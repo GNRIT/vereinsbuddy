@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/vereinsbuddy"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL_VEREINSBUDDY")
+}
+
+model benutzerkonto {
+  id           Int     @id @default(autoincrement())
+  benutzername String  @unique(map: "benutzername") @db.VarChar(100)
+  passwort     String  @db.VarChar(255)
+  aktiv        Boolean @default(true)
+  person_id    Int
+  person       person  @relation(fields: [person_id], references: [id], onDelete: Cascade, map: "benutzerkonto_ibfk_1")
+
+  @@index([person_id], map: "person_id")
+}
+
+model person {
+  id               Int                @id @default(autoincrement())
+  vorname          String             @db.VarChar(100)
+  name             String             @db.VarChar(100)
+  geburtsdatum     DateTime?          @db.Date
+  email            String             @db.VarChar(255)
+  benutzerkonto    benutzerkonto[]
+  vereinszuordnung vereinszuordnung[]
+}
+
+model verein {
+  id               Int                @id @default(autoincrement())
+  name             String             @db.VarChar(255)
+  strasse          String             @db.VarChar(100)
+  hausnummer       Int
+  postleitzahl     Int
+  ort              String             @db.VarChar(100)
+  subdomain        String             @unique(map: "subdomain") @db.VarChar(100)
+  vereinszuordnung vereinszuordnung[]
+}
+
+model vereinszuordnung {
+  id        Int                    @id @default(autoincrement())
+  person_id Int
+  verein_id Int
+  rolle     vereinszuordnung_rolle @default(mitglied)
+  person    person                 @relation(fields: [person_id], references: [id], onUpdate: Restrict, map: "vereinszuordnung_ibfk_1")
+  verein    verein                 @relation(fields: [verein_id], references: [id], onUpdate: Restrict, map: "vereinszuordnung_ibfk_2")
+
+  @@index([person_id], map: "person_id")
+  @@index([verein_id], map: "verein_id")
+}
+
+enum vereinszuordnung_rolle {
+  mitglied
+  admin
+}

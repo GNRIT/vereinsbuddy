@@ -1,0 +1,145 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/verein_db"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL_VEREINDB")
+}
+
+model einsatz {
+  id           Int         @id @default(autoincrement())
+  datum        DateTime    @db.DateTime(0)
+  beschreibung String?     @db.Text
+  ort          String?     @db.VarChar(255)
+  art          einsatz_art
+}
+
+model ff_mitglied {
+  id                  Int                   @id @default(autoincrement())
+  person_id           Int
+  eintrittsdatum      DateTime              @db.Date
+  austrittsdatum      DateTime?             @db.Date
+  status              ff_mitglied_status    @default(aktiv)
+  person              person                @relation(fields: [person_id], references: [id], onUpdate: Restrict, map: "ff_mitglied_ibfk_1")
+  mitglied_funktionen mitglied_funktionen[]
+  teilnahme           teilnahme[]
+
+  @@index([person_id], map: "person_id")
+}
+
+model funktion_ff {
+  id                  Int                   @id @default(autoincrement())
+  name                String                @db.VarChar(100)
+  ist_admin           Boolean               @default(false)
+  mitglied_funktionen mitglied_funktionen[]
+}
+
+model funktion_jf {
+  id        Int     @id @default(autoincrement())
+  name      String  @db.VarChar(100)
+  ist_admin Boolean @default(false)
+}
+
+model jf_erziehungsberechtigter {
+  id             Int         @id @default(autoincrement())
+  jf_mitglied_id Int
+  person_id      Int
+  jf_mitglied    jf_mitglied @relation(fields: [jf_mitglied_id], references: [id], onUpdate: Restrict, map: "jf_erziehungsberechtigter_ibfk_1")
+  person         person      @relation(fields: [person_id], references: [id], onUpdate: Restrict, map: "jf_erziehungsberechtigter_ibfk_2")
+
+  @@index([jf_mitglied_id], map: "jf_mitglied_id")
+  @@index([person_id], map: "person_id")
+}
+
+model jf_mitglied {
+  id                        Int                         @id @default(autoincrement())
+  person_id                 Int
+  eintrittsdatum            DateTime                    @db.Date
+  austrittsdatum            DateTime?                   @db.Date
+  status                    jf_mitglied_status          @default(aktiv)
+  jf_erziehungsberechtigter jf_erziehungsberechtigter[]
+  person                    person                      @relation(fields: [person_id], references: [id], onUpdate: Restrict, map: "jf_mitglied_ibfk_1")
+
+  @@index([person_id], map: "person_id")
+}
+
+model mitglied_funktionen {
+  id          Int                     @id @default(autoincrement())
+  mitglied_id Int
+  funktion_id Int
+  typ         mitglied_funktionen_typ
+  ff_mitglied ff_mitglied             @relation(fields: [mitglied_id], references: [id], onUpdate: Restrict, map: "mitglied_funktionen_ibfk_1")
+  funktion_ff funktion_ff             @relation(fields: [funktion_id], references: [id], onUpdate: Restrict, map: "mitglied_funktionen_ibfk_2")
+
+  @@index([funktion_id], map: "funktion_id")
+  @@index([mitglied_id], map: "mitglied_id")
+}
+
+model mitglied_login {
+  id          Int               @id @default(autoincrement())
+  benutzer_id Int
+  mitglied_id Int
+  ty          mitglied_login_ty
+}
+
+model person {
+  id                        Int                         @id @default(autoincrement())
+  vorname                   String                      @db.VarChar(100)
+  name                      String                      @db.VarChar(100)
+  geburtsdatum              DateTime?                   @db.Date
+  email                     String                      @db.VarChar(255)
+  ff_mitglied               ff_mitglied[]
+  jf_erziehungsberechtigter jf_erziehungsberechtigter[]
+  jf_mitglied               jf_mitglied[]
+}
+
+model teilnahme {
+  id               Int           @id @default(autoincrement())
+  mitglied_id      Int
+  veranstaltung_id Int
+  typ              teilnahme_typ
+  ff_mitglied      ff_mitglied   @relation(fields: [mitglied_id], references: [id], onUpdate: Restrict, map: "teilnahme_ibfk_1")
+
+  @@index([mitglied_id], map: "mitglied_id")
+}
+
+model uebungsabend {
+  id    Int      @id @default(autoincrement())
+  datum DateTime @db.DateTime(0)
+  thema String?  @db.VarChar(255)
+}
+
+enum mitglied_funktionen_typ {
+  ff
+  jf
+}
+
+enum mitglied_login_ty {
+  ff
+  jf
+}
+
+enum teilnahme_typ {
+  einsatz
+  uebung
+}
+
+enum einsatz_art {
+  brand
+  hilfeleistung
+  sonstiges
+}
+
+enum ff_mitglied_status {
+  aktiv
+  anw_rter    @map("anwärter")
+  ausgetreten
+}
+
+enum jf_mitglied_status {
+  aktiv
+  anw_rter    @map("anwärter")
+  ausgetreten
+}
