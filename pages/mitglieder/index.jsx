@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Layout from '../../components/Layout'
-import { vereinsbuddyPrisma as prisma } from '../../lib/prisma'
+const { db1 } = require('@/lib/prisma')
 
 export default function MitgliederListe({ mitglieder }) {
     return (
@@ -72,7 +72,7 @@ export default function MitgliederListe({ mitglieder }) {
     }
 
     export async function getServerSideProps() {
-    const mitglieder = await prisma.person.findMany({
+    const mitglieder = await db1.person.findMany({
         include: {
         Vereinszuordnung: true
         }

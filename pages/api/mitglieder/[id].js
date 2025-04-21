@@ -1,5 +1,5 @@
 import { getSession } from 'next-auth/react'
-import { vereinsbuddyPrisma as prisma } from '../../../lib/prisma'
+const { db1 } = require('@/lib/prisma')
 
 export default async function handler(req, res) {
     const session = await getSession({ req })
@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
     if (req.method === 'GET') {
         try {
-        const mitglied = await prisma.person.findUnique({
+        const mitglied = await db1.person.findUnique({
             where: {
             id: parseInt(id),
             },
@@ -37,7 +37,7 @@ export default async function handler(req, res) {
         const { Vorname, Name, Geburtsdatum, Strasse, Hausnummer, Postleitzahl, Ort, Email, HandyNr, Rolle } = req.body
 
         // Aktualisiere die Person
-        const updatedPerson = await prisma.person.update({
+        const updatedPerson = await db1.person.update({
             where: {
             id: parseInt(id),
             },
@@ -56,14 +56,14 @@ export default async function handler(req, res) {
         })
 
         // Aktualisiere die Vereinszuordnung (falls vorhanden)
-        const existingZuordnung = await prisma.vereinszuordnung.findFirst({
+        const existingZuordnung = await db1.vereinszuordnung.findFirst({
             where: {
             Person_ID: parseInt(id),
             }
         })
 
         if (existingZuordnung) {
-            await prisma.vereinszuordnung.update({
+            await db1.vereinszuordnung.update({
             where: {
                 id: existingZuordnung.id,
             },
@@ -81,14 +81,14 @@ export default async function handler(req, res) {
     } else if (req.method === 'DELETE') {
         try {
         // Lösche zuerst die Vereinszuordnung
-        await prisma.vereinszuordnung.deleteMany({
+        await db1.vereinszuordnung.deleteMany({
             where: {
             Person_ID: parseInt(id),
             }
         })
 
         // Dann die Person
-        await prisma.person.delete({
+        await db1.person.delete({
             where: {
             id: parseInt(id),
             }

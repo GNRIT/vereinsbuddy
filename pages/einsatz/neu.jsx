@@ -1,7 +1,7 @@
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import EinsatzForm from '../../components/EinsatzForm'
 import Layout from '../../components/Layout'
+import EinsatzForm from './components/EinsatzForm'
 
 export default function NeuerEinsatz() {
     const router = useRouter()

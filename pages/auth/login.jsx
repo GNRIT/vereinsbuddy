@@ -1,7 +1,6 @@
-import { signIn } from 'next-auth/react'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 export default function LoginPage() {
     const [benutzername, setBenutzername] = useState('')
@@ -83,12 +82,7 @@ export default function LoginPage() {
                     Angemeldet bleiben
                 </label>
                 </div>
-
-                <div className="text-sm">
-                <Link href="/auth/passwort-vergessen" className="font-medium text-blue-600 hover:text-blue-500">
-                    Passwort vergessen?
-                </Link>
-                </div>
+                
             </div>
 
             <div>

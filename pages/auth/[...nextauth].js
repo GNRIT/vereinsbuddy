@@ -1,7 +1,6 @@
 import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
-
-const { db1, db2 } = require('@/lib/prisma')
+const { db1 } = require('@/lib/prisma')
 
 export const authOptions = {
     providers: [
@@ -52,7 +51,7 @@ export const authOptions = {
                 rolle: zuordnung.Rolle
             })),
             aktuellerVerein: user.Person.Vereinszuordnung.length > 0
-                ? user.Person.Vereinszuordnung[0].Verein_ID 
+                ? user.Person.Vereinszuordnung[0].Verein_ID
                 : null
             }
         }

@@ -1,8 +1,8 @@
 import { getSession } from 'next-auth/react'
 import Layout from '../../../components/Layout'
-import { vereinsbuddyPrisma as prisma } from '../../../lib/prisma'
 import MitgliedForm from '../components/MitgliedForm'
 
+const { db1 } = require('@/lib/prisma')
 export default function MitgliedBearbeiten({ initialData }) {
     const router = useRouter()
 
@@ -51,9 +51,9 @@ export default function MitgliedBearbeiten({ initialData }) {
         }
     }
 
-    const mitglied = await prisma.person.findUnique({
+    const mitglied = await db1.person.findUnique({
         where: {
-        id: parseInt(id),
+        ID: parseInt(id),
         },
         include: {
         Vereinszuordnung: true,

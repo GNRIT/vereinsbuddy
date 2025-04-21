@@ -1,5 +1,5 @@
 import { getSession } from 'next-auth/react'
-import { vereinsbuddyPrisma as prisma } from '../../../lib/prisma'
+const { db1 } = require('@/lib/prisma')
 
 export default async function handler(req, res) {
     const session = await getSession({ req })
@@ -10,7 +10,7 @@ export default async function handler(req, res) {
 
     if (req.method === 'GET') {
         try {
-        const mitglieder = await prisma.person.findMany({
+        const mitglieder = await db1.person.findMany({
             include: {
             Vereinszuordnung: {
                 include: {
@@ -28,7 +28,7 @@ export default async function handler(req, res) {
         const { Vorname, Name, Geburtsdatum, Strasse, Hausnummer, Postleitzahl, Ort, Email, HandyNr, Rolle } = req.body
 
         // Erstelle zuerst die Person
-        const neuePerson = await prisma.person.create({
+        const neuePerson = await db1.person.create({
             data: {
             Vorname,
             Name,
@@ -44,10 +44,10 @@ export default async function handler(req, res) {
         })
 
         // Dann die Vereinszuordnung (hier mit dem ersten Verein, könnte erweitert werden)
-        const verein = await prisma.verein.findFirst()
+        const verein = await db1.verein.findFirst()
         
         if (verein) {
-            await prisma.vereinszuordnung.create({
+            await db1.vereinszuordnung.create({
             data: {
                 Person_ID: neuePerson.id,
                 Verein_ID: verein.id,

@@ -1,15 +1,15 @@
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import Layout from '../../../components/Layout'
-import EinsatzForm from '../components/EinsatzForm'
-const { db2 } = require('@/lib/prisma')
+import VereinForm from '../components/VereinForm'
+const { db1 } = require('@/lib/prisma')
 
-export default function EinsatzBearbeiten({ initialData }) {
+export default function VereinBearbeiten({ initialData }) {
     const router = useRouter()
 
     const handleSubmit = async (formData) => {
         try {
-        const response = await fetch(`/api/einsatz/${initialData.id}`, {
+        const response = await fetch(`/api/vereine/${initialData.id}`, {
             method: 'PUT',
             headers: {
             'Content-Type': 'application/json',
@@ -18,7 +18,7 @@ export default function EinsatzBearbeiten({ initialData }) {
         })
 
         if (response.ok) {
-            router.push(`/einsatz/${initialData.id}`)
+            router.push('/vereine')
         } else {
             const errorData = await response.json()
             alert(errorData.message || 'Fehler beim Speichern')
@@ -32,8 +32,8 @@ export default function EinsatzBearbeiten({ initialData }) {
     return (
         <Layout>
         <div className="bg-white shadow rounded-lg p-6">
-            <h1 className="text-2xl font-bold text-gray-900 mb-6">Einsatz bearbeiten</h1>
-            <EinsatzForm initialData={initialData} onSubmit={handleSubmit} />
+            <h1 className="text-2xl font-bold text-gray-900 mb-6">Verein bearbeiten</h1>
+            <VereinForm initialData={initialData} onSubmit={handleSubmit} />
         </div>
         </Layout>
     )
@@ -52,13 +52,24 @@ export default function EinsatzBearbeiten({ initialData }) {
         }
     }
 
-    const einsatz = await db2.einsatz.findUnique({
+    // Nur Admins dürfen Vereine bearbeiten
+    const isAdmin = session.user.vereine.some(v => v.rolle === 'admin')
+    if (!isAdmin) {
+        return {
+        redirect: {
+            destination: '/dashboard',
+            permanent: false,
+        },
+        }
+    }
+
+    const verein = await db1.verein.findUnique({
         where: {
         id: parseInt(id),
         },
     })
 
-    if (!einsatz) {
+    if (!verein) {
         return {
         notFound: true,
         }
@@ -66,7 +77,7 @@ export default function EinsatzBearbeiten({ initialData }) {
 
     return {
         props: {
-        initialData: JSON.parse(JSON.stringify(einsatz)),
+        initialData: JSON.parse(JSON.stringify(verein)),
         },
     }
-    }
+}

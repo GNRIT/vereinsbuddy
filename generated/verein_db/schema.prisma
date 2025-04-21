@@ -8,9 +8,8 @@ datasource vereindb {
   url      = env("DATABASE_URL_VEREINDB")
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 model allergie {
-  ID             Int
+  ID             Int         @id @default(autoincrement())
   JF_Mitglied_ID Int
   FF_Mitglied_ID Int
   Allergie       String      @vereindb.VarChar(255)
@@ -22,7 +21,6 @@ model allergie {
 
   @@index([FF_Mitglied_ID], map: "FF_Mitglied_ID")
   @@index([JF_Mitglied_ID], map: "JF_Mitglied_ID")
-  @@ignore
 }
 
 model dienstgrad {
@@ -36,11 +34,12 @@ model dienstgrad {
 }
 
 model dientsabend {
-  ID           Int       @id @default(autoincrement())
-  Datum        DateTime  @vereindb.DateTime(0)
-  Thema        String?   @vereindb.VarChar(255)
-  Erstellt_am  DateTime  @map("Erstellt am") @vereindb.Date
-  Geaendert_am DateTime? @map("Geaendert am") @vereindb.Date
+  ID           Int          @id @default(autoincrement())
+  Datum        DateTime     @vereindb.DateTime(0)
+  Thema        String?      @vereindb.VarChar(255)
+  Erstellt_am  DateTime     @map("Erstellt am") @vereindb.Date
+  Geaendert_am DateTime?    @map("Geaendert am") @vereindb.Date
+  einteilung   einteilung[]
 }
 
 model einheit {
@@ -49,7 +48,7 @@ model einheit {
   Beschreibung String?      @vereindb.Text
   Erstellt_am  DateTime?    @map("Erstellt am") @vereindb.Date
   Geaendert_am DateTime?    @map("Geaendert am") @vereindb.Date
-  einteilung   einteilung[] @ignore
+  einteilung   einteilung[]
 }
 
 model einsatz {
@@ -67,16 +66,18 @@ model einsatz {
   Art            einsatz_Art
   Erstellt_am    DateTime?    @map("Erstellt am") @vereindb.Date
   Geaendert_am   DateTime?    @map("Geaendert am") @vereindb.Date
-  einteilung     einteilung[] @ignore
+  einteilung     einteilung[]
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 model einteilung {
+  ID             Int         @id @default(autoincrement())
   Einsatz_ID     Int
   Dienstabend_ID Int
   Fahrzeug_ID    Int
   FF_Mitglied_ID Int
   Einheit_ID     Int
+  dientsabend    dientsabend @relation(fields: [Dienstabend_ID], references: [ID], onDelete: Cascade, map: "einteilung_ibfk_1")
   einheit        einheit     @relation(fields: [Einheit_ID], references: [ID], onDelete: Cascade, map: "einteilung_ibfk_2")
   einsatz        einsatz     @relation(fields: [Einsatz_ID], references: [ID], onDelete: Cascade, map: "einteilung_ibfk_3")
   fahrzeug       fahrzeug    @relation(fields: [Fahrzeug_ID], references: [ID], onDelete: Cascade, map: "einteilung_ibfk_4")
@@ -87,7 +88,6 @@ model einteilung {
   @@index([Einsatz_ID], map: "Einsatz_ID")
   @@index([FF_Mitglied_ID], map: "FF_Mitglied_ID")
   @@index([Fahrzeug_ID], map: "Fahrzeug_ID")
-  @@ignore
 }
 
 model fahrzeug {
@@ -96,7 +96,7 @@ model fahrzeug {
   Besatzungsstaerke String?      @vereindb.VarChar(100)
   Erstellt_am       DateTime?    @map("Erstellt am") @vereindb.Date
   Geaendert_am      DateTime?    @map("Geaendert am") @vereindb.Date
-  einteilung        einteilung[] @ignore
+  einteilung        einteilung[]
 }
 
 model ff_mitglied {
@@ -108,8 +108,8 @@ model ff_mitglied {
   Status               ff_mitglied_Status     @default(aktiv)
   Erstellt_am          DateTime               @map("Erstellt am") @vereindb.Date
   Geaendert_am         DateTime?              @map("Geaendert am") @vereindb.Date
-  allergie             allergie[]             @ignore
-  einteilung           einteilung[]           @ignore
+  allergie             allergie[]
+  einteilung           einteilung[]
   person               person                 @relation(fields: [Person_ID], references: [ID], onUpdate: Restrict, map: "ff_mitglied_ibfk_1")
   ff_mitglied_lehrgang ff_mitglied_lehrgang[]
   mitglied_funktionen  mitglied_funktionen[]
@@ -170,7 +170,7 @@ model jf_mitglied {
   Status                    jf_mitglied_Status          @default(aktiv)
   Erstellt_am               DateTime?                   @map("Erstellt am") @vereindb.Date
   Geaendert_am              DateTime?                   @map("Geaendert am") @vereindb.Date
-  allergie                  allergie[]                  @ignore
+  allergie                  allergie[]
   jf_erziehungsberechtigter jf_erziehungsberechtigter[]
   person                    person                      @relation(fields: [Person_ID], references: [ID], onDelete: Cascade, map: "jf_mitglied_ibfk_1")
 

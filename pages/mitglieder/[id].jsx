@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
-import Layout from '../../../components/Layout'
-import { vereinsbuddyPrisma as prisma } from '../../../lib/prisma'
+import Layout from '../../components/Layout'
+const { db1 } = require('@/lib/prisma')
 
 export default function MitgliedDetail({ mitglied }) {
     const router = useRouter()
@@ -103,9 +103,9 @@ export default function MitgliedDetail({ mitglied }) {
     export async function getServerSideProps(context) {
     const { id } = context.params
 
-    const mitglied = await prisma.person.findUnique({
+    const mitglied = await db1.person.findUnique({
         where: {
-        id: parseInt(id)
+        ID: parseInt(id)
         },
         include: {
         Vereinszuordnung: {

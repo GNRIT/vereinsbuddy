@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import Layout from '../../../components/Layout'
-import { vereinDbPrisma as prisma } from '../../../lib/prisma'
+const { db2 } = require('@/lib/prisma')
 
 export default function EinsatzDetail({ einsatz }) {
     const router = useRouter()
@@ -92,7 +92,7 @@ export default function EinsatzDetail({ einsatz }) {
     export async function getServerSideProps(context) {
     const { id } = context.params
 
-    const einsatz = await prisma.einsatz.findUnique({
+    const einsatz = await db2.einsatz.findUnique({
         where: {
         id: parseInt(id)
         }

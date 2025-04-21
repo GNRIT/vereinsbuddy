@@ -1,5 +1,5 @@
 import { getSession } from 'next-auth/react'
-import { vereinDbPrisma as prisma } from '../../../lib/prisma'
+const { db2 } = require('@/lib/prisma')
 
 export default async function handler(req, res) {
     const session = await getSession({ req })
@@ -10,7 +10,7 @@ export default async function handler(req, res) {
 
     if (req.method === 'GET') {
         try {
-        const einsaetze = await prisma.einsatz.findMany({
+        const einsaetze = await db2.einsatz.findMany({
             orderBy: {
             StartDatum: 'desc',
             },
@@ -23,7 +23,7 @@ export default async function handler(req, res) {
         try {
         const { Titel, Beschreibung, StartDatum, EndDatum, Ort } = req.body
 
-        const neuerEinsatz = await prisma.einsatz.create({
+        const neuerEinsatz = await db2.einsatz.create({
             data: {
             Titel,
             Beschreibung,

@@ -2,7 +2,7 @@ import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import Layout from '../../components/Layout'
 import { useVerein } from '../../context/VereinContext'
-import { vereinsbuddyPrisma as prisma } from '../../lib/prisma'
+const { db1 } = require('@/lib/prisma')
 
 export default function VereinDetail({ verein }) {
     const { data: session } = useSession()
@@ -77,9 +77,9 @@ export default function VereinDetail({ verein }) {
 
 export async function getServerSideProps(context) {
     const { id } = context.params
-    const verein = await prisma.verein.findUnique({
+    const verein = await db1.verein.findUnique({
         where: {
-        id: parseInt(id),
+            ID: parseInt(id),
         },
     })
 

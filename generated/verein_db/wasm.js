@@ -117,6 +117,16 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.AllergieScalarFieldEnum = {
+  ID: 'ID',
+  JF_Mitglied_ID: 'JF_Mitglied_ID',
+  FF_Mitglied_ID: 'FF_Mitglied_ID',
+  Allergie: 'Allergie',
+  Beschreibung: 'Beschreibung',
+  Erstellt_am: 'Erstellt_am',
+  Geaendert_am: 'Geaendert_am'
+};
+
 exports.Prisma.DienstgradScalarFieldEnum = {
   ID: 'ID',
   Abkuerzung_maennlich: 'Abkuerzung_maennlich',
@@ -158,6 +168,15 @@ exports.Prisma.EinsatzScalarFieldEnum = {
   Art: 'Art',
   Erstellt_am: 'Erstellt_am',
   Geaendert_am: 'Geaendert_am'
+};
+
+exports.Prisma.EinteilungScalarFieldEnum = {
+  ID: 'ID',
+  Einsatz_ID: 'Einsatz_ID',
+  Dienstabend_ID: 'Dienstabend_ID',
+  Fahrzeug_ID: 'Fahrzeug_ID',
+  FF_Mitglied_ID: 'FF_Mitglied_ID',
+  Einheit_ID: 'Einheit_ID'
 };
 
 exports.Prisma.FahrzeugScalarFieldEnum = {
@@ -284,6 +303,11 @@ exports.Prisma.NullsOrder = {
   last: 'last'
 };
 
+exports.Prisma.allergieOrderByRelevanceFieldEnum = {
+  Allergie: 'Allergie',
+  Beschreibung: 'Beschreibung'
+};
+
 exports.Prisma.dienstgradOrderByRelevanceFieldEnum = {
   Abkuerzung_maennlich: 'Abkuerzung_maennlich',
   Beschreibung_maennlich: 'Beschreibung_maennlich',
@@ -369,10 +393,12 @@ exports.teilnahme_Typ = exports.$Enums.teilnahme_Typ = {
 };
 
 exports.Prisma.ModelName = {
+  allergie: 'allergie',
   dienstgrad: 'dienstgrad',
   dientsabend: 'dientsabend',
   einheit: 'einheit',
   einsatz: 'einsatz',
+  einteilung: 'einteilung',
   fahrzeug: 'fahrzeug',
   ff_mitglied: 'ff_mitglied',
   ff_mitglied_lehrgang: 'ff_mitglied_lehrgang',

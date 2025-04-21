@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Layout from '../../components/Layout'
-import { vereinDbPrisma as prisma } from '../../lib/prisma'
+const { db2 } = require('@/lib/prisma')
 
 export default function EinsatzListe({ einsaetze }) {
     return (
@@ -68,7 +68,7 @@ export default function EinsatzListe({ einsaetze }) {
     }
 
     export async function getServerSideProps() {
-    const einsaetze = await prisma.einsatz.findMany({
+    const einsaetze = await db2.einsatz.findMany({
         orderBy: {
         StartDatum: 'desc',
         },

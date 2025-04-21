@@ -14,6 +14,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
+ * Model allergie
+ * 
+ */
+export type allergie = $Result.DefaultSelection<Prisma.$allergiePayload>
+/**
  * Model dienstgrad
  * 
  */
@@ -33,6 +38,11 @@ export type einheit = $Result.DefaultSelection<Prisma.$einheitPayload>
  * 
  */
 export type einsatz = $Result.DefaultSelection<Prisma.$einsatzPayload>
+/**
+ * Model einteilung
+ * The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+ */
+export type einteilung = $Result.DefaultSelection<Prisma.$einteilungPayload>
 /**
  * Model fahrzeug
  * 
@@ -181,8 +191,8 @@ export const einsatz_Art: typeof $Enums.einsatz_Art
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Dienstgrads
- * const dienstgrads = await prisma.dienstgrad.findMany()
+ * // Fetch zero or more Allergies
+ * const allergies = await prisma.allergie.findMany()
  * ```
  *
  *
@@ -202,8 +212,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Dienstgrads
-   * const dienstgrads = await prisma.dienstgrad.findMany()
+   * // Fetch zero or more Allergies
+   * const allergies = await prisma.allergie.findMany()
    * ```
    *
    *
@@ -300,6 +310,16 @@ export class PrismaClient<
   }>>
 
       /**
+   * `prisma.allergie`: Exposes CRUD operations for the **allergie** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Allergies
+    * const allergies = await prisma.allergie.findMany()
+    * ```
+    */
+  get allergie(): Prisma.allergieDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.dienstgrad`: Exposes CRUD operations for the **dienstgrad** model.
     * Example usage:
     * ```ts
@@ -338,6 +358,16 @@ export class PrismaClient<
     * ```
     */
   get einsatz(): Prisma.einsatzDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.einteilung`: Exposes CRUD operations for the **einteilung** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Einteilungs
+    * const einteilungs = await prisma.einteilung.findMany()
+    * ```
+    */
+  get einteilung(): Prisma.einteilungDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.fahrzeug`: Exposes CRUD operations for the **fahrzeug** model.
@@ -898,10 +928,12 @@ export namespace Prisma {
 
 
   export const ModelName: {
+    allergie: 'allergie',
     dienstgrad: 'dienstgrad',
     dientsabend: 'dientsabend',
     einheit: 'einheit',
     einsatz: 'einsatz',
+    einteilung: 'einteilung',
     fahrzeug: 'fahrzeug',
     ff_mitglied: 'ff_mitglied',
     ff_mitglied_lehrgang: 'ff_mitglied_lehrgang',
@@ -932,10 +964,76 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "dienstgrad" | "dientsabend" | "einheit" | "einsatz" | "fahrzeug" | "ff_mitglied" | "ff_mitglied_lehrgang" | "funktion_ff" | "funktion_jf" | "jf_erziehungsberechtigter" | "jf_mitglied" | "lehrgang" | "mitglied_funktionen" | "mitglied_login" | "person" | "teilnahme"
+      modelProps: "allergie" | "dienstgrad" | "dientsabend" | "einheit" | "einsatz" | "einteilung" | "fahrzeug" | "ff_mitglied" | "ff_mitglied_lehrgang" | "funktion_ff" | "funktion_jf" | "jf_erziehungsberechtigter" | "jf_mitglied" | "lehrgang" | "mitglied_funktionen" | "mitglied_login" | "person" | "teilnahme"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
+      allergie: {
+        payload: Prisma.$allergiePayload<ExtArgs>
+        fields: Prisma.allergieFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.allergieFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$allergiePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.allergieFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$allergiePayload>
+          }
+          findFirst: {
+            args: Prisma.allergieFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$allergiePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.allergieFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$allergiePayload>
+          }
+          findMany: {
+            args: Prisma.allergieFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$allergiePayload>[]
+          }
+          create: {
+            args: Prisma.allergieCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$allergiePayload>
+          }
+          createMany: {
+            args: Prisma.allergieCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.allergieDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$allergiePayload>
+          }
+          update: {
+            args: Prisma.allergieUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$allergiePayload>
+          }
+          deleteMany: {
+            args: Prisma.allergieDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.allergieUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.allergieUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$allergiePayload>
+          }
+          aggregate: {
+            args: Prisma.AllergieAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAllergie>
+          }
+          groupBy: {
+            args: Prisma.allergieGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AllergieGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.allergieCountArgs<ExtArgs>
+            result: $Utils.Optional<AllergieCountAggregateOutputType> | number
+          }
+        }
+      }
       dienstgrad: {
         payload: Prisma.$dienstgradPayload<ExtArgs>
         fields: Prisma.dienstgradFieldRefs
@@ -1197,6 +1295,72 @@ export namespace Prisma {
           count: {
             args: Prisma.einsatzCountArgs<ExtArgs>
             result: $Utils.Optional<EinsatzCountAggregateOutputType> | number
+          }
+        }
+      }
+      einteilung: {
+        payload: Prisma.$einteilungPayload<ExtArgs>
+        fields: Prisma.einteilungFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.einteilungFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$einteilungPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.einteilungFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$einteilungPayload>
+          }
+          findFirst: {
+            args: Prisma.einteilungFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$einteilungPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.einteilungFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$einteilungPayload>
+          }
+          findMany: {
+            args: Prisma.einteilungFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$einteilungPayload>[]
+          }
+          create: {
+            args: Prisma.einteilungCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$einteilungPayload>
+          }
+          createMany: {
+            args: Prisma.einteilungCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.einteilungDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$einteilungPayload>
+          }
+          update: {
+            args: Prisma.einteilungUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$einteilungPayload>
+          }
+          deleteMany: {
+            args: Prisma.einteilungDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.einteilungUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.einteilungUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$einteilungPayload>
+          }
+          aggregate: {
+            args: Prisma.EinteilungAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEinteilung>
+          }
+          groupBy: {
+            args: Prisma.einteilungGroupByArgs<ExtArgs>
+            result: $Utils.Optional<EinteilungGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.einteilungCountArgs<ExtArgs>
+            result: $Utils.Optional<EinteilungCountAggregateOutputType> | number
           }
         }
       }
@@ -2076,10 +2240,12 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
+    allergie?: allergieOmit
     dienstgrad?: dienstgradOmit
     dientsabend?: dientsabendOmit
     einheit?: einheitOmit
     einsatz?: einsatzOmit
+    einteilung?: einteilungOmit
     fahrzeug?: fahrzeugOmit
     ff_mitglied?: ff_mitgliedOmit
     ff_mitglied_lehrgang?: ff_mitglied_lehrgangOmit
@@ -2182,15 +2348,143 @@ export namespace Prisma {
 
 
   /**
+   * Count Type DientsabendCountOutputType
+   */
+
+  export type DientsabendCountOutputType = {
+    einteilung: number
+  }
+
+  export type DientsabendCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    einteilung?: boolean | DientsabendCountOutputTypeCountEinteilungArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * DientsabendCountOutputType without action
+   */
+  export type DientsabendCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DientsabendCountOutputType
+     */
+    select?: DientsabendCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * DientsabendCountOutputType without action
+   */
+  export type DientsabendCountOutputTypeCountEinteilungArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: einteilungWhereInput
+  }
+
+
+  /**
+   * Count Type EinheitCountOutputType
+   */
+
+  export type EinheitCountOutputType = {
+    einteilung: number
+  }
+
+  export type EinheitCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    einteilung?: boolean | EinheitCountOutputTypeCountEinteilungArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * EinheitCountOutputType without action
+   */
+  export type EinheitCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EinheitCountOutputType
+     */
+    select?: EinheitCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * EinheitCountOutputType without action
+   */
+  export type EinheitCountOutputTypeCountEinteilungArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: einteilungWhereInput
+  }
+
+
+  /**
+   * Count Type EinsatzCountOutputType
+   */
+
+  export type EinsatzCountOutputType = {
+    einteilung: number
+  }
+
+  export type EinsatzCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    einteilung?: boolean | EinsatzCountOutputTypeCountEinteilungArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * EinsatzCountOutputType without action
+   */
+  export type EinsatzCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EinsatzCountOutputType
+     */
+    select?: EinsatzCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * EinsatzCountOutputType without action
+   */
+  export type EinsatzCountOutputTypeCountEinteilungArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: einteilungWhereInput
+  }
+
+
+  /**
+   * Count Type FahrzeugCountOutputType
+   */
+
+  export type FahrzeugCountOutputType = {
+    einteilung: number
+  }
+
+  export type FahrzeugCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    einteilung?: boolean | FahrzeugCountOutputTypeCountEinteilungArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * FahrzeugCountOutputType without action
+   */
+  export type FahrzeugCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FahrzeugCountOutputType
+     */
+    select?: FahrzeugCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * FahrzeugCountOutputType without action
+   */
+  export type FahrzeugCountOutputTypeCountEinteilungArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: einteilungWhereInput
+  }
+
+
+  /**
    * Count Type Ff_mitgliedCountOutputType
    */
 
   export type Ff_mitgliedCountOutputType = {
+    allergie: number
+    einteilung: number
     ff_mitglied_lehrgang: number
     mitglied_funktionen: number
   }
 
   export type Ff_mitgliedCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    allergie?: boolean | Ff_mitgliedCountOutputTypeCountAllergieArgs
+    einteilung?: boolean | Ff_mitgliedCountOutputTypeCountEinteilungArgs
     ff_mitglied_lehrgang?: boolean | Ff_mitgliedCountOutputTypeCountFf_mitglied_lehrgangArgs
     mitglied_funktionen?: boolean | Ff_mitgliedCountOutputTypeCountMitglied_funktionenArgs
   }
@@ -2204,6 +2498,20 @@ export namespace Prisma {
      * Select specific fields to fetch from the Ff_mitgliedCountOutputType
      */
     select?: Ff_mitgliedCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * Ff_mitgliedCountOutputType without action
+   */
+  export type Ff_mitgliedCountOutputTypeCountAllergieArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: allergieWhereInput
+  }
+
+  /**
+   * Ff_mitgliedCountOutputType without action
+   */
+  export type Ff_mitgliedCountOutputTypeCountEinteilungArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: einteilungWhereInput
   }
 
   /**
@@ -2257,10 +2565,12 @@ export namespace Prisma {
    */
 
   export type Jf_mitgliedCountOutputType = {
+    allergie: number
     jf_erziehungsberechtigter: number
   }
 
   export type Jf_mitgliedCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    allergie?: boolean | Jf_mitgliedCountOutputTypeCountAllergieArgs
     jf_erziehungsberechtigter?: boolean | Jf_mitgliedCountOutputTypeCountJf_erziehungsberechtigterArgs
   }
 
@@ -2273,6 +2583,13 @@ export namespace Prisma {
      * Select specific fields to fetch from the Jf_mitgliedCountOutputType
      */
     select?: Jf_mitgliedCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * Jf_mitgliedCountOutputType without action
+   */
+  export type Jf_mitgliedCountOutputTypeCountAllergieArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: allergieWhereInput
   }
 
   /**
@@ -2384,6 +2701,1003 @@ export namespace Prisma {
   /**
    * Models
    */
+
+  /**
+   * Model allergie
+   */
+
+  export type AggregateAllergie = {
+    _count: AllergieCountAggregateOutputType | null
+    _avg: AllergieAvgAggregateOutputType | null
+    _sum: AllergieSumAggregateOutputType | null
+    _min: AllergieMinAggregateOutputType | null
+    _max: AllergieMaxAggregateOutputType | null
+  }
+
+  export type AllergieAvgAggregateOutputType = {
+    ID: number | null
+    JF_Mitglied_ID: number | null
+    FF_Mitglied_ID: number | null
+  }
+
+  export type AllergieSumAggregateOutputType = {
+    ID: number | null
+    JF_Mitglied_ID: number | null
+    FF_Mitglied_ID: number | null
+  }
+
+  export type AllergieMinAggregateOutputType = {
+    ID: number | null
+    JF_Mitglied_ID: number | null
+    FF_Mitglied_ID: number | null
+    Allergie: string | null
+    Beschreibung: string | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
+  }
+
+  export type AllergieMaxAggregateOutputType = {
+    ID: number | null
+    JF_Mitglied_ID: number | null
+    FF_Mitglied_ID: number | null
+    Allergie: string | null
+    Beschreibung: string | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
+  }
+
+  export type AllergieCountAggregateOutputType = {
+    ID: number
+    JF_Mitglied_ID: number
+    FF_Mitglied_ID: number
+    Allergie: number
+    Beschreibung: number
+    Erstellt_am: number
+    Geaendert_am: number
+    _all: number
+  }
+
+
+  export type AllergieAvgAggregateInputType = {
+    ID?: true
+    JF_Mitglied_ID?: true
+    FF_Mitglied_ID?: true
+  }
+
+  export type AllergieSumAggregateInputType = {
+    ID?: true
+    JF_Mitglied_ID?: true
+    FF_Mitglied_ID?: true
+  }
+
+  export type AllergieMinAggregateInputType = {
+    ID?: true
+    JF_Mitglied_ID?: true
+    FF_Mitglied_ID?: true
+    Allergie?: true
+    Beschreibung?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
+  }
+
+  export type AllergieMaxAggregateInputType = {
+    ID?: true
+    JF_Mitglied_ID?: true
+    FF_Mitglied_ID?: true
+    Allergie?: true
+    Beschreibung?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
+  }
+
+  export type AllergieCountAggregateInputType = {
+    ID?: true
+    JF_Mitglied_ID?: true
+    FF_Mitglied_ID?: true
+    Allergie?: true
+    Beschreibung?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
+    _all?: true
+  }
+
+  export type AllergieAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which allergie to aggregate.
+     */
+    where?: allergieWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of allergies to fetch.
+     */
+    orderBy?: allergieOrderByWithRelationInput | allergieOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: allergieWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` allergies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` allergies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned allergies
+    **/
+    _count?: true | AllergieCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AllergieAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AllergieSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AllergieMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AllergieMaxAggregateInputType
+  }
+
+  export type GetAllergieAggregateType<T extends AllergieAggregateArgs> = {
+        [P in keyof T & keyof AggregateAllergie]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAllergie[P]>
+      : GetScalarType<T[P], AggregateAllergie[P]>
+  }
+
+
+
+
+  export type allergieGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: allergieWhereInput
+    orderBy?: allergieOrderByWithAggregationInput | allergieOrderByWithAggregationInput[]
+    by: AllergieScalarFieldEnum[] | AllergieScalarFieldEnum
+    having?: allergieScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AllergieCountAggregateInputType | true
+    _avg?: AllergieAvgAggregateInputType
+    _sum?: AllergieSumAggregateInputType
+    _min?: AllergieMinAggregateInputType
+    _max?: AllergieMaxAggregateInputType
+  }
+
+  export type AllergieGroupByOutputType = {
+    ID: number
+    JF_Mitglied_ID: number
+    FF_Mitglied_ID: number
+    Allergie: string
+    Beschreibung: string | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
+    _count: AllergieCountAggregateOutputType | null
+    _avg: AllergieAvgAggregateOutputType | null
+    _sum: AllergieSumAggregateOutputType | null
+    _min: AllergieMinAggregateOutputType | null
+    _max: AllergieMaxAggregateOutputType | null
+  }
+
+  type GetAllergieGroupByPayload<T extends allergieGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AllergieGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AllergieGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AllergieGroupByOutputType[P]>
+            : GetScalarType<T[P], AllergieGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type allergieSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    ID?: boolean
+    JF_Mitglied_ID?: boolean
+    FF_Mitglied_ID?: boolean
+    Allergie?: boolean
+    Beschreibung?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
+    ff_mitglied?: boolean | ff_mitgliedDefaultArgs<ExtArgs>
+    jf_mitglied?: boolean | jf_mitgliedDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["allergie"]>
+
+
+
+  export type allergieSelectScalar = {
+    ID?: boolean
+    JF_Mitglied_ID?: boolean
+    FF_Mitglied_ID?: boolean
+    Allergie?: boolean
+    Beschreibung?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
+  }
+
+  export type allergieOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "JF_Mitglied_ID" | "FF_Mitglied_ID" | "Allergie" | "Beschreibung" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["allergie"]>
+  export type allergieInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ff_mitglied?: boolean | ff_mitgliedDefaultArgs<ExtArgs>
+    jf_mitglied?: boolean | jf_mitgliedDefaultArgs<ExtArgs>
+  }
+
+  export type $allergiePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "allergie"
+    objects: {
+      ff_mitglied: Prisma.$ff_mitgliedPayload<ExtArgs>
+      jf_mitglied: Prisma.$jf_mitgliedPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      ID: number
+      JF_Mitglied_ID: number
+      FF_Mitglied_ID: number
+      Allergie: string
+      Beschreibung: string | null
+      Erstellt_am: Date | null
+      Geaendert_am: Date | null
+    }, ExtArgs["result"]["allergie"]>
+    composites: {}
+  }
+
+  type allergieGetPayload<S extends boolean | null | undefined | allergieDefaultArgs> = $Result.GetResult<Prisma.$allergiePayload, S>
+
+  type allergieCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<allergieFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AllergieCountAggregateInputType | true
+    }
+
+  export interface allergieDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['allergie'], meta: { name: 'allergie' } }
+    /**
+     * Find zero or one Allergie that matches the filter.
+     * @param {allergieFindUniqueArgs} args - Arguments to find a Allergie
+     * @example
+     * // Get one Allergie
+     * const allergie = await prisma.allergie.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends allergieFindUniqueArgs>(args: SelectSubset<T, allergieFindUniqueArgs<ExtArgs>>): Prisma__allergieClient<$Result.GetResult<Prisma.$allergiePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Allergie that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {allergieFindUniqueOrThrowArgs} args - Arguments to find a Allergie
+     * @example
+     * // Get one Allergie
+     * const allergie = await prisma.allergie.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends allergieFindUniqueOrThrowArgs>(args: SelectSubset<T, allergieFindUniqueOrThrowArgs<ExtArgs>>): Prisma__allergieClient<$Result.GetResult<Prisma.$allergiePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Allergie that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {allergieFindFirstArgs} args - Arguments to find a Allergie
+     * @example
+     * // Get one Allergie
+     * const allergie = await prisma.allergie.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends allergieFindFirstArgs>(args?: SelectSubset<T, allergieFindFirstArgs<ExtArgs>>): Prisma__allergieClient<$Result.GetResult<Prisma.$allergiePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Allergie that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {allergieFindFirstOrThrowArgs} args - Arguments to find a Allergie
+     * @example
+     * // Get one Allergie
+     * const allergie = await prisma.allergie.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends allergieFindFirstOrThrowArgs>(args?: SelectSubset<T, allergieFindFirstOrThrowArgs<ExtArgs>>): Prisma__allergieClient<$Result.GetResult<Prisma.$allergiePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Allergies that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {allergieFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Allergies
+     * const allergies = await prisma.allergie.findMany()
+     * 
+     * // Get first 10 Allergies
+     * const allergies = await prisma.allergie.findMany({ take: 10 })
+     * 
+     * // Only select the `ID`
+     * const allergieWithIDOnly = await prisma.allergie.findMany({ select: { ID: true } })
+     * 
+     */
+    findMany<T extends allergieFindManyArgs>(args?: SelectSubset<T, allergieFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$allergiePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Allergie.
+     * @param {allergieCreateArgs} args - Arguments to create a Allergie.
+     * @example
+     * // Create one Allergie
+     * const Allergie = await prisma.allergie.create({
+     *   data: {
+     *     // ... data to create a Allergie
+     *   }
+     * })
+     * 
+     */
+    create<T extends allergieCreateArgs>(args: SelectSubset<T, allergieCreateArgs<ExtArgs>>): Prisma__allergieClient<$Result.GetResult<Prisma.$allergiePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Allergies.
+     * @param {allergieCreateManyArgs} args - Arguments to create many Allergies.
+     * @example
+     * // Create many Allergies
+     * const allergie = await prisma.allergie.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends allergieCreateManyArgs>(args?: SelectSubset<T, allergieCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Allergie.
+     * @param {allergieDeleteArgs} args - Arguments to delete one Allergie.
+     * @example
+     * // Delete one Allergie
+     * const Allergie = await prisma.allergie.delete({
+     *   where: {
+     *     // ... filter to delete one Allergie
+     *   }
+     * })
+     * 
+     */
+    delete<T extends allergieDeleteArgs>(args: SelectSubset<T, allergieDeleteArgs<ExtArgs>>): Prisma__allergieClient<$Result.GetResult<Prisma.$allergiePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Allergie.
+     * @param {allergieUpdateArgs} args - Arguments to update one Allergie.
+     * @example
+     * // Update one Allergie
+     * const allergie = await prisma.allergie.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends allergieUpdateArgs>(args: SelectSubset<T, allergieUpdateArgs<ExtArgs>>): Prisma__allergieClient<$Result.GetResult<Prisma.$allergiePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Allergies.
+     * @param {allergieDeleteManyArgs} args - Arguments to filter Allergies to delete.
+     * @example
+     * // Delete a few Allergies
+     * const { count } = await prisma.allergie.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends allergieDeleteManyArgs>(args?: SelectSubset<T, allergieDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Allergies.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {allergieUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Allergies
+     * const allergie = await prisma.allergie.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends allergieUpdateManyArgs>(args: SelectSubset<T, allergieUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Allergie.
+     * @param {allergieUpsertArgs} args - Arguments to update or create a Allergie.
+     * @example
+     * // Update or create a Allergie
+     * const allergie = await prisma.allergie.upsert({
+     *   create: {
+     *     // ... data to create a Allergie
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Allergie we want to update
+     *   }
+     * })
+     */
+    upsert<T extends allergieUpsertArgs>(args: SelectSubset<T, allergieUpsertArgs<ExtArgs>>): Prisma__allergieClient<$Result.GetResult<Prisma.$allergiePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Allergies.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {allergieCountArgs} args - Arguments to filter Allergies to count.
+     * @example
+     * // Count the number of Allergies
+     * const count = await prisma.allergie.count({
+     *   where: {
+     *     // ... the filter for the Allergies we want to count
+     *   }
+     * })
+    **/
+    count<T extends allergieCountArgs>(
+      args?: Subset<T, allergieCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AllergieCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Allergie.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AllergieAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AllergieAggregateArgs>(args: Subset<T, AllergieAggregateArgs>): Prisma.PrismaPromise<GetAllergieAggregateType<T>>
+
+    /**
+     * Group by Allergie.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {allergieGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends allergieGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: allergieGroupByArgs['orderBy'] }
+        : { orderBy?: allergieGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, allergieGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAllergieGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the allergie model
+   */
+  readonly fields: allergieFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for allergie.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__allergieClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    ff_mitglied<T extends ff_mitgliedDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ff_mitgliedDefaultArgs<ExtArgs>>): Prisma__ff_mitgliedClient<$Result.GetResult<Prisma.$ff_mitgliedPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    jf_mitglied<T extends jf_mitgliedDefaultArgs<ExtArgs> = {}>(args?: Subset<T, jf_mitgliedDefaultArgs<ExtArgs>>): Prisma__jf_mitgliedClient<$Result.GetResult<Prisma.$jf_mitgliedPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the allergie model
+   */
+  interface allergieFieldRefs {
+    readonly ID: FieldRef<"allergie", 'Int'>
+    readonly JF_Mitglied_ID: FieldRef<"allergie", 'Int'>
+    readonly FF_Mitglied_ID: FieldRef<"allergie", 'Int'>
+    readonly Allergie: FieldRef<"allergie", 'String'>
+    readonly Beschreibung: FieldRef<"allergie", 'String'>
+    readonly Erstellt_am: FieldRef<"allergie", 'DateTime'>
+    readonly Geaendert_am: FieldRef<"allergie", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * allergie findUnique
+   */
+  export type allergieFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the allergie
+     */
+    select?: allergieSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the allergie
+     */
+    omit?: allergieOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: allergieInclude<ExtArgs> | null
+    /**
+     * Filter, which allergie to fetch.
+     */
+    where: allergieWhereUniqueInput
+  }
+
+  /**
+   * allergie findUniqueOrThrow
+   */
+  export type allergieFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the allergie
+     */
+    select?: allergieSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the allergie
+     */
+    omit?: allergieOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: allergieInclude<ExtArgs> | null
+    /**
+     * Filter, which allergie to fetch.
+     */
+    where: allergieWhereUniqueInput
+  }
+
+  /**
+   * allergie findFirst
+   */
+  export type allergieFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the allergie
+     */
+    select?: allergieSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the allergie
+     */
+    omit?: allergieOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: allergieInclude<ExtArgs> | null
+    /**
+     * Filter, which allergie to fetch.
+     */
+    where?: allergieWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of allergies to fetch.
+     */
+    orderBy?: allergieOrderByWithRelationInput | allergieOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for allergies.
+     */
+    cursor?: allergieWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` allergies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` allergies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of allergies.
+     */
+    distinct?: AllergieScalarFieldEnum | AllergieScalarFieldEnum[]
+  }
+
+  /**
+   * allergie findFirstOrThrow
+   */
+  export type allergieFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the allergie
+     */
+    select?: allergieSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the allergie
+     */
+    omit?: allergieOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: allergieInclude<ExtArgs> | null
+    /**
+     * Filter, which allergie to fetch.
+     */
+    where?: allergieWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of allergies to fetch.
+     */
+    orderBy?: allergieOrderByWithRelationInput | allergieOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for allergies.
+     */
+    cursor?: allergieWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` allergies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` allergies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of allergies.
+     */
+    distinct?: AllergieScalarFieldEnum | AllergieScalarFieldEnum[]
+  }
+
+  /**
+   * allergie findMany
+   */
+  export type allergieFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the allergie
+     */
+    select?: allergieSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the allergie
+     */
+    omit?: allergieOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: allergieInclude<ExtArgs> | null
+    /**
+     * Filter, which allergies to fetch.
+     */
+    where?: allergieWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of allergies to fetch.
+     */
+    orderBy?: allergieOrderByWithRelationInput | allergieOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing allergies.
+     */
+    cursor?: allergieWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` allergies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` allergies.
+     */
+    skip?: number
+    distinct?: AllergieScalarFieldEnum | AllergieScalarFieldEnum[]
+  }
+
+  /**
+   * allergie create
+   */
+  export type allergieCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the allergie
+     */
+    select?: allergieSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the allergie
+     */
+    omit?: allergieOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: allergieInclude<ExtArgs> | null
+    /**
+     * The data needed to create a allergie.
+     */
+    data: XOR<allergieCreateInput, allergieUncheckedCreateInput>
+  }
+
+  /**
+   * allergie createMany
+   */
+  export type allergieCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many allergies.
+     */
+    data: allergieCreateManyInput | allergieCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * allergie update
+   */
+  export type allergieUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the allergie
+     */
+    select?: allergieSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the allergie
+     */
+    omit?: allergieOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: allergieInclude<ExtArgs> | null
+    /**
+     * The data needed to update a allergie.
+     */
+    data: XOR<allergieUpdateInput, allergieUncheckedUpdateInput>
+    /**
+     * Choose, which allergie to update.
+     */
+    where: allergieWhereUniqueInput
+  }
+
+  /**
+   * allergie updateMany
+   */
+  export type allergieUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update allergies.
+     */
+    data: XOR<allergieUpdateManyMutationInput, allergieUncheckedUpdateManyInput>
+    /**
+     * Filter which allergies to update
+     */
+    where?: allergieWhereInput
+    /**
+     * Limit how many allergies to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * allergie upsert
+   */
+  export type allergieUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the allergie
+     */
+    select?: allergieSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the allergie
+     */
+    omit?: allergieOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: allergieInclude<ExtArgs> | null
+    /**
+     * The filter to search for the allergie to update in case it exists.
+     */
+    where: allergieWhereUniqueInput
+    /**
+     * In case the allergie found by the `where` argument doesn't exist, create a new allergie with this data.
+     */
+    create: XOR<allergieCreateInput, allergieUncheckedCreateInput>
+    /**
+     * In case the allergie was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<allergieUpdateInput, allergieUncheckedUpdateInput>
+  }
+
+  /**
+   * allergie delete
+   */
+  export type allergieDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the allergie
+     */
+    select?: allergieSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the allergie
+     */
+    omit?: allergieOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: allergieInclude<ExtArgs> | null
+    /**
+     * Filter which allergie to delete.
+     */
+    where: allergieWhereUniqueInput
+  }
+
+  /**
+   * allergie deleteMany
+   */
+  export type allergieDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which allergies to delete
+     */
+    where?: allergieWhereInput
+    /**
+     * Limit how many allergies to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * allergie without action
+   */
+  export type allergieDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the allergie
+     */
+    select?: allergieSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the allergie
+     */
+    omit?: allergieOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: allergieInclude<ExtArgs> | null
+  }
+
 
   /**
    * Model dienstgrad
@@ -3521,6 +4835,8 @@ export namespace Prisma {
     Thema?: boolean
     Erstellt_am?: boolean
     Geaendert_am?: boolean
+    einteilung?: boolean | dientsabend$einteilungArgs<ExtArgs>
+    _count?: boolean | DientsabendCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["dientsabend"]>
 
 
@@ -3534,10 +4850,16 @@ export namespace Prisma {
   }
 
   export type dientsabendOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Datum" | "Thema" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["dientsabend"]>
+  export type dientsabendInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    einteilung?: boolean | dientsabend$einteilungArgs<ExtArgs>
+    _count?: boolean | DientsabendCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $dientsabendPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "dientsabend"
-    objects: {}
+    objects: {
+      einteilung: Prisma.$einteilungPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       ID: number
       Datum: Date
@@ -3884,6 +5206,7 @@ export namespace Prisma {
    */
   export interface Prisma__dientsabendClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    einteilung<T extends dientsabend$einteilungArgs<ExtArgs> = {}>(args?: Subset<T, dientsabend$einteilungArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$einteilungPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3935,6 +5258,10 @@ export namespace Prisma {
      */
     omit?: dientsabendOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: dientsabendInclude<ExtArgs> | null
+    /**
      * Filter, which dientsabend to fetch.
      */
     where: dientsabendWhereUniqueInput
@@ -3953,6 +5280,10 @@ export namespace Prisma {
      */
     omit?: dientsabendOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: dientsabendInclude<ExtArgs> | null
+    /**
      * Filter, which dientsabend to fetch.
      */
     where: dientsabendWhereUniqueInput
@@ -3970,6 +5301,10 @@ export namespace Prisma {
      * Omit specific fields from the dientsabend
      */
     omit?: dientsabendOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: dientsabendInclude<ExtArgs> | null
     /**
      * Filter, which dientsabend to fetch.
      */
@@ -4019,6 +5354,10 @@ export namespace Prisma {
      */
     omit?: dientsabendOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: dientsabendInclude<ExtArgs> | null
+    /**
      * Filter, which dientsabend to fetch.
      */
     where?: dientsabendWhereInput
@@ -4067,6 +5406,10 @@ export namespace Prisma {
      */
     omit?: dientsabendOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: dientsabendInclude<ExtArgs> | null
+    /**
      * Filter, which dientsabends to fetch.
      */
     where?: dientsabendWhereInput
@@ -4110,6 +5453,10 @@ export namespace Prisma {
      */
     omit?: dientsabendOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: dientsabendInclude<ExtArgs> | null
+    /**
      * The data needed to create a dientsabend.
      */
     data: XOR<dientsabendCreateInput, dientsabendUncheckedCreateInput>
@@ -4138,6 +5485,10 @@ export namespace Prisma {
      * Omit specific fields from the dientsabend
      */
     omit?: dientsabendOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: dientsabendInclude<ExtArgs> | null
     /**
      * The data needed to update a dientsabend.
      */
@@ -4179,6 +5530,10 @@ export namespace Prisma {
      */
     omit?: dientsabendOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: dientsabendInclude<ExtArgs> | null
+    /**
      * The filter to search for the dientsabend to update in case it exists.
      */
     where: dientsabendWhereUniqueInput
@@ -4205,6 +5560,10 @@ export namespace Prisma {
      */
     omit?: dientsabendOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: dientsabendInclude<ExtArgs> | null
+    /**
      * Filter which dientsabend to delete.
      */
     where: dientsabendWhereUniqueInput
@@ -4225,6 +5584,30 @@ export namespace Prisma {
   }
 
   /**
+   * dientsabend.einteilung
+   */
+  export type dientsabend$einteilungArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the einteilung
+     */
+    select?: einteilungSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the einteilung
+     */
+    omit?: einteilungOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einteilungInclude<ExtArgs> | null
+    where?: einteilungWhereInput
+    orderBy?: einteilungOrderByWithRelationInput | einteilungOrderByWithRelationInput[]
+    cursor?: einteilungWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EinteilungScalarFieldEnum | EinteilungScalarFieldEnum[]
+  }
+
+  /**
    * dientsabend without action
    */
   export type dientsabendDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4236,6 +5619,10 @@ export namespace Prisma {
      * Omit specific fields from the dientsabend
      */
     omit?: dientsabendOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: dientsabendInclude<ExtArgs> | null
   }
 
 
@@ -4437,6 +5824,8 @@ export namespace Prisma {
     Beschreibung?: boolean
     Erstellt_am?: boolean
     Geaendert_am?: boolean
+    einteilung?: boolean | einheit$einteilungArgs<ExtArgs>
+    _count?: boolean | EinheitCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["einheit"]>
 
 
@@ -4450,10 +5839,16 @@ export namespace Prisma {
   }
 
   export type einheitOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Abkuerzung" | "Beschreibung" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["einheit"]>
+  export type einheitInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    einteilung?: boolean | einheit$einteilungArgs<ExtArgs>
+    _count?: boolean | EinheitCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $einheitPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "einheit"
-    objects: {}
+    objects: {
+      einteilung: Prisma.$einteilungPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       ID: number
       Abkuerzung: string | null
@@ -4800,6 +6195,7 @@ export namespace Prisma {
    */
   export interface Prisma__einheitClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    einteilung<T extends einheit$einteilungArgs<ExtArgs> = {}>(args?: Subset<T, einheit$einteilungArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$einteilungPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4851,6 +6247,10 @@ export namespace Prisma {
      */
     omit?: einheitOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einheitInclude<ExtArgs> | null
+    /**
      * Filter, which einheit to fetch.
      */
     where: einheitWhereUniqueInput
@@ -4869,6 +6269,10 @@ export namespace Prisma {
      */
     omit?: einheitOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einheitInclude<ExtArgs> | null
+    /**
      * Filter, which einheit to fetch.
      */
     where: einheitWhereUniqueInput
@@ -4886,6 +6290,10 @@ export namespace Prisma {
      * Omit specific fields from the einheit
      */
     omit?: einheitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einheitInclude<ExtArgs> | null
     /**
      * Filter, which einheit to fetch.
      */
@@ -4935,6 +6343,10 @@ export namespace Prisma {
      */
     omit?: einheitOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einheitInclude<ExtArgs> | null
+    /**
      * Filter, which einheit to fetch.
      */
     where?: einheitWhereInput
@@ -4983,6 +6395,10 @@ export namespace Prisma {
      */
     omit?: einheitOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einheitInclude<ExtArgs> | null
+    /**
      * Filter, which einheits to fetch.
      */
     where?: einheitWhereInput
@@ -5026,6 +6442,10 @@ export namespace Prisma {
      */
     omit?: einheitOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einheitInclude<ExtArgs> | null
+    /**
      * The data needed to create a einheit.
      */
     data?: XOR<einheitCreateInput, einheitUncheckedCreateInput>
@@ -5054,6 +6474,10 @@ export namespace Prisma {
      * Omit specific fields from the einheit
      */
     omit?: einheitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einheitInclude<ExtArgs> | null
     /**
      * The data needed to update a einheit.
      */
@@ -5095,6 +6519,10 @@ export namespace Prisma {
      */
     omit?: einheitOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einheitInclude<ExtArgs> | null
+    /**
      * The filter to search for the einheit to update in case it exists.
      */
     where: einheitWhereUniqueInput
@@ -5121,6 +6549,10 @@ export namespace Prisma {
      */
     omit?: einheitOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einheitInclude<ExtArgs> | null
+    /**
      * Filter which einheit to delete.
      */
     where: einheitWhereUniqueInput
@@ -5141,6 +6573,30 @@ export namespace Prisma {
   }
 
   /**
+   * einheit.einteilung
+   */
+  export type einheit$einteilungArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the einteilung
+     */
+    select?: einteilungSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the einteilung
+     */
+    omit?: einteilungOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einteilungInclude<ExtArgs> | null
+    where?: einteilungWhereInput
+    orderBy?: einteilungOrderByWithRelationInput | einteilungOrderByWithRelationInput[]
+    cursor?: einteilungWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EinteilungScalarFieldEnum | EinteilungScalarFieldEnum[]
+  }
+
+  /**
    * einheit without action
    */
   export type einheitDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5152,6 +6608,10 @@ export namespace Prisma {
      * Omit specific fields from the einheit
      */
     omit?: einheitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einheitInclude<ExtArgs> | null
   }
 
 
@@ -5429,6 +6889,8 @@ export namespace Prisma {
     Art?: boolean
     Erstellt_am?: boolean
     Geaendert_am?: boolean
+    einteilung?: boolean | einsatz$einteilungArgs<ExtArgs>
+    _count?: boolean | EinsatzCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["einsatz"]>
 
 
@@ -5451,10 +6913,16 @@ export namespace Prisma {
   }
 
   export type einsatzOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Einsatznummer" | "Datum_Anfang" | "Uhrzeit_Anfang" | "Datum_Ende" | "Uhrzeit_Ende" | "Beschreibung" | "Strasse" | "Hausnummer" | "Postleitzahl" | "Ort" | "Art" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["einsatz"]>
+  export type einsatzInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    einteilung?: boolean | einsatz$einteilungArgs<ExtArgs>
+    _count?: boolean | EinsatzCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $einsatzPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "einsatz"
-    objects: {}
+    objects: {
+      einteilung: Prisma.$einteilungPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       ID: number
       Einsatznummer: number
@@ -5810,6 +7278,7 @@ export namespace Prisma {
    */
   export interface Prisma__einsatzClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    einteilung<T extends einsatz$einteilungArgs<ExtArgs> = {}>(args?: Subset<T, einsatz$einteilungArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$einteilungPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5870,6 +7339,10 @@ export namespace Prisma {
      */
     omit?: einsatzOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einsatzInclude<ExtArgs> | null
+    /**
      * Filter, which einsatz to fetch.
      */
     where: einsatzWhereUniqueInput
@@ -5888,6 +7361,10 @@ export namespace Prisma {
      */
     omit?: einsatzOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einsatzInclude<ExtArgs> | null
+    /**
      * Filter, which einsatz to fetch.
      */
     where: einsatzWhereUniqueInput
@@ -5905,6 +7382,10 @@ export namespace Prisma {
      * Omit specific fields from the einsatz
      */
     omit?: einsatzOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einsatzInclude<ExtArgs> | null
     /**
      * Filter, which einsatz to fetch.
      */
@@ -5954,6 +7435,10 @@ export namespace Prisma {
      */
     omit?: einsatzOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einsatzInclude<ExtArgs> | null
+    /**
      * Filter, which einsatz to fetch.
      */
     where?: einsatzWhereInput
@@ -6002,6 +7487,10 @@ export namespace Prisma {
      */
     omit?: einsatzOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einsatzInclude<ExtArgs> | null
+    /**
      * Filter, which einsatzs to fetch.
      */
     where?: einsatzWhereInput
@@ -6045,6 +7534,10 @@ export namespace Prisma {
      */
     omit?: einsatzOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einsatzInclude<ExtArgs> | null
+    /**
      * The data needed to create a einsatz.
      */
     data: XOR<einsatzCreateInput, einsatzUncheckedCreateInput>
@@ -6073,6 +7566,10 @@ export namespace Prisma {
      * Omit specific fields from the einsatz
      */
     omit?: einsatzOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einsatzInclude<ExtArgs> | null
     /**
      * The data needed to update a einsatz.
      */
@@ -6114,6 +7611,10 @@ export namespace Prisma {
      */
     omit?: einsatzOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einsatzInclude<ExtArgs> | null
+    /**
      * The filter to search for the einsatz to update in case it exists.
      */
     where: einsatzWhereUniqueInput
@@ -6140,6 +7641,10 @@ export namespace Prisma {
      */
     omit?: einsatzOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einsatzInclude<ExtArgs> | null
+    /**
      * Filter which einsatz to delete.
      */
     where: einsatzWhereUniqueInput
@@ -6160,6 +7665,30 @@ export namespace Prisma {
   }
 
   /**
+   * einsatz.einteilung
+   */
+  export type einsatz$einteilungArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the einteilung
+     */
+    select?: einteilungSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the einteilung
+     */
+    omit?: einteilungOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einteilungInclude<ExtArgs> | null
+    where?: einteilungWhereInput
+    orderBy?: einteilungOrderByWithRelationInput | einteilungOrderByWithRelationInput[]
+    cursor?: einteilungWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EinteilungScalarFieldEnum | EinteilungScalarFieldEnum[]
+  }
+
+  /**
    * einsatz without action
    */
   export type einsatzDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6171,6 +7700,1020 @@ export namespace Prisma {
      * Omit specific fields from the einsatz
      */
     omit?: einsatzOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einsatzInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model einteilung
+   */
+
+  export type AggregateEinteilung = {
+    _count: EinteilungCountAggregateOutputType | null
+    _avg: EinteilungAvgAggregateOutputType | null
+    _sum: EinteilungSumAggregateOutputType | null
+    _min: EinteilungMinAggregateOutputType | null
+    _max: EinteilungMaxAggregateOutputType | null
+  }
+
+  export type EinteilungAvgAggregateOutputType = {
+    ID: number | null
+    Einsatz_ID: number | null
+    Dienstabend_ID: number | null
+    Fahrzeug_ID: number | null
+    FF_Mitglied_ID: number | null
+    Einheit_ID: number | null
+  }
+
+  export type EinteilungSumAggregateOutputType = {
+    ID: number | null
+    Einsatz_ID: number | null
+    Dienstabend_ID: number | null
+    Fahrzeug_ID: number | null
+    FF_Mitglied_ID: number | null
+    Einheit_ID: number | null
+  }
+
+  export type EinteilungMinAggregateOutputType = {
+    ID: number | null
+    Einsatz_ID: number | null
+    Dienstabend_ID: number | null
+    Fahrzeug_ID: number | null
+    FF_Mitglied_ID: number | null
+    Einheit_ID: number | null
+  }
+
+  export type EinteilungMaxAggregateOutputType = {
+    ID: number | null
+    Einsatz_ID: number | null
+    Dienstabend_ID: number | null
+    Fahrzeug_ID: number | null
+    FF_Mitglied_ID: number | null
+    Einheit_ID: number | null
+  }
+
+  export type EinteilungCountAggregateOutputType = {
+    ID: number
+    Einsatz_ID: number
+    Dienstabend_ID: number
+    Fahrzeug_ID: number
+    FF_Mitglied_ID: number
+    Einheit_ID: number
+    _all: number
+  }
+
+
+  export type EinteilungAvgAggregateInputType = {
+    ID?: true
+    Einsatz_ID?: true
+    Dienstabend_ID?: true
+    Fahrzeug_ID?: true
+    FF_Mitglied_ID?: true
+    Einheit_ID?: true
+  }
+
+  export type EinteilungSumAggregateInputType = {
+    ID?: true
+    Einsatz_ID?: true
+    Dienstabend_ID?: true
+    Fahrzeug_ID?: true
+    FF_Mitglied_ID?: true
+    Einheit_ID?: true
+  }
+
+  export type EinteilungMinAggregateInputType = {
+    ID?: true
+    Einsatz_ID?: true
+    Dienstabend_ID?: true
+    Fahrzeug_ID?: true
+    FF_Mitglied_ID?: true
+    Einheit_ID?: true
+  }
+
+  export type EinteilungMaxAggregateInputType = {
+    ID?: true
+    Einsatz_ID?: true
+    Dienstabend_ID?: true
+    Fahrzeug_ID?: true
+    FF_Mitglied_ID?: true
+    Einheit_ID?: true
+  }
+
+  export type EinteilungCountAggregateInputType = {
+    ID?: true
+    Einsatz_ID?: true
+    Dienstabend_ID?: true
+    Fahrzeug_ID?: true
+    FF_Mitglied_ID?: true
+    Einheit_ID?: true
+    _all?: true
+  }
+
+  export type EinteilungAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which einteilung to aggregate.
+     */
+    where?: einteilungWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of einteilungs to fetch.
+     */
+    orderBy?: einteilungOrderByWithRelationInput | einteilungOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: einteilungWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` einteilungs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` einteilungs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned einteilungs
+    **/
+    _count?: true | EinteilungCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: EinteilungAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: EinteilungSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: EinteilungMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: EinteilungMaxAggregateInputType
+  }
+
+  export type GetEinteilungAggregateType<T extends EinteilungAggregateArgs> = {
+        [P in keyof T & keyof AggregateEinteilung]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEinteilung[P]>
+      : GetScalarType<T[P], AggregateEinteilung[P]>
+  }
+
+
+
+
+  export type einteilungGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: einteilungWhereInput
+    orderBy?: einteilungOrderByWithAggregationInput | einteilungOrderByWithAggregationInput[]
+    by: EinteilungScalarFieldEnum[] | EinteilungScalarFieldEnum
+    having?: einteilungScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: EinteilungCountAggregateInputType | true
+    _avg?: EinteilungAvgAggregateInputType
+    _sum?: EinteilungSumAggregateInputType
+    _min?: EinteilungMinAggregateInputType
+    _max?: EinteilungMaxAggregateInputType
+  }
+
+  export type EinteilungGroupByOutputType = {
+    ID: number
+    Einsatz_ID: number
+    Dienstabend_ID: number
+    Fahrzeug_ID: number
+    FF_Mitglied_ID: number
+    Einheit_ID: number
+    _count: EinteilungCountAggregateOutputType | null
+    _avg: EinteilungAvgAggregateOutputType | null
+    _sum: EinteilungSumAggregateOutputType | null
+    _min: EinteilungMinAggregateOutputType | null
+    _max: EinteilungMaxAggregateOutputType | null
+  }
+
+  type GetEinteilungGroupByPayload<T extends einteilungGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<EinteilungGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof EinteilungGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], EinteilungGroupByOutputType[P]>
+            : GetScalarType<T[P], EinteilungGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type einteilungSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    ID?: boolean
+    Einsatz_ID?: boolean
+    Dienstabend_ID?: boolean
+    Fahrzeug_ID?: boolean
+    FF_Mitglied_ID?: boolean
+    Einheit_ID?: boolean
+    dientsabend?: boolean | dientsabendDefaultArgs<ExtArgs>
+    einheit?: boolean | einheitDefaultArgs<ExtArgs>
+    einsatz?: boolean | einsatzDefaultArgs<ExtArgs>
+    fahrzeug?: boolean | fahrzeugDefaultArgs<ExtArgs>
+    ff_mitglied?: boolean | ff_mitgliedDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["einteilung"]>
+
+
+
+  export type einteilungSelectScalar = {
+    ID?: boolean
+    Einsatz_ID?: boolean
+    Dienstabend_ID?: boolean
+    Fahrzeug_ID?: boolean
+    FF_Mitglied_ID?: boolean
+    Einheit_ID?: boolean
+  }
+
+  export type einteilungOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Einsatz_ID" | "Dienstabend_ID" | "Fahrzeug_ID" | "FF_Mitglied_ID" | "Einheit_ID", ExtArgs["result"]["einteilung"]>
+  export type einteilungInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    dientsabend?: boolean | dientsabendDefaultArgs<ExtArgs>
+    einheit?: boolean | einheitDefaultArgs<ExtArgs>
+    einsatz?: boolean | einsatzDefaultArgs<ExtArgs>
+    fahrzeug?: boolean | fahrzeugDefaultArgs<ExtArgs>
+    ff_mitglied?: boolean | ff_mitgliedDefaultArgs<ExtArgs>
+  }
+
+  export type $einteilungPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "einteilung"
+    objects: {
+      dientsabend: Prisma.$dientsabendPayload<ExtArgs>
+      einheit: Prisma.$einheitPayload<ExtArgs>
+      einsatz: Prisma.$einsatzPayload<ExtArgs>
+      fahrzeug: Prisma.$fahrzeugPayload<ExtArgs>
+      ff_mitglied: Prisma.$ff_mitgliedPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      ID: number
+      Einsatz_ID: number
+      Dienstabend_ID: number
+      Fahrzeug_ID: number
+      FF_Mitglied_ID: number
+      Einheit_ID: number
+    }, ExtArgs["result"]["einteilung"]>
+    composites: {}
+  }
+
+  type einteilungGetPayload<S extends boolean | null | undefined | einteilungDefaultArgs> = $Result.GetResult<Prisma.$einteilungPayload, S>
+
+  type einteilungCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<einteilungFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: EinteilungCountAggregateInputType | true
+    }
+
+  export interface einteilungDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['einteilung'], meta: { name: 'einteilung' } }
+    /**
+     * Find zero or one Einteilung that matches the filter.
+     * @param {einteilungFindUniqueArgs} args - Arguments to find a Einteilung
+     * @example
+     * // Get one Einteilung
+     * const einteilung = await prisma.einteilung.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends einteilungFindUniqueArgs>(args: SelectSubset<T, einteilungFindUniqueArgs<ExtArgs>>): Prisma__einteilungClient<$Result.GetResult<Prisma.$einteilungPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Einteilung that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {einteilungFindUniqueOrThrowArgs} args - Arguments to find a Einteilung
+     * @example
+     * // Get one Einteilung
+     * const einteilung = await prisma.einteilung.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends einteilungFindUniqueOrThrowArgs>(args: SelectSubset<T, einteilungFindUniqueOrThrowArgs<ExtArgs>>): Prisma__einteilungClient<$Result.GetResult<Prisma.$einteilungPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Einteilung that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {einteilungFindFirstArgs} args - Arguments to find a Einteilung
+     * @example
+     * // Get one Einteilung
+     * const einteilung = await prisma.einteilung.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends einteilungFindFirstArgs>(args?: SelectSubset<T, einteilungFindFirstArgs<ExtArgs>>): Prisma__einteilungClient<$Result.GetResult<Prisma.$einteilungPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Einteilung that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {einteilungFindFirstOrThrowArgs} args - Arguments to find a Einteilung
+     * @example
+     * // Get one Einteilung
+     * const einteilung = await prisma.einteilung.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends einteilungFindFirstOrThrowArgs>(args?: SelectSubset<T, einteilungFindFirstOrThrowArgs<ExtArgs>>): Prisma__einteilungClient<$Result.GetResult<Prisma.$einteilungPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Einteilungs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {einteilungFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Einteilungs
+     * const einteilungs = await prisma.einteilung.findMany()
+     * 
+     * // Get first 10 Einteilungs
+     * const einteilungs = await prisma.einteilung.findMany({ take: 10 })
+     * 
+     * // Only select the `ID`
+     * const einteilungWithIDOnly = await prisma.einteilung.findMany({ select: { ID: true } })
+     * 
+     */
+    findMany<T extends einteilungFindManyArgs>(args?: SelectSubset<T, einteilungFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$einteilungPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Einteilung.
+     * @param {einteilungCreateArgs} args - Arguments to create a Einteilung.
+     * @example
+     * // Create one Einteilung
+     * const Einteilung = await prisma.einteilung.create({
+     *   data: {
+     *     // ... data to create a Einteilung
+     *   }
+     * })
+     * 
+     */
+    create<T extends einteilungCreateArgs>(args: SelectSubset<T, einteilungCreateArgs<ExtArgs>>): Prisma__einteilungClient<$Result.GetResult<Prisma.$einteilungPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Einteilungs.
+     * @param {einteilungCreateManyArgs} args - Arguments to create many Einteilungs.
+     * @example
+     * // Create many Einteilungs
+     * const einteilung = await prisma.einteilung.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends einteilungCreateManyArgs>(args?: SelectSubset<T, einteilungCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Einteilung.
+     * @param {einteilungDeleteArgs} args - Arguments to delete one Einteilung.
+     * @example
+     * // Delete one Einteilung
+     * const Einteilung = await prisma.einteilung.delete({
+     *   where: {
+     *     // ... filter to delete one Einteilung
+     *   }
+     * })
+     * 
+     */
+    delete<T extends einteilungDeleteArgs>(args: SelectSubset<T, einteilungDeleteArgs<ExtArgs>>): Prisma__einteilungClient<$Result.GetResult<Prisma.$einteilungPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Einteilung.
+     * @param {einteilungUpdateArgs} args - Arguments to update one Einteilung.
+     * @example
+     * // Update one Einteilung
+     * const einteilung = await prisma.einteilung.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends einteilungUpdateArgs>(args: SelectSubset<T, einteilungUpdateArgs<ExtArgs>>): Prisma__einteilungClient<$Result.GetResult<Prisma.$einteilungPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Einteilungs.
+     * @param {einteilungDeleteManyArgs} args - Arguments to filter Einteilungs to delete.
+     * @example
+     * // Delete a few Einteilungs
+     * const { count } = await prisma.einteilung.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends einteilungDeleteManyArgs>(args?: SelectSubset<T, einteilungDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Einteilungs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {einteilungUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Einteilungs
+     * const einteilung = await prisma.einteilung.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends einteilungUpdateManyArgs>(args: SelectSubset<T, einteilungUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Einteilung.
+     * @param {einteilungUpsertArgs} args - Arguments to update or create a Einteilung.
+     * @example
+     * // Update or create a Einteilung
+     * const einteilung = await prisma.einteilung.upsert({
+     *   create: {
+     *     // ... data to create a Einteilung
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Einteilung we want to update
+     *   }
+     * })
+     */
+    upsert<T extends einteilungUpsertArgs>(args: SelectSubset<T, einteilungUpsertArgs<ExtArgs>>): Prisma__einteilungClient<$Result.GetResult<Prisma.$einteilungPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Einteilungs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {einteilungCountArgs} args - Arguments to filter Einteilungs to count.
+     * @example
+     * // Count the number of Einteilungs
+     * const count = await prisma.einteilung.count({
+     *   where: {
+     *     // ... the filter for the Einteilungs we want to count
+     *   }
+     * })
+    **/
+    count<T extends einteilungCountArgs>(
+      args?: Subset<T, einteilungCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], EinteilungCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Einteilung.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EinteilungAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends EinteilungAggregateArgs>(args: Subset<T, EinteilungAggregateArgs>): Prisma.PrismaPromise<GetEinteilungAggregateType<T>>
+
+    /**
+     * Group by Einteilung.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {einteilungGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends einteilungGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: einteilungGroupByArgs['orderBy'] }
+        : { orderBy?: einteilungGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, einteilungGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEinteilungGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the einteilung model
+   */
+  readonly fields: einteilungFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for einteilung.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__einteilungClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    dientsabend<T extends dientsabendDefaultArgs<ExtArgs> = {}>(args?: Subset<T, dientsabendDefaultArgs<ExtArgs>>): Prisma__dientsabendClient<$Result.GetResult<Prisma.$dientsabendPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    einheit<T extends einheitDefaultArgs<ExtArgs> = {}>(args?: Subset<T, einheitDefaultArgs<ExtArgs>>): Prisma__einheitClient<$Result.GetResult<Prisma.$einheitPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    einsatz<T extends einsatzDefaultArgs<ExtArgs> = {}>(args?: Subset<T, einsatzDefaultArgs<ExtArgs>>): Prisma__einsatzClient<$Result.GetResult<Prisma.$einsatzPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    fahrzeug<T extends fahrzeugDefaultArgs<ExtArgs> = {}>(args?: Subset<T, fahrzeugDefaultArgs<ExtArgs>>): Prisma__fahrzeugClient<$Result.GetResult<Prisma.$fahrzeugPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    ff_mitglied<T extends ff_mitgliedDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ff_mitgliedDefaultArgs<ExtArgs>>): Prisma__ff_mitgliedClient<$Result.GetResult<Prisma.$ff_mitgliedPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the einteilung model
+   */
+  interface einteilungFieldRefs {
+    readonly ID: FieldRef<"einteilung", 'Int'>
+    readonly Einsatz_ID: FieldRef<"einteilung", 'Int'>
+    readonly Dienstabend_ID: FieldRef<"einteilung", 'Int'>
+    readonly Fahrzeug_ID: FieldRef<"einteilung", 'Int'>
+    readonly FF_Mitglied_ID: FieldRef<"einteilung", 'Int'>
+    readonly Einheit_ID: FieldRef<"einteilung", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * einteilung findUnique
+   */
+  export type einteilungFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the einteilung
+     */
+    select?: einteilungSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the einteilung
+     */
+    omit?: einteilungOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einteilungInclude<ExtArgs> | null
+    /**
+     * Filter, which einteilung to fetch.
+     */
+    where: einteilungWhereUniqueInput
+  }
+
+  /**
+   * einteilung findUniqueOrThrow
+   */
+  export type einteilungFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the einteilung
+     */
+    select?: einteilungSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the einteilung
+     */
+    omit?: einteilungOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einteilungInclude<ExtArgs> | null
+    /**
+     * Filter, which einteilung to fetch.
+     */
+    where: einteilungWhereUniqueInput
+  }
+
+  /**
+   * einteilung findFirst
+   */
+  export type einteilungFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the einteilung
+     */
+    select?: einteilungSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the einteilung
+     */
+    omit?: einteilungOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einteilungInclude<ExtArgs> | null
+    /**
+     * Filter, which einteilung to fetch.
+     */
+    where?: einteilungWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of einteilungs to fetch.
+     */
+    orderBy?: einteilungOrderByWithRelationInput | einteilungOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for einteilungs.
+     */
+    cursor?: einteilungWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` einteilungs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` einteilungs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of einteilungs.
+     */
+    distinct?: EinteilungScalarFieldEnum | EinteilungScalarFieldEnum[]
+  }
+
+  /**
+   * einteilung findFirstOrThrow
+   */
+  export type einteilungFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the einteilung
+     */
+    select?: einteilungSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the einteilung
+     */
+    omit?: einteilungOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einteilungInclude<ExtArgs> | null
+    /**
+     * Filter, which einteilung to fetch.
+     */
+    where?: einteilungWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of einteilungs to fetch.
+     */
+    orderBy?: einteilungOrderByWithRelationInput | einteilungOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for einteilungs.
+     */
+    cursor?: einteilungWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` einteilungs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` einteilungs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of einteilungs.
+     */
+    distinct?: EinteilungScalarFieldEnum | EinteilungScalarFieldEnum[]
+  }
+
+  /**
+   * einteilung findMany
+   */
+  export type einteilungFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the einteilung
+     */
+    select?: einteilungSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the einteilung
+     */
+    omit?: einteilungOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einteilungInclude<ExtArgs> | null
+    /**
+     * Filter, which einteilungs to fetch.
+     */
+    where?: einteilungWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of einteilungs to fetch.
+     */
+    orderBy?: einteilungOrderByWithRelationInput | einteilungOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing einteilungs.
+     */
+    cursor?: einteilungWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` einteilungs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` einteilungs.
+     */
+    skip?: number
+    distinct?: EinteilungScalarFieldEnum | EinteilungScalarFieldEnum[]
+  }
+
+  /**
+   * einteilung create
+   */
+  export type einteilungCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the einteilung
+     */
+    select?: einteilungSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the einteilung
+     */
+    omit?: einteilungOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einteilungInclude<ExtArgs> | null
+    /**
+     * The data needed to create a einteilung.
+     */
+    data: XOR<einteilungCreateInput, einteilungUncheckedCreateInput>
+  }
+
+  /**
+   * einteilung createMany
+   */
+  export type einteilungCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many einteilungs.
+     */
+    data: einteilungCreateManyInput | einteilungCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * einteilung update
+   */
+  export type einteilungUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the einteilung
+     */
+    select?: einteilungSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the einteilung
+     */
+    omit?: einteilungOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einteilungInclude<ExtArgs> | null
+    /**
+     * The data needed to update a einteilung.
+     */
+    data: XOR<einteilungUpdateInput, einteilungUncheckedUpdateInput>
+    /**
+     * Choose, which einteilung to update.
+     */
+    where: einteilungWhereUniqueInput
+  }
+
+  /**
+   * einteilung updateMany
+   */
+  export type einteilungUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update einteilungs.
+     */
+    data: XOR<einteilungUpdateManyMutationInput, einteilungUncheckedUpdateManyInput>
+    /**
+     * Filter which einteilungs to update
+     */
+    where?: einteilungWhereInput
+    /**
+     * Limit how many einteilungs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * einteilung upsert
+   */
+  export type einteilungUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the einteilung
+     */
+    select?: einteilungSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the einteilung
+     */
+    omit?: einteilungOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einteilungInclude<ExtArgs> | null
+    /**
+     * The filter to search for the einteilung to update in case it exists.
+     */
+    where: einteilungWhereUniqueInput
+    /**
+     * In case the einteilung found by the `where` argument doesn't exist, create a new einteilung with this data.
+     */
+    create: XOR<einteilungCreateInput, einteilungUncheckedCreateInput>
+    /**
+     * In case the einteilung was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<einteilungUpdateInput, einteilungUncheckedUpdateInput>
+  }
+
+  /**
+   * einteilung delete
+   */
+  export type einteilungDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the einteilung
+     */
+    select?: einteilungSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the einteilung
+     */
+    omit?: einteilungOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einteilungInclude<ExtArgs> | null
+    /**
+     * Filter which einteilung to delete.
+     */
+    where: einteilungWhereUniqueInput
+  }
+
+  /**
+   * einteilung deleteMany
+   */
+  export type einteilungDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which einteilungs to delete
+     */
+    where?: einteilungWhereInput
+    /**
+     * Limit how many einteilungs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * einteilung without action
+   */
+  export type einteilungDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the einteilung
+     */
+    select?: einteilungSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the einteilung
+     */
+    omit?: einteilungOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einteilungInclude<ExtArgs> | null
   }
 
 
@@ -6372,6 +8915,8 @@ export namespace Prisma {
     Besatzungsstaerke?: boolean
     Erstellt_am?: boolean
     Geaendert_am?: boolean
+    einteilung?: boolean | fahrzeug$einteilungArgs<ExtArgs>
+    _count?: boolean | FahrzeugCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["fahrzeug"]>
 
 
@@ -6385,10 +8930,16 @@ export namespace Prisma {
   }
 
   export type fahrzeugOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Kennzeichen" | "Besatzungsstaerke" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["fahrzeug"]>
+  export type fahrzeugInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    einteilung?: boolean | fahrzeug$einteilungArgs<ExtArgs>
+    _count?: boolean | FahrzeugCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $fahrzeugPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "fahrzeug"
-    objects: {}
+    objects: {
+      einteilung: Prisma.$einteilungPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       ID: number
       Kennzeichen: string | null
@@ -6735,6 +9286,7 @@ export namespace Prisma {
    */
   export interface Prisma__fahrzeugClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    einteilung<T extends fahrzeug$einteilungArgs<ExtArgs> = {}>(args?: Subset<T, fahrzeug$einteilungArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$einteilungPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6786,6 +9338,10 @@ export namespace Prisma {
      */
     omit?: fahrzeugOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fahrzeugInclude<ExtArgs> | null
+    /**
      * Filter, which fahrzeug to fetch.
      */
     where: fahrzeugWhereUniqueInput
@@ -6804,6 +9360,10 @@ export namespace Prisma {
      */
     omit?: fahrzeugOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fahrzeugInclude<ExtArgs> | null
+    /**
      * Filter, which fahrzeug to fetch.
      */
     where: fahrzeugWhereUniqueInput
@@ -6821,6 +9381,10 @@ export namespace Prisma {
      * Omit specific fields from the fahrzeug
      */
     omit?: fahrzeugOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fahrzeugInclude<ExtArgs> | null
     /**
      * Filter, which fahrzeug to fetch.
      */
@@ -6870,6 +9434,10 @@ export namespace Prisma {
      */
     omit?: fahrzeugOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fahrzeugInclude<ExtArgs> | null
+    /**
      * Filter, which fahrzeug to fetch.
      */
     where?: fahrzeugWhereInput
@@ -6918,6 +9486,10 @@ export namespace Prisma {
      */
     omit?: fahrzeugOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fahrzeugInclude<ExtArgs> | null
+    /**
      * Filter, which fahrzeugs to fetch.
      */
     where?: fahrzeugWhereInput
@@ -6961,6 +9533,10 @@ export namespace Prisma {
      */
     omit?: fahrzeugOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fahrzeugInclude<ExtArgs> | null
+    /**
      * The data needed to create a fahrzeug.
      */
     data?: XOR<fahrzeugCreateInput, fahrzeugUncheckedCreateInput>
@@ -6989,6 +9565,10 @@ export namespace Prisma {
      * Omit specific fields from the fahrzeug
      */
     omit?: fahrzeugOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fahrzeugInclude<ExtArgs> | null
     /**
      * The data needed to update a fahrzeug.
      */
@@ -7030,6 +9610,10 @@ export namespace Prisma {
      */
     omit?: fahrzeugOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fahrzeugInclude<ExtArgs> | null
+    /**
      * The filter to search for the fahrzeug to update in case it exists.
      */
     where: fahrzeugWhereUniqueInput
@@ -7056,6 +9640,10 @@ export namespace Prisma {
      */
     omit?: fahrzeugOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fahrzeugInclude<ExtArgs> | null
+    /**
      * Filter which fahrzeug to delete.
      */
     where: fahrzeugWhereUniqueInput
@@ -7076,6 +9664,30 @@ export namespace Prisma {
   }
 
   /**
+   * fahrzeug.einteilung
+   */
+  export type fahrzeug$einteilungArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the einteilung
+     */
+    select?: einteilungSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the einteilung
+     */
+    omit?: einteilungOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einteilungInclude<ExtArgs> | null
+    where?: einteilungWhereInput
+    orderBy?: einteilungOrderByWithRelationInput | einteilungOrderByWithRelationInput[]
+    cursor?: einteilungWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EinteilungScalarFieldEnum | EinteilungScalarFieldEnum[]
+  }
+
+  /**
    * fahrzeug without action
    */
   export type fahrzeugDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7087,6 +9699,10 @@ export namespace Prisma {
      * Omit specific fields from the fahrzeug
      */
     omit?: fahrzeugOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fahrzeugInclude<ExtArgs> | null
   }
 
 
@@ -7316,6 +9932,8 @@ export namespace Prisma {
     Status?: boolean
     Erstellt_am?: boolean
     Geaendert_am?: boolean
+    allergie?: boolean | ff_mitglied$allergieArgs<ExtArgs>
+    einteilung?: boolean | ff_mitglied$einteilungArgs<ExtArgs>
     person?: boolean | personDefaultArgs<ExtArgs>
     ff_mitglied_lehrgang?: boolean | ff_mitglied$ff_mitglied_lehrgangArgs<ExtArgs>
     mitglied_funktionen?: boolean | ff_mitglied$mitglied_funktionenArgs<ExtArgs>
@@ -7337,6 +9955,8 @@ export namespace Prisma {
 
   export type ff_mitgliedOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Person_ID" | "Eintrittsdatum" | "Austrittsdatum" | "Aufnahmedatum" | "Status" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["ff_mitglied"]>
   export type ff_mitgliedInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    allergie?: boolean | ff_mitglied$allergieArgs<ExtArgs>
+    einteilung?: boolean | ff_mitglied$einteilungArgs<ExtArgs>
     person?: boolean | personDefaultArgs<ExtArgs>
     ff_mitglied_lehrgang?: boolean | ff_mitglied$ff_mitglied_lehrgangArgs<ExtArgs>
     mitglied_funktionen?: boolean | ff_mitglied$mitglied_funktionenArgs<ExtArgs>
@@ -7346,6 +9966,8 @@ export namespace Prisma {
   export type $ff_mitgliedPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ff_mitglied"
     objects: {
+      allergie: Prisma.$allergiePayload<ExtArgs>[]
+      einteilung: Prisma.$einteilungPayload<ExtArgs>[]
       person: Prisma.$personPayload<ExtArgs>
       ff_mitglied_lehrgang: Prisma.$ff_mitglied_lehrgangPayload<ExtArgs>[]
       mitglied_funktionen: Prisma.$mitglied_funktionenPayload<ExtArgs>[]
@@ -7699,6 +10321,8 @@ export namespace Prisma {
    */
   export interface Prisma__ff_mitgliedClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    allergie<T extends ff_mitglied$allergieArgs<ExtArgs> = {}>(args?: Subset<T, ff_mitglied$allergieArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$allergiePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    einteilung<T extends ff_mitglied$einteilungArgs<ExtArgs> = {}>(args?: Subset<T, ff_mitglied$einteilungArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$einteilungPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     person<T extends personDefaultArgs<ExtArgs> = {}>(args?: Subset<T, personDefaultArgs<ExtArgs>>): Prisma__personClient<$Result.GetResult<Prisma.$personPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     ff_mitglied_lehrgang<T extends ff_mitglied$ff_mitglied_lehrgangArgs<ExtArgs> = {}>(args?: Subset<T, ff_mitglied$ff_mitglied_lehrgangArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ff_mitglied_lehrgangPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     mitglied_funktionen<T extends ff_mitglied$mitglied_funktionenArgs<ExtArgs> = {}>(args?: Subset<T, ff_mitglied$mitglied_funktionenArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$mitglied_funktionenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -8079,6 +10703,54 @@ export namespace Prisma {
      * Limit how many ff_mitglieds to delete.
      */
     limit?: number
+  }
+
+  /**
+   * ff_mitglied.allergie
+   */
+  export type ff_mitglied$allergieArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the allergie
+     */
+    select?: allergieSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the allergie
+     */
+    omit?: allergieOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: allergieInclude<ExtArgs> | null
+    where?: allergieWhereInput
+    orderBy?: allergieOrderByWithRelationInput | allergieOrderByWithRelationInput[]
+    cursor?: allergieWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AllergieScalarFieldEnum | AllergieScalarFieldEnum[]
+  }
+
+  /**
+   * ff_mitglied.einteilung
+   */
+  export type ff_mitglied$einteilungArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the einteilung
+     */
+    select?: einteilungSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the einteilung
+     */
+    omit?: einteilungOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: einteilungInclude<ExtArgs> | null
+    where?: einteilungWhereInput
+    orderBy?: einteilungOrderByWithRelationInput | einteilungOrderByWithRelationInput[]
+    cursor?: einteilungWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EinteilungScalarFieldEnum | EinteilungScalarFieldEnum[]
   }
 
   /**
@@ -12240,6 +14912,7 @@ export namespace Prisma {
     Status?: boolean
     Erstellt_am?: boolean
     Geaendert_am?: boolean
+    allergie?: boolean | jf_mitglied$allergieArgs<ExtArgs>
     jf_erziehungsberechtigter?: boolean | jf_mitglied$jf_erziehungsberechtigterArgs<ExtArgs>
     person?: boolean | personDefaultArgs<ExtArgs>
     _count?: boolean | Jf_mitgliedCountOutputTypeDefaultArgs<ExtArgs>
@@ -12260,6 +14933,7 @@ export namespace Prisma {
 
   export type jf_mitgliedOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Person_ID" | "Eintrittsdatum" | "Austrittsdatum" | "Aufnahmedatum" | "Status" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["jf_mitglied"]>
   export type jf_mitgliedInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    allergie?: boolean | jf_mitglied$allergieArgs<ExtArgs>
     jf_erziehungsberechtigter?: boolean | jf_mitglied$jf_erziehungsberechtigterArgs<ExtArgs>
     person?: boolean | personDefaultArgs<ExtArgs>
     _count?: boolean | Jf_mitgliedCountOutputTypeDefaultArgs<ExtArgs>
@@ -12268,6 +14942,7 @@ export namespace Prisma {
   export type $jf_mitgliedPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "jf_mitglied"
     objects: {
+      allergie: Prisma.$allergiePayload<ExtArgs>[]
       jf_erziehungsberechtigter: Prisma.$jf_erziehungsberechtigterPayload<ExtArgs>[]
       person: Prisma.$personPayload<ExtArgs>
     }
@@ -12620,6 +15295,7 @@ export namespace Prisma {
    */
   export interface Prisma__jf_mitgliedClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    allergie<T extends jf_mitglied$allergieArgs<ExtArgs> = {}>(args?: Subset<T, jf_mitglied$allergieArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$allergiePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     jf_erziehungsberechtigter<T extends jf_mitglied$jf_erziehungsberechtigterArgs<ExtArgs> = {}>(args?: Subset<T, jf_mitglied$jf_erziehungsberechtigterArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jf_erziehungsberechtigterPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     person<T extends personDefaultArgs<ExtArgs> = {}>(args?: Subset<T, personDefaultArgs<ExtArgs>>): Prisma__personClient<$Result.GetResult<Prisma.$personPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
@@ -12999,6 +15675,30 @@ export namespace Prisma {
      * Limit how many jf_mitglieds to delete.
      */
     limit?: number
+  }
+
+  /**
+   * jf_mitglied.allergie
+   */
+  export type jf_mitglied$allergieArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the allergie
+     */
+    select?: allergieSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the allergie
+     */
+    omit?: allergieOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: allergieInclude<ExtArgs> | null
+    where?: allergieWhereInput
+    orderBy?: allergieOrderByWithRelationInput | allergieOrderByWithRelationInput[]
+    cursor?: allergieWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AllergieScalarFieldEnum | AllergieScalarFieldEnum[]
   }
 
   /**
@@ -18194,6 +20894,19 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+  export const AllergieScalarFieldEnum: {
+    ID: 'ID',
+    JF_Mitglied_ID: 'JF_Mitglied_ID',
+    FF_Mitglied_ID: 'FF_Mitglied_ID',
+    Allergie: 'Allergie',
+    Beschreibung: 'Beschreibung',
+    Erstellt_am: 'Erstellt_am',
+    Geaendert_am: 'Geaendert_am'
+  };
+
+  export type AllergieScalarFieldEnum = (typeof AllergieScalarFieldEnum)[keyof typeof AllergieScalarFieldEnum]
+
+
   export const DienstgradScalarFieldEnum: {
     ID: 'ID',
     Abkuerzung_maennlich: 'Abkuerzung_maennlich',
@@ -18247,6 +20960,18 @@ export namespace Prisma {
   };
 
   export type EinsatzScalarFieldEnum = (typeof EinsatzScalarFieldEnum)[keyof typeof EinsatzScalarFieldEnum]
+
+
+  export const EinteilungScalarFieldEnum: {
+    ID: 'ID',
+    Einsatz_ID: 'Einsatz_ID',
+    Dienstabend_ID: 'Dienstabend_ID',
+    Fahrzeug_ID: 'Fahrzeug_ID',
+    FF_Mitglied_ID: 'FF_Mitglied_ID',
+    Einheit_ID: 'Einheit_ID'
+  };
+
+  export type EinteilungScalarFieldEnum = (typeof EinteilungScalarFieldEnum)[keyof typeof EinteilungScalarFieldEnum]
 
 
   export const FahrzeugScalarFieldEnum: {
@@ -18415,6 +21140,14 @@ export namespace Prisma {
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
+  export const allergieOrderByRelevanceFieldEnum: {
+    Allergie: 'Allergie',
+    Beschreibung: 'Beschreibung'
+  };
+
+  export type allergieOrderByRelevanceFieldEnum = (typeof allergieOrderByRelevanceFieldEnum)[keyof typeof allergieOrderByRelevanceFieldEnum]
+
+
   export const dienstgradOrderByRelevanceFieldEnum: {
     Abkuerzung_maennlich: 'Abkuerzung_maennlich',
     Beschreibung_maennlich: 'Beschreibung_maennlich',
@@ -18579,6 +21312,77 @@ export namespace Prisma {
    */
 
 
+  export type allergieWhereInput = {
+    AND?: allergieWhereInput | allergieWhereInput[]
+    OR?: allergieWhereInput[]
+    NOT?: allergieWhereInput | allergieWhereInput[]
+    ID?: IntFilter<"allergie"> | number
+    JF_Mitglied_ID?: IntFilter<"allergie"> | number
+    FF_Mitglied_ID?: IntFilter<"allergie"> | number
+    Allergie?: StringFilter<"allergie"> | string
+    Beschreibung?: StringNullableFilter<"allergie"> | string | null
+    Erstellt_am?: DateTimeNullableFilter<"allergie"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"allergie"> | Date | string | null
+    ff_mitglied?: XOR<Ff_mitgliedScalarRelationFilter, ff_mitgliedWhereInput>
+    jf_mitglied?: XOR<Jf_mitgliedScalarRelationFilter, jf_mitgliedWhereInput>
+  }
+
+  export type allergieOrderByWithRelationInput = {
+    ID?: SortOrder
+    JF_Mitglied_ID?: SortOrder
+    FF_Mitglied_ID?: SortOrder
+    Allergie?: SortOrder
+    Beschreibung?: SortOrderInput | SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
+    ff_mitglied?: ff_mitgliedOrderByWithRelationInput
+    jf_mitglied?: jf_mitgliedOrderByWithRelationInput
+    _relevance?: allergieOrderByRelevanceInput
+  }
+
+  export type allergieWhereUniqueInput = Prisma.AtLeast<{
+    ID?: number
+    AND?: allergieWhereInput | allergieWhereInput[]
+    OR?: allergieWhereInput[]
+    NOT?: allergieWhereInput | allergieWhereInput[]
+    JF_Mitglied_ID?: IntFilter<"allergie"> | number
+    FF_Mitglied_ID?: IntFilter<"allergie"> | number
+    Allergie?: StringFilter<"allergie"> | string
+    Beschreibung?: StringNullableFilter<"allergie"> | string | null
+    Erstellt_am?: DateTimeNullableFilter<"allergie"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"allergie"> | Date | string | null
+    ff_mitglied?: XOR<Ff_mitgliedScalarRelationFilter, ff_mitgliedWhereInput>
+    jf_mitglied?: XOR<Jf_mitgliedScalarRelationFilter, jf_mitgliedWhereInput>
+  }, "ID">
+
+  export type allergieOrderByWithAggregationInput = {
+    ID?: SortOrder
+    JF_Mitglied_ID?: SortOrder
+    FF_Mitglied_ID?: SortOrder
+    Allergie?: SortOrder
+    Beschreibung?: SortOrderInput | SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
+    _count?: allergieCountOrderByAggregateInput
+    _avg?: allergieAvgOrderByAggregateInput
+    _max?: allergieMaxOrderByAggregateInput
+    _min?: allergieMinOrderByAggregateInput
+    _sum?: allergieSumOrderByAggregateInput
+  }
+
+  export type allergieScalarWhereWithAggregatesInput = {
+    AND?: allergieScalarWhereWithAggregatesInput | allergieScalarWhereWithAggregatesInput[]
+    OR?: allergieScalarWhereWithAggregatesInput[]
+    NOT?: allergieScalarWhereWithAggregatesInput | allergieScalarWhereWithAggregatesInput[]
+    ID?: IntWithAggregatesFilter<"allergie"> | number
+    JF_Mitglied_ID?: IntWithAggregatesFilter<"allergie"> | number
+    FF_Mitglied_ID?: IntWithAggregatesFilter<"allergie"> | number
+    Allergie?: StringWithAggregatesFilter<"allergie"> | string
+    Beschreibung?: StringNullableWithAggregatesFilter<"allergie"> | string | null
+    Erstellt_am?: DateTimeNullableWithAggregatesFilter<"allergie"> | Date | string | null
+    Geaendert_am?: DateTimeNullableWithAggregatesFilter<"allergie"> | Date | string | null
+  }
+
   export type dienstgradWhereInput = {
     AND?: dienstgradWhereInput | dienstgradWhereInput[]
     OR?: dienstgradWhereInput[]
@@ -18653,6 +21457,7 @@ export namespace Prisma {
     Thema?: StringNullableFilter<"dientsabend"> | string | null
     Erstellt_am?: DateTimeFilter<"dientsabend"> | Date | string
     Geaendert_am?: DateTimeNullableFilter<"dientsabend"> | Date | string | null
+    einteilung?: EinteilungListRelationFilter
   }
 
   export type dientsabendOrderByWithRelationInput = {
@@ -18661,6 +21466,7 @@ export namespace Prisma {
     Thema?: SortOrderInput | SortOrder
     Erstellt_am?: SortOrder
     Geaendert_am?: SortOrderInput | SortOrder
+    einteilung?: einteilungOrderByRelationAggregateInput
     _relevance?: dientsabendOrderByRelevanceInput
   }
 
@@ -18673,6 +21479,7 @@ export namespace Prisma {
     Thema?: StringNullableFilter<"dientsabend"> | string | null
     Erstellt_am?: DateTimeFilter<"dientsabend"> | Date | string
     Geaendert_am?: DateTimeNullableFilter<"dientsabend"> | Date | string | null
+    einteilung?: EinteilungListRelationFilter
   }, "ID">
 
   export type dientsabendOrderByWithAggregationInput = {
@@ -18708,6 +21515,7 @@ export namespace Prisma {
     Beschreibung?: StringNullableFilter<"einheit"> | string | null
     Erstellt_am?: DateTimeNullableFilter<"einheit"> | Date | string | null
     Geaendert_am?: DateTimeNullableFilter<"einheit"> | Date | string | null
+    einteilung?: EinteilungListRelationFilter
   }
 
   export type einheitOrderByWithRelationInput = {
@@ -18716,6 +21524,7 @@ export namespace Prisma {
     Beschreibung?: SortOrderInput | SortOrder
     Erstellt_am?: SortOrderInput | SortOrder
     Geaendert_am?: SortOrderInput | SortOrder
+    einteilung?: einteilungOrderByRelationAggregateInput
     _relevance?: einheitOrderByRelevanceInput
   }
 
@@ -18728,6 +21537,7 @@ export namespace Prisma {
     Beschreibung?: StringNullableFilter<"einheit"> | string | null
     Erstellt_am?: DateTimeNullableFilter<"einheit"> | Date | string | null
     Geaendert_am?: DateTimeNullableFilter<"einheit"> | Date | string | null
+    einteilung?: EinteilungListRelationFilter
   }, "ID">
 
   export type einheitOrderByWithAggregationInput = {
@@ -18772,6 +21582,7 @@ export namespace Prisma {
     Art?: Enumeinsatz_ArtFilter<"einsatz"> | $Enums.einsatz_Art
     Erstellt_am?: DateTimeNullableFilter<"einsatz"> | Date | string | null
     Geaendert_am?: DateTimeNullableFilter<"einsatz"> | Date | string | null
+    einteilung?: EinteilungListRelationFilter
   }
 
   export type einsatzOrderByWithRelationInput = {
@@ -18789,6 +21600,7 @@ export namespace Prisma {
     Art?: SortOrder
     Erstellt_am?: SortOrderInput | SortOrder
     Geaendert_am?: SortOrderInput | SortOrder
+    einteilung?: einteilungOrderByRelationAggregateInput
     _relevance?: einsatzOrderByRelevanceInput
   }
 
@@ -18810,6 +21622,7 @@ export namespace Prisma {
     Art?: Enumeinsatz_ArtFilter<"einsatz"> | $Enums.einsatz_Art
     Erstellt_am?: DateTimeNullableFilter<"einsatz"> | Date | string | null
     Geaendert_am?: DateTimeNullableFilter<"einsatz"> | Date | string | null
+    einteilung?: EinteilungListRelationFilter
   }, "ID">
 
   export type einsatzOrderByWithAggregationInput = {
@@ -18854,6 +21667,80 @@ export namespace Prisma {
     Geaendert_am?: DateTimeNullableWithAggregatesFilter<"einsatz"> | Date | string | null
   }
 
+  export type einteilungWhereInput = {
+    AND?: einteilungWhereInput | einteilungWhereInput[]
+    OR?: einteilungWhereInput[]
+    NOT?: einteilungWhereInput | einteilungWhereInput[]
+    ID?: IntFilter<"einteilung"> | number
+    Einsatz_ID?: IntFilter<"einteilung"> | number
+    Dienstabend_ID?: IntFilter<"einteilung"> | number
+    Fahrzeug_ID?: IntFilter<"einteilung"> | number
+    FF_Mitglied_ID?: IntFilter<"einteilung"> | number
+    Einheit_ID?: IntFilter<"einteilung"> | number
+    dientsabend?: XOR<DientsabendScalarRelationFilter, dientsabendWhereInput>
+    einheit?: XOR<EinheitScalarRelationFilter, einheitWhereInput>
+    einsatz?: XOR<EinsatzScalarRelationFilter, einsatzWhereInput>
+    fahrzeug?: XOR<FahrzeugScalarRelationFilter, fahrzeugWhereInput>
+    ff_mitglied?: XOR<Ff_mitgliedScalarRelationFilter, ff_mitgliedWhereInput>
+  }
+
+  export type einteilungOrderByWithRelationInput = {
+    ID?: SortOrder
+    Einsatz_ID?: SortOrder
+    Dienstabend_ID?: SortOrder
+    Fahrzeug_ID?: SortOrder
+    FF_Mitglied_ID?: SortOrder
+    Einheit_ID?: SortOrder
+    dientsabend?: dientsabendOrderByWithRelationInput
+    einheit?: einheitOrderByWithRelationInput
+    einsatz?: einsatzOrderByWithRelationInput
+    fahrzeug?: fahrzeugOrderByWithRelationInput
+    ff_mitglied?: ff_mitgliedOrderByWithRelationInput
+  }
+
+  export type einteilungWhereUniqueInput = Prisma.AtLeast<{
+    ID?: number
+    AND?: einteilungWhereInput | einteilungWhereInput[]
+    OR?: einteilungWhereInput[]
+    NOT?: einteilungWhereInput | einteilungWhereInput[]
+    Einsatz_ID?: IntFilter<"einteilung"> | number
+    Dienstabend_ID?: IntFilter<"einteilung"> | number
+    Fahrzeug_ID?: IntFilter<"einteilung"> | number
+    FF_Mitglied_ID?: IntFilter<"einteilung"> | number
+    Einheit_ID?: IntFilter<"einteilung"> | number
+    dientsabend?: XOR<DientsabendScalarRelationFilter, dientsabendWhereInput>
+    einheit?: XOR<EinheitScalarRelationFilter, einheitWhereInput>
+    einsatz?: XOR<EinsatzScalarRelationFilter, einsatzWhereInput>
+    fahrzeug?: XOR<FahrzeugScalarRelationFilter, fahrzeugWhereInput>
+    ff_mitglied?: XOR<Ff_mitgliedScalarRelationFilter, ff_mitgliedWhereInput>
+  }, "ID">
+
+  export type einteilungOrderByWithAggregationInput = {
+    ID?: SortOrder
+    Einsatz_ID?: SortOrder
+    Dienstabend_ID?: SortOrder
+    Fahrzeug_ID?: SortOrder
+    FF_Mitglied_ID?: SortOrder
+    Einheit_ID?: SortOrder
+    _count?: einteilungCountOrderByAggregateInput
+    _avg?: einteilungAvgOrderByAggregateInput
+    _max?: einteilungMaxOrderByAggregateInput
+    _min?: einteilungMinOrderByAggregateInput
+    _sum?: einteilungSumOrderByAggregateInput
+  }
+
+  export type einteilungScalarWhereWithAggregatesInput = {
+    AND?: einteilungScalarWhereWithAggregatesInput | einteilungScalarWhereWithAggregatesInput[]
+    OR?: einteilungScalarWhereWithAggregatesInput[]
+    NOT?: einteilungScalarWhereWithAggregatesInput | einteilungScalarWhereWithAggregatesInput[]
+    ID?: IntWithAggregatesFilter<"einteilung"> | number
+    Einsatz_ID?: IntWithAggregatesFilter<"einteilung"> | number
+    Dienstabend_ID?: IntWithAggregatesFilter<"einteilung"> | number
+    Fahrzeug_ID?: IntWithAggregatesFilter<"einteilung"> | number
+    FF_Mitglied_ID?: IntWithAggregatesFilter<"einteilung"> | number
+    Einheit_ID?: IntWithAggregatesFilter<"einteilung"> | number
+  }
+
   export type fahrzeugWhereInput = {
     AND?: fahrzeugWhereInput | fahrzeugWhereInput[]
     OR?: fahrzeugWhereInput[]
@@ -18863,6 +21750,7 @@ export namespace Prisma {
     Besatzungsstaerke?: StringNullableFilter<"fahrzeug"> | string | null
     Erstellt_am?: DateTimeNullableFilter<"fahrzeug"> | Date | string | null
     Geaendert_am?: DateTimeNullableFilter<"fahrzeug"> | Date | string | null
+    einteilung?: EinteilungListRelationFilter
   }
 
   export type fahrzeugOrderByWithRelationInput = {
@@ -18871,6 +21759,7 @@ export namespace Prisma {
     Besatzungsstaerke?: SortOrderInput | SortOrder
     Erstellt_am?: SortOrderInput | SortOrder
     Geaendert_am?: SortOrderInput | SortOrder
+    einteilung?: einteilungOrderByRelationAggregateInput
     _relevance?: fahrzeugOrderByRelevanceInput
   }
 
@@ -18883,6 +21772,7 @@ export namespace Prisma {
     Besatzungsstaerke?: StringNullableFilter<"fahrzeug"> | string | null
     Erstellt_am?: DateTimeNullableFilter<"fahrzeug"> | Date | string | null
     Geaendert_am?: DateTimeNullableFilter<"fahrzeug"> | Date | string | null
+    einteilung?: EinteilungListRelationFilter
   }, "ID">
 
   export type fahrzeugOrderByWithAggregationInput = {
@@ -18921,6 +21811,8 @@ export namespace Prisma {
     Status?: Enumff_mitglied_StatusFilter<"ff_mitglied"> | $Enums.ff_mitglied_Status
     Erstellt_am?: DateTimeFilter<"ff_mitglied"> | Date | string
     Geaendert_am?: DateTimeNullableFilter<"ff_mitglied"> | Date | string | null
+    allergie?: AllergieListRelationFilter
+    einteilung?: EinteilungListRelationFilter
     person?: XOR<PersonScalarRelationFilter, personWhereInput>
     ff_mitglied_lehrgang?: Ff_mitglied_lehrgangListRelationFilter
     mitglied_funktionen?: Mitglied_funktionenListRelationFilter
@@ -18935,6 +21827,8 @@ export namespace Prisma {
     Status?: SortOrder
     Erstellt_am?: SortOrder
     Geaendert_am?: SortOrderInput | SortOrder
+    allergie?: allergieOrderByRelationAggregateInput
+    einteilung?: einteilungOrderByRelationAggregateInput
     person?: personOrderByWithRelationInput
     ff_mitglied_lehrgang?: ff_mitglied_lehrgangOrderByRelationAggregateInput
     mitglied_funktionen?: mitglied_funktionenOrderByRelationAggregateInput
@@ -18952,6 +21846,8 @@ export namespace Prisma {
     Status?: Enumff_mitglied_StatusFilter<"ff_mitglied"> | $Enums.ff_mitglied_Status
     Erstellt_am?: DateTimeFilter<"ff_mitglied"> | Date | string
     Geaendert_am?: DateTimeNullableFilter<"ff_mitglied"> | Date | string | null
+    allergie?: AllergieListRelationFilter
+    einteilung?: EinteilungListRelationFilter
     person?: XOR<PersonScalarRelationFilter, personWhereInput>
     ff_mitglied_lehrgang?: Ff_mitglied_lehrgangListRelationFilter
     mitglied_funktionen?: Mitglied_funktionenListRelationFilter
@@ -19237,6 +22133,7 @@ export namespace Prisma {
     Status?: Enumjf_mitglied_StatusFilter<"jf_mitglied"> | $Enums.jf_mitglied_Status
     Erstellt_am?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
     Geaendert_am?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
+    allergie?: AllergieListRelationFilter
     jf_erziehungsberechtigter?: Jf_erziehungsberechtigterListRelationFilter
     person?: XOR<PersonScalarRelationFilter, personWhereInput>
   }
@@ -19250,6 +22147,7 @@ export namespace Prisma {
     Status?: SortOrder
     Erstellt_am?: SortOrderInput | SortOrder
     Geaendert_am?: SortOrderInput | SortOrder
+    allergie?: allergieOrderByRelationAggregateInput
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterOrderByRelationAggregateInput
     person?: personOrderByWithRelationInput
   }
@@ -19266,6 +22164,7 @@ export namespace Prisma {
     Status?: Enumjf_mitglied_StatusFilter<"jf_mitglied"> | $Enums.jf_mitglied_Status
     Erstellt_am?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
     Geaendert_am?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
+    allergie?: AllergieListRelationFilter
     jf_erziehungsberechtigter?: Jf_erziehungsberechtigterListRelationFilter
     person?: XOR<PersonScalarRelationFilter, personWhereInput>
   }, "ID">
@@ -19657,6 +22556,71 @@ export namespace Prisma {
     Geaendert_am?: DateTimeNullableWithAggregatesFilter<"teilnahme"> | Date | string | null
   }
 
+  export type allergieCreateInput = {
+    Allergie: string
+    Beschreibung?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+    ff_mitglied: ff_mitgliedCreateNestedOneWithoutAllergieInput
+    jf_mitglied: jf_mitgliedCreateNestedOneWithoutAllergieInput
+  }
+
+  export type allergieUncheckedCreateInput = {
+    ID?: number
+    JF_Mitglied_ID: number
+    FF_Mitglied_ID: number
+    Allergie: string
+    Beschreibung?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type allergieUpdateInput = {
+    Allergie?: StringFieldUpdateOperationsInput | string
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ff_mitglied?: ff_mitgliedUpdateOneRequiredWithoutAllergieNestedInput
+    jf_mitglied?: jf_mitgliedUpdateOneRequiredWithoutAllergieNestedInput
+  }
+
+  export type allergieUncheckedUpdateInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    JF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    FF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Allergie?: StringFieldUpdateOperationsInput | string
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type allergieCreateManyInput = {
+    ID?: number
+    JF_Mitglied_ID: number
+    FF_Mitglied_ID: number
+    Allergie: string
+    Beschreibung?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type allergieUpdateManyMutationInput = {
+    Allergie?: StringFieldUpdateOperationsInput | string
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type allergieUncheckedUpdateManyInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    JF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    FF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Allergie?: StringFieldUpdateOperationsInput | string
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
   export type dienstgradCreateInput = {
     Abkuerzung_maennlich?: string | null
     Beschreibung_maennlich?: string | null
@@ -19729,6 +22693,7 @@ export namespace Prisma {
     Thema?: string | null
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
+    einteilung?: einteilungCreateNestedManyWithoutDientsabendInput
   }
 
   export type dientsabendUncheckedCreateInput = {
@@ -19737,6 +22702,7 @@ export namespace Prisma {
     Thema?: string | null
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
+    einteilung?: einteilungUncheckedCreateNestedManyWithoutDientsabendInput
   }
 
   export type dientsabendUpdateInput = {
@@ -19744,6 +22710,7 @@ export namespace Prisma {
     Thema?: NullableStringFieldUpdateOperationsInput | string | null
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    einteilung?: einteilungUpdateManyWithoutDientsabendNestedInput
   }
 
   export type dientsabendUncheckedUpdateInput = {
@@ -19752,6 +22719,7 @@ export namespace Prisma {
     Thema?: NullableStringFieldUpdateOperationsInput | string | null
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    einteilung?: einteilungUncheckedUpdateManyWithoutDientsabendNestedInput
   }
 
   export type dientsabendCreateManyInput = {
@@ -19782,6 +22750,7 @@ export namespace Prisma {
     Beschreibung?: string | null
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
+    einteilung?: einteilungCreateNestedManyWithoutEinheitInput
   }
 
   export type einheitUncheckedCreateInput = {
@@ -19790,6 +22759,7 @@ export namespace Prisma {
     Beschreibung?: string | null
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
+    einteilung?: einteilungUncheckedCreateNestedManyWithoutEinheitInput
   }
 
   export type einheitUpdateInput = {
@@ -19797,6 +22767,7 @@ export namespace Prisma {
     Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    einteilung?: einteilungUpdateManyWithoutEinheitNestedInput
   }
 
   export type einheitUncheckedUpdateInput = {
@@ -19805,6 +22776,7 @@ export namespace Prisma {
     Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    einteilung?: einteilungUncheckedUpdateManyWithoutEinheitNestedInput
   }
 
   export type einheitCreateManyInput = {
@@ -19844,6 +22816,7 @@ export namespace Prisma {
     Art: $Enums.einsatz_Art
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
+    einteilung?: einteilungCreateNestedManyWithoutEinsatzInput
   }
 
   export type einsatzUncheckedCreateInput = {
@@ -19861,6 +22834,7 @@ export namespace Prisma {
     Art: $Enums.einsatz_Art
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
+    einteilung?: einteilungUncheckedCreateNestedManyWithoutEinsatzInput
   }
 
   export type einsatzUpdateInput = {
@@ -19877,6 +22851,7 @@ export namespace Prisma {
     Art?: Enumeinsatz_ArtFieldUpdateOperationsInput | $Enums.einsatz_Art
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    einteilung?: einteilungUpdateManyWithoutEinsatzNestedInput
   }
 
   export type einsatzUncheckedUpdateInput = {
@@ -19894,6 +22869,7 @@ export namespace Prisma {
     Art?: Enumeinsatz_ArtFieldUpdateOperationsInput | $Enums.einsatz_Art
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    einteilung?: einteilungUncheckedUpdateManyWithoutEinsatzNestedInput
   }
 
   export type einsatzCreateManyInput = {
@@ -19946,11 +22922,68 @@ export namespace Prisma {
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
+  export type einteilungCreateInput = {
+    dientsabend: dientsabendCreateNestedOneWithoutEinteilungInput
+    einheit: einheitCreateNestedOneWithoutEinteilungInput
+    einsatz: einsatzCreateNestedOneWithoutEinteilungInput
+    fahrzeug: fahrzeugCreateNestedOneWithoutEinteilungInput
+    ff_mitglied: ff_mitgliedCreateNestedOneWithoutEinteilungInput
+  }
+
+  export type einteilungUncheckedCreateInput = {
+    ID?: number
+    Einsatz_ID: number
+    Dienstabend_ID: number
+    Fahrzeug_ID: number
+    FF_Mitglied_ID: number
+    Einheit_ID: number
+  }
+
+  export type einteilungUpdateInput = {
+    dientsabend?: dientsabendUpdateOneRequiredWithoutEinteilungNestedInput
+    einheit?: einheitUpdateOneRequiredWithoutEinteilungNestedInput
+    einsatz?: einsatzUpdateOneRequiredWithoutEinteilungNestedInput
+    fahrzeug?: fahrzeugUpdateOneRequiredWithoutEinteilungNestedInput
+    ff_mitglied?: ff_mitgliedUpdateOneRequiredWithoutEinteilungNestedInput
+  }
+
+  export type einteilungUncheckedUpdateInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Einsatz_ID?: IntFieldUpdateOperationsInput | number
+    Dienstabend_ID?: IntFieldUpdateOperationsInput | number
+    Fahrzeug_ID?: IntFieldUpdateOperationsInput | number
+    FF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Einheit_ID?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type einteilungCreateManyInput = {
+    ID?: number
+    Einsatz_ID: number
+    Dienstabend_ID: number
+    Fahrzeug_ID: number
+    FF_Mitglied_ID: number
+    Einheit_ID: number
+  }
+
+  export type einteilungUpdateManyMutationInput = {
+
+  }
+
+  export type einteilungUncheckedUpdateManyInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Einsatz_ID?: IntFieldUpdateOperationsInput | number
+    Dienstabend_ID?: IntFieldUpdateOperationsInput | number
+    Fahrzeug_ID?: IntFieldUpdateOperationsInput | number
+    FF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Einheit_ID?: IntFieldUpdateOperationsInput | number
+  }
+
   export type fahrzeugCreateInput = {
     Kennzeichen?: string | null
     Besatzungsstaerke?: string | null
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
+    einteilung?: einteilungCreateNestedManyWithoutFahrzeugInput
   }
 
   export type fahrzeugUncheckedCreateInput = {
@@ -19959,6 +22992,7 @@ export namespace Prisma {
     Besatzungsstaerke?: string | null
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
+    einteilung?: einteilungUncheckedCreateNestedManyWithoutFahrzeugInput
   }
 
   export type fahrzeugUpdateInput = {
@@ -19966,6 +23000,7 @@ export namespace Prisma {
     Besatzungsstaerke?: NullableStringFieldUpdateOperationsInput | string | null
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    einteilung?: einteilungUpdateManyWithoutFahrzeugNestedInput
   }
 
   export type fahrzeugUncheckedUpdateInput = {
@@ -19974,6 +23009,7 @@ export namespace Prisma {
     Besatzungsstaerke?: NullableStringFieldUpdateOperationsInput | string | null
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    einteilung?: einteilungUncheckedUpdateManyWithoutFahrzeugNestedInput
   }
 
   export type fahrzeugCreateManyInput = {
@@ -20006,6 +23042,8 @@ export namespace Prisma {
     Status?: $Enums.ff_mitglied_Status
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
+    allergie?: allergieCreateNestedManyWithoutFf_mitgliedInput
+    einteilung?: einteilungCreateNestedManyWithoutFf_mitgliedInput
     person: personCreateNestedOneWithoutFf_mitgliedInput
     ff_mitglied_lehrgang?: ff_mitglied_lehrgangCreateNestedManyWithoutFf_mitgliedInput
     mitglied_funktionen?: mitglied_funktionenCreateNestedManyWithoutFf_mitgliedInput
@@ -20020,6 +23058,8 @@ export namespace Prisma {
     Status?: $Enums.ff_mitglied_Status
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
+    allergie?: allergieUncheckedCreateNestedManyWithoutFf_mitgliedInput
+    einteilung?: einteilungUncheckedCreateNestedManyWithoutFf_mitgliedInput
     ff_mitglied_lehrgang?: ff_mitglied_lehrgangUncheckedCreateNestedManyWithoutFf_mitgliedInput
     mitglied_funktionen?: mitglied_funktionenUncheckedCreateNestedManyWithoutFf_mitgliedInput
   }
@@ -20031,6 +23071,8 @@ export namespace Prisma {
     Status?: Enumff_mitglied_StatusFieldUpdateOperationsInput | $Enums.ff_mitglied_Status
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    allergie?: allergieUpdateManyWithoutFf_mitgliedNestedInput
+    einteilung?: einteilungUpdateManyWithoutFf_mitgliedNestedInput
     person?: personUpdateOneRequiredWithoutFf_mitgliedNestedInput
     ff_mitglied_lehrgang?: ff_mitglied_lehrgangUpdateManyWithoutFf_mitgliedNestedInput
     mitglied_funktionen?: mitglied_funktionenUpdateManyWithoutFf_mitgliedNestedInput
@@ -20045,6 +23087,8 @@ export namespace Prisma {
     Status?: Enumff_mitglied_StatusFieldUpdateOperationsInput | $Enums.ff_mitglied_Status
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    allergie?: allergieUncheckedUpdateManyWithoutFf_mitgliedNestedInput
+    einteilung?: einteilungUncheckedUpdateManyWithoutFf_mitgliedNestedInput
     ff_mitglied_lehrgang?: ff_mitglied_lehrgangUncheckedUpdateManyWithoutFf_mitgliedNestedInput
     mitglied_funktionen?: mitglied_funktionenUncheckedUpdateManyWithoutFf_mitgliedNestedInput
   }
@@ -20306,6 +23350,7 @@ export namespace Prisma {
     Status?: $Enums.jf_mitglied_Status
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
+    allergie?: allergieCreateNestedManyWithoutJf_mitgliedInput
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterCreateNestedManyWithoutJf_mitgliedInput
     person: personCreateNestedOneWithoutJf_mitgliedInput
   }
@@ -20319,6 +23364,7 @@ export namespace Prisma {
     Status?: $Enums.jf_mitglied_Status
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
+    allergie?: allergieUncheckedCreateNestedManyWithoutJf_mitgliedInput
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedCreateNestedManyWithoutJf_mitgliedInput
   }
 
@@ -20329,6 +23375,7 @@ export namespace Prisma {
     Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    allergie?: allergieUpdateManyWithoutJf_mitgliedNestedInput
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterUpdateManyWithoutJf_mitgliedNestedInput
     person?: personUpdateOneRequiredWithoutJf_mitgliedNestedInput
   }
@@ -20342,6 +23389,7 @@ export namespace Prisma {
     Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    allergie?: allergieUncheckedUpdateManyWithoutJf_mitgliedNestedInput
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedUpdateManyWithoutJf_mitgliedNestedInput
   }
 
@@ -20749,6 +23797,21 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
+  export type StringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringFilter<$PrismaModel> | string
+  }
+
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | null
@@ -20775,9 +23838,133 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
+  export type Ff_mitgliedScalarRelationFilter = {
+    is?: ff_mitgliedWhereInput
+    isNot?: ff_mitgliedWhereInput
+  }
+
+  export type Jf_mitgliedScalarRelationFilter = {
+    is?: jf_mitgliedWhereInput
+    isNot?: jf_mitgliedWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
+  }
+
+  export type allergieOrderByRelevanceInput = {
+    fields: allergieOrderByRelevanceFieldEnum | allergieOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type allergieCountOrderByAggregateInput = {
+    ID?: SortOrder
+    JF_Mitglied_ID?: SortOrder
+    FF_Mitglied_ID?: SortOrder
+    Allergie?: SortOrder
+    Beschreibung?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type allergieAvgOrderByAggregateInput = {
+    ID?: SortOrder
+    JF_Mitglied_ID?: SortOrder
+    FF_Mitglied_ID?: SortOrder
+  }
+
+  export type allergieMaxOrderByAggregateInput = {
+    ID?: SortOrder
+    JF_Mitglied_ID?: SortOrder
+    FF_Mitglied_ID?: SortOrder
+    Allergie?: SortOrder
+    Beschreibung?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type allergieMinOrderByAggregateInput = {
+    ID?: SortOrder
+    JF_Mitglied_ID?: SortOrder
+    FF_Mitglied_ID?: SortOrder
+    Allergie?: SortOrder
+    Beschreibung?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type allergieSumOrderByAggregateInput = {
+    ID?: SortOrder
+    JF_Mitglied_ID?: SortOrder
+    FF_Mitglied_ID?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type dienstgradOrderByRelevanceInput = {
@@ -20824,54 +24011,6 @@ export namespace Prisma {
     ID?: SortOrder
   }
 
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | null
-    notIn?: Date[] | string[] | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[]
@@ -20881,6 +24020,16 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type EinteilungListRelationFilter = {
+    every?: einteilungWhereInput
+    some?: einteilungWhereInput
+    none?: einteilungWhereInput
+  }
+
+  export type einteilungOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type dientsabendOrderByRelevanceInput = {
@@ -21057,6 +24206,71 @@ export namespace Prisma {
     _max?: NestedEnumeinsatz_ArtFilter<$PrismaModel>
   }
 
+  export type DientsabendScalarRelationFilter = {
+    is?: dientsabendWhereInput
+    isNot?: dientsabendWhereInput
+  }
+
+  export type EinheitScalarRelationFilter = {
+    is?: einheitWhereInput
+    isNot?: einheitWhereInput
+  }
+
+  export type EinsatzScalarRelationFilter = {
+    is?: einsatzWhereInput
+    isNot?: einsatzWhereInput
+  }
+
+  export type FahrzeugScalarRelationFilter = {
+    is?: fahrzeugWhereInput
+    isNot?: fahrzeugWhereInput
+  }
+
+  export type einteilungCountOrderByAggregateInput = {
+    ID?: SortOrder
+    Einsatz_ID?: SortOrder
+    Dienstabend_ID?: SortOrder
+    Fahrzeug_ID?: SortOrder
+    FF_Mitglied_ID?: SortOrder
+    Einheit_ID?: SortOrder
+  }
+
+  export type einteilungAvgOrderByAggregateInput = {
+    ID?: SortOrder
+    Einsatz_ID?: SortOrder
+    Dienstabend_ID?: SortOrder
+    Fahrzeug_ID?: SortOrder
+    FF_Mitglied_ID?: SortOrder
+    Einheit_ID?: SortOrder
+  }
+
+  export type einteilungMaxOrderByAggregateInput = {
+    ID?: SortOrder
+    Einsatz_ID?: SortOrder
+    Dienstabend_ID?: SortOrder
+    Fahrzeug_ID?: SortOrder
+    FF_Mitglied_ID?: SortOrder
+    Einheit_ID?: SortOrder
+  }
+
+  export type einteilungMinOrderByAggregateInput = {
+    ID?: SortOrder
+    Einsatz_ID?: SortOrder
+    Dienstabend_ID?: SortOrder
+    Fahrzeug_ID?: SortOrder
+    FF_Mitglied_ID?: SortOrder
+    Einheit_ID?: SortOrder
+  }
+
+  export type einteilungSumOrderByAggregateInput = {
+    ID?: SortOrder
+    Einsatz_ID?: SortOrder
+    Dienstabend_ID?: SortOrder
+    Fahrzeug_ID?: SortOrder
+    FF_Mitglied_ID?: SortOrder
+    Einheit_ID?: SortOrder
+  }
+
   export type fahrzeugOrderByRelevanceInput = {
     fields: fahrzeugOrderByRelevanceFieldEnum | fahrzeugOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -21102,6 +24316,12 @@ export namespace Prisma {
     not?: NestedEnumff_mitglied_StatusFilter<$PrismaModel> | $Enums.ff_mitglied_Status
   }
 
+  export type AllergieListRelationFilter = {
+    every?: allergieWhereInput
+    some?: allergieWhereInput
+    none?: allergieWhereInput
+  }
+
   export type PersonScalarRelationFilter = {
     is?: personWhereInput
     isNot?: personWhereInput
@@ -21117,6 +24337,10 @@ export namespace Prisma {
     every?: mitglied_funktionenWhereInput
     some?: mitglied_funktionenWhereInput
     none?: mitglied_funktionenWhereInput
+  }
+
+  export type allergieOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type ff_mitglied_lehrgangOrderByRelationAggregateInput = {
@@ -21180,11 +24404,6 @@ export namespace Prisma {
     _max?: NestedEnumff_mitglied_StatusFilter<$PrismaModel>
   }
 
-  export type Ff_mitgliedScalarRelationFilter = {
-    is?: ff_mitgliedWhereInput
-    isNot?: ff_mitgliedWhereInput
-  }
-
   export type LehrgangScalarRelationFilter = {
     is?: lehrgangWhereInput
     isNot?: lehrgangWhereInput
@@ -21229,21 +24448,6 @@ export namespace Prisma {
     Lehrgang_ID?: SortOrder
   }
 
-  export type StringFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringFilter<$PrismaModel> | string
-  }
-
   export type BoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
@@ -21285,24 +24489,6 @@ export namespace Prisma {
 
   export type funktion_ffSumOrderByAggregateInput = {
     ID?: SortOrder
-  }
-
-  export type StringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -21349,11 +24535,6 @@ export namespace Prisma {
 
   export type funktion_jfSumOrderByAggregateInput = {
     ID?: SortOrder
-  }
-
-  export type Jf_mitgliedScalarRelationFilter = {
-    is?: jf_mitgliedWhereInput
-    isNot?: jf_mitgliedWhereInput
   }
 
   export type jf_erziehungsberechtigterCountOrderByAggregateInput = {
@@ -21806,12 +24987,44 @@ export namespace Prisma {
     _max?: NestedEnumteilnahme_TypFilter<$PrismaModel>
   }
 
+  export type ff_mitgliedCreateNestedOneWithoutAllergieInput = {
+    create?: XOR<ff_mitgliedCreateWithoutAllergieInput, ff_mitgliedUncheckedCreateWithoutAllergieInput>
+    connectOrCreate?: ff_mitgliedCreateOrConnectWithoutAllergieInput
+    connect?: ff_mitgliedWhereUniqueInput
+  }
+
+  export type jf_mitgliedCreateNestedOneWithoutAllergieInput = {
+    create?: XOR<jf_mitgliedCreateWithoutAllergieInput, jf_mitgliedUncheckedCreateWithoutAllergieInput>
+    connectOrCreate?: jf_mitgliedCreateOrConnectWithoutAllergieInput
+    connect?: jf_mitgliedWhereUniqueInput
+  }
+
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
+  }
+
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
+  }
+
+  export type ff_mitgliedUpdateOneRequiredWithoutAllergieNestedInput = {
+    create?: XOR<ff_mitgliedCreateWithoutAllergieInput, ff_mitgliedUncheckedCreateWithoutAllergieInput>
+    connectOrCreate?: ff_mitgliedCreateOrConnectWithoutAllergieInput
+    upsert?: ff_mitgliedUpsertWithoutAllergieInput
+    connect?: ff_mitgliedWhereUniqueInput
+    update?: XOR<XOR<ff_mitgliedUpdateToOneWithWhereWithoutAllergieInput, ff_mitgliedUpdateWithoutAllergieInput>, ff_mitgliedUncheckedUpdateWithoutAllergieInput>
+  }
+
+  export type jf_mitgliedUpdateOneRequiredWithoutAllergieNestedInput = {
+    create?: XOR<jf_mitgliedCreateWithoutAllergieInput, jf_mitgliedUncheckedCreateWithoutAllergieInput>
+    connectOrCreate?: jf_mitgliedCreateOrConnectWithoutAllergieInput
+    upsert?: jf_mitgliedUpsertWithoutAllergieInput
+    connect?: jf_mitgliedWhereUniqueInput
+    update?: XOR<XOR<jf_mitgliedUpdateToOneWithWhereWithoutAllergieInput, jf_mitgliedUpdateWithoutAllergieInput>, jf_mitgliedUncheckedUpdateWithoutAllergieInput>
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -21822,12 +25035,264 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type einteilungCreateNestedManyWithoutDientsabendInput = {
+    create?: XOR<einteilungCreateWithoutDientsabendInput, einteilungUncheckedCreateWithoutDientsabendInput> | einteilungCreateWithoutDientsabendInput[] | einteilungUncheckedCreateWithoutDientsabendInput[]
+    connectOrCreate?: einteilungCreateOrConnectWithoutDientsabendInput | einteilungCreateOrConnectWithoutDientsabendInput[]
+    createMany?: einteilungCreateManyDientsabendInputEnvelope
+    connect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+  }
+
+  export type einteilungUncheckedCreateNestedManyWithoutDientsabendInput = {
+    create?: XOR<einteilungCreateWithoutDientsabendInput, einteilungUncheckedCreateWithoutDientsabendInput> | einteilungCreateWithoutDientsabendInput[] | einteilungUncheckedCreateWithoutDientsabendInput[]
+    connectOrCreate?: einteilungCreateOrConnectWithoutDientsabendInput | einteilungCreateOrConnectWithoutDientsabendInput[]
+    createMany?: einteilungCreateManyDientsabendInputEnvelope
+    connect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+  }
+
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
 
+  export type einteilungUpdateManyWithoutDientsabendNestedInput = {
+    create?: XOR<einteilungCreateWithoutDientsabendInput, einteilungUncheckedCreateWithoutDientsabendInput> | einteilungCreateWithoutDientsabendInput[] | einteilungUncheckedCreateWithoutDientsabendInput[]
+    connectOrCreate?: einteilungCreateOrConnectWithoutDientsabendInput | einteilungCreateOrConnectWithoutDientsabendInput[]
+    upsert?: einteilungUpsertWithWhereUniqueWithoutDientsabendInput | einteilungUpsertWithWhereUniqueWithoutDientsabendInput[]
+    createMany?: einteilungCreateManyDientsabendInputEnvelope
+    set?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    disconnect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    delete?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    connect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    update?: einteilungUpdateWithWhereUniqueWithoutDientsabendInput | einteilungUpdateWithWhereUniqueWithoutDientsabendInput[]
+    updateMany?: einteilungUpdateManyWithWhereWithoutDientsabendInput | einteilungUpdateManyWithWhereWithoutDientsabendInput[]
+    deleteMany?: einteilungScalarWhereInput | einteilungScalarWhereInput[]
+  }
+
+  export type einteilungUncheckedUpdateManyWithoutDientsabendNestedInput = {
+    create?: XOR<einteilungCreateWithoutDientsabendInput, einteilungUncheckedCreateWithoutDientsabendInput> | einteilungCreateWithoutDientsabendInput[] | einteilungUncheckedCreateWithoutDientsabendInput[]
+    connectOrCreate?: einteilungCreateOrConnectWithoutDientsabendInput | einteilungCreateOrConnectWithoutDientsabendInput[]
+    upsert?: einteilungUpsertWithWhereUniqueWithoutDientsabendInput | einteilungUpsertWithWhereUniqueWithoutDientsabendInput[]
+    createMany?: einteilungCreateManyDientsabendInputEnvelope
+    set?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    disconnect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    delete?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    connect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    update?: einteilungUpdateWithWhereUniqueWithoutDientsabendInput | einteilungUpdateWithWhereUniqueWithoutDientsabendInput[]
+    updateMany?: einteilungUpdateManyWithWhereWithoutDientsabendInput | einteilungUpdateManyWithWhereWithoutDientsabendInput[]
+    deleteMany?: einteilungScalarWhereInput | einteilungScalarWhereInput[]
+  }
+
+  export type einteilungCreateNestedManyWithoutEinheitInput = {
+    create?: XOR<einteilungCreateWithoutEinheitInput, einteilungUncheckedCreateWithoutEinheitInput> | einteilungCreateWithoutEinheitInput[] | einteilungUncheckedCreateWithoutEinheitInput[]
+    connectOrCreate?: einteilungCreateOrConnectWithoutEinheitInput | einteilungCreateOrConnectWithoutEinheitInput[]
+    createMany?: einteilungCreateManyEinheitInputEnvelope
+    connect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+  }
+
+  export type einteilungUncheckedCreateNestedManyWithoutEinheitInput = {
+    create?: XOR<einteilungCreateWithoutEinheitInput, einteilungUncheckedCreateWithoutEinheitInput> | einteilungCreateWithoutEinheitInput[] | einteilungUncheckedCreateWithoutEinheitInput[]
+    connectOrCreate?: einteilungCreateOrConnectWithoutEinheitInput | einteilungCreateOrConnectWithoutEinheitInput[]
+    createMany?: einteilungCreateManyEinheitInputEnvelope
+    connect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+  }
+
+  export type einteilungUpdateManyWithoutEinheitNestedInput = {
+    create?: XOR<einteilungCreateWithoutEinheitInput, einteilungUncheckedCreateWithoutEinheitInput> | einteilungCreateWithoutEinheitInput[] | einteilungUncheckedCreateWithoutEinheitInput[]
+    connectOrCreate?: einteilungCreateOrConnectWithoutEinheitInput | einteilungCreateOrConnectWithoutEinheitInput[]
+    upsert?: einteilungUpsertWithWhereUniqueWithoutEinheitInput | einteilungUpsertWithWhereUniqueWithoutEinheitInput[]
+    createMany?: einteilungCreateManyEinheitInputEnvelope
+    set?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    disconnect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    delete?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    connect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    update?: einteilungUpdateWithWhereUniqueWithoutEinheitInput | einteilungUpdateWithWhereUniqueWithoutEinheitInput[]
+    updateMany?: einteilungUpdateManyWithWhereWithoutEinheitInput | einteilungUpdateManyWithWhereWithoutEinheitInput[]
+    deleteMany?: einteilungScalarWhereInput | einteilungScalarWhereInput[]
+  }
+
+  export type einteilungUncheckedUpdateManyWithoutEinheitNestedInput = {
+    create?: XOR<einteilungCreateWithoutEinheitInput, einteilungUncheckedCreateWithoutEinheitInput> | einteilungCreateWithoutEinheitInput[] | einteilungUncheckedCreateWithoutEinheitInput[]
+    connectOrCreate?: einteilungCreateOrConnectWithoutEinheitInput | einteilungCreateOrConnectWithoutEinheitInput[]
+    upsert?: einteilungUpsertWithWhereUniqueWithoutEinheitInput | einteilungUpsertWithWhereUniqueWithoutEinheitInput[]
+    createMany?: einteilungCreateManyEinheitInputEnvelope
+    set?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    disconnect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    delete?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    connect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    update?: einteilungUpdateWithWhereUniqueWithoutEinheitInput | einteilungUpdateWithWhereUniqueWithoutEinheitInput[]
+    updateMany?: einteilungUpdateManyWithWhereWithoutEinheitInput | einteilungUpdateManyWithWhereWithoutEinheitInput[]
+    deleteMany?: einteilungScalarWhereInput | einteilungScalarWhereInput[]
+  }
+
+  export type einteilungCreateNestedManyWithoutEinsatzInput = {
+    create?: XOR<einteilungCreateWithoutEinsatzInput, einteilungUncheckedCreateWithoutEinsatzInput> | einteilungCreateWithoutEinsatzInput[] | einteilungUncheckedCreateWithoutEinsatzInput[]
+    connectOrCreate?: einteilungCreateOrConnectWithoutEinsatzInput | einteilungCreateOrConnectWithoutEinsatzInput[]
+    createMany?: einteilungCreateManyEinsatzInputEnvelope
+    connect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+  }
+
+  export type einteilungUncheckedCreateNestedManyWithoutEinsatzInput = {
+    create?: XOR<einteilungCreateWithoutEinsatzInput, einteilungUncheckedCreateWithoutEinsatzInput> | einteilungCreateWithoutEinsatzInput[] | einteilungUncheckedCreateWithoutEinsatzInput[]
+    connectOrCreate?: einteilungCreateOrConnectWithoutEinsatzInput | einteilungCreateOrConnectWithoutEinsatzInput[]
+    createMany?: einteilungCreateManyEinsatzInputEnvelope
+    connect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+  }
+
   export type Enumeinsatz_ArtFieldUpdateOperationsInput = {
     set?: $Enums.einsatz_Art
+  }
+
+  export type einteilungUpdateManyWithoutEinsatzNestedInput = {
+    create?: XOR<einteilungCreateWithoutEinsatzInput, einteilungUncheckedCreateWithoutEinsatzInput> | einteilungCreateWithoutEinsatzInput[] | einteilungUncheckedCreateWithoutEinsatzInput[]
+    connectOrCreate?: einteilungCreateOrConnectWithoutEinsatzInput | einteilungCreateOrConnectWithoutEinsatzInput[]
+    upsert?: einteilungUpsertWithWhereUniqueWithoutEinsatzInput | einteilungUpsertWithWhereUniqueWithoutEinsatzInput[]
+    createMany?: einteilungCreateManyEinsatzInputEnvelope
+    set?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    disconnect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    delete?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    connect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    update?: einteilungUpdateWithWhereUniqueWithoutEinsatzInput | einteilungUpdateWithWhereUniqueWithoutEinsatzInput[]
+    updateMany?: einteilungUpdateManyWithWhereWithoutEinsatzInput | einteilungUpdateManyWithWhereWithoutEinsatzInput[]
+    deleteMany?: einteilungScalarWhereInput | einteilungScalarWhereInput[]
+  }
+
+  export type einteilungUncheckedUpdateManyWithoutEinsatzNestedInput = {
+    create?: XOR<einteilungCreateWithoutEinsatzInput, einteilungUncheckedCreateWithoutEinsatzInput> | einteilungCreateWithoutEinsatzInput[] | einteilungUncheckedCreateWithoutEinsatzInput[]
+    connectOrCreate?: einteilungCreateOrConnectWithoutEinsatzInput | einteilungCreateOrConnectWithoutEinsatzInput[]
+    upsert?: einteilungUpsertWithWhereUniqueWithoutEinsatzInput | einteilungUpsertWithWhereUniqueWithoutEinsatzInput[]
+    createMany?: einteilungCreateManyEinsatzInputEnvelope
+    set?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    disconnect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    delete?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    connect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    update?: einteilungUpdateWithWhereUniqueWithoutEinsatzInput | einteilungUpdateWithWhereUniqueWithoutEinsatzInput[]
+    updateMany?: einteilungUpdateManyWithWhereWithoutEinsatzInput | einteilungUpdateManyWithWhereWithoutEinsatzInput[]
+    deleteMany?: einteilungScalarWhereInput | einteilungScalarWhereInput[]
+  }
+
+  export type dientsabendCreateNestedOneWithoutEinteilungInput = {
+    create?: XOR<dientsabendCreateWithoutEinteilungInput, dientsabendUncheckedCreateWithoutEinteilungInput>
+    connectOrCreate?: dientsabendCreateOrConnectWithoutEinteilungInput
+    connect?: dientsabendWhereUniqueInput
+  }
+
+  export type einheitCreateNestedOneWithoutEinteilungInput = {
+    create?: XOR<einheitCreateWithoutEinteilungInput, einheitUncheckedCreateWithoutEinteilungInput>
+    connectOrCreate?: einheitCreateOrConnectWithoutEinteilungInput
+    connect?: einheitWhereUniqueInput
+  }
+
+  export type einsatzCreateNestedOneWithoutEinteilungInput = {
+    create?: XOR<einsatzCreateWithoutEinteilungInput, einsatzUncheckedCreateWithoutEinteilungInput>
+    connectOrCreate?: einsatzCreateOrConnectWithoutEinteilungInput
+    connect?: einsatzWhereUniqueInput
+  }
+
+  export type fahrzeugCreateNestedOneWithoutEinteilungInput = {
+    create?: XOR<fahrzeugCreateWithoutEinteilungInput, fahrzeugUncheckedCreateWithoutEinteilungInput>
+    connectOrCreate?: fahrzeugCreateOrConnectWithoutEinteilungInput
+    connect?: fahrzeugWhereUniqueInput
+  }
+
+  export type ff_mitgliedCreateNestedOneWithoutEinteilungInput = {
+    create?: XOR<ff_mitgliedCreateWithoutEinteilungInput, ff_mitgliedUncheckedCreateWithoutEinteilungInput>
+    connectOrCreate?: ff_mitgliedCreateOrConnectWithoutEinteilungInput
+    connect?: ff_mitgliedWhereUniqueInput
+  }
+
+  export type dientsabendUpdateOneRequiredWithoutEinteilungNestedInput = {
+    create?: XOR<dientsabendCreateWithoutEinteilungInput, dientsabendUncheckedCreateWithoutEinteilungInput>
+    connectOrCreate?: dientsabendCreateOrConnectWithoutEinteilungInput
+    upsert?: dientsabendUpsertWithoutEinteilungInput
+    connect?: dientsabendWhereUniqueInput
+    update?: XOR<XOR<dientsabendUpdateToOneWithWhereWithoutEinteilungInput, dientsabendUpdateWithoutEinteilungInput>, dientsabendUncheckedUpdateWithoutEinteilungInput>
+  }
+
+  export type einheitUpdateOneRequiredWithoutEinteilungNestedInput = {
+    create?: XOR<einheitCreateWithoutEinteilungInput, einheitUncheckedCreateWithoutEinteilungInput>
+    connectOrCreate?: einheitCreateOrConnectWithoutEinteilungInput
+    upsert?: einheitUpsertWithoutEinteilungInput
+    connect?: einheitWhereUniqueInput
+    update?: XOR<XOR<einheitUpdateToOneWithWhereWithoutEinteilungInput, einheitUpdateWithoutEinteilungInput>, einheitUncheckedUpdateWithoutEinteilungInput>
+  }
+
+  export type einsatzUpdateOneRequiredWithoutEinteilungNestedInput = {
+    create?: XOR<einsatzCreateWithoutEinteilungInput, einsatzUncheckedCreateWithoutEinteilungInput>
+    connectOrCreate?: einsatzCreateOrConnectWithoutEinteilungInput
+    upsert?: einsatzUpsertWithoutEinteilungInput
+    connect?: einsatzWhereUniqueInput
+    update?: XOR<XOR<einsatzUpdateToOneWithWhereWithoutEinteilungInput, einsatzUpdateWithoutEinteilungInput>, einsatzUncheckedUpdateWithoutEinteilungInput>
+  }
+
+  export type fahrzeugUpdateOneRequiredWithoutEinteilungNestedInput = {
+    create?: XOR<fahrzeugCreateWithoutEinteilungInput, fahrzeugUncheckedCreateWithoutEinteilungInput>
+    connectOrCreate?: fahrzeugCreateOrConnectWithoutEinteilungInput
+    upsert?: fahrzeugUpsertWithoutEinteilungInput
+    connect?: fahrzeugWhereUniqueInput
+    update?: XOR<XOR<fahrzeugUpdateToOneWithWhereWithoutEinteilungInput, fahrzeugUpdateWithoutEinteilungInput>, fahrzeugUncheckedUpdateWithoutEinteilungInput>
+  }
+
+  export type ff_mitgliedUpdateOneRequiredWithoutEinteilungNestedInput = {
+    create?: XOR<ff_mitgliedCreateWithoutEinteilungInput, ff_mitgliedUncheckedCreateWithoutEinteilungInput>
+    connectOrCreate?: ff_mitgliedCreateOrConnectWithoutEinteilungInput
+    upsert?: ff_mitgliedUpsertWithoutEinteilungInput
+    connect?: ff_mitgliedWhereUniqueInput
+    update?: XOR<XOR<ff_mitgliedUpdateToOneWithWhereWithoutEinteilungInput, ff_mitgliedUpdateWithoutEinteilungInput>, ff_mitgliedUncheckedUpdateWithoutEinteilungInput>
+  }
+
+  export type einteilungCreateNestedManyWithoutFahrzeugInput = {
+    create?: XOR<einteilungCreateWithoutFahrzeugInput, einteilungUncheckedCreateWithoutFahrzeugInput> | einteilungCreateWithoutFahrzeugInput[] | einteilungUncheckedCreateWithoutFahrzeugInput[]
+    connectOrCreate?: einteilungCreateOrConnectWithoutFahrzeugInput | einteilungCreateOrConnectWithoutFahrzeugInput[]
+    createMany?: einteilungCreateManyFahrzeugInputEnvelope
+    connect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+  }
+
+  export type einteilungUncheckedCreateNestedManyWithoutFahrzeugInput = {
+    create?: XOR<einteilungCreateWithoutFahrzeugInput, einteilungUncheckedCreateWithoutFahrzeugInput> | einteilungCreateWithoutFahrzeugInput[] | einteilungUncheckedCreateWithoutFahrzeugInput[]
+    connectOrCreate?: einteilungCreateOrConnectWithoutFahrzeugInput | einteilungCreateOrConnectWithoutFahrzeugInput[]
+    createMany?: einteilungCreateManyFahrzeugInputEnvelope
+    connect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+  }
+
+  export type einteilungUpdateManyWithoutFahrzeugNestedInput = {
+    create?: XOR<einteilungCreateWithoutFahrzeugInput, einteilungUncheckedCreateWithoutFahrzeugInput> | einteilungCreateWithoutFahrzeugInput[] | einteilungUncheckedCreateWithoutFahrzeugInput[]
+    connectOrCreate?: einteilungCreateOrConnectWithoutFahrzeugInput | einteilungCreateOrConnectWithoutFahrzeugInput[]
+    upsert?: einteilungUpsertWithWhereUniqueWithoutFahrzeugInput | einteilungUpsertWithWhereUniqueWithoutFahrzeugInput[]
+    createMany?: einteilungCreateManyFahrzeugInputEnvelope
+    set?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    disconnect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    delete?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    connect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    update?: einteilungUpdateWithWhereUniqueWithoutFahrzeugInput | einteilungUpdateWithWhereUniqueWithoutFahrzeugInput[]
+    updateMany?: einteilungUpdateManyWithWhereWithoutFahrzeugInput | einteilungUpdateManyWithWhereWithoutFahrzeugInput[]
+    deleteMany?: einteilungScalarWhereInput | einteilungScalarWhereInput[]
+  }
+
+  export type einteilungUncheckedUpdateManyWithoutFahrzeugNestedInput = {
+    create?: XOR<einteilungCreateWithoutFahrzeugInput, einteilungUncheckedCreateWithoutFahrzeugInput> | einteilungCreateWithoutFahrzeugInput[] | einteilungUncheckedCreateWithoutFahrzeugInput[]
+    connectOrCreate?: einteilungCreateOrConnectWithoutFahrzeugInput | einteilungCreateOrConnectWithoutFahrzeugInput[]
+    upsert?: einteilungUpsertWithWhereUniqueWithoutFahrzeugInput | einteilungUpsertWithWhereUniqueWithoutFahrzeugInput[]
+    createMany?: einteilungCreateManyFahrzeugInputEnvelope
+    set?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    disconnect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    delete?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    connect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    update?: einteilungUpdateWithWhereUniqueWithoutFahrzeugInput | einteilungUpdateWithWhereUniqueWithoutFahrzeugInput[]
+    updateMany?: einteilungUpdateManyWithWhereWithoutFahrzeugInput | einteilungUpdateManyWithWhereWithoutFahrzeugInput[]
+    deleteMany?: einteilungScalarWhereInput | einteilungScalarWhereInput[]
+  }
+
+  export type allergieCreateNestedManyWithoutFf_mitgliedInput = {
+    create?: XOR<allergieCreateWithoutFf_mitgliedInput, allergieUncheckedCreateWithoutFf_mitgliedInput> | allergieCreateWithoutFf_mitgliedInput[] | allergieUncheckedCreateWithoutFf_mitgliedInput[]
+    connectOrCreate?: allergieCreateOrConnectWithoutFf_mitgliedInput | allergieCreateOrConnectWithoutFf_mitgliedInput[]
+    createMany?: allergieCreateManyFf_mitgliedInputEnvelope
+    connect?: allergieWhereUniqueInput | allergieWhereUniqueInput[]
+  }
+
+  export type einteilungCreateNestedManyWithoutFf_mitgliedInput = {
+    create?: XOR<einteilungCreateWithoutFf_mitgliedInput, einteilungUncheckedCreateWithoutFf_mitgliedInput> | einteilungCreateWithoutFf_mitgliedInput[] | einteilungUncheckedCreateWithoutFf_mitgliedInput[]
+    connectOrCreate?: einteilungCreateOrConnectWithoutFf_mitgliedInput | einteilungCreateOrConnectWithoutFf_mitgliedInput[]
+    createMany?: einteilungCreateManyFf_mitgliedInputEnvelope
+    connect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
   }
 
   export type personCreateNestedOneWithoutFf_mitgliedInput = {
@@ -21850,6 +25315,20 @@ export namespace Prisma {
     connect?: mitglied_funktionenWhereUniqueInput | mitglied_funktionenWhereUniqueInput[]
   }
 
+  export type allergieUncheckedCreateNestedManyWithoutFf_mitgliedInput = {
+    create?: XOR<allergieCreateWithoutFf_mitgliedInput, allergieUncheckedCreateWithoutFf_mitgliedInput> | allergieCreateWithoutFf_mitgliedInput[] | allergieUncheckedCreateWithoutFf_mitgliedInput[]
+    connectOrCreate?: allergieCreateOrConnectWithoutFf_mitgliedInput | allergieCreateOrConnectWithoutFf_mitgliedInput[]
+    createMany?: allergieCreateManyFf_mitgliedInputEnvelope
+    connect?: allergieWhereUniqueInput | allergieWhereUniqueInput[]
+  }
+
+  export type einteilungUncheckedCreateNestedManyWithoutFf_mitgliedInput = {
+    create?: XOR<einteilungCreateWithoutFf_mitgliedInput, einteilungUncheckedCreateWithoutFf_mitgliedInput> | einteilungCreateWithoutFf_mitgliedInput[] | einteilungUncheckedCreateWithoutFf_mitgliedInput[]
+    connectOrCreate?: einteilungCreateOrConnectWithoutFf_mitgliedInput | einteilungCreateOrConnectWithoutFf_mitgliedInput[]
+    createMany?: einteilungCreateManyFf_mitgliedInputEnvelope
+    connect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+  }
+
   export type ff_mitglied_lehrgangUncheckedCreateNestedManyWithoutFf_mitgliedInput = {
     create?: XOR<ff_mitglied_lehrgangCreateWithoutFf_mitgliedInput, ff_mitglied_lehrgangUncheckedCreateWithoutFf_mitgliedInput> | ff_mitglied_lehrgangCreateWithoutFf_mitgliedInput[] | ff_mitglied_lehrgangUncheckedCreateWithoutFf_mitgliedInput[]
     connectOrCreate?: ff_mitglied_lehrgangCreateOrConnectWithoutFf_mitgliedInput | ff_mitglied_lehrgangCreateOrConnectWithoutFf_mitgliedInput[]
@@ -21866,6 +25345,34 @@ export namespace Prisma {
 
   export type Enumff_mitglied_StatusFieldUpdateOperationsInput = {
     set?: $Enums.ff_mitglied_Status
+  }
+
+  export type allergieUpdateManyWithoutFf_mitgliedNestedInput = {
+    create?: XOR<allergieCreateWithoutFf_mitgliedInput, allergieUncheckedCreateWithoutFf_mitgliedInput> | allergieCreateWithoutFf_mitgliedInput[] | allergieUncheckedCreateWithoutFf_mitgliedInput[]
+    connectOrCreate?: allergieCreateOrConnectWithoutFf_mitgliedInput | allergieCreateOrConnectWithoutFf_mitgliedInput[]
+    upsert?: allergieUpsertWithWhereUniqueWithoutFf_mitgliedInput | allergieUpsertWithWhereUniqueWithoutFf_mitgliedInput[]
+    createMany?: allergieCreateManyFf_mitgliedInputEnvelope
+    set?: allergieWhereUniqueInput | allergieWhereUniqueInput[]
+    disconnect?: allergieWhereUniqueInput | allergieWhereUniqueInput[]
+    delete?: allergieWhereUniqueInput | allergieWhereUniqueInput[]
+    connect?: allergieWhereUniqueInput | allergieWhereUniqueInput[]
+    update?: allergieUpdateWithWhereUniqueWithoutFf_mitgliedInput | allergieUpdateWithWhereUniqueWithoutFf_mitgliedInput[]
+    updateMany?: allergieUpdateManyWithWhereWithoutFf_mitgliedInput | allergieUpdateManyWithWhereWithoutFf_mitgliedInput[]
+    deleteMany?: allergieScalarWhereInput | allergieScalarWhereInput[]
+  }
+
+  export type einteilungUpdateManyWithoutFf_mitgliedNestedInput = {
+    create?: XOR<einteilungCreateWithoutFf_mitgliedInput, einteilungUncheckedCreateWithoutFf_mitgliedInput> | einteilungCreateWithoutFf_mitgliedInput[] | einteilungUncheckedCreateWithoutFf_mitgliedInput[]
+    connectOrCreate?: einteilungCreateOrConnectWithoutFf_mitgliedInput | einteilungCreateOrConnectWithoutFf_mitgliedInput[]
+    upsert?: einteilungUpsertWithWhereUniqueWithoutFf_mitgliedInput | einteilungUpsertWithWhereUniqueWithoutFf_mitgliedInput[]
+    createMany?: einteilungCreateManyFf_mitgliedInputEnvelope
+    set?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    disconnect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    delete?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    connect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    update?: einteilungUpdateWithWhereUniqueWithoutFf_mitgliedInput | einteilungUpdateWithWhereUniqueWithoutFf_mitgliedInput[]
+    updateMany?: einteilungUpdateManyWithWhereWithoutFf_mitgliedInput | einteilungUpdateManyWithWhereWithoutFf_mitgliedInput[]
+    deleteMany?: einteilungScalarWhereInput | einteilungScalarWhereInput[]
   }
 
   export type personUpdateOneRequiredWithoutFf_mitgliedNestedInput = {
@@ -21902,6 +25409,34 @@ export namespace Prisma {
     update?: mitglied_funktionenUpdateWithWhereUniqueWithoutFf_mitgliedInput | mitglied_funktionenUpdateWithWhereUniqueWithoutFf_mitgliedInput[]
     updateMany?: mitglied_funktionenUpdateManyWithWhereWithoutFf_mitgliedInput | mitglied_funktionenUpdateManyWithWhereWithoutFf_mitgliedInput[]
     deleteMany?: mitglied_funktionenScalarWhereInput | mitglied_funktionenScalarWhereInput[]
+  }
+
+  export type allergieUncheckedUpdateManyWithoutFf_mitgliedNestedInput = {
+    create?: XOR<allergieCreateWithoutFf_mitgliedInput, allergieUncheckedCreateWithoutFf_mitgliedInput> | allergieCreateWithoutFf_mitgliedInput[] | allergieUncheckedCreateWithoutFf_mitgliedInput[]
+    connectOrCreate?: allergieCreateOrConnectWithoutFf_mitgliedInput | allergieCreateOrConnectWithoutFf_mitgliedInput[]
+    upsert?: allergieUpsertWithWhereUniqueWithoutFf_mitgliedInput | allergieUpsertWithWhereUniqueWithoutFf_mitgliedInput[]
+    createMany?: allergieCreateManyFf_mitgliedInputEnvelope
+    set?: allergieWhereUniqueInput | allergieWhereUniqueInput[]
+    disconnect?: allergieWhereUniqueInput | allergieWhereUniqueInput[]
+    delete?: allergieWhereUniqueInput | allergieWhereUniqueInput[]
+    connect?: allergieWhereUniqueInput | allergieWhereUniqueInput[]
+    update?: allergieUpdateWithWhereUniqueWithoutFf_mitgliedInput | allergieUpdateWithWhereUniqueWithoutFf_mitgliedInput[]
+    updateMany?: allergieUpdateManyWithWhereWithoutFf_mitgliedInput | allergieUpdateManyWithWhereWithoutFf_mitgliedInput[]
+    deleteMany?: allergieScalarWhereInput | allergieScalarWhereInput[]
+  }
+
+  export type einteilungUncheckedUpdateManyWithoutFf_mitgliedNestedInput = {
+    create?: XOR<einteilungCreateWithoutFf_mitgliedInput, einteilungUncheckedCreateWithoutFf_mitgliedInput> | einteilungCreateWithoutFf_mitgliedInput[] | einteilungUncheckedCreateWithoutFf_mitgliedInput[]
+    connectOrCreate?: einteilungCreateOrConnectWithoutFf_mitgliedInput | einteilungCreateOrConnectWithoutFf_mitgliedInput[]
+    upsert?: einteilungUpsertWithWhereUniqueWithoutFf_mitgliedInput | einteilungUpsertWithWhereUniqueWithoutFf_mitgliedInput[]
+    createMany?: einteilungCreateManyFf_mitgliedInputEnvelope
+    set?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    disconnect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    delete?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    connect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
+    update?: einteilungUpdateWithWhereUniqueWithoutFf_mitgliedInput | einteilungUpdateWithWhereUniqueWithoutFf_mitgliedInput[]
+    updateMany?: einteilungUpdateManyWithWhereWithoutFf_mitgliedInput | einteilungUpdateManyWithWhereWithoutFf_mitgliedInput[]
+    deleteMany?: einteilungScalarWhereInput | einteilungScalarWhereInput[]
   }
 
   export type ff_mitglied_lehrgangUncheckedUpdateManyWithoutFf_mitgliedNestedInput = {
@@ -21974,10 +25509,6 @@ export namespace Prisma {
     connect?: mitglied_funktionenWhereUniqueInput | mitglied_funktionenWhereUniqueInput[]
   }
 
-  export type StringFieldUpdateOperationsInput = {
-    set?: string
-  }
-
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
   }
@@ -22038,6 +25569,13 @@ export namespace Prisma {
     update?: XOR<XOR<personUpdateToOneWithWhereWithoutJf_erziehungsberechtigterInput, personUpdateWithoutJf_erziehungsberechtigterInput>, personUncheckedUpdateWithoutJf_erziehungsberechtigterInput>
   }
 
+  export type allergieCreateNestedManyWithoutJf_mitgliedInput = {
+    create?: XOR<allergieCreateWithoutJf_mitgliedInput, allergieUncheckedCreateWithoutJf_mitgliedInput> | allergieCreateWithoutJf_mitgliedInput[] | allergieUncheckedCreateWithoutJf_mitgliedInput[]
+    connectOrCreate?: allergieCreateOrConnectWithoutJf_mitgliedInput | allergieCreateOrConnectWithoutJf_mitgliedInput[]
+    createMany?: allergieCreateManyJf_mitgliedInputEnvelope
+    connect?: allergieWhereUniqueInput | allergieWhereUniqueInput[]
+  }
+
   export type jf_erziehungsberechtigterCreateNestedManyWithoutJf_mitgliedInput = {
     create?: XOR<jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput, jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput> | jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput[] | jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput[]
     connectOrCreate?: jf_erziehungsberechtigterCreateOrConnectWithoutJf_mitgliedInput | jf_erziehungsberechtigterCreateOrConnectWithoutJf_mitgliedInput[]
@@ -22051,6 +25589,13 @@ export namespace Prisma {
     connect?: personWhereUniqueInput
   }
 
+  export type allergieUncheckedCreateNestedManyWithoutJf_mitgliedInput = {
+    create?: XOR<allergieCreateWithoutJf_mitgliedInput, allergieUncheckedCreateWithoutJf_mitgliedInput> | allergieCreateWithoutJf_mitgliedInput[] | allergieUncheckedCreateWithoutJf_mitgliedInput[]
+    connectOrCreate?: allergieCreateOrConnectWithoutJf_mitgliedInput | allergieCreateOrConnectWithoutJf_mitgliedInput[]
+    createMany?: allergieCreateManyJf_mitgliedInputEnvelope
+    connect?: allergieWhereUniqueInput | allergieWhereUniqueInput[]
+  }
+
   export type jf_erziehungsberechtigterUncheckedCreateNestedManyWithoutJf_mitgliedInput = {
     create?: XOR<jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput, jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput> | jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput[] | jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput[]
     connectOrCreate?: jf_erziehungsberechtigterCreateOrConnectWithoutJf_mitgliedInput | jf_erziehungsberechtigterCreateOrConnectWithoutJf_mitgliedInput[]
@@ -22060,6 +25605,20 @@ export namespace Prisma {
 
   export type Enumjf_mitglied_StatusFieldUpdateOperationsInput = {
     set?: $Enums.jf_mitglied_Status
+  }
+
+  export type allergieUpdateManyWithoutJf_mitgliedNestedInput = {
+    create?: XOR<allergieCreateWithoutJf_mitgliedInput, allergieUncheckedCreateWithoutJf_mitgliedInput> | allergieCreateWithoutJf_mitgliedInput[] | allergieUncheckedCreateWithoutJf_mitgliedInput[]
+    connectOrCreate?: allergieCreateOrConnectWithoutJf_mitgliedInput | allergieCreateOrConnectWithoutJf_mitgliedInput[]
+    upsert?: allergieUpsertWithWhereUniqueWithoutJf_mitgliedInput | allergieUpsertWithWhereUniqueWithoutJf_mitgliedInput[]
+    createMany?: allergieCreateManyJf_mitgliedInputEnvelope
+    set?: allergieWhereUniqueInput | allergieWhereUniqueInput[]
+    disconnect?: allergieWhereUniqueInput | allergieWhereUniqueInput[]
+    delete?: allergieWhereUniqueInput | allergieWhereUniqueInput[]
+    connect?: allergieWhereUniqueInput | allergieWhereUniqueInput[]
+    update?: allergieUpdateWithWhereUniqueWithoutJf_mitgliedInput | allergieUpdateWithWhereUniqueWithoutJf_mitgliedInput[]
+    updateMany?: allergieUpdateManyWithWhereWithoutJf_mitgliedInput | allergieUpdateManyWithWhereWithoutJf_mitgliedInput[]
+    deleteMany?: allergieScalarWhereInput | allergieScalarWhereInput[]
   }
 
   export type jf_erziehungsberechtigterUpdateManyWithoutJf_mitgliedNestedInput = {
@@ -22082,6 +25641,20 @@ export namespace Prisma {
     upsert?: personUpsertWithoutJf_mitgliedInput
     connect?: personWhereUniqueInput
     update?: XOR<XOR<personUpdateToOneWithWhereWithoutJf_mitgliedInput, personUpdateWithoutJf_mitgliedInput>, personUncheckedUpdateWithoutJf_mitgliedInput>
+  }
+
+  export type allergieUncheckedUpdateManyWithoutJf_mitgliedNestedInput = {
+    create?: XOR<allergieCreateWithoutJf_mitgliedInput, allergieUncheckedCreateWithoutJf_mitgliedInput> | allergieCreateWithoutJf_mitgliedInput[] | allergieUncheckedCreateWithoutJf_mitgliedInput[]
+    connectOrCreate?: allergieCreateOrConnectWithoutJf_mitgliedInput | allergieCreateOrConnectWithoutJf_mitgliedInput[]
+    upsert?: allergieUpsertWithWhereUniqueWithoutJf_mitgliedInput | allergieUpsertWithWhereUniqueWithoutJf_mitgliedInput[]
+    createMany?: allergieCreateManyJf_mitgliedInputEnvelope
+    set?: allergieWhereUniqueInput | allergieWhereUniqueInput[]
+    disconnect?: allergieWhereUniqueInput | allergieWhereUniqueInput[]
+    delete?: allergieWhereUniqueInput | allergieWhereUniqueInput[]
+    connect?: allergieWhereUniqueInput | allergieWhereUniqueInput[]
+    update?: allergieUpdateWithWhereUniqueWithoutJf_mitgliedInput | allergieUpdateWithWhereUniqueWithoutJf_mitgliedInput[]
+    updateMany?: allergieUpdateManyWithWhereWithoutJf_mitgliedInput | allergieUpdateManyWithWhereWithoutJf_mitgliedInput[]
+    deleteMany?: allergieScalarWhereInput | allergieScalarWhereInput[]
   }
 
   export type jf_erziehungsberechtigterUncheckedUpdateManyWithoutJf_mitgliedNestedInput = {
@@ -22437,6 +26010,21 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
+  export type NestedStringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringFilter<$PrismaModel> | string
+  }
+
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | null
@@ -22488,6 +26076,24 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -22592,42 +26198,9 @@ export namespace Prisma {
     _max?: NestedEnumff_mitglied_StatusFilter<$PrismaModel>
   }
 
-  export type NestedStringFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringFilter<$PrismaModel> | string
-  }
-
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
   }
 
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -22733,6 +26306,656 @@ export namespace Prisma {
     _max?: NestedEnumteilnahme_TypFilter<$PrismaModel>
   }
 
+  export type ff_mitgliedCreateWithoutAllergieInput = {
+    Eintrittsdatum: Date | string
+    Austrittsdatum?: Date | string | null
+    Aufnahmedatum?: Date | string | null
+    Status?: $Enums.ff_mitglied_Status
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
+    einteilung?: einteilungCreateNestedManyWithoutFf_mitgliedInput
+    person: personCreateNestedOneWithoutFf_mitgliedInput
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangCreateNestedManyWithoutFf_mitgliedInput
+    mitglied_funktionen?: mitglied_funktionenCreateNestedManyWithoutFf_mitgliedInput
+  }
+
+  export type ff_mitgliedUncheckedCreateWithoutAllergieInput = {
+    ID?: number
+    Person_ID: number
+    Eintrittsdatum: Date | string
+    Austrittsdatum?: Date | string | null
+    Aufnahmedatum?: Date | string | null
+    Status?: $Enums.ff_mitglied_Status
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
+    einteilung?: einteilungUncheckedCreateNestedManyWithoutFf_mitgliedInput
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangUncheckedCreateNestedManyWithoutFf_mitgliedInput
+    mitglied_funktionen?: mitglied_funktionenUncheckedCreateNestedManyWithoutFf_mitgliedInput
+  }
+
+  export type ff_mitgliedCreateOrConnectWithoutAllergieInput = {
+    where: ff_mitgliedWhereUniqueInput
+    create: XOR<ff_mitgliedCreateWithoutAllergieInput, ff_mitgliedUncheckedCreateWithoutAllergieInput>
+  }
+
+  export type jf_mitgliedCreateWithoutAllergieInput = {
+    Eintrittsdatum: Date | string
+    Austrittsdatum?: Date | string | null
+    Aufnahmedatum?: Date | string | null
+    Status?: $Enums.jf_mitglied_Status
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+    jf_erziehungsberechtigter?: jf_erziehungsberechtigterCreateNestedManyWithoutJf_mitgliedInput
+    person: personCreateNestedOneWithoutJf_mitgliedInput
+  }
+
+  export type jf_mitgliedUncheckedCreateWithoutAllergieInput = {
+    ID?: number
+    Person_ID: number
+    Eintrittsdatum: Date | string
+    Austrittsdatum?: Date | string | null
+    Aufnahmedatum?: Date | string | null
+    Status?: $Enums.jf_mitglied_Status
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedCreateNestedManyWithoutJf_mitgliedInput
+  }
+
+  export type jf_mitgliedCreateOrConnectWithoutAllergieInput = {
+    where: jf_mitgliedWhereUniqueInput
+    create: XOR<jf_mitgliedCreateWithoutAllergieInput, jf_mitgliedUncheckedCreateWithoutAllergieInput>
+  }
+
+  export type ff_mitgliedUpsertWithoutAllergieInput = {
+    update: XOR<ff_mitgliedUpdateWithoutAllergieInput, ff_mitgliedUncheckedUpdateWithoutAllergieInput>
+    create: XOR<ff_mitgliedCreateWithoutAllergieInput, ff_mitgliedUncheckedCreateWithoutAllergieInput>
+    where?: ff_mitgliedWhereInput
+  }
+
+  export type ff_mitgliedUpdateToOneWithWhereWithoutAllergieInput = {
+    where?: ff_mitgliedWhereInput
+    data: XOR<ff_mitgliedUpdateWithoutAllergieInput, ff_mitgliedUncheckedUpdateWithoutAllergieInput>
+  }
+
+  export type ff_mitgliedUpdateWithoutAllergieInput = {
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumff_mitglied_StatusFieldUpdateOperationsInput | $Enums.ff_mitglied_Status
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    einteilung?: einteilungUpdateManyWithoutFf_mitgliedNestedInput
+    person?: personUpdateOneRequiredWithoutFf_mitgliedNestedInput
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangUpdateManyWithoutFf_mitgliedNestedInput
+    mitglied_funktionen?: mitglied_funktionenUpdateManyWithoutFf_mitgliedNestedInput
+  }
+
+  export type ff_mitgliedUncheckedUpdateWithoutAllergieInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumff_mitglied_StatusFieldUpdateOperationsInput | $Enums.ff_mitglied_Status
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    einteilung?: einteilungUncheckedUpdateManyWithoutFf_mitgliedNestedInput
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangUncheckedUpdateManyWithoutFf_mitgliedNestedInput
+    mitglied_funktionen?: mitglied_funktionenUncheckedUpdateManyWithoutFf_mitgliedNestedInput
+  }
+
+  export type jf_mitgliedUpsertWithoutAllergieInput = {
+    update: XOR<jf_mitgliedUpdateWithoutAllergieInput, jf_mitgliedUncheckedUpdateWithoutAllergieInput>
+    create: XOR<jf_mitgliedCreateWithoutAllergieInput, jf_mitgliedUncheckedCreateWithoutAllergieInput>
+    where?: jf_mitgliedWhereInput
+  }
+
+  export type jf_mitgliedUpdateToOneWithWhereWithoutAllergieInput = {
+    where?: jf_mitgliedWhereInput
+    data: XOR<jf_mitgliedUpdateWithoutAllergieInput, jf_mitgliedUncheckedUpdateWithoutAllergieInput>
+  }
+
+  export type jf_mitgliedUpdateWithoutAllergieInput = {
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUpdateManyWithoutJf_mitgliedNestedInput
+    person?: personUpdateOneRequiredWithoutJf_mitgliedNestedInput
+  }
+
+  export type jf_mitgliedUncheckedUpdateWithoutAllergieInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedUpdateManyWithoutJf_mitgliedNestedInput
+  }
+
+  export type einteilungCreateWithoutDientsabendInput = {
+    einheit: einheitCreateNestedOneWithoutEinteilungInput
+    einsatz: einsatzCreateNestedOneWithoutEinteilungInput
+    fahrzeug: fahrzeugCreateNestedOneWithoutEinteilungInput
+    ff_mitglied: ff_mitgliedCreateNestedOneWithoutEinteilungInput
+  }
+
+  export type einteilungUncheckedCreateWithoutDientsabendInput = {
+    ID?: number
+    Einsatz_ID: number
+    Fahrzeug_ID: number
+    FF_Mitglied_ID: number
+    Einheit_ID: number
+  }
+
+  export type einteilungCreateOrConnectWithoutDientsabendInput = {
+    where: einteilungWhereUniqueInput
+    create: XOR<einteilungCreateWithoutDientsabendInput, einteilungUncheckedCreateWithoutDientsabendInput>
+  }
+
+  export type einteilungCreateManyDientsabendInputEnvelope = {
+    data: einteilungCreateManyDientsabendInput | einteilungCreateManyDientsabendInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type einteilungUpsertWithWhereUniqueWithoutDientsabendInput = {
+    where: einteilungWhereUniqueInput
+    update: XOR<einteilungUpdateWithoutDientsabendInput, einteilungUncheckedUpdateWithoutDientsabendInput>
+    create: XOR<einteilungCreateWithoutDientsabendInput, einteilungUncheckedCreateWithoutDientsabendInput>
+  }
+
+  export type einteilungUpdateWithWhereUniqueWithoutDientsabendInput = {
+    where: einteilungWhereUniqueInput
+    data: XOR<einteilungUpdateWithoutDientsabendInput, einteilungUncheckedUpdateWithoutDientsabendInput>
+  }
+
+  export type einteilungUpdateManyWithWhereWithoutDientsabendInput = {
+    where: einteilungScalarWhereInput
+    data: XOR<einteilungUpdateManyMutationInput, einteilungUncheckedUpdateManyWithoutDientsabendInput>
+  }
+
+  export type einteilungScalarWhereInput = {
+    AND?: einteilungScalarWhereInput | einteilungScalarWhereInput[]
+    OR?: einteilungScalarWhereInput[]
+    NOT?: einteilungScalarWhereInput | einteilungScalarWhereInput[]
+    ID?: IntFilter<"einteilung"> | number
+    Einsatz_ID?: IntFilter<"einteilung"> | number
+    Dienstabend_ID?: IntFilter<"einteilung"> | number
+    Fahrzeug_ID?: IntFilter<"einteilung"> | number
+    FF_Mitglied_ID?: IntFilter<"einteilung"> | number
+    Einheit_ID?: IntFilter<"einteilung"> | number
+  }
+
+  export type einteilungCreateWithoutEinheitInput = {
+    dientsabend: dientsabendCreateNestedOneWithoutEinteilungInput
+    einsatz: einsatzCreateNestedOneWithoutEinteilungInput
+    fahrzeug: fahrzeugCreateNestedOneWithoutEinteilungInput
+    ff_mitglied: ff_mitgliedCreateNestedOneWithoutEinteilungInput
+  }
+
+  export type einteilungUncheckedCreateWithoutEinheitInput = {
+    ID?: number
+    Einsatz_ID: number
+    Dienstabend_ID: number
+    Fahrzeug_ID: number
+    FF_Mitglied_ID: number
+  }
+
+  export type einteilungCreateOrConnectWithoutEinheitInput = {
+    where: einteilungWhereUniqueInput
+    create: XOR<einteilungCreateWithoutEinheitInput, einteilungUncheckedCreateWithoutEinheitInput>
+  }
+
+  export type einteilungCreateManyEinheitInputEnvelope = {
+    data: einteilungCreateManyEinheitInput | einteilungCreateManyEinheitInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type einteilungUpsertWithWhereUniqueWithoutEinheitInput = {
+    where: einteilungWhereUniqueInput
+    update: XOR<einteilungUpdateWithoutEinheitInput, einteilungUncheckedUpdateWithoutEinheitInput>
+    create: XOR<einteilungCreateWithoutEinheitInput, einteilungUncheckedCreateWithoutEinheitInput>
+  }
+
+  export type einteilungUpdateWithWhereUniqueWithoutEinheitInput = {
+    where: einteilungWhereUniqueInput
+    data: XOR<einteilungUpdateWithoutEinheitInput, einteilungUncheckedUpdateWithoutEinheitInput>
+  }
+
+  export type einteilungUpdateManyWithWhereWithoutEinheitInput = {
+    where: einteilungScalarWhereInput
+    data: XOR<einteilungUpdateManyMutationInput, einteilungUncheckedUpdateManyWithoutEinheitInput>
+  }
+
+  export type einteilungCreateWithoutEinsatzInput = {
+    dientsabend: dientsabendCreateNestedOneWithoutEinteilungInput
+    einheit: einheitCreateNestedOneWithoutEinteilungInput
+    fahrzeug: fahrzeugCreateNestedOneWithoutEinteilungInput
+    ff_mitglied: ff_mitgliedCreateNestedOneWithoutEinteilungInput
+  }
+
+  export type einteilungUncheckedCreateWithoutEinsatzInput = {
+    ID?: number
+    Dienstabend_ID: number
+    Fahrzeug_ID: number
+    FF_Mitglied_ID: number
+    Einheit_ID: number
+  }
+
+  export type einteilungCreateOrConnectWithoutEinsatzInput = {
+    where: einteilungWhereUniqueInput
+    create: XOR<einteilungCreateWithoutEinsatzInput, einteilungUncheckedCreateWithoutEinsatzInput>
+  }
+
+  export type einteilungCreateManyEinsatzInputEnvelope = {
+    data: einteilungCreateManyEinsatzInput | einteilungCreateManyEinsatzInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type einteilungUpsertWithWhereUniqueWithoutEinsatzInput = {
+    where: einteilungWhereUniqueInput
+    update: XOR<einteilungUpdateWithoutEinsatzInput, einteilungUncheckedUpdateWithoutEinsatzInput>
+    create: XOR<einteilungCreateWithoutEinsatzInput, einteilungUncheckedCreateWithoutEinsatzInput>
+  }
+
+  export type einteilungUpdateWithWhereUniqueWithoutEinsatzInput = {
+    where: einteilungWhereUniqueInput
+    data: XOR<einteilungUpdateWithoutEinsatzInput, einteilungUncheckedUpdateWithoutEinsatzInput>
+  }
+
+  export type einteilungUpdateManyWithWhereWithoutEinsatzInput = {
+    where: einteilungScalarWhereInput
+    data: XOR<einteilungUpdateManyMutationInput, einteilungUncheckedUpdateManyWithoutEinsatzInput>
+  }
+
+  export type dientsabendCreateWithoutEinteilungInput = {
+    Datum: Date | string
+    Thema?: string | null
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
+  }
+
+  export type dientsabendUncheckedCreateWithoutEinteilungInput = {
+    ID?: number
+    Datum: Date | string
+    Thema?: string | null
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
+  }
+
+  export type dientsabendCreateOrConnectWithoutEinteilungInput = {
+    where: dientsabendWhereUniqueInput
+    create: XOR<dientsabendCreateWithoutEinteilungInput, dientsabendUncheckedCreateWithoutEinteilungInput>
+  }
+
+  export type einheitCreateWithoutEinteilungInput = {
+    Abkuerzung?: string | null
+    Beschreibung?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type einheitUncheckedCreateWithoutEinteilungInput = {
+    ID?: number
+    Abkuerzung?: string | null
+    Beschreibung?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type einheitCreateOrConnectWithoutEinteilungInput = {
+    where: einheitWhereUniqueInput
+    create: XOR<einheitCreateWithoutEinteilungInput, einheitUncheckedCreateWithoutEinteilungInput>
+  }
+
+  export type einsatzCreateWithoutEinteilungInput = {
+    Einsatznummer: number
+    Datum_Anfang: Date | string
+    Uhrzeit_Anfang: Date | string
+    Datum_Ende?: Date | string | null
+    Uhrzeit_Ende?: Date | string | null
+    Beschreibung?: string | null
+    Strasse?: string | null
+    Hausnummer?: string | null
+    Postleitzahl?: string | null
+    Ort?: string | null
+    Art: $Enums.einsatz_Art
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type einsatzUncheckedCreateWithoutEinteilungInput = {
+    ID?: number
+    Einsatznummer: number
+    Datum_Anfang: Date | string
+    Uhrzeit_Anfang: Date | string
+    Datum_Ende?: Date | string | null
+    Uhrzeit_Ende?: Date | string | null
+    Beschreibung?: string | null
+    Strasse?: string | null
+    Hausnummer?: string | null
+    Postleitzahl?: string | null
+    Ort?: string | null
+    Art: $Enums.einsatz_Art
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type einsatzCreateOrConnectWithoutEinteilungInput = {
+    where: einsatzWhereUniqueInput
+    create: XOR<einsatzCreateWithoutEinteilungInput, einsatzUncheckedCreateWithoutEinteilungInput>
+  }
+
+  export type fahrzeugCreateWithoutEinteilungInput = {
+    Kennzeichen?: string | null
+    Besatzungsstaerke?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type fahrzeugUncheckedCreateWithoutEinteilungInput = {
+    ID?: number
+    Kennzeichen?: string | null
+    Besatzungsstaerke?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type fahrzeugCreateOrConnectWithoutEinteilungInput = {
+    where: fahrzeugWhereUniqueInput
+    create: XOR<fahrzeugCreateWithoutEinteilungInput, fahrzeugUncheckedCreateWithoutEinteilungInput>
+  }
+
+  export type ff_mitgliedCreateWithoutEinteilungInput = {
+    Eintrittsdatum: Date | string
+    Austrittsdatum?: Date | string | null
+    Aufnahmedatum?: Date | string | null
+    Status?: $Enums.ff_mitglied_Status
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
+    allergie?: allergieCreateNestedManyWithoutFf_mitgliedInput
+    person: personCreateNestedOneWithoutFf_mitgliedInput
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangCreateNestedManyWithoutFf_mitgliedInput
+    mitglied_funktionen?: mitglied_funktionenCreateNestedManyWithoutFf_mitgliedInput
+  }
+
+  export type ff_mitgliedUncheckedCreateWithoutEinteilungInput = {
+    ID?: number
+    Person_ID: number
+    Eintrittsdatum: Date | string
+    Austrittsdatum?: Date | string | null
+    Aufnahmedatum?: Date | string | null
+    Status?: $Enums.ff_mitglied_Status
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
+    allergie?: allergieUncheckedCreateNestedManyWithoutFf_mitgliedInput
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangUncheckedCreateNestedManyWithoutFf_mitgliedInput
+    mitglied_funktionen?: mitglied_funktionenUncheckedCreateNestedManyWithoutFf_mitgliedInput
+  }
+
+  export type ff_mitgliedCreateOrConnectWithoutEinteilungInput = {
+    where: ff_mitgliedWhereUniqueInput
+    create: XOR<ff_mitgliedCreateWithoutEinteilungInput, ff_mitgliedUncheckedCreateWithoutEinteilungInput>
+  }
+
+  export type dientsabendUpsertWithoutEinteilungInput = {
+    update: XOR<dientsabendUpdateWithoutEinteilungInput, dientsabendUncheckedUpdateWithoutEinteilungInput>
+    create: XOR<dientsabendCreateWithoutEinteilungInput, dientsabendUncheckedCreateWithoutEinteilungInput>
+    where?: dientsabendWhereInput
+  }
+
+  export type dientsabendUpdateToOneWithWhereWithoutEinteilungInput = {
+    where?: dientsabendWhereInput
+    data: XOR<dientsabendUpdateWithoutEinteilungInput, dientsabendUncheckedUpdateWithoutEinteilungInput>
+  }
+
+  export type dientsabendUpdateWithoutEinteilungInput = {
+    Datum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Thema?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type dientsabendUncheckedUpdateWithoutEinteilungInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Datum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Thema?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type einheitUpsertWithoutEinteilungInput = {
+    update: XOR<einheitUpdateWithoutEinteilungInput, einheitUncheckedUpdateWithoutEinteilungInput>
+    create: XOR<einheitCreateWithoutEinteilungInput, einheitUncheckedCreateWithoutEinteilungInput>
+    where?: einheitWhereInput
+  }
+
+  export type einheitUpdateToOneWithWhereWithoutEinteilungInput = {
+    where?: einheitWhereInput
+    data: XOR<einheitUpdateWithoutEinteilungInput, einheitUncheckedUpdateWithoutEinteilungInput>
+  }
+
+  export type einheitUpdateWithoutEinteilungInput = {
+    Abkuerzung?: NullableStringFieldUpdateOperationsInput | string | null
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type einheitUncheckedUpdateWithoutEinteilungInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Abkuerzung?: NullableStringFieldUpdateOperationsInput | string | null
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type einsatzUpsertWithoutEinteilungInput = {
+    update: XOR<einsatzUpdateWithoutEinteilungInput, einsatzUncheckedUpdateWithoutEinteilungInput>
+    create: XOR<einsatzCreateWithoutEinteilungInput, einsatzUncheckedCreateWithoutEinteilungInput>
+    where?: einsatzWhereInput
+  }
+
+  export type einsatzUpdateToOneWithWhereWithoutEinteilungInput = {
+    where?: einsatzWhereInput
+    data: XOR<einsatzUpdateWithoutEinteilungInput, einsatzUncheckedUpdateWithoutEinteilungInput>
+  }
+
+  export type einsatzUpdateWithoutEinteilungInput = {
+    Einsatznummer?: IntFieldUpdateOperationsInput | number
+    Datum_Anfang?: DateTimeFieldUpdateOperationsInput | Date | string
+    Uhrzeit_Anfang?: DateTimeFieldUpdateOperationsInput | Date | string
+    Datum_Ende?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Uhrzeit_Ende?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Art?: Enumeinsatz_ArtFieldUpdateOperationsInput | $Enums.einsatz_Art
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type einsatzUncheckedUpdateWithoutEinteilungInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Einsatznummer?: IntFieldUpdateOperationsInput | number
+    Datum_Anfang?: DateTimeFieldUpdateOperationsInput | Date | string
+    Uhrzeit_Anfang?: DateTimeFieldUpdateOperationsInput | Date | string
+    Datum_Ende?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Uhrzeit_Ende?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Art?: Enumeinsatz_ArtFieldUpdateOperationsInput | $Enums.einsatz_Art
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type fahrzeugUpsertWithoutEinteilungInput = {
+    update: XOR<fahrzeugUpdateWithoutEinteilungInput, fahrzeugUncheckedUpdateWithoutEinteilungInput>
+    create: XOR<fahrzeugCreateWithoutEinteilungInput, fahrzeugUncheckedCreateWithoutEinteilungInput>
+    where?: fahrzeugWhereInput
+  }
+
+  export type fahrzeugUpdateToOneWithWhereWithoutEinteilungInput = {
+    where?: fahrzeugWhereInput
+    data: XOR<fahrzeugUpdateWithoutEinteilungInput, fahrzeugUncheckedUpdateWithoutEinteilungInput>
+  }
+
+  export type fahrzeugUpdateWithoutEinteilungInput = {
+    Kennzeichen?: NullableStringFieldUpdateOperationsInput | string | null
+    Besatzungsstaerke?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type fahrzeugUncheckedUpdateWithoutEinteilungInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Kennzeichen?: NullableStringFieldUpdateOperationsInput | string | null
+    Besatzungsstaerke?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ff_mitgliedUpsertWithoutEinteilungInput = {
+    update: XOR<ff_mitgliedUpdateWithoutEinteilungInput, ff_mitgliedUncheckedUpdateWithoutEinteilungInput>
+    create: XOR<ff_mitgliedCreateWithoutEinteilungInput, ff_mitgliedUncheckedCreateWithoutEinteilungInput>
+    where?: ff_mitgliedWhereInput
+  }
+
+  export type ff_mitgliedUpdateToOneWithWhereWithoutEinteilungInput = {
+    where?: ff_mitgliedWhereInput
+    data: XOR<ff_mitgliedUpdateWithoutEinteilungInput, ff_mitgliedUncheckedUpdateWithoutEinteilungInput>
+  }
+
+  export type ff_mitgliedUpdateWithoutEinteilungInput = {
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumff_mitglied_StatusFieldUpdateOperationsInput | $Enums.ff_mitglied_Status
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    allergie?: allergieUpdateManyWithoutFf_mitgliedNestedInput
+    person?: personUpdateOneRequiredWithoutFf_mitgliedNestedInput
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangUpdateManyWithoutFf_mitgliedNestedInput
+    mitglied_funktionen?: mitglied_funktionenUpdateManyWithoutFf_mitgliedNestedInput
+  }
+
+  export type ff_mitgliedUncheckedUpdateWithoutEinteilungInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumff_mitglied_StatusFieldUpdateOperationsInput | $Enums.ff_mitglied_Status
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    allergie?: allergieUncheckedUpdateManyWithoutFf_mitgliedNestedInput
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangUncheckedUpdateManyWithoutFf_mitgliedNestedInput
+    mitglied_funktionen?: mitglied_funktionenUncheckedUpdateManyWithoutFf_mitgliedNestedInput
+  }
+
+  export type einteilungCreateWithoutFahrzeugInput = {
+    dientsabend: dientsabendCreateNestedOneWithoutEinteilungInput
+    einheit: einheitCreateNestedOneWithoutEinteilungInput
+    einsatz: einsatzCreateNestedOneWithoutEinteilungInput
+    ff_mitglied: ff_mitgliedCreateNestedOneWithoutEinteilungInput
+  }
+
+  export type einteilungUncheckedCreateWithoutFahrzeugInput = {
+    ID?: number
+    Einsatz_ID: number
+    Dienstabend_ID: number
+    FF_Mitglied_ID: number
+    Einheit_ID: number
+  }
+
+  export type einteilungCreateOrConnectWithoutFahrzeugInput = {
+    where: einteilungWhereUniqueInput
+    create: XOR<einteilungCreateWithoutFahrzeugInput, einteilungUncheckedCreateWithoutFahrzeugInput>
+  }
+
+  export type einteilungCreateManyFahrzeugInputEnvelope = {
+    data: einteilungCreateManyFahrzeugInput | einteilungCreateManyFahrzeugInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type einteilungUpsertWithWhereUniqueWithoutFahrzeugInput = {
+    where: einteilungWhereUniqueInput
+    update: XOR<einteilungUpdateWithoutFahrzeugInput, einteilungUncheckedUpdateWithoutFahrzeugInput>
+    create: XOR<einteilungCreateWithoutFahrzeugInput, einteilungUncheckedCreateWithoutFahrzeugInput>
+  }
+
+  export type einteilungUpdateWithWhereUniqueWithoutFahrzeugInput = {
+    where: einteilungWhereUniqueInput
+    data: XOR<einteilungUpdateWithoutFahrzeugInput, einteilungUncheckedUpdateWithoutFahrzeugInput>
+  }
+
+  export type einteilungUpdateManyWithWhereWithoutFahrzeugInput = {
+    where: einteilungScalarWhereInput
+    data: XOR<einteilungUpdateManyMutationInput, einteilungUncheckedUpdateManyWithoutFahrzeugInput>
+  }
+
+  export type allergieCreateWithoutFf_mitgliedInput = {
+    Allergie: string
+    Beschreibung?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+    jf_mitglied: jf_mitgliedCreateNestedOneWithoutAllergieInput
+  }
+
+  export type allergieUncheckedCreateWithoutFf_mitgliedInput = {
+    ID?: number
+    JF_Mitglied_ID: number
+    Allergie: string
+    Beschreibung?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type allergieCreateOrConnectWithoutFf_mitgliedInput = {
+    where: allergieWhereUniqueInput
+    create: XOR<allergieCreateWithoutFf_mitgliedInput, allergieUncheckedCreateWithoutFf_mitgliedInput>
+  }
+
+  export type allergieCreateManyFf_mitgliedInputEnvelope = {
+    data: allergieCreateManyFf_mitgliedInput | allergieCreateManyFf_mitgliedInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type einteilungCreateWithoutFf_mitgliedInput = {
+    dientsabend: dientsabendCreateNestedOneWithoutEinteilungInput
+    einheit: einheitCreateNestedOneWithoutEinteilungInput
+    einsatz: einsatzCreateNestedOneWithoutEinteilungInput
+    fahrzeug: fahrzeugCreateNestedOneWithoutEinteilungInput
+  }
+
+  export type einteilungUncheckedCreateWithoutFf_mitgliedInput = {
+    ID?: number
+    Einsatz_ID: number
+    Dienstabend_ID: number
+    Fahrzeug_ID: number
+    Einheit_ID: number
+  }
+
+  export type einteilungCreateOrConnectWithoutFf_mitgliedInput = {
+    where: einteilungWhereUniqueInput
+    create: XOR<einteilungCreateWithoutFf_mitgliedInput, einteilungUncheckedCreateWithoutFf_mitgliedInput>
+  }
+
+  export type einteilungCreateManyFf_mitgliedInputEnvelope = {
+    data: einteilungCreateManyFf_mitgliedInput | einteilungCreateManyFf_mitgliedInput[]
+    skipDuplicates?: boolean
+  }
+
   export type personCreateWithoutFf_mitgliedInput = {
     Vorname: string
     Name: string
@@ -22823,6 +27046,51 @@ export namespace Prisma {
   export type mitglied_funktionenCreateManyFf_mitgliedInputEnvelope = {
     data: mitglied_funktionenCreateManyFf_mitgliedInput | mitglied_funktionenCreateManyFf_mitgliedInput[]
     skipDuplicates?: boolean
+  }
+
+  export type allergieUpsertWithWhereUniqueWithoutFf_mitgliedInput = {
+    where: allergieWhereUniqueInput
+    update: XOR<allergieUpdateWithoutFf_mitgliedInput, allergieUncheckedUpdateWithoutFf_mitgliedInput>
+    create: XOR<allergieCreateWithoutFf_mitgliedInput, allergieUncheckedCreateWithoutFf_mitgliedInput>
+  }
+
+  export type allergieUpdateWithWhereUniqueWithoutFf_mitgliedInput = {
+    where: allergieWhereUniqueInput
+    data: XOR<allergieUpdateWithoutFf_mitgliedInput, allergieUncheckedUpdateWithoutFf_mitgliedInput>
+  }
+
+  export type allergieUpdateManyWithWhereWithoutFf_mitgliedInput = {
+    where: allergieScalarWhereInput
+    data: XOR<allergieUpdateManyMutationInput, allergieUncheckedUpdateManyWithoutFf_mitgliedInput>
+  }
+
+  export type allergieScalarWhereInput = {
+    AND?: allergieScalarWhereInput | allergieScalarWhereInput[]
+    OR?: allergieScalarWhereInput[]
+    NOT?: allergieScalarWhereInput | allergieScalarWhereInput[]
+    ID?: IntFilter<"allergie"> | number
+    JF_Mitglied_ID?: IntFilter<"allergie"> | number
+    FF_Mitglied_ID?: IntFilter<"allergie"> | number
+    Allergie?: StringFilter<"allergie"> | string
+    Beschreibung?: StringNullableFilter<"allergie"> | string | null
+    Erstellt_am?: DateTimeNullableFilter<"allergie"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"allergie"> | Date | string | null
+  }
+
+  export type einteilungUpsertWithWhereUniqueWithoutFf_mitgliedInput = {
+    where: einteilungWhereUniqueInput
+    update: XOR<einteilungUpdateWithoutFf_mitgliedInput, einteilungUncheckedUpdateWithoutFf_mitgliedInput>
+    create: XOR<einteilungCreateWithoutFf_mitgliedInput, einteilungUncheckedCreateWithoutFf_mitgliedInput>
+  }
+
+  export type einteilungUpdateWithWhereUniqueWithoutFf_mitgliedInput = {
+    where: einteilungWhereUniqueInput
+    data: XOR<einteilungUpdateWithoutFf_mitgliedInput, einteilungUncheckedUpdateWithoutFf_mitgliedInput>
+  }
+
+  export type einteilungUpdateManyWithWhereWithoutFf_mitgliedInput = {
+    where: einteilungScalarWhereInput
+    data: XOR<einteilungUpdateManyMutationInput, einteilungUncheckedUpdateManyWithoutFf_mitgliedInput>
   }
 
   export type personUpsertWithoutFf_mitgliedInput = {
@@ -22936,6 +27204,8 @@ export namespace Prisma {
     Status?: $Enums.ff_mitglied_Status
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
+    allergie?: allergieCreateNestedManyWithoutFf_mitgliedInput
+    einteilung?: einteilungCreateNestedManyWithoutFf_mitgliedInput
     person: personCreateNestedOneWithoutFf_mitgliedInput
     mitglied_funktionen?: mitglied_funktionenCreateNestedManyWithoutFf_mitgliedInput
   }
@@ -22949,6 +27219,8 @@ export namespace Prisma {
     Status?: $Enums.ff_mitglied_Status
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
+    allergie?: allergieUncheckedCreateNestedManyWithoutFf_mitgliedInput
+    einteilung?: einteilungUncheckedCreateNestedManyWithoutFf_mitgliedInput
     mitglied_funktionen?: mitglied_funktionenUncheckedCreateNestedManyWithoutFf_mitgliedInput
   }
 
@@ -22997,6 +27269,8 @@ export namespace Prisma {
     Status?: Enumff_mitglied_StatusFieldUpdateOperationsInput | $Enums.ff_mitglied_Status
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    allergie?: allergieUpdateManyWithoutFf_mitgliedNestedInput
+    einteilung?: einteilungUpdateManyWithoutFf_mitgliedNestedInput
     person?: personUpdateOneRequiredWithoutFf_mitgliedNestedInput
     mitglied_funktionen?: mitglied_funktionenUpdateManyWithoutFf_mitgliedNestedInput
   }
@@ -23010,6 +27284,8 @@ export namespace Prisma {
     Status?: Enumff_mitglied_StatusFieldUpdateOperationsInput | $Enums.ff_mitglied_Status
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    allergie?: allergieUncheckedUpdateManyWithoutFf_mitgliedNestedInput
+    einteilung?: einteilungUncheckedUpdateManyWithoutFf_mitgliedNestedInput
     mitglied_funktionen?: mitglied_funktionenUncheckedUpdateManyWithoutFf_mitgliedNestedInput
   }
 
@@ -23089,6 +27365,7 @@ export namespace Prisma {
     Status?: $Enums.jf_mitglied_Status
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
+    allergie?: allergieCreateNestedManyWithoutJf_mitgliedInput
     person: personCreateNestedOneWithoutJf_mitgliedInput
   }
 
@@ -23101,6 +27378,7 @@ export namespace Prisma {
     Status?: $Enums.jf_mitglied_Status
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
+    allergie?: allergieUncheckedCreateNestedManyWithoutJf_mitgliedInput
   }
 
   export type jf_mitgliedCreateOrConnectWithoutJf_erziehungsberechtigterInput = {
@@ -23168,6 +27446,7 @@ export namespace Prisma {
     Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    allergie?: allergieUpdateManyWithoutJf_mitgliedNestedInput
     person?: personUpdateOneRequiredWithoutJf_mitgliedNestedInput
   }
 
@@ -23180,6 +27459,7 @@ export namespace Prisma {
     Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    allergie?: allergieUncheckedUpdateManyWithoutJf_mitgliedNestedInput
   }
 
   export type personUpsertWithoutJf_erziehungsberechtigterInput = {
@@ -23228,6 +27508,33 @@ export namespace Prisma {
     jf_mitglied?: jf_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
     mitglied_login?: mitglied_loginUncheckedUpdateManyWithoutPersonNestedInput
     teilnahme?: teilnahmeUncheckedUpdateManyWithoutPersonNestedInput
+  }
+
+  export type allergieCreateWithoutJf_mitgliedInput = {
+    Allergie: string
+    Beschreibung?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+    ff_mitglied: ff_mitgliedCreateNestedOneWithoutAllergieInput
+  }
+
+  export type allergieUncheckedCreateWithoutJf_mitgliedInput = {
+    ID?: number
+    FF_Mitglied_ID: number
+    Allergie: string
+    Beschreibung?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type allergieCreateOrConnectWithoutJf_mitgliedInput = {
+    where: allergieWhereUniqueInput
+    create: XOR<allergieCreateWithoutJf_mitgliedInput, allergieUncheckedCreateWithoutJf_mitgliedInput>
+  }
+
+  export type allergieCreateManyJf_mitgliedInputEnvelope = {
+    data: allergieCreateManyJf_mitgliedInput | allergieCreateManyJf_mitgliedInput[]
+    skipDuplicates?: boolean
   }
 
   export type jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput = {
@@ -23293,6 +27600,22 @@ export namespace Prisma {
   export type personCreateOrConnectWithoutJf_mitgliedInput = {
     where: personWhereUniqueInput
     create: XOR<personCreateWithoutJf_mitgliedInput, personUncheckedCreateWithoutJf_mitgliedInput>
+  }
+
+  export type allergieUpsertWithWhereUniqueWithoutJf_mitgliedInput = {
+    where: allergieWhereUniqueInput
+    update: XOR<allergieUpdateWithoutJf_mitgliedInput, allergieUncheckedUpdateWithoutJf_mitgliedInput>
+    create: XOR<allergieCreateWithoutJf_mitgliedInput, allergieUncheckedCreateWithoutJf_mitgliedInput>
+  }
+
+  export type allergieUpdateWithWhereUniqueWithoutJf_mitgliedInput = {
+    where: allergieWhereUniqueInput
+    data: XOR<allergieUpdateWithoutJf_mitgliedInput, allergieUncheckedUpdateWithoutJf_mitgliedInput>
+  }
+
+  export type allergieUpdateManyWithWhereWithoutJf_mitgliedInput = {
+    where: allergieScalarWhereInput
+    data: XOR<allergieUpdateManyMutationInput, allergieUncheckedUpdateManyWithoutJf_mitgliedInput>
   }
 
   export type jf_erziehungsberechtigterUpsertWithWhereUniqueWithoutJf_mitgliedInput = {
@@ -23418,6 +27741,8 @@ export namespace Prisma {
     Status?: $Enums.ff_mitglied_Status
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
+    allergie?: allergieCreateNestedManyWithoutFf_mitgliedInput
+    einteilung?: einteilungCreateNestedManyWithoutFf_mitgliedInput
     person: personCreateNestedOneWithoutFf_mitgliedInput
     ff_mitglied_lehrgang?: ff_mitglied_lehrgangCreateNestedManyWithoutFf_mitgliedInput
   }
@@ -23431,6 +27756,8 @@ export namespace Prisma {
     Status?: $Enums.ff_mitglied_Status
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
+    allergie?: allergieUncheckedCreateNestedManyWithoutFf_mitgliedInput
+    einteilung?: einteilungUncheckedCreateNestedManyWithoutFf_mitgliedInput
     ff_mitglied_lehrgang?: ff_mitglied_lehrgangUncheckedCreateNestedManyWithoutFf_mitgliedInput
   }
 
@@ -23477,6 +27804,8 @@ export namespace Prisma {
     Status?: Enumff_mitglied_StatusFieldUpdateOperationsInput | $Enums.ff_mitglied_Status
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    allergie?: allergieUpdateManyWithoutFf_mitgliedNestedInput
+    einteilung?: einteilungUpdateManyWithoutFf_mitgliedNestedInput
     person?: personUpdateOneRequiredWithoutFf_mitgliedNestedInput
     ff_mitglied_lehrgang?: ff_mitglied_lehrgangUpdateManyWithoutFf_mitgliedNestedInput
   }
@@ -23490,6 +27819,8 @@ export namespace Prisma {
     Status?: Enumff_mitglied_StatusFieldUpdateOperationsInput | $Enums.ff_mitglied_Status
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    allergie?: allergieUncheckedUpdateManyWithoutFf_mitgliedNestedInput
+    einteilung?: einteilungUncheckedUpdateManyWithoutFf_mitgliedNestedInput
     ff_mitglied_lehrgang?: ff_mitglied_lehrgangUncheckedUpdateManyWithoutFf_mitgliedNestedInput
   }
 
@@ -23616,6 +27947,8 @@ export namespace Prisma {
     Status?: $Enums.ff_mitglied_Status
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
+    allergie?: allergieCreateNestedManyWithoutFf_mitgliedInput
+    einteilung?: einteilungCreateNestedManyWithoutFf_mitgliedInput
     ff_mitglied_lehrgang?: ff_mitglied_lehrgangCreateNestedManyWithoutFf_mitgliedInput
     mitglied_funktionen?: mitglied_funktionenCreateNestedManyWithoutFf_mitgliedInput
   }
@@ -23628,6 +27961,8 @@ export namespace Prisma {
     Status?: $Enums.ff_mitglied_Status
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
+    allergie?: allergieUncheckedCreateNestedManyWithoutFf_mitgliedInput
+    einteilung?: einteilungUncheckedCreateNestedManyWithoutFf_mitgliedInput
     ff_mitglied_lehrgang?: ff_mitglied_lehrgangUncheckedCreateNestedManyWithoutFf_mitgliedInput
     mitglied_funktionen?: mitglied_funktionenUncheckedCreateNestedManyWithoutFf_mitgliedInput
   }
@@ -23672,6 +28007,7 @@ export namespace Prisma {
     Status?: $Enums.jf_mitglied_Status
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
+    allergie?: allergieCreateNestedManyWithoutJf_mitgliedInput
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterCreateNestedManyWithoutJf_mitgliedInput
   }
 
@@ -23683,6 +28019,7 @@ export namespace Prisma {
     Status?: $Enums.jf_mitglied_Status
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
+    allergie?: allergieUncheckedCreateNestedManyWithoutJf_mitgliedInput
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedCreateNestedManyWithoutJf_mitgliedInput
   }
 
@@ -23968,6 +28305,147 @@ export namespace Prisma {
     mitglied_login?: mitglied_loginUncheckedUpdateManyWithoutPersonNestedInput
   }
 
+  export type einteilungCreateManyDientsabendInput = {
+    ID?: number
+    Einsatz_ID: number
+    Fahrzeug_ID: number
+    FF_Mitglied_ID: number
+    Einheit_ID: number
+  }
+
+  export type einteilungUpdateWithoutDientsabendInput = {
+    einheit?: einheitUpdateOneRequiredWithoutEinteilungNestedInput
+    einsatz?: einsatzUpdateOneRequiredWithoutEinteilungNestedInput
+    fahrzeug?: fahrzeugUpdateOneRequiredWithoutEinteilungNestedInput
+    ff_mitglied?: ff_mitgliedUpdateOneRequiredWithoutEinteilungNestedInput
+  }
+
+  export type einteilungUncheckedUpdateWithoutDientsabendInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Einsatz_ID?: IntFieldUpdateOperationsInput | number
+    Fahrzeug_ID?: IntFieldUpdateOperationsInput | number
+    FF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Einheit_ID?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type einteilungUncheckedUpdateManyWithoutDientsabendInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Einsatz_ID?: IntFieldUpdateOperationsInput | number
+    Fahrzeug_ID?: IntFieldUpdateOperationsInput | number
+    FF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Einheit_ID?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type einteilungCreateManyEinheitInput = {
+    ID?: number
+    Einsatz_ID: number
+    Dienstabend_ID: number
+    Fahrzeug_ID: number
+    FF_Mitglied_ID: number
+  }
+
+  export type einteilungUpdateWithoutEinheitInput = {
+    dientsabend?: dientsabendUpdateOneRequiredWithoutEinteilungNestedInput
+    einsatz?: einsatzUpdateOneRequiredWithoutEinteilungNestedInput
+    fahrzeug?: fahrzeugUpdateOneRequiredWithoutEinteilungNestedInput
+    ff_mitglied?: ff_mitgliedUpdateOneRequiredWithoutEinteilungNestedInput
+  }
+
+  export type einteilungUncheckedUpdateWithoutEinheitInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Einsatz_ID?: IntFieldUpdateOperationsInput | number
+    Dienstabend_ID?: IntFieldUpdateOperationsInput | number
+    Fahrzeug_ID?: IntFieldUpdateOperationsInput | number
+    FF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type einteilungUncheckedUpdateManyWithoutEinheitInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Einsatz_ID?: IntFieldUpdateOperationsInput | number
+    Dienstabend_ID?: IntFieldUpdateOperationsInput | number
+    Fahrzeug_ID?: IntFieldUpdateOperationsInput | number
+    FF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type einteilungCreateManyEinsatzInput = {
+    ID?: number
+    Dienstabend_ID: number
+    Fahrzeug_ID: number
+    FF_Mitglied_ID: number
+    Einheit_ID: number
+  }
+
+  export type einteilungUpdateWithoutEinsatzInput = {
+    dientsabend?: dientsabendUpdateOneRequiredWithoutEinteilungNestedInput
+    einheit?: einheitUpdateOneRequiredWithoutEinteilungNestedInput
+    fahrzeug?: fahrzeugUpdateOneRequiredWithoutEinteilungNestedInput
+    ff_mitglied?: ff_mitgliedUpdateOneRequiredWithoutEinteilungNestedInput
+  }
+
+  export type einteilungUncheckedUpdateWithoutEinsatzInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Dienstabend_ID?: IntFieldUpdateOperationsInput | number
+    Fahrzeug_ID?: IntFieldUpdateOperationsInput | number
+    FF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Einheit_ID?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type einteilungUncheckedUpdateManyWithoutEinsatzInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Dienstabend_ID?: IntFieldUpdateOperationsInput | number
+    Fahrzeug_ID?: IntFieldUpdateOperationsInput | number
+    FF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Einheit_ID?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type einteilungCreateManyFahrzeugInput = {
+    ID?: number
+    Einsatz_ID: number
+    Dienstabend_ID: number
+    FF_Mitglied_ID: number
+    Einheit_ID: number
+  }
+
+  export type einteilungUpdateWithoutFahrzeugInput = {
+    dientsabend?: dientsabendUpdateOneRequiredWithoutEinteilungNestedInput
+    einheit?: einheitUpdateOneRequiredWithoutEinteilungNestedInput
+    einsatz?: einsatzUpdateOneRequiredWithoutEinteilungNestedInput
+    ff_mitglied?: ff_mitgliedUpdateOneRequiredWithoutEinteilungNestedInput
+  }
+
+  export type einteilungUncheckedUpdateWithoutFahrzeugInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Einsatz_ID?: IntFieldUpdateOperationsInput | number
+    Dienstabend_ID?: IntFieldUpdateOperationsInput | number
+    FF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Einheit_ID?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type einteilungUncheckedUpdateManyWithoutFahrzeugInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Einsatz_ID?: IntFieldUpdateOperationsInput | number
+    Dienstabend_ID?: IntFieldUpdateOperationsInput | number
+    FF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Einheit_ID?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type allergieCreateManyFf_mitgliedInput = {
+    ID?: number
+    JF_Mitglied_ID: number
+    Allergie: string
+    Beschreibung?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type einteilungCreateManyFf_mitgliedInput = {
+    ID?: number
+    Einsatz_ID: number
+    Dienstabend_ID: number
+    Fahrzeug_ID: number
+    Einheit_ID: number
+  }
+
   export type ff_mitglied_lehrgangCreateManyFf_mitgliedInput = {
     ID?: number
     Lehrgang_ID: number
@@ -23982,6 +28460,55 @@ export namespace Prisma {
     Typ: $Enums.mitglied_funktionen_Typ
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
+  }
+
+  export type allergieUpdateWithoutFf_mitgliedInput = {
+    Allergie?: StringFieldUpdateOperationsInput | string
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    jf_mitglied?: jf_mitgliedUpdateOneRequiredWithoutAllergieNestedInput
+  }
+
+  export type allergieUncheckedUpdateWithoutFf_mitgliedInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    JF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Allergie?: StringFieldUpdateOperationsInput | string
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type allergieUncheckedUpdateManyWithoutFf_mitgliedInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    JF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Allergie?: StringFieldUpdateOperationsInput | string
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type einteilungUpdateWithoutFf_mitgliedInput = {
+    dientsabend?: dientsabendUpdateOneRequiredWithoutEinteilungNestedInput
+    einheit?: einheitUpdateOneRequiredWithoutEinteilungNestedInput
+    einsatz?: einsatzUpdateOneRequiredWithoutEinteilungNestedInput
+    fahrzeug?: fahrzeugUpdateOneRequiredWithoutEinteilungNestedInput
+  }
+
+  export type einteilungUncheckedUpdateWithoutFf_mitgliedInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Einsatz_ID?: IntFieldUpdateOperationsInput | number
+    Dienstabend_ID?: IntFieldUpdateOperationsInput | number
+    Fahrzeug_ID?: IntFieldUpdateOperationsInput | number
+    Einheit_ID?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type einteilungUncheckedUpdateManyWithoutFf_mitgliedInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Einsatz_ID?: IntFieldUpdateOperationsInput | number
+    Dienstabend_ID?: IntFieldUpdateOperationsInput | number
+    Fahrzeug_ID?: IntFieldUpdateOperationsInput | number
+    Einheit_ID?: IntFieldUpdateOperationsInput | number
   }
 
   export type ff_mitglied_lehrgangUpdateWithoutFf_mitgliedInput = {
@@ -24061,11 +28588,46 @@ export namespace Prisma {
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
+  export type allergieCreateManyJf_mitgliedInput = {
+    ID?: number
+    FF_Mitglied_ID: number
+    Allergie: string
+    Beschreibung?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
   export type jf_erziehungsberechtigterCreateManyJf_mitgliedInput = {
     ID?: number
     Person_ID: number
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
+  }
+
+  export type allergieUpdateWithoutJf_mitgliedInput = {
+    Allergie?: StringFieldUpdateOperationsInput | string
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ff_mitglied?: ff_mitgliedUpdateOneRequiredWithoutAllergieNestedInput
+  }
+
+  export type allergieUncheckedUpdateWithoutJf_mitgliedInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    FF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Allergie?: StringFieldUpdateOperationsInput | string
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type allergieUncheckedUpdateManyWithoutJf_mitgliedInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    FF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Allergie?: StringFieldUpdateOperationsInput | string
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type jf_erziehungsberechtigterUpdateWithoutJf_mitgliedInput = {
@@ -24169,6 +28731,8 @@ export namespace Prisma {
     Status?: Enumff_mitglied_StatusFieldUpdateOperationsInput | $Enums.ff_mitglied_Status
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    allergie?: allergieUpdateManyWithoutFf_mitgliedNestedInput
+    einteilung?: einteilungUpdateManyWithoutFf_mitgliedNestedInput
     ff_mitglied_lehrgang?: ff_mitglied_lehrgangUpdateManyWithoutFf_mitgliedNestedInput
     mitglied_funktionen?: mitglied_funktionenUpdateManyWithoutFf_mitgliedNestedInput
   }
@@ -24181,6 +28745,8 @@ export namespace Prisma {
     Status?: Enumff_mitglied_StatusFieldUpdateOperationsInput | $Enums.ff_mitglied_Status
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    allergie?: allergieUncheckedUpdateManyWithoutFf_mitgliedNestedInput
+    einteilung?: einteilungUncheckedUpdateManyWithoutFf_mitgliedNestedInput
     ff_mitglied_lehrgang?: ff_mitglied_lehrgangUncheckedUpdateManyWithoutFf_mitgliedNestedInput
     mitglied_funktionen?: mitglied_funktionenUncheckedUpdateManyWithoutFf_mitgliedNestedInput
   }
@@ -24222,6 +28788,7 @@ export namespace Prisma {
     Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    allergie?: allergieUpdateManyWithoutJf_mitgliedNestedInput
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterUpdateManyWithoutJf_mitgliedNestedInput
   }
 
@@ -24233,6 +28800,7 @@ export namespace Prisma {
     Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    allergie?: allergieUncheckedUpdateManyWithoutJf_mitgliedNestedInput
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedUpdateManyWithoutJf_mitgliedNestedInput
   }
 

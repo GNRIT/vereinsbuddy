@@ -7,8 +7,7 @@ export default function VereinAuswahl() {
     const router = useRouter()
 
     const handleVereinSelect = (vereinId) => {
-        // Hier können wir den ausgewählten Verein in einem Cookie oder Session speichern
-        // Für dieses Beispiel leiten wir einfach zur Dashboard-Seite weiter
+        // Leiten wir zur Dashboard-Seite weiter
         router.push('/dashboard')
     }
 
