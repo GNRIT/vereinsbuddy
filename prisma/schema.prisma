@@ -1,16 +1,75 @@
-generator client {
-  provider = "prisma-client-js"
-  output   = "../generated/verein_db"
-}
-
-datasource vereindb {
+// Datasources für beide Datenbanken
+datasource vereinsbuddy {
   provider = "mysql"
-  url      = env("DATABASE_URL_VEREINDB")
+  url      = env("DATABASE_URL_vereinsbuddy")
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+datasource verein_db {
+  provider = "mysql"
+  url      = env("DATABASE_URL_verein_db")
+}
+
+// Modelle für die vereinsbuddy Datenbank
+model Benutzerkonto {
+  id           Int      @id @default(autoincrement())
+  Benutzername String   @unique
+  Passwort     String
+  Aktiv        Boolean  @default(true)
+  Person_ID    Int
+  Erstellt_am  DateTime?
+  Geaendert_am DateTime?
+  Person       Person   @relation(fields: [Person_ID], references: [id])
+}
+
+model Person {
+  id            Int      @id @default(autoincrement())
+  Vorname       String
+  Name          String
+  Geburtsdatum  DateTime?
+  Strasse       String?
+  Hausnummer    String?
+  Postleitzahl  String?
+  Ort           String?
+  Email         String?
+  HandyNr       String?
+  Erstellt_am   DateTime?
+  Geaendert_am  DateTime?
+  Benutzerkonto Benutzerkonto[]
+  Vereinszuordnung Vereinszuordnung[]
+}
+
+model Verein {
+  id           Int      @id @default(autoincrement())
+  Name         String
+  Strasse      String
+  Hausnummer   String
+  Postleitzahl String
+  Ort          String
+  Subdomain    String   @unique
+  Erstellt_am  DateTime?
+  Geaendert_am DateTime?
+  Vereinszuordnung Vereinszuordnung[]
+}
+
+model Vereinszuordnung {
+  id         Int      @id @default(autoincrement())
+  Person_ID  Int
+  Verein_ID  Int
+  Rolle      Rolle    @default(mitglied)
+  Erstellt_am DateTime @default(now())
+  Geaendert_am DateTime?
+  Person     Person   @relation(fields: [Person_ID], references: [id])
+  Verein     Verein   @relation(fields: [Verein_ID], references: [id])
+}
+
+enum Rolle {
+  mitglied
+  admin
+}
+
+// Modelle für die verein_db Datenbank (Beispiel - anpassen nach Bedarf)
 model allergie {
-  ID             Int
+  ID             Int         @id @default(autoincrement())
   JF_Mitglied_ID Int
   FF_Mitglied_ID Int
   Allergie       String      @vereindb.VarChar(255)
@@ -70,8 +129,8 @@ model einsatz {
   einteilung     einteilung[] @ignore
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 model einteilung {
+  ID             Int          @id @default(autoincrement())
   Einsatz_ID     Int
   Dienstabend_ID Int
   Fahrzeug_ID    Int

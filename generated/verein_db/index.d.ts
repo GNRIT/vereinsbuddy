@@ -14,15 +14,40 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
+ * Model dienstgrad
+ * 
+ */
+export type dienstgrad = $Result.DefaultSelection<Prisma.$dienstgradPayload>
+/**
+ * Model dientsabend
+ * 
+ */
+export type dientsabend = $Result.DefaultSelection<Prisma.$dientsabendPayload>
+/**
+ * Model einheit
+ * 
+ */
+export type einheit = $Result.DefaultSelection<Prisma.$einheitPayload>
+/**
  * Model einsatz
  * 
  */
 export type einsatz = $Result.DefaultSelection<Prisma.$einsatzPayload>
 /**
+ * Model fahrzeug
+ * 
+ */
+export type fahrzeug = $Result.DefaultSelection<Prisma.$fahrzeugPayload>
+/**
  * Model ff_mitglied
  * 
  */
 export type ff_mitglied = $Result.DefaultSelection<Prisma.$ff_mitgliedPayload>
+/**
+ * Model ff_mitglied_lehrgang
+ * 
+ */
+export type ff_mitglied_lehrgang = $Result.DefaultSelection<Prisma.$ff_mitglied_lehrgangPayload>
 /**
  * Model funktion_ff
  * 
@@ -44,6 +69,11 @@ export type jf_erziehungsberechtigter = $Result.DefaultSelection<Prisma.$jf_erzi
  */
 export type jf_mitglied = $Result.DefaultSelection<Prisma.$jf_mitgliedPayload>
 /**
+ * Model lehrgang
+ * 
+ */
+export type lehrgang = $Result.DefaultSelection<Prisma.$lehrgangPayload>
+/**
  * Model mitglied_funktionen
  * 
  */
@@ -63,91 +93,86 @@ export type person = $Result.DefaultSelection<Prisma.$personPayload>
  * 
  */
 export type teilnahme = $Result.DefaultSelection<Prisma.$teilnahmePayload>
-/**
- * Model uebungsabend
- * 
- */
-export type uebungsabend = $Result.DefaultSelection<Prisma.$uebungsabendPayload>
 
 /**
  * Enums
  */
 export namespace $Enums {
-  export const mitglied_funktionen_typ: {
+  export const mitglied_funktionen_Typ: {
   ff: 'ff',
   jf: 'jf'
 };
 
-export type mitglied_funktionen_typ = (typeof mitglied_funktionen_typ)[keyof typeof mitglied_funktionen_typ]
+export type mitglied_funktionen_Typ = (typeof mitglied_funktionen_Typ)[keyof typeof mitglied_funktionen_Typ]
 
 
-export const mitglied_login_ty: {
+export const mitglied_login_Typ: {
   ff: 'ff',
   jf: 'jf'
 };
 
-export type mitglied_login_ty = (typeof mitglied_login_ty)[keyof typeof mitglied_login_ty]
+export type mitglied_login_Typ = (typeof mitglied_login_Typ)[keyof typeof mitglied_login_Typ]
 
 
-export const teilnahme_typ: {
+export const teilnahme_Typ: {
   einsatz: 'einsatz',
-  uebung: 'uebung'
+  dienstabend: 'dienstabend'
 };
 
-export type teilnahme_typ = (typeof teilnahme_typ)[keyof typeof teilnahme_typ]
+export type teilnahme_Typ = (typeof teilnahme_Typ)[keyof typeof teilnahme_Typ]
 
 
-export const einsatz_art: {
+export const ff_mitglied_Status: {
+  aktiv: 'aktiv',
+  anwaerter: 'anwaerter',
+  ausgetreten: 'ausgetreten'
+};
+
+export type ff_mitglied_Status = (typeof ff_mitglied_Status)[keyof typeof ff_mitglied_Status]
+
+
+export const jf_mitglied_Status: {
+  aktiv: 'aktiv',
+  anwaerter: 'anwaerter',
+  ausgetreten: 'ausgetreten'
+};
+
+export type jf_mitglied_Status = (typeof jf_mitglied_Status)[keyof typeof jf_mitglied_Status]
+
+
+export const einsatz_Art: {
   brand: 'brand',
   hilfeleistung: 'hilfeleistung',
   sonstiges: 'sonstiges'
 };
 
-export type einsatz_art = (typeof einsatz_art)[keyof typeof einsatz_art]
-
-
-export const ff_mitglied_status: {
-  aktiv: 'aktiv',
-  anw_rter: 'anw_rter',
-  ausgetreten: 'ausgetreten'
-};
-
-export type ff_mitglied_status = (typeof ff_mitglied_status)[keyof typeof ff_mitglied_status]
-
-
-export const jf_mitglied_status: {
-  aktiv: 'aktiv',
-  anw_rter: 'anw_rter',
-  ausgetreten: 'ausgetreten'
-};
-
-export type jf_mitglied_status = (typeof jf_mitglied_status)[keyof typeof jf_mitglied_status]
+export type einsatz_Art = (typeof einsatz_Art)[keyof typeof einsatz_Art]
 
 }
 
-export type mitglied_funktionen_typ = $Enums.mitglied_funktionen_typ
+export type mitglied_funktionen_Typ = $Enums.mitglied_funktionen_Typ
 
-export const mitglied_funktionen_typ: typeof $Enums.mitglied_funktionen_typ
+export const mitglied_funktionen_Typ: typeof $Enums.mitglied_funktionen_Typ
 
-export type mitglied_login_ty = $Enums.mitglied_login_ty
+export type mitglied_login_Typ = $Enums.mitglied_login_Typ
 
-export const mitglied_login_ty: typeof $Enums.mitglied_login_ty
+export const mitglied_login_Typ: typeof $Enums.mitglied_login_Typ
 
-export type teilnahme_typ = $Enums.teilnahme_typ
+export type teilnahme_Typ = $Enums.teilnahme_Typ
 
-export const teilnahme_typ: typeof $Enums.teilnahme_typ
+export const teilnahme_Typ: typeof $Enums.teilnahme_Typ
 
-export type einsatz_art = $Enums.einsatz_art
+export type ff_mitglied_Status = $Enums.ff_mitglied_Status
 
-export const einsatz_art: typeof $Enums.einsatz_art
+export const ff_mitglied_Status: typeof $Enums.ff_mitglied_Status
 
-export type ff_mitglied_status = $Enums.ff_mitglied_status
+export type jf_mitglied_Status = $Enums.jf_mitglied_Status
 
-export const ff_mitglied_status: typeof $Enums.ff_mitglied_status
+export const jf_mitglied_Status: typeof $Enums.jf_mitglied_Status
 
-export type jf_mitglied_status = $Enums.jf_mitglied_status
+export type einsatz_Art = $Enums.einsatz_Art
 
-export const jf_mitglied_status: typeof $Enums.jf_mitglied_status
+export const einsatz_Art: typeof $Enums.einsatz_Art
 
 /**
  * ##  Prisma Client ʲˢ
@@ -156,8 +181,8 @@ export const jf_mitglied_status: typeof $Enums.jf_mitglied_status
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Einsatzs
- * const einsatzs = await prisma.einsatz.findMany()
+ * // Fetch zero or more Dienstgrads
+ * const dienstgrads = await prisma.dienstgrad.findMany()
  * ```
  *
  *
@@ -177,8 +202,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Einsatzs
-   * const einsatzs = await prisma.einsatz.findMany()
+   * // Fetch zero or more Dienstgrads
+   * const dienstgrads = await prisma.dienstgrad.findMany()
    * ```
    *
    *
@@ -275,6 +300,36 @@ export class PrismaClient<
   }>>
 
       /**
+   * `prisma.dienstgrad`: Exposes CRUD operations for the **dienstgrad** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Dienstgrads
+    * const dienstgrads = await prisma.dienstgrad.findMany()
+    * ```
+    */
+  get dienstgrad(): Prisma.dienstgradDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.dientsabend`: Exposes CRUD operations for the **dientsabend** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Dientsabends
+    * const dientsabends = await prisma.dientsabend.findMany()
+    * ```
+    */
+  get dientsabend(): Prisma.dientsabendDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.einheit`: Exposes CRUD operations for the **einheit** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Einheits
+    * const einheits = await prisma.einheit.findMany()
+    * ```
+    */
+  get einheit(): Prisma.einheitDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.einsatz`: Exposes CRUD operations for the **einsatz** model.
     * Example usage:
     * ```ts
@@ -285,6 +340,16 @@ export class PrismaClient<
   get einsatz(): Prisma.einsatzDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.fahrzeug`: Exposes CRUD operations for the **fahrzeug** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Fahrzeugs
+    * const fahrzeugs = await prisma.fahrzeug.findMany()
+    * ```
+    */
+  get fahrzeug(): Prisma.fahrzeugDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.ff_mitglied`: Exposes CRUD operations for the **ff_mitglied** model.
     * Example usage:
     * ```ts
@@ -293,6 +358,16 @@ export class PrismaClient<
     * ```
     */
   get ff_mitglied(): Prisma.ff_mitgliedDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.ff_mitglied_lehrgang`: Exposes CRUD operations for the **ff_mitglied_lehrgang** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Ff_mitglied_lehrgangs
+    * const ff_mitglied_lehrgangs = await prisma.ff_mitglied_lehrgang.findMany()
+    * ```
+    */
+  get ff_mitglied_lehrgang(): Prisma.ff_mitglied_lehrgangDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.funktion_ff`: Exposes CRUD operations for the **funktion_ff** model.
@@ -335,6 +410,16 @@ export class PrismaClient<
   get jf_mitglied(): Prisma.jf_mitgliedDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.lehrgang`: Exposes CRUD operations for the **lehrgang** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Lehrgangs
+    * const lehrgangs = await prisma.lehrgang.findMany()
+    * ```
+    */
+  get lehrgang(): Prisma.lehrgangDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.mitglied_funktionen`: Exposes CRUD operations for the **mitglied_funktionen** model.
     * Example usage:
     * ```ts
@@ -373,16 +458,6 @@ export class PrismaClient<
     * ```
     */
   get teilnahme(): Prisma.teilnahmeDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.uebungsabend`: Exposes CRUD operations for the **uebungsabend** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Uebungsabends
-    * const uebungsabends = await prisma.uebungsabend.findMany()
-    * ```
-    */
-  get uebungsabend(): Prisma.uebungsabendDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -823,24 +898,29 @@ export namespace Prisma {
 
 
   export const ModelName: {
+    dienstgrad: 'dienstgrad',
+    dientsabend: 'dientsabend',
+    einheit: 'einheit',
     einsatz: 'einsatz',
+    fahrzeug: 'fahrzeug',
     ff_mitglied: 'ff_mitglied',
+    ff_mitglied_lehrgang: 'ff_mitglied_lehrgang',
     funktion_ff: 'funktion_ff',
     funktion_jf: 'funktion_jf',
     jf_erziehungsberechtigter: 'jf_erziehungsberechtigter',
     jf_mitglied: 'jf_mitglied',
+    lehrgang: 'lehrgang',
     mitglied_funktionen: 'mitglied_funktionen',
     mitglied_login: 'mitglied_login',
     person: 'person',
-    teilnahme: 'teilnahme',
-    uebungsabend: 'uebungsabend'
+    teilnahme: 'teilnahme'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
 
 
   export type Datasources = {
-    db?: Datasource
+    vereindb?: Datasource
   }
 
   interface TypeMapCb<ClientOptions = {}> extends $Utils.Fn<{extArgs: $Extensions.InternalArgs }, $Utils.Record<string, any>> {
@@ -852,10 +932,208 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "einsatz" | "ff_mitglied" | "funktion_ff" | "funktion_jf" | "jf_erziehungsberechtigter" | "jf_mitglied" | "mitglied_funktionen" | "mitglied_login" | "person" | "teilnahme" | "uebungsabend"
+      modelProps: "dienstgrad" | "dientsabend" | "einheit" | "einsatz" | "fahrzeug" | "ff_mitglied" | "ff_mitglied_lehrgang" | "funktion_ff" | "funktion_jf" | "jf_erziehungsberechtigter" | "jf_mitglied" | "lehrgang" | "mitglied_funktionen" | "mitglied_login" | "person" | "teilnahme"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
+      dienstgrad: {
+        payload: Prisma.$dienstgradPayload<ExtArgs>
+        fields: Prisma.dienstgradFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.dienstgradFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$dienstgradPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.dienstgradFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$dienstgradPayload>
+          }
+          findFirst: {
+            args: Prisma.dienstgradFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$dienstgradPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.dienstgradFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$dienstgradPayload>
+          }
+          findMany: {
+            args: Prisma.dienstgradFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$dienstgradPayload>[]
+          }
+          create: {
+            args: Prisma.dienstgradCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$dienstgradPayload>
+          }
+          createMany: {
+            args: Prisma.dienstgradCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.dienstgradDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$dienstgradPayload>
+          }
+          update: {
+            args: Prisma.dienstgradUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$dienstgradPayload>
+          }
+          deleteMany: {
+            args: Prisma.dienstgradDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.dienstgradUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.dienstgradUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$dienstgradPayload>
+          }
+          aggregate: {
+            args: Prisma.DienstgradAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDienstgrad>
+          }
+          groupBy: {
+            args: Prisma.dienstgradGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DienstgradGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.dienstgradCountArgs<ExtArgs>
+            result: $Utils.Optional<DienstgradCountAggregateOutputType> | number
+          }
+        }
+      }
+      dientsabend: {
+        payload: Prisma.$dientsabendPayload<ExtArgs>
+        fields: Prisma.dientsabendFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.dientsabendFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$dientsabendPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.dientsabendFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$dientsabendPayload>
+          }
+          findFirst: {
+            args: Prisma.dientsabendFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$dientsabendPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.dientsabendFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$dientsabendPayload>
+          }
+          findMany: {
+            args: Prisma.dientsabendFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$dientsabendPayload>[]
+          }
+          create: {
+            args: Prisma.dientsabendCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$dientsabendPayload>
+          }
+          createMany: {
+            args: Prisma.dientsabendCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.dientsabendDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$dientsabendPayload>
+          }
+          update: {
+            args: Prisma.dientsabendUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$dientsabendPayload>
+          }
+          deleteMany: {
+            args: Prisma.dientsabendDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.dientsabendUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.dientsabendUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$dientsabendPayload>
+          }
+          aggregate: {
+            args: Prisma.DientsabendAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDientsabend>
+          }
+          groupBy: {
+            args: Prisma.dientsabendGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DientsabendGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.dientsabendCountArgs<ExtArgs>
+            result: $Utils.Optional<DientsabendCountAggregateOutputType> | number
+          }
+        }
+      }
+      einheit: {
+        payload: Prisma.$einheitPayload<ExtArgs>
+        fields: Prisma.einheitFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.einheitFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$einheitPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.einheitFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$einheitPayload>
+          }
+          findFirst: {
+            args: Prisma.einheitFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$einheitPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.einheitFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$einheitPayload>
+          }
+          findMany: {
+            args: Prisma.einheitFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$einheitPayload>[]
+          }
+          create: {
+            args: Prisma.einheitCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$einheitPayload>
+          }
+          createMany: {
+            args: Prisma.einheitCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.einheitDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$einheitPayload>
+          }
+          update: {
+            args: Prisma.einheitUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$einheitPayload>
+          }
+          deleteMany: {
+            args: Prisma.einheitDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.einheitUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.einheitUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$einheitPayload>
+          }
+          aggregate: {
+            args: Prisma.EinheitAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEinheit>
+          }
+          groupBy: {
+            args: Prisma.einheitGroupByArgs<ExtArgs>
+            result: $Utils.Optional<EinheitGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.einheitCountArgs<ExtArgs>
+            result: $Utils.Optional<EinheitCountAggregateOutputType> | number
+          }
+        }
+      }
       einsatz: {
         payload: Prisma.$einsatzPayload<ExtArgs>
         fields: Prisma.einsatzFieldRefs
@@ -922,6 +1200,72 @@ export namespace Prisma {
           }
         }
       }
+      fahrzeug: {
+        payload: Prisma.$fahrzeugPayload<ExtArgs>
+        fields: Prisma.fahrzeugFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.fahrzeugFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fahrzeugPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.fahrzeugFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fahrzeugPayload>
+          }
+          findFirst: {
+            args: Prisma.fahrzeugFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fahrzeugPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.fahrzeugFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fahrzeugPayload>
+          }
+          findMany: {
+            args: Prisma.fahrzeugFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fahrzeugPayload>[]
+          }
+          create: {
+            args: Prisma.fahrzeugCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fahrzeugPayload>
+          }
+          createMany: {
+            args: Prisma.fahrzeugCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.fahrzeugDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fahrzeugPayload>
+          }
+          update: {
+            args: Prisma.fahrzeugUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fahrzeugPayload>
+          }
+          deleteMany: {
+            args: Prisma.fahrzeugDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.fahrzeugUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.fahrzeugUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fahrzeugPayload>
+          }
+          aggregate: {
+            args: Prisma.FahrzeugAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFahrzeug>
+          }
+          groupBy: {
+            args: Prisma.fahrzeugGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FahrzeugGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.fahrzeugCountArgs<ExtArgs>
+            result: $Utils.Optional<FahrzeugCountAggregateOutputType> | number
+          }
+        }
+      }
       ff_mitglied: {
         payload: Prisma.$ff_mitgliedPayload<ExtArgs>
         fields: Prisma.ff_mitgliedFieldRefs
@@ -985,6 +1329,72 @@ export namespace Prisma {
           count: {
             args: Prisma.ff_mitgliedCountArgs<ExtArgs>
             result: $Utils.Optional<Ff_mitgliedCountAggregateOutputType> | number
+          }
+        }
+      }
+      ff_mitglied_lehrgang: {
+        payload: Prisma.$ff_mitglied_lehrgangPayload<ExtArgs>
+        fields: Prisma.ff_mitglied_lehrgangFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ff_mitglied_lehrgangFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ff_mitglied_lehrgangPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ff_mitglied_lehrgangFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ff_mitglied_lehrgangPayload>
+          }
+          findFirst: {
+            args: Prisma.ff_mitglied_lehrgangFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ff_mitglied_lehrgangPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ff_mitglied_lehrgangFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ff_mitglied_lehrgangPayload>
+          }
+          findMany: {
+            args: Prisma.ff_mitglied_lehrgangFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ff_mitglied_lehrgangPayload>[]
+          }
+          create: {
+            args: Prisma.ff_mitglied_lehrgangCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ff_mitglied_lehrgangPayload>
+          }
+          createMany: {
+            args: Prisma.ff_mitglied_lehrgangCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.ff_mitglied_lehrgangDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ff_mitglied_lehrgangPayload>
+          }
+          update: {
+            args: Prisma.ff_mitglied_lehrgangUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ff_mitglied_lehrgangPayload>
+          }
+          deleteMany: {
+            args: Prisma.ff_mitglied_lehrgangDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ff_mitglied_lehrgangUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ff_mitglied_lehrgangUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ff_mitglied_lehrgangPayload>
+          }
+          aggregate: {
+            args: Prisma.Ff_mitglied_lehrgangAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFf_mitglied_lehrgang>
+          }
+          groupBy: {
+            args: Prisma.ff_mitglied_lehrgangGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Ff_mitglied_lehrgangGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ff_mitglied_lehrgangCountArgs<ExtArgs>
+            result: $Utils.Optional<Ff_mitglied_lehrgangCountAggregateOutputType> | number
           }
         }
       }
@@ -1252,6 +1662,72 @@ export namespace Prisma {
           }
         }
       }
+      lehrgang: {
+        payload: Prisma.$lehrgangPayload<ExtArgs>
+        fields: Prisma.lehrgangFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.lehrgangFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lehrgangPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.lehrgangFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lehrgangPayload>
+          }
+          findFirst: {
+            args: Prisma.lehrgangFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lehrgangPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.lehrgangFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lehrgangPayload>
+          }
+          findMany: {
+            args: Prisma.lehrgangFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lehrgangPayload>[]
+          }
+          create: {
+            args: Prisma.lehrgangCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lehrgangPayload>
+          }
+          createMany: {
+            args: Prisma.lehrgangCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.lehrgangDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lehrgangPayload>
+          }
+          update: {
+            args: Prisma.lehrgangUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lehrgangPayload>
+          }
+          deleteMany: {
+            args: Prisma.lehrgangDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.lehrgangUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.lehrgangUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lehrgangPayload>
+          }
+          aggregate: {
+            args: Prisma.LehrgangAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLehrgang>
+          }
+          groupBy: {
+            args: Prisma.lehrgangGroupByArgs<ExtArgs>
+            result: $Utils.Optional<LehrgangGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.lehrgangCountArgs<ExtArgs>
+            result: $Utils.Optional<LehrgangCountAggregateOutputType> | number
+          }
+        }
+      }
       mitglied_funktionen: {
         payload: Prisma.$mitglied_funktionenPayload<ExtArgs>
         fields: Prisma.mitglied_funktionenFieldRefs
@@ -1516,72 +1992,6 @@ export namespace Prisma {
           }
         }
       }
-      uebungsabend: {
-        payload: Prisma.$uebungsabendPayload<ExtArgs>
-        fields: Prisma.uebungsabendFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.uebungsabendFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$uebungsabendPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.uebungsabendFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$uebungsabendPayload>
-          }
-          findFirst: {
-            args: Prisma.uebungsabendFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$uebungsabendPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.uebungsabendFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$uebungsabendPayload>
-          }
-          findMany: {
-            args: Prisma.uebungsabendFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$uebungsabendPayload>[]
-          }
-          create: {
-            args: Prisma.uebungsabendCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$uebungsabendPayload>
-          }
-          createMany: {
-            args: Prisma.uebungsabendCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          delete: {
-            args: Prisma.uebungsabendDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$uebungsabendPayload>
-          }
-          update: {
-            args: Prisma.uebungsabendUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$uebungsabendPayload>
-          }
-          deleteMany: {
-            args: Prisma.uebungsabendDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.uebungsabendUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          upsert: {
-            args: Prisma.uebungsabendUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$uebungsabendPayload>
-          }
-          aggregate: {
-            args: Prisma.UebungsabendAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateUebungsabend>
-          }
-          groupBy: {
-            args: Prisma.uebungsabendGroupByArgs<ExtArgs>
-            result: $Utils.Optional<UebungsabendGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.uebungsabendCountArgs<ExtArgs>
-            result: $Utils.Optional<UebungsabendCountAggregateOutputType> | number
-          }
-        }
-      }
     }
   } & {
     other: {
@@ -1666,17 +2076,22 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
+    dienstgrad?: dienstgradOmit
+    dientsabend?: dientsabendOmit
+    einheit?: einheitOmit
     einsatz?: einsatzOmit
+    fahrzeug?: fahrzeugOmit
     ff_mitglied?: ff_mitgliedOmit
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangOmit
     funktion_ff?: funktion_ffOmit
     funktion_jf?: funktion_jfOmit
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterOmit
     jf_mitglied?: jf_mitgliedOmit
+    lehrgang?: lehrgangOmit
     mitglied_funktionen?: mitglied_funktionenOmit
     mitglied_login?: mitglied_loginOmit
     person?: personOmit
     teilnahme?: teilnahmeOmit
-    uebungsabend?: uebungsabendOmit
   }
 
   /* Types for Logging */
@@ -1771,13 +2186,13 @@ export namespace Prisma {
    */
 
   export type Ff_mitgliedCountOutputType = {
+    ff_mitglied_lehrgang: number
     mitglied_funktionen: number
-    teilnahme: number
   }
 
   export type Ff_mitgliedCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ff_mitglied_lehrgang?: boolean | Ff_mitgliedCountOutputTypeCountFf_mitglied_lehrgangArgs
     mitglied_funktionen?: boolean | Ff_mitgliedCountOutputTypeCountMitglied_funktionenArgs
-    teilnahme?: boolean | Ff_mitgliedCountOutputTypeCountTeilnahmeArgs
   }
 
   // Custom InputTypes
@@ -1794,15 +2209,15 @@ export namespace Prisma {
   /**
    * Ff_mitgliedCountOutputType without action
    */
-  export type Ff_mitgliedCountOutputTypeCountMitglied_funktionenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: mitglied_funktionenWhereInput
+  export type Ff_mitgliedCountOutputTypeCountFf_mitglied_lehrgangArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ff_mitglied_lehrgangWhereInput
   }
 
   /**
    * Ff_mitgliedCountOutputType without action
    */
-  export type Ff_mitgliedCountOutputTypeCountTeilnahmeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: teilnahmeWhereInput
+  export type Ff_mitgliedCountOutputTypeCountMitglied_funktionenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: mitglied_funktionenWhereInput
   }
 
 
@@ -1869,6 +2284,37 @@ export namespace Prisma {
 
 
   /**
+   * Count Type LehrgangCountOutputType
+   */
+
+  export type LehrgangCountOutputType = {
+    ff_mitglied_lehrgang: number
+  }
+
+  export type LehrgangCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ff_mitglied_lehrgang?: boolean | LehrgangCountOutputTypeCountFf_mitglied_lehrgangArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * LehrgangCountOutputType without action
+   */
+  export type LehrgangCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LehrgangCountOutputType
+     */
+    select?: LehrgangCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * LehrgangCountOutputType without action
+   */
+  export type LehrgangCountOutputTypeCountFf_mitglied_lehrgangArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ff_mitglied_lehrgangWhereInput
+  }
+
+
+  /**
    * Count Type PersonCountOutputType
    */
 
@@ -1876,12 +2322,16 @@ export namespace Prisma {
     ff_mitglied: number
     jf_erziehungsberechtigter: number
     jf_mitglied: number
+    mitglied_login: number
+    teilnahme: number
   }
 
   export type PersonCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     ff_mitglied?: boolean | PersonCountOutputTypeCountFf_mitgliedArgs
     jf_erziehungsberechtigter?: boolean | PersonCountOutputTypeCountJf_erziehungsberechtigterArgs
     jf_mitglied?: boolean | PersonCountOutputTypeCountJf_mitgliedArgs
+    mitglied_login?: boolean | PersonCountOutputTypeCountMitglied_loginArgs
+    teilnahme?: boolean | PersonCountOutputTypeCountTeilnahmeArgs
   }
 
   // Custom InputTypes
@@ -1916,10 +2366,2794 @@ export namespace Prisma {
     where?: jf_mitgliedWhereInput
   }
 
+  /**
+   * PersonCountOutputType without action
+   */
+  export type PersonCountOutputTypeCountMitglied_loginArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: mitglied_loginWhereInput
+  }
+
+  /**
+   * PersonCountOutputType without action
+   */
+  export type PersonCountOutputTypeCountTeilnahmeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: teilnahmeWhereInput
+  }
+
 
   /**
    * Models
    */
+
+  /**
+   * Model dienstgrad
+   */
+
+  export type AggregateDienstgrad = {
+    _count: DienstgradCountAggregateOutputType | null
+    _avg: DienstgradAvgAggregateOutputType | null
+    _sum: DienstgradSumAggregateOutputType | null
+    _min: DienstgradMinAggregateOutputType | null
+    _max: DienstgradMaxAggregateOutputType | null
+  }
+
+  export type DienstgradAvgAggregateOutputType = {
+    ID: number | null
+  }
+
+  export type DienstgradSumAggregateOutputType = {
+    ID: number | null
+  }
+
+  export type DienstgradMinAggregateOutputType = {
+    ID: number | null
+    Abkuerzung_maennlich: string | null
+    Beschreibung_maennlich: string | null
+    Abkuerzung_weiblich: string | null
+    Beschreibung_weiblich: string | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
+  }
+
+  export type DienstgradMaxAggregateOutputType = {
+    ID: number | null
+    Abkuerzung_maennlich: string | null
+    Beschreibung_maennlich: string | null
+    Abkuerzung_weiblich: string | null
+    Beschreibung_weiblich: string | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
+  }
+
+  export type DienstgradCountAggregateOutputType = {
+    ID: number
+    Abkuerzung_maennlich: number
+    Beschreibung_maennlich: number
+    Abkuerzung_weiblich: number
+    Beschreibung_weiblich: number
+    Erstellt_am: number
+    Geaendert_am: number
+    _all: number
+  }
+
+
+  export type DienstgradAvgAggregateInputType = {
+    ID?: true
+  }
+
+  export type DienstgradSumAggregateInputType = {
+    ID?: true
+  }
+
+  export type DienstgradMinAggregateInputType = {
+    ID?: true
+    Abkuerzung_maennlich?: true
+    Beschreibung_maennlich?: true
+    Abkuerzung_weiblich?: true
+    Beschreibung_weiblich?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
+  }
+
+  export type DienstgradMaxAggregateInputType = {
+    ID?: true
+    Abkuerzung_maennlich?: true
+    Beschreibung_maennlich?: true
+    Abkuerzung_weiblich?: true
+    Beschreibung_weiblich?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
+  }
+
+  export type DienstgradCountAggregateInputType = {
+    ID?: true
+    Abkuerzung_maennlich?: true
+    Beschreibung_maennlich?: true
+    Abkuerzung_weiblich?: true
+    Beschreibung_weiblich?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
+    _all?: true
+  }
+
+  export type DienstgradAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which dienstgrad to aggregate.
+     */
+    where?: dienstgradWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of dienstgrads to fetch.
+     */
+    orderBy?: dienstgradOrderByWithRelationInput | dienstgradOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: dienstgradWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` dienstgrads from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` dienstgrads.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned dienstgrads
+    **/
+    _count?: true | DienstgradCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DienstgradAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DienstgradSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DienstgradMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DienstgradMaxAggregateInputType
+  }
+
+  export type GetDienstgradAggregateType<T extends DienstgradAggregateArgs> = {
+        [P in keyof T & keyof AggregateDienstgrad]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDienstgrad[P]>
+      : GetScalarType<T[P], AggregateDienstgrad[P]>
+  }
+
+
+
+
+  export type dienstgradGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: dienstgradWhereInput
+    orderBy?: dienstgradOrderByWithAggregationInput | dienstgradOrderByWithAggregationInput[]
+    by: DienstgradScalarFieldEnum[] | DienstgradScalarFieldEnum
+    having?: dienstgradScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DienstgradCountAggregateInputType | true
+    _avg?: DienstgradAvgAggregateInputType
+    _sum?: DienstgradSumAggregateInputType
+    _min?: DienstgradMinAggregateInputType
+    _max?: DienstgradMaxAggregateInputType
+  }
+
+  export type DienstgradGroupByOutputType = {
+    ID: number
+    Abkuerzung_maennlich: string | null
+    Beschreibung_maennlich: string | null
+    Abkuerzung_weiblich: string | null
+    Beschreibung_weiblich: string | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
+    _count: DienstgradCountAggregateOutputType | null
+    _avg: DienstgradAvgAggregateOutputType | null
+    _sum: DienstgradSumAggregateOutputType | null
+    _min: DienstgradMinAggregateOutputType | null
+    _max: DienstgradMaxAggregateOutputType | null
+  }
+
+  type GetDienstgradGroupByPayload<T extends dienstgradGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DienstgradGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DienstgradGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DienstgradGroupByOutputType[P]>
+            : GetScalarType<T[P], DienstgradGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type dienstgradSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    ID?: boolean
+    Abkuerzung_maennlich?: boolean
+    Beschreibung_maennlich?: boolean
+    Abkuerzung_weiblich?: boolean
+    Beschreibung_weiblich?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
+  }, ExtArgs["result"]["dienstgrad"]>
+
+
+
+  export type dienstgradSelectScalar = {
+    ID?: boolean
+    Abkuerzung_maennlich?: boolean
+    Beschreibung_maennlich?: boolean
+    Abkuerzung_weiblich?: boolean
+    Beschreibung_weiblich?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
+  }
+
+  export type dienstgradOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Abkuerzung_maennlich" | "Beschreibung_maennlich" | "Abkuerzung_weiblich" | "Beschreibung_weiblich" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["dienstgrad"]>
+
+  export type $dienstgradPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "dienstgrad"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      ID: number
+      Abkuerzung_maennlich: string | null
+      Beschreibung_maennlich: string | null
+      Abkuerzung_weiblich: string | null
+      Beschreibung_weiblich: string | null
+      Erstellt_am: Date | null
+      Geaendert_am: Date | null
+    }, ExtArgs["result"]["dienstgrad"]>
+    composites: {}
+  }
+
+  type dienstgradGetPayload<S extends boolean | null | undefined | dienstgradDefaultArgs> = $Result.GetResult<Prisma.$dienstgradPayload, S>
+
+  type dienstgradCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<dienstgradFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DienstgradCountAggregateInputType | true
+    }
+
+  export interface dienstgradDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['dienstgrad'], meta: { name: 'dienstgrad' } }
+    /**
+     * Find zero or one Dienstgrad that matches the filter.
+     * @param {dienstgradFindUniqueArgs} args - Arguments to find a Dienstgrad
+     * @example
+     * // Get one Dienstgrad
+     * const dienstgrad = await prisma.dienstgrad.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends dienstgradFindUniqueArgs>(args: SelectSubset<T, dienstgradFindUniqueArgs<ExtArgs>>): Prisma__dienstgradClient<$Result.GetResult<Prisma.$dienstgradPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Dienstgrad that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {dienstgradFindUniqueOrThrowArgs} args - Arguments to find a Dienstgrad
+     * @example
+     * // Get one Dienstgrad
+     * const dienstgrad = await prisma.dienstgrad.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends dienstgradFindUniqueOrThrowArgs>(args: SelectSubset<T, dienstgradFindUniqueOrThrowArgs<ExtArgs>>): Prisma__dienstgradClient<$Result.GetResult<Prisma.$dienstgradPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Dienstgrad that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {dienstgradFindFirstArgs} args - Arguments to find a Dienstgrad
+     * @example
+     * // Get one Dienstgrad
+     * const dienstgrad = await prisma.dienstgrad.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends dienstgradFindFirstArgs>(args?: SelectSubset<T, dienstgradFindFirstArgs<ExtArgs>>): Prisma__dienstgradClient<$Result.GetResult<Prisma.$dienstgradPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Dienstgrad that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {dienstgradFindFirstOrThrowArgs} args - Arguments to find a Dienstgrad
+     * @example
+     * // Get one Dienstgrad
+     * const dienstgrad = await prisma.dienstgrad.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends dienstgradFindFirstOrThrowArgs>(args?: SelectSubset<T, dienstgradFindFirstOrThrowArgs<ExtArgs>>): Prisma__dienstgradClient<$Result.GetResult<Prisma.$dienstgradPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Dienstgrads that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {dienstgradFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Dienstgrads
+     * const dienstgrads = await prisma.dienstgrad.findMany()
+     * 
+     * // Get first 10 Dienstgrads
+     * const dienstgrads = await prisma.dienstgrad.findMany({ take: 10 })
+     * 
+     * // Only select the `ID`
+     * const dienstgradWithIDOnly = await prisma.dienstgrad.findMany({ select: { ID: true } })
+     * 
+     */
+    findMany<T extends dienstgradFindManyArgs>(args?: SelectSubset<T, dienstgradFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$dienstgradPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Dienstgrad.
+     * @param {dienstgradCreateArgs} args - Arguments to create a Dienstgrad.
+     * @example
+     * // Create one Dienstgrad
+     * const Dienstgrad = await prisma.dienstgrad.create({
+     *   data: {
+     *     // ... data to create a Dienstgrad
+     *   }
+     * })
+     * 
+     */
+    create<T extends dienstgradCreateArgs>(args: SelectSubset<T, dienstgradCreateArgs<ExtArgs>>): Prisma__dienstgradClient<$Result.GetResult<Prisma.$dienstgradPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Dienstgrads.
+     * @param {dienstgradCreateManyArgs} args - Arguments to create many Dienstgrads.
+     * @example
+     * // Create many Dienstgrads
+     * const dienstgrad = await prisma.dienstgrad.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends dienstgradCreateManyArgs>(args?: SelectSubset<T, dienstgradCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Dienstgrad.
+     * @param {dienstgradDeleteArgs} args - Arguments to delete one Dienstgrad.
+     * @example
+     * // Delete one Dienstgrad
+     * const Dienstgrad = await prisma.dienstgrad.delete({
+     *   where: {
+     *     // ... filter to delete one Dienstgrad
+     *   }
+     * })
+     * 
+     */
+    delete<T extends dienstgradDeleteArgs>(args: SelectSubset<T, dienstgradDeleteArgs<ExtArgs>>): Prisma__dienstgradClient<$Result.GetResult<Prisma.$dienstgradPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Dienstgrad.
+     * @param {dienstgradUpdateArgs} args - Arguments to update one Dienstgrad.
+     * @example
+     * // Update one Dienstgrad
+     * const dienstgrad = await prisma.dienstgrad.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends dienstgradUpdateArgs>(args: SelectSubset<T, dienstgradUpdateArgs<ExtArgs>>): Prisma__dienstgradClient<$Result.GetResult<Prisma.$dienstgradPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Dienstgrads.
+     * @param {dienstgradDeleteManyArgs} args - Arguments to filter Dienstgrads to delete.
+     * @example
+     * // Delete a few Dienstgrads
+     * const { count } = await prisma.dienstgrad.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends dienstgradDeleteManyArgs>(args?: SelectSubset<T, dienstgradDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Dienstgrads.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {dienstgradUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Dienstgrads
+     * const dienstgrad = await prisma.dienstgrad.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends dienstgradUpdateManyArgs>(args: SelectSubset<T, dienstgradUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Dienstgrad.
+     * @param {dienstgradUpsertArgs} args - Arguments to update or create a Dienstgrad.
+     * @example
+     * // Update or create a Dienstgrad
+     * const dienstgrad = await prisma.dienstgrad.upsert({
+     *   create: {
+     *     // ... data to create a Dienstgrad
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Dienstgrad we want to update
+     *   }
+     * })
+     */
+    upsert<T extends dienstgradUpsertArgs>(args: SelectSubset<T, dienstgradUpsertArgs<ExtArgs>>): Prisma__dienstgradClient<$Result.GetResult<Prisma.$dienstgradPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Dienstgrads.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {dienstgradCountArgs} args - Arguments to filter Dienstgrads to count.
+     * @example
+     * // Count the number of Dienstgrads
+     * const count = await prisma.dienstgrad.count({
+     *   where: {
+     *     // ... the filter for the Dienstgrads we want to count
+     *   }
+     * })
+    **/
+    count<T extends dienstgradCountArgs>(
+      args?: Subset<T, dienstgradCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DienstgradCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Dienstgrad.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DienstgradAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DienstgradAggregateArgs>(args: Subset<T, DienstgradAggregateArgs>): Prisma.PrismaPromise<GetDienstgradAggregateType<T>>
+
+    /**
+     * Group by Dienstgrad.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {dienstgradGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends dienstgradGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: dienstgradGroupByArgs['orderBy'] }
+        : { orderBy?: dienstgradGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, dienstgradGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDienstgradGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the dienstgrad model
+   */
+  readonly fields: dienstgradFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for dienstgrad.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__dienstgradClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the dienstgrad model
+   */
+  interface dienstgradFieldRefs {
+    readonly ID: FieldRef<"dienstgrad", 'Int'>
+    readonly Abkuerzung_maennlich: FieldRef<"dienstgrad", 'String'>
+    readonly Beschreibung_maennlich: FieldRef<"dienstgrad", 'String'>
+    readonly Abkuerzung_weiblich: FieldRef<"dienstgrad", 'String'>
+    readonly Beschreibung_weiblich: FieldRef<"dienstgrad", 'String'>
+    readonly Erstellt_am: FieldRef<"dienstgrad", 'DateTime'>
+    readonly Geaendert_am: FieldRef<"dienstgrad", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * dienstgrad findUnique
+   */
+  export type dienstgradFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the dienstgrad
+     */
+    select?: dienstgradSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the dienstgrad
+     */
+    omit?: dienstgradOmit<ExtArgs> | null
+    /**
+     * Filter, which dienstgrad to fetch.
+     */
+    where: dienstgradWhereUniqueInput
+  }
+
+  /**
+   * dienstgrad findUniqueOrThrow
+   */
+  export type dienstgradFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the dienstgrad
+     */
+    select?: dienstgradSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the dienstgrad
+     */
+    omit?: dienstgradOmit<ExtArgs> | null
+    /**
+     * Filter, which dienstgrad to fetch.
+     */
+    where: dienstgradWhereUniqueInput
+  }
+
+  /**
+   * dienstgrad findFirst
+   */
+  export type dienstgradFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the dienstgrad
+     */
+    select?: dienstgradSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the dienstgrad
+     */
+    omit?: dienstgradOmit<ExtArgs> | null
+    /**
+     * Filter, which dienstgrad to fetch.
+     */
+    where?: dienstgradWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of dienstgrads to fetch.
+     */
+    orderBy?: dienstgradOrderByWithRelationInput | dienstgradOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for dienstgrads.
+     */
+    cursor?: dienstgradWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` dienstgrads from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` dienstgrads.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of dienstgrads.
+     */
+    distinct?: DienstgradScalarFieldEnum | DienstgradScalarFieldEnum[]
+  }
+
+  /**
+   * dienstgrad findFirstOrThrow
+   */
+  export type dienstgradFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the dienstgrad
+     */
+    select?: dienstgradSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the dienstgrad
+     */
+    omit?: dienstgradOmit<ExtArgs> | null
+    /**
+     * Filter, which dienstgrad to fetch.
+     */
+    where?: dienstgradWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of dienstgrads to fetch.
+     */
+    orderBy?: dienstgradOrderByWithRelationInput | dienstgradOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for dienstgrads.
+     */
+    cursor?: dienstgradWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` dienstgrads from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` dienstgrads.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of dienstgrads.
+     */
+    distinct?: DienstgradScalarFieldEnum | DienstgradScalarFieldEnum[]
+  }
+
+  /**
+   * dienstgrad findMany
+   */
+  export type dienstgradFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the dienstgrad
+     */
+    select?: dienstgradSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the dienstgrad
+     */
+    omit?: dienstgradOmit<ExtArgs> | null
+    /**
+     * Filter, which dienstgrads to fetch.
+     */
+    where?: dienstgradWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of dienstgrads to fetch.
+     */
+    orderBy?: dienstgradOrderByWithRelationInput | dienstgradOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing dienstgrads.
+     */
+    cursor?: dienstgradWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` dienstgrads from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` dienstgrads.
+     */
+    skip?: number
+    distinct?: DienstgradScalarFieldEnum | DienstgradScalarFieldEnum[]
+  }
+
+  /**
+   * dienstgrad create
+   */
+  export type dienstgradCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the dienstgrad
+     */
+    select?: dienstgradSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the dienstgrad
+     */
+    omit?: dienstgradOmit<ExtArgs> | null
+    /**
+     * The data needed to create a dienstgrad.
+     */
+    data?: XOR<dienstgradCreateInput, dienstgradUncheckedCreateInput>
+  }
+
+  /**
+   * dienstgrad createMany
+   */
+  export type dienstgradCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many dienstgrads.
+     */
+    data: dienstgradCreateManyInput | dienstgradCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * dienstgrad update
+   */
+  export type dienstgradUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the dienstgrad
+     */
+    select?: dienstgradSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the dienstgrad
+     */
+    omit?: dienstgradOmit<ExtArgs> | null
+    /**
+     * The data needed to update a dienstgrad.
+     */
+    data: XOR<dienstgradUpdateInput, dienstgradUncheckedUpdateInput>
+    /**
+     * Choose, which dienstgrad to update.
+     */
+    where: dienstgradWhereUniqueInput
+  }
+
+  /**
+   * dienstgrad updateMany
+   */
+  export type dienstgradUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update dienstgrads.
+     */
+    data: XOR<dienstgradUpdateManyMutationInput, dienstgradUncheckedUpdateManyInput>
+    /**
+     * Filter which dienstgrads to update
+     */
+    where?: dienstgradWhereInput
+    /**
+     * Limit how many dienstgrads to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * dienstgrad upsert
+   */
+  export type dienstgradUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the dienstgrad
+     */
+    select?: dienstgradSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the dienstgrad
+     */
+    omit?: dienstgradOmit<ExtArgs> | null
+    /**
+     * The filter to search for the dienstgrad to update in case it exists.
+     */
+    where: dienstgradWhereUniqueInput
+    /**
+     * In case the dienstgrad found by the `where` argument doesn't exist, create a new dienstgrad with this data.
+     */
+    create: XOR<dienstgradCreateInput, dienstgradUncheckedCreateInput>
+    /**
+     * In case the dienstgrad was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<dienstgradUpdateInput, dienstgradUncheckedUpdateInput>
+  }
+
+  /**
+   * dienstgrad delete
+   */
+  export type dienstgradDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the dienstgrad
+     */
+    select?: dienstgradSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the dienstgrad
+     */
+    omit?: dienstgradOmit<ExtArgs> | null
+    /**
+     * Filter which dienstgrad to delete.
+     */
+    where: dienstgradWhereUniqueInput
+  }
+
+  /**
+   * dienstgrad deleteMany
+   */
+  export type dienstgradDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which dienstgrads to delete
+     */
+    where?: dienstgradWhereInput
+    /**
+     * Limit how many dienstgrads to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * dienstgrad without action
+   */
+  export type dienstgradDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the dienstgrad
+     */
+    select?: dienstgradSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the dienstgrad
+     */
+    omit?: dienstgradOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model dientsabend
+   */
+
+  export type AggregateDientsabend = {
+    _count: DientsabendCountAggregateOutputType | null
+    _avg: DientsabendAvgAggregateOutputType | null
+    _sum: DientsabendSumAggregateOutputType | null
+    _min: DientsabendMinAggregateOutputType | null
+    _max: DientsabendMaxAggregateOutputType | null
+  }
+
+  export type DientsabendAvgAggregateOutputType = {
+    ID: number | null
+  }
+
+  export type DientsabendSumAggregateOutputType = {
+    ID: number | null
+  }
+
+  export type DientsabendMinAggregateOutputType = {
+    ID: number | null
+    Datum: Date | null
+    Thema: string | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
+  }
+
+  export type DientsabendMaxAggregateOutputType = {
+    ID: number | null
+    Datum: Date | null
+    Thema: string | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
+  }
+
+  export type DientsabendCountAggregateOutputType = {
+    ID: number
+    Datum: number
+    Thema: number
+    Erstellt_am: number
+    Geaendert_am: number
+    _all: number
+  }
+
+
+  export type DientsabendAvgAggregateInputType = {
+    ID?: true
+  }
+
+  export type DientsabendSumAggregateInputType = {
+    ID?: true
+  }
+
+  export type DientsabendMinAggregateInputType = {
+    ID?: true
+    Datum?: true
+    Thema?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
+  }
+
+  export type DientsabendMaxAggregateInputType = {
+    ID?: true
+    Datum?: true
+    Thema?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
+  }
+
+  export type DientsabendCountAggregateInputType = {
+    ID?: true
+    Datum?: true
+    Thema?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
+    _all?: true
+  }
+
+  export type DientsabendAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which dientsabend to aggregate.
+     */
+    where?: dientsabendWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of dientsabends to fetch.
+     */
+    orderBy?: dientsabendOrderByWithRelationInput | dientsabendOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: dientsabendWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` dientsabends from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` dientsabends.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned dientsabends
+    **/
+    _count?: true | DientsabendCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DientsabendAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DientsabendSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DientsabendMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DientsabendMaxAggregateInputType
+  }
+
+  export type GetDientsabendAggregateType<T extends DientsabendAggregateArgs> = {
+        [P in keyof T & keyof AggregateDientsabend]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDientsabend[P]>
+      : GetScalarType<T[P], AggregateDientsabend[P]>
+  }
+
+
+
+
+  export type dientsabendGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: dientsabendWhereInput
+    orderBy?: dientsabendOrderByWithAggregationInput | dientsabendOrderByWithAggregationInput[]
+    by: DientsabendScalarFieldEnum[] | DientsabendScalarFieldEnum
+    having?: dientsabendScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DientsabendCountAggregateInputType | true
+    _avg?: DientsabendAvgAggregateInputType
+    _sum?: DientsabendSumAggregateInputType
+    _min?: DientsabendMinAggregateInputType
+    _max?: DientsabendMaxAggregateInputType
+  }
+
+  export type DientsabendGroupByOutputType = {
+    ID: number
+    Datum: Date
+    Thema: string | null
+    Erstellt_am: Date
+    Geaendert_am: Date | null
+    _count: DientsabendCountAggregateOutputType | null
+    _avg: DientsabendAvgAggregateOutputType | null
+    _sum: DientsabendSumAggregateOutputType | null
+    _min: DientsabendMinAggregateOutputType | null
+    _max: DientsabendMaxAggregateOutputType | null
+  }
+
+  type GetDientsabendGroupByPayload<T extends dientsabendGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DientsabendGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DientsabendGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DientsabendGroupByOutputType[P]>
+            : GetScalarType<T[P], DientsabendGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type dientsabendSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    ID?: boolean
+    Datum?: boolean
+    Thema?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
+  }, ExtArgs["result"]["dientsabend"]>
+
+
+
+  export type dientsabendSelectScalar = {
+    ID?: boolean
+    Datum?: boolean
+    Thema?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
+  }
+
+  export type dientsabendOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Datum" | "Thema" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["dientsabend"]>
+
+  export type $dientsabendPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "dientsabend"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      ID: number
+      Datum: Date
+      Thema: string | null
+      Erstellt_am: Date
+      Geaendert_am: Date | null
+    }, ExtArgs["result"]["dientsabend"]>
+    composites: {}
+  }
+
+  type dientsabendGetPayload<S extends boolean | null | undefined | dientsabendDefaultArgs> = $Result.GetResult<Prisma.$dientsabendPayload, S>
+
+  type dientsabendCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<dientsabendFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DientsabendCountAggregateInputType | true
+    }
+
+  export interface dientsabendDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['dientsabend'], meta: { name: 'dientsabend' } }
+    /**
+     * Find zero or one Dientsabend that matches the filter.
+     * @param {dientsabendFindUniqueArgs} args - Arguments to find a Dientsabend
+     * @example
+     * // Get one Dientsabend
+     * const dientsabend = await prisma.dientsabend.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends dientsabendFindUniqueArgs>(args: SelectSubset<T, dientsabendFindUniqueArgs<ExtArgs>>): Prisma__dientsabendClient<$Result.GetResult<Prisma.$dientsabendPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Dientsabend that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {dientsabendFindUniqueOrThrowArgs} args - Arguments to find a Dientsabend
+     * @example
+     * // Get one Dientsabend
+     * const dientsabend = await prisma.dientsabend.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends dientsabendFindUniqueOrThrowArgs>(args: SelectSubset<T, dientsabendFindUniqueOrThrowArgs<ExtArgs>>): Prisma__dientsabendClient<$Result.GetResult<Prisma.$dientsabendPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Dientsabend that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {dientsabendFindFirstArgs} args - Arguments to find a Dientsabend
+     * @example
+     * // Get one Dientsabend
+     * const dientsabend = await prisma.dientsabend.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends dientsabendFindFirstArgs>(args?: SelectSubset<T, dientsabendFindFirstArgs<ExtArgs>>): Prisma__dientsabendClient<$Result.GetResult<Prisma.$dientsabendPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Dientsabend that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {dientsabendFindFirstOrThrowArgs} args - Arguments to find a Dientsabend
+     * @example
+     * // Get one Dientsabend
+     * const dientsabend = await prisma.dientsabend.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends dientsabendFindFirstOrThrowArgs>(args?: SelectSubset<T, dientsabendFindFirstOrThrowArgs<ExtArgs>>): Prisma__dientsabendClient<$Result.GetResult<Prisma.$dientsabendPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Dientsabends that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {dientsabendFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Dientsabends
+     * const dientsabends = await prisma.dientsabend.findMany()
+     * 
+     * // Get first 10 Dientsabends
+     * const dientsabends = await prisma.dientsabend.findMany({ take: 10 })
+     * 
+     * // Only select the `ID`
+     * const dientsabendWithIDOnly = await prisma.dientsabend.findMany({ select: { ID: true } })
+     * 
+     */
+    findMany<T extends dientsabendFindManyArgs>(args?: SelectSubset<T, dientsabendFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$dientsabendPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Dientsabend.
+     * @param {dientsabendCreateArgs} args - Arguments to create a Dientsabend.
+     * @example
+     * // Create one Dientsabend
+     * const Dientsabend = await prisma.dientsabend.create({
+     *   data: {
+     *     // ... data to create a Dientsabend
+     *   }
+     * })
+     * 
+     */
+    create<T extends dientsabendCreateArgs>(args: SelectSubset<T, dientsabendCreateArgs<ExtArgs>>): Prisma__dientsabendClient<$Result.GetResult<Prisma.$dientsabendPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Dientsabends.
+     * @param {dientsabendCreateManyArgs} args - Arguments to create many Dientsabends.
+     * @example
+     * // Create many Dientsabends
+     * const dientsabend = await prisma.dientsabend.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends dientsabendCreateManyArgs>(args?: SelectSubset<T, dientsabendCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Dientsabend.
+     * @param {dientsabendDeleteArgs} args - Arguments to delete one Dientsabend.
+     * @example
+     * // Delete one Dientsabend
+     * const Dientsabend = await prisma.dientsabend.delete({
+     *   where: {
+     *     // ... filter to delete one Dientsabend
+     *   }
+     * })
+     * 
+     */
+    delete<T extends dientsabendDeleteArgs>(args: SelectSubset<T, dientsabendDeleteArgs<ExtArgs>>): Prisma__dientsabendClient<$Result.GetResult<Prisma.$dientsabendPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Dientsabend.
+     * @param {dientsabendUpdateArgs} args - Arguments to update one Dientsabend.
+     * @example
+     * // Update one Dientsabend
+     * const dientsabend = await prisma.dientsabend.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends dientsabendUpdateArgs>(args: SelectSubset<T, dientsabendUpdateArgs<ExtArgs>>): Prisma__dientsabendClient<$Result.GetResult<Prisma.$dientsabendPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Dientsabends.
+     * @param {dientsabendDeleteManyArgs} args - Arguments to filter Dientsabends to delete.
+     * @example
+     * // Delete a few Dientsabends
+     * const { count } = await prisma.dientsabend.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends dientsabendDeleteManyArgs>(args?: SelectSubset<T, dientsabendDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Dientsabends.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {dientsabendUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Dientsabends
+     * const dientsabend = await prisma.dientsabend.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends dientsabendUpdateManyArgs>(args: SelectSubset<T, dientsabendUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Dientsabend.
+     * @param {dientsabendUpsertArgs} args - Arguments to update or create a Dientsabend.
+     * @example
+     * // Update or create a Dientsabend
+     * const dientsabend = await prisma.dientsabend.upsert({
+     *   create: {
+     *     // ... data to create a Dientsabend
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Dientsabend we want to update
+     *   }
+     * })
+     */
+    upsert<T extends dientsabendUpsertArgs>(args: SelectSubset<T, dientsabendUpsertArgs<ExtArgs>>): Prisma__dientsabendClient<$Result.GetResult<Prisma.$dientsabendPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Dientsabends.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {dientsabendCountArgs} args - Arguments to filter Dientsabends to count.
+     * @example
+     * // Count the number of Dientsabends
+     * const count = await prisma.dientsabend.count({
+     *   where: {
+     *     // ... the filter for the Dientsabends we want to count
+     *   }
+     * })
+    **/
+    count<T extends dientsabendCountArgs>(
+      args?: Subset<T, dientsabendCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DientsabendCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Dientsabend.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DientsabendAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DientsabendAggregateArgs>(args: Subset<T, DientsabendAggregateArgs>): Prisma.PrismaPromise<GetDientsabendAggregateType<T>>
+
+    /**
+     * Group by Dientsabend.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {dientsabendGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends dientsabendGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: dientsabendGroupByArgs['orderBy'] }
+        : { orderBy?: dientsabendGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, dientsabendGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDientsabendGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the dientsabend model
+   */
+  readonly fields: dientsabendFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for dientsabend.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__dientsabendClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the dientsabend model
+   */
+  interface dientsabendFieldRefs {
+    readonly ID: FieldRef<"dientsabend", 'Int'>
+    readonly Datum: FieldRef<"dientsabend", 'DateTime'>
+    readonly Thema: FieldRef<"dientsabend", 'String'>
+    readonly Erstellt_am: FieldRef<"dientsabend", 'DateTime'>
+    readonly Geaendert_am: FieldRef<"dientsabend", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * dientsabend findUnique
+   */
+  export type dientsabendFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the dientsabend
+     */
+    select?: dientsabendSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the dientsabend
+     */
+    omit?: dientsabendOmit<ExtArgs> | null
+    /**
+     * Filter, which dientsabend to fetch.
+     */
+    where: dientsabendWhereUniqueInput
+  }
+
+  /**
+   * dientsabend findUniqueOrThrow
+   */
+  export type dientsabendFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the dientsabend
+     */
+    select?: dientsabendSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the dientsabend
+     */
+    omit?: dientsabendOmit<ExtArgs> | null
+    /**
+     * Filter, which dientsabend to fetch.
+     */
+    where: dientsabendWhereUniqueInput
+  }
+
+  /**
+   * dientsabend findFirst
+   */
+  export type dientsabendFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the dientsabend
+     */
+    select?: dientsabendSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the dientsabend
+     */
+    omit?: dientsabendOmit<ExtArgs> | null
+    /**
+     * Filter, which dientsabend to fetch.
+     */
+    where?: dientsabendWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of dientsabends to fetch.
+     */
+    orderBy?: dientsabendOrderByWithRelationInput | dientsabendOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for dientsabends.
+     */
+    cursor?: dientsabendWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` dientsabends from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` dientsabends.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of dientsabends.
+     */
+    distinct?: DientsabendScalarFieldEnum | DientsabendScalarFieldEnum[]
+  }
+
+  /**
+   * dientsabend findFirstOrThrow
+   */
+  export type dientsabendFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the dientsabend
+     */
+    select?: dientsabendSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the dientsabend
+     */
+    omit?: dientsabendOmit<ExtArgs> | null
+    /**
+     * Filter, which dientsabend to fetch.
+     */
+    where?: dientsabendWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of dientsabends to fetch.
+     */
+    orderBy?: dientsabendOrderByWithRelationInput | dientsabendOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for dientsabends.
+     */
+    cursor?: dientsabendWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` dientsabends from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` dientsabends.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of dientsabends.
+     */
+    distinct?: DientsabendScalarFieldEnum | DientsabendScalarFieldEnum[]
+  }
+
+  /**
+   * dientsabend findMany
+   */
+  export type dientsabendFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the dientsabend
+     */
+    select?: dientsabendSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the dientsabend
+     */
+    omit?: dientsabendOmit<ExtArgs> | null
+    /**
+     * Filter, which dientsabends to fetch.
+     */
+    where?: dientsabendWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of dientsabends to fetch.
+     */
+    orderBy?: dientsabendOrderByWithRelationInput | dientsabendOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing dientsabends.
+     */
+    cursor?: dientsabendWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` dientsabends from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` dientsabends.
+     */
+    skip?: number
+    distinct?: DientsabendScalarFieldEnum | DientsabendScalarFieldEnum[]
+  }
+
+  /**
+   * dientsabend create
+   */
+  export type dientsabendCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the dientsabend
+     */
+    select?: dientsabendSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the dientsabend
+     */
+    omit?: dientsabendOmit<ExtArgs> | null
+    /**
+     * The data needed to create a dientsabend.
+     */
+    data: XOR<dientsabendCreateInput, dientsabendUncheckedCreateInput>
+  }
+
+  /**
+   * dientsabend createMany
+   */
+  export type dientsabendCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many dientsabends.
+     */
+    data: dientsabendCreateManyInput | dientsabendCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * dientsabend update
+   */
+  export type dientsabendUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the dientsabend
+     */
+    select?: dientsabendSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the dientsabend
+     */
+    omit?: dientsabendOmit<ExtArgs> | null
+    /**
+     * The data needed to update a dientsabend.
+     */
+    data: XOR<dientsabendUpdateInput, dientsabendUncheckedUpdateInput>
+    /**
+     * Choose, which dientsabend to update.
+     */
+    where: dientsabendWhereUniqueInput
+  }
+
+  /**
+   * dientsabend updateMany
+   */
+  export type dientsabendUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update dientsabends.
+     */
+    data: XOR<dientsabendUpdateManyMutationInput, dientsabendUncheckedUpdateManyInput>
+    /**
+     * Filter which dientsabends to update
+     */
+    where?: dientsabendWhereInput
+    /**
+     * Limit how many dientsabends to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * dientsabend upsert
+   */
+  export type dientsabendUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the dientsabend
+     */
+    select?: dientsabendSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the dientsabend
+     */
+    omit?: dientsabendOmit<ExtArgs> | null
+    /**
+     * The filter to search for the dientsabend to update in case it exists.
+     */
+    where: dientsabendWhereUniqueInput
+    /**
+     * In case the dientsabend found by the `where` argument doesn't exist, create a new dientsabend with this data.
+     */
+    create: XOR<dientsabendCreateInput, dientsabendUncheckedCreateInput>
+    /**
+     * In case the dientsabend was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<dientsabendUpdateInput, dientsabendUncheckedUpdateInput>
+  }
+
+  /**
+   * dientsabend delete
+   */
+  export type dientsabendDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the dientsabend
+     */
+    select?: dientsabendSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the dientsabend
+     */
+    omit?: dientsabendOmit<ExtArgs> | null
+    /**
+     * Filter which dientsabend to delete.
+     */
+    where: dientsabendWhereUniqueInput
+  }
+
+  /**
+   * dientsabend deleteMany
+   */
+  export type dientsabendDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which dientsabends to delete
+     */
+    where?: dientsabendWhereInput
+    /**
+     * Limit how many dientsabends to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * dientsabend without action
+   */
+  export type dientsabendDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the dientsabend
+     */
+    select?: dientsabendSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the dientsabend
+     */
+    omit?: dientsabendOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model einheit
+   */
+
+  export type AggregateEinheit = {
+    _count: EinheitCountAggregateOutputType | null
+    _avg: EinheitAvgAggregateOutputType | null
+    _sum: EinheitSumAggregateOutputType | null
+    _min: EinheitMinAggregateOutputType | null
+    _max: EinheitMaxAggregateOutputType | null
+  }
+
+  export type EinheitAvgAggregateOutputType = {
+    ID: number | null
+  }
+
+  export type EinheitSumAggregateOutputType = {
+    ID: number | null
+  }
+
+  export type EinheitMinAggregateOutputType = {
+    ID: number | null
+    Abkuerzung: string | null
+    Beschreibung: string | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
+  }
+
+  export type EinheitMaxAggregateOutputType = {
+    ID: number | null
+    Abkuerzung: string | null
+    Beschreibung: string | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
+  }
+
+  export type EinheitCountAggregateOutputType = {
+    ID: number
+    Abkuerzung: number
+    Beschreibung: number
+    Erstellt_am: number
+    Geaendert_am: number
+    _all: number
+  }
+
+
+  export type EinheitAvgAggregateInputType = {
+    ID?: true
+  }
+
+  export type EinheitSumAggregateInputType = {
+    ID?: true
+  }
+
+  export type EinheitMinAggregateInputType = {
+    ID?: true
+    Abkuerzung?: true
+    Beschreibung?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
+  }
+
+  export type EinheitMaxAggregateInputType = {
+    ID?: true
+    Abkuerzung?: true
+    Beschreibung?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
+  }
+
+  export type EinheitCountAggregateInputType = {
+    ID?: true
+    Abkuerzung?: true
+    Beschreibung?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
+    _all?: true
+  }
+
+  export type EinheitAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which einheit to aggregate.
+     */
+    where?: einheitWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of einheits to fetch.
+     */
+    orderBy?: einheitOrderByWithRelationInput | einheitOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: einheitWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` einheits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` einheits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned einheits
+    **/
+    _count?: true | EinheitCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: EinheitAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: EinheitSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: EinheitMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: EinheitMaxAggregateInputType
+  }
+
+  export type GetEinheitAggregateType<T extends EinheitAggregateArgs> = {
+        [P in keyof T & keyof AggregateEinheit]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEinheit[P]>
+      : GetScalarType<T[P], AggregateEinheit[P]>
+  }
+
+
+
+
+  export type einheitGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: einheitWhereInput
+    orderBy?: einheitOrderByWithAggregationInput | einheitOrderByWithAggregationInput[]
+    by: EinheitScalarFieldEnum[] | EinheitScalarFieldEnum
+    having?: einheitScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: EinheitCountAggregateInputType | true
+    _avg?: EinheitAvgAggregateInputType
+    _sum?: EinheitSumAggregateInputType
+    _min?: EinheitMinAggregateInputType
+    _max?: EinheitMaxAggregateInputType
+  }
+
+  export type EinheitGroupByOutputType = {
+    ID: number
+    Abkuerzung: string | null
+    Beschreibung: string | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
+    _count: EinheitCountAggregateOutputType | null
+    _avg: EinheitAvgAggregateOutputType | null
+    _sum: EinheitSumAggregateOutputType | null
+    _min: EinheitMinAggregateOutputType | null
+    _max: EinheitMaxAggregateOutputType | null
+  }
+
+  type GetEinheitGroupByPayload<T extends einheitGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<EinheitGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof EinheitGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], EinheitGroupByOutputType[P]>
+            : GetScalarType<T[P], EinheitGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type einheitSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    ID?: boolean
+    Abkuerzung?: boolean
+    Beschreibung?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
+  }, ExtArgs["result"]["einheit"]>
+
+
+
+  export type einheitSelectScalar = {
+    ID?: boolean
+    Abkuerzung?: boolean
+    Beschreibung?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
+  }
+
+  export type einheitOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Abkuerzung" | "Beschreibung" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["einheit"]>
+
+  export type $einheitPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "einheit"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      ID: number
+      Abkuerzung: string | null
+      Beschreibung: string | null
+      Erstellt_am: Date | null
+      Geaendert_am: Date | null
+    }, ExtArgs["result"]["einheit"]>
+    composites: {}
+  }
+
+  type einheitGetPayload<S extends boolean | null | undefined | einheitDefaultArgs> = $Result.GetResult<Prisma.$einheitPayload, S>
+
+  type einheitCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<einheitFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: EinheitCountAggregateInputType | true
+    }
+
+  export interface einheitDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['einheit'], meta: { name: 'einheit' } }
+    /**
+     * Find zero or one Einheit that matches the filter.
+     * @param {einheitFindUniqueArgs} args - Arguments to find a Einheit
+     * @example
+     * // Get one Einheit
+     * const einheit = await prisma.einheit.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends einheitFindUniqueArgs>(args: SelectSubset<T, einheitFindUniqueArgs<ExtArgs>>): Prisma__einheitClient<$Result.GetResult<Prisma.$einheitPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Einheit that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {einheitFindUniqueOrThrowArgs} args - Arguments to find a Einheit
+     * @example
+     * // Get one Einheit
+     * const einheit = await prisma.einheit.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends einheitFindUniqueOrThrowArgs>(args: SelectSubset<T, einheitFindUniqueOrThrowArgs<ExtArgs>>): Prisma__einheitClient<$Result.GetResult<Prisma.$einheitPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Einheit that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {einheitFindFirstArgs} args - Arguments to find a Einheit
+     * @example
+     * // Get one Einheit
+     * const einheit = await prisma.einheit.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends einheitFindFirstArgs>(args?: SelectSubset<T, einheitFindFirstArgs<ExtArgs>>): Prisma__einheitClient<$Result.GetResult<Prisma.$einheitPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Einheit that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {einheitFindFirstOrThrowArgs} args - Arguments to find a Einheit
+     * @example
+     * // Get one Einheit
+     * const einheit = await prisma.einheit.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends einheitFindFirstOrThrowArgs>(args?: SelectSubset<T, einheitFindFirstOrThrowArgs<ExtArgs>>): Prisma__einheitClient<$Result.GetResult<Prisma.$einheitPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Einheits that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {einheitFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Einheits
+     * const einheits = await prisma.einheit.findMany()
+     * 
+     * // Get first 10 Einheits
+     * const einheits = await prisma.einheit.findMany({ take: 10 })
+     * 
+     * // Only select the `ID`
+     * const einheitWithIDOnly = await prisma.einheit.findMany({ select: { ID: true } })
+     * 
+     */
+    findMany<T extends einheitFindManyArgs>(args?: SelectSubset<T, einheitFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$einheitPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Einheit.
+     * @param {einheitCreateArgs} args - Arguments to create a Einheit.
+     * @example
+     * // Create one Einheit
+     * const Einheit = await prisma.einheit.create({
+     *   data: {
+     *     // ... data to create a Einheit
+     *   }
+     * })
+     * 
+     */
+    create<T extends einheitCreateArgs>(args: SelectSubset<T, einheitCreateArgs<ExtArgs>>): Prisma__einheitClient<$Result.GetResult<Prisma.$einheitPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Einheits.
+     * @param {einheitCreateManyArgs} args - Arguments to create many Einheits.
+     * @example
+     * // Create many Einheits
+     * const einheit = await prisma.einheit.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends einheitCreateManyArgs>(args?: SelectSubset<T, einheitCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Einheit.
+     * @param {einheitDeleteArgs} args - Arguments to delete one Einheit.
+     * @example
+     * // Delete one Einheit
+     * const Einheit = await prisma.einheit.delete({
+     *   where: {
+     *     // ... filter to delete one Einheit
+     *   }
+     * })
+     * 
+     */
+    delete<T extends einheitDeleteArgs>(args: SelectSubset<T, einheitDeleteArgs<ExtArgs>>): Prisma__einheitClient<$Result.GetResult<Prisma.$einheitPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Einheit.
+     * @param {einheitUpdateArgs} args - Arguments to update one Einheit.
+     * @example
+     * // Update one Einheit
+     * const einheit = await prisma.einheit.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends einheitUpdateArgs>(args: SelectSubset<T, einheitUpdateArgs<ExtArgs>>): Prisma__einheitClient<$Result.GetResult<Prisma.$einheitPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Einheits.
+     * @param {einheitDeleteManyArgs} args - Arguments to filter Einheits to delete.
+     * @example
+     * // Delete a few Einheits
+     * const { count } = await prisma.einheit.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends einheitDeleteManyArgs>(args?: SelectSubset<T, einheitDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Einheits.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {einheitUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Einheits
+     * const einheit = await prisma.einheit.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends einheitUpdateManyArgs>(args: SelectSubset<T, einheitUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Einheit.
+     * @param {einheitUpsertArgs} args - Arguments to update or create a Einheit.
+     * @example
+     * // Update or create a Einheit
+     * const einheit = await prisma.einheit.upsert({
+     *   create: {
+     *     // ... data to create a Einheit
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Einheit we want to update
+     *   }
+     * })
+     */
+    upsert<T extends einheitUpsertArgs>(args: SelectSubset<T, einheitUpsertArgs<ExtArgs>>): Prisma__einheitClient<$Result.GetResult<Prisma.$einheitPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Einheits.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {einheitCountArgs} args - Arguments to filter Einheits to count.
+     * @example
+     * // Count the number of Einheits
+     * const count = await prisma.einheit.count({
+     *   where: {
+     *     // ... the filter for the Einheits we want to count
+     *   }
+     * })
+    **/
+    count<T extends einheitCountArgs>(
+      args?: Subset<T, einheitCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], EinheitCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Einheit.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EinheitAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends EinheitAggregateArgs>(args: Subset<T, EinheitAggregateArgs>): Prisma.PrismaPromise<GetEinheitAggregateType<T>>
+
+    /**
+     * Group by Einheit.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {einheitGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends einheitGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: einheitGroupByArgs['orderBy'] }
+        : { orderBy?: einheitGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, einheitGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEinheitGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the einheit model
+   */
+  readonly fields: einheitFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for einheit.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__einheitClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the einheit model
+   */
+  interface einheitFieldRefs {
+    readonly ID: FieldRef<"einheit", 'Int'>
+    readonly Abkuerzung: FieldRef<"einheit", 'String'>
+    readonly Beschreibung: FieldRef<"einheit", 'String'>
+    readonly Erstellt_am: FieldRef<"einheit", 'DateTime'>
+    readonly Geaendert_am: FieldRef<"einheit", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * einheit findUnique
+   */
+  export type einheitFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the einheit
+     */
+    select?: einheitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the einheit
+     */
+    omit?: einheitOmit<ExtArgs> | null
+    /**
+     * Filter, which einheit to fetch.
+     */
+    where: einheitWhereUniqueInput
+  }
+
+  /**
+   * einheit findUniqueOrThrow
+   */
+  export type einheitFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the einheit
+     */
+    select?: einheitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the einheit
+     */
+    omit?: einheitOmit<ExtArgs> | null
+    /**
+     * Filter, which einheit to fetch.
+     */
+    where: einheitWhereUniqueInput
+  }
+
+  /**
+   * einheit findFirst
+   */
+  export type einheitFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the einheit
+     */
+    select?: einheitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the einheit
+     */
+    omit?: einheitOmit<ExtArgs> | null
+    /**
+     * Filter, which einheit to fetch.
+     */
+    where?: einheitWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of einheits to fetch.
+     */
+    orderBy?: einheitOrderByWithRelationInput | einheitOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for einheits.
+     */
+    cursor?: einheitWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` einheits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` einheits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of einheits.
+     */
+    distinct?: EinheitScalarFieldEnum | EinheitScalarFieldEnum[]
+  }
+
+  /**
+   * einheit findFirstOrThrow
+   */
+  export type einheitFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the einheit
+     */
+    select?: einheitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the einheit
+     */
+    omit?: einheitOmit<ExtArgs> | null
+    /**
+     * Filter, which einheit to fetch.
+     */
+    where?: einheitWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of einheits to fetch.
+     */
+    orderBy?: einheitOrderByWithRelationInput | einheitOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for einheits.
+     */
+    cursor?: einheitWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` einheits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` einheits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of einheits.
+     */
+    distinct?: EinheitScalarFieldEnum | EinheitScalarFieldEnum[]
+  }
+
+  /**
+   * einheit findMany
+   */
+  export type einheitFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the einheit
+     */
+    select?: einheitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the einheit
+     */
+    omit?: einheitOmit<ExtArgs> | null
+    /**
+     * Filter, which einheits to fetch.
+     */
+    where?: einheitWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of einheits to fetch.
+     */
+    orderBy?: einheitOrderByWithRelationInput | einheitOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing einheits.
+     */
+    cursor?: einheitWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` einheits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` einheits.
+     */
+    skip?: number
+    distinct?: EinheitScalarFieldEnum | EinheitScalarFieldEnum[]
+  }
+
+  /**
+   * einheit create
+   */
+  export type einheitCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the einheit
+     */
+    select?: einheitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the einheit
+     */
+    omit?: einheitOmit<ExtArgs> | null
+    /**
+     * The data needed to create a einheit.
+     */
+    data?: XOR<einheitCreateInput, einheitUncheckedCreateInput>
+  }
+
+  /**
+   * einheit createMany
+   */
+  export type einheitCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many einheits.
+     */
+    data: einheitCreateManyInput | einheitCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * einheit update
+   */
+  export type einheitUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the einheit
+     */
+    select?: einheitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the einheit
+     */
+    omit?: einheitOmit<ExtArgs> | null
+    /**
+     * The data needed to update a einheit.
+     */
+    data: XOR<einheitUpdateInput, einheitUncheckedUpdateInput>
+    /**
+     * Choose, which einheit to update.
+     */
+    where: einheitWhereUniqueInput
+  }
+
+  /**
+   * einheit updateMany
+   */
+  export type einheitUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update einheits.
+     */
+    data: XOR<einheitUpdateManyMutationInput, einheitUncheckedUpdateManyInput>
+    /**
+     * Filter which einheits to update
+     */
+    where?: einheitWhereInput
+    /**
+     * Limit how many einheits to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * einheit upsert
+   */
+  export type einheitUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the einheit
+     */
+    select?: einheitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the einheit
+     */
+    omit?: einheitOmit<ExtArgs> | null
+    /**
+     * The filter to search for the einheit to update in case it exists.
+     */
+    where: einheitWhereUniqueInput
+    /**
+     * In case the einheit found by the `where` argument doesn't exist, create a new einheit with this data.
+     */
+    create: XOR<einheitCreateInput, einheitUncheckedCreateInput>
+    /**
+     * In case the einheit was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<einheitUpdateInput, einheitUncheckedUpdateInput>
+  }
+
+  /**
+   * einheit delete
+   */
+  export type einheitDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the einheit
+     */
+    select?: einheitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the einheit
+     */
+    omit?: einheitOmit<ExtArgs> | null
+    /**
+     * Filter which einheit to delete.
+     */
+    where: einheitWhereUniqueInput
+  }
+
+  /**
+   * einheit deleteMany
+   */
+  export type einheitDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which einheits to delete
+     */
+    where?: einheitWhereInput
+    /**
+     * Limit how many einheits to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * einheit without action
+   */
+  export type einheitDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the einheit
+     */
+    select?: einheitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the einheit
+     */
+    omit?: einheitOmit<ExtArgs> | null
+  }
+
 
   /**
    * Model einsatz
@@ -1934,69 +5168,127 @@ export namespace Prisma {
   }
 
   export type EinsatzAvgAggregateOutputType = {
-    id: number | null
+    ID: number | null
+    Einsatznummer: number | null
   }
 
   export type EinsatzSumAggregateOutputType = {
-    id: number | null
+    ID: number | null
+    Einsatznummer: number | null
   }
 
   export type EinsatzMinAggregateOutputType = {
-    id: number | null
-    datum: Date | null
-    beschreibung: string | null
-    ort: string | null
-    art: $Enums.einsatz_art | null
+    ID: number | null
+    Einsatznummer: number | null
+    Datum_Anfang: Date | null
+    Uhrzeit_Anfang: Date | null
+    Datum_Ende: Date | null
+    Uhrzeit_Ende: Date | null
+    Beschreibung: string | null
+    Strasse: string | null
+    Hausnummer: string | null
+    Postleitzahl: string | null
+    Ort: string | null
+    Art: $Enums.einsatz_Art | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type EinsatzMaxAggregateOutputType = {
-    id: number | null
-    datum: Date | null
-    beschreibung: string | null
-    ort: string | null
-    art: $Enums.einsatz_art | null
+    ID: number | null
+    Einsatznummer: number | null
+    Datum_Anfang: Date | null
+    Uhrzeit_Anfang: Date | null
+    Datum_Ende: Date | null
+    Uhrzeit_Ende: Date | null
+    Beschreibung: string | null
+    Strasse: string | null
+    Hausnummer: string | null
+    Postleitzahl: string | null
+    Ort: string | null
+    Art: $Enums.einsatz_Art | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type EinsatzCountAggregateOutputType = {
-    id: number
-    datum: number
-    beschreibung: number
-    ort: number
-    art: number
+    ID: number
+    Einsatznummer: number
+    Datum_Anfang: number
+    Uhrzeit_Anfang: number
+    Datum_Ende: number
+    Uhrzeit_Ende: number
+    Beschreibung: number
+    Strasse: number
+    Hausnummer: number
+    Postleitzahl: number
+    Ort: number
+    Art: number
+    Erstellt_am: number
+    Geaendert_am: number
     _all: number
   }
 
 
   export type EinsatzAvgAggregateInputType = {
-    id?: true
+    ID?: true
+    Einsatznummer?: true
   }
 
   export type EinsatzSumAggregateInputType = {
-    id?: true
+    ID?: true
+    Einsatznummer?: true
   }
 
   export type EinsatzMinAggregateInputType = {
-    id?: true
-    datum?: true
-    beschreibung?: true
-    ort?: true
-    art?: true
+    ID?: true
+    Einsatznummer?: true
+    Datum_Anfang?: true
+    Uhrzeit_Anfang?: true
+    Datum_Ende?: true
+    Uhrzeit_Ende?: true
+    Beschreibung?: true
+    Strasse?: true
+    Hausnummer?: true
+    Postleitzahl?: true
+    Ort?: true
+    Art?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type EinsatzMaxAggregateInputType = {
-    id?: true
-    datum?: true
-    beschreibung?: true
-    ort?: true
-    art?: true
+    ID?: true
+    Einsatznummer?: true
+    Datum_Anfang?: true
+    Uhrzeit_Anfang?: true
+    Datum_Ende?: true
+    Uhrzeit_Ende?: true
+    Beschreibung?: true
+    Strasse?: true
+    Hausnummer?: true
+    Postleitzahl?: true
+    Ort?: true
+    Art?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type EinsatzCountAggregateInputType = {
-    id?: true
-    datum?: true
-    beschreibung?: true
-    ort?: true
-    art?: true
+    ID?: true
+    Einsatznummer?: true
+    Datum_Anfang?: true
+    Uhrzeit_Anfang?: true
+    Datum_Ende?: true
+    Uhrzeit_Ende?: true
+    Beschreibung?: true
+    Strasse?: true
+    Hausnummer?: true
+    Postleitzahl?: true
+    Ort?: true
+    Art?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
     _all?: true
   }
 
@@ -2087,11 +5379,20 @@ export namespace Prisma {
   }
 
   export type EinsatzGroupByOutputType = {
-    id: number
-    datum: Date
-    beschreibung: string | null
-    ort: string | null
-    art: $Enums.einsatz_art
+    ID: number
+    Einsatznummer: number
+    Datum_Anfang: Date
+    Uhrzeit_Anfang: Date
+    Datum_Ende: Date | null
+    Uhrzeit_Ende: Date | null
+    Beschreibung: string | null
+    Strasse: string | null
+    Hausnummer: string | null
+    Postleitzahl: string | null
+    Ort: string | null
+    Art: $Enums.einsatz_Art
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
     _count: EinsatzCountAggregateOutputType | null
     _avg: EinsatzAvgAggregateOutputType | null
     _sum: EinsatzSumAggregateOutputType | null
@@ -2114,34 +5415,61 @@ export namespace Prisma {
 
 
   export type einsatzSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    datum?: boolean
-    beschreibung?: boolean
-    ort?: boolean
-    art?: boolean
+    ID?: boolean
+    Einsatznummer?: boolean
+    Datum_Anfang?: boolean
+    Uhrzeit_Anfang?: boolean
+    Datum_Ende?: boolean
+    Uhrzeit_Ende?: boolean
+    Beschreibung?: boolean
+    Strasse?: boolean
+    Hausnummer?: boolean
+    Postleitzahl?: boolean
+    Ort?: boolean
+    Art?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
   }, ExtArgs["result"]["einsatz"]>
 
 
 
   export type einsatzSelectScalar = {
-    id?: boolean
-    datum?: boolean
-    beschreibung?: boolean
-    ort?: boolean
-    art?: boolean
+    ID?: boolean
+    Einsatznummer?: boolean
+    Datum_Anfang?: boolean
+    Uhrzeit_Anfang?: boolean
+    Datum_Ende?: boolean
+    Uhrzeit_Ende?: boolean
+    Beschreibung?: boolean
+    Strasse?: boolean
+    Hausnummer?: boolean
+    Postleitzahl?: boolean
+    Ort?: boolean
+    Art?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
   }
 
-  export type einsatzOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "datum" | "beschreibung" | "ort" | "art", ExtArgs["result"]["einsatz"]>
+  export type einsatzOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Einsatznummer" | "Datum_Anfang" | "Uhrzeit_Anfang" | "Datum_Ende" | "Uhrzeit_Ende" | "Beschreibung" | "Strasse" | "Hausnummer" | "Postleitzahl" | "Ort" | "Art" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["einsatz"]>
 
   export type $einsatzPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "einsatz"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      id: number
-      datum: Date
-      beschreibung: string | null
-      ort: string | null
-      art: $Enums.einsatz_art
+      ID: number
+      Einsatznummer: number
+      Datum_Anfang: Date
+      Uhrzeit_Anfang: Date
+      Datum_Ende: Date | null
+      Uhrzeit_Ende: Date | null
+      Beschreibung: string | null
+      Strasse: string | null
+      Hausnummer: string | null
+      Postleitzahl: string | null
+      Ort: string | null
+      Art: $Enums.einsatz_Art
+      Erstellt_am: Date | null
+      Geaendert_am: Date | null
     }, ExtArgs["result"]["einsatz"]>
     composites: {}
   }
@@ -2225,8 +5553,8 @@ export namespace Prisma {
      * // Get first 10 Einsatzs
      * const einsatzs = await prisma.einsatz.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const einsatzWithIdOnly = await prisma.einsatz.findMany({ select: { id: true } })
+     * // Only select the `ID`
+     * const einsatzWithIDOnly = await prisma.einsatz.findMany({ select: { ID: true } })
      * 
      */
     findMany<T extends einsatzFindManyArgs>(args?: SelectSubset<T, einsatzFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$einsatzPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -2511,11 +5839,20 @@ export namespace Prisma {
    * Fields of the einsatz model
    */
   interface einsatzFieldRefs {
-    readonly id: FieldRef<"einsatz", 'Int'>
-    readonly datum: FieldRef<"einsatz", 'DateTime'>
-    readonly beschreibung: FieldRef<"einsatz", 'String'>
-    readonly ort: FieldRef<"einsatz", 'String'>
-    readonly art: FieldRef<"einsatz", 'einsatz_art'>
+    readonly ID: FieldRef<"einsatz", 'Int'>
+    readonly Einsatznummer: FieldRef<"einsatz", 'Int'>
+    readonly Datum_Anfang: FieldRef<"einsatz", 'DateTime'>
+    readonly Uhrzeit_Anfang: FieldRef<"einsatz", 'DateTime'>
+    readonly Datum_Ende: FieldRef<"einsatz", 'DateTime'>
+    readonly Uhrzeit_Ende: FieldRef<"einsatz", 'DateTime'>
+    readonly Beschreibung: FieldRef<"einsatz", 'String'>
+    readonly Strasse: FieldRef<"einsatz", 'String'>
+    readonly Hausnummer: FieldRef<"einsatz", 'String'>
+    readonly Postleitzahl: FieldRef<"einsatz", 'String'>
+    readonly Ort: FieldRef<"einsatz", 'String'>
+    readonly Art: FieldRef<"einsatz", 'einsatz_Art'>
+    readonly Erstellt_am: FieldRef<"einsatz", 'DateTime'>
+    readonly Geaendert_am: FieldRef<"einsatz", 'DateTime'>
   }
     
 
@@ -2838,6 +6175,922 @@ export namespace Prisma {
 
 
   /**
+   * Model fahrzeug
+   */
+
+  export type AggregateFahrzeug = {
+    _count: FahrzeugCountAggregateOutputType | null
+    _avg: FahrzeugAvgAggregateOutputType | null
+    _sum: FahrzeugSumAggregateOutputType | null
+    _min: FahrzeugMinAggregateOutputType | null
+    _max: FahrzeugMaxAggregateOutputType | null
+  }
+
+  export type FahrzeugAvgAggregateOutputType = {
+    ID: number | null
+  }
+
+  export type FahrzeugSumAggregateOutputType = {
+    ID: number | null
+  }
+
+  export type FahrzeugMinAggregateOutputType = {
+    ID: number | null
+    Kennzeichen: string | null
+    Besatzungsstaerke: string | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
+  }
+
+  export type FahrzeugMaxAggregateOutputType = {
+    ID: number | null
+    Kennzeichen: string | null
+    Besatzungsstaerke: string | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
+  }
+
+  export type FahrzeugCountAggregateOutputType = {
+    ID: number
+    Kennzeichen: number
+    Besatzungsstaerke: number
+    Erstellt_am: number
+    Geaendert_am: number
+    _all: number
+  }
+
+
+  export type FahrzeugAvgAggregateInputType = {
+    ID?: true
+  }
+
+  export type FahrzeugSumAggregateInputType = {
+    ID?: true
+  }
+
+  export type FahrzeugMinAggregateInputType = {
+    ID?: true
+    Kennzeichen?: true
+    Besatzungsstaerke?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
+  }
+
+  export type FahrzeugMaxAggregateInputType = {
+    ID?: true
+    Kennzeichen?: true
+    Besatzungsstaerke?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
+  }
+
+  export type FahrzeugCountAggregateInputType = {
+    ID?: true
+    Kennzeichen?: true
+    Besatzungsstaerke?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
+    _all?: true
+  }
+
+  export type FahrzeugAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which fahrzeug to aggregate.
+     */
+    where?: fahrzeugWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of fahrzeugs to fetch.
+     */
+    orderBy?: fahrzeugOrderByWithRelationInput | fahrzeugOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: fahrzeugWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` fahrzeugs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` fahrzeugs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned fahrzeugs
+    **/
+    _count?: true | FahrzeugCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: FahrzeugAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FahrzeugSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FahrzeugMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FahrzeugMaxAggregateInputType
+  }
+
+  export type GetFahrzeugAggregateType<T extends FahrzeugAggregateArgs> = {
+        [P in keyof T & keyof AggregateFahrzeug]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFahrzeug[P]>
+      : GetScalarType<T[P], AggregateFahrzeug[P]>
+  }
+
+
+
+
+  export type fahrzeugGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: fahrzeugWhereInput
+    orderBy?: fahrzeugOrderByWithAggregationInput | fahrzeugOrderByWithAggregationInput[]
+    by: FahrzeugScalarFieldEnum[] | FahrzeugScalarFieldEnum
+    having?: fahrzeugScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FahrzeugCountAggregateInputType | true
+    _avg?: FahrzeugAvgAggregateInputType
+    _sum?: FahrzeugSumAggregateInputType
+    _min?: FahrzeugMinAggregateInputType
+    _max?: FahrzeugMaxAggregateInputType
+  }
+
+  export type FahrzeugGroupByOutputType = {
+    ID: number
+    Kennzeichen: string | null
+    Besatzungsstaerke: string | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
+    _count: FahrzeugCountAggregateOutputType | null
+    _avg: FahrzeugAvgAggregateOutputType | null
+    _sum: FahrzeugSumAggregateOutputType | null
+    _min: FahrzeugMinAggregateOutputType | null
+    _max: FahrzeugMaxAggregateOutputType | null
+  }
+
+  type GetFahrzeugGroupByPayload<T extends fahrzeugGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FahrzeugGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FahrzeugGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FahrzeugGroupByOutputType[P]>
+            : GetScalarType<T[P], FahrzeugGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type fahrzeugSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    ID?: boolean
+    Kennzeichen?: boolean
+    Besatzungsstaerke?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
+  }, ExtArgs["result"]["fahrzeug"]>
+
+
+
+  export type fahrzeugSelectScalar = {
+    ID?: boolean
+    Kennzeichen?: boolean
+    Besatzungsstaerke?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
+  }
+
+  export type fahrzeugOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Kennzeichen" | "Besatzungsstaerke" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["fahrzeug"]>
+
+  export type $fahrzeugPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "fahrzeug"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      ID: number
+      Kennzeichen: string | null
+      Besatzungsstaerke: string | null
+      Erstellt_am: Date | null
+      Geaendert_am: Date | null
+    }, ExtArgs["result"]["fahrzeug"]>
+    composites: {}
+  }
+
+  type fahrzeugGetPayload<S extends boolean | null | undefined | fahrzeugDefaultArgs> = $Result.GetResult<Prisma.$fahrzeugPayload, S>
+
+  type fahrzeugCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<fahrzeugFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FahrzeugCountAggregateInputType | true
+    }
+
+  export interface fahrzeugDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['fahrzeug'], meta: { name: 'fahrzeug' } }
+    /**
+     * Find zero or one Fahrzeug that matches the filter.
+     * @param {fahrzeugFindUniqueArgs} args - Arguments to find a Fahrzeug
+     * @example
+     * // Get one Fahrzeug
+     * const fahrzeug = await prisma.fahrzeug.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends fahrzeugFindUniqueArgs>(args: SelectSubset<T, fahrzeugFindUniqueArgs<ExtArgs>>): Prisma__fahrzeugClient<$Result.GetResult<Prisma.$fahrzeugPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Fahrzeug that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {fahrzeugFindUniqueOrThrowArgs} args - Arguments to find a Fahrzeug
+     * @example
+     * // Get one Fahrzeug
+     * const fahrzeug = await prisma.fahrzeug.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends fahrzeugFindUniqueOrThrowArgs>(args: SelectSubset<T, fahrzeugFindUniqueOrThrowArgs<ExtArgs>>): Prisma__fahrzeugClient<$Result.GetResult<Prisma.$fahrzeugPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Fahrzeug that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {fahrzeugFindFirstArgs} args - Arguments to find a Fahrzeug
+     * @example
+     * // Get one Fahrzeug
+     * const fahrzeug = await prisma.fahrzeug.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends fahrzeugFindFirstArgs>(args?: SelectSubset<T, fahrzeugFindFirstArgs<ExtArgs>>): Prisma__fahrzeugClient<$Result.GetResult<Prisma.$fahrzeugPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Fahrzeug that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {fahrzeugFindFirstOrThrowArgs} args - Arguments to find a Fahrzeug
+     * @example
+     * // Get one Fahrzeug
+     * const fahrzeug = await prisma.fahrzeug.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends fahrzeugFindFirstOrThrowArgs>(args?: SelectSubset<T, fahrzeugFindFirstOrThrowArgs<ExtArgs>>): Prisma__fahrzeugClient<$Result.GetResult<Prisma.$fahrzeugPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Fahrzeugs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {fahrzeugFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Fahrzeugs
+     * const fahrzeugs = await prisma.fahrzeug.findMany()
+     * 
+     * // Get first 10 Fahrzeugs
+     * const fahrzeugs = await prisma.fahrzeug.findMany({ take: 10 })
+     * 
+     * // Only select the `ID`
+     * const fahrzeugWithIDOnly = await prisma.fahrzeug.findMany({ select: { ID: true } })
+     * 
+     */
+    findMany<T extends fahrzeugFindManyArgs>(args?: SelectSubset<T, fahrzeugFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$fahrzeugPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Fahrzeug.
+     * @param {fahrzeugCreateArgs} args - Arguments to create a Fahrzeug.
+     * @example
+     * // Create one Fahrzeug
+     * const Fahrzeug = await prisma.fahrzeug.create({
+     *   data: {
+     *     // ... data to create a Fahrzeug
+     *   }
+     * })
+     * 
+     */
+    create<T extends fahrzeugCreateArgs>(args: SelectSubset<T, fahrzeugCreateArgs<ExtArgs>>): Prisma__fahrzeugClient<$Result.GetResult<Prisma.$fahrzeugPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Fahrzeugs.
+     * @param {fahrzeugCreateManyArgs} args - Arguments to create many Fahrzeugs.
+     * @example
+     * // Create many Fahrzeugs
+     * const fahrzeug = await prisma.fahrzeug.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends fahrzeugCreateManyArgs>(args?: SelectSubset<T, fahrzeugCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Fahrzeug.
+     * @param {fahrzeugDeleteArgs} args - Arguments to delete one Fahrzeug.
+     * @example
+     * // Delete one Fahrzeug
+     * const Fahrzeug = await prisma.fahrzeug.delete({
+     *   where: {
+     *     // ... filter to delete one Fahrzeug
+     *   }
+     * })
+     * 
+     */
+    delete<T extends fahrzeugDeleteArgs>(args: SelectSubset<T, fahrzeugDeleteArgs<ExtArgs>>): Prisma__fahrzeugClient<$Result.GetResult<Prisma.$fahrzeugPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Fahrzeug.
+     * @param {fahrzeugUpdateArgs} args - Arguments to update one Fahrzeug.
+     * @example
+     * // Update one Fahrzeug
+     * const fahrzeug = await prisma.fahrzeug.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends fahrzeugUpdateArgs>(args: SelectSubset<T, fahrzeugUpdateArgs<ExtArgs>>): Prisma__fahrzeugClient<$Result.GetResult<Prisma.$fahrzeugPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Fahrzeugs.
+     * @param {fahrzeugDeleteManyArgs} args - Arguments to filter Fahrzeugs to delete.
+     * @example
+     * // Delete a few Fahrzeugs
+     * const { count } = await prisma.fahrzeug.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends fahrzeugDeleteManyArgs>(args?: SelectSubset<T, fahrzeugDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Fahrzeugs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {fahrzeugUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Fahrzeugs
+     * const fahrzeug = await prisma.fahrzeug.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends fahrzeugUpdateManyArgs>(args: SelectSubset<T, fahrzeugUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Fahrzeug.
+     * @param {fahrzeugUpsertArgs} args - Arguments to update or create a Fahrzeug.
+     * @example
+     * // Update or create a Fahrzeug
+     * const fahrzeug = await prisma.fahrzeug.upsert({
+     *   create: {
+     *     // ... data to create a Fahrzeug
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Fahrzeug we want to update
+     *   }
+     * })
+     */
+    upsert<T extends fahrzeugUpsertArgs>(args: SelectSubset<T, fahrzeugUpsertArgs<ExtArgs>>): Prisma__fahrzeugClient<$Result.GetResult<Prisma.$fahrzeugPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Fahrzeugs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {fahrzeugCountArgs} args - Arguments to filter Fahrzeugs to count.
+     * @example
+     * // Count the number of Fahrzeugs
+     * const count = await prisma.fahrzeug.count({
+     *   where: {
+     *     // ... the filter for the Fahrzeugs we want to count
+     *   }
+     * })
+    **/
+    count<T extends fahrzeugCountArgs>(
+      args?: Subset<T, fahrzeugCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FahrzeugCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Fahrzeug.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FahrzeugAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FahrzeugAggregateArgs>(args: Subset<T, FahrzeugAggregateArgs>): Prisma.PrismaPromise<GetFahrzeugAggregateType<T>>
+
+    /**
+     * Group by Fahrzeug.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {fahrzeugGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends fahrzeugGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: fahrzeugGroupByArgs['orderBy'] }
+        : { orderBy?: fahrzeugGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, fahrzeugGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFahrzeugGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the fahrzeug model
+   */
+  readonly fields: fahrzeugFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for fahrzeug.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__fahrzeugClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the fahrzeug model
+   */
+  interface fahrzeugFieldRefs {
+    readonly ID: FieldRef<"fahrzeug", 'Int'>
+    readonly Kennzeichen: FieldRef<"fahrzeug", 'String'>
+    readonly Besatzungsstaerke: FieldRef<"fahrzeug", 'String'>
+    readonly Erstellt_am: FieldRef<"fahrzeug", 'DateTime'>
+    readonly Geaendert_am: FieldRef<"fahrzeug", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * fahrzeug findUnique
+   */
+  export type fahrzeugFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the fahrzeug
+     */
+    select?: fahrzeugSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the fahrzeug
+     */
+    omit?: fahrzeugOmit<ExtArgs> | null
+    /**
+     * Filter, which fahrzeug to fetch.
+     */
+    where: fahrzeugWhereUniqueInput
+  }
+
+  /**
+   * fahrzeug findUniqueOrThrow
+   */
+  export type fahrzeugFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the fahrzeug
+     */
+    select?: fahrzeugSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the fahrzeug
+     */
+    omit?: fahrzeugOmit<ExtArgs> | null
+    /**
+     * Filter, which fahrzeug to fetch.
+     */
+    where: fahrzeugWhereUniqueInput
+  }
+
+  /**
+   * fahrzeug findFirst
+   */
+  export type fahrzeugFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the fahrzeug
+     */
+    select?: fahrzeugSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the fahrzeug
+     */
+    omit?: fahrzeugOmit<ExtArgs> | null
+    /**
+     * Filter, which fahrzeug to fetch.
+     */
+    where?: fahrzeugWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of fahrzeugs to fetch.
+     */
+    orderBy?: fahrzeugOrderByWithRelationInput | fahrzeugOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for fahrzeugs.
+     */
+    cursor?: fahrzeugWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` fahrzeugs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` fahrzeugs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of fahrzeugs.
+     */
+    distinct?: FahrzeugScalarFieldEnum | FahrzeugScalarFieldEnum[]
+  }
+
+  /**
+   * fahrzeug findFirstOrThrow
+   */
+  export type fahrzeugFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the fahrzeug
+     */
+    select?: fahrzeugSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the fahrzeug
+     */
+    omit?: fahrzeugOmit<ExtArgs> | null
+    /**
+     * Filter, which fahrzeug to fetch.
+     */
+    where?: fahrzeugWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of fahrzeugs to fetch.
+     */
+    orderBy?: fahrzeugOrderByWithRelationInput | fahrzeugOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for fahrzeugs.
+     */
+    cursor?: fahrzeugWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` fahrzeugs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` fahrzeugs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of fahrzeugs.
+     */
+    distinct?: FahrzeugScalarFieldEnum | FahrzeugScalarFieldEnum[]
+  }
+
+  /**
+   * fahrzeug findMany
+   */
+  export type fahrzeugFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the fahrzeug
+     */
+    select?: fahrzeugSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the fahrzeug
+     */
+    omit?: fahrzeugOmit<ExtArgs> | null
+    /**
+     * Filter, which fahrzeugs to fetch.
+     */
+    where?: fahrzeugWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of fahrzeugs to fetch.
+     */
+    orderBy?: fahrzeugOrderByWithRelationInput | fahrzeugOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing fahrzeugs.
+     */
+    cursor?: fahrzeugWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` fahrzeugs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` fahrzeugs.
+     */
+    skip?: number
+    distinct?: FahrzeugScalarFieldEnum | FahrzeugScalarFieldEnum[]
+  }
+
+  /**
+   * fahrzeug create
+   */
+  export type fahrzeugCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the fahrzeug
+     */
+    select?: fahrzeugSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the fahrzeug
+     */
+    omit?: fahrzeugOmit<ExtArgs> | null
+    /**
+     * The data needed to create a fahrzeug.
+     */
+    data?: XOR<fahrzeugCreateInput, fahrzeugUncheckedCreateInput>
+  }
+
+  /**
+   * fahrzeug createMany
+   */
+  export type fahrzeugCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many fahrzeugs.
+     */
+    data: fahrzeugCreateManyInput | fahrzeugCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * fahrzeug update
+   */
+  export type fahrzeugUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the fahrzeug
+     */
+    select?: fahrzeugSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the fahrzeug
+     */
+    omit?: fahrzeugOmit<ExtArgs> | null
+    /**
+     * The data needed to update a fahrzeug.
+     */
+    data: XOR<fahrzeugUpdateInput, fahrzeugUncheckedUpdateInput>
+    /**
+     * Choose, which fahrzeug to update.
+     */
+    where: fahrzeugWhereUniqueInput
+  }
+
+  /**
+   * fahrzeug updateMany
+   */
+  export type fahrzeugUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update fahrzeugs.
+     */
+    data: XOR<fahrzeugUpdateManyMutationInput, fahrzeugUncheckedUpdateManyInput>
+    /**
+     * Filter which fahrzeugs to update
+     */
+    where?: fahrzeugWhereInput
+    /**
+     * Limit how many fahrzeugs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * fahrzeug upsert
+   */
+  export type fahrzeugUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the fahrzeug
+     */
+    select?: fahrzeugSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the fahrzeug
+     */
+    omit?: fahrzeugOmit<ExtArgs> | null
+    /**
+     * The filter to search for the fahrzeug to update in case it exists.
+     */
+    where: fahrzeugWhereUniqueInput
+    /**
+     * In case the fahrzeug found by the `where` argument doesn't exist, create a new fahrzeug with this data.
+     */
+    create: XOR<fahrzeugCreateInput, fahrzeugUncheckedCreateInput>
+    /**
+     * In case the fahrzeug was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<fahrzeugUpdateInput, fahrzeugUncheckedUpdateInput>
+  }
+
+  /**
+   * fahrzeug delete
+   */
+  export type fahrzeugDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the fahrzeug
+     */
+    select?: fahrzeugSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the fahrzeug
+     */
+    omit?: fahrzeugOmit<ExtArgs> | null
+    /**
+     * Filter which fahrzeug to delete.
+     */
+    where: fahrzeugWhereUniqueInput
+  }
+
+  /**
+   * fahrzeug deleteMany
+   */
+  export type fahrzeugDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which fahrzeugs to delete
+     */
+    where?: fahrzeugWhereInput
+    /**
+     * Limit how many fahrzeugs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * fahrzeug without action
+   */
+  export type fahrzeugDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the fahrzeug
+     */
+    select?: fahrzeugSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the fahrzeug
+     */
+    omit?: fahrzeugOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Model ff_mitglied
    */
 
@@ -2850,73 +7103,91 @@ export namespace Prisma {
   }
 
   export type Ff_mitgliedAvgAggregateOutputType = {
-    id: number | null
-    person_id: number | null
+    ID: number | null
+    Person_ID: number | null
   }
 
   export type Ff_mitgliedSumAggregateOutputType = {
-    id: number | null
-    person_id: number | null
+    ID: number | null
+    Person_ID: number | null
   }
 
   export type Ff_mitgliedMinAggregateOutputType = {
-    id: number | null
-    person_id: number | null
-    eintrittsdatum: Date | null
-    austrittsdatum: Date | null
-    status: $Enums.ff_mitglied_status | null
+    ID: number | null
+    Person_ID: number | null
+    Eintrittsdatum: Date | null
+    Austrittsdatum: Date | null
+    Aufnahmedatum: Date | null
+    Status: $Enums.ff_mitglied_Status | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type Ff_mitgliedMaxAggregateOutputType = {
-    id: number | null
-    person_id: number | null
-    eintrittsdatum: Date | null
-    austrittsdatum: Date | null
-    status: $Enums.ff_mitglied_status | null
+    ID: number | null
+    Person_ID: number | null
+    Eintrittsdatum: Date | null
+    Austrittsdatum: Date | null
+    Aufnahmedatum: Date | null
+    Status: $Enums.ff_mitglied_Status | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type Ff_mitgliedCountAggregateOutputType = {
-    id: number
-    person_id: number
-    eintrittsdatum: number
-    austrittsdatum: number
-    status: number
+    ID: number
+    Person_ID: number
+    Eintrittsdatum: number
+    Austrittsdatum: number
+    Aufnahmedatum: number
+    Status: number
+    Erstellt_am: number
+    Geaendert_am: number
     _all: number
   }
 
 
   export type Ff_mitgliedAvgAggregateInputType = {
-    id?: true
-    person_id?: true
+    ID?: true
+    Person_ID?: true
   }
 
   export type Ff_mitgliedSumAggregateInputType = {
-    id?: true
-    person_id?: true
+    ID?: true
+    Person_ID?: true
   }
 
   export type Ff_mitgliedMinAggregateInputType = {
-    id?: true
-    person_id?: true
-    eintrittsdatum?: true
-    austrittsdatum?: true
-    status?: true
+    ID?: true
+    Person_ID?: true
+    Eintrittsdatum?: true
+    Austrittsdatum?: true
+    Aufnahmedatum?: true
+    Status?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type Ff_mitgliedMaxAggregateInputType = {
-    id?: true
-    person_id?: true
-    eintrittsdatum?: true
-    austrittsdatum?: true
-    status?: true
+    ID?: true
+    Person_ID?: true
+    Eintrittsdatum?: true
+    Austrittsdatum?: true
+    Aufnahmedatum?: true
+    Status?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type Ff_mitgliedCountAggregateInputType = {
-    id?: true
-    person_id?: true
-    eintrittsdatum?: true
-    austrittsdatum?: true
-    status?: true
+    ID?: true
+    Person_ID?: true
+    Eintrittsdatum?: true
+    Austrittsdatum?: true
+    Aufnahmedatum?: true
+    Status?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
     _all?: true
   }
 
@@ -3007,11 +7278,14 @@ export namespace Prisma {
   }
 
   export type Ff_mitgliedGroupByOutputType = {
-    id: number
-    person_id: number
-    eintrittsdatum: Date
-    austrittsdatum: Date | null
-    status: $Enums.ff_mitglied_status
+    ID: number
+    Person_ID: number
+    Eintrittsdatum: Date
+    Austrittsdatum: Date | null
+    Aufnahmedatum: Date | null
+    Status: $Enums.ff_mitglied_Status
+    Erstellt_am: Date
+    Geaendert_am: Date | null
     _count: Ff_mitgliedCountAggregateOutputType | null
     _avg: Ff_mitgliedAvgAggregateOutputType | null
     _sum: Ff_mitgliedSumAggregateOutputType | null
@@ -3034,32 +7308,38 @@ export namespace Prisma {
 
 
   export type ff_mitgliedSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    person_id?: boolean
-    eintrittsdatum?: boolean
-    austrittsdatum?: boolean
-    status?: boolean
+    ID?: boolean
+    Person_ID?: boolean
+    Eintrittsdatum?: boolean
+    Austrittsdatum?: boolean
+    Aufnahmedatum?: boolean
+    Status?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
     person?: boolean | personDefaultArgs<ExtArgs>
+    ff_mitglied_lehrgang?: boolean | ff_mitglied$ff_mitglied_lehrgangArgs<ExtArgs>
     mitglied_funktionen?: boolean | ff_mitglied$mitglied_funktionenArgs<ExtArgs>
-    teilnahme?: boolean | ff_mitglied$teilnahmeArgs<ExtArgs>
     _count?: boolean | Ff_mitgliedCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["ff_mitglied"]>
 
 
 
   export type ff_mitgliedSelectScalar = {
-    id?: boolean
-    person_id?: boolean
-    eintrittsdatum?: boolean
-    austrittsdatum?: boolean
-    status?: boolean
+    ID?: boolean
+    Person_ID?: boolean
+    Eintrittsdatum?: boolean
+    Austrittsdatum?: boolean
+    Aufnahmedatum?: boolean
+    Status?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
   }
 
-  export type ff_mitgliedOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "person_id" | "eintrittsdatum" | "austrittsdatum" | "status", ExtArgs["result"]["ff_mitglied"]>
+  export type ff_mitgliedOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Person_ID" | "Eintrittsdatum" | "Austrittsdatum" | "Aufnahmedatum" | "Status" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["ff_mitglied"]>
   export type ff_mitgliedInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     person?: boolean | personDefaultArgs<ExtArgs>
+    ff_mitglied_lehrgang?: boolean | ff_mitglied$ff_mitglied_lehrgangArgs<ExtArgs>
     mitglied_funktionen?: boolean | ff_mitglied$mitglied_funktionenArgs<ExtArgs>
-    teilnahme?: boolean | ff_mitglied$teilnahmeArgs<ExtArgs>
     _count?: boolean | Ff_mitgliedCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -3067,15 +7347,18 @@ export namespace Prisma {
     name: "ff_mitglied"
     objects: {
       person: Prisma.$personPayload<ExtArgs>
+      ff_mitglied_lehrgang: Prisma.$ff_mitglied_lehrgangPayload<ExtArgs>[]
       mitglied_funktionen: Prisma.$mitglied_funktionenPayload<ExtArgs>[]
-      teilnahme: Prisma.$teilnahmePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
-      person_id: number
-      eintrittsdatum: Date
-      austrittsdatum: Date | null
-      status: $Enums.ff_mitglied_status
+      ID: number
+      Person_ID: number
+      Eintrittsdatum: Date
+      Austrittsdatum: Date | null
+      Aufnahmedatum: Date | null
+      Status: $Enums.ff_mitglied_Status
+      Erstellt_am: Date
+      Geaendert_am: Date | null
     }, ExtArgs["result"]["ff_mitglied"]>
     composites: {}
   }
@@ -3159,8 +7442,8 @@ export namespace Prisma {
      * // Get first 10 Ff_mitglieds
      * const ff_mitglieds = await prisma.ff_mitglied.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const ff_mitgliedWithIdOnly = await prisma.ff_mitglied.findMany({ select: { id: true } })
+     * // Only select the `ID`
+     * const ff_mitgliedWithIDOnly = await prisma.ff_mitglied.findMany({ select: { ID: true } })
      * 
      */
     findMany<T extends ff_mitgliedFindManyArgs>(args?: SelectSubset<T, ff_mitgliedFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ff_mitgliedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -3417,8 +7700,8 @@ export namespace Prisma {
   export interface Prisma__ff_mitgliedClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     person<T extends personDefaultArgs<ExtArgs> = {}>(args?: Subset<T, personDefaultArgs<ExtArgs>>): Prisma__personClient<$Result.GetResult<Prisma.$personPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    ff_mitglied_lehrgang<T extends ff_mitglied$ff_mitglied_lehrgangArgs<ExtArgs> = {}>(args?: Subset<T, ff_mitglied$ff_mitglied_lehrgangArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ff_mitglied_lehrgangPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     mitglied_funktionen<T extends ff_mitglied$mitglied_funktionenArgs<ExtArgs> = {}>(args?: Subset<T, ff_mitglied$mitglied_funktionenArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$mitglied_funktionenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    teilnahme<T extends ff_mitglied$teilnahmeArgs<ExtArgs> = {}>(args?: Subset<T, ff_mitglied$teilnahmeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$teilnahmePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3448,11 +7731,14 @@ export namespace Prisma {
    * Fields of the ff_mitglied model
    */
   interface ff_mitgliedFieldRefs {
-    readonly id: FieldRef<"ff_mitglied", 'Int'>
-    readonly person_id: FieldRef<"ff_mitglied", 'Int'>
-    readonly eintrittsdatum: FieldRef<"ff_mitglied", 'DateTime'>
-    readonly austrittsdatum: FieldRef<"ff_mitglied", 'DateTime'>
-    readonly status: FieldRef<"ff_mitglied", 'ff_mitglied_status'>
+    readonly ID: FieldRef<"ff_mitglied", 'Int'>
+    readonly Person_ID: FieldRef<"ff_mitglied", 'Int'>
+    readonly Eintrittsdatum: FieldRef<"ff_mitglied", 'DateTime'>
+    readonly Austrittsdatum: FieldRef<"ff_mitglied", 'DateTime'>
+    readonly Aufnahmedatum: FieldRef<"ff_mitglied", 'DateTime'>
+    readonly Status: FieldRef<"ff_mitglied", 'ff_mitglied_Status'>
+    readonly Erstellt_am: FieldRef<"ff_mitglied", 'DateTime'>
+    readonly Geaendert_am: FieldRef<"ff_mitglied", 'DateTime'>
   }
     
 
@@ -3796,6 +8082,30 @@ export namespace Prisma {
   }
 
   /**
+   * ff_mitglied.ff_mitglied_lehrgang
+   */
+  export type ff_mitglied$ff_mitglied_lehrgangArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ff_mitglied_lehrgang
+     */
+    select?: ff_mitglied_lehrgangSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ff_mitglied_lehrgang
+     */
+    omit?: ff_mitglied_lehrgangOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ff_mitglied_lehrgangInclude<ExtArgs> | null
+    where?: ff_mitglied_lehrgangWhereInput
+    orderBy?: ff_mitglied_lehrgangOrderByWithRelationInput | ff_mitglied_lehrgangOrderByWithRelationInput[]
+    cursor?: ff_mitglied_lehrgangWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Ff_mitglied_lehrgangScalarFieldEnum | Ff_mitglied_lehrgangScalarFieldEnum[]
+  }
+
+  /**
    * ff_mitglied.mitglied_funktionen
    */
   export type ff_mitglied$mitglied_funktionenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3820,30 +8130,6 @@ export namespace Prisma {
   }
 
   /**
-   * ff_mitglied.teilnahme
-   */
-  export type ff_mitglied$teilnahmeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the teilnahme
-     */
-    select?: teilnahmeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the teilnahme
-     */
-    omit?: teilnahmeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: teilnahmeInclude<ExtArgs> | null
-    where?: teilnahmeWhereInput
-    orderBy?: teilnahmeOrderByWithRelationInput | teilnahmeOrderByWithRelationInput[]
-    cursor?: teilnahmeWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: TeilnahmeScalarFieldEnum | TeilnahmeScalarFieldEnum[]
-  }
-
-  /**
    * ff_mitglied without action
    */
   export type ff_mitgliedDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3863,6 +8149,992 @@ export namespace Prisma {
 
 
   /**
+   * Model ff_mitglied_lehrgang
+   */
+
+  export type AggregateFf_mitglied_lehrgang = {
+    _count: Ff_mitglied_lehrgangCountAggregateOutputType | null
+    _avg: Ff_mitglied_lehrgangAvgAggregateOutputType | null
+    _sum: Ff_mitglied_lehrgangSumAggregateOutputType | null
+    _min: Ff_mitglied_lehrgangMinAggregateOutputType | null
+    _max: Ff_mitglied_lehrgangMaxAggregateOutputType | null
+  }
+
+  export type Ff_mitglied_lehrgangAvgAggregateOutputType = {
+    ID: number | null
+    FF_Mitglied_ID: number | null
+    Lehrgang_ID: number | null
+  }
+
+  export type Ff_mitglied_lehrgangSumAggregateOutputType = {
+    ID: number | null
+    FF_Mitglied_ID: number | null
+    Lehrgang_ID: number | null
+  }
+
+  export type Ff_mitglied_lehrgangMinAggregateOutputType = {
+    ID: number | null
+    FF_Mitglied_ID: number | null
+    Lehrgang_ID: number | null
+    Datum_bestanden: Date | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
+  }
+
+  export type Ff_mitglied_lehrgangMaxAggregateOutputType = {
+    ID: number | null
+    FF_Mitglied_ID: number | null
+    Lehrgang_ID: number | null
+    Datum_bestanden: Date | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
+  }
+
+  export type Ff_mitglied_lehrgangCountAggregateOutputType = {
+    ID: number
+    FF_Mitglied_ID: number
+    Lehrgang_ID: number
+    Datum_bestanden: number
+    Erstellt_am: number
+    Geaendert_am: number
+    _all: number
+  }
+
+
+  export type Ff_mitglied_lehrgangAvgAggregateInputType = {
+    ID?: true
+    FF_Mitglied_ID?: true
+    Lehrgang_ID?: true
+  }
+
+  export type Ff_mitglied_lehrgangSumAggregateInputType = {
+    ID?: true
+    FF_Mitglied_ID?: true
+    Lehrgang_ID?: true
+  }
+
+  export type Ff_mitglied_lehrgangMinAggregateInputType = {
+    ID?: true
+    FF_Mitglied_ID?: true
+    Lehrgang_ID?: true
+    Datum_bestanden?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
+  }
+
+  export type Ff_mitglied_lehrgangMaxAggregateInputType = {
+    ID?: true
+    FF_Mitglied_ID?: true
+    Lehrgang_ID?: true
+    Datum_bestanden?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
+  }
+
+  export type Ff_mitglied_lehrgangCountAggregateInputType = {
+    ID?: true
+    FF_Mitglied_ID?: true
+    Lehrgang_ID?: true
+    Datum_bestanden?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
+    _all?: true
+  }
+
+  export type Ff_mitglied_lehrgangAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ff_mitglied_lehrgang to aggregate.
+     */
+    where?: ff_mitglied_lehrgangWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ff_mitglied_lehrgangs to fetch.
+     */
+    orderBy?: ff_mitglied_lehrgangOrderByWithRelationInput | ff_mitglied_lehrgangOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ff_mitglied_lehrgangWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ff_mitglied_lehrgangs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ff_mitglied_lehrgangs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ff_mitglied_lehrgangs
+    **/
+    _count?: true | Ff_mitglied_lehrgangCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Ff_mitglied_lehrgangAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Ff_mitglied_lehrgangSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Ff_mitglied_lehrgangMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Ff_mitglied_lehrgangMaxAggregateInputType
+  }
+
+  export type GetFf_mitglied_lehrgangAggregateType<T extends Ff_mitglied_lehrgangAggregateArgs> = {
+        [P in keyof T & keyof AggregateFf_mitglied_lehrgang]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFf_mitglied_lehrgang[P]>
+      : GetScalarType<T[P], AggregateFf_mitglied_lehrgang[P]>
+  }
+
+
+
+
+  export type ff_mitglied_lehrgangGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ff_mitglied_lehrgangWhereInput
+    orderBy?: ff_mitglied_lehrgangOrderByWithAggregationInput | ff_mitglied_lehrgangOrderByWithAggregationInput[]
+    by: Ff_mitglied_lehrgangScalarFieldEnum[] | Ff_mitglied_lehrgangScalarFieldEnum
+    having?: ff_mitglied_lehrgangScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Ff_mitglied_lehrgangCountAggregateInputType | true
+    _avg?: Ff_mitglied_lehrgangAvgAggregateInputType
+    _sum?: Ff_mitglied_lehrgangSumAggregateInputType
+    _min?: Ff_mitglied_lehrgangMinAggregateInputType
+    _max?: Ff_mitglied_lehrgangMaxAggregateInputType
+  }
+
+  export type Ff_mitglied_lehrgangGroupByOutputType = {
+    ID: number
+    FF_Mitglied_ID: number
+    Lehrgang_ID: number
+    Datum_bestanden: Date | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
+    _count: Ff_mitglied_lehrgangCountAggregateOutputType | null
+    _avg: Ff_mitglied_lehrgangAvgAggregateOutputType | null
+    _sum: Ff_mitglied_lehrgangSumAggregateOutputType | null
+    _min: Ff_mitglied_lehrgangMinAggregateOutputType | null
+    _max: Ff_mitglied_lehrgangMaxAggregateOutputType | null
+  }
+
+  type GetFf_mitglied_lehrgangGroupByPayload<T extends ff_mitglied_lehrgangGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Ff_mitglied_lehrgangGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Ff_mitglied_lehrgangGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Ff_mitglied_lehrgangGroupByOutputType[P]>
+            : GetScalarType<T[P], Ff_mitglied_lehrgangGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ff_mitglied_lehrgangSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    ID?: boolean
+    FF_Mitglied_ID?: boolean
+    Lehrgang_ID?: boolean
+    Datum_bestanden?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
+    ff_mitglied?: boolean | ff_mitgliedDefaultArgs<ExtArgs>
+    lehrgang?: boolean | lehrgangDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["ff_mitglied_lehrgang"]>
+
+
+
+  export type ff_mitglied_lehrgangSelectScalar = {
+    ID?: boolean
+    FF_Mitglied_ID?: boolean
+    Lehrgang_ID?: boolean
+    Datum_bestanden?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
+  }
+
+  export type ff_mitglied_lehrgangOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "FF_Mitglied_ID" | "Lehrgang_ID" | "Datum_bestanden" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["ff_mitglied_lehrgang"]>
+  export type ff_mitglied_lehrgangInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ff_mitglied?: boolean | ff_mitgliedDefaultArgs<ExtArgs>
+    lehrgang?: boolean | lehrgangDefaultArgs<ExtArgs>
+  }
+
+  export type $ff_mitglied_lehrgangPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ff_mitglied_lehrgang"
+    objects: {
+      ff_mitglied: Prisma.$ff_mitgliedPayload<ExtArgs>
+      lehrgang: Prisma.$lehrgangPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      ID: number
+      FF_Mitglied_ID: number
+      Lehrgang_ID: number
+      Datum_bestanden: Date | null
+      Erstellt_am: Date | null
+      Geaendert_am: Date | null
+    }, ExtArgs["result"]["ff_mitglied_lehrgang"]>
+    composites: {}
+  }
+
+  type ff_mitglied_lehrgangGetPayload<S extends boolean | null | undefined | ff_mitglied_lehrgangDefaultArgs> = $Result.GetResult<Prisma.$ff_mitglied_lehrgangPayload, S>
+
+  type ff_mitglied_lehrgangCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ff_mitglied_lehrgangFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Ff_mitglied_lehrgangCountAggregateInputType | true
+    }
+
+  export interface ff_mitglied_lehrgangDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ff_mitglied_lehrgang'], meta: { name: 'ff_mitglied_lehrgang' } }
+    /**
+     * Find zero or one Ff_mitglied_lehrgang that matches the filter.
+     * @param {ff_mitglied_lehrgangFindUniqueArgs} args - Arguments to find a Ff_mitglied_lehrgang
+     * @example
+     * // Get one Ff_mitglied_lehrgang
+     * const ff_mitglied_lehrgang = await prisma.ff_mitglied_lehrgang.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ff_mitglied_lehrgangFindUniqueArgs>(args: SelectSubset<T, ff_mitglied_lehrgangFindUniqueArgs<ExtArgs>>): Prisma__ff_mitglied_lehrgangClient<$Result.GetResult<Prisma.$ff_mitglied_lehrgangPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Ff_mitglied_lehrgang that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ff_mitglied_lehrgangFindUniqueOrThrowArgs} args - Arguments to find a Ff_mitglied_lehrgang
+     * @example
+     * // Get one Ff_mitglied_lehrgang
+     * const ff_mitglied_lehrgang = await prisma.ff_mitglied_lehrgang.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ff_mitglied_lehrgangFindUniqueOrThrowArgs>(args: SelectSubset<T, ff_mitglied_lehrgangFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ff_mitglied_lehrgangClient<$Result.GetResult<Prisma.$ff_mitglied_lehrgangPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Ff_mitglied_lehrgang that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ff_mitglied_lehrgangFindFirstArgs} args - Arguments to find a Ff_mitglied_lehrgang
+     * @example
+     * // Get one Ff_mitglied_lehrgang
+     * const ff_mitglied_lehrgang = await prisma.ff_mitglied_lehrgang.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ff_mitglied_lehrgangFindFirstArgs>(args?: SelectSubset<T, ff_mitglied_lehrgangFindFirstArgs<ExtArgs>>): Prisma__ff_mitglied_lehrgangClient<$Result.GetResult<Prisma.$ff_mitglied_lehrgangPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Ff_mitglied_lehrgang that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ff_mitglied_lehrgangFindFirstOrThrowArgs} args - Arguments to find a Ff_mitglied_lehrgang
+     * @example
+     * // Get one Ff_mitglied_lehrgang
+     * const ff_mitglied_lehrgang = await prisma.ff_mitglied_lehrgang.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ff_mitglied_lehrgangFindFirstOrThrowArgs>(args?: SelectSubset<T, ff_mitglied_lehrgangFindFirstOrThrowArgs<ExtArgs>>): Prisma__ff_mitglied_lehrgangClient<$Result.GetResult<Prisma.$ff_mitglied_lehrgangPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Ff_mitglied_lehrgangs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ff_mitglied_lehrgangFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Ff_mitglied_lehrgangs
+     * const ff_mitglied_lehrgangs = await prisma.ff_mitglied_lehrgang.findMany()
+     * 
+     * // Get first 10 Ff_mitglied_lehrgangs
+     * const ff_mitglied_lehrgangs = await prisma.ff_mitglied_lehrgang.findMany({ take: 10 })
+     * 
+     * // Only select the `ID`
+     * const ff_mitglied_lehrgangWithIDOnly = await prisma.ff_mitglied_lehrgang.findMany({ select: { ID: true } })
+     * 
+     */
+    findMany<T extends ff_mitglied_lehrgangFindManyArgs>(args?: SelectSubset<T, ff_mitglied_lehrgangFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ff_mitglied_lehrgangPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Ff_mitglied_lehrgang.
+     * @param {ff_mitglied_lehrgangCreateArgs} args - Arguments to create a Ff_mitglied_lehrgang.
+     * @example
+     * // Create one Ff_mitglied_lehrgang
+     * const Ff_mitglied_lehrgang = await prisma.ff_mitglied_lehrgang.create({
+     *   data: {
+     *     // ... data to create a Ff_mitglied_lehrgang
+     *   }
+     * })
+     * 
+     */
+    create<T extends ff_mitglied_lehrgangCreateArgs>(args: SelectSubset<T, ff_mitglied_lehrgangCreateArgs<ExtArgs>>): Prisma__ff_mitglied_lehrgangClient<$Result.GetResult<Prisma.$ff_mitglied_lehrgangPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Ff_mitglied_lehrgangs.
+     * @param {ff_mitglied_lehrgangCreateManyArgs} args - Arguments to create many Ff_mitglied_lehrgangs.
+     * @example
+     * // Create many Ff_mitglied_lehrgangs
+     * const ff_mitglied_lehrgang = await prisma.ff_mitglied_lehrgang.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ff_mitglied_lehrgangCreateManyArgs>(args?: SelectSubset<T, ff_mitglied_lehrgangCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Ff_mitglied_lehrgang.
+     * @param {ff_mitglied_lehrgangDeleteArgs} args - Arguments to delete one Ff_mitglied_lehrgang.
+     * @example
+     * // Delete one Ff_mitglied_lehrgang
+     * const Ff_mitglied_lehrgang = await prisma.ff_mitglied_lehrgang.delete({
+     *   where: {
+     *     // ... filter to delete one Ff_mitglied_lehrgang
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ff_mitglied_lehrgangDeleteArgs>(args: SelectSubset<T, ff_mitglied_lehrgangDeleteArgs<ExtArgs>>): Prisma__ff_mitglied_lehrgangClient<$Result.GetResult<Prisma.$ff_mitglied_lehrgangPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Ff_mitglied_lehrgang.
+     * @param {ff_mitglied_lehrgangUpdateArgs} args - Arguments to update one Ff_mitglied_lehrgang.
+     * @example
+     * // Update one Ff_mitglied_lehrgang
+     * const ff_mitglied_lehrgang = await prisma.ff_mitglied_lehrgang.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ff_mitglied_lehrgangUpdateArgs>(args: SelectSubset<T, ff_mitglied_lehrgangUpdateArgs<ExtArgs>>): Prisma__ff_mitglied_lehrgangClient<$Result.GetResult<Prisma.$ff_mitglied_lehrgangPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Ff_mitglied_lehrgangs.
+     * @param {ff_mitglied_lehrgangDeleteManyArgs} args - Arguments to filter Ff_mitglied_lehrgangs to delete.
+     * @example
+     * // Delete a few Ff_mitglied_lehrgangs
+     * const { count } = await prisma.ff_mitglied_lehrgang.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ff_mitglied_lehrgangDeleteManyArgs>(args?: SelectSubset<T, ff_mitglied_lehrgangDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Ff_mitglied_lehrgangs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ff_mitglied_lehrgangUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Ff_mitglied_lehrgangs
+     * const ff_mitglied_lehrgang = await prisma.ff_mitglied_lehrgang.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ff_mitglied_lehrgangUpdateManyArgs>(args: SelectSubset<T, ff_mitglied_lehrgangUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Ff_mitglied_lehrgang.
+     * @param {ff_mitglied_lehrgangUpsertArgs} args - Arguments to update or create a Ff_mitglied_lehrgang.
+     * @example
+     * // Update or create a Ff_mitglied_lehrgang
+     * const ff_mitglied_lehrgang = await prisma.ff_mitglied_lehrgang.upsert({
+     *   create: {
+     *     // ... data to create a Ff_mitglied_lehrgang
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Ff_mitglied_lehrgang we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ff_mitglied_lehrgangUpsertArgs>(args: SelectSubset<T, ff_mitglied_lehrgangUpsertArgs<ExtArgs>>): Prisma__ff_mitglied_lehrgangClient<$Result.GetResult<Prisma.$ff_mitglied_lehrgangPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Ff_mitglied_lehrgangs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ff_mitglied_lehrgangCountArgs} args - Arguments to filter Ff_mitglied_lehrgangs to count.
+     * @example
+     * // Count the number of Ff_mitglied_lehrgangs
+     * const count = await prisma.ff_mitglied_lehrgang.count({
+     *   where: {
+     *     // ... the filter for the Ff_mitglied_lehrgangs we want to count
+     *   }
+     * })
+    **/
+    count<T extends ff_mitglied_lehrgangCountArgs>(
+      args?: Subset<T, ff_mitglied_lehrgangCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Ff_mitglied_lehrgangCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Ff_mitglied_lehrgang.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Ff_mitglied_lehrgangAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Ff_mitglied_lehrgangAggregateArgs>(args: Subset<T, Ff_mitglied_lehrgangAggregateArgs>): Prisma.PrismaPromise<GetFf_mitglied_lehrgangAggregateType<T>>
+
+    /**
+     * Group by Ff_mitglied_lehrgang.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ff_mitglied_lehrgangGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ff_mitglied_lehrgangGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ff_mitglied_lehrgangGroupByArgs['orderBy'] }
+        : { orderBy?: ff_mitglied_lehrgangGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ff_mitglied_lehrgangGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFf_mitglied_lehrgangGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ff_mitglied_lehrgang model
+   */
+  readonly fields: ff_mitglied_lehrgangFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ff_mitglied_lehrgang.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ff_mitglied_lehrgangClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    ff_mitglied<T extends ff_mitgliedDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ff_mitgliedDefaultArgs<ExtArgs>>): Prisma__ff_mitgliedClient<$Result.GetResult<Prisma.$ff_mitgliedPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    lehrgang<T extends lehrgangDefaultArgs<ExtArgs> = {}>(args?: Subset<T, lehrgangDefaultArgs<ExtArgs>>): Prisma__lehrgangClient<$Result.GetResult<Prisma.$lehrgangPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ff_mitglied_lehrgang model
+   */
+  interface ff_mitglied_lehrgangFieldRefs {
+    readonly ID: FieldRef<"ff_mitglied_lehrgang", 'Int'>
+    readonly FF_Mitglied_ID: FieldRef<"ff_mitglied_lehrgang", 'Int'>
+    readonly Lehrgang_ID: FieldRef<"ff_mitglied_lehrgang", 'Int'>
+    readonly Datum_bestanden: FieldRef<"ff_mitglied_lehrgang", 'DateTime'>
+    readonly Erstellt_am: FieldRef<"ff_mitglied_lehrgang", 'DateTime'>
+    readonly Geaendert_am: FieldRef<"ff_mitglied_lehrgang", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ff_mitglied_lehrgang findUnique
+   */
+  export type ff_mitglied_lehrgangFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ff_mitglied_lehrgang
+     */
+    select?: ff_mitglied_lehrgangSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ff_mitglied_lehrgang
+     */
+    omit?: ff_mitglied_lehrgangOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ff_mitglied_lehrgangInclude<ExtArgs> | null
+    /**
+     * Filter, which ff_mitglied_lehrgang to fetch.
+     */
+    where: ff_mitglied_lehrgangWhereUniqueInput
+  }
+
+  /**
+   * ff_mitglied_lehrgang findUniqueOrThrow
+   */
+  export type ff_mitglied_lehrgangFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ff_mitglied_lehrgang
+     */
+    select?: ff_mitglied_lehrgangSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ff_mitglied_lehrgang
+     */
+    omit?: ff_mitglied_lehrgangOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ff_mitglied_lehrgangInclude<ExtArgs> | null
+    /**
+     * Filter, which ff_mitglied_lehrgang to fetch.
+     */
+    where: ff_mitglied_lehrgangWhereUniqueInput
+  }
+
+  /**
+   * ff_mitglied_lehrgang findFirst
+   */
+  export type ff_mitglied_lehrgangFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ff_mitglied_lehrgang
+     */
+    select?: ff_mitglied_lehrgangSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ff_mitglied_lehrgang
+     */
+    omit?: ff_mitglied_lehrgangOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ff_mitglied_lehrgangInclude<ExtArgs> | null
+    /**
+     * Filter, which ff_mitglied_lehrgang to fetch.
+     */
+    where?: ff_mitglied_lehrgangWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ff_mitglied_lehrgangs to fetch.
+     */
+    orderBy?: ff_mitglied_lehrgangOrderByWithRelationInput | ff_mitglied_lehrgangOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ff_mitglied_lehrgangs.
+     */
+    cursor?: ff_mitglied_lehrgangWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ff_mitglied_lehrgangs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ff_mitglied_lehrgangs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ff_mitglied_lehrgangs.
+     */
+    distinct?: Ff_mitglied_lehrgangScalarFieldEnum | Ff_mitglied_lehrgangScalarFieldEnum[]
+  }
+
+  /**
+   * ff_mitglied_lehrgang findFirstOrThrow
+   */
+  export type ff_mitglied_lehrgangFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ff_mitglied_lehrgang
+     */
+    select?: ff_mitglied_lehrgangSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ff_mitglied_lehrgang
+     */
+    omit?: ff_mitglied_lehrgangOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ff_mitglied_lehrgangInclude<ExtArgs> | null
+    /**
+     * Filter, which ff_mitglied_lehrgang to fetch.
+     */
+    where?: ff_mitglied_lehrgangWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ff_mitglied_lehrgangs to fetch.
+     */
+    orderBy?: ff_mitglied_lehrgangOrderByWithRelationInput | ff_mitglied_lehrgangOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ff_mitglied_lehrgangs.
+     */
+    cursor?: ff_mitglied_lehrgangWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ff_mitglied_lehrgangs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ff_mitglied_lehrgangs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ff_mitglied_lehrgangs.
+     */
+    distinct?: Ff_mitglied_lehrgangScalarFieldEnum | Ff_mitglied_lehrgangScalarFieldEnum[]
+  }
+
+  /**
+   * ff_mitglied_lehrgang findMany
+   */
+  export type ff_mitglied_lehrgangFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ff_mitglied_lehrgang
+     */
+    select?: ff_mitglied_lehrgangSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ff_mitglied_lehrgang
+     */
+    omit?: ff_mitglied_lehrgangOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ff_mitglied_lehrgangInclude<ExtArgs> | null
+    /**
+     * Filter, which ff_mitglied_lehrgangs to fetch.
+     */
+    where?: ff_mitglied_lehrgangWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ff_mitglied_lehrgangs to fetch.
+     */
+    orderBy?: ff_mitglied_lehrgangOrderByWithRelationInput | ff_mitglied_lehrgangOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ff_mitglied_lehrgangs.
+     */
+    cursor?: ff_mitglied_lehrgangWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ff_mitglied_lehrgangs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ff_mitglied_lehrgangs.
+     */
+    skip?: number
+    distinct?: Ff_mitglied_lehrgangScalarFieldEnum | Ff_mitglied_lehrgangScalarFieldEnum[]
+  }
+
+  /**
+   * ff_mitglied_lehrgang create
+   */
+  export type ff_mitglied_lehrgangCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ff_mitglied_lehrgang
+     */
+    select?: ff_mitglied_lehrgangSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ff_mitglied_lehrgang
+     */
+    omit?: ff_mitglied_lehrgangOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ff_mitglied_lehrgangInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ff_mitglied_lehrgang.
+     */
+    data: XOR<ff_mitglied_lehrgangCreateInput, ff_mitglied_lehrgangUncheckedCreateInput>
+  }
+
+  /**
+   * ff_mitglied_lehrgang createMany
+   */
+  export type ff_mitglied_lehrgangCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ff_mitglied_lehrgangs.
+     */
+    data: ff_mitglied_lehrgangCreateManyInput | ff_mitglied_lehrgangCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ff_mitglied_lehrgang update
+   */
+  export type ff_mitglied_lehrgangUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ff_mitglied_lehrgang
+     */
+    select?: ff_mitglied_lehrgangSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ff_mitglied_lehrgang
+     */
+    omit?: ff_mitglied_lehrgangOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ff_mitglied_lehrgangInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ff_mitglied_lehrgang.
+     */
+    data: XOR<ff_mitglied_lehrgangUpdateInput, ff_mitglied_lehrgangUncheckedUpdateInput>
+    /**
+     * Choose, which ff_mitglied_lehrgang to update.
+     */
+    where: ff_mitglied_lehrgangWhereUniqueInput
+  }
+
+  /**
+   * ff_mitglied_lehrgang updateMany
+   */
+  export type ff_mitglied_lehrgangUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ff_mitglied_lehrgangs.
+     */
+    data: XOR<ff_mitglied_lehrgangUpdateManyMutationInput, ff_mitglied_lehrgangUncheckedUpdateManyInput>
+    /**
+     * Filter which ff_mitglied_lehrgangs to update
+     */
+    where?: ff_mitglied_lehrgangWhereInput
+    /**
+     * Limit how many ff_mitglied_lehrgangs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ff_mitglied_lehrgang upsert
+   */
+  export type ff_mitglied_lehrgangUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ff_mitglied_lehrgang
+     */
+    select?: ff_mitglied_lehrgangSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ff_mitglied_lehrgang
+     */
+    omit?: ff_mitglied_lehrgangOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ff_mitglied_lehrgangInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ff_mitglied_lehrgang to update in case it exists.
+     */
+    where: ff_mitglied_lehrgangWhereUniqueInput
+    /**
+     * In case the ff_mitglied_lehrgang found by the `where` argument doesn't exist, create a new ff_mitglied_lehrgang with this data.
+     */
+    create: XOR<ff_mitglied_lehrgangCreateInput, ff_mitglied_lehrgangUncheckedCreateInput>
+    /**
+     * In case the ff_mitglied_lehrgang was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ff_mitglied_lehrgangUpdateInput, ff_mitglied_lehrgangUncheckedUpdateInput>
+  }
+
+  /**
+   * ff_mitglied_lehrgang delete
+   */
+  export type ff_mitglied_lehrgangDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ff_mitglied_lehrgang
+     */
+    select?: ff_mitglied_lehrgangSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ff_mitglied_lehrgang
+     */
+    omit?: ff_mitglied_lehrgangOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ff_mitglied_lehrgangInclude<ExtArgs> | null
+    /**
+     * Filter which ff_mitglied_lehrgang to delete.
+     */
+    where: ff_mitglied_lehrgangWhereUniqueInput
+  }
+
+  /**
+   * ff_mitglied_lehrgang deleteMany
+   */
+  export type ff_mitglied_lehrgangDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ff_mitglied_lehrgangs to delete
+     */
+    where?: ff_mitglied_lehrgangWhereInput
+    /**
+     * Limit how many ff_mitglied_lehrgangs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ff_mitglied_lehrgang without action
+   */
+  export type ff_mitglied_lehrgangDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ff_mitglied_lehrgang
+     */
+    select?: ff_mitglied_lehrgangSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ff_mitglied_lehrgang
+     */
+    omit?: ff_mitglied_lehrgangOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ff_mitglied_lehrgangInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model funktion_ff
    */
 
@@ -3875,57 +9147,69 @@ export namespace Prisma {
   }
 
   export type Funktion_ffAvgAggregateOutputType = {
-    id: number | null
+    ID: number | null
   }
 
   export type Funktion_ffSumAggregateOutputType = {
-    id: number | null
+    ID: number | null
   }
 
   export type Funktion_ffMinAggregateOutputType = {
-    id: number | null
-    name: string | null
-    ist_admin: boolean | null
+    ID: number | null
+    Name: string | null
+    Ist_Admin: boolean | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type Funktion_ffMaxAggregateOutputType = {
-    id: number | null
-    name: string | null
-    ist_admin: boolean | null
+    ID: number | null
+    Name: string | null
+    Ist_Admin: boolean | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type Funktion_ffCountAggregateOutputType = {
-    id: number
-    name: number
-    ist_admin: number
+    ID: number
+    Name: number
+    Ist_Admin: number
+    Erstellt_am: number
+    Geaendert_am: number
     _all: number
   }
 
 
   export type Funktion_ffAvgAggregateInputType = {
-    id?: true
+    ID?: true
   }
 
   export type Funktion_ffSumAggregateInputType = {
-    id?: true
+    ID?: true
   }
 
   export type Funktion_ffMinAggregateInputType = {
-    id?: true
-    name?: true
-    ist_admin?: true
+    ID?: true
+    Name?: true
+    Ist_Admin?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type Funktion_ffMaxAggregateInputType = {
-    id?: true
-    name?: true
-    ist_admin?: true
+    ID?: true
+    Name?: true
+    Ist_Admin?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type Funktion_ffCountAggregateInputType = {
-    id?: true
-    name?: true
-    ist_admin?: true
+    ID?: true
+    Name?: true
+    Ist_Admin?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
     _all?: true
   }
 
@@ -4016,9 +9300,11 @@ export namespace Prisma {
   }
 
   export type Funktion_ffGroupByOutputType = {
-    id: number
-    name: string
-    ist_admin: boolean
+    ID: number
+    Name: string
+    Ist_Admin: boolean
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
     _count: Funktion_ffCountAggregateOutputType | null
     _avg: Funktion_ffAvgAggregateOutputType | null
     _sum: Funktion_ffSumAggregateOutputType | null
@@ -4041,9 +9327,11 @@ export namespace Prisma {
 
 
   export type funktion_ffSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    ist_admin?: boolean
+    ID?: boolean
+    Name?: boolean
+    Ist_Admin?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
     mitglied_funktionen?: boolean | funktion_ff$mitglied_funktionenArgs<ExtArgs>
     _count?: boolean | Funktion_ffCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["funktion_ff"]>
@@ -4051,12 +9339,14 @@ export namespace Prisma {
 
 
   export type funktion_ffSelectScalar = {
-    id?: boolean
-    name?: boolean
-    ist_admin?: boolean
+    ID?: boolean
+    Name?: boolean
+    Ist_Admin?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
   }
 
-  export type funktion_ffOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "ist_admin", ExtArgs["result"]["funktion_ff"]>
+  export type funktion_ffOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Name" | "Ist_Admin" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["funktion_ff"]>
   export type funktion_ffInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     mitglied_funktionen?: boolean | funktion_ff$mitglied_funktionenArgs<ExtArgs>
     _count?: boolean | Funktion_ffCountOutputTypeDefaultArgs<ExtArgs>
@@ -4068,9 +9358,11 @@ export namespace Prisma {
       mitglied_funktionen: Prisma.$mitglied_funktionenPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
-      name: string
-      ist_admin: boolean
+      ID: number
+      Name: string
+      Ist_Admin: boolean
+      Erstellt_am: Date | null
+      Geaendert_am: Date | null
     }, ExtArgs["result"]["funktion_ff"]>
     composites: {}
   }
@@ -4154,8 +9446,8 @@ export namespace Prisma {
      * // Get first 10 Funktion_ffs
      * const funktion_ffs = await prisma.funktion_ff.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const funktion_ffWithIdOnly = await prisma.funktion_ff.findMany({ select: { id: true } })
+     * // Only select the `ID`
+     * const funktion_ffWithIDOnly = await prisma.funktion_ff.findMany({ select: { ID: true } })
      * 
      */
     findMany<T extends funktion_ffFindManyArgs>(args?: SelectSubset<T, funktion_ffFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$funktion_ffPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -4441,9 +9733,11 @@ export namespace Prisma {
    * Fields of the funktion_ff model
    */
   interface funktion_ffFieldRefs {
-    readonly id: FieldRef<"funktion_ff", 'Int'>
-    readonly name: FieldRef<"funktion_ff", 'String'>
-    readonly ist_admin: FieldRef<"funktion_ff", 'Boolean'>
+    readonly ID: FieldRef<"funktion_ff", 'Int'>
+    readonly Name: FieldRef<"funktion_ff", 'String'>
+    readonly Ist_Admin: FieldRef<"funktion_ff", 'Boolean'>
+    readonly Erstellt_am: FieldRef<"funktion_ff", 'DateTime'>
+    readonly Geaendert_am: FieldRef<"funktion_ff", 'DateTime'>
   }
     
 
@@ -4842,57 +10136,69 @@ export namespace Prisma {
   }
 
   export type Funktion_jfAvgAggregateOutputType = {
-    id: number | null
+    ID: number | null
   }
 
   export type Funktion_jfSumAggregateOutputType = {
-    id: number | null
+    ID: number | null
   }
 
   export type Funktion_jfMinAggregateOutputType = {
-    id: number | null
-    name: string | null
-    ist_admin: boolean | null
+    ID: number | null
+    Name: string | null
+    Ist_admin: boolean | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type Funktion_jfMaxAggregateOutputType = {
-    id: number | null
-    name: string | null
-    ist_admin: boolean | null
+    ID: number | null
+    Name: string | null
+    Ist_admin: boolean | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type Funktion_jfCountAggregateOutputType = {
-    id: number
-    name: number
-    ist_admin: number
+    ID: number
+    Name: number
+    Ist_admin: number
+    Erstellt_am: number
+    Geaendert_am: number
     _all: number
   }
 
 
   export type Funktion_jfAvgAggregateInputType = {
-    id?: true
+    ID?: true
   }
 
   export type Funktion_jfSumAggregateInputType = {
-    id?: true
+    ID?: true
   }
 
   export type Funktion_jfMinAggregateInputType = {
-    id?: true
-    name?: true
-    ist_admin?: true
+    ID?: true
+    Name?: true
+    Ist_admin?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type Funktion_jfMaxAggregateInputType = {
-    id?: true
-    name?: true
-    ist_admin?: true
+    ID?: true
+    Name?: true
+    Ist_admin?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type Funktion_jfCountAggregateInputType = {
-    id?: true
-    name?: true
-    ist_admin?: true
+    ID?: true
+    Name?: true
+    Ist_admin?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
     _all?: true
   }
 
@@ -4983,9 +10289,11 @@ export namespace Prisma {
   }
 
   export type Funktion_jfGroupByOutputType = {
-    id: number
-    name: string
-    ist_admin: boolean
+    ID: number
+    Name: string
+    Ist_admin: boolean
+    Erstellt_am: Date
+    Geaendert_am: Date | null
     _count: Funktion_jfCountAggregateOutputType | null
     _avg: Funktion_jfAvgAggregateOutputType | null
     _sum: Funktion_jfSumAggregateOutputType | null
@@ -5008,28 +10316,34 @@ export namespace Prisma {
 
 
   export type funktion_jfSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    ist_admin?: boolean
+    ID?: boolean
+    Name?: boolean
+    Ist_admin?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
   }, ExtArgs["result"]["funktion_jf"]>
 
 
 
   export type funktion_jfSelectScalar = {
-    id?: boolean
-    name?: boolean
-    ist_admin?: boolean
+    ID?: boolean
+    Name?: boolean
+    Ist_admin?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
   }
 
-  export type funktion_jfOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "ist_admin", ExtArgs["result"]["funktion_jf"]>
+  export type funktion_jfOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Name" | "Ist_admin" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["funktion_jf"]>
 
   export type $funktion_jfPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "funktion_jf"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      id: number
-      name: string
-      ist_admin: boolean
+      ID: number
+      Name: string
+      Ist_admin: boolean
+      Erstellt_am: Date
+      Geaendert_am: Date | null
     }, ExtArgs["result"]["funktion_jf"]>
     composites: {}
   }
@@ -5113,8 +10427,8 @@ export namespace Prisma {
      * // Get first 10 Funktion_jfs
      * const funktion_jfs = await prisma.funktion_jf.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const funktion_jfWithIdOnly = await prisma.funktion_jf.findMany({ select: { id: true } })
+     * // Only select the `ID`
+     * const funktion_jfWithIDOnly = await prisma.funktion_jf.findMany({ select: { ID: true } })
      * 
      */
     findMany<T extends funktion_jfFindManyArgs>(args?: SelectSubset<T, funktion_jfFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$funktion_jfPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -5399,9 +10713,11 @@ export namespace Prisma {
    * Fields of the funktion_jf model
    */
   interface funktion_jfFieldRefs {
-    readonly id: FieldRef<"funktion_jf", 'Int'>
-    readonly name: FieldRef<"funktion_jf", 'String'>
-    readonly ist_admin: FieldRef<"funktion_jf", 'Boolean'>
+    readonly ID: FieldRef<"funktion_jf", 'Int'>
+    readonly Name: FieldRef<"funktion_jf", 'String'>
+    readonly Ist_admin: FieldRef<"funktion_jf", 'Boolean'>
+    readonly Erstellt_am: FieldRef<"funktion_jf", 'DateTime'>
+    readonly Geaendert_am: FieldRef<"funktion_jf", 'DateTime'>
   }
     
 
@@ -5736,65 +11052,77 @@ export namespace Prisma {
   }
 
   export type Jf_erziehungsberechtigterAvgAggregateOutputType = {
-    id: number | null
-    jf_mitglied_id: number | null
-    person_id: number | null
+    ID: number | null
+    JF_Mitglied_ID: number | null
+    Person_ID: number | null
   }
 
   export type Jf_erziehungsberechtigterSumAggregateOutputType = {
-    id: number | null
-    jf_mitglied_id: number | null
-    person_id: number | null
+    ID: number | null
+    JF_Mitglied_ID: number | null
+    Person_ID: number | null
   }
 
   export type Jf_erziehungsberechtigterMinAggregateOutputType = {
-    id: number | null
-    jf_mitglied_id: number | null
-    person_id: number | null
+    ID: number | null
+    JF_Mitglied_ID: number | null
+    Person_ID: number | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type Jf_erziehungsberechtigterMaxAggregateOutputType = {
-    id: number | null
-    jf_mitglied_id: number | null
-    person_id: number | null
+    ID: number | null
+    JF_Mitglied_ID: number | null
+    Person_ID: number | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type Jf_erziehungsberechtigterCountAggregateOutputType = {
-    id: number
-    jf_mitglied_id: number
-    person_id: number
+    ID: number
+    JF_Mitglied_ID: number
+    Person_ID: number
+    Erstellt_am: number
+    Geaendert_am: number
     _all: number
   }
 
 
   export type Jf_erziehungsberechtigterAvgAggregateInputType = {
-    id?: true
-    jf_mitglied_id?: true
-    person_id?: true
+    ID?: true
+    JF_Mitglied_ID?: true
+    Person_ID?: true
   }
 
   export type Jf_erziehungsberechtigterSumAggregateInputType = {
-    id?: true
-    jf_mitglied_id?: true
-    person_id?: true
+    ID?: true
+    JF_Mitglied_ID?: true
+    Person_ID?: true
   }
 
   export type Jf_erziehungsberechtigterMinAggregateInputType = {
-    id?: true
-    jf_mitglied_id?: true
-    person_id?: true
+    ID?: true
+    JF_Mitglied_ID?: true
+    Person_ID?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type Jf_erziehungsberechtigterMaxAggregateInputType = {
-    id?: true
-    jf_mitglied_id?: true
-    person_id?: true
+    ID?: true
+    JF_Mitglied_ID?: true
+    Person_ID?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type Jf_erziehungsberechtigterCountAggregateInputType = {
-    id?: true
-    jf_mitglied_id?: true
-    person_id?: true
+    ID?: true
+    JF_Mitglied_ID?: true
+    Person_ID?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
     _all?: true
   }
 
@@ -5885,9 +11213,11 @@ export namespace Prisma {
   }
 
   export type Jf_erziehungsberechtigterGroupByOutputType = {
-    id: number
-    jf_mitglied_id: number
-    person_id: number
+    ID: number
+    JF_Mitglied_ID: number
+    Person_ID: number
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
     _count: Jf_erziehungsberechtigterCountAggregateOutputType | null
     _avg: Jf_erziehungsberechtigterAvgAggregateOutputType | null
     _sum: Jf_erziehungsberechtigterSumAggregateOutputType | null
@@ -5910,9 +11240,11 @@ export namespace Prisma {
 
 
   export type jf_erziehungsberechtigterSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    jf_mitglied_id?: boolean
-    person_id?: boolean
+    ID?: boolean
+    JF_Mitglied_ID?: boolean
+    Person_ID?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
     jf_mitglied?: boolean | jf_mitgliedDefaultArgs<ExtArgs>
     person?: boolean | personDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["jf_erziehungsberechtigter"]>
@@ -5920,12 +11252,14 @@ export namespace Prisma {
 
 
   export type jf_erziehungsberechtigterSelectScalar = {
-    id?: boolean
-    jf_mitglied_id?: boolean
-    person_id?: boolean
+    ID?: boolean
+    JF_Mitglied_ID?: boolean
+    Person_ID?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
   }
 
-  export type jf_erziehungsberechtigterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "jf_mitglied_id" | "person_id", ExtArgs["result"]["jf_erziehungsberechtigter"]>
+  export type jf_erziehungsberechtigterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "JF_Mitglied_ID" | "Person_ID" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["jf_erziehungsberechtigter"]>
   export type jf_erziehungsberechtigterInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     jf_mitglied?: boolean | jf_mitgliedDefaultArgs<ExtArgs>
     person?: boolean | personDefaultArgs<ExtArgs>
@@ -5938,9 +11272,11 @@ export namespace Prisma {
       person: Prisma.$personPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
-      jf_mitglied_id: number
-      person_id: number
+      ID: number
+      JF_Mitglied_ID: number
+      Person_ID: number
+      Erstellt_am: Date | null
+      Geaendert_am: Date | null
     }, ExtArgs["result"]["jf_erziehungsberechtigter"]>
     composites: {}
   }
@@ -6024,8 +11360,8 @@ export namespace Prisma {
      * // Get first 10 Jf_erziehungsberechtigters
      * const jf_erziehungsberechtigters = await prisma.jf_erziehungsberechtigter.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const jf_erziehungsberechtigterWithIdOnly = await prisma.jf_erziehungsberechtigter.findMany({ select: { id: true } })
+     * // Only select the `ID`
+     * const jf_erziehungsberechtigterWithIDOnly = await prisma.jf_erziehungsberechtigter.findMany({ select: { ID: true } })
      * 
      */
     findMany<T extends jf_erziehungsberechtigterFindManyArgs>(args?: SelectSubset<T, jf_erziehungsberechtigterFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jf_erziehungsberechtigterPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -6312,9 +11648,11 @@ export namespace Prisma {
    * Fields of the jf_erziehungsberechtigter model
    */
   interface jf_erziehungsberechtigterFieldRefs {
-    readonly id: FieldRef<"jf_erziehungsberechtigter", 'Int'>
-    readonly jf_mitglied_id: FieldRef<"jf_erziehungsberechtigter", 'Int'>
-    readonly person_id: FieldRef<"jf_erziehungsberechtigter", 'Int'>
+    readonly ID: FieldRef<"jf_erziehungsberechtigter", 'Int'>
+    readonly JF_Mitglied_ID: FieldRef<"jf_erziehungsberechtigter", 'Int'>
+    readonly Person_ID: FieldRef<"jf_erziehungsberechtigter", 'Int'>
+    readonly Erstellt_am: FieldRef<"jf_erziehungsberechtigter", 'DateTime'>
+    readonly Geaendert_am: FieldRef<"jf_erziehungsberechtigter", 'DateTime'>
   }
     
 
@@ -6689,73 +12027,91 @@ export namespace Prisma {
   }
 
   export type Jf_mitgliedAvgAggregateOutputType = {
-    id: number | null
-    person_id: number | null
+    ID: number | null
+    Person_ID: number | null
   }
 
   export type Jf_mitgliedSumAggregateOutputType = {
-    id: number | null
-    person_id: number | null
+    ID: number | null
+    Person_ID: number | null
   }
 
   export type Jf_mitgliedMinAggregateOutputType = {
-    id: number | null
-    person_id: number | null
-    eintrittsdatum: Date | null
-    austrittsdatum: Date | null
-    status: $Enums.jf_mitglied_status | null
+    ID: number | null
+    Person_ID: number | null
+    Eintrittsdatum: Date | null
+    Austrittsdatum: Date | null
+    Aufnahmedatum: Date | null
+    Status: $Enums.jf_mitglied_Status | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type Jf_mitgliedMaxAggregateOutputType = {
-    id: number | null
-    person_id: number | null
-    eintrittsdatum: Date | null
-    austrittsdatum: Date | null
-    status: $Enums.jf_mitglied_status | null
+    ID: number | null
+    Person_ID: number | null
+    Eintrittsdatum: Date | null
+    Austrittsdatum: Date | null
+    Aufnahmedatum: Date | null
+    Status: $Enums.jf_mitglied_Status | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type Jf_mitgliedCountAggregateOutputType = {
-    id: number
-    person_id: number
-    eintrittsdatum: number
-    austrittsdatum: number
-    status: number
+    ID: number
+    Person_ID: number
+    Eintrittsdatum: number
+    Austrittsdatum: number
+    Aufnahmedatum: number
+    Status: number
+    Erstellt_am: number
+    Geaendert_am: number
     _all: number
   }
 
 
   export type Jf_mitgliedAvgAggregateInputType = {
-    id?: true
-    person_id?: true
+    ID?: true
+    Person_ID?: true
   }
 
   export type Jf_mitgliedSumAggregateInputType = {
-    id?: true
-    person_id?: true
+    ID?: true
+    Person_ID?: true
   }
 
   export type Jf_mitgliedMinAggregateInputType = {
-    id?: true
-    person_id?: true
-    eintrittsdatum?: true
-    austrittsdatum?: true
-    status?: true
+    ID?: true
+    Person_ID?: true
+    Eintrittsdatum?: true
+    Austrittsdatum?: true
+    Aufnahmedatum?: true
+    Status?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type Jf_mitgliedMaxAggregateInputType = {
-    id?: true
-    person_id?: true
-    eintrittsdatum?: true
-    austrittsdatum?: true
-    status?: true
+    ID?: true
+    Person_ID?: true
+    Eintrittsdatum?: true
+    Austrittsdatum?: true
+    Aufnahmedatum?: true
+    Status?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type Jf_mitgliedCountAggregateInputType = {
-    id?: true
-    person_id?: true
-    eintrittsdatum?: true
-    austrittsdatum?: true
-    status?: true
+    ID?: true
+    Person_ID?: true
+    Eintrittsdatum?: true
+    Austrittsdatum?: true
+    Aufnahmedatum?: true
+    Status?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
     _all?: true
   }
 
@@ -6846,11 +12202,14 @@ export namespace Prisma {
   }
 
   export type Jf_mitgliedGroupByOutputType = {
-    id: number
-    person_id: number
-    eintrittsdatum: Date
-    austrittsdatum: Date | null
-    status: $Enums.jf_mitglied_status
+    ID: number
+    Person_ID: number
+    Eintrittsdatum: Date
+    Austrittsdatum: Date | null
+    Aufnahmedatum: Date | null
+    Status: $Enums.jf_mitglied_Status
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
     _count: Jf_mitgliedCountAggregateOutputType | null
     _avg: Jf_mitgliedAvgAggregateOutputType | null
     _sum: Jf_mitgliedSumAggregateOutputType | null
@@ -6873,11 +12232,14 @@ export namespace Prisma {
 
 
   export type jf_mitgliedSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    person_id?: boolean
-    eintrittsdatum?: boolean
-    austrittsdatum?: boolean
-    status?: boolean
+    ID?: boolean
+    Person_ID?: boolean
+    Eintrittsdatum?: boolean
+    Austrittsdatum?: boolean
+    Aufnahmedatum?: boolean
+    Status?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
     jf_erziehungsberechtigter?: boolean | jf_mitglied$jf_erziehungsberechtigterArgs<ExtArgs>
     person?: boolean | personDefaultArgs<ExtArgs>
     _count?: boolean | Jf_mitgliedCountOutputTypeDefaultArgs<ExtArgs>
@@ -6886,14 +12248,17 @@ export namespace Prisma {
 
 
   export type jf_mitgliedSelectScalar = {
-    id?: boolean
-    person_id?: boolean
-    eintrittsdatum?: boolean
-    austrittsdatum?: boolean
-    status?: boolean
+    ID?: boolean
+    Person_ID?: boolean
+    Eintrittsdatum?: boolean
+    Austrittsdatum?: boolean
+    Aufnahmedatum?: boolean
+    Status?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
   }
 
-  export type jf_mitgliedOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "person_id" | "eintrittsdatum" | "austrittsdatum" | "status", ExtArgs["result"]["jf_mitglied"]>
+  export type jf_mitgliedOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Person_ID" | "Eintrittsdatum" | "Austrittsdatum" | "Aufnahmedatum" | "Status" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["jf_mitglied"]>
   export type jf_mitgliedInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     jf_erziehungsberechtigter?: boolean | jf_mitglied$jf_erziehungsberechtigterArgs<ExtArgs>
     person?: boolean | personDefaultArgs<ExtArgs>
@@ -6907,11 +12272,14 @@ export namespace Prisma {
       person: Prisma.$personPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
-      person_id: number
-      eintrittsdatum: Date
-      austrittsdatum: Date | null
-      status: $Enums.jf_mitglied_status
+      ID: number
+      Person_ID: number
+      Eintrittsdatum: Date
+      Austrittsdatum: Date | null
+      Aufnahmedatum: Date | null
+      Status: $Enums.jf_mitglied_Status
+      Erstellt_am: Date | null
+      Geaendert_am: Date | null
     }, ExtArgs["result"]["jf_mitglied"]>
     composites: {}
   }
@@ -6995,8 +12363,8 @@ export namespace Prisma {
      * // Get first 10 Jf_mitglieds
      * const jf_mitglieds = await prisma.jf_mitglied.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const jf_mitgliedWithIdOnly = await prisma.jf_mitglied.findMany({ select: { id: true } })
+     * // Only select the `ID`
+     * const jf_mitgliedWithIDOnly = await prisma.jf_mitglied.findMany({ select: { ID: true } })
      * 
      */
     findMany<T extends jf_mitgliedFindManyArgs>(args?: SelectSubset<T, jf_mitgliedFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jf_mitgliedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -7283,11 +12651,14 @@ export namespace Prisma {
    * Fields of the jf_mitglied model
    */
   interface jf_mitgliedFieldRefs {
-    readonly id: FieldRef<"jf_mitglied", 'Int'>
-    readonly person_id: FieldRef<"jf_mitglied", 'Int'>
-    readonly eintrittsdatum: FieldRef<"jf_mitglied", 'DateTime'>
-    readonly austrittsdatum: FieldRef<"jf_mitglied", 'DateTime'>
-    readonly status: FieldRef<"jf_mitglied", 'jf_mitglied_status'>
+    readonly ID: FieldRef<"jf_mitglied", 'Int'>
+    readonly Person_ID: FieldRef<"jf_mitglied", 'Int'>
+    readonly Eintrittsdatum: FieldRef<"jf_mitglied", 'DateTime'>
+    readonly Austrittsdatum: FieldRef<"jf_mitglied", 'DateTime'>
+    readonly Aufnahmedatum: FieldRef<"jf_mitglied", 'DateTime'>
+    readonly Status: FieldRef<"jf_mitglied", 'jf_mitglied_Status'>
+    readonly Erstellt_am: FieldRef<"jf_mitglied", 'DateTime'>
+    readonly Geaendert_am: FieldRef<"jf_mitglied", 'DateTime'>
   }
     
 
@@ -7674,6 +13045,1010 @@ export namespace Prisma {
 
 
   /**
+   * Model lehrgang
+   */
+
+  export type AggregateLehrgang = {
+    _count: LehrgangCountAggregateOutputType | null
+    _avg: LehrgangAvgAggregateOutputType | null
+    _sum: LehrgangSumAggregateOutputType | null
+    _min: LehrgangMinAggregateOutputType | null
+    _max: LehrgangMaxAggregateOutputType | null
+  }
+
+  export type LehrgangAvgAggregateOutputType = {
+    ID: number | null
+    Reihenfolge: number | null
+  }
+
+  export type LehrgangSumAggregateOutputType = {
+    ID: number | null
+    Reihenfolge: number | null
+  }
+
+  export type LehrgangMinAggregateOutputType = {
+    ID: number | null
+    Abk_rzung: string | null
+    Beschreibung: string | null
+    Reihenfolge: number | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
+  }
+
+  export type LehrgangMaxAggregateOutputType = {
+    ID: number | null
+    Abk_rzung: string | null
+    Beschreibung: string | null
+    Reihenfolge: number | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
+  }
+
+  export type LehrgangCountAggregateOutputType = {
+    ID: number
+    Abk_rzung: number
+    Beschreibung: number
+    Reihenfolge: number
+    Erstellt_am: number
+    Geaendert_am: number
+    _all: number
+  }
+
+
+  export type LehrgangAvgAggregateInputType = {
+    ID?: true
+    Reihenfolge?: true
+  }
+
+  export type LehrgangSumAggregateInputType = {
+    ID?: true
+    Reihenfolge?: true
+  }
+
+  export type LehrgangMinAggregateInputType = {
+    ID?: true
+    Abk_rzung?: true
+    Beschreibung?: true
+    Reihenfolge?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
+  }
+
+  export type LehrgangMaxAggregateInputType = {
+    ID?: true
+    Abk_rzung?: true
+    Beschreibung?: true
+    Reihenfolge?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
+  }
+
+  export type LehrgangCountAggregateInputType = {
+    ID?: true
+    Abk_rzung?: true
+    Beschreibung?: true
+    Reihenfolge?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
+    _all?: true
+  }
+
+  export type LehrgangAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which lehrgang to aggregate.
+     */
+    where?: lehrgangWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of lehrgangs to fetch.
+     */
+    orderBy?: lehrgangOrderByWithRelationInput | lehrgangOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: lehrgangWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` lehrgangs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` lehrgangs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned lehrgangs
+    **/
+    _count?: true | LehrgangCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: LehrgangAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: LehrgangSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: LehrgangMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: LehrgangMaxAggregateInputType
+  }
+
+  export type GetLehrgangAggregateType<T extends LehrgangAggregateArgs> = {
+        [P in keyof T & keyof AggregateLehrgang]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLehrgang[P]>
+      : GetScalarType<T[P], AggregateLehrgang[P]>
+  }
+
+
+
+
+  export type lehrgangGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: lehrgangWhereInput
+    orderBy?: lehrgangOrderByWithAggregationInput | lehrgangOrderByWithAggregationInput[]
+    by: LehrgangScalarFieldEnum[] | LehrgangScalarFieldEnum
+    having?: lehrgangScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: LehrgangCountAggregateInputType | true
+    _avg?: LehrgangAvgAggregateInputType
+    _sum?: LehrgangSumAggregateInputType
+    _min?: LehrgangMinAggregateInputType
+    _max?: LehrgangMaxAggregateInputType
+  }
+
+  export type LehrgangGroupByOutputType = {
+    ID: number
+    Abk_rzung: string | null
+    Beschreibung: string | null
+    Reihenfolge: number | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
+    _count: LehrgangCountAggregateOutputType | null
+    _avg: LehrgangAvgAggregateOutputType | null
+    _sum: LehrgangSumAggregateOutputType | null
+    _min: LehrgangMinAggregateOutputType | null
+    _max: LehrgangMaxAggregateOutputType | null
+  }
+
+  type GetLehrgangGroupByPayload<T extends lehrgangGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<LehrgangGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof LehrgangGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], LehrgangGroupByOutputType[P]>
+            : GetScalarType<T[P], LehrgangGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type lehrgangSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    ID?: boolean
+    Abk_rzung?: boolean
+    Beschreibung?: boolean
+    Reihenfolge?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
+    ff_mitglied_lehrgang?: boolean | lehrgang$ff_mitglied_lehrgangArgs<ExtArgs>
+    _count?: boolean | LehrgangCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["lehrgang"]>
+
+
+
+  export type lehrgangSelectScalar = {
+    ID?: boolean
+    Abk_rzung?: boolean
+    Beschreibung?: boolean
+    Reihenfolge?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
+  }
+
+  export type lehrgangOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Abk_rzung" | "Beschreibung" | "Reihenfolge" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["lehrgang"]>
+  export type lehrgangInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ff_mitglied_lehrgang?: boolean | lehrgang$ff_mitglied_lehrgangArgs<ExtArgs>
+    _count?: boolean | LehrgangCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $lehrgangPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "lehrgang"
+    objects: {
+      ff_mitglied_lehrgang: Prisma.$ff_mitglied_lehrgangPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      ID: number
+      Abk_rzung: string | null
+      Beschreibung: string | null
+      Reihenfolge: number | null
+      Erstellt_am: Date | null
+      Geaendert_am: Date | null
+    }, ExtArgs["result"]["lehrgang"]>
+    composites: {}
+  }
+
+  type lehrgangGetPayload<S extends boolean | null | undefined | lehrgangDefaultArgs> = $Result.GetResult<Prisma.$lehrgangPayload, S>
+
+  type lehrgangCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<lehrgangFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: LehrgangCountAggregateInputType | true
+    }
+
+  export interface lehrgangDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['lehrgang'], meta: { name: 'lehrgang' } }
+    /**
+     * Find zero or one Lehrgang that matches the filter.
+     * @param {lehrgangFindUniqueArgs} args - Arguments to find a Lehrgang
+     * @example
+     * // Get one Lehrgang
+     * const lehrgang = await prisma.lehrgang.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends lehrgangFindUniqueArgs>(args: SelectSubset<T, lehrgangFindUniqueArgs<ExtArgs>>): Prisma__lehrgangClient<$Result.GetResult<Prisma.$lehrgangPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Lehrgang that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {lehrgangFindUniqueOrThrowArgs} args - Arguments to find a Lehrgang
+     * @example
+     * // Get one Lehrgang
+     * const lehrgang = await prisma.lehrgang.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends lehrgangFindUniqueOrThrowArgs>(args: SelectSubset<T, lehrgangFindUniqueOrThrowArgs<ExtArgs>>): Prisma__lehrgangClient<$Result.GetResult<Prisma.$lehrgangPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Lehrgang that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lehrgangFindFirstArgs} args - Arguments to find a Lehrgang
+     * @example
+     * // Get one Lehrgang
+     * const lehrgang = await prisma.lehrgang.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends lehrgangFindFirstArgs>(args?: SelectSubset<T, lehrgangFindFirstArgs<ExtArgs>>): Prisma__lehrgangClient<$Result.GetResult<Prisma.$lehrgangPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Lehrgang that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lehrgangFindFirstOrThrowArgs} args - Arguments to find a Lehrgang
+     * @example
+     * // Get one Lehrgang
+     * const lehrgang = await prisma.lehrgang.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends lehrgangFindFirstOrThrowArgs>(args?: SelectSubset<T, lehrgangFindFirstOrThrowArgs<ExtArgs>>): Prisma__lehrgangClient<$Result.GetResult<Prisma.$lehrgangPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Lehrgangs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lehrgangFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Lehrgangs
+     * const lehrgangs = await prisma.lehrgang.findMany()
+     * 
+     * // Get first 10 Lehrgangs
+     * const lehrgangs = await prisma.lehrgang.findMany({ take: 10 })
+     * 
+     * // Only select the `ID`
+     * const lehrgangWithIDOnly = await prisma.lehrgang.findMany({ select: { ID: true } })
+     * 
+     */
+    findMany<T extends lehrgangFindManyArgs>(args?: SelectSubset<T, lehrgangFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$lehrgangPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Lehrgang.
+     * @param {lehrgangCreateArgs} args - Arguments to create a Lehrgang.
+     * @example
+     * // Create one Lehrgang
+     * const Lehrgang = await prisma.lehrgang.create({
+     *   data: {
+     *     // ... data to create a Lehrgang
+     *   }
+     * })
+     * 
+     */
+    create<T extends lehrgangCreateArgs>(args: SelectSubset<T, lehrgangCreateArgs<ExtArgs>>): Prisma__lehrgangClient<$Result.GetResult<Prisma.$lehrgangPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Lehrgangs.
+     * @param {lehrgangCreateManyArgs} args - Arguments to create many Lehrgangs.
+     * @example
+     * // Create many Lehrgangs
+     * const lehrgang = await prisma.lehrgang.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends lehrgangCreateManyArgs>(args?: SelectSubset<T, lehrgangCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Lehrgang.
+     * @param {lehrgangDeleteArgs} args - Arguments to delete one Lehrgang.
+     * @example
+     * // Delete one Lehrgang
+     * const Lehrgang = await prisma.lehrgang.delete({
+     *   where: {
+     *     // ... filter to delete one Lehrgang
+     *   }
+     * })
+     * 
+     */
+    delete<T extends lehrgangDeleteArgs>(args: SelectSubset<T, lehrgangDeleteArgs<ExtArgs>>): Prisma__lehrgangClient<$Result.GetResult<Prisma.$lehrgangPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Lehrgang.
+     * @param {lehrgangUpdateArgs} args - Arguments to update one Lehrgang.
+     * @example
+     * // Update one Lehrgang
+     * const lehrgang = await prisma.lehrgang.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends lehrgangUpdateArgs>(args: SelectSubset<T, lehrgangUpdateArgs<ExtArgs>>): Prisma__lehrgangClient<$Result.GetResult<Prisma.$lehrgangPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Lehrgangs.
+     * @param {lehrgangDeleteManyArgs} args - Arguments to filter Lehrgangs to delete.
+     * @example
+     * // Delete a few Lehrgangs
+     * const { count } = await prisma.lehrgang.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends lehrgangDeleteManyArgs>(args?: SelectSubset<T, lehrgangDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Lehrgangs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lehrgangUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Lehrgangs
+     * const lehrgang = await prisma.lehrgang.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends lehrgangUpdateManyArgs>(args: SelectSubset<T, lehrgangUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Lehrgang.
+     * @param {lehrgangUpsertArgs} args - Arguments to update or create a Lehrgang.
+     * @example
+     * // Update or create a Lehrgang
+     * const lehrgang = await prisma.lehrgang.upsert({
+     *   create: {
+     *     // ... data to create a Lehrgang
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Lehrgang we want to update
+     *   }
+     * })
+     */
+    upsert<T extends lehrgangUpsertArgs>(args: SelectSubset<T, lehrgangUpsertArgs<ExtArgs>>): Prisma__lehrgangClient<$Result.GetResult<Prisma.$lehrgangPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Lehrgangs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lehrgangCountArgs} args - Arguments to filter Lehrgangs to count.
+     * @example
+     * // Count the number of Lehrgangs
+     * const count = await prisma.lehrgang.count({
+     *   where: {
+     *     // ... the filter for the Lehrgangs we want to count
+     *   }
+     * })
+    **/
+    count<T extends lehrgangCountArgs>(
+      args?: Subset<T, lehrgangCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], LehrgangCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Lehrgang.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LehrgangAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends LehrgangAggregateArgs>(args: Subset<T, LehrgangAggregateArgs>): Prisma.PrismaPromise<GetLehrgangAggregateType<T>>
+
+    /**
+     * Group by Lehrgang.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lehrgangGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends lehrgangGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: lehrgangGroupByArgs['orderBy'] }
+        : { orderBy?: lehrgangGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, lehrgangGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLehrgangGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the lehrgang model
+   */
+  readonly fields: lehrgangFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for lehrgang.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__lehrgangClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    ff_mitglied_lehrgang<T extends lehrgang$ff_mitglied_lehrgangArgs<ExtArgs> = {}>(args?: Subset<T, lehrgang$ff_mitglied_lehrgangArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ff_mitglied_lehrgangPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the lehrgang model
+   */
+  interface lehrgangFieldRefs {
+    readonly ID: FieldRef<"lehrgang", 'Int'>
+    readonly Abk_rzung: FieldRef<"lehrgang", 'String'>
+    readonly Beschreibung: FieldRef<"lehrgang", 'String'>
+    readonly Reihenfolge: FieldRef<"lehrgang", 'Int'>
+    readonly Erstellt_am: FieldRef<"lehrgang", 'DateTime'>
+    readonly Geaendert_am: FieldRef<"lehrgang", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * lehrgang findUnique
+   */
+  export type lehrgangFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lehrgang
+     */
+    select?: lehrgangSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lehrgang
+     */
+    omit?: lehrgangOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: lehrgangInclude<ExtArgs> | null
+    /**
+     * Filter, which lehrgang to fetch.
+     */
+    where: lehrgangWhereUniqueInput
+  }
+
+  /**
+   * lehrgang findUniqueOrThrow
+   */
+  export type lehrgangFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lehrgang
+     */
+    select?: lehrgangSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lehrgang
+     */
+    omit?: lehrgangOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: lehrgangInclude<ExtArgs> | null
+    /**
+     * Filter, which lehrgang to fetch.
+     */
+    where: lehrgangWhereUniqueInput
+  }
+
+  /**
+   * lehrgang findFirst
+   */
+  export type lehrgangFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lehrgang
+     */
+    select?: lehrgangSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lehrgang
+     */
+    omit?: lehrgangOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: lehrgangInclude<ExtArgs> | null
+    /**
+     * Filter, which lehrgang to fetch.
+     */
+    where?: lehrgangWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of lehrgangs to fetch.
+     */
+    orderBy?: lehrgangOrderByWithRelationInput | lehrgangOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for lehrgangs.
+     */
+    cursor?: lehrgangWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` lehrgangs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` lehrgangs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of lehrgangs.
+     */
+    distinct?: LehrgangScalarFieldEnum | LehrgangScalarFieldEnum[]
+  }
+
+  /**
+   * lehrgang findFirstOrThrow
+   */
+  export type lehrgangFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lehrgang
+     */
+    select?: lehrgangSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lehrgang
+     */
+    omit?: lehrgangOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: lehrgangInclude<ExtArgs> | null
+    /**
+     * Filter, which lehrgang to fetch.
+     */
+    where?: lehrgangWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of lehrgangs to fetch.
+     */
+    orderBy?: lehrgangOrderByWithRelationInput | lehrgangOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for lehrgangs.
+     */
+    cursor?: lehrgangWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` lehrgangs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` lehrgangs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of lehrgangs.
+     */
+    distinct?: LehrgangScalarFieldEnum | LehrgangScalarFieldEnum[]
+  }
+
+  /**
+   * lehrgang findMany
+   */
+  export type lehrgangFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lehrgang
+     */
+    select?: lehrgangSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lehrgang
+     */
+    omit?: lehrgangOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: lehrgangInclude<ExtArgs> | null
+    /**
+     * Filter, which lehrgangs to fetch.
+     */
+    where?: lehrgangWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of lehrgangs to fetch.
+     */
+    orderBy?: lehrgangOrderByWithRelationInput | lehrgangOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing lehrgangs.
+     */
+    cursor?: lehrgangWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` lehrgangs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` lehrgangs.
+     */
+    skip?: number
+    distinct?: LehrgangScalarFieldEnum | LehrgangScalarFieldEnum[]
+  }
+
+  /**
+   * lehrgang create
+   */
+  export type lehrgangCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lehrgang
+     */
+    select?: lehrgangSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lehrgang
+     */
+    omit?: lehrgangOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: lehrgangInclude<ExtArgs> | null
+    /**
+     * The data needed to create a lehrgang.
+     */
+    data?: XOR<lehrgangCreateInput, lehrgangUncheckedCreateInput>
+  }
+
+  /**
+   * lehrgang createMany
+   */
+  export type lehrgangCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many lehrgangs.
+     */
+    data: lehrgangCreateManyInput | lehrgangCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * lehrgang update
+   */
+  export type lehrgangUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lehrgang
+     */
+    select?: lehrgangSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lehrgang
+     */
+    omit?: lehrgangOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: lehrgangInclude<ExtArgs> | null
+    /**
+     * The data needed to update a lehrgang.
+     */
+    data: XOR<lehrgangUpdateInput, lehrgangUncheckedUpdateInput>
+    /**
+     * Choose, which lehrgang to update.
+     */
+    where: lehrgangWhereUniqueInput
+  }
+
+  /**
+   * lehrgang updateMany
+   */
+  export type lehrgangUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update lehrgangs.
+     */
+    data: XOR<lehrgangUpdateManyMutationInput, lehrgangUncheckedUpdateManyInput>
+    /**
+     * Filter which lehrgangs to update
+     */
+    where?: lehrgangWhereInput
+    /**
+     * Limit how many lehrgangs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * lehrgang upsert
+   */
+  export type lehrgangUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lehrgang
+     */
+    select?: lehrgangSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lehrgang
+     */
+    omit?: lehrgangOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: lehrgangInclude<ExtArgs> | null
+    /**
+     * The filter to search for the lehrgang to update in case it exists.
+     */
+    where: lehrgangWhereUniqueInput
+    /**
+     * In case the lehrgang found by the `where` argument doesn't exist, create a new lehrgang with this data.
+     */
+    create: XOR<lehrgangCreateInput, lehrgangUncheckedCreateInput>
+    /**
+     * In case the lehrgang was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<lehrgangUpdateInput, lehrgangUncheckedUpdateInput>
+  }
+
+  /**
+   * lehrgang delete
+   */
+  export type lehrgangDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lehrgang
+     */
+    select?: lehrgangSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lehrgang
+     */
+    omit?: lehrgangOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: lehrgangInclude<ExtArgs> | null
+    /**
+     * Filter which lehrgang to delete.
+     */
+    where: lehrgangWhereUniqueInput
+  }
+
+  /**
+   * lehrgang deleteMany
+   */
+  export type lehrgangDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which lehrgangs to delete
+     */
+    where?: lehrgangWhereInput
+    /**
+     * Limit how many lehrgangs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * lehrgang.ff_mitglied_lehrgang
+   */
+  export type lehrgang$ff_mitglied_lehrgangArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ff_mitglied_lehrgang
+     */
+    select?: ff_mitglied_lehrgangSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ff_mitglied_lehrgang
+     */
+    omit?: ff_mitglied_lehrgangOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ff_mitglied_lehrgangInclude<ExtArgs> | null
+    where?: ff_mitglied_lehrgangWhereInput
+    orderBy?: ff_mitglied_lehrgangOrderByWithRelationInput | ff_mitglied_lehrgangOrderByWithRelationInput[]
+    cursor?: ff_mitglied_lehrgangWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Ff_mitglied_lehrgangScalarFieldEnum | Ff_mitglied_lehrgangScalarFieldEnum[]
+  }
+
+  /**
+   * lehrgang without action
+   */
+  export type lehrgangDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lehrgang
+     */
+    select?: lehrgangSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lehrgang
+     */
+    omit?: lehrgangOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: lehrgangInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model mitglied_funktionen
    */
 
@@ -7686,71 +14061,83 @@ export namespace Prisma {
   }
 
   export type Mitglied_funktionenAvgAggregateOutputType = {
-    id: number | null
-    mitglied_id: number | null
-    funktion_id: number | null
+    ID: number | null
+    Mitglied_ID: number | null
+    Funktion_ID: number | null
   }
 
   export type Mitglied_funktionenSumAggregateOutputType = {
-    id: number | null
-    mitglied_id: number | null
-    funktion_id: number | null
+    ID: number | null
+    Mitglied_ID: number | null
+    Funktion_ID: number | null
   }
 
   export type Mitglied_funktionenMinAggregateOutputType = {
-    id: number | null
-    mitglied_id: number | null
-    funktion_id: number | null
-    typ: $Enums.mitglied_funktionen_typ | null
+    ID: number | null
+    Mitglied_ID: number | null
+    Funktion_ID: number | null
+    Typ: $Enums.mitglied_funktionen_Typ | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type Mitglied_funktionenMaxAggregateOutputType = {
-    id: number | null
-    mitglied_id: number | null
-    funktion_id: number | null
-    typ: $Enums.mitglied_funktionen_typ | null
+    ID: number | null
+    Mitglied_ID: number | null
+    Funktion_ID: number | null
+    Typ: $Enums.mitglied_funktionen_Typ | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type Mitglied_funktionenCountAggregateOutputType = {
-    id: number
-    mitglied_id: number
-    funktion_id: number
-    typ: number
+    ID: number
+    Mitglied_ID: number
+    Funktion_ID: number
+    Typ: number
+    Erstellt_am: number
+    Geaendert_am: number
     _all: number
   }
 
 
   export type Mitglied_funktionenAvgAggregateInputType = {
-    id?: true
-    mitglied_id?: true
-    funktion_id?: true
+    ID?: true
+    Mitglied_ID?: true
+    Funktion_ID?: true
   }
 
   export type Mitglied_funktionenSumAggregateInputType = {
-    id?: true
-    mitglied_id?: true
-    funktion_id?: true
+    ID?: true
+    Mitglied_ID?: true
+    Funktion_ID?: true
   }
 
   export type Mitglied_funktionenMinAggregateInputType = {
-    id?: true
-    mitglied_id?: true
-    funktion_id?: true
-    typ?: true
+    ID?: true
+    Mitglied_ID?: true
+    Funktion_ID?: true
+    Typ?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type Mitglied_funktionenMaxAggregateInputType = {
-    id?: true
-    mitglied_id?: true
-    funktion_id?: true
-    typ?: true
+    ID?: true
+    Mitglied_ID?: true
+    Funktion_ID?: true
+    Typ?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type Mitglied_funktionenCountAggregateInputType = {
-    id?: true
-    mitglied_id?: true
-    funktion_id?: true
-    typ?: true
+    ID?: true
+    Mitglied_ID?: true
+    Funktion_ID?: true
+    Typ?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
     _all?: true
   }
 
@@ -7841,10 +14228,12 @@ export namespace Prisma {
   }
 
   export type Mitglied_funktionenGroupByOutputType = {
-    id: number
-    mitglied_id: number
-    funktion_id: number
-    typ: $Enums.mitglied_funktionen_typ
+    ID: number
+    Mitglied_ID: number
+    Funktion_ID: number
+    Typ: $Enums.mitglied_funktionen_Typ
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
     _count: Mitglied_funktionenCountAggregateOutputType | null
     _avg: Mitglied_funktionenAvgAggregateOutputType | null
     _sum: Mitglied_funktionenSumAggregateOutputType | null
@@ -7867,10 +14256,12 @@ export namespace Prisma {
 
 
   export type mitglied_funktionenSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    mitglied_id?: boolean
-    funktion_id?: boolean
-    typ?: boolean
+    ID?: boolean
+    Mitglied_ID?: boolean
+    Funktion_ID?: boolean
+    Typ?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
     ff_mitglied?: boolean | ff_mitgliedDefaultArgs<ExtArgs>
     funktion_ff?: boolean | funktion_ffDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["mitglied_funktionen"]>
@@ -7878,13 +14269,15 @@ export namespace Prisma {
 
 
   export type mitglied_funktionenSelectScalar = {
-    id?: boolean
-    mitglied_id?: boolean
-    funktion_id?: boolean
-    typ?: boolean
+    ID?: boolean
+    Mitglied_ID?: boolean
+    Funktion_ID?: boolean
+    Typ?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
   }
 
-  export type mitglied_funktionenOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "mitglied_id" | "funktion_id" | "typ", ExtArgs["result"]["mitglied_funktionen"]>
+  export type mitglied_funktionenOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Mitglied_ID" | "Funktion_ID" | "Typ" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["mitglied_funktionen"]>
   export type mitglied_funktionenInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     ff_mitglied?: boolean | ff_mitgliedDefaultArgs<ExtArgs>
     funktion_ff?: boolean | funktion_ffDefaultArgs<ExtArgs>
@@ -7897,10 +14290,12 @@ export namespace Prisma {
       funktion_ff: Prisma.$funktion_ffPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
-      mitglied_id: number
-      funktion_id: number
-      typ: $Enums.mitglied_funktionen_typ
+      ID: number
+      Mitglied_ID: number
+      Funktion_ID: number
+      Typ: $Enums.mitglied_funktionen_Typ
+      Erstellt_am: Date | null
+      Geaendert_am: Date | null
     }, ExtArgs["result"]["mitglied_funktionen"]>
     composites: {}
   }
@@ -7984,8 +14379,8 @@ export namespace Prisma {
      * // Get first 10 Mitglied_funktionens
      * const mitglied_funktionens = await prisma.mitglied_funktionen.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const mitglied_funktionenWithIdOnly = await prisma.mitglied_funktionen.findMany({ select: { id: true } })
+     * // Only select the `ID`
+     * const mitglied_funktionenWithIDOnly = await prisma.mitglied_funktionen.findMany({ select: { ID: true } })
      * 
      */
     findMany<T extends mitglied_funktionenFindManyArgs>(args?: SelectSubset<T, mitglied_funktionenFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$mitglied_funktionenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -8272,10 +14667,12 @@ export namespace Prisma {
    * Fields of the mitglied_funktionen model
    */
   interface mitglied_funktionenFieldRefs {
-    readonly id: FieldRef<"mitglied_funktionen", 'Int'>
-    readonly mitglied_id: FieldRef<"mitglied_funktionen", 'Int'>
-    readonly funktion_id: FieldRef<"mitglied_funktionen", 'Int'>
-    readonly typ: FieldRef<"mitglied_funktionen", 'mitglied_funktionen_typ'>
+    readonly ID: FieldRef<"mitglied_funktionen", 'Int'>
+    readonly Mitglied_ID: FieldRef<"mitglied_funktionen", 'Int'>
+    readonly Funktion_ID: FieldRef<"mitglied_funktionen", 'Int'>
+    readonly Typ: FieldRef<"mitglied_funktionen", 'mitglied_funktionen_Typ'>
+    readonly Erstellt_am: FieldRef<"mitglied_funktionen", 'DateTime'>
+    readonly Geaendert_am: FieldRef<"mitglied_funktionen", 'DateTime'>
   }
     
 
@@ -8650,71 +15047,83 @@ export namespace Prisma {
   }
 
   export type Mitglied_loginAvgAggregateOutputType = {
-    id: number | null
-    benutzer_id: number | null
-    mitglied_id: number | null
+    ID: number | null
+    Benutzer_ID: number | null
+    Mitglied_ID: number | null
   }
 
   export type Mitglied_loginSumAggregateOutputType = {
-    id: number | null
-    benutzer_id: number | null
-    mitglied_id: number | null
+    ID: number | null
+    Benutzer_ID: number | null
+    Mitglied_ID: number | null
   }
 
   export type Mitglied_loginMinAggregateOutputType = {
-    id: number | null
-    benutzer_id: number | null
-    mitglied_id: number | null
-    ty: $Enums.mitglied_login_ty | null
+    ID: number | null
+    Benutzer_ID: number | null
+    Mitglied_ID: number | null
+    Typ: $Enums.mitglied_login_Typ | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type Mitglied_loginMaxAggregateOutputType = {
-    id: number | null
-    benutzer_id: number | null
-    mitglied_id: number | null
-    ty: $Enums.mitglied_login_ty | null
+    ID: number | null
+    Benutzer_ID: number | null
+    Mitglied_ID: number | null
+    Typ: $Enums.mitglied_login_Typ | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type Mitglied_loginCountAggregateOutputType = {
-    id: number
-    benutzer_id: number
-    mitglied_id: number
-    ty: number
+    ID: number
+    Benutzer_ID: number
+    Mitglied_ID: number
+    Typ: number
+    Erstellt_am: number
+    Geaendert_am: number
     _all: number
   }
 
 
   export type Mitglied_loginAvgAggregateInputType = {
-    id?: true
-    benutzer_id?: true
-    mitglied_id?: true
+    ID?: true
+    Benutzer_ID?: true
+    Mitglied_ID?: true
   }
 
   export type Mitglied_loginSumAggregateInputType = {
-    id?: true
-    benutzer_id?: true
-    mitglied_id?: true
+    ID?: true
+    Benutzer_ID?: true
+    Mitglied_ID?: true
   }
 
   export type Mitglied_loginMinAggregateInputType = {
-    id?: true
-    benutzer_id?: true
-    mitglied_id?: true
-    ty?: true
+    ID?: true
+    Benutzer_ID?: true
+    Mitglied_ID?: true
+    Typ?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type Mitglied_loginMaxAggregateInputType = {
-    id?: true
-    benutzer_id?: true
-    mitglied_id?: true
-    ty?: true
+    ID?: true
+    Benutzer_ID?: true
+    Mitglied_ID?: true
+    Typ?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type Mitglied_loginCountAggregateInputType = {
-    id?: true
-    benutzer_id?: true
-    mitglied_id?: true
-    ty?: true
+    ID?: true
+    Benutzer_ID?: true
+    Mitglied_ID?: true
+    Typ?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
     _all?: true
   }
 
@@ -8805,10 +15214,12 @@ export namespace Prisma {
   }
 
   export type Mitglied_loginGroupByOutputType = {
-    id: number
-    benutzer_id: number
-    mitglied_id: number
-    ty: $Enums.mitglied_login_ty
+    ID: number
+    Benutzer_ID: number
+    Mitglied_ID: number
+    Typ: $Enums.mitglied_login_Typ
+    Erstellt_am: Date
+    Geaendert_am: Date | null
     _count: Mitglied_loginCountAggregateOutputType | null
     _avg: Mitglied_loginAvgAggregateOutputType | null
     _sum: Mitglied_loginSumAggregateOutputType | null
@@ -8831,31 +15242,43 @@ export namespace Prisma {
 
 
   export type mitglied_loginSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    benutzer_id?: boolean
-    mitglied_id?: boolean
-    ty?: boolean
+    ID?: boolean
+    Benutzer_ID?: boolean
+    Mitglied_ID?: boolean
+    Typ?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
+    person?: boolean | personDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["mitglied_login"]>
 
 
 
   export type mitglied_loginSelectScalar = {
-    id?: boolean
-    benutzer_id?: boolean
-    mitglied_id?: boolean
-    ty?: boolean
+    ID?: boolean
+    Benutzer_ID?: boolean
+    Mitglied_ID?: boolean
+    Typ?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
   }
 
-  export type mitglied_loginOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "benutzer_id" | "mitglied_id" | "ty", ExtArgs["result"]["mitglied_login"]>
+  export type mitglied_loginOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Benutzer_ID" | "Mitglied_ID" | "Typ" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["mitglied_login"]>
+  export type mitglied_loginInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    person?: boolean | personDefaultArgs<ExtArgs>
+  }
 
   export type $mitglied_loginPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "mitglied_login"
-    objects: {}
+    objects: {
+      person: Prisma.$personPayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
-      benutzer_id: number
-      mitglied_id: number
-      ty: $Enums.mitglied_login_ty
+      ID: number
+      Benutzer_ID: number
+      Mitglied_ID: number
+      Typ: $Enums.mitglied_login_Typ
+      Erstellt_am: Date
+      Geaendert_am: Date | null
     }, ExtArgs["result"]["mitglied_login"]>
     composites: {}
   }
@@ -8939,8 +15362,8 @@ export namespace Prisma {
      * // Get first 10 Mitglied_logins
      * const mitglied_logins = await prisma.mitglied_login.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const mitglied_loginWithIdOnly = await prisma.mitglied_login.findMany({ select: { id: true } })
+     * // Only select the `ID`
+     * const mitglied_loginWithIDOnly = await prisma.mitglied_login.findMany({ select: { ID: true } })
      * 
      */
     findMany<T extends mitglied_loginFindManyArgs>(args?: SelectSubset<T, mitglied_loginFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$mitglied_loginPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -9196,6 +15619,7 @@ export namespace Prisma {
    */
   export interface Prisma__mitglied_loginClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    person<T extends personDefaultArgs<ExtArgs> = {}>(args?: Subset<T, personDefaultArgs<ExtArgs>>): Prisma__personClient<$Result.GetResult<Prisma.$personPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9225,10 +15649,12 @@ export namespace Prisma {
    * Fields of the mitglied_login model
    */
   interface mitglied_loginFieldRefs {
-    readonly id: FieldRef<"mitglied_login", 'Int'>
-    readonly benutzer_id: FieldRef<"mitglied_login", 'Int'>
-    readonly mitglied_id: FieldRef<"mitglied_login", 'Int'>
-    readonly ty: FieldRef<"mitglied_login", 'mitglied_login_ty'>
+    readonly ID: FieldRef<"mitglied_login", 'Int'>
+    readonly Benutzer_ID: FieldRef<"mitglied_login", 'Int'>
+    readonly Mitglied_ID: FieldRef<"mitglied_login", 'Int'>
+    readonly Typ: FieldRef<"mitglied_login", 'mitglied_login_Typ'>
+    readonly Erstellt_am: FieldRef<"mitglied_login", 'DateTime'>
+    readonly Geaendert_am: FieldRef<"mitglied_login", 'DateTime'>
   }
     
 
@@ -9245,6 +15671,10 @@ export namespace Prisma {
      * Omit specific fields from the mitglied_login
      */
     omit?: mitglied_loginOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mitglied_loginInclude<ExtArgs> | null
     /**
      * Filter, which mitglied_login to fetch.
      */
@@ -9264,6 +15694,10 @@ export namespace Prisma {
      */
     omit?: mitglied_loginOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mitglied_loginInclude<ExtArgs> | null
+    /**
      * Filter, which mitglied_login to fetch.
      */
     where: mitglied_loginWhereUniqueInput
@@ -9281,6 +15715,10 @@ export namespace Prisma {
      * Omit specific fields from the mitglied_login
      */
     omit?: mitglied_loginOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mitglied_loginInclude<ExtArgs> | null
     /**
      * Filter, which mitglied_login to fetch.
      */
@@ -9330,6 +15768,10 @@ export namespace Prisma {
      */
     omit?: mitglied_loginOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mitglied_loginInclude<ExtArgs> | null
+    /**
      * Filter, which mitglied_login to fetch.
      */
     where?: mitglied_loginWhereInput
@@ -9378,6 +15820,10 @@ export namespace Prisma {
      */
     omit?: mitglied_loginOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mitglied_loginInclude<ExtArgs> | null
+    /**
      * Filter, which mitglied_logins to fetch.
      */
     where?: mitglied_loginWhereInput
@@ -9421,6 +15867,10 @@ export namespace Prisma {
      */
     omit?: mitglied_loginOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mitglied_loginInclude<ExtArgs> | null
+    /**
      * The data needed to create a mitglied_login.
      */
     data: XOR<mitglied_loginCreateInput, mitglied_loginUncheckedCreateInput>
@@ -9449,6 +15899,10 @@ export namespace Prisma {
      * Omit specific fields from the mitglied_login
      */
     omit?: mitglied_loginOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mitglied_loginInclude<ExtArgs> | null
     /**
      * The data needed to update a mitglied_login.
      */
@@ -9490,6 +15944,10 @@ export namespace Prisma {
      */
     omit?: mitglied_loginOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mitglied_loginInclude<ExtArgs> | null
+    /**
      * The filter to search for the mitglied_login to update in case it exists.
      */
     where: mitglied_loginWhereUniqueInput
@@ -9515,6 +15973,10 @@ export namespace Prisma {
      * Omit specific fields from the mitglied_login
      */
     omit?: mitglied_loginOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mitglied_loginInclude<ExtArgs> | null
     /**
      * Filter which mitglied_login to delete.
      */
@@ -9547,6 +16009,10 @@ export namespace Prisma {
      * Omit specific fields from the mitglied_login
      */
     omit?: mitglied_loginOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mitglied_loginInclude<ExtArgs> | null
   }
 
 
@@ -9563,69 +16029,115 @@ export namespace Prisma {
   }
 
   export type PersonAvgAggregateOutputType = {
-    id: number | null
+    ID: number | null
+    HandyNr: number | null
   }
 
   export type PersonSumAggregateOutputType = {
-    id: number | null
+    ID: number | null
+    HandyNr: number | null
   }
 
   export type PersonMinAggregateOutputType = {
-    id: number | null
-    vorname: string | null
-    name: string | null
-    geburtsdatum: Date | null
-    email: string | null
+    ID: number | null
+    Vorname: string | null
+    Name: string | null
+    Geburtsdatum: Date | null
+    Strasse: string | null
+    Hausnummer: string | null
+    Postleitzahl: string | null
+    Ort: string | null
+    Email: string | null
+    HandyNr: number | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type PersonMaxAggregateOutputType = {
-    id: number | null
-    vorname: string | null
-    name: string | null
-    geburtsdatum: Date | null
-    email: string | null
+    ID: number | null
+    Vorname: string | null
+    Name: string | null
+    Geburtsdatum: Date | null
+    Strasse: string | null
+    Hausnummer: string | null
+    Postleitzahl: string | null
+    Ort: string | null
+    Email: string | null
+    HandyNr: number | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type PersonCountAggregateOutputType = {
-    id: number
-    vorname: number
-    name: number
-    geburtsdatum: number
-    email: number
+    ID: number
+    Vorname: number
+    Name: number
+    Geburtsdatum: number
+    Strasse: number
+    Hausnummer: number
+    Postleitzahl: number
+    Ort: number
+    Email: number
+    HandyNr: number
+    Erstellt_am: number
+    Geaendert_am: number
     _all: number
   }
 
 
   export type PersonAvgAggregateInputType = {
-    id?: true
+    ID?: true
+    HandyNr?: true
   }
 
   export type PersonSumAggregateInputType = {
-    id?: true
+    ID?: true
+    HandyNr?: true
   }
 
   export type PersonMinAggregateInputType = {
-    id?: true
-    vorname?: true
-    name?: true
-    geburtsdatum?: true
-    email?: true
+    ID?: true
+    Vorname?: true
+    Name?: true
+    Geburtsdatum?: true
+    Strasse?: true
+    Hausnummer?: true
+    Postleitzahl?: true
+    Ort?: true
+    Email?: true
+    HandyNr?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type PersonMaxAggregateInputType = {
-    id?: true
-    vorname?: true
-    name?: true
-    geburtsdatum?: true
-    email?: true
+    ID?: true
+    Vorname?: true
+    Name?: true
+    Geburtsdatum?: true
+    Strasse?: true
+    Hausnummer?: true
+    Postleitzahl?: true
+    Ort?: true
+    Email?: true
+    HandyNr?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type PersonCountAggregateInputType = {
-    id?: true
-    vorname?: true
-    name?: true
-    geburtsdatum?: true
-    email?: true
+    ID?: true
+    Vorname?: true
+    Name?: true
+    Geburtsdatum?: true
+    Strasse?: true
+    Hausnummer?: true
+    Postleitzahl?: true
+    Ort?: true
+    Email?: true
+    HandyNr?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
     _all?: true
   }
 
@@ -9716,11 +16228,18 @@ export namespace Prisma {
   }
 
   export type PersonGroupByOutputType = {
-    id: number
-    vorname: string
-    name: string
-    geburtsdatum: Date | null
-    email: string
+    ID: number
+    Vorname: string
+    Name: string
+    Geburtsdatum: Date | null
+    Strasse: string | null
+    Hausnummer: string | null
+    Postleitzahl: string | null
+    Ort: string | null
+    Email: string | null
+    HandyNr: number | null
+    Erstellt_am: Date
+    Geaendert_am: Date | null
     _count: PersonCountAggregateOutputType | null
     _avg: PersonAvgAggregateOutputType | null
     _sum: PersonSumAggregateOutputType | null
@@ -9743,32 +16262,50 @@ export namespace Prisma {
 
 
   export type personSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    vorname?: boolean
-    name?: boolean
-    geburtsdatum?: boolean
-    email?: boolean
+    ID?: boolean
+    Vorname?: boolean
+    Name?: boolean
+    Geburtsdatum?: boolean
+    Strasse?: boolean
+    Hausnummer?: boolean
+    Postleitzahl?: boolean
+    Ort?: boolean
+    Email?: boolean
+    HandyNr?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
     ff_mitglied?: boolean | person$ff_mitgliedArgs<ExtArgs>
     jf_erziehungsberechtigter?: boolean | person$jf_erziehungsberechtigterArgs<ExtArgs>
     jf_mitglied?: boolean | person$jf_mitgliedArgs<ExtArgs>
+    mitglied_login?: boolean | person$mitglied_loginArgs<ExtArgs>
+    teilnahme?: boolean | person$teilnahmeArgs<ExtArgs>
     _count?: boolean | PersonCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["person"]>
 
 
 
   export type personSelectScalar = {
-    id?: boolean
-    vorname?: boolean
-    name?: boolean
-    geburtsdatum?: boolean
-    email?: boolean
+    ID?: boolean
+    Vorname?: boolean
+    Name?: boolean
+    Geburtsdatum?: boolean
+    Strasse?: boolean
+    Hausnummer?: boolean
+    Postleitzahl?: boolean
+    Ort?: boolean
+    Email?: boolean
+    HandyNr?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
   }
 
-  export type personOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "vorname" | "name" | "geburtsdatum" | "email", ExtArgs["result"]["person"]>
+  export type personOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Vorname" | "Name" | "Geburtsdatum" | "Strasse" | "Hausnummer" | "Postleitzahl" | "Ort" | "Email" | "HandyNr" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["person"]>
   export type personInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     ff_mitglied?: boolean | person$ff_mitgliedArgs<ExtArgs>
     jf_erziehungsberechtigter?: boolean | person$jf_erziehungsberechtigterArgs<ExtArgs>
     jf_mitglied?: boolean | person$jf_mitgliedArgs<ExtArgs>
+    mitglied_login?: boolean | person$mitglied_loginArgs<ExtArgs>
+    teilnahme?: boolean | person$teilnahmeArgs<ExtArgs>
     _count?: boolean | PersonCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -9778,13 +16315,22 @@ export namespace Prisma {
       ff_mitglied: Prisma.$ff_mitgliedPayload<ExtArgs>[]
       jf_erziehungsberechtigter: Prisma.$jf_erziehungsberechtigterPayload<ExtArgs>[]
       jf_mitglied: Prisma.$jf_mitgliedPayload<ExtArgs>[]
+      mitglied_login: Prisma.$mitglied_loginPayload<ExtArgs>[]
+      teilnahme: Prisma.$teilnahmePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
-      vorname: string
-      name: string
-      geburtsdatum: Date | null
-      email: string
+      ID: number
+      Vorname: string
+      Name: string
+      Geburtsdatum: Date | null
+      Strasse: string | null
+      Hausnummer: string | null
+      Postleitzahl: string | null
+      Ort: string | null
+      Email: string | null
+      HandyNr: number | null
+      Erstellt_am: Date
+      Geaendert_am: Date | null
     }, ExtArgs["result"]["person"]>
     composites: {}
   }
@@ -9868,8 +16414,8 @@ export namespace Prisma {
      * // Get first 10 People
      * const people = await prisma.person.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const personWithIdOnly = await prisma.person.findMany({ select: { id: true } })
+     * // Only select the `ID`
+     * const personWithIDOnly = await prisma.person.findMany({ select: { ID: true } })
      * 
      */
     findMany<T extends personFindManyArgs>(args?: SelectSubset<T, personFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$personPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -10128,6 +16674,8 @@ export namespace Prisma {
     ff_mitglied<T extends person$ff_mitgliedArgs<ExtArgs> = {}>(args?: Subset<T, person$ff_mitgliedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ff_mitgliedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     jf_erziehungsberechtigter<T extends person$jf_erziehungsberechtigterArgs<ExtArgs> = {}>(args?: Subset<T, person$jf_erziehungsberechtigterArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jf_erziehungsberechtigterPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     jf_mitglied<T extends person$jf_mitgliedArgs<ExtArgs> = {}>(args?: Subset<T, person$jf_mitgliedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jf_mitgliedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    mitglied_login<T extends person$mitglied_loginArgs<ExtArgs> = {}>(args?: Subset<T, person$mitglied_loginArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$mitglied_loginPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    teilnahme<T extends person$teilnahmeArgs<ExtArgs> = {}>(args?: Subset<T, person$teilnahmeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$teilnahmePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10157,11 +16705,18 @@ export namespace Prisma {
    * Fields of the person model
    */
   interface personFieldRefs {
-    readonly id: FieldRef<"person", 'Int'>
-    readonly vorname: FieldRef<"person", 'String'>
-    readonly name: FieldRef<"person", 'String'>
-    readonly geburtsdatum: FieldRef<"person", 'DateTime'>
-    readonly email: FieldRef<"person", 'String'>
+    readonly ID: FieldRef<"person", 'Int'>
+    readonly Vorname: FieldRef<"person", 'String'>
+    readonly Name: FieldRef<"person", 'String'>
+    readonly Geburtsdatum: FieldRef<"person", 'DateTime'>
+    readonly Strasse: FieldRef<"person", 'String'>
+    readonly Hausnummer: FieldRef<"person", 'String'>
+    readonly Postleitzahl: FieldRef<"person", 'String'>
+    readonly Ort: FieldRef<"person", 'String'>
+    readonly Email: FieldRef<"person", 'String'>
+    readonly HandyNr: FieldRef<"person", 'Int'>
+    readonly Erstellt_am: FieldRef<"person", 'DateTime'>
+    readonly Geaendert_am: FieldRef<"person", 'DateTime'>
   }
     
 
@@ -10577,6 +17132,54 @@ export namespace Prisma {
   }
 
   /**
+   * person.mitglied_login
+   */
+  export type person$mitglied_loginArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mitglied_login
+     */
+    select?: mitglied_loginSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the mitglied_login
+     */
+    omit?: mitglied_loginOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mitglied_loginInclude<ExtArgs> | null
+    where?: mitglied_loginWhereInput
+    orderBy?: mitglied_loginOrderByWithRelationInput | mitglied_loginOrderByWithRelationInput[]
+    cursor?: mitglied_loginWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Mitglied_loginScalarFieldEnum | Mitglied_loginScalarFieldEnum[]
+  }
+
+  /**
+   * person.teilnahme
+   */
+  export type person$teilnahmeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the teilnahme
+     */
+    select?: teilnahmeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the teilnahme
+     */
+    omit?: teilnahmeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: teilnahmeInclude<ExtArgs> | null
+    where?: teilnahmeWhereInput
+    orderBy?: teilnahmeOrderByWithRelationInput | teilnahmeOrderByWithRelationInput[]
+    cursor?: teilnahmeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TeilnahmeScalarFieldEnum | TeilnahmeScalarFieldEnum[]
+  }
+
+  /**
    * person without action
    */
   export type personDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10608,71 +17211,83 @@ export namespace Prisma {
   }
 
   export type TeilnahmeAvgAggregateOutputType = {
-    id: number | null
-    mitglied_id: number | null
-    veranstaltung_id: number | null
+    ID: number | null
+    Mitglied_ID: number | null
+    Veranstaltung_ID: number | null
   }
 
   export type TeilnahmeSumAggregateOutputType = {
-    id: number | null
-    mitglied_id: number | null
-    veranstaltung_id: number | null
+    ID: number | null
+    Mitglied_ID: number | null
+    Veranstaltung_ID: number | null
   }
 
   export type TeilnahmeMinAggregateOutputType = {
-    id: number | null
-    mitglied_id: number | null
-    veranstaltung_id: number | null
-    typ: $Enums.teilnahme_typ | null
+    ID: number | null
+    Mitglied_ID: number | null
+    Veranstaltung_ID: number | null
+    Typ: $Enums.teilnahme_Typ | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type TeilnahmeMaxAggregateOutputType = {
-    id: number | null
-    mitglied_id: number | null
-    veranstaltung_id: number | null
-    typ: $Enums.teilnahme_typ | null
+    ID: number | null
+    Mitglied_ID: number | null
+    Veranstaltung_ID: number | null
+    Typ: $Enums.teilnahme_Typ | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type TeilnahmeCountAggregateOutputType = {
-    id: number
-    mitglied_id: number
-    veranstaltung_id: number
-    typ: number
+    ID: number
+    Mitglied_ID: number
+    Veranstaltung_ID: number
+    Typ: number
+    Erstellt_am: number
+    Geaendert_am: number
     _all: number
   }
 
 
   export type TeilnahmeAvgAggregateInputType = {
-    id?: true
-    mitglied_id?: true
-    veranstaltung_id?: true
+    ID?: true
+    Mitglied_ID?: true
+    Veranstaltung_ID?: true
   }
 
   export type TeilnahmeSumAggregateInputType = {
-    id?: true
-    mitglied_id?: true
-    veranstaltung_id?: true
+    ID?: true
+    Mitglied_ID?: true
+    Veranstaltung_ID?: true
   }
 
   export type TeilnahmeMinAggregateInputType = {
-    id?: true
-    mitglied_id?: true
-    veranstaltung_id?: true
-    typ?: true
+    ID?: true
+    Mitglied_ID?: true
+    Veranstaltung_ID?: true
+    Typ?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type TeilnahmeMaxAggregateInputType = {
-    id?: true
-    mitglied_id?: true
-    veranstaltung_id?: true
-    typ?: true
+    ID?: true
+    Mitglied_ID?: true
+    Veranstaltung_ID?: true
+    Typ?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type TeilnahmeCountAggregateInputType = {
-    id?: true
-    mitglied_id?: true
-    veranstaltung_id?: true
-    typ?: true
+    ID?: true
+    Mitglied_ID?: true
+    Veranstaltung_ID?: true
+    Typ?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
     _all?: true
   }
 
@@ -10763,10 +17378,12 @@ export namespace Prisma {
   }
 
   export type TeilnahmeGroupByOutputType = {
-    id: number
-    mitglied_id: number
-    veranstaltung_id: number
-    typ: $Enums.teilnahme_typ
+    ID: number
+    Mitglied_ID: number
+    Veranstaltung_ID: number
+    Typ: $Enums.teilnahme_Typ
+    Erstellt_am: Date
+    Geaendert_am: Date | null
     _count: TeilnahmeCountAggregateOutputType | null
     _avg: TeilnahmeAvgAggregateOutputType | null
     _sum: TeilnahmeSumAggregateOutputType | null
@@ -10789,37 +17406,43 @@ export namespace Prisma {
 
 
   export type teilnahmeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    mitglied_id?: boolean
-    veranstaltung_id?: boolean
-    typ?: boolean
-    ff_mitglied?: boolean | ff_mitgliedDefaultArgs<ExtArgs>
+    ID?: boolean
+    Mitglied_ID?: boolean
+    Veranstaltung_ID?: boolean
+    Typ?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
+    person?: boolean | personDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["teilnahme"]>
 
 
 
   export type teilnahmeSelectScalar = {
-    id?: boolean
-    mitglied_id?: boolean
-    veranstaltung_id?: boolean
-    typ?: boolean
+    ID?: boolean
+    Mitglied_ID?: boolean
+    Veranstaltung_ID?: boolean
+    Typ?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
   }
 
-  export type teilnahmeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "mitglied_id" | "veranstaltung_id" | "typ", ExtArgs["result"]["teilnahme"]>
+  export type teilnahmeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Mitglied_ID" | "Veranstaltung_ID" | "Typ" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["teilnahme"]>
   export type teilnahmeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    ff_mitglied?: boolean | ff_mitgliedDefaultArgs<ExtArgs>
+    person?: boolean | personDefaultArgs<ExtArgs>
   }
 
   export type $teilnahmePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "teilnahme"
     objects: {
-      ff_mitglied: Prisma.$ff_mitgliedPayload<ExtArgs>
+      person: Prisma.$personPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
-      mitglied_id: number
-      veranstaltung_id: number
-      typ: $Enums.teilnahme_typ
+      ID: number
+      Mitglied_ID: number
+      Veranstaltung_ID: number
+      Typ: $Enums.teilnahme_Typ
+      Erstellt_am: Date
+      Geaendert_am: Date | null
     }, ExtArgs["result"]["teilnahme"]>
     composites: {}
   }
@@ -10903,8 +17526,8 @@ export namespace Prisma {
      * // Get first 10 Teilnahmes
      * const teilnahmes = await prisma.teilnahme.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const teilnahmeWithIdOnly = await prisma.teilnahme.findMany({ select: { id: true } })
+     * // Only select the `ID`
+     * const teilnahmeWithIDOnly = await prisma.teilnahme.findMany({ select: { ID: true } })
      * 
      */
     findMany<T extends teilnahmeFindManyArgs>(args?: SelectSubset<T, teilnahmeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$teilnahmePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -11160,7 +17783,7 @@ export namespace Prisma {
    */
   export interface Prisma__teilnahmeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    ff_mitglied<T extends ff_mitgliedDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ff_mitgliedDefaultArgs<ExtArgs>>): Prisma__ff_mitgliedClient<$Result.GetResult<Prisma.$ff_mitgliedPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    person<T extends personDefaultArgs<ExtArgs> = {}>(args?: Subset<T, personDefaultArgs<ExtArgs>>): Prisma__personClient<$Result.GetResult<Prisma.$personPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11190,10 +17813,12 @@ export namespace Prisma {
    * Fields of the teilnahme model
    */
   interface teilnahmeFieldRefs {
-    readonly id: FieldRef<"teilnahme", 'Int'>
-    readonly mitglied_id: FieldRef<"teilnahme", 'Int'>
-    readonly veranstaltung_id: FieldRef<"teilnahme", 'Int'>
-    readonly typ: FieldRef<"teilnahme", 'teilnahme_typ'>
+    readonly ID: FieldRef<"teilnahme", 'Int'>
+    readonly Mitglied_ID: FieldRef<"teilnahme", 'Int'>
+    readonly Veranstaltung_ID: FieldRef<"teilnahme", 'Int'>
+    readonly Typ: FieldRef<"teilnahme", 'teilnahme_Typ'>
+    readonly Erstellt_am: FieldRef<"teilnahme", 'DateTime'>
+    readonly Geaendert_am: FieldRef<"teilnahme", 'DateTime'>
   }
     
 
@@ -11556,900 +18181,6 @@ export namespace Prisma {
 
 
   /**
-   * Model uebungsabend
-   */
-
-  export type AggregateUebungsabend = {
-    _count: UebungsabendCountAggregateOutputType | null
-    _avg: UebungsabendAvgAggregateOutputType | null
-    _sum: UebungsabendSumAggregateOutputType | null
-    _min: UebungsabendMinAggregateOutputType | null
-    _max: UebungsabendMaxAggregateOutputType | null
-  }
-
-  export type UebungsabendAvgAggregateOutputType = {
-    id: number | null
-  }
-
-  export type UebungsabendSumAggregateOutputType = {
-    id: number | null
-  }
-
-  export type UebungsabendMinAggregateOutputType = {
-    id: number | null
-    datum: Date | null
-    thema: string | null
-  }
-
-  export type UebungsabendMaxAggregateOutputType = {
-    id: number | null
-    datum: Date | null
-    thema: string | null
-  }
-
-  export type UebungsabendCountAggregateOutputType = {
-    id: number
-    datum: number
-    thema: number
-    _all: number
-  }
-
-
-  export type UebungsabendAvgAggregateInputType = {
-    id?: true
-  }
-
-  export type UebungsabendSumAggregateInputType = {
-    id?: true
-  }
-
-  export type UebungsabendMinAggregateInputType = {
-    id?: true
-    datum?: true
-    thema?: true
-  }
-
-  export type UebungsabendMaxAggregateInputType = {
-    id?: true
-    datum?: true
-    thema?: true
-  }
-
-  export type UebungsabendCountAggregateInputType = {
-    id?: true
-    datum?: true
-    thema?: true
-    _all?: true
-  }
-
-  export type UebungsabendAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which uebungsabend to aggregate.
-     */
-    where?: uebungsabendWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of uebungsabends to fetch.
-     */
-    orderBy?: uebungsabendOrderByWithRelationInput | uebungsabendOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: uebungsabendWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` uebungsabends from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` uebungsabends.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned uebungsabends
-    **/
-    _count?: true | UebungsabendCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: UebungsabendAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: UebungsabendSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: UebungsabendMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: UebungsabendMaxAggregateInputType
-  }
-
-  export type GetUebungsabendAggregateType<T extends UebungsabendAggregateArgs> = {
-        [P in keyof T & keyof AggregateUebungsabend]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateUebungsabend[P]>
-      : GetScalarType<T[P], AggregateUebungsabend[P]>
-  }
-
-
-
-
-  export type uebungsabendGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: uebungsabendWhereInput
-    orderBy?: uebungsabendOrderByWithAggregationInput | uebungsabendOrderByWithAggregationInput[]
-    by: UebungsabendScalarFieldEnum[] | UebungsabendScalarFieldEnum
-    having?: uebungsabendScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: UebungsabendCountAggregateInputType | true
-    _avg?: UebungsabendAvgAggregateInputType
-    _sum?: UebungsabendSumAggregateInputType
-    _min?: UebungsabendMinAggregateInputType
-    _max?: UebungsabendMaxAggregateInputType
-  }
-
-  export type UebungsabendGroupByOutputType = {
-    id: number
-    datum: Date
-    thema: string | null
-    _count: UebungsabendCountAggregateOutputType | null
-    _avg: UebungsabendAvgAggregateOutputType | null
-    _sum: UebungsabendSumAggregateOutputType | null
-    _min: UebungsabendMinAggregateOutputType | null
-    _max: UebungsabendMaxAggregateOutputType | null
-  }
-
-  type GetUebungsabendGroupByPayload<T extends uebungsabendGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<UebungsabendGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof UebungsabendGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], UebungsabendGroupByOutputType[P]>
-            : GetScalarType<T[P], UebungsabendGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type uebungsabendSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    datum?: boolean
-    thema?: boolean
-  }, ExtArgs["result"]["uebungsabend"]>
-
-
-
-  export type uebungsabendSelectScalar = {
-    id?: boolean
-    datum?: boolean
-    thema?: boolean
-  }
-
-  export type uebungsabendOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "datum" | "thema", ExtArgs["result"]["uebungsabend"]>
-
-  export type $uebungsabendPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "uebungsabend"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      datum: Date
-      thema: string | null
-    }, ExtArgs["result"]["uebungsabend"]>
-    composites: {}
-  }
-
-  type uebungsabendGetPayload<S extends boolean | null | undefined | uebungsabendDefaultArgs> = $Result.GetResult<Prisma.$uebungsabendPayload, S>
-
-  type uebungsabendCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<uebungsabendFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: UebungsabendCountAggregateInputType | true
-    }
-
-  export interface uebungsabendDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['uebungsabend'], meta: { name: 'uebungsabend' } }
-    /**
-     * Find zero or one Uebungsabend that matches the filter.
-     * @param {uebungsabendFindUniqueArgs} args - Arguments to find a Uebungsabend
-     * @example
-     * // Get one Uebungsabend
-     * const uebungsabend = await prisma.uebungsabend.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends uebungsabendFindUniqueArgs>(args: SelectSubset<T, uebungsabendFindUniqueArgs<ExtArgs>>): Prisma__uebungsabendClient<$Result.GetResult<Prisma.$uebungsabendPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Uebungsabend that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {uebungsabendFindUniqueOrThrowArgs} args - Arguments to find a Uebungsabend
-     * @example
-     * // Get one Uebungsabend
-     * const uebungsabend = await prisma.uebungsabend.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends uebungsabendFindUniqueOrThrowArgs>(args: SelectSubset<T, uebungsabendFindUniqueOrThrowArgs<ExtArgs>>): Prisma__uebungsabendClient<$Result.GetResult<Prisma.$uebungsabendPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Uebungsabend that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {uebungsabendFindFirstArgs} args - Arguments to find a Uebungsabend
-     * @example
-     * // Get one Uebungsabend
-     * const uebungsabend = await prisma.uebungsabend.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends uebungsabendFindFirstArgs>(args?: SelectSubset<T, uebungsabendFindFirstArgs<ExtArgs>>): Prisma__uebungsabendClient<$Result.GetResult<Prisma.$uebungsabendPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Uebungsabend that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {uebungsabendFindFirstOrThrowArgs} args - Arguments to find a Uebungsabend
-     * @example
-     * // Get one Uebungsabend
-     * const uebungsabend = await prisma.uebungsabend.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends uebungsabendFindFirstOrThrowArgs>(args?: SelectSubset<T, uebungsabendFindFirstOrThrowArgs<ExtArgs>>): Prisma__uebungsabendClient<$Result.GetResult<Prisma.$uebungsabendPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Uebungsabends that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {uebungsabendFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Uebungsabends
-     * const uebungsabends = await prisma.uebungsabend.findMany()
-     * 
-     * // Get first 10 Uebungsabends
-     * const uebungsabends = await prisma.uebungsabend.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const uebungsabendWithIdOnly = await prisma.uebungsabend.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends uebungsabendFindManyArgs>(args?: SelectSubset<T, uebungsabendFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$uebungsabendPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Uebungsabend.
-     * @param {uebungsabendCreateArgs} args - Arguments to create a Uebungsabend.
-     * @example
-     * // Create one Uebungsabend
-     * const Uebungsabend = await prisma.uebungsabend.create({
-     *   data: {
-     *     // ... data to create a Uebungsabend
-     *   }
-     * })
-     * 
-     */
-    create<T extends uebungsabendCreateArgs>(args: SelectSubset<T, uebungsabendCreateArgs<ExtArgs>>): Prisma__uebungsabendClient<$Result.GetResult<Prisma.$uebungsabendPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Uebungsabends.
-     * @param {uebungsabendCreateManyArgs} args - Arguments to create many Uebungsabends.
-     * @example
-     * // Create many Uebungsabends
-     * const uebungsabend = await prisma.uebungsabend.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends uebungsabendCreateManyArgs>(args?: SelectSubset<T, uebungsabendCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Uebungsabend.
-     * @param {uebungsabendDeleteArgs} args - Arguments to delete one Uebungsabend.
-     * @example
-     * // Delete one Uebungsabend
-     * const Uebungsabend = await prisma.uebungsabend.delete({
-     *   where: {
-     *     // ... filter to delete one Uebungsabend
-     *   }
-     * })
-     * 
-     */
-    delete<T extends uebungsabendDeleteArgs>(args: SelectSubset<T, uebungsabendDeleteArgs<ExtArgs>>): Prisma__uebungsabendClient<$Result.GetResult<Prisma.$uebungsabendPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Uebungsabend.
-     * @param {uebungsabendUpdateArgs} args - Arguments to update one Uebungsabend.
-     * @example
-     * // Update one Uebungsabend
-     * const uebungsabend = await prisma.uebungsabend.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends uebungsabendUpdateArgs>(args: SelectSubset<T, uebungsabendUpdateArgs<ExtArgs>>): Prisma__uebungsabendClient<$Result.GetResult<Prisma.$uebungsabendPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Uebungsabends.
-     * @param {uebungsabendDeleteManyArgs} args - Arguments to filter Uebungsabends to delete.
-     * @example
-     * // Delete a few Uebungsabends
-     * const { count } = await prisma.uebungsabend.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends uebungsabendDeleteManyArgs>(args?: SelectSubset<T, uebungsabendDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Uebungsabends.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {uebungsabendUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Uebungsabends
-     * const uebungsabend = await prisma.uebungsabend.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends uebungsabendUpdateManyArgs>(args: SelectSubset<T, uebungsabendUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Uebungsabend.
-     * @param {uebungsabendUpsertArgs} args - Arguments to update or create a Uebungsabend.
-     * @example
-     * // Update or create a Uebungsabend
-     * const uebungsabend = await prisma.uebungsabend.upsert({
-     *   create: {
-     *     // ... data to create a Uebungsabend
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Uebungsabend we want to update
-     *   }
-     * })
-     */
-    upsert<T extends uebungsabendUpsertArgs>(args: SelectSubset<T, uebungsabendUpsertArgs<ExtArgs>>): Prisma__uebungsabendClient<$Result.GetResult<Prisma.$uebungsabendPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Uebungsabends.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {uebungsabendCountArgs} args - Arguments to filter Uebungsabends to count.
-     * @example
-     * // Count the number of Uebungsabends
-     * const count = await prisma.uebungsabend.count({
-     *   where: {
-     *     // ... the filter for the Uebungsabends we want to count
-     *   }
-     * })
-    **/
-    count<T extends uebungsabendCountArgs>(
-      args?: Subset<T, uebungsabendCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], UebungsabendCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Uebungsabend.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UebungsabendAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends UebungsabendAggregateArgs>(args: Subset<T, UebungsabendAggregateArgs>): Prisma.PrismaPromise<GetUebungsabendAggregateType<T>>
-
-    /**
-     * Group by Uebungsabend.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {uebungsabendGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends uebungsabendGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: uebungsabendGroupByArgs['orderBy'] }
-        : { orderBy?: uebungsabendGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, uebungsabendGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUebungsabendGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the uebungsabend model
-   */
-  readonly fields: uebungsabendFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for uebungsabend.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__uebungsabendClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the uebungsabend model
-   */
-  interface uebungsabendFieldRefs {
-    readonly id: FieldRef<"uebungsabend", 'Int'>
-    readonly datum: FieldRef<"uebungsabend", 'DateTime'>
-    readonly thema: FieldRef<"uebungsabend", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * uebungsabend findUnique
-   */
-  export type uebungsabendFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the uebungsabend
-     */
-    select?: uebungsabendSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the uebungsabend
-     */
-    omit?: uebungsabendOmit<ExtArgs> | null
-    /**
-     * Filter, which uebungsabend to fetch.
-     */
-    where: uebungsabendWhereUniqueInput
-  }
-
-  /**
-   * uebungsabend findUniqueOrThrow
-   */
-  export type uebungsabendFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the uebungsabend
-     */
-    select?: uebungsabendSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the uebungsabend
-     */
-    omit?: uebungsabendOmit<ExtArgs> | null
-    /**
-     * Filter, which uebungsabend to fetch.
-     */
-    where: uebungsabendWhereUniqueInput
-  }
-
-  /**
-   * uebungsabend findFirst
-   */
-  export type uebungsabendFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the uebungsabend
-     */
-    select?: uebungsabendSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the uebungsabend
-     */
-    omit?: uebungsabendOmit<ExtArgs> | null
-    /**
-     * Filter, which uebungsabend to fetch.
-     */
-    where?: uebungsabendWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of uebungsabends to fetch.
-     */
-    orderBy?: uebungsabendOrderByWithRelationInput | uebungsabendOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for uebungsabends.
-     */
-    cursor?: uebungsabendWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` uebungsabends from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` uebungsabends.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of uebungsabends.
-     */
-    distinct?: UebungsabendScalarFieldEnum | UebungsabendScalarFieldEnum[]
-  }
-
-  /**
-   * uebungsabend findFirstOrThrow
-   */
-  export type uebungsabendFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the uebungsabend
-     */
-    select?: uebungsabendSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the uebungsabend
-     */
-    omit?: uebungsabendOmit<ExtArgs> | null
-    /**
-     * Filter, which uebungsabend to fetch.
-     */
-    where?: uebungsabendWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of uebungsabends to fetch.
-     */
-    orderBy?: uebungsabendOrderByWithRelationInput | uebungsabendOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for uebungsabends.
-     */
-    cursor?: uebungsabendWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` uebungsabends from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` uebungsabends.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of uebungsabends.
-     */
-    distinct?: UebungsabendScalarFieldEnum | UebungsabendScalarFieldEnum[]
-  }
-
-  /**
-   * uebungsabend findMany
-   */
-  export type uebungsabendFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the uebungsabend
-     */
-    select?: uebungsabendSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the uebungsabend
-     */
-    omit?: uebungsabendOmit<ExtArgs> | null
-    /**
-     * Filter, which uebungsabends to fetch.
-     */
-    where?: uebungsabendWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of uebungsabends to fetch.
-     */
-    orderBy?: uebungsabendOrderByWithRelationInput | uebungsabendOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing uebungsabends.
-     */
-    cursor?: uebungsabendWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` uebungsabends from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` uebungsabends.
-     */
-    skip?: number
-    distinct?: UebungsabendScalarFieldEnum | UebungsabendScalarFieldEnum[]
-  }
-
-  /**
-   * uebungsabend create
-   */
-  export type uebungsabendCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the uebungsabend
-     */
-    select?: uebungsabendSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the uebungsabend
-     */
-    omit?: uebungsabendOmit<ExtArgs> | null
-    /**
-     * The data needed to create a uebungsabend.
-     */
-    data: XOR<uebungsabendCreateInput, uebungsabendUncheckedCreateInput>
-  }
-
-  /**
-   * uebungsabend createMany
-   */
-  export type uebungsabendCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many uebungsabends.
-     */
-    data: uebungsabendCreateManyInput | uebungsabendCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * uebungsabend update
-   */
-  export type uebungsabendUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the uebungsabend
-     */
-    select?: uebungsabendSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the uebungsabend
-     */
-    omit?: uebungsabendOmit<ExtArgs> | null
-    /**
-     * The data needed to update a uebungsabend.
-     */
-    data: XOR<uebungsabendUpdateInput, uebungsabendUncheckedUpdateInput>
-    /**
-     * Choose, which uebungsabend to update.
-     */
-    where: uebungsabendWhereUniqueInput
-  }
-
-  /**
-   * uebungsabend updateMany
-   */
-  export type uebungsabendUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update uebungsabends.
-     */
-    data: XOR<uebungsabendUpdateManyMutationInput, uebungsabendUncheckedUpdateManyInput>
-    /**
-     * Filter which uebungsabends to update
-     */
-    where?: uebungsabendWhereInput
-    /**
-     * Limit how many uebungsabends to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * uebungsabend upsert
-   */
-  export type uebungsabendUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the uebungsabend
-     */
-    select?: uebungsabendSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the uebungsabend
-     */
-    omit?: uebungsabendOmit<ExtArgs> | null
-    /**
-     * The filter to search for the uebungsabend to update in case it exists.
-     */
-    where: uebungsabendWhereUniqueInput
-    /**
-     * In case the uebungsabend found by the `where` argument doesn't exist, create a new uebungsabend with this data.
-     */
-    create: XOR<uebungsabendCreateInput, uebungsabendUncheckedCreateInput>
-    /**
-     * In case the uebungsabend was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<uebungsabendUpdateInput, uebungsabendUncheckedUpdateInput>
-  }
-
-  /**
-   * uebungsabend delete
-   */
-  export type uebungsabendDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the uebungsabend
-     */
-    select?: uebungsabendSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the uebungsabend
-     */
-    omit?: uebungsabendOmit<ExtArgs> | null
-    /**
-     * Filter which uebungsabend to delete.
-     */
-    where: uebungsabendWhereUniqueInput
-  }
-
-  /**
-   * uebungsabend deleteMany
-   */
-  export type uebungsabendDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which uebungsabends to delete
-     */
-    where?: uebungsabendWhereInput
-    /**
-     * Limit how many uebungsabends to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * uebungsabend without action
-   */
-  export type uebungsabendDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the uebungsabend
-     */
-    select?: uebungsabendSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the uebungsabend
-     */
-    omit?: uebungsabendOmit<ExtArgs> | null
-  }
-
-
-  /**
    * Enums
    */
 
@@ -12463,114 +18194,209 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+  export const DienstgradScalarFieldEnum: {
+    ID: 'ID',
+    Abkuerzung_maennlich: 'Abkuerzung_maennlich',
+    Beschreibung_maennlich: 'Beschreibung_maennlich',
+    Abkuerzung_weiblich: 'Abkuerzung_weiblich',
+    Beschreibung_weiblich: 'Beschreibung_weiblich',
+    Erstellt_am: 'Erstellt_am',
+    Geaendert_am: 'Geaendert_am'
+  };
+
+  export type DienstgradScalarFieldEnum = (typeof DienstgradScalarFieldEnum)[keyof typeof DienstgradScalarFieldEnum]
+
+
+  export const DientsabendScalarFieldEnum: {
+    ID: 'ID',
+    Datum: 'Datum',
+    Thema: 'Thema',
+    Erstellt_am: 'Erstellt_am',
+    Geaendert_am: 'Geaendert_am'
+  };
+
+  export type DientsabendScalarFieldEnum = (typeof DientsabendScalarFieldEnum)[keyof typeof DientsabendScalarFieldEnum]
+
+
+  export const EinheitScalarFieldEnum: {
+    ID: 'ID',
+    Abkuerzung: 'Abkuerzung',
+    Beschreibung: 'Beschreibung',
+    Erstellt_am: 'Erstellt_am',
+    Geaendert_am: 'Geaendert_am'
+  };
+
+  export type EinheitScalarFieldEnum = (typeof EinheitScalarFieldEnum)[keyof typeof EinheitScalarFieldEnum]
+
+
   export const EinsatzScalarFieldEnum: {
-    id: 'id',
-    datum: 'datum',
-    beschreibung: 'beschreibung',
-    ort: 'ort',
-    art: 'art'
+    ID: 'ID',
+    Einsatznummer: 'Einsatznummer',
+    Datum_Anfang: 'Datum_Anfang',
+    Uhrzeit_Anfang: 'Uhrzeit_Anfang',
+    Datum_Ende: 'Datum_Ende',
+    Uhrzeit_Ende: 'Uhrzeit_Ende',
+    Beschreibung: 'Beschreibung',
+    Strasse: 'Strasse',
+    Hausnummer: 'Hausnummer',
+    Postleitzahl: 'Postleitzahl',
+    Ort: 'Ort',
+    Art: 'Art',
+    Erstellt_am: 'Erstellt_am',
+    Geaendert_am: 'Geaendert_am'
   };
 
   export type EinsatzScalarFieldEnum = (typeof EinsatzScalarFieldEnum)[keyof typeof EinsatzScalarFieldEnum]
 
 
+  export const FahrzeugScalarFieldEnum: {
+    ID: 'ID',
+    Kennzeichen: 'Kennzeichen',
+    Besatzungsstaerke: 'Besatzungsstaerke',
+    Erstellt_am: 'Erstellt_am',
+    Geaendert_am: 'Geaendert_am'
+  };
+
+  export type FahrzeugScalarFieldEnum = (typeof FahrzeugScalarFieldEnum)[keyof typeof FahrzeugScalarFieldEnum]
+
+
   export const Ff_mitgliedScalarFieldEnum: {
-    id: 'id',
-    person_id: 'person_id',
-    eintrittsdatum: 'eintrittsdatum',
-    austrittsdatum: 'austrittsdatum',
-    status: 'status'
+    ID: 'ID',
+    Person_ID: 'Person_ID',
+    Eintrittsdatum: 'Eintrittsdatum',
+    Austrittsdatum: 'Austrittsdatum',
+    Aufnahmedatum: 'Aufnahmedatum',
+    Status: 'Status',
+    Erstellt_am: 'Erstellt_am',
+    Geaendert_am: 'Geaendert_am'
   };
 
   export type Ff_mitgliedScalarFieldEnum = (typeof Ff_mitgliedScalarFieldEnum)[keyof typeof Ff_mitgliedScalarFieldEnum]
 
 
+  export const Ff_mitglied_lehrgangScalarFieldEnum: {
+    ID: 'ID',
+    FF_Mitglied_ID: 'FF_Mitglied_ID',
+    Lehrgang_ID: 'Lehrgang_ID',
+    Datum_bestanden: 'Datum_bestanden',
+    Erstellt_am: 'Erstellt_am',
+    Geaendert_am: 'Geaendert_am'
+  };
+
+  export type Ff_mitglied_lehrgangScalarFieldEnum = (typeof Ff_mitglied_lehrgangScalarFieldEnum)[keyof typeof Ff_mitglied_lehrgangScalarFieldEnum]
+
+
   export const Funktion_ffScalarFieldEnum: {
-    id: 'id',
-    name: 'name',
-    ist_admin: 'ist_admin'
+    ID: 'ID',
+    Name: 'Name',
+    Ist_Admin: 'Ist_Admin',
+    Erstellt_am: 'Erstellt_am',
+    Geaendert_am: 'Geaendert_am'
   };
 
   export type Funktion_ffScalarFieldEnum = (typeof Funktion_ffScalarFieldEnum)[keyof typeof Funktion_ffScalarFieldEnum]
 
 
   export const Funktion_jfScalarFieldEnum: {
-    id: 'id',
-    name: 'name',
-    ist_admin: 'ist_admin'
+    ID: 'ID',
+    Name: 'Name',
+    Ist_admin: 'Ist_admin',
+    Erstellt_am: 'Erstellt_am',
+    Geaendert_am: 'Geaendert_am'
   };
 
   export type Funktion_jfScalarFieldEnum = (typeof Funktion_jfScalarFieldEnum)[keyof typeof Funktion_jfScalarFieldEnum]
 
 
   export const Jf_erziehungsberechtigterScalarFieldEnum: {
-    id: 'id',
-    jf_mitglied_id: 'jf_mitglied_id',
-    person_id: 'person_id'
+    ID: 'ID',
+    JF_Mitglied_ID: 'JF_Mitglied_ID',
+    Person_ID: 'Person_ID',
+    Erstellt_am: 'Erstellt_am',
+    Geaendert_am: 'Geaendert_am'
   };
 
   export type Jf_erziehungsberechtigterScalarFieldEnum = (typeof Jf_erziehungsberechtigterScalarFieldEnum)[keyof typeof Jf_erziehungsberechtigterScalarFieldEnum]
 
 
   export const Jf_mitgliedScalarFieldEnum: {
-    id: 'id',
-    person_id: 'person_id',
-    eintrittsdatum: 'eintrittsdatum',
-    austrittsdatum: 'austrittsdatum',
-    status: 'status'
+    ID: 'ID',
+    Person_ID: 'Person_ID',
+    Eintrittsdatum: 'Eintrittsdatum',
+    Austrittsdatum: 'Austrittsdatum',
+    Aufnahmedatum: 'Aufnahmedatum',
+    Status: 'Status',
+    Erstellt_am: 'Erstellt_am',
+    Geaendert_am: 'Geaendert_am'
   };
 
   export type Jf_mitgliedScalarFieldEnum = (typeof Jf_mitgliedScalarFieldEnum)[keyof typeof Jf_mitgliedScalarFieldEnum]
 
 
+  export const LehrgangScalarFieldEnum: {
+    ID: 'ID',
+    Abk_rzung: 'Abk_rzung',
+    Beschreibung: 'Beschreibung',
+    Reihenfolge: 'Reihenfolge',
+    Erstellt_am: 'Erstellt_am',
+    Geaendert_am: 'Geaendert_am'
+  };
+
+  export type LehrgangScalarFieldEnum = (typeof LehrgangScalarFieldEnum)[keyof typeof LehrgangScalarFieldEnum]
+
+
   export const Mitglied_funktionenScalarFieldEnum: {
-    id: 'id',
-    mitglied_id: 'mitglied_id',
-    funktion_id: 'funktion_id',
-    typ: 'typ'
+    ID: 'ID',
+    Mitglied_ID: 'Mitglied_ID',
+    Funktion_ID: 'Funktion_ID',
+    Typ: 'Typ',
+    Erstellt_am: 'Erstellt_am',
+    Geaendert_am: 'Geaendert_am'
   };
 
   export type Mitglied_funktionenScalarFieldEnum = (typeof Mitglied_funktionenScalarFieldEnum)[keyof typeof Mitglied_funktionenScalarFieldEnum]
 
 
   export const Mitglied_loginScalarFieldEnum: {
-    id: 'id',
-    benutzer_id: 'benutzer_id',
-    mitglied_id: 'mitglied_id',
-    ty: 'ty'
+    ID: 'ID',
+    Benutzer_ID: 'Benutzer_ID',
+    Mitglied_ID: 'Mitglied_ID',
+    Typ: 'Typ',
+    Erstellt_am: 'Erstellt_am',
+    Geaendert_am: 'Geaendert_am'
   };
 
   export type Mitglied_loginScalarFieldEnum = (typeof Mitglied_loginScalarFieldEnum)[keyof typeof Mitglied_loginScalarFieldEnum]
 
 
   export const PersonScalarFieldEnum: {
-    id: 'id',
-    vorname: 'vorname',
-    name: 'name',
-    geburtsdatum: 'geburtsdatum',
-    email: 'email'
+    ID: 'ID',
+    Vorname: 'Vorname',
+    Name: 'Name',
+    Geburtsdatum: 'Geburtsdatum',
+    Strasse: 'Strasse',
+    Hausnummer: 'Hausnummer',
+    Postleitzahl: 'Postleitzahl',
+    Ort: 'Ort',
+    Email: 'Email',
+    HandyNr: 'HandyNr',
+    Erstellt_am: 'Erstellt_am',
+    Geaendert_am: 'Geaendert_am'
   };
 
   export type PersonScalarFieldEnum = (typeof PersonScalarFieldEnum)[keyof typeof PersonScalarFieldEnum]
 
 
   export const TeilnahmeScalarFieldEnum: {
-    id: 'id',
-    mitglied_id: 'mitglied_id',
-    veranstaltung_id: 'veranstaltung_id',
-    typ: 'typ'
+    ID: 'ID',
+    Mitglied_ID: 'Mitglied_ID',
+    Veranstaltung_ID: 'Veranstaltung_ID',
+    Typ: 'Typ',
+    Erstellt_am: 'Erstellt_am',
+    Geaendert_am: 'Geaendert_am'
   };
 
   export type TeilnahmeScalarFieldEnum = (typeof TeilnahmeScalarFieldEnum)[keyof typeof TeilnahmeScalarFieldEnum]
-
-
-  export const UebungsabendScalarFieldEnum: {
-    id: 'id',
-    datum: 'datum',
-    thema: 'thema'
-  };
-
-  export type UebungsabendScalarFieldEnum = (typeof UebungsabendScalarFieldEnum)[keyof typeof UebungsabendScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -12589,42 +18415,83 @@ export namespace Prisma {
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
+  export const dienstgradOrderByRelevanceFieldEnum: {
+    Abkuerzung_maennlich: 'Abkuerzung_maennlich',
+    Beschreibung_maennlich: 'Beschreibung_maennlich',
+    Abkuerzung_weiblich: 'Abkuerzung_weiblich',
+    Beschreibung_weiblich: 'Beschreibung_weiblich'
+  };
+
+  export type dienstgradOrderByRelevanceFieldEnum = (typeof dienstgradOrderByRelevanceFieldEnum)[keyof typeof dienstgradOrderByRelevanceFieldEnum]
+
+
+  export const dientsabendOrderByRelevanceFieldEnum: {
+    Thema: 'Thema'
+  };
+
+  export type dientsabendOrderByRelevanceFieldEnum = (typeof dientsabendOrderByRelevanceFieldEnum)[keyof typeof dientsabendOrderByRelevanceFieldEnum]
+
+
+  export const einheitOrderByRelevanceFieldEnum: {
+    Abkuerzung: 'Abkuerzung',
+    Beschreibung: 'Beschreibung'
+  };
+
+  export type einheitOrderByRelevanceFieldEnum = (typeof einheitOrderByRelevanceFieldEnum)[keyof typeof einheitOrderByRelevanceFieldEnum]
+
+
   export const einsatzOrderByRelevanceFieldEnum: {
-    beschreibung: 'beschreibung',
-    ort: 'ort'
+    Beschreibung: 'Beschreibung',
+    Strasse: 'Strasse',
+    Hausnummer: 'Hausnummer',
+    Postleitzahl: 'Postleitzahl',
+    Ort: 'Ort'
   };
 
   export type einsatzOrderByRelevanceFieldEnum = (typeof einsatzOrderByRelevanceFieldEnum)[keyof typeof einsatzOrderByRelevanceFieldEnum]
 
 
+  export const fahrzeugOrderByRelevanceFieldEnum: {
+    Kennzeichen: 'Kennzeichen',
+    Besatzungsstaerke: 'Besatzungsstaerke'
+  };
+
+  export type fahrzeugOrderByRelevanceFieldEnum = (typeof fahrzeugOrderByRelevanceFieldEnum)[keyof typeof fahrzeugOrderByRelevanceFieldEnum]
+
+
   export const funktion_ffOrderByRelevanceFieldEnum: {
-    name: 'name'
+    Name: 'Name'
   };
 
   export type funktion_ffOrderByRelevanceFieldEnum = (typeof funktion_ffOrderByRelevanceFieldEnum)[keyof typeof funktion_ffOrderByRelevanceFieldEnum]
 
 
   export const funktion_jfOrderByRelevanceFieldEnum: {
-    name: 'name'
+    Name: 'Name'
   };
 
   export type funktion_jfOrderByRelevanceFieldEnum = (typeof funktion_jfOrderByRelevanceFieldEnum)[keyof typeof funktion_jfOrderByRelevanceFieldEnum]
 
 
+  export const lehrgangOrderByRelevanceFieldEnum: {
+    Abk_rzung: 'Abk_rzung',
+    Beschreibung: 'Beschreibung'
+  };
+
+  export type lehrgangOrderByRelevanceFieldEnum = (typeof lehrgangOrderByRelevanceFieldEnum)[keyof typeof lehrgangOrderByRelevanceFieldEnum]
+
+
   export const personOrderByRelevanceFieldEnum: {
-    vorname: 'vorname',
-    name: 'name',
-    email: 'email'
+    Vorname: 'Vorname',
+    Name: 'Name',
+    Strasse: 'Strasse',
+    Hausnummer: 'Hausnummer',
+    Postleitzahl: 'Postleitzahl',
+    Ort: 'Ort',
+    Email: 'Email'
   };
 
   export type personOrderByRelevanceFieldEnum = (typeof personOrderByRelevanceFieldEnum)[keyof typeof personOrderByRelevanceFieldEnum]
-
-
-  export const uebungsabendOrderByRelevanceFieldEnum: {
-    thema: 'thema'
-  };
-
-  export type uebungsabendOrderByRelevanceFieldEnum = (typeof uebungsabendOrderByRelevanceFieldEnum)[keyof typeof uebungsabendOrderByRelevanceFieldEnum]
 
 
   /**
@@ -12640,13 +18507,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'DateTime'
-   */
-  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
-
-  /**
    * Reference to a field of type 'String'
    */
   export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
@@ -12654,16 +18514,23 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'einsatz_art'
+   * Reference to a field of type 'DateTime'
    */
-  export type Enumeinsatz_artFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'einsatz_art'>
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
     
 
 
   /**
-   * Reference to a field of type 'ff_mitglied_status'
+   * Reference to a field of type 'einsatz_Art'
    */
-  export type Enumff_mitglied_statusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ff_mitglied_status'>
+  export type Enumeinsatz_ArtFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'einsatz_Art'>
+    
+
+
+  /**
+   * Reference to a field of type 'ff_mitglied_Status'
+   */
+  export type Enumff_mitglied_StatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ff_mitglied_Status'>
     
 
 
@@ -12675,30 +18542,30 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'jf_mitglied_status'
+   * Reference to a field of type 'jf_mitglied_Status'
    */
-  export type Enumjf_mitglied_statusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'jf_mitglied_status'>
+  export type Enumjf_mitglied_StatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'jf_mitglied_Status'>
     
 
 
   /**
-   * Reference to a field of type 'mitglied_funktionen_typ'
+   * Reference to a field of type 'mitglied_funktionen_Typ'
    */
-  export type Enummitglied_funktionen_typFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'mitglied_funktionen_typ'>
+  export type Enummitglied_funktionen_TypFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'mitglied_funktionen_Typ'>
     
 
 
   /**
-   * Reference to a field of type 'mitglied_login_ty'
+   * Reference to a field of type 'mitglied_login_Typ'
    */
-  export type Enummitglied_login_tyFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'mitglied_login_ty'>
+  export type Enummitglied_login_TypFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'mitglied_login_Typ'>
     
 
 
   /**
-   * Reference to a field of type 'teilnahme_typ'
+   * Reference to a field of type 'teilnahme_Typ'
    */
-  export type Enumteilnahme_typFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'teilnahme_typ'>
+  export type Enumteilnahme_TypFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'teilnahme_Typ'>
     
 
 
@@ -12712,43 +18579,254 @@ export namespace Prisma {
    */
 
 
+  export type dienstgradWhereInput = {
+    AND?: dienstgradWhereInput | dienstgradWhereInput[]
+    OR?: dienstgradWhereInput[]
+    NOT?: dienstgradWhereInput | dienstgradWhereInput[]
+    ID?: IntFilter<"dienstgrad"> | number
+    Abkuerzung_maennlich?: StringNullableFilter<"dienstgrad"> | string | null
+    Beschreibung_maennlich?: StringNullableFilter<"dienstgrad"> | string | null
+    Abkuerzung_weiblich?: StringNullableFilter<"dienstgrad"> | string | null
+    Beschreibung_weiblich?: StringNullableFilter<"dienstgrad"> | string | null
+    Erstellt_am?: DateTimeNullableFilter<"dienstgrad"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"dienstgrad"> | Date | string | null
+  }
+
+  export type dienstgradOrderByWithRelationInput = {
+    ID?: SortOrder
+    Abkuerzung_maennlich?: SortOrderInput | SortOrder
+    Beschreibung_maennlich?: SortOrderInput | SortOrder
+    Abkuerzung_weiblich?: SortOrderInput | SortOrder
+    Beschreibung_weiblich?: SortOrderInput | SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
+    _relevance?: dienstgradOrderByRelevanceInput
+  }
+
+  export type dienstgradWhereUniqueInput = Prisma.AtLeast<{
+    ID?: number
+    AND?: dienstgradWhereInput | dienstgradWhereInput[]
+    OR?: dienstgradWhereInput[]
+    NOT?: dienstgradWhereInput | dienstgradWhereInput[]
+    Abkuerzung_maennlich?: StringNullableFilter<"dienstgrad"> | string | null
+    Beschreibung_maennlich?: StringNullableFilter<"dienstgrad"> | string | null
+    Abkuerzung_weiblich?: StringNullableFilter<"dienstgrad"> | string | null
+    Beschreibung_weiblich?: StringNullableFilter<"dienstgrad"> | string | null
+    Erstellt_am?: DateTimeNullableFilter<"dienstgrad"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"dienstgrad"> | Date | string | null
+  }, "ID">
+
+  export type dienstgradOrderByWithAggregationInput = {
+    ID?: SortOrder
+    Abkuerzung_maennlich?: SortOrderInput | SortOrder
+    Beschreibung_maennlich?: SortOrderInput | SortOrder
+    Abkuerzung_weiblich?: SortOrderInput | SortOrder
+    Beschreibung_weiblich?: SortOrderInput | SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
+    _count?: dienstgradCountOrderByAggregateInput
+    _avg?: dienstgradAvgOrderByAggregateInput
+    _max?: dienstgradMaxOrderByAggregateInput
+    _min?: dienstgradMinOrderByAggregateInput
+    _sum?: dienstgradSumOrderByAggregateInput
+  }
+
+  export type dienstgradScalarWhereWithAggregatesInput = {
+    AND?: dienstgradScalarWhereWithAggregatesInput | dienstgradScalarWhereWithAggregatesInput[]
+    OR?: dienstgradScalarWhereWithAggregatesInput[]
+    NOT?: dienstgradScalarWhereWithAggregatesInput | dienstgradScalarWhereWithAggregatesInput[]
+    ID?: IntWithAggregatesFilter<"dienstgrad"> | number
+    Abkuerzung_maennlich?: StringNullableWithAggregatesFilter<"dienstgrad"> | string | null
+    Beschreibung_maennlich?: StringNullableWithAggregatesFilter<"dienstgrad"> | string | null
+    Abkuerzung_weiblich?: StringNullableWithAggregatesFilter<"dienstgrad"> | string | null
+    Beschreibung_weiblich?: StringNullableWithAggregatesFilter<"dienstgrad"> | string | null
+    Erstellt_am?: DateTimeNullableWithAggregatesFilter<"dienstgrad"> | Date | string | null
+    Geaendert_am?: DateTimeNullableWithAggregatesFilter<"dienstgrad"> | Date | string | null
+  }
+
+  export type dientsabendWhereInput = {
+    AND?: dientsabendWhereInput | dientsabendWhereInput[]
+    OR?: dientsabendWhereInput[]
+    NOT?: dientsabendWhereInput | dientsabendWhereInput[]
+    ID?: IntFilter<"dientsabend"> | number
+    Datum?: DateTimeFilter<"dientsabend"> | Date | string
+    Thema?: StringNullableFilter<"dientsabend"> | string | null
+    Erstellt_am?: DateTimeFilter<"dientsabend"> | Date | string
+    Geaendert_am?: DateTimeNullableFilter<"dientsabend"> | Date | string | null
+  }
+
+  export type dientsabendOrderByWithRelationInput = {
+    ID?: SortOrder
+    Datum?: SortOrder
+    Thema?: SortOrderInput | SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
+    _relevance?: dientsabendOrderByRelevanceInput
+  }
+
+  export type dientsabendWhereUniqueInput = Prisma.AtLeast<{
+    ID?: number
+    AND?: dientsabendWhereInput | dientsabendWhereInput[]
+    OR?: dientsabendWhereInput[]
+    NOT?: dientsabendWhereInput | dientsabendWhereInput[]
+    Datum?: DateTimeFilter<"dientsabend"> | Date | string
+    Thema?: StringNullableFilter<"dientsabend"> | string | null
+    Erstellt_am?: DateTimeFilter<"dientsabend"> | Date | string
+    Geaendert_am?: DateTimeNullableFilter<"dientsabend"> | Date | string | null
+  }, "ID">
+
+  export type dientsabendOrderByWithAggregationInput = {
+    ID?: SortOrder
+    Datum?: SortOrder
+    Thema?: SortOrderInput | SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
+    _count?: dientsabendCountOrderByAggregateInput
+    _avg?: dientsabendAvgOrderByAggregateInput
+    _max?: dientsabendMaxOrderByAggregateInput
+    _min?: dientsabendMinOrderByAggregateInput
+    _sum?: dientsabendSumOrderByAggregateInput
+  }
+
+  export type dientsabendScalarWhereWithAggregatesInput = {
+    AND?: dientsabendScalarWhereWithAggregatesInput | dientsabendScalarWhereWithAggregatesInput[]
+    OR?: dientsabendScalarWhereWithAggregatesInput[]
+    NOT?: dientsabendScalarWhereWithAggregatesInput | dientsabendScalarWhereWithAggregatesInput[]
+    ID?: IntWithAggregatesFilter<"dientsabend"> | number
+    Datum?: DateTimeWithAggregatesFilter<"dientsabend"> | Date | string
+    Thema?: StringNullableWithAggregatesFilter<"dientsabend"> | string | null
+    Erstellt_am?: DateTimeWithAggregatesFilter<"dientsabend"> | Date | string
+    Geaendert_am?: DateTimeNullableWithAggregatesFilter<"dientsabend"> | Date | string | null
+  }
+
+  export type einheitWhereInput = {
+    AND?: einheitWhereInput | einheitWhereInput[]
+    OR?: einheitWhereInput[]
+    NOT?: einheitWhereInput | einheitWhereInput[]
+    ID?: IntFilter<"einheit"> | number
+    Abkuerzung?: StringNullableFilter<"einheit"> | string | null
+    Beschreibung?: StringNullableFilter<"einheit"> | string | null
+    Erstellt_am?: DateTimeNullableFilter<"einheit"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"einheit"> | Date | string | null
+  }
+
+  export type einheitOrderByWithRelationInput = {
+    ID?: SortOrder
+    Abkuerzung?: SortOrderInput | SortOrder
+    Beschreibung?: SortOrderInput | SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
+    _relevance?: einheitOrderByRelevanceInput
+  }
+
+  export type einheitWhereUniqueInput = Prisma.AtLeast<{
+    ID?: number
+    AND?: einheitWhereInput | einheitWhereInput[]
+    OR?: einheitWhereInput[]
+    NOT?: einheitWhereInput | einheitWhereInput[]
+    Abkuerzung?: StringNullableFilter<"einheit"> | string | null
+    Beschreibung?: StringNullableFilter<"einheit"> | string | null
+    Erstellt_am?: DateTimeNullableFilter<"einheit"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"einheit"> | Date | string | null
+  }, "ID">
+
+  export type einheitOrderByWithAggregationInput = {
+    ID?: SortOrder
+    Abkuerzung?: SortOrderInput | SortOrder
+    Beschreibung?: SortOrderInput | SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
+    _count?: einheitCountOrderByAggregateInput
+    _avg?: einheitAvgOrderByAggregateInput
+    _max?: einheitMaxOrderByAggregateInput
+    _min?: einheitMinOrderByAggregateInput
+    _sum?: einheitSumOrderByAggregateInput
+  }
+
+  export type einheitScalarWhereWithAggregatesInput = {
+    AND?: einheitScalarWhereWithAggregatesInput | einheitScalarWhereWithAggregatesInput[]
+    OR?: einheitScalarWhereWithAggregatesInput[]
+    NOT?: einheitScalarWhereWithAggregatesInput | einheitScalarWhereWithAggregatesInput[]
+    ID?: IntWithAggregatesFilter<"einheit"> | number
+    Abkuerzung?: StringNullableWithAggregatesFilter<"einheit"> | string | null
+    Beschreibung?: StringNullableWithAggregatesFilter<"einheit"> | string | null
+    Erstellt_am?: DateTimeNullableWithAggregatesFilter<"einheit"> | Date | string | null
+    Geaendert_am?: DateTimeNullableWithAggregatesFilter<"einheit"> | Date | string | null
+  }
+
   export type einsatzWhereInput = {
     AND?: einsatzWhereInput | einsatzWhereInput[]
     OR?: einsatzWhereInput[]
     NOT?: einsatzWhereInput | einsatzWhereInput[]
-    id?: IntFilter<"einsatz"> | number
-    datum?: DateTimeFilter<"einsatz"> | Date | string
-    beschreibung?: StringNullableFilter<"einsatz"> | string | null
-    ort?: StringNullableFilter<"einsatz"> | string | null
-    art?: Enumeinsatz_artFilter<"einsatz"> | $Enums.einsatz_art
+    ID?: IntFilter<"einsatz"> | number
+    Einsatznummer?: IntFilter<"einsatz"> | number
+    Datum_Anfang?: DateTimeFilter<"einsatz"> | Date | string
+    Uhrzeit_Anfang?: DateTimeFilter<"einsatz"> | Date | string
+    Datum_Ende?: DateTimeNullableFilter<"einsatz"> | Date | string | null
+    Uhrzeit_Ende?: DateTimeNullableFilter<"einsatz"> | Date | string | null
+    Beschreibung?: StringNullableFilter<"einsatz"> | string | null
+    Strasse?: StringNullableFilter<"einsatz"> | string | null
+    Hausnummer?: StringNullableFilter<"einsatz"> | string | null
+    Postleitzahl?: StringNullableFilter<"einsatz"> | string | null
+    Ort?: StringNullableFilter<"einsatz"> | string | null
+    Art?: Enumeinsatz_ArtFilter<"einsatz"> | $Enums.einsatz_Art
+    Erstellt_am?: DateTimeNullableFilter<"einsatz"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"einsatz"> | Date | string | null
   }
 
   export type einsatzOrderByWithRelationInput = {
-    id?: SortOrder
-    datum?: SortOrder
-    beschreibung?: SortOrderInput | SortOrder
-    ort?: SortOrderInput | SortOrder
-    art?: SortOrder
+    ID?: SortOrder
+    Einsatznummer?: SortOrder
+    Datum_Anfang?: SortOrder
+    Uhrzeit_Anfang?: SortOrder
+    Datum_Ende?: SortOrderInput | SortOrder
+    Uhrzeit_Ende?: SortOrderInput | SortOrder
+    Beschreibung?: SortOrderInput | SortOrder
+    Strasse?: SortOrderInput | SortOrder
+    Hausnummer?: SortOrderInput | SortOrder
+    Postleitzahl?: SortOrderInput | SortOrder
+    Ort?: SortOrderInput | SortOrder
+    Art?: SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     _relevance?: einsatzOrderByRelevanceInput
   }
 
   export type einsatzWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    ID?: number
     AND?: einsatzWhereInput | einsatzWhereInput[]
     OR?: einsatzWhereInput[]
     NOT?: einsatzWhereInput | einsatzWhereInput[]
-    datum?: DateTimeFilter<"einsatz"> | Date | string
-    beschreibung?: StringNullableFilter<"einsatz"> | string | null
-    ort?: StringNullableFilter<"einsatz"> | string | null
-    art?: Enumeinsatz_artFilter<"einsatz"> | $Enums.einsatz_art
-  }, "id">
+    Einsatznummer?: IntFilter<"einsatz"> | number
+    Datum_Anfang?: DateTimeFilter<"einsatz"> | Date | string
+    Uhrzeit_Anfang?: DateTimeFilter<"einsatz"> | Date | string
+    Datum_Ende?: DateTimeNullableFilter<"einsatz"> | Date | string | null
+    Uhrzeit_Ende?: DateTimeNullableFilter<"einsatz"> | Date | string | null
+    Beschreibung?: StringNullableFilter<"einsatz"> | string | null
+    Strasse?: StringNullableFilter<"einsatz"> | string | null
+    Hausnummer?: StringNullableFilter<"einsatz"> | string | null
+    Postleitzahl?: StringNullableFilter<"einsatz"> | string | null
+    Ort?: StringNullableFilter<"einsatz"> | string | null
+    Art?: Enumeinsatz_ArtFilter<"einsatz"> | $Enums.einsatz_Art
+    Erstellt_am?: DateTimeNullableFilter<"einsatz"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"einsatz"> | Date | string | null
+  }, "ID">
 
   export type einsatzOrderByWithAggregationInput = {
-    id?: SortOrder
-    datum?: SortOrder
-    beschreibung?: SortOrderInput | SortOrder
-    ort?: SortOrderInput | SortOrder
-    art?: SortOrder
+    ID?: SortOrder
+    Einsatznummer?: SortOrder
+    Datum_Anfang?: SortOrder
+    Uhrzeit_Anfang?: SortOrder
+    Datum_Ende?: SortOrderInput | SortOrder
+    Uhrzeit_Ende?: SortOrderInput | SortOrder
+    Beschreibung?: SortOrderInput | SortOrder
+    Strasse?: SortOrderInput | SortOrder
+    Hausnummer?: SortOrderInput | SortOrder
+    Postleitzahl?: SortOrderInput | SortOrder
+    Ort?: SortOrderInput | SortOrder
+    Art?: SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     _count?: einsatzCountOrderByAggregateInput
     _avg?: einsatzAvgOrderByAggregateInput
     _max?: einsatzMaxOrderByAggregateInput
@@ -12760,58 +18838,134 @@ export namespace Prisma {
     AND?: einsatzScalarWhereWithAggregatesInput | einsatzScalarWhereWithAggregatesInput[]
     OR?: einsatzScalarWhereWithAggregatesInput[]
     NOT?: einsatzScalarWhereWithAggregatesInput | einsatzScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"einsatz"> | number
-    datum?: DateTimeWithAggregatesFilter<"einsatz"> | Date | string
-    beschreibung?: StringNullableWithAggregatesFilter<"einsatz"> | string | null
-    ort?: StringNullableWithAggregatesFilter<"einsatz"> | string | null
-    art?: Enumeinsatz_artWithAggregatesFilter<"einsatz"> | $Enums.einsatz_art
+    ID?: IntWithAggregatesFilter<"einsatz"> | number
+    Einsatznummer?: IntWithAggregatesFilter<"einsatz"> | number
+    Datum_Anfang?: DateTimeWithAggregatesFilter<"einsatz"> | Date | string
+    Uhrzeit_Anfang?: DateTimeWithAggregatesFilter<"einsatz"> | Date | string
+    Datum_Ende?: DateTimeNullableWithAggregatesFilter<"einsatz"> | Date | string | null
+    Uhrzeit_Ende?: DateTimeNullableWithAggregatesFilter<"einsatz"> | Date | string | null
+    Beschreibung?: StringNullableWithAggregatesFilter<"einsatz"> | string | null
+    Strasse?: StringNullableWithAggregatesFilter<"einsatz"> | string | null
+    Hausnummer?: StringNullableWithAggregatesFilter<"einsatz"> | string | null
+    Postleitzahl?: StringNullableWithAggregatesFilter<"einsatz"> | string | null
+    Ort?: StringNullableWithAggregatesFilter<"einsatz"> | string | null
+    Art?: Enumeinsatz_ArtWithAggregatesFilter<"einsatz"> | $Enums.einsatz_Art
+    Erstellt_am?: DateTimeNullableWithAggregatesFilter<"einsatz"> | Date | string | null
+    Geaendert_am?: DateTimeNullableWithAggregatesFilter<"einsatz"> | Date | string | null
+  }
+
+  export type fahrzeugWhereInput = {
+    AND?: fahrzeugWhereInput | fahrzeugWhereInput[]
+    OR?: fahrzeugWhereInput[]
+    NOT?: fahrzeugWhereInput | fahrzeugWhereInput[]
+    ID?: IntFilter<"fahrzeug"> | number
+    Kennzeichen?: StringNullableFilter<"fahrzeug"> | string | null
+    Besatzungsstaerke?: StringNullableFilter<"fahrzeug"> | string | null
+    Erstellt_am?: DateTimeNullableFilter<"fahrzeug"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"fahrzeug"> | Date | string | null
+  }
+
+  export type fahrzeugOrderByWithRelationInput = {
+    ID?: SortOrder
+    Kennzeichen?: SortOrderInput | SortOrder
+    Besatzungsstaerke?: SortOrderInput | SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
+    _relevance?: fahrzeugOrderByRelevanceInput
+  }
+
+  export type fahrzeugWhereUniqueInput = Prisma.AtLeast<{
+    ID?: number
+    AND?: fahrzeugWhereInput | fahrzeugWhereInput[]
+    OR?: fahrzeugWhereInput[]
+    NOT?: fahrzeugWhereInput | fahrzeugWhereInput[]
+    Kennzeichen?: StringNullableFilter<"fahrzeug"> | string | null
+    Besatzungsstaerke?: StringNullableFilter<"fahrzeug"> | string | null
+    Erstellt_am?: DateTimeNullableFilter<"fahrzeug"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"fahrzeug"> | Date | string | null
+  }, "ID">
+
+  export type fahrzeugOrderByWithAggregationInput = {
+    ID?: SortOrder
+    Kennzeichen?: SortOrderInput | SortOrder
+    Besatzungsstaerke?: SortOrderInput | SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
+    _count?: fahrzeugCountOrderByAggregateInput
+    _avg?: fahrzeugAvgOrderByAggregateInput
+    _max?: fahrzeugMaxOrderByAggregateInput
+    _min?: fahrzeugMinOrderByAggregateInput
+    _sum?: fahrzeugSumOrderByAggregateInput
+  }
+
+  export type fahrzeugScalarWhereWithAggregatesInput = {
+    AND?: fahrzeugScalarWhereWithAggregatesInput | fahrzeugScalarWhereWithAggregatesInput[]
+    OR?: fahrzeugScalarWhereWithAggregatesInput[]
+    NOT?: fahrzeugScalarWhereWithAggregatesInput | fahrzeugScalarWhereWithAggregatesInput[]
+    ID?: IntWithAggregatesFilter<"fahrzeug"> | number
+    Kennzeichen?: StringNullableWithAggregatesFilter<"fahrzeug"> | string | null
+    Besatzungsstaerke?: StringNullableWithAggregatesFilter<"fahrzeug"> | string | null
+    Erstellt_am?: DateTimeNullableWithAggregatesFilter<"fahrzeug"> | Date | string | null
+    Geaendert_am?: DateTimeNullableWithAggregatesFilter<"fahrzeug"> | Date | string | null
   }
 
   export type ff_mitgliedWhereInput = {
     AND?: ff_mitgliedWhereInput | ff_mitgliedWhereInput[]
     OR?: ff_mitgliedWhereInput[]
     NOT?: ff_mitgliedWhereInput | ff_mitgliedWhereInput[]
-    id?: IntFilter<"ff_mitglied"> | number
-    person_id?: IntFilter<"ff_mitglied"> | number
-    eintrittsdatum?: DateTimeFilter<"ff_mitglied"> | Date | string
-    austrittsdatum?: DateTimeNullableFilter<"ff_mitglied"> | Date | string | null
-    status?: Enumff_mitglied_statusFilter<"ff_mitglied"> | $Enums.ff_mitglied_status
+    ID?: IntFilter<"ff_mitglied"> | number
+    Person_ID?: IntFilter<"ff_mitglied"> | number
+    Eintrittsdatum?: DateTimeFilter<"ff_mitglied"> | Date | string
+    Austrittsdatum?: DateTimeNullableFilter<"ff_mitglied"> | Date | string | null
+    Aufnahmedatum?: DateTimeNullableFilter<"ff_mitglied"> | Date | string | null
+    Status?: Enumff_mitglied_StatusFilter<"ff_mitglied"> | $Enums.ff_mitglied_Status
+    Erstellt_am?: DateTimeFilter<"ff_mitglied"> | Date | string
+    Geaendert_am?: DateTimeNullableFilter<"ff_mitglied"> | Date | string | null
     person?: XOR<PersonScalarRelationFilter, personWhereInput>
+    ff_mitglied_lehrgang?: Ff_mitglied_lehrgangListRelationFilter
     mitglied_funktionen?: Mitglied_funktionenListRelationFilter
-    teilnahme?: TeilnahmeListRelationFilter
   }
 
   export type ff_mitgliedOrderByWithRelationInput = {
-    id?: SortOrder
-    person_id?: SortOrder
-    eintrittsdatum?: SortOrder
-    austrittsdatum?: SortOrderInput | SortOrder
-    status?: SortOrder
+    ID?: SortOrder
+    Person_ID?: SortOrder
+    Eintrittsdatum?: SortOrder
+    Austrittsdatum?: SortOrderInput | SortOrder
+    Aufnahmedatum?: SortOrderInput | SortOrder
+    Status?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     person?: personOrderByWithRelationInput
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangOrderByRelationAggregateInput
     mitglied_funktionen?: mitglied_funktionenOrderByRelationAggregateInput
-    teilnahme?: teilnahmeOrderByRelationAggregateInput
   }
 
   export type ff_mitgliedWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    ID?: number
     AND?: ff_mitgliedWhereInput | ff_mitgliedWhereInput[]
     OR?: ff_mitgliedWhereInput[]
     NOT?: ff_mitgliedWhereInput | ff_mitgliedWhereInput[]
-    person_id?: IntFilter<"ff_mitglied"> | number
-    eintrittsdatum?: DateTimeFilter<"ff_mitglied"> | Date | string
-    austrittsdatum?: DateTimeNullableFilter<"ff_mitglied"> | Date | string | null
-    status?: Enumff_mitglied_statusFilter<"ff_mitglied"> | $Enums.ff_mitglied_status
+    Person_ID?: IntFilter<"ff_mitglied"> | number
+    Eintrittsdatum?: DateTimeFilter<"ff_mitglied"> | Date | string
+    Austrittsdatum?: DateTimeNullableFilter<"ff_mitglied"> | Date | string | null
+    Aufnahmedatum?: DateTimeNullableFilter<"ff_mitglied"> | Date | string | null
+    Status?: Enumff_mitglied_StatusFilter<"ff_mitglied"> | $Enums.ff_mitglied_Status
+    Erstellt_am?: DateTimeFilter<"ff_mitglied"> | Date | string
+    Geaendert_am?: DateTimeNullableFilter<"ff_mitglied"> | Date | string | null
     person?: XOR<PersonScalarRelationFilter, personWhereInput>
+    ff_mitglied_lehrgang?: Ff_mitglied_lehrgangListRelationFilter
     mitglied_funktionen?: Mitglied_funktionenListRelationFilter
-    teilnahme?: TeilnahmeListRelationFilter
-  }, "id">
+  }, "ID">
 
   export type ff_mitgliedOrderByWithAggregationInput = {
-    id?: SortOrder
-    person_id?: SortOrder
-    eintrittsdatum?: SortOrder
-    austrittsdatum?: SortOrderInput | SortOrder
-    status?: SortOrder
+    ID?: SortOrder
+    Person_ID?: SortOrder
+    Eintrittsdatum?: SortOrder
+    Austrittsdatum?: SortOrderInput | SortOrder
+    Aufnahmedatum?: SortOrderInput | SortOrder
+    Status?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     _count?: ff_mitgliedCountOrderByAggregateInput
     _avg?: ff_mitgliedAvgOrderByAggregateInput
     _max?: ff_mitgliedMaxOrderByAggregateInput
@@ -12823,45 +18977,121 @@ export namespace Prisma {
     AND?: ff_mitgliedScalarWhereWithAggregatesInput | ff_mitgliedScalarWhereWithAggregatesInput[]
     OR?: ff_mitgliedScalarWhereWithAggregatesInput[]
     NOT?: ff_mitgliedScalarWhereWithAggregatesInput | ff_mitgliedScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"ff_mitglied"> | number
-    person_id?: IntWithAggregatesFilter<"ff_mitglied"> | number
-    eintrittsdatum?: DateTimeWithAggregatesFilter<"ff_mitglied"> | Date | string
-    austrittsdatum?: DateTimeNullableWithAggregatesFilter<"ff_mitglied"> | Date | string | null
-    status?: Enumff_mitglied_statusWithAggregatesFilter<"ff_mitglied"> | $Enums.ff_mitglied_status
+    ID?: IntWithAggregatesFilter<"ff_mitglied"> | number
+    Person_ID?: IntWithAggregatesFilter<"ff_mitglied"> | number
+    Eintrittsdatum?: DateTimeWithAggregatesFilter<"ff_mitglied"> | Date | string
+    Austrittsdatum?: DateTimeNullableWithAggregatesFilter<"ff_mitglied"> | Date | string | null
+    Aufnahmedatum?: DateTimeNullableWithAggregatesFilter<"ff_mitglied"> | Date | string | null
+    Status?: Enumff_mitglied_StatusWithAggregatesFilter<"ff_mitglied"> | $Enums.ff_mitglied_Status
+    Erstellt_am?: DateTimeWithAggregatesFilter<"ff_mitglied"> | Date | string
+    Geaendert_am?: DateTimeNullableWithAggregatesFilter<"ff_mitglied"> | Date | string | null
+  }
+
+  export type ff_mitglied_lehrgangWhereInput = {
+    AND?: ff_mitglied_lehrgangWhereInput | ff_mitglied_lehrgangWhereInput[]
+    OR?: ff_mitglied_lehrgangWhereInput[]
+    NOT?: ff_mitglied_lehrgangWhereInput | ff_mitglied_lehrgangWhereInput[]
+    ID?: IntFilter<"ff_mitglied_lehrgang"> | number
+    FF_Mitglied_ID?: IntFilter<"ff_mitglied_lehrgang"> | number
+    Lehrgang_ID?: IntFilter<"ff_mitglied_lehrgang"> | number
+    Datum_bestanden?: DateTimeNullableFilter<"ff_mitglied_lehrgang"> | Date | string | null
+    Erstellt_am?: DateTimeNullableFilter<"ff_mitglied_lehrgang"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"ff_mitglied_lehrgang"> | Date | string | null
+    ff_mitglied?: XOR<Ff_mitgliedScalarRelationFilter, ff_mitgliedWhereInput>
+    lehrgang?: XOR<LehrgangScalarRelationFilter, lehrgangWhereInput>
+  }
+
+  export type ff_mitglied_lehrgangOrderByWithRelationInput = {
+    ID?: SortOrder
+    FF_Mitglied_ID?: SortOrder
+    Lehrgang_ID?: SortOrder
+    Datum_bestanden?: SortOrderInput | SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
+    ff_mitglied?: ff_mitgliedOrderByWithRelationInput
+    lehrgang?: lehrgangOrderByWithRelationInput
+  }
+
+  export type ff_mitglied_lehrgangWhereUniqueInput = Prisma.AtLeast<{
+    ID?: number
+    AND?: ff_mitglied_lehrgangWhereInput | ff_mitglied_lehrgangWhereInput[]
+    OR?: ff_mitglied_lehrgangWhereInput[]
+    NOT?: ff_mitglied_lehrgangWhereInput | ff_mitglied_lehrgangWhereInput[]
+    FF_Mitglied_ID?: IntFilter<"ff_mitglied_lehrgang"> | number
+    Lehrgang_ID?: IntFilter<"ff_mitglied_lehrgang"> | number
+    Datum_bestanden?: DateTimeNullableFilter<"ff_mitglied_lehrgang"> | Date | string | null
+    Erstellt_am?: DateTimeNullableFilter<"ff_mitglied_lehrgang"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"ff_mitglied_lehrgang"> | Date | string | null
+    ff_mitglied?: XOR<Ff_mitgliedScalarRelationFilter, ff_mitgliedWhereInput>
+    lehrgang?: XOR<LehrgangScalarRelationFilter, lehrgangWhereInput>
+  }, "ID">
+
+  export type ff_mitglied_lehrgangOrderByWithAggregationInput = {
+    ID?: SortOrder
+    FF_Mitglied_ID?: SortOrder
+    Lehrgang_ID?: SortOrder
+    Datum_bestanden?: SortOrderInput | SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
+    _count?: ff_mitglied_lehrgangCountOrderByAggregateInput
+    _avg?: ff_mitglied_lehrgangAvgOrderByAggregateInput
+    _max?: ff_mitglied_lehrgangMaxOrderByAggregateInput
+    _min?: ff_mitglied_lehrgangMinOrderByAggregateInput
+    _sum?: ff_mitglied_lehrgangSumOrderByAggregateInput
+  }
+
+  export type ff_mitglied_lehrgangScalarWhereWithAggregatesInput = {
+    AND?: ff_mitglied_lehrgangScalarWhereWithAggregatesInput | ff_mitglied_lehrgangScalarWhereWithAggregatesInput[]
+    OR?: ff_mitglied_lehrgangScalarWhereWithAggregatesInput[]
+    NOT?: ff_mitglied_lehrgangScalarWhereWithAggregatesInput | ff_mitglied_lehrgangScalarWhereWithAggregatesInput[]
+    ID?: IntWithAggregatesFilter<"ff_mitglied_lehrgang"> | number
+    FF_Mitglied_ID?: IntWithAggregatesFilter<"ff_mitglied_lehrgang"> | number
+    Lehrgang_ID?: IntWithAggregatesFilter<"ff_mitglied_lehrgang"> | number
+    Datum_bestanden?: DateTimeNullableWithAggregatesFilter<"ff_mitglied_lehrgang"> | Date | string | null
+    Erstellt_am?: DateTimeNullableWithAggregatesFilter<"ff_mitglied_lehrgang"> | Date | string | null
+    Geaendert_am?: DateTimeNullableWithAggregatesFilter<"ff_mitglied_lehrgang"> | Date | string | null
   }
 
   export type funktion_ffWhereInput = {
     AND?: funktion_ffWhereInput | funktion_ffWhereInput[]
     OR?: funktion_ffWhereInput[]
     NOT?: funktion_ffWhereInput | funktion_ffWhereInput[]
-    id?: IntFilter<"funktion_ff"> | number
-    name?: StringFilter<"funktion_ff"> | string
-    ist_admin?: BoolFilter<"funktion_ff"> | boolean
+    ID?: IntFilter<"funktion_ff"> | number
+    Name?: StringFilter<"funktion_ff"> | string
+    Ist_Admin?: BoolFilter<"funktion_ff"> | boolean
+    Erstellt_am?: DateTimeNullableFilter<"funktion_ff"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"funktion_ff"> | Date | string | null
     mitglied_funktionen?: Mitglied_funktionenListRelationFilter
   }
 
   export type funktion_ffOrderByWithRelationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    ist_admin?: SortOrder
+    ID?: SortOrder
+    Name?: SortOrder
+    Ist_Admin?: SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     mitglied_funktionen?: mitglied_funktionenOrderByRelationAggregateInput
     _relevance?: funktion_ffOrderByRelevanceInput
   }
 
   export type funktion_ffWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    ID?: number
     AND?: funktion_ffWhereInput | funktion_ffWhereInput[]
     OR?: funktion_ffWhereInput[]
     NOT?: funktion_ffWhereInput | funktion_ffWhereInput[]
-    name?: StringFilter<"funktion_ff"> | string
-    ist_admin?: BoolFilter<"funktion_ff"> | boolean
+    Name?: StringFilter<"funktion_ff"> | string
+    Ist_Admin?: BoolFilter<"funktion_ff"> | boolean
+    Erstellt_am?: DateTimeNullableFilter<"funktion_ff"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"funktion_ff"> | Date | string | null
     mitglied_funktionen?: Mitglied_funktionenListRelationFilter
-  }, "id">
+  }, "ID">
 
   export type funktion_ffOrderByWithAggregationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    ist_admin?: SortOrder
+    ID?: SortOrder
+    Name?: SortOrder
+    Ist_Admin?: SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     _count?: funktion_ffCountOrderByAggregateInput
     _avg?: funktion_ffAvgOrderByAggregateInput
     _max?: funktion_ffMaxOrderByAggregateInput
@@ -12873,40 +19103,50 @@ export namespace Prisma {
     AND?: funktion_ffScalarWhereWithAggregatesInput | funktion_ffScalarWhereWithAggregatesInput[]
     OR?: funktion_ffScalarWhereWithAggregatesInput[]
     NOT?: funktion_ffScalarWhereWithAggregatesInput | funktion_ffScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"funktion_ff"> | number
-    name?: StringWithAggregatesFilter<"funktion_ff"> | string
-    ist_admin?: BoolWithAggregatesFilter<"funktion_ff"> | boolean
+    ID?: IntWithAggregatesFilter<"funktion_ff"> | number
+    Name?: StringWithAggregatesFilter<"funktion_ff"> | string
+    Ist_Admin?: BoolWithAggregatesFilter<"funktion_ff"> | boolean
+    Erstellt_am?: DateTimeNullableWithAggregatesFilter<"funktion_ff"> | Date | string | null
+    Geaendert_am?: DateTimeNullableWithAggregatesFilter<"funktion_ff"> | Date | string | null
   }
 
   export type funktion_jfWhereInput = {
     AND?: funktion_jfWhereInput | funktion_jfWhereInput[]
     OR?: funktion_jfWhereInput[]
     NOT?: funktion_jfWhereInput | funktion_jfWhereInput[]
-    id?: IntFilter<"funktion_jf"> | number
-    name?: StringFilter<"funktion_jf"> | string
-    ist_admin?: BoolFilter<"funktion_jf"> | boolean
+    ID?: IntFilter<"funktion_jf"> | number
+    Name?: StringFilter<"funktion_jf"> | string
+    Ist_admin?: BoolFilter<"funktion_jf"> | boolean
+    Erstellt_am?: DateTimeFilter<"funktion_jf"> | Date | string
+    Geaendert_am?: DateTimeNullableFilter<"funktion_jf"> | Date | string | null
   }
 
   export type funktion_jfOrderByWithRelationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    ist_admin?: SortOrder
+    ID?: SortOrder
+    Name?: SortOrder
+    Ist_admin?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     _relevance?: funktion_jfOrderByRelevanceInput
   }
 
   export type funktion_jfWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    ID?: number
     AND?: funktion_jfWhereInput | funktion_jfWhereInput[]
     OR?: funktion_jfWhereInput[]
     NOT?: funktion_jfWhereInput | funktion_jfWhereInput[]
-    name?: StringFilter<"funktion_jf"> | string
-    ist_admin?: BoolFilter<"funktion_jf"> | boolean
-  }, "id">
+    Name?: StringFilter<"funktion_jf"> | string
+    Ist_admin?: BoolFilter<"funktion_jf"> | boolean
+    Erstellt_am?: DateTimeFilter<"funktion_jf"> | Date | string
+    Geaendert_am?: DateTimeNullableFilter<"funktion_jf"> | Date | string | null
+  }, "ID">
 
   export type funktion_jfOrderByWithAggregationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    ist_admin?: SortOrder
+    ID?: SortOrder
+    Name?: SortOrder
+    Ist_admin?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     _count?: funktion_jfCountOrderByAggregateInput
     _avg?: funktion_jfAvgOrderByAggregateInput
     _max?: funktion_jfMaxOrderByAggregateInput
@@ -12918,45 +19158,55 @@ export namespace Prisma {
     AND?: funktion_jfScalarWhereWithAggregatesInput | funktion_jfScalarWhereWithAggregatesInput[]
     OR?: funktion_jfScalarWhereWithAggregatesInput[]
     NOT?: funktion_jfScalarWhereWithAggregatesInput | funktion_jfScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"funktion_jf"> | number
-    name?: StringWithAggregatesFilter<"funktion_jf"> | string
-    ist_admin?: BoolWithAggregatesFilter<"funktion_jf"> | boolean
+    ID?: IntWithAggregatesFilter<"funktion_jf"> | number
+    Name?: StringWithAggregatesFilter<"funktion_jf"> | string
+    Ist_admin?: BoolWithAggregatesFilter<"funktion_jf"> | boolean
+    Erstellt_am?: DateTimeWithAggregatesFilter<"funktion_jf"> | Date | string
+    Geaendert_am?: DateTimeNullableWithAggregatesFilter<"funktion_jf"> | Date | string | null
   }
 
   export type jf_erziehungsberechtigterWhereInput = {
     AND?: jf_erziehungsberechtigterWhereInput | jf_erziehungsberechtigterWhereInput[]
     OR?: jf_erziehungsberechtigterWhereInput[]
     NOT?: jf_erziehungsberechtigterWhereInput | jf_erziehungsberechtigterWhereInput[]
-    id?: IntFilter<"jf_erziehungsberechtigter"> | number
-    jf_mitglied_id?: IntFilter<"jf_erziehungsberechtigter"> | number
-    person_id?: IntFilter<"jf_erziehungsberechtigter"> | number
+    ID?: IntFilter<"jf_erziehungsberechtigter"> | number
+    JF_Mitglied_ID?: IntFilter<"jf_erziehungsberechtigter"> | number
+    Person_ID?: IntFilter<"jf_erziehungsberechtigter"> | number
+    Erstellt_am?: DateTimeNullableFilter<"jf_erziehungsberechtigter"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"jf_erziehungsberechtigter"> | Date | string | null
     jf_mitglied?: XOR<Jf_mitgliedScalarRelationFilter, jf_mitgliedWhereInput>
     person?: XOR<PersonScalarRelationFilter, personWhereInput>
   }
 
   export type jf_erziehungsberechtigterOrderByWithRelationInput = {
-    id?: SortOrder
-    jf_mitglied_id?: SortOrder
-    person_id?: SortOrder
+    ID?: SortOrder
+    JF_Mitglied_ID?: SortOrder
+    Person_ID?: SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     jf_mitglied?: jf_mitgliedOrderByWithRelationInput
     person?: personOrderByWithRelationInput
   }
 
   export type jf_erziehungsberechtigterWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    ID?: number
     AND?: jf_erziehungsberechtigterWhereInput | jf_erziehungsberechtigterWhereInput[]
     OR?: jf_erziehungsberechtigterWhereInput[]
     NOT?: jf_erziehungsberechtigterWhereInput | jf_erziehungsberechtigterWhereInput[]
-    jf_mitglied_id?: IntFilter<"jf_erziehungsberechtigter"> | number
-    person_id?: IntFilter<"jf_erziehungsberechtigter"> | number
+    JF_Mitglied_ID?: IntFilter<"jf_erziehungsberechtigter"> | number
+    Person_ID?: IntFilter<"jf_erziehungsberechtigter"> | number
+    Erstellt_am?: DateTimeNullableFilter<"jf_erziehungsberechtigter"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"jf_erziehungsberechtigter"> | Date | string | null
     jf_mitglied?: XOR<Jf_mitgliedScalarRelationFilter, jf_mitgliedWhereInput>
     person?: XOR<PersonScalarRelationFilter, personWhereInput>
-  }, "id">
+  }, "ID">
 
   export type jf_erziehungsberechtigterOrderByWithAggregationInput = {
-    id?: SortOrder
-    jf_mitglied_id?: SortOrder
-    person_id?: SortOrder
+    ID?: SortOrder
+    JF_Mitglied_ID?: SortOrder
+    Person_ID?: SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     _count?: jf_erziehungsberechtigterCountOrderByAggregateInput
     _avg?: jf_erziehungsberechtigterAvgOrderByAggregateInput
     _max?: jf_erziehungsberechtigterMaxOrderByAggregateInput
@@ -12968,53 +19218,67 @@ export namespace Prisma {
     AND?: jf_erziehungsberechtigterScalarWhereWithAggregatesInput | jf_erziehungsberechtigterScalarWhereWithAggregatesInput[]
     OR?: jf_erziehungsberechtigterScalarWhereWithAggregatesInput[]
     NOT?: jf_erziehungsberechtigterScalarWhereWithAggregatesInput | jf_erziehungsberechtigterScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"jf_erziehungsberechtigter"> | number
-    jf_mitglied_id?: IntWithAggregatesFilter<"jf_erziehungsberechtigter"> | number
-    person_id?: IntWithAggregatesFilter<"jf_erziehungsberechtigter"> | number
+    ID?: IntWithAggregatesFilter<"jf_erziehungsberechtigter"> | number
+    JF_Mitglied_ID?: IntWithAggregatesFilter<"jf_erziehungsberechtigter"> | number
+    Person_ID?: IntWithAggregatesFilter<"jf_erziehungsberechtigter"> | number
+    Erstellt_am?: DateTimeNullableWithAggregatesFilter<"jf_erziehungsberechtigter"> | Date | string | null
+    Geaendert_am?: DateTimeNullableWithAggregatesFilter<"jf_erziehungsberechtigter"> | Date | string | null
   }
 
   export type jf_mitgliedWhereInput = {
     AND?: jf_mitgliedWhereInput | jf_mitgliedWhereInput[]
     OR?: jf_mitgliedWhereInput[]
     NOT?: jf_mitgliedWhereInput | jf_mitgliedWhereInput[]
-    id?: IntFilter<"jf_mitglied"> | number
-    person_id?: IntFilter<"jf_mitglied"> | number
-    eintrittsdatum?: DateTimeFilter<"jf_mitglied"> | Date | string
-    austrittsdatum?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
-    status?: Enumjf_mitglied_statusFilter<"jf_mitglied"> | $Enums.jf_mitglied_status
+    ID?: IntFilter<"jf_mitglied"> | number
+    Person_ID?: IntFilter<"jf_mitglied"> | number
+    Eintrittsdatum?: DateTimeFilter<"jf_mitglied"> | Date | string
+    Austrittsdatum?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
+    Aufnahmedatum?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
+    Status?: Enumjf_mitglied_StatusFilter<"jf_mitglied"> | $Enums.jf_mitglied_Status
+    Erstellt_am?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
     jf_erziehungsberechtigter?: Jf_erziehungsberechtigterListRelationFilter
     person?: XOR<PersonScalarRelationFilter, personWhereInput>
   }
 
   export type jf_mitgliedOrderByWithRelationInput = {
-    id?: SortOrder
-    person_id?: SortOrder
-    eintrittsdatum?: SortOrder
-    austrittsdatum?: SortOrderInput | SortOrder
-    status?: SortOrder
+    ID?: SortOrder
+    Person_ID?: SortOrder
+    Eintrittsdatum?: SortOrder
+    Austrittsdatum?: SortOrderInput | SortOrder
+    Aufnahmedatum?: SortOrderInput | SortOrder
+    Status?: SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterOrderByRelationAggregateInput
     person?: personOrderByWithRelationInput
   }
 
   export type jf_mitgliedWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    ID?: number
     AND?: jf_mitgliedWhereInput | jf_mitgliedWhereInput[]
     OR?: jf_mitgliedWhereInput[]
     NOT?: jf_mitgliedWhereInput | jf_mitgliedWhereInput[]
-    person_id?: IntFilter<"jf_mitglied"> | number
-    eintrittsdatum?: DateTimeFilter<"jf_mitglied"> | Date | string
-    austrittsdatum?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
-    status?: Enumjf_mitglied_statusFilter<"jf_mitglied"> | $Enums.jf_mitglied_status
+    Person_ID?: IntFilter<"jf_mitglied"> | number
+    Eintrittsdatum?: DateTimeFilter<"jf_mitglied"> | Date | string
+    Austrittsdatum?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
+    Aufnahmedatum?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
+    Status?: Enumjf_mitglied_StatusFilter<"jf_mitglied"> | $Enums.jf_mitglied_Status
+    Erstellt_am?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
     jf_erziehungsberechtigter?: Jf_erziehungsberechtigterListRelationFilter
     person?: XOR<PersonScalarRelationFilter, personWhereInput>
-  }, "id">
+  }, "ID">
 
   export type jf_mitgliedOrderByWithAggregationInput = {
-    id?: SortOrder
-    person_id?: SortOrder
-    eintrittsdatum?: SortOrder
-    austrittsdatum?: SortOrderInput | SortOrder
-    status?: SortOrder
+    ID?: SortOrder
+    Person_ID?: SortOrder
+    Eintrittsdatum?: SortOrder
+    Austrittsdatum?: SortOrderInput | SortOrder
+    Aufnahmedatum?: SortOrderInput | SortOrder
+    Status?: SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     _count?: jf_mitgliedCountOrderByAggregateInput
     _avg?: jf_mitgliedAvgOrderByAggregateInput
     _max?: jf_mitgliedMaxOrderByAggregateInput
@@ -13026,51 +19290,125 @@ export namespace Prisma {
     AND?: jf_mitgliedScalarWhereWithAggregatesInput | jf_mitgliedScalarWhereWithAggregatesInput[]
     OR?: jf_mitgliedScalarWhereWithAggregatesInput[]
     NOT?: jf_mitgliedScalarWhereWithAggregatesInput | jf_mitgliedScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"jf_mitglied"> | number
-    person_id?: IntWithAggregatesFilter<"jf_mitglied"> | number
-    eintrittsdatum?: DateTimeWithAggregatesFilter<"jf_mitglied"> | Date | string
-    austrittsdatum?: DateTimeNullableWithAggregatesFilter<"jf_mitglied"> | Date | string | null
-    status?: Enumjf_mitglied_statusWithAggregatesFilter<"jf_mitglied"> | $Enums.jf_mitglied_status
+    ID?: IntWithAggregatesFilter<"jf_mitglied"> | number
+    Person_ID?: IntWithAggregatesFilter<"jf_mitglied"> | number
+    Eintrittsdatum?: DateTimeWithAggregatesFilter<"jf_mitglied"> | Date | string
+    Austrittsdatum?: DateTimeNullableWithAggregatesFilter<"jf_mitglied"> | Date | string | null
+    Aufnahmedatum?: DateTimeNullableWithAggregatesFilter<"jf_mitglied"> | Date | string | null
+    Status?: Enumjf_mitglied_StatusWithAggregatesFilter<"jf_mitglied"> | $Enums.jf_mitglied_Status
+    Erstellt_am?: DateTimeNullableWithAggregatesFilter<"jf_mitglied"> | Date | string | null
+    Geaendert_am?: DateTimeNullableWithAggregatesFilter<"jf_mitglied"> | Date | string | null
+  }
+
+  export type lehrgangWhereInput = {
+    AND?: lehrgangWhereInput | lehrgangWhereInput[]
+    OR?: lehrgangWhereInput[]
+    NOT?: lehrgangWhereInput | lehrgangWhereInput[]
+    ID?: IntFilter<"lehrgang"> | number
+    Abk_rzung?: StringNullableFilter<"lehrgang"> | string | null
+    Beschreibung?: StringNullableFilter<"lehrgang"> | string | null
+    Reihenfolge?: IntNullableFilter<"lehrgang"> | number | null
+    Erstellt_am?: DateTimeNullableFilter<"lehrgang"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"lehrgang"> | Date | string | null
+    ff_mitglied_lehrgang?: Ff_mitglied_lehrgangListRelationFilter
+  }
+
+  export type lehrgangOrderByWithRelationInput = {
+    ID?: SortOrder
+    Abk_rzung?: SortOrderInput | SortOrder
+    Beschreibung?: SortOrderInput | SortOrder
+    Reihenfolge?: SortOrderInput | SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangOrderByRelationAggregateInput
+    _relevance?: lehrgangOrderByRelevanceInput
+  }
+
+  export type lehrgangWhereUniqueInput = Prisma.AtLeast<{
+    ID?: number
+    AND?: lehrgangWhereInput | lehrgangWhereInput[]
+    OR?: lehrgangWhereInput[]
+    NOT?: lehrgangWhereInput | lehrgangWhereInput[]
+    Abk_rzung?: StringNullableFilter<"lehrgang"> | string | null
+    Beschreibung?: StringNullableFilter<"lehrgang"> | string | null
+    Reihenfolge?: IntNullableFilter<"lehrgang"> | number | null
+    Erstellt_am?: DateTimeNullableFilter<"lehrgang"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"lehrgang"> | Date | string | null
+    ff_mitglied_lehrgang?: Ff_mitglied_lehrgangListRelationFilter
+  }, "ID">
+
+  export type lehrgangOrderByWithAggregationInput = {
+    ID?: SortOrder
+    Abk_rzung?: SortOrderInput | SortOrder
+    Beschreibung?: SortOrderInput | SortOrder
+    Reihenfolge?: SortOrderInput | SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
+    _count?: lehrgangCountOrderByAggregateInput
+    _avg?: lehrgangAvgOrderByAggregateInput
+    _max?: lehrgangMaxOrderByAggregateInput
+    _min?: lehrgangMinOrderByAggregateInput
+    _sum?: lehrgangSumOrderByAggregateInput
+  }
+
+  export type lehrgangScalarWhereWithAggregatesInput = {
+    AND?: lehrgangScalarWhereWithAggregatesInput | lehrgangScalarWhereWithAggregatesInput[]
+    OR?: lehrgangScalarWhereWithAggregatesInput[]
+    NOT?: lehrgangScalarWhereWithAggregatesInput | lehrgangScalarWhereWithAggregatesInput[]
+    ID?: IntWithAggregatesFilter<"lehrgang"> | number
+    Abk_rzung?: StringNullableWithAggregatesFilter<"lehrgang"> | string | null
+    Beschreibung?: StringNullableWithAggregatesFilter<"lehrgang"> | string | null
+    Reihenfolge?: IntNullableWithAggregatesFilter<"lehrgang"> | number | null
+    Erstellt_am?: DateTimeNullableWithAggregatesFilter<"lehrgang"> | Date | string | null
+    Geaendert_am?: DateTimeNullableWithAggregatesFilter<"lehrgang"> | Date | string | null
   }
 
   export type mitglied_funktionenWhereInput = {
     AND?: mitglied_funktionenWhereInput | mitglied_funktionenWhereInput[]
     OR?: mitglied_funktionenWhereInput[]
     NOT?: mitglied_funktionenWhereInput | mitglied_funktionenWhereInput[]
-    id?: IntFilter<"mitglied_funktionen"> | number
-    mitglied_id?: IntFilter<"mitglied_funktionen"> | number
-    funktion_id?: IntFilter<"mitglied_funktionen"> | number
-    typ?: Enummitglied_funktionen_typFilter<"mitglied_funktionen"> | $Enums.mitglied_funktionen_typ
+    ID?: IntFilter<"mitglied_funktionen"> | number
+    Mitglied_ID?: IntFilter<"mitglied_funktionen"> | number
+    Funktion_ID?: IntFilter<"mitglied_funktionen"> | number
+    Typ?: Enummitglied_funktionen_TypFilter<"mitglied_funktionen"> | $Enums.mitglied_funktionen_Typ
+    Erstellt_am?: DateTimeNullableFilter<"mitglied_funktionen"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"mitglied_funktionen"> | Date | string | null
     ff_mitglied?: XOR<Ff_mitgliedScalarRelationFilter, ff_mitgliedWhereInput>
     funktion_ff?: XOR<Funktion_ffScalarRelationFilter, funktion_ffWhereInput>
   }
 
   export type mitglied_funktionenOrderByWithRelationInput = {
-    id?: SortOrder
-    mitglied_id?: SortOrder
-    funktion_id?: SortOrder
-    typ?: SortOrder
+    ID?: SortOrder
+    Mitglied_ID?: SortOrder
+    Funktion_ID?: SortOrder
+    Typ?: SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     ff_mitglied?: ff_mitgliedOrderByWithRelationInput
     funktion_ff?: funktion_ffOrderByWithRelationInput
   }
 
   export type mitglied_funktionenWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    ID?: number
     AND?: mitglied_funktionenWhereInput | mitglied_funktionenWhereInput[]
     OR?: mitglied_funktionenWhereInput[]
     NOT?: mitglied_funktionenWhereInput | mitglied_funktionenWhereInput[]
-    mitglied_id?: IntFilter<"mitglied_funktionen"> | number
-    funktion_id?: IntFilter<"mitglied_funktionen"> | number
-    typ?: Enummitglied_funktionen_typFilter<"mitglied_funktionen"> | $Enums.mitglied_funktionen_typ
+    Mitglied_ID?: IntFilter<"mitglied_funktionen"> | number
+    Funktion_ID?: IntFilter<"mitglied_funktionen"> | number
+    Typ?: Enummitglied_funktionen_TypFilter<"mitglied_funktionen"> | $Enums.mitglied_funktionen_Typ
+    Erstellt_am?: DateTimeNullableFilter<"mitglied_funktionen"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"mitglied_funktionen"> | Date | string | null
     ff_mitglied?: XOR<Ff_mitgliedScalarRelationFilter, ff_mitgliedWhereInput>
     funktion_ff?: XOR<Funktion_ffScalarRelationFilter, funktion_ffWhereInput>
-  }, "id">
+  }, "ID">
 
   export type mitglied_funktionenOrderByWithAggregationInput = {
-    id?: SortOrder
-    mitglied_id?: SortOrder
-    funktion_id?: SortOrder
-    typ?: SortOrder
+    ID?: SortOrder
+    Mitglied_ID?: SortOrder
+    Funktion_ID?: SortOrder
+    Typ?: SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     _count?: mitglied_funktionenCountOrderByAggregateInput
     _avg?: mitglied_funktionenAvgOrderByAggregateInput
     _max?: mitglied_funktionenMaxOrderByAggregateInput
@@ -13082,44 +19420,57 @@ export namespace Prisma {
     AND?: mitglied_funktionenScalarWhereWithAggregatesInput | mitglied_funktionenScalarWhereWithAggregatesInput[]
     OR?: mitglied_funktionenScalarWhereWithAggregatesInput[]
     NOT?: mitglied_funktionenScalarWhereWithAggregatesInput | mitglied_funktionenScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"mitglied_funktionen"> | number
-    mitglied_id?: IntWithAggregatesFilter<"mitglied_funktionen"> | number
-    funktion_id?: IntWithAggregatesFilter<"mitglied_funktionen"> | number
-    typ?: Enummitglied_funktionen_typWithAggregatesFilter<"mitglied_funktionen"> | $Enums.mitglied_funktionen_typ
+    ID?: IntWithAggregatesFilter<"mitglied_funktionen"> | number
+    Mitglied_ID?: IntWithAggregatesFilter<"mitglied_funktionen"> | number
+    Funktion_ID?: IntWithAggregatesFilter<"mitglied_funktionen"> | number
+    Typ?: Enummitglied_funktionen_TypWithAggregatesFilter<"mitglied_funktionen"> | $Enums.mitglied_funktionen_Typ
+    Erstellt_am?: DateTimeNullableWithAggregatesFilter<"mitglied_funktionen"> | Date | string | null
+    Geaendert_am?: DateTimeNullableWithAggregatesFilter<"mitglied_funktionen"> | Date | string | null
   }
 
   export type mitglied_loginWhereInput = {
     AND?: mitglied_loginWhereInput | mitglied_loginWhereInput[]
     OR?: mitglied_loginWhereInput[]
     NOT?: mitglied_loginWhereInput | mitglied_loginWhereInput[]
-    id?: IntFilter<"mitglied_login"> | number
-    benutzer_id?: IntFilter<"mitglied_login"> | number
-    mitglied_id?: IntFilter<"mitglied_login"> | number
-    ty?: Enummitglied_login_tyFilter<"mitglied_login"> | $Enums.mitglied_login_ty
+    ID?: IntFilter<"mitglied_login"> | number
+    Benutzer_ID?: IntFilter<"mitglied_login"> | number
+    Mitglied_ID?: IntFilter<"mitglied_login"> | number
+    Typ?: Enummitglied_login_TypFilter<"mitglied_login"> | $Enums.mitglied_login_Typ
+    Erstellt_am?: DateTimeFilter<"mitglied_login"> | Date | string
+    Geaendert_am?: DateTimeNullableFilter<"mitglied_login"> | Date | string | null
+    person?: XOR<PersonScalarRelationFilter, personWhereInput>
   }
 
   export type mitglied_loginOrderByWithRelationInput = {
-    id?: SortOrder
-    benutzer_id?: SortOrder
-    mitglied_id?: SortOrder
-    ty?: SortOrder
+    ID?: SortOrder
+    Benutzer_ID?: SortOrder
+    Mitglied_ID?: SortOrder
+    Typ?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
+    person?: personOrderByWithRelationInput
   }
 
   export type mitglied_loginWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    ID?: number
     AND?: mitglied_loginWhereInput | mitglied_loginWhereInput[]
     OR?: mitglied_loginWhereInput[]
     NOT?: mitglied_loginWhereInput | mitglied_loginWhereInput[]
-    benutzer_id?: IntFilter<"mitglied_login"> | number
-    mitglied_id?: IntFilter<"mitglied_login"> | number
-    ty?: Enummitglied_login_tyFilter<"mitglied_login"> | $Enums.mitglied_login_ty
-  }, "id">
+    Benutzer_ID?: IntFilter<"mitglied_login"> | number
+    Mitglied_ID?: IntFilter<"mitglied_login"> | number
+    Typ?: Enummitglied_login_TypFilter<"mitglied_login"> | $Enums.mitglied_login_Typ
+    Erstellt_am?: DateTimeFilter<"mitglied_login"> | Date | string
+    Geaendert_am?: DateTimeNullableFilter<"mitglied_login"> | Date | string | null
+    person?: XOR<PersonScalarRelationFilter, personWhereInput>
+  }, "ID">
 
   export type mitglied_loginOrderByWithAggregationInput = {
-    id?: SortOrder
-    benutzer_id?: SortOrder
-    mitglied_id?: SortOrder
-    ty?: SortOrder
+    ID?: SortOrder
+    Benutzer_ID?: SortOrder
+    Mitglied_ID?: SortOrder
+    Typ?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     _count?: mitglied_loginCountOrderByAggregateInput
     _avg?: mitglied_loginAvgOrderByAggregateInput
     _max?: mitglied_loginMaxOrderByAggregateInput
@@ -13131,58 +19482,94 @@ export namespace Prisma {
     AND?: mitglied_loginScalarWhereWithAggregatesInput | mitglied_loginScalarWhereWithAggregatesInput[]
     OR?: mitglied_loginScalarWhereWithAggregatesInput[]
     NOT?: mitglied_loginScalarWhereWithAggregatesInput | mitglied_loginScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"mitglied_login"> | number
-    benutzer_id?: IntWithAggregatesFilter<"mitglied_login"> | number
-    mitglied_id?: IntWithAggregatesFilter<"mitglied_login"> | number
-    ty?: Enummitglied_login_tyWithAggregatesFilter<"mitglied_login"> | $Enums.mitglied_login_ty
+    ID?: IntWithAggregatesFilter<"mitglied_login"> | number
+    Benutzer_ID?: IntWithAggregatesFilter<"mitglied_login"> | number
+    Mitglied_ID?: IntWithAggregatesFilter<"mitglied_login"> | number
+    Typ?: Enummitglied_login_TypWithAggregatesFilter<"mitglied_login"> | $Enums.mitglied_login_Typ
+    Erstellt_am?: DateTimeWithAggregatesFilter<"mitglied_login"> | Date | string
+    Geaendert_am?: DateTimeNullableWithAggregatesFilter<"mitglied_login"> | Date | string | null
   }
 
   export type personWhereInput = {
     AND?: personWhereInput | personWhereInput[]
     OR?: personWhereInput[]
     NOT?: personWhereInput | personWhereInput[]
-    id?: IntFilter<"person"> | number
-    vorname?: StringFilter<"person"> | string
-    name?: StringFilter<"person"> | string
-    geburtsdatum?: DateTimeNullableFilter<"person"> | Date | string | null
-    email?: StringFilter<"person"> | string
+    ID?: IntFilter<"person"> | number
+    Vorname?: StringFilter<"person"> | string
+    Name?: StringFilter<"person"> | string
+    Geburtsdatum?: DateTimeNullableFilter<"person"> | Date | string | null
+    Strasse?: StringNullableFilter<"person"> | string | null
+    Hausnummer?: StringNullableFilter<"person"> | string | null
+    Postleitzahl?: StringNullableFilter<"person"> | string | null
+    Ort?: StringNullableFilter<"person"> | string | null
+    Email?: StringNullableFilter<"person"> | string | null
+    HandyNr?: IntNullableFilter<"person"> | number | null
+    Erstellt_am?: DateTimeFilter<"person"> | Date | string
+    Geaendert_am?: DateTimeNullableFilter<"person"> | Date | string | null
     ff_mitglied?: Ff_mitgliedListRelationFilter
     jf_erziehungsberechtigter?: Jf_erziehungsberechtigterListRelationFilter
     jf_mitglied?: Jf_mitgliedListRelationFilter
+    mitglied_login?: Mitglied_loginListRelationFilter
+    teilnahme?: TeilnahmeListRelationFilter
   }
 
   export type personOrderByWithRelationInput = {
-    id?: SortOrder
-    vorname?: SortOrder
-    name?: SortOrder
-    geburtsdatum?: SortOrderInput | SortOrder
-    email?: SortOrder
+    ID?: SortOrder
+    Vorname?: SortOrder
+    Name?: SortOrder
+    Geburtsdatum?: SortOrderInput | SortOrder
+    Strasse?: SortOrderInput | SortOrder
+    Hausnummer?: SortOrderInput | SortOrder
+    Postleitzahl?: SortOrderInput | SortOrder
+    Ort?: SortOrderInput | SortOrder
+    Email?: SortOrderInput | SortOrder
+    HandyNr?: SortOrderInput | SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     ff_mitglied?: ff_mitgliedOrderByRelationAggregateInput
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterOrderByRelationAggregateInput
     jf_mitglied?: jf_mitgliedOrderByRelationAggregateInput
+    mitglied_login?: mitglied_loginOrderByRelationAggregateInput
+    teilnahme?: teilnahmeOrderByRelationAggregateInput
     _relevance?: personOrderByRelevanceInput
   }
 
   export type personWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    ID?: number
     AND?: personWhereInput | personWhereInput[]
     OR?: personWhereInput[]
     NOT?: personWhereInput | personWhereInput[]
-    vorname?: StringFilter<"person"> | string
-    name?: StringFilter<"person"> | string
-    geburtsdatum?: DateTimeNullableFilter<"person"> | Date | string | null
-    email?: StringFilter<"person"> | string
+    Vorname?: StringFilter<"person"> | string
+    Name?: StringFilter<"person"> | string
+    Geburtsdatum?: DateTimeNullableFilter<"person"> | Date | string | null
+    Strasse?: StringNullableFilter<"person"> | string | null
+    Hausnummer?: StringNullableFilter<"person"> | string | null
+    Postleitzahl?: StringNullableFilter<"person"> | string | null
+    Ort?: StringNullableFilter<"person"> | string | null
+    Email?: StringNullableFilter<"person"> | string | null
+    HandyNr?: IntNullableFilter<"person"> | number | null
+    Erstellt_am?: DateTimeFilter<"person"> | Date | string
+    Geaendert_am?: DateTimeNullableFilter<"person"> | Date | string | null
     ff_mitglied?: Ff_mitgliedListRelationFilter
     jf_erziehungsberechtigter?: Jf_erziehungsberechtigterListRelationFilter
     jf_mitglied?: Jf_mitgliedListRelationFilter
-  }, "id">
+    mitglied_login?: Mitglied_loginListRelationFilter
+    teilnahme?: TeilnahmeListRelationFilter
+  }, "ID">
 
   export type personOrderByWithAggregationInput = {
-    id?: SortOrder
-    vorname?: SortOrder
-    name?: SortOrder
-    geburtsdatum?: SortOrderInput | SortOrder
-    email?: SortOrder
+    ID?: SortOrder
+    Vorname?: SortOrder
+    Name?: SortOrder
+    Geburtsdatum?: SortOrderInput | SortOrder
+    Strasse?: SortOrderInput | SortOrder
+    Hausnummer?: SortOrderInput | SortOrder
+    Postleitzahl?: SortOrderInput | SortOrder
+    Ort?: SortOrderInput | SortOrder
+    Email?: SortOrderInput | SortOrder
+    HandyNr?: SortOrderInput | SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     _count?: personCountOrderByAggregateInput
     _avg?: personAvgOrderByAggregateInput
     _max?: personMaxOrderByAggregateInput
@@ -13194,48 +19581,63 @@ export namespace Prisma {
     AND?: personScalarWhereWithAggregatesInput | personScalarWhereWithAggregatesInput[]
     OR?: personScalarWhereWithAggregatesInput[]
     NOT?: personScalarWhereWithAggregatesInput | personScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"person"> | number
-    vorname?: StringWithAggregatesFilter<"person"> | string
-    name?: StringWithAggregatesFilter<"person"> | string
-    geburtsdatum?: DateTimeNullableWithAggregatesFilter<"person"> | Date | string | null
-    email?: StringWithAggregatesFilter<"person"> | string
+    ID?: IntWithAggregatesFilter<"person"> | number
+    Vorname?: StringWithAggregatesFilter<"person"> | string
+    Name?: StringWithAggregatesFilter<"person"> | string
+    Geburtsdatum?: DateTimeNullableWithAggregatesFilter<"person"> | Date | string | null
+    Strasse?: StringNullableWithAggregatesFilter<"person"> | string | null
+    Hausnummer?: StringNullableWithAggregatesFilter<"person"> | string | null
+    Postleitzahl?: StringNullableWithAggregatesFilter<"person"> | string | null
+    Ort?: StringNullableWithAggregatesFilter<"person"> | string | null
+    Email?: StringNullableWithAggregatesFilter<"person"> | string | null
+    HandyNr?: IntNullableWithAggregatesFilter<"person"> | number | null
+    Erstellt_am?: DateTimeWithAggregatesFilter<"person"> | Date | string
+    Geaendert_am?: DateTimeNullableWithAggregatesFilter<"person"> | Date | string | null
   }
 
   export type teilnahmeWhereInput = {
     AND?: teilnahmeWhereInput | teilnahmeWhereInput[]
     OR?: teilnahmeWhereInput[]
     NOT?: teilnahmeWhereInput | teilnahmeWhereInput[]
-    id?: IntFilter<"teilnahme"> | number
-    mitglied_id?: IntFilter<"teilnahme"> | number
-    veranstaltung_id?: IntFilter<"teilnahme"> | number
-    typ?: Enumteilnahme_typFilter<"teilnahme"> | $Enums.teilnahme_typ
-    ff_mitglied?: XOR<Ff_mitgliedScalarRelationFilter, ff_mitgliedWhereInput>
+    ID?: IntFilter<"teilnahme"> | number
+    Mitglied_ID?: IntFilter<"teilnahme"> | number
+    Veranstaltung_ID?: IntFilter<"teilnahme"> | number
+    Typ?: Enumteilnahme_TypFilter<"teilnahme"> | $Enums.teilnahme_Typ
+    Erstellt_am?: DateTimeFilter<"teilnahme"> | Date | string
+    Geaendert_am?: DateTimeNullableFilter<"teilnahme"> | Date | string | null
+    person?: XOR<PersonScalarRelationFilter, personWhereInput>
   }
 
   export type teilnahmeOrderByWithRelationInput = {
-    id?: SortOrder
-    mitglied_id?: SortOrder
-    veranstaltung_id?: SortOrder
-    typ?: SortOrder
-    ff_mitglied?: ff_mitgliedOrderByWithRelationInput
+    ID?: SortOrder
+    Mitglied_ID?: SortOrder
+    Veranstaltung_ID?: SortOrder
+    Typ?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
+    person?: personOrderByWithRelationInput
   }
 
   export type teilnahmeWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    ID?: number
     AND?: teilnahmeWhereInput | teilnahmeWhereInput[]
     OR?: teilnahmeWhereInput[]
     NOT?: teilnahmeWhereInput | teilnahmeWhereInput[]
-    mitglied_id?: IntFilter<"teilnahme"> | number
-    veranstaltung_id?: IntFilter<"teilnahme"> | number
-    typ?: Enumteilnahme_typFilter<"teilnahme"> | $Enums.teilnahme_typ
-    ff_mitglied?: XOR<Ff_mitgliedScalarRelationFilter, ff_mitgliedWhereInput>
-  }, "id">
+    Mitglied_ID?: IntFilter<"teilnahme"> | number
+    Veranstaltung_ID?: IntFilter<"teilnahme"> | number
+    Typ?: Enumteilnahme_TypFilter<"teilnahme"> | $Enums.teilnahme_Typ
+    Erstellt_am?: DateTimeFilter<"teilnahme"> | Date | string
+    Geaendert_am?: DateTimeNullableFilter<"teilnahme"> | Date | string | null
+    person?: XOR<PersonScalarRelationFilter, personWhereInput>
+  }, "ID">
 
   export type teilnahmeOrderByWithAggregationInput = {
-    id?: SortOrder
-    mitglied_id?: SortOrder
-    veranstaltung_id?: SortOrder
-    typ?: SortOrder
+    ID?: SortOrder
+    Mitglied_ID?: SortOrder
+    Veranstaltung_ID?: SortOrder
+    Typ?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     _count?: teilnahmeCountOrderByAggregateInput
     _avg?: teilnahmeAvgOrderByAggregateInput
     _max?: teilnahmeMaxOrderByAggregateInput
@@ -13247,583 +19649,1093 @@ export namespace Prisma {
     AND?: teilnahmeScalarWhereWithAggregatesInput | teilnahmeScalarWhereWithAggregatesInput[]
     OR?: teilnahmeScalarWhereWithAggregatesInput[]
     NOT?: teilnahmeScalarWhereWithAggregatesInput | teilnahmeScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"teilnahme"> | number
-    mitglied_id?: IntWithAggregatesFilter<"teilnahme"> | number
-    veranstaltung_id?: IntWithAggregatesFilter<"teilnahme"> | number
-    typ?: Enumteilnahme_typWithAggregatesFilter<"teilnahme"> | $Enums.teilnahme_typ
+    ID?: IntWithAggregatesFilter<"teilnahme"> | number
+    Mitglied_ID?: IntWithAggregatesFilter<"teilnahme"> | number
+    Veranstaltung_ID?: IntWithAggregatesFilter<"teilnahme"> | number
+    Typ?: Enumteilnahme_TypWithAggregatesFilter<"teilnahme"> | $Enums.teilnahme_Typ
+    Erstellt_am?: DateTimeWithAggregatesFilter<"teilnahme"> | Date | string
+    Geaendert_am?: DateTimeNullableWithAggregatesFilter<"teilnahme"> | Date | string | null
   }
 
-  export type uebungsabendWhereInput = {
-    AND?: uebungsabendWhereInput | uebungsabendWhereInput[]
-    OR?: uebungsabendWhereInput[]
-    NOT?: uebungsabendWhereInput | uebungsabendWhereInput[]
-    id?: IntFilter<"uebungsabend"> | number
-    datum?: DateTimeFilter<"uebungsabend"> | Date | string
-    thema?: StringNullableFilter<"uebungsabend"> | string | null
+  export type dienstgradCreateInput = {
+    Abkuerzung_maennlich?: string | null
+    Beschreibung_maennlich?: string | null
+    Abkuerzung_weiblich?: string | null
+    Beschreibung_weiblich?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
-  export type uebungsabendOrderByWithRelationInput = {
-    id?: SortOrder
-    datum?: SortOrder
-    thema?: SortOrderInput | SortOrder
-    _relevance?: uebungsabendOrderByRelevanceInput
+  export type dienstgradUncheckedCreateInput = {
+    ID?: number
+    Abkuerzung_maennlich?: string | null
+    Beschreibung_maennlich?: string | null
+    Abkuerzung_weiblich?: string | null
+    Beschreibung_weiblich?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
-  export type uebungsabendWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: uebungsabendWhereInput | uebungsabendWhereInput[]
-    OR?: uebungsabendWhereInput[]
-    NOT?: uebungsabendWhereInput | uebungsabendWhereInput[]
-    datum?: DateTimeFilter<"uebungsabend"> | Date | string
-    thema?: StringNullableFilter<"uebungsabend"> | string | null
-  }, "id">
-
-  export type uebungsabendOrderByWithAggregationInput = {
-    id?: SortOrder
-    datum?: SortOrder
-    thema?: SortOrderInput | SortOrder
-    _count?: uebungsabendCountOrderByAggregateInput
-    _avg?: uebungsabendAvgOrderByAggregateInput
-    _max?: uebungsabendMaxOrderByAggregateInput
-    _min?: uebungsabendMinOrderByAggregateInput
-    _sum?: uebungsabendSumOrderByAggregateInput
+  export type dienstgradUpdateInput = {
+    Abkuerzung_maennlich?: NullableStringFieldUpdateOperationsInput | string | null
+    Beschreibung_maennlich?: NullableStringFieldUpdateOperationsInput | string | null
+    Abkuerzung_weiblich?: NullableStringFieldUpdateOperationsInput | string | null
+    Beschreibung_weiblich?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type uebungsabendScalarWhereWithAggregatesInput = {
-    AND?: uebungsabendScalarWhereWithAggregatesInput | uebungsabendScalarWhereWithAggregatesInput[]
-    OR?: uebungsabendScalarWhereWithAggregatesInput[]
-    NOT?: uebungsabendScalarWhereWithAggregatesInput | uebungsabendScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"uebungsabend"> | number
-    datum?: DateTimeWithAggregatesFilter<"uebungsabend"> | Date | string
-    thema?: StringNullableWithAggregatesFilter<"uebungsabend"> | string | null
+  export type dienstgradUncheckedUpdateInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Abkuerzung_maennlich?: NullableStringFieldUpdateOperationsInput | string | null
+    Beschreibung_maennlich?: NullableStringFieldUpdateOperationsInput | string | null
+    Abkuerzung_weiblich?: NullableStringFieldUpdateOperationsInput | string | null
+    Beschreibung_weiblich?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type dienstgradCreateManyInput = {
+    ID?: number
+    Abkuerzung_maennlich?: string | null
+    Beschreibung_maennlich?: string | null
+    Abkuerzung_weiblich?: string | null
+    Beschreibung_weiblich?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type dienstgradUpdateManyMutationInput = {
+    Abkuerzung_maennlich?: NullableStringFieldUpdateOperationsInput | string | null
+    Beschreibung_maennlich?: NullableStringFieldUpdateOperationsInput | string | null
+    Abkuerzung_weiblich?: NullableStringFieldUpdateOperationsInput | string | null
+    Beschreibung_weiblich?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type dienstgradUncheckedUpdateManyInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Abkuerzung_maennlich?: NullableStringFieldUpdateOperationsInput | string | null
+    Beschreibung_maennlich?: NullableStringFieldUpdateOperationsInput | string | null
+    Abkuerzung_weiblich?: NullableStringFieldUpdateOperationsInput | string | null
+    Beschreibung_weiblich?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type dientsabendCreateInput = {
+    Datum: Date | string
+    Thema?: string | null
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
+  }
+
+  export type dientsabendUncheckedCreateInput = {
+    ID?: number
+    Datum: Date | string
+    Thema?: string | null
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
+  }
+
+  export type dientsabendUpdateInput = {
+    Datum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Thema?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type dientsabendUncheckedUpdateInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Datum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Thema?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type dientsabendCreateManyInput = {
+    ID?: number
+    Datum: Date | string
+    Thema?: string | null
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
+  }
+
+  export type dientsabendUpdateManyMutationInput = {
+    Datum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Thema?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type dientsabendUncheckedUpdateManyInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Datum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Thema?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type einheitCreateInput = {
+    Abkuerzung?: string | null
+    Beschreibung?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type einheitUncheckedCreateInput = {
+    ID?: number
+    Abkuerzung?: string | null
+    Beschreibung?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type einheitUpdateInput = {
+    Abkuerzung?: NullableStringFieldUpdateOperationsInput | string | null
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type einheitUncheckedUpdateInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Abkuerzung?: NullableStringFieldUpdateOperationsInput | string | null
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type einheitCreateManyInput = {
+    ID?: number
+    Abkuerzung?: string | null
+    Beschreibung?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type einheitUpdateManyMutationInput = {
+    Abkuerzung?: NullableStringFieldUpdateOperationsInput | string | null
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type einheitUncheckedUpdateManyInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Abkuerzung?: NullableStringFieldUpdateOperationsInput | string | null
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type einsatzCreateInput = {
-    datum: Date | string
-    beschreibung?: string | null
-    ort?: string | null
-    art: $Enums.einsatz_art
+    Einsatznummer: number
+    Datum_Anfang: Date | string
+    Uhrzeit_Anfang: Date | string
+    Datum_Ende?: Date | string | null
+    Uhrzeit_Ende?: Date | string | null
+    Beschreibung?: string | null
+    Strasse?: string | null
+    Hausnummer?: string | null
+    Postleitzahl?: string | null
+    Ort?: string | null
+    Art: $Enums.einsatz_Art
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type einsatzUncheckedCreateInput = {
-    id?: number
-    datum: Date | string
-    beschreibung?: string | null
-    ort?: string | null
-    art: $Enums.einsatz_art
+    ID?: number
+    Einsatznummer: number
+    Datum_Anfang: Date | string
+    Uhrzeit_Anfang: Date | string
+    Datum_Ende?: Date | string | null
+    Uhrzeit_Ende?: Date | string | null
+    Beschreibung?: string | null
+    Strasse?: string | null
+    Hausnummer?: string | null
+    Postleitzahl?: string | null
+    Ort?: string | null
+    Art: $Enums.einsatz_Art
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type einsatzUpdateInput = {
-    datum?: DateTimeFieldUpdateOperationsInput | Date | string
-    beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
-    ort?: NullableStringFieldUpdateOperationsInput | string | null
-    art?: Enumeinsatz_artFieldUpdateOperationsInput | $Enums.einsatz_art
+    Einsatznummer?: IntFieldUpdateOperationsInput | number
+    Datum_Anfang?: DateTimeFieldUpdateOperationsInput | Date | string
+    Uhrzeit_Anfang?: DateTimeFieldUpdateOperationsInput | Date | string
+    Datum_Ende?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Uhrzeit_Ende?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Art?: Enumeinsatz_ArtFieldUpdateOperationsInput | $Enums.einsatz_Art
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type einsatzUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    datum?: DateTimeFieldUpdateOperationsInput | Date | string
-    beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
-    ort?: NullableStringFieldUpdateOperationsInput | string | null
-    art?: Enumeinsatz_artFieldUpdateOperationsInput | $Enums.einsatz_art
+    ID?: IntFieldUpdateOperationsInput | number
+    Einsatznummer?: IntFieldUpdateOperationsInput | number
+    Datum_Anfang?: DateTimeFieldUpdateOperationsInput | Date | string
+    Uhrzeit_Anfang?: DateTimeFieldUpdateOperationsInput | Date | string
+    Datum_Ende?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Uhrzeit_Ende?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Art?: Enumeinsatz_ArtFieldUpdateOperationsInput | $Enums.einsatz_Art
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type einsatzCreateManyInput = {
-    id?: number
-    datum: Date | string
-    beschreibung?: string | null
-    ort?: string | null
-    art: $Enums.einsatz_art
+    ID?: number
+    Einsatznummer: number
+    Datum_Anfang: Date | string
+    Uhrzeit_Anfang: Date | string
+    Datum_Ende?: Date | string | null
+    Uhrzeit_Ende?: Date | string | null
+    Beschreibung?: string | null
+    Strasse?: string | null
+    Hausnummer?: string | null
+    Postleitzahl?: string | null
+    Ort?: string | null
+    Art: $Enums.einsatz_Art
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type einsatzUpdateManyMutationInput = {
-    datum?: DateTimeFieldUpdateOperationsInput | Date | string
-    beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
-    ort?: NullableStringFieldUpdateOperationsInput | string | null
-    art?: Enumeinsatz_artFieldUpdateOperationsInput | $Enums.einsatz_art
+    Einsatznummer?: IntFieldUpdateOperationsInput | number
+    Datum_Anfang?: DateTimeFieldUpdateOperationsInput | Date | string
+    Uhrzeit_Anfang?: DateTimeFieldUpdateOperationsInput | Date | string
+    Datum_Ende?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Uhrzeit_Ende?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Art?: Enumeinsatz_ArtFieldUpdateOperationsInput | $Enums.einsatz_Art
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type einsatzUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    datum?: DateTimeFieldUpdateOperationsInput | Date | string
-    beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
-    ort?: NullableStringFieldUpdateOperationsInput | string | null
-    art?: Enumeinsatz_artFieldUpdateOperationsInput | $Enums.einsatz_art
+    ID?: IntFieldUpdateOperationsInput | number
+    Einsatznummer?: IntFieldUpdateOperationsInput | number
+    Datum_Anfang?: DateTimeFieldUpdateOperationsInput | Date | string
+    Uhrzeit_Anfang?: DateTimeFieldUpdateOperationsInput | Date | string
+    Datum_Ende?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Uhrzeit_Ende?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Art?: Enumeinsatz_ArtFieldUpdateOperationsInput | $Enums.einsatz_Art
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type fahrzeugCreateInput = {
+    Kennzeichen?: string | null
+    Besatzungsstaerke?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type fahrzeugUncheckedCreateInput = {
+    ID?: number
+    Kennzeichen?: string | null
+    Besatzungsstaerke?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type fahrzeugUpdateInput = {
+    Kennzeichen?: NullableStringFieldUpdateOperationsInput | string | null
+    Besatzungsstaerke?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type fahrzeugUncheckedUpdateInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Kennzeichen?: NullableStringFieldUpdateOperationsInput | string | null
+    Besatzungsstaerke?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type fahrzeugCreateManyInput = {
+    ID?: number
+    Kennzeichen?: string | null
+    Besatzungsstaerke?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type fahrzeugUpdateManyMutationInput = {
+    Kennzeichen?: NullableStringFieldUpdateOperationsInput | string | null
+    Besatzungsstaerke?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type fahrzeugUncheckedUpdateManyInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Kennzeichen?: NullableStringFieldUpdateOperationsInput | string | null
+    Besatzungsstaerke?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ff_mitgliedCreateInput = {
-    eintrittsdatum: Date | string
-    austrittsdatum?: Date | string | null
-    status?: $Enums.ff_mitglied_status
+    Eintrittsdatum: Date | string
+    Austrittsdatum?: Date | string | null
+    Aufnahmedatum?: Date | string | null
+    Status?: $Enums.ff_mitglied_Status
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
     person: personCreateNestedOneWithoutFf_mitgliedInput
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangCreateNestedManyWithoutFf_mitgliedInput
     mitglied_funktionen?: mitglied_funktionenCreateNestedManyWithoutFf_mitgliedInput
-    teilnahme?: teilnahmeCreateNestedManyWithoutFf_mitgliedInput
   }
 
   export type ff_mitgliedUncheckedCreateInput = {
-    id?: number
-    person_id: number
-    eintrittsdatum: Date | string
-    austrittsdatum?: Date | string | null
-    status?: $Enums.ff_mitglied_status
+    ID?: number
+    Person_ID: number
+    Eintrittsdatum: Date | string
+    Austrittsdatum?: Date | string | null
+    Aufnahmedatum?: Date | string | null
+    Status?: $Enums.ff_mitglied_Status
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangUncheckedCreateNestedManyWithoutFf_mitgliedInput
     mitglied_funktionen?: mitglied_funktionenUncheckedCreateNestedManyWithoutFf_mitgliedInput
-    teilnahme?: teilnahmeUncheckedCreateNestedManyWithoutFf_mitgliedInput
   }
 
   export type ff_mitgliedUpdateInput = {
-    eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: Enumff_mitglied_statusFieldUpdateOperationsInput | $Enums.ff_mitglied_status
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumff_mitglied_StatusFieldUpdateOperationsInput | $Enums.ff_mitglied_Status
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     person?: personUpdateOneRequiredWithoutFf_mitgliedNestedInput
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangUpdateManyWithoutFf_mitgliedNestedInput
     mitglied_funktionen?: mitglied_funktionenUpdateManyWithoutFf_mitgliedNestedInput
-    teilnahme?: teilnahmeUpdateManyWithoutFf_mitgliedNestedInput
   }
 
   export type ff_mitgliedUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    person_id?: IntFieldUpdateOperationsInput | number
-    eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: Enumff_mitglied_statusFieldUpdateOperationsInput | $Enums.ff_mitglied_status
+    ID?: IntFieldUpdateOperationsInput | number
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumff_mitglied_StatusFieldUpdateOperationsInput | $Enums.ff_mitglied_Status
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangUncheckedUpdateManyWithoutFf_mitgliedNestedInput
     mitglied_funktionen?: mitglied_funktionenUncheckedUpdateManyWithoutFf_mitgliedNestedInput
-    teilnahme?: teilnahmeUncheckedUpdateManyWithoutFf_mitgliedNestedInput
   }
 
   export type ff_mitgliedCreateManyInput = {
-    id?: number
-    person_id: number
-    eintrittsdatum: Date | string
-    austrittsdatum?: Date | string | null
-    status?: $Enums.ff_mitglied_status
+    ID?: number
+    Person_ID: number
+    Eintrittsdatum: Date | string
+    Austrittsdatum?: Date | string | null
+    Aufnahmedatum?: Date | string | null
+    Status?: $Enums.ff_mitglied_Status
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
   }
 
   export type ff_mitgliedUpdateManyMutationInput = {
-    eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: Enumff_mitglied_statusFieldUpdateOperationsInput | $Enums.ff_mitglied_status
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumff_mitglied_StatusFieldUpdateOperationsInput | $Enums.ff_mitglied_Status
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ff_mitgliedUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    person_id?: IntFieldUpdateOperationsInput | number
-    eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: Enumff_mitglied_statusFieldUpdateOperationsInput | $Enums.ff_mitglied_status
+    ID?: IntFieldUpdateOperationsInput | number
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumff_mitglied_StatusFieldUpdateOperationsInput | $Enums.ff_mitglied_Status
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ff_mitglied_lehrgangCreateInput = {
+    Datum_bestanden?: Date | string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+    ff_mitglied: ff_mitgliedCreateNestedOneWithoutFf_mitglied_lehrgangInput
+    lehrgang: lehrgangCreateNestedOneWithoutFf_mitglied_lehrgangInput
+  }
+
+  export type ff_mitglied_lehrgangUncheckedCreateInput = {
+    ID?: number
+    FF_Mitglied_ID: number
+    Lehrgang_ID: number
+    Datum_bestanden?: Date | string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type ff_mitglied_lehrgangUpdateInput = {
+    Datum_bestanden?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ff_mitglied?: ff_mitgliedUpdateOneRequiredWithoutFf_mitglied_lehrgangNestedInput
+    lehrgang?: lehrgangUpdateOneRequiredWithoutFf_mitglied_lehrgangNestedInput
+  }
+
+  export type ff_mitglied_lehrgangUncheckedUpdateInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    FF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Lehrgang_ID?: IntFieldUpdateOperationsInput | number
+    Datum_bestanden?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ff_mitglied_lehrgangCreateManyInput = {
+    ID?: number
+    FF_Mitglied_ID: number
+    Lehrgang_ID: number
+    Datum_bestanden?: Date | string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type ff_mitglied_lehrgangUpdateManyMutationInput = {
+    Datum_bestanden?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ff_mitglied_lehrgangUncheckedUpdateManyInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    FF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Lehrgang_ID?: IntFieldUpdateOperationsInput | number
+    Datum_bestanden?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type funktion_ffCreateInput = {
-    name: string
-    ist_admin?: boolean
+    Name: string
+    Ist_Admin?: boolean
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
     mitglied_funktionen?: mitglied_funktionenCreateNestedManyWithoutFunktion_ffInput
   }
 
   export type funktion_ffUncheckedCreateInput = {
-    id?: number
-    name: string
-    ist_admin?: boolean
+    ID?: number
+    Name: string
+    Ist_Admin?: boolean
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
     mitglied_funktionen?: mitglied_funktionenUncheckedCreateNestedManyWithoutFunktion_ffInput
   }
 
   export type funktion_ffUpdateInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    ist_admin?: BoolFieldUpdateOperationsInput | boolean
+    Name?: StringFieldUpdateOperationsInput | string
+    Ist_Admin?: BoolFieldUpdateOperationsInput | boolean
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     mitglied_funktionen?: mitglied_funktionenUpdateManyWithoutFunktion_ffNestedInput
   }
 
   export type funktion_ffUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    ist_admin?: BoolFieldUpdateOperationsInput | boolean
+    ID?: IntFieldUpdateOperationsInput | number
+    Name?: StringFieldUpdateOperationsInput | string
+    Ist_Admin?: BoolFieldUpdateOperationsInput | boolean
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     mitglied_funktionen?: mitglied_funktionenUncheckedUpdateManyWithoutFunktion_ffNestedInput
   }
 
   export type funktion_ffCreateManyInput = {
-    id?: number
-    name: string
-    ist_admin?: boolean
+    ID?: number
+    Name: string
+    Ist_Admin?: boolean
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type funktion_ffUpdateManyMutationInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    ist_admin?: BoolFieldUpdateOperationsInput | boolean
+    Name?: StringFieldUpdateOperationsInput | string
+    Ist_Admin?: BoolFieldUpdateOperationsInput | boolean
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type funktion_ffUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    ist_admin?: BoolFieldUpdateOperationsInput | boolean
+    ID?: IntFieldUpdateOperationsInput | number
+    Name?: StringFieldUpdateOperationsInput | string
+    Ist_Admin?: BoolFieldUpdateOperationsInput | boolean
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type funktion_jfCreateInput = {
-    name: string
-    ist_admin?: boolean
+    Name: string
+    Ist_admin?: boolean
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
   }
 
   export type funktion_jfUncheckedCreateInput = {
-    id?: number
-    name: string
-    ist_admin?: boolean
+    ID?: number
+    Name: string
+    Ist_admin?: boolean
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
   }
 
   export type funktion_jfUpdateInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    ist_admin?: BoolFieldUpdateOperationsInput | boolean
+    Name?: StringFieldUpdateOperationsInput | string
+    Ist_admin?: BoolFieldUpdateOperationsInput | boolean
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type funktion_jfUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    ist_admin?: BoolFieldUpdateOperationsInput | boolean
+    ID?: IntFieldUpdateOperationsInput | number
+    Name?: StringFieldUpdateOperationsInput | string
+    Ist_admin?: BoolFieldUpdateOperationsInput | boolean
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type funktion_jfCreateManyInput = {
-    id?: number
-    name: string
-    ist_admin?: boolean
+    ID?: number
+    Name: string
+    Ist_admin?: boolean
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
   }
 
   export type funktion_jfUpdateManyMutationInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    ist_admin?: BoolFieldUpdateOperationsInput | boolean
+    Name?: StringFieldUpdateOperationsInput | string
+    Ist_admin?: BoolFieldUpdateOperationsInput | boolean
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type funktion_jfUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    ist_admin?: BoolFieldUpdateOperationsInput | boolean
+    ID?: IntFieldUpdateOperationsInput | number
+    Name?: StringFieldUpdateOperationsInput | string
+    Ist_admin?: BoolFieldUpdateOperationsInput | boolean
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type jf_erziehungsberechtigterCreateInput = {
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
     jf_mitglied: jf_mitgliedCreateNestedOneWithoutJf_erziehungsberechtigterInput
     person: personCreateNestedOneWithoutJf_erziehungsberechtigterInput
   }
 
   export type jf_erziehungsberechtigterUncheckedCreateInput = {
-    id?: number
-    jf_mitglied_id: number
-    person_id: number
+    ID?: number
+    JF_Mitglied_ID: number
+    Person_ID: number
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type jf_erziehungsberechtigterUpdateInput = {
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     jf_mitglied?: jf_mitgliedUpdateOneRequiredWithoutJf_erziehungsberechtigterNestedInput
     person?: personUpdateOneRequiredWithoutJf_erziehungsberechtigterNestedInput
   }
 
   export type jf_erziehungsberechtigterUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    jf_mitglied_id?: IntFieldUpdateOperationsInput | number
-    person_id?: IntFieldUpdateOperationsInput | number
+    ID?: IntFieldUpdateOperationsInput | number
+    JF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type jf_erziehungsberechtigterCreateManyInput = {
-    id?: number
-    jf_mitglied_id: number
-    person_id: number
+    ID?: number
+    JF_Mitglied_ID: number
+    Person_ID: number
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type jf_erziehungsberechtigterUpdateManyMutationInput = {
-
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type jf_erziehungsberechtigterUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    jf_mitglied_id?: IntFieldUpdateOperationsInput | number
-    person_id?: IntFieldUpdateOperationsInput | number
+    ID?: IntFieldUpdateOperationsInput | number
+    JF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type jf_mitgliedCreateInput = {
-    eintrittsdatum: Date | string
-    austrittsdatum?: Date | string | null
-    status?: $Enums.jf_mitglied_status
+    Eintrittsdatum: Date | string
+    Austrittsdatum?: Date | string | null
+    Aufnahmedatum?: Date | string | null
+    Status?: $Enums.jf_mitglied_Status
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterCreateNestedManyWithoutJf_mitgliedInput
     person: personCreateNestedOneWithoutJf_mitgliedInput
   }
 
   export type jf_mitgliedUncheckedCreateInput = {
-    id?: number
-    person_id: number
-    eintrittsdatum: Date | string
-    austrittsdatum?: Date | string | null
-    status?: $Enums.jf_mitglied_status
+    ID?: number
+    Person_ID: number
+    Eintrittsdatum: Date | string
+    Austrittsdatum?: Date | string | null
+    Aufnahmedatum?: Date | string | null
+    Status?: $Enums.jf_mitglied_Status
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedCreateNestedManyWithoutJf_mitgliedInput
   }
 
   export type jf_mitgliedUpdateInput = {
-    eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: Enumjf_mitglied_statusFieldUpdateOperationsInput | $Enums.jf_mitglied_status
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterUpdateManyWithoutJf_mitgliedNestedInput
     person?: personUpdateOneRequiredWithoutJf_mitgliedNestedInput
   }
 
   export type jf_mitgliedUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    person_id?: IntFieldUpdateOperationsInput | number
-    eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: Enumjf_mitglied_statusFieldUpdateOperationsInput | $Enums.jf_mitglied_status
+    ID?: IntFieldUpdateOperationsInput | number
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedUpdateManyWithoutJf_mitgliedNestedInput
   }
 
   export type jf_mitgliedCreateManyInput = {
-    id?: number
-    person_id: number
-    eintrittsdatum: Date | string
-    austrittsdatum?: Date | string | null
-    status?: $Enums.jf_mitglied_status
+    ID?: number
+    Person_ID: number
+    Eintrittsdatum: Date | string
+    Austrittsdatum?: Date | string | null
+    Aufnahmedatum?: Date | string | null
+    Status?: $Enums.jf_mitglied_Status
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type jf_mitgliedUpdateManyMutationInput = {
-    eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: Enumjf_mitglied_statusFieldUpdateOperationsInput | $Enums.jf_mitglied_status
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type jf_mitgliedUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    person_id?: IntFieldUpdateOperationsInput | number
-    eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: Enumjf_mitglied_statusFieldUpdateOperationsInput | $Enums.jf_mitglied_status
+    ID?: IntFieldUpdateOperationsInput | number
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type lehrgangCreateInput = {
+    Abk_rzung?: string | null
+    Beschreibung?: string | null
+    Reihenfolge?: number | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangCreateNestedManyWithoutLehrgangInput
+  }
+
+  export type lehrgangUncheckedCreateInput = {
+    ID?: number
+    Abk_rzung?: string | null
+    Beschreibung?: string | null
+    Reihenfolge?: number | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangUncheckedCreateNestedManyWithoutLehrgangInput
+  }
+
+  export type lehrgangUpdateInput = {
+    Abk_rzung?: NullableStringFieldUpdateOperationsInput | string | null
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Reihenfolge?: NullableIntFieldUpdateOperationsInput | number | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangUpdateManyWithoutLehrgangNestedInput
+  }
+
+  export type lehrgangUncheckedUpdateInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Abk_rzung?: NullableStringFieldUpdateOperationsInput | string | null
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Reihenfolge?: NullableIntFieldUpdateOperationsInput | number | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangUncheckedUpdateManyWithoutLehrgangNestedInput
+  }
+
+  export type lehrgangCreateManyInput = {
+    ID?: number
+    Abk_rzung?: string | null
+    Beschreibung?: string | null
+    Reihenfolge?: number | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type lehrgangUpdateManyMutationInput = {
+    Abk_rzung?: NullableStringFieldUpdateOperationsInput | string | null
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Reihenfolge?: NullableIntFieldUpdateOperationsInput | number | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type lehrgangUncheckedUpdateManyInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Abk_rzung?: NullableStringFieldUpdateOperationsInput | string | null
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Reihenfolge?: NullableIntFieldUpdateOperationsInput | number | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type mitglied_funktionenCreateInput = {
-    typ: $Enums.mitglied_funktionen_typ
+    Typ: $Enums.mitglied_funktionen_Typ
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
     ff_mitglied: ff_mitgliedCreateNestedOneWithoutMitglied_funktionenInput
     funktion_ff: funktion_ffCreateNestedOneWithoutMitglied_funktionenInput
   }
 
   export type mitglied_funktionenUncheckedCreateInput = {
-    id?: number
-    mitglied_id: number
-    funktion_id: number
-    typ: $Enums.mitglied_funktionen_typ
+    ID?: number
+    Mitglied_ID: number
+    Funktion_ID: number
+    Typ: $Enums.mitglied_funktionen_Typ
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type mitglied_funktionenUpdateInput = {
-    typ?: Enummitglied_funktionen_typFieldUpdateOperationsInput | $Enums.mitglied_funktionen_typ
+    Typ?: Enummitglied_funktionen_TypFieldUpdateOperationsInput | $Enums.mitglied_funktionen_Typ
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ff_mitglied?: ff_mitgliedUpdateOneRequiredWithoutMitglied_funktionenNestedInput
     funktion_ff?: funktion_ffUpdateOneRequiredWithoutMitglied_funktionenNestedInput
   }
 
   export type mitglied_funktionenUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    mitglied_id?: IntFieldUpdateOperationsInput | number
-    funktion_id?: IntFieldUpdateOperationsInput | number
-    typ?: Enummitglied_funktionen_typFieldUpdateOperationsInput | $Enums.mitglied_funktionen_typ
+    ID?: IntFieldUpdateOperationsInput | number
+    Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Funktion_ID?: IntFieldUpdateOperationsInput | number
+    Typ?: Enummitglied_funktionen_TypFieldUpdateOperationsInput | $Enums.mitglied_funktionen_Typ
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type mitglied_funktionenCreateManyInput = {
-    id?: number
-    mitglied_id: number
-    funktion_id: number
-    typ: $Enums.mitglied_funktionen_typ
+    ID?: number
+    Mitglied_ID: number
+    Funktion_ID: number
+    Typ: $Enums.mitglied_funktionen_Typ
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type mitglied_funktionenUpdateManyMutationInput = {
-    typ?: Enummitglied_funktionen_typFieldUpdateOperationsInput | $Enums.mitglied_funktionen_typ
+    Typ?: Enummitglied_funktionen_TypFieldUpdateOperationsInput | $Enums.mitglied_funktionen_Typ
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type mitglied_funktionenUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    mitglied_id?: IntFieldUpdateOperationsInput | number
-    funktion_id?: IntFieldUpdateOperationsInput | number
-    typ?: Enummitglied_funktionen_typFieldUpdateOperationsInput | $Enums.mitglied_funktionen_typ
+    ID?: IntFieldUpdateOperationsInput | number
+    Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Funktion_ID?: IntFieldUpdateOperationsInput | number
+    Typ?: Enummitglied_funktionen_TypFieldUpdateOperationsInput | $Enums.mitglied_funktionen_Typ
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type mitglied_loginCreateInput = {
-    benutzer_id: number
-    mitglied_id: number
-    ty: $Enums.mitglied_login_ty
+    Benutzer_ID: number
+    Typ: $Enums.mitglied_login_Typ
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
+    person: personCreateNestedOneWithoutMitglied_loginInput
   }
 
   export type mitglied_loginUncheckedCreateInput = {
-    id?: number
-    benutzer_id: number
-    mitglied_id: number
-    ty: $Enums.mitglied_login_ty
+    ID?: number
+    Benutzer_ID: number
+    Mitglied_ID: number
+    Typ: $Enums.mitglied_login_Typ
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
   }
 
   export type mitglied_loginUpdateInput = {
-    benutzer_id?: IntFieldUpdateOperationsInput | number
-    mitglied_id?: IntFieldUpdateOperationsInput | number
-    ty?: Enummitglied_login_tyFieldUpdateOperationsInput | $Enums.mitglied_login_ty
+    Benutzer_ID?: IntFieldUpdateOperationsInput | number
+    Typ?: Enummitglied_login_TypFieldUpdateOperationsInput | $Enums.mitglied_login_Typ
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    person?: personUpdateOneRequiredWithoutMitglied_loginNestedInput
   }
 
   export type mitglied_loginUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    benutzer_id?: IntFieldUpdateOperationsInput | number
-    mitglied_id?: IntFieldUpdateOperationsInput | number
-    ty?: Enummitglied_login_tyFieldUpdateOperationsInput | $Enums.mitglied_login_ty
+    ID?: IntFieldUpdateOperationsInput | number
+    Benutzer_ID?: IntFieldUpdateOperationsInput | number
+    Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Typ?: Enummitglied_login_TypFieldUpdateOperationsInput | $Enums.mitglied_login_Typ
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type mitglied_loginCreateManyInput = {
-    id?: number
-    benutzer_id: number
-    mitglied_id: number
-    ty: $Enums.mitglied_login_ty
+    ID?: number
+    Benutzer_ID: number
+    Mitglied_ID: number
+    Typ: $Enums.mitglied_login_Typ
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
   }
 
   export type mitglied_loginUpdateManyMutationInput = {
-    benutzer_id?: IntFieldUpdateOperationsInput | number
-    mitglied_id?: IntFieldUpdateOperationsInput | number
-    ty?: Enummitglied_login_tyFieldUpdateOperationsInput | $Enums.mitglied_login_ty
+    Benutzer_ID?: IntFieldUpdateOperationsInput | number
+    Typ?: Enummitglied_login_TypFieldUpdateOperationsInput | $Enums.mitglied_login_Typ
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type mitglied_loginUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    benutzer_id?: IntFieldUpdateOperationsInput | number
-    mitglied_id?: IntFieldUpdateOperationsInput | number
-    ty?: Enummitglied_login_tyFieldUpdateOperationsInput | $Enums.mitglied_login_ty
+    ID?: IntFieldUpdateOperationsInput | number
+    Benutzer_ID?: IntFieldUpdateOperationsInput | number
+    Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Typ?: Enummitglied_login_TypFieldUpdateOperationsInput | $Enums.mitglied_login_Typ
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type personCreateInput = {
-    vorname: string
-    name: string
-    geburtsdatum?: Date | string | null
-    email: string
+    Vorname: string
+    Name: string
+    Geburtsdatum?: Date | string | null
+    Strasse?: string | null
+    Hausnummer?: string | null
+    Postleitzahl?: string | null
+    Ort?: string | null
+    Email?: string | null
+    HandyNr?: number | null
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
     ff_mitglied?: ff_mitgliedCreateNestedManyWithoutPersonInput
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterCreateNestedManyWithoutPersonInput
     jf_mitglied?: jf_mitgliedCreateNestedManyWithoutPersonInput
+    mitglied_login?: mitglied_loginCreateNestedManyWithoutPersonInput
+    teilnahme?: teilnahmeCreateNestedManyWithoutPersonInput
   }
 
   export type personUncheckedCreateInput = {
-    id?: number
-    vorname: string
-    name: string
-    geburtsdatum?: Date | string | null
-    email: string
+    ID?: number
+    Vorname: string
+    Name: string
+    Geburtsdatum?: Date | string | null
+    Strasse?: string | null
+    Hausnummer?: string | null
+    Postleitzahl?: string | null
+    Ort?: string | null
+    Email?: string | null
+    HandyNr?: number | null
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
     ff_mitglied?: ff_mitgliedUncheckedCreateNestedManyWithoutPersonInput
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedCreateNestedManyWithoutPersonInput
     jf_mitglied?: jf_mitgliedUncheckedCreateNestedManyWithoutPersonInput
+    mitglied_login?: mitglied_loginUncheckedCreateNestedManyWithoutPersonInput
+    teilnahme?: teilnahmeUncheckedCreateNestedManyWithoutPersonInput
   }
 
   export type personUpdateInput = {
-    vorname?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    Vorname?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Email?: NullableStringFieldUpdateOperationsInput | string | null
+    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ff_mitglied?: ff_mitgliedUpdateManyWithoutPersonNestedInput
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterUpdateManyWithoutPersonNestedInput
     jf_mitglied?: jf_mitgliedUpdateManyWithoutPersonNestedInput
+    mitglied_login?: mitglied_loginUpdateManyWithoutPersonNestedInput
+    teilnahme?: teilnahmeUpdateManyWithoutPersonNestedInput
   }
 
   export type personUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    vorname?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    ID?: IntFieldUpdateOperationsInput | number
+    Vorname?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Email?: NullableStringFieldUpdateOperationsInput | string | null
+    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ff_mitglied?: ff_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedUpdateManyWithoutPersonNestedInput
     jf_mitglied?: jf_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
+    mitglied_login?: mitglied_loginUncheckedUpdateManyWithoutPersonNestedInput
+    teilnahme?: teilnahmeUncheckedUpdateManyWithoutPersonNestedInput
   }
 
   export type personCreateManyInput = {
-    id?: number
-    vorname: string
-    name: string
-    geburtsdatum?: Date | string | null
-    email: string
+    ID?: number
+    Vorname: string
+    Name: string
+    Geburtsdatum?: Date | string | null
+    Strasse?: string | null
+    Hausnummer?: string | null
+    Postleitzahl?: string | null
+    Ort?: string | null
+    Email?: string | null
+    HandyNr?: number | null
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
   }
 
   export type personUpdateManyMutationInput = {
-    vorname?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    Vorname?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Email?: NullableStringFieldUpdateOperationsInput | string | null
+    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type personUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    vorname?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    ID?: IntFieldUpdateOperationsInput | number
+    Vorname?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Email?: NullableStringFieldUpdateOperationsInput | string | null
+    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type teilnahmeCreateInput = {
-    veranstaltung_id: number
-    typ: $Enums.teilnahme_typ
-    ff_mitglied: ff_mitgliedCreateNestedOneWithoutTeilnahmeInput
+    Veranstaltung_ID: number
+    Typ: $Enums.teilnahme_Typ
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
+    person: personCreateNestedOneWithoutTeilnahmeInput
   }
 
   export type teilnahmeUncheckedCreateInput = {
-    id?: number
-    mitglied_id: number
-    veranstaltung_id: number
-    typ: $Enums.teilnahme_typ
+    ID?: number
+    Mitglied_ID: number
+    Veranstaltung_ID: number
+    Typ: $Enums.teilnahme_Typ
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
   }
 
   export type teilnahmeUpdateInput = {
-    veranstaltung_id?: IntFieldUpdateOperationsInput | number
-    typ?: Enumteilnahme_typFieldUpdateOperationsInput | $Enums.teilnahme_typ
-    ff_mitglied?: ff_mitgliedUpdateOneRequiredWithoutTeilnahmeNestedInput
+    Veranstaltung_ID?: IntFieldUpdateOperationsInput | number
+    Typ?: Enumteilnahme_TypFieldUpdateOperationsInput | $Enums.teilnahme_Typ
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    person?: personUpdateOneRequiredWithoutTeilnahmeNestedInput
   }
 
   export type teilnahmeUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    mitglied_id?: IntFieldUpdateOperationsInput | number
-    veranstaltung_id?: IntFieldUpdateOperationsInput | number
-    typ?: Enumteilnahme_typFieldUpdateOperationsInput | $Enums.teilnahme_typ
+    ID?: IntFieldUpdateOperationsInput | number
+    Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Veranstaltung_ID?: IntFieldUpdateOperationsInput | number
+    Typ?: Enumteilnahme_TypFieldUpdateOperationsInput | $Enums.teilnahme_Typ
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type teilnahmeCreateManyInput = {
-    id?: number
-    mitglied_id: number
-    veranstaltung_id: number
-    typ: $Enums.teilnahme_typ
+    ID?: number
+    Mitglied_ID: number
+    Veranstaltung_ID: number
+    Typ: $Enums.teilnahme_Typ
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
   }
 
   export type teilnahmeUpdateManyMutationInput = {
-    veranstaltung_id?: IntFieldUpdateOperationsInput | number
-    typ?: Enumteilnahme_typFieldUpdateOperationsInput | $Enums.teilnahme_typ
+    Veranstaltung_ID?: IntFieldUpdateOperationsInput | number
+    Typ?: Enumteilnahme_TypFieldUpdateOperationsInput | $Enums.teilnahme_Typ
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type teilnahmeUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    mitglied_id?: IntFieldUpdateOperationsInput | number
-    veranstaltung_id?: IntFieldUpdateOperationsInput | number
-    typ?: Enumteilnahme_typFieldUpdateOperationsInput | $Enums.teilnahme_typ
-  }
-
-  export type uebungsabendCreateInput = {
-    datum: Date | string
-    thema?: string | null
-  }
-
-  export type uebungsabendUncheckedCreateInput = {
-    id?: number
-    datum: Date | string
-    thema?: string | null
-  }
-
-  export type uebungsabendUpdateInput = {
-    datum?: DateTimeFieldUpdateOperationsInput | Date | string
-    thema?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type uebungsabendUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    datum?: DateTimeFieldUpdateOperationsInput | Date | string
-    thema?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type uebungsabendCreateManyInput = {
-    id?: number
-    datum: Date | string
-    thema?: string | null
-  }
-
-  export type uebungsabendUpdateManyMutationInput = {
-    datum?: DateTimeFieldUpdateOperationsInput | Date | string
-    thema?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type uebungsabendUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    datum?: DateTimeFieldUpdateOperationsInput | Date | string
-    thema?: NullableStringFieldUpdateOperationsInput | string | null
+    ID?: IntFieldUpdateOperationsInput | number
+    Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Veranstaltung_ID?: IntFieldUpdateOperationsInput | number
+    Typ?: Enumteilnahme_TypFieldUpdateOperationsInput | $Enums.teilnahme_Typ
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -13835,17 +20747,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type StringNullableFilter<$PrismaModel = never> = {
@@ -13863,11 +20764,15 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type Enumeinsatz_artFilter<$PrismaModel = never> = {
-    equals?: $Enums.einsatz_art | Enumeinsatz_artFieldRefInput<$PrismaModel>
-    in?: $Enums.einsatz_art[]
-    notIn?: $Enums.einsatz_art[]
-    not?: NestedEnumeinsatz_artFilter<$PrismaModel> | $Enums.einsatz_art
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type SortOrderInput = {
@@ -13875,42 +20780,48 @@ export namespace Prisma {
     nulls?: NullsOrder
   }
 
-  export type einsatzOrderByRelevanceInput = {
-    fields: einsatzOrderByRelevanceFieldEnum | einsatzOrderByRelevanceFieldEnum[]
+  export type dienstgradOrderByRelevanceInput = {
+    fields: dienstgradOrderByRelevanceFieldEnum | dienstgradOrderByRelevanceFieldEnum[]
     sort: SortOrder
     search: string
   }
 
-  export type einsatzCountOrderByAggregateInput = {
-    id?: SortOrder
-    datum?: SortOrder
-    beschreibung?: SortOrder
-    ort?: SortOrder
-    art?: SortOrder
+  export type dienstgradCountOrderByAggregateInput = {
+    ID?: SortOrder
+    Abkuerzung_maennlich?: SortOrder
+    Beschreibung_maennlich?: SortOrder
+    Abkuerzung_weiblich?: SortOrder
+    Beschreibung_weiblich?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
-  export type einsatzAvgOrderByAggregateInput = {
-    id?: SortOrder
+  export type dienstgradAvgOrderByAggregateInput = {
+    ID?: SortOrder
   }
 
-  export type einsatzMaxOrderByAggregateInput = {
-    id?: SortOrder
-    datum?: SortOrder
-    beschreibung?: SortOrder
-    ort?: SortOrder
-    art?: SortOrder
+  export type dienstgradMaxOrderByAggregateInput = {
+    ID?: SortOrder
+    Abkuerzung_maennlich?: SortOrder
+    Beschreibung_maennlich?: SortOrder
+    Abkuerzung_weiblich?: SortOrder
+    Beschreibung_weiblich?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
-  export type einsatzMinOrderByAggregateInput = {
-    id?: SortOrder
-    datum?: SortOrder
-    beschreibung?: SortOrder
-    ort?: SortOrder
-    art?: SortOrder
+  export type dienstgradMinOrderByAggregateInput = {
+    ID?: SortOrder
+    Abkuerzung_maennlich?: SortOrder
+    Beschreibung_maennlich?: SortOrder
+    Abkuerzung_weiblich?: SortOrder
+    Beschreibung_weiblich?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
-  export type einsatzSumOrderByAggregateInput = {
-    id?: SortOrder
+  export type dienstgradSumOrderByAggregateInput = {
+    ID?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -13927,20 +20838,6 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -13961,93 +20858,6 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type Enumeinsatz_artWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.einsatz_art | Enumeinsatz_artFieldRefInput<$PrismaModel>
-    in?: $Enums.einsatz_art[]
-    notIn?: $Enums.einsatz_art[]
-    not?: NestedEnumeinsatz_artWithAggregatesFilter<$PrismaModel> | $Enums.einsatz_art
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumeinsatz_artFilter<$PrismaModel>
-    _max?: NestedEnumeinsatz_artFilter<$PrismaModel>
-  }
-
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | null
-    notIn?: Date[] | string[] | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
-  export type Enumff_mitglied_statusFilter<$PrismaModel = never> = {
-    equals?: $Enums.ff_mitglied_status | Enumff_mitglied_statusFieldRefInput<$PrismaModel>
-    in?: $Enums.ff_mitglied_status[]
-    notIn?: $Enums.ff_mitglied_status[]
-    not?: NestedEnumff_mitglied_statusFilter<$PrismaModel> | $Enums.ff_mitglied_status
-  }
-
-  export type PersonScalarRelationFilter = {
-    is?: personWhereInput
-    isNot?: personWhereInput
-  }
-
-  export type Mitglied_funktionenListRelationFilter = {
-    every?: mitglied_funktionenWhereInput
-    some?: mitglied_funktionenWhereInput
-    none?: mitglied_funktionenWhereInput
-  }
-
-  export type TeilnahmeListRelationFilter = {
-    every?: teilnahmeWhereInput
-    some?: teilnahmeWhereInput
-    none?: teilnahmeWhereInput
-  }
-
-  export type mitglied_funktionenOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type teilnahmeOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type ff_mitgliedCountOrderByAggregateInput = {
-    id?: SortOrder
-    person_id?: SortOrder
-    eintrittsdatum?: SortOrder
-    austrittsdatum?: SortOrder
-    status?: SortOrder
-  }
-
-  export type ff_mitgliedAvgOrderByAggregateInput = {
-    id?: SortOrder
-    person_id?: SortOrder
-  }
-
-  export type ff_mitgliedMaxOrderByAggregateInput = {
-    id?: SortOrder
-    person_id?: SortOrder
-    eintrittsdatum?: SortOrder
-    austrittsdatum?: SortOrder
-    status?: SortOrder
-  }
-
-  export type ff_mitgliedMinOrderByAggregateInput = {
-    id?: SortOrder
-    person_id?: SortOrder
-    eintrittsdatum?: SortOrder
-    austrittsdatum?: SortOrder
-    status?: SortOrder
-  }
-
-  export type ff_mitgliedSumOrderByAggregateInput = {
-    id?: SortOrder
-    person_id?: SortOrder
-  }
-
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | null
@@ -14062,14 +20872,361 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type Enumff_mitglied_statusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.ff_mitglied_status | Enumff_mitglied_statusFieldRefInput<$PrismaModel>
-    in?: $Enums.ff_mitglied_status[]
-    notIn?: $Enums.ff_mitglied_status[]
-    not?: NestedEnumff_mitglied_statusWithAggregatesFilter<$PrismaModel> | $Enums.ff_mitglied_status
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type dientsabendOrderByRelevanceInput = {
+    fields: dientsabendOrderByRelevanceFieldEnum | dientsabendOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type dientsabendCountOrderByAggregateInput = {
+    ID?: SortOrder
+    Datum?: SortOrder
+    Thema?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type dientsabendAvgOrderByAggregateInput = {
+    ID?: SortOrder
+  }
+
+  export type dientsabendMaxOrderByAggregateInput = {
+    ID?: SortOrder
+    Datum?: SortOrder
+    Thema?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type dientsabendMinOrderByAggregateInput = {
+    ID?: SortOrder
+    Datum?: SortOrder
+    Thema?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type dientsabendSumOrderByAggregateInput = {
+    ID?: SortOrder
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumff_mitglied_statusFilter<$PrismaModel>
-    _max?: NestedEnumff_mitglied_statusFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type einheitOrderByRelevanceInput = {
+    fields: einheitOrderByRelevanceFieldEnum | einheitOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type einheitCountOrderByAggregateInput = {
+    ID?: SortOrder
+    Abkuerzung?: SortOrder
+    Beschreibung?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type einheitAvgOrderByAggregateInput = {
+    ID?: SortOrder
+  }
+
+  export type einheitMaxOrderByAggregateInput = {
+    ID?: SortOrder
+    Abkuerzung?: SortOrder
+    Beschreibung?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type einheitMinOrderByAggregateInput = {
+    ID?: SortOrder
+    Abkuerzung?: SortOrder
+    Beschreibung?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type einheitSumOrderByAggregateInput = {
+    ID?: SortOrder
+  }
+
+  export type Enumeinsatz_ArtFilter<$PrismaModel = never> = {
+    equals?: $Enums.einsatz_Art | Enumeinsatz_ArtFieldRefInput<$PrismaModel>
+    in?: $Enums.einsatz_Art[]
+    notIn?: $Enums.einsatz_Art[]
+    not?: NestedEnumeinsatz_ArtFilter<$PrismaModel> | $Enums.einsatz_Art
+  }
+
+  export type einsatzOrderByRelevanceInput = {
+    fields: einsatzOrderByRelevanceFieldEnum | einsatzOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type einsatzCountOrderByAggregateInput = {
+    ID?: SortOrder
+    Einsatznummer?: SortOrder
+    Datum_Anfang?: SortOrder
+    Uhrzeit_Anfang?: SortOrder
+    Datum_Ende?: SortOrder
+    Uhrzeit_Ende?: SortOrder
+    Beschreibung?: SortOrder
+    Strasse?: SortOrder
+    Hausnummer?: SortOrder
+    Postleitzahl?: SortOrder
+    Ort?: SortOrder
+    Art?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type einsatzAvgOrderByAggregateInput = {
+    ID?: SortOrder
+    Einsatznummer?: SortOrder
+  }
+
+  export type einsatzMaxOrderByAggregateInput = {
+    ID?: SortOrder
+    Einsatznummer?: SortOrder
+    Datum_Anfang?: SortOrder
+    Uhrzeit_Anfang?: SortOrder
+    Datum_Ende?: SortOrder
+    Uhrzeit_Ende?: SortOrder
+    Beschreibung?: SortOrder
+    Strasse?: SortOrder
+    Hausnummer?: SortOrder
+    Postleitzahl?: SortOrder
+    Ort?: SortOrder
+    Art?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type einsatzMinOrderByAggregateInput = {
+    ID?: SortOrder
+    Einsatznummer?: SortOrder
+    Datum_Anfang?: SortOrder
+    Uhrzeit_Anfang?: SortOrder
+    Datum_Ende?: SortOrder
+    Uhrzeit_Ende?: SortOrder
+    Beschreibung?: SortOrder
+    Strasse?: SortOrder
+    Hausnummer?: SortOrder
+    Postleitzahl?: SortOrder
+    Ort?: SortOrder
+    Art?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type einsatzSumOrderByAggregateInput = {
+    ID?: SortOrder
+    Einsatznummer?: SortOrder
+  }
+
+  export type Enumeinsatz_ArtWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.einsatz_Art | Enumeinsatz_ArtFieldRefInput<$PrismaModel>
+    in?: $Enums.einsatz_Art[]
+    notIn?: $Enums.einsatz_Art[]
+    not?: NestedEnumeinsatz_ArtWithAggregatesFilter<$PrismaModel> | $Enums.einsatz_Art
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumeinsatz_ArtFilter<$PrismaModel>
+    _max?: NestedEnumeinsatz_ArtFilter<$PrismaModel>
+  }
+
+  export type fahrzeugOrderByRelevanceInput = {
+    fields: fahrzeugOrderByRelevanceFieldEnum | fahrzeugOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type fahrzeugCountOrderByAggregateInput = {
+    ID?: SortOrder
+    Kennzeichen?: SortOrder
+    Besatzungsstaerke?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type fahrzeugAvgOrderByAggregateInput = {
+    ID?: SortOrder
+  }
+
+  export type fahrzeugMaxOrderByAggregateInput = {
+    ID?: SortOrder
+    Kennzeichen?: SortOrder
+    Besatzungsstaerke?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type fahrzeugMinOrderByAggregateInput = {
+    ID?: SortOrder
+    Kennzeichen?: SortOrder
+    Besatzungsstaerke?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type fahrzeugSumOrderByAggregateInput = {
+    ID?: SortOrder
+  }
+
+  export type Enumff_mitglied_StatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.ff_mitglied_Status | Enumff_mitglied_StatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ff_mitglied_Status[]
+    notIn?: $Enums.ff_mitglied_Status[]
+    not?: NestedEnumff_mitglied_StatusFilter<$PrismaModel> | $Enums.ff_mitglied_Status
+  }
+
+  export type PersonScalarRelationFilter = {
+    is?: personWhereInput
+    isNot?: personWhereInput
+  }
+
+  export type Ff_mitglied_lehrgangListRelationFilter = {
+    every?: ff_mitglied_lehrgangWhereInput
+    some?: ff_mitglied_lehrgangWhereInput
+    none?: ff_mitglied_lehrgangWhereInput
+  }
+
+  export type Mitglied_funktionenListRelationFilter = {
+    every?: mitglied_funktionenWhereInput
+    some?: mitglied_funktionenWhereInput
+    none?: mitglied_funktionenWhereInput
+  }
+
+  export type ff_mitglied_lehrgangOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type mitglied_funktionenOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ff_mitgliedCountOrderByAggregateInput = {
+    ID?: SortOrder
+    Person_ID?: SortOrder
+    Eintrittsdatum?: SortOrder
+    Austrittsdatum?: SortOrder
+    Aufnahmedatum?: SortOrder
+    Status?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type ff_mitgliedAvgOrderByAggregateInput = {
+    ID?: SortOrder
+    Person_ID?: SortOrder
+  }
+
+  export type ff_mitgliedMaxOrderByAggregateInput = {
+    ID?: SortOrder
+    Person_ID?: SortOrder
+    Eintrittsdatum?: SortOrder
+    Austrittsdatum?: SortOrder
+    Aufnahmedatum?: SortOrder
+    Status?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type ff_mitgliedMinOrderByAggregateInput = {
+    ID?: SortOrder
+    Person_ID?: SortOrder
+    Eintrittsdatum?: SortOrder
+    Austrittsdatum?: SortOrder
+    Aufnahmedatum?: SortOrder
+    Status?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type ff_mitgliedSumOrderByAggregateInput = {
+    ID?: SortOrder
+    Person_ID?: SortOrder
+  }
+
+  export type Enumff_mitglied_StatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ff_mitglied_Status | Enumff_mitglied_StatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ff_mitglied_Status[]
+    notIn?: $Enums.ff_mitglied_Status[]
+    not?: NestedEnumff_mitglied_StatusWithAggregatesFilter<$PrismaModel> | $Enums.ff_mitglied_Status
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumff_mitglied_StatusFilter<$PrismaModel>
+    _max?: NestedEnumff_mitglied_StatusFilter<$PrismaModel>
+  }
+
+  export type Ff_mitgliedScalarRelationFilter = {
+    is?: ff_mitgliedWhereInput
+    isNot?: ff_mitgliedWhereInput
+  }
+
+  export type LehrgangScalarRelationFilter = {
+    is?: lehrgangWhereInput
+    isNot?: lehrgangWhereInput
+  }
+
+  export type ff_mitglied_lehrgangCountOrderByAggregateInput = {
+    ID?: SortOrder
+    FF_Mitglied_ID?: SortOrder
+    Lehrgang_ID?: SortOrder
+    Datum_bestanden?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type ff_mitglied_lehrgangAvgOrderByAggregateInput = {
+    ID?: SortOrder
+    FF_Mitglied_ID?: SortOrder
+    Lehrgang_ID?: SortOrder
+  }
+
+  export type ff_mitglied_lehrgangMaxOrderByAggregateInput = {
+    ID?: SortOrder
+    FF_Mitglied_ID?: SortOrder
+    Lehrgang_ID?: SortOrder
+    Datum_bestanden?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type ff_mitglied_lehrgangMinOrderByAggregateInput = {
+    ID?: SortOrder
+    FF_Mitglied_ID?: SortOrder
+    Lehrgang_ID?: SortOrder
+    Datum_bestanden?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type ff_mitglied_lehrgangSumOrderByAggregateInput = {
+    ID?: SortOrder
+    FF_Mitglied_ID?: SortOrder
+    Lehrgang_ID?: SortOrder
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -14099,29 +21256,35 @@ export namespace Prisma {
   }
 
   export type funktion_ffCountOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    ist_admin?: SortOrder
+    ID?: SortOrder
+    Name?: SortOrder
+    Ist_Admin?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type funktion_ffAvgOrderByAggregateInput = {
-    id?: SortOrder
+    ID?: SortOrder
   }
 
   export type funktion_ffMaxOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    ist_admin?: SortOrder
+    ID?: SortOrder
+    Name?: SortOrder
+    Ist_Admin?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type funktion_ffMinOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    ist_admin?: SortOrder
+    ID?: SortOrder
+    Name?: SortOrder
+    Ist_Admin?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type funktion_ffSumOrderByAggregateInput = {
-    id?: SortOrder
+    ID?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -14157,29 +21320,35 @@ export namespace Prisma {
   }
 
   export type funktion_jfCountOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    ist_admin?: SortOrder
+    ID?: SortOrder
+    Name?: SortOrder
+    Ist_admin?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type funktion_jfAvgOrderByAggregateInput = {
-    id?: SortOrder
+    ID?: SortOrder
   }
 
   export type funktion_jfMaxOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    ist_admin?: SortOrder
+    ID?: SortOrder
+    Name?: SortOrder
+    Ist_admin?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type funktion_jfMinOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    ist_admin?: SortOrder
+    ID?: SortOrder
+    Name?: SortOrder
+    Ist_admin?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type funktion_jfSumOrderByAggregateInput = {
-    id?: SortOrder
+    ID?: SortOrder
   }
 
   export type Jf_mitgliedScalarRelationFilter = {
@@ -14188,40 +21357,46 @@ export namespace Prisma {
   }
 
   export type jf_erziehungsberechtigterCountOrderByAggregateInput = {
-    id?: SortOrder
-    jf_mitglied_id?: SortOrder
-    person_id?: SortOrder
+    ID?: SortOrder
+    JF_Mitglied_ID?: SortOrder
+    Person_ID?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type jf_erziehungsberechtigterAvgOrderByAggregateInput = {
-    id?: SortOrder
-    jf_mitglied_id?: SortOrder
-    person_id?: SortOrder
+    ID?: SortOrder
+    JF_Mitglied_ID?: SortOrder
+    Person_ID?: SortOrder
   }
 
   export type jf_erziehungsberechtigterMaxOrderByAggregateInput = {
-    id?: SortOrder
-    jf_mitglied_id?: SortOrder
-    person_id?: SortOrder
+    ID?: SortOrder
+    JF_Mitglied_ID?: SortOrder
+    Person_ID?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type jf_erziehungsberechtigterMinOrderByAggregateInput = {
-    id?: SortOrder
-    jf_mitglied_id?: SortOrder
-    person_id?: SortOrder
+    ID?: SortOrder
+    JF_Mitglied_ID?: SortOrder
+    Person_ID?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type jf_erziehungsberechtigterSumOrderByAggregateInput = {
-    id?: SortOrder
-    jf_mitglied_id?: SortOrder
-    person_id?: SortOrder
+    ID?: SortOrder
+    JF_Mitglied_ID?: SortOrder
+    Person_ID?: SortOrder
   }
 
-  export type Enumjf_mitglied_statusFilter<$PrismaModel = never> = {
-    equals?: $Enums.jf_mitglied_status | Enumjf_mitglied_statusFieldRefInput<$PrismaModel>
-    in?: $Enums.jf_mitglied_status[]
-    notIn?: $Enums.jf_mitglied_status[]
-    not?: NestedEnumjf_mitglied_statusFilter<$PrismaModel> | $Enums.jf_mitglied_status
+  export type Enumjf_mitglied_StatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.jf_mitglied_Status | Enumjf_mitglied_StatusFieldRefInput<$PrismaModel>
+    in?: $Enums.jf_mitglied_Status[]
+    notIn?: $Enums.jf_mitglied_Status[]
+    not?: NestedEnumjf_mitglied_StatusFilter<$PrismaModel> | $Enums.jf_mitglied_Status
   }
 
   export type Jf_erziehungsberechtigterListRelationFilter = {
@@ -14235,59 +21410,133 @@ export namespace Prisma {
   }
 
   export type jf_mitgliedCountOrderByAggregateInput = {
-    id?: SortOrder
-    person_id?: SortOrder
-    eintrittsdatum?: SortOrder
-    austrittsdatum?: SortOrder
-    status?: SortOrder
+    ID?: SortOrder
+    Person_ID?: SortOrder
+    Eintrittsdatum?: SortOrder
+    Austrittsdatum?: SortOrder
+    Aufnahmedatum?: SortOrder
+    Status?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type jf_mitgliedAvgOrderByAggregateInput = {
-    id?: SortOrder
-    person_id?: SortOrder
+    ID?: SortOrder
+    Person_ID?: SortOrder
   }
 
   export type jf_mitgliedMaxOrderByAggregateInput = {
-    id?: SortOrder
-    person_id?: SortOrder
-    eintrittsdatum?: SortOrder
-    austrittsdatum?: SortOrder
-    status?: SortOrder
+    ID?: SortOrder
+    Person_ID?: SortOrder
+    Eintrittsdatum?: SortOrder
+    Austrittsdatum?: SortOrder
+    Aufnahmedatum?: SortOrder
+    Status?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type jf_mitgliedMinOrderByAggregateInput = {
-    id?: SortOrder
-    person_id?: SortOrder
-    eintrittsdatum?: SortOrder
-    austrittsdatum?: SortOrder
-    status?: SortOrder
+    ID?: SortOrder
+    Person_ID?: SortOrder
+    Eintrittsdatum?: SortOrder
+    Austrittsdatum?: SortOrder
+    Aufnahmedatum?: SortOrder
+    Status?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type jf_mitgliedSumOrderByAggregateInput = {
-    id?: SortOrder
-    person_id?: SortOrder
+    ID?: SortOrder
+    Person_ID?: SortOrder
   }
 
-  export type Enumjf_mitglied_statusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.jf_mitglied_status | Enumjf_mitglied_statusFieldRefInput<$PrismaModel>
-    in?: $Enums.jf_mitglied_status[]
-    notIn?: $Enums.jf_mitglied_status[]
-    not?: NestedEnumjf_mitglied_statusWithAggregatesFilter<$PrismaModel> | $Enums.jf_mitglied_status
+  export type Enumjf_mitglied_StatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.jf_mitglied_Status | Enumjf_mitglied_StatusFieldRefInput<$PrismaModel>
+    in?: $Enums.jf_mitglied_Status[]
+    notIn?: $Enums.jf_mitglied_Status[]
+    not?: NestedEnumjf_mitglied_StatusWithAggregatesFilter<$PrismaModel> | $Enums.jf_mitglied_Status
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumjf_mitglied_statusFilter<$PrismaModel>
-    _max?: NestedEnumjf_mitglied_statusFilter<$PrismaModel>
+    _min?: NestedEnumjf_mitglied_StatusFilter<$PrismaModel>
+    _max?: NestedEnumjf_mitglied_StatusFilter<$PrismaModel>
   }
 
-  export type Enummitglied_funktionen_typFilter<$PrismaModel = never> = {
-    equals?: $Enums.mitglied_funktionen_typ | Enummitglied_funktionen_typFieldRefInput<$PrismaModel>
-    in?: $Enums.mitglied_funktionen_typ[]
-    notIn?: $Enums.mitglied_funktionen_typ[]
-    not?: NestedEnummitglied_funktionen_typFilter<$PrismaModel> | $Enums.mitglied_funktionen_typ
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type Ff_mitgliedScalarRelationFilter = {
-    is?: ff_mitgliedWhereInput
-    isNot?: ff_mitgliedWhereInput
+  export type lehrgangOrderByRelevanceInput = {
+    fields: lehrgangOrderByRelevanceFieldEnum | lehrgangOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type lehrgangCountOrderByAggregateInput = {
+    ID?: SortOrder
+    Abk_rzung?: SortOrder
+    Beschreibung?: SortOrder
+    Reihenfolge?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type lehrgangAvgOrderByAggregateInput = {
+    ID?: SortOrder
+    Reihenfolge?: SortOrder
+  }
+
+  export type lehrgangMaxOrderByAggregateInput = {
+    ID?: SortOrder
+    Abk_rzung?: SortOrder
+    Beschreibung?: SortOrder
+    Reihenfolge?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type lehrgangMinOrderByAggregateInput = {
+    ID?: SortOrder
+    Abk_rzung?: SortOrder
+    Beschreibung?: SortOrder
+    Reihenfolge?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type lehrgangSumOrderByAggregateInput = {
+    ID?: SortOrder
+    Reihenfolge?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type Enummitglied_funktionen_TypFilter<$PrismaModel = never> = {
+    equals?: $Enums.mitglied_funktionen_Typ | Enummitglied_funktionen_TypFieldRefInput<$PrismaModel>
+    in?: $Enums.mitglied_funktionen_Typ[]
+    notIn?: $Enums.mitglied_funktionen_Typ[]
+    not?: NestedEnummitglied_funktionen_TypFilter<$PrismaModel> | $Enums.mitglied_funktionen_Typ
   }
 
   export type Funktion_ffScalarRelationFilter = {
@@ -14296,96 +21545,108 @@ export namespace Prisma {
   }
 
   export type mitglied_funktionenCountOrderByAggregateInput = {
-    id?: SortOrder
-    mitglied_id?: SortOrder
-    funktion_id?: SortOrder
-    typ?: SortOrder
+    ID?: SortOrder
+    Mitglied_ID?: SortOrder
+    Funktion_ID?: SortOrder
+    Typ?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type mitglied_funktionenAvgOrderByAggregateInput = {
-    id?: SortOrder
-    mitglied_id?: SortOrder
-    funktion_id?: SortOrder
+    ID?: SortOrder
+    Mitglied_ID?: SortOrder
+    Funktion_ID?: SortOrder
   }
 
   export type mitglied_funktionenMaxOrderByAggregateInput = {
-    id?: SortOrder
-    mitglied_id?: SortOrder
-    funktion_id?: SortOrder
-    typ?: SortOrder
+    ID?: SortOrder
+    Mitglied_ID?: SortOrder
+    Funktion_ID?: SortOrder
+    Typ?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type mitglied_funktionenMinOrderByAggregateInput = {
-    id?: SortOrder
-    mitglied_id?: SortOrder
-    funktion_id?: SortOrder
-    typ?: SortOrder
+    ID?: SortOrder
+    Mitglied_ID?: SortOrder
+    Funktion_ID?: SortOrder
+    Typ?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type mitglied_funktionenSumOrderByAggregateInput = {
-    id?: SortOrder
-    mitglied_id?: SortOrder
-    funktion_id?: SortOrder
+    ID?: SortOrder
+    Mitglied_ID?: SortOrder
+    Funktion_ID?: SortOrder
   }
 
-  export type Enummitglied_funktionen_typWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.mitglied_funktionen_typ | Enummitglied_funktionen_typFieldRefInput<$PrismaModel>
-    in?: $Enums.mitglied_funktionen_typ[]
-    notIn?: $Enums.mitglied_funktionen_typ[]
-    not?: NestedEnummitglied_funktionen_typWithAggregatesFilter<$PrismaModel> | $Enums.mitglied_funktionen_typ
+  export type Enummitglied_funktionen_TypWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.mitglied_funktionen_Typ | Enummitglied_funktionen_TypFieldRefInput<$PrismaModel>
+    in?: $Enums.mitglied_funktionen_Typ[]
+    notIn?: $Enums.mitglied_funktionen_Typ[]
+    not?: NestedEnummitglied_funktionen_TypWithAggregatesFilter<$PrismaModel> | $Enums.mitglied_funktionen_Typ
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnummitglied_funktionen_typFilter<$PrismaModel>
-    _max?: NestedEnummitglied_funktionen_typFilter<$PrismaModel>
+    _min?: NestedEnummitglied_funktionen_TypFilter<$PrismaModel>
+    _max?: NestedEnummitglied_funktionen_TypFilter<$PrismaModel>
   }
 
-  export type Enummitglied_login_tyFilter<$PrismaModel = never> = {
-    equals?: $Enums.mitglied_login_ty | Enummitglied_login_tyFieldRefInput<$PrismaModel>
-    in?: $Enums.mitglied_login_ty[]
-    notIn?: $Enums.mitglied_login_ty[]
-    not?: NestedEnummitglied_login_tyFilter<$PrismaModel> | $Enums.mitglied_login_ty
+  export type Enummitglied_login_TypFilter<$PrismaModel = never> = {
+    equals?: $Enums.mitglied_login_Typ | Enummitglied_login_TypFieldRefInput<$PrismaModel>
+    in?: $Enums.mitglied_login_Typ[]
+    notIn?: $Enums.mitglied_login_Typ[]
+    not?: NestedEnummitglied_login_TypFilter<$PrismaModel> | $Enums.mitglied_login_Typ
   }
 
   export type mitglied_loginCountOrderByAggregateInput = {
-    id?: SortOrder
-    benutzer_id?: SortOrder
-    mitglied_id?: SortOrder
-    ty?: SortOrder
+    ID?: SortOrder
+    Benutzer_ID?: SortOrder
+    Mitglied_ID?: SortOrder
+    Typ?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type mitglied_loginAvgOrderByAggregateInput = {
-    id?: SortOrder
-    benutzer_id?: SortOrder
-    mitglied_id?: SortOrder
+    ID?: SortOrder
+    Benutzer_ID?: SortOrder
+    Mitglied_ID?: SortOrder
   }
 
   export type mitglied_loginMaxOrderByAggregateInput = {
-    id?: SortOrder
-    benutzer_id?: SortOrder
-    mitglied_id?: SortOrder
-    ty?: SortOrder
+    ID?: SortOrder
+    Benutzer_ID?: SortOrder
+    Mitglied_ID?: SortOrder
+    Typ?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type mitglied_loginMinOrderByAggregateInput = {
-    id?: SortOrder
-    benutzer_id?: SortOrder
-    mitglied_id?: SortOrder
-    ty?: SortOrder
+    ID?: SortOrder
+    Benutzer_ID?: SortOrder
+    Mitglied_ID?: SortOrder
+    Typ?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type mitglied_loginSumOrderByAggregateInput = {
-    id?: SortOrder
-    benutzer_id?: SortOrder
-    mitglied_id?: SortOrder
+    ID?: SortOrder
+    Benutzer_ID?: SortOrder
+    Mitglied_ID?: SortOrder
   }
 
-  export type Enummitglied_login_tyWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.mitglied_login_ty | Enummitglied_login_tyFieldRefInput<$PrismaModel>
-    in?: $Enums.mitglied_login_ty[]
-    notIn?: $Enums.mitglied_login_ty[]
-    not?: NestedEnummitglied_login_tyWithAggregatesFilter<$PrismaModel> | $Enums.mitglied_login_ty
+  export type Enummitglied_login_TypWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.mitglied_login_Typ | Enummitglied_login_TypFieldRefInput<$PrismaModel>
+    in?: $Enums.mitglied_login_Typ[]
+    notIn?: $Enums.mitglied_login_Typ[]
+    not?: NestedEnummitglied_login_TypWithAggregatesFilter<$PrismaModel> | $Enums.mitglied_login_Typ
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnummitglied_login_tyFilter<$PrismaModel>
-    _max?: NestedEnummitglied_login_tyFilter<$PrismaModel>
+    _min?: NestedEnummitglied_login_TypFilter<$PrismaModel>
+    _max?: NestedEnummitglied_login_TypFilter<$PrismaModel>
   }
 
   export type Ff_mitgliedListRelationFilter = {
@@ -14400,11 +21661,31 @@ export namespace Prisma {
     none?: jf_mitgliedWhereInput
   }
 
+  export type Mitglied_loginListRelationFilter = {
+    every?: mitglied_loginWhereInput
+    some?: mitglied_loginWhereInput
+    none?: mitglied_loginWhereInput
+  }
+
+  export type TeilnahmeListRelationFilter = {
+    every?: teilnahmeWhereInput
+    some?: teilnahmeWhereInput
+    none?: teilnahmeWhereInput
+  }
+
   export type ff_mitgliedOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type jf_mitgliedOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type mitglied_loginOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type teilnahmeOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -14415,129 +21696,122 @@ export namespace Prisma {
   }
 
   export type personCountOrderByAggregateInput = {
-    id?: SortOrder
-    vorname?: SortOrder
-    name?: SortOrder
-    geburtsdatum?: SortOrder
-    email?: SortOrder
+    ID?: SortOrder
+    Vorname?: SortOrder
+    Name?: SortOrder
+    Geburtsdatum?: SortOrder
+    Strasse?: SortOrder
+    Hausnummer?: SortOrder
+    Postleitzahl?: SortOrder
+    Ort?: SortOrder
+    Email?: SortOrder
+    HandyNr?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type personAvgOrderByAggregateInput = {
-    id?: SortOrder
+    ID?: SortOrder
+    HandyNr?: SortOrder
   }
 
   export type personMaxOrderByAggregateInput = {
-    id?: SortOrder
-    vorname?: SortOrder
-    name?: SortOrder
-    geburtsdatum?: SortOrder
-    email?: SortOrder
+    ID?: SortOrder
+    Vorname?: SortOrder
+    Name?: SortOrder
+    Geburtsdatum?: SortOrder
+    Strasse?: SortOrder
+    Hausnummer?: SortOrder
+    Postleitzahl?: SortOrder
+    Ort?: SortOrder
+    Email?: SortOrder
+    HandyNr?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type personMinOrderByAggregateInput = {
-    id?: SortOrder
-    vorname?: SortOrder
-    name?: SortOrder
-    geburtsdatum?: SortOrder
-    email?: SortOrder
+    ID?: SortOrder
+    Vorname?: SortOrder
+    Name?: SortOrder
+    Geburtsdatum?: SortOrder
+    Strasse?: SortOrder
+    Hausnummer?: SortOrder
+    Postleitzahl?: SortOrder
+    Ort?: SortOrder
+    Email?: SortOrder
+    HandyNr?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type personSumOrderByAggregateInput = {
-    id?: SortOrder
+    ID?: SortOrder
+    HandyNr?: SortOrder
   }
 
-  export type Enumteilnahme_typFilter<$PrismaModel = never> = {
-    equals?: $Enums.teilnahme_typ | Enumteilnahme_typFieldRefInput<$PrismaModel>
-    in?: $Enums.teilnahme_typ[]
-    notIn?: $Enums.teilnahme_typ[]
-    not?: NestedEnumteilnahme_typFilter<$PrismaModel> | $Enums.teilnahme_typ
+  export type Enumteilnahme_TypFilter<$PrismaModel = never> = {
+    equals?: $Enums.teilnahme_Typ | Enumteilnahme_TypFieldRefInput<$PrismaModel>
+    in?: $Enums.teilnahme_Typ[]
+    notIn?: $Enums.teilnahme_Typ[]
+    not?: NestedEnumteilnahme_TypFilter<$PrismaModel> | $Enums.teilnahme_Typ
   }
 
   export type teilnahmeCountOrderByAggregateInput = {
-    id?: SortOrder
-    mitglied_id?: SortOrder
-    veranstaltung_id?: SortOrder
-    typ?: SortOrder
+    ID?: SortOrder
+    Mitglied_ID?: SortOrder
+    Veranstaltung_ID?: SortOrder
+    Typ?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type teilnahmeAvgOrderByAggregateInput = {
-    id?: SortOrder
-    mitglied_id?: SortOrder
-    veranstaltung_id?: SortOrder
+    ID?: SortOrder
+    Mitglied_ID?: SortOrder
+    Veranstaltung_ID?: SortOrder
   }
 
   export type teilnahmeMaxOrderByAggregateInput = {
-    id?: SortOrder
-    mitglied_id?: SortOrder
-    veranstaltung_id?: SortOrder
-    typ?: SortOrder
+    ID?: SortOrder
+    Mitglied_ID?: SortOrder
+    Veranstaltung_ID?: SortOrder
+    Typ?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type teilnahmeMinOrderByAggregateInput = {
-    id?: SortOrder
-    mitglied_id?: SortOrder
-    veranstaltung_id?: SortOrder
-    typ?: SortOrder
+    ID?: SortOrder
+    Mitglied_ID?: SortOrder
+    Veranstaltung_ID?: SortOrder
+    Typ?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type teilnahmeSumOrderByAggregateInput = {
-    id?: SortOrder
-    mitglied_id?: SortOrder
-    veranstaltung_id?: SortOrder
+    ID?: SortOrder
+    Mitglied_ID?: SortOrder
+    Veranstaltung_ID?: SortOrder
   }
 
-  export type Enumteilnahme_typWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.teilnahme_typ | Enumteilnahme_typFieldRefInput<$PrismaModel>
-    in?: $Enums.teilnahme_typ[]
-    notIn?: $Enums.teilnahme_typ[]
-    not?: NestedEnumteilnahme_typWithAggregatesFilter<$PrismaModel> | $Enums.teilnahme_typ
+  export type Enumteilnahme_TypWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.teilnahme_Typ | Enumteilnahme_TypFieldRefInput<$PrismaModel>
+    in?: $Enums.teilnahme_Typ[]
+    notIn?: $Enums.teilnahme_Typ[]
+    not?: NestedEnumteilnahme_TypWithAggregatesFilter<$PrismaModel> | $Enums.teilnahme_Typ
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumteilnahme_typFilter<$PrismaModel>
-    _max?: NestedEnumteilnahme_typFilter<$PrismaModel>
-  }
-
-  export type uebungsabendOrderByRelevanceInput = {
-    fields: uebungsabendOrderByRelevanceFieldEnum | uebungsabendOrderByRelevanceFieldEnum[]
-    sort: SortOrder
-    search: string
-  }
-
-  export type uebungsabendCountOrderByAggregateInput = {
-    id?: SortOrder
-    datum?: SortOrder
-    thema?: SortOrder
-  }
-
-  export type uebungsabendAvgOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type uebungsabendMaxOrderByAggregateInput = {
-    id?: SortOrder
-    datum?: SortOrder
-    thema?: SortOrder
-  }
-
-  export type uebungsabendMinOrderByAggregateInput = {
-    id?: SortOrder
-    datum?: SortOrder
-    thema?: SortOrder
-  }
-
-  export type uebungsabendSumOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
+    _min?: NestedEnumteilnahme_TypFilter<$PrismaModel>
+    _max?: NestedEnumteilnahme_TypFilter<$PrismaModel>
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
   }
 
-  export type Enumeinsatz_artFieldUpdateOperationsInput = {
-    set?: $Enums.einsatz_art
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -14548,10 +21822,25 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type Enumeinsatz_ArtFieldUpdateOperationsInput = {
+    set?: $Enums.einsatz_Art
+  }
+
   export type personCreateNestedOneWithoutFf_mitgliedInput = {
     create?: XOR<personCreateWithoutFf_mitgliedInput, personUncheckedCreateWithoutFf_mitgliedInput>
     connectOrCreate?: personCreateOrConnectWithoutFf_mitgliedInput
     connect?: personWhereUniqueInput
+  }
+
+  export type ff_mitglied_lehrgangCreateNestedManyWithoutFf_mitgliedInput = {
+    create?: XOR<ff_mitglied_lehrgangCreateWithoutFf_mitgliedInput, ff_mitglied_lehrgangUncheckedCreateWithoutFf_mitgliedInput> | ff_mitglied_lehrgangCreateWithoutFf_mitgliedInput[] | ff_mitglied_lehrgangUncheckedCreateWithoutFf_mitgliedInput[]
+    connectOrCreate?: ff_mitglied_lehrgangCreateOrConnectWithoutFf_mitgliedInput | ff_mitglied_lehrgangCreateOrConnectWithoutFf_mitgliedInput[]
+    createMany?: ff_mitglied_lehrgangCreateManyFf_mitgliedInputEnvelope
+    connect?: ff_mitglied_lehrgangWhereUniqueInput | ff_mitglied_lehrgangWhereUniqueInput[]
   }
 
   export type mitglied_funktionenCreateNestedManyWithoutFf_mitgliedInput = {
@@ -14561,11 +21850,11 @@ export namespace Prisma {
     connect?: mitglied_funktionenWhereUniqueInput | mitglied_funktionenWhereUniqueInput[]
   }
 
-  export type teilnahmeCreateNestedManyWithoutFf_mitgliedInput = {
-    create?: XOR<teilnahmeCreateWithoutFf_mitgliedInput, teilnahmeUncheckedCreateWithoutFf_mitgliedInput> | teilnahmeCreateWithoutFf_mitgliedInput[] | teilnahmeUncheckedCreateWithoutFf_mitgliedInput[]
-    connectOrCreate?: teilnahmeCreateOrConnectWithoutFf_mitgliedInput | teilnahmeCreateOrConnectWithoutFf_mitgliedInput[]
-    createMany?: teilnahmeCreateManyFf_mitgliedInputEnvelope
-    connect?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
+  export type ff_mitglied_lehrgangUncheckedCreateNestedManyWithoutFf_mitgliedInput = {
+    create?: XOR<ff_mitglied_lehrgangCreateWithoutFf_mitgliedInput, ff_mitglied_lehrgangUncheckedCreateWithoutFf_mitgliedInput> | ff_mitglied_lehrgangCreateWithoutFf_mitgliedInput[] | ff_mitglied_lehrgangUncheckedCreateWithoutFf_mitgliedInput[]
+    connectOrCreate?: ff_mitglied_lehrgangCreateOrConnectWithoutFf_mitgliedInput | ff_mitglied_lehrgangCreateOrConnectWithoutFf_mitgliedInput[]
+    createMany?: ff_mitglied_lehrgangCreateManyFf_mitgliedInputEnvelope
+    connect?: ff_mitglied_lehrgangWhereUniqueInput | ff_mitglied_lehrgangWhereUniqueInput[]
   }
 
   export type mitglied_funktionenUncheckedCreateNestedManyWithoutFf_mitgliedInput = {
@@ -14575,19 +21864,8 @@ export namespace Prisma {
     connect?: mitglied_funktionenWhereUniqueInput | mitglied_funktionenWhereUniqueInput[]
   }
 
-  export type teilnahmeUncheckedCreateNestedManyWithoutFf_mitgliedInput = {
-    create?: XOR<teilnahmeCreateWithoutFf_mitgliedInput, teilnahmeUncheckedCreateWithoutFf_mitgliedInput> | teilnahmeCreateWithoutFf_mitgliedInput[] | teilnahmeUncheckedCreateWithoutFf_mitgliedInput[]
-    connectOrCreate?: teilnahmeCreateOrConnectWithoutFf_mitgliedInput | teilnahmeCreateOrConnectWithoutFf_mitgliedInput[]
-    createMany?: teilnahmeCreateManyFf_mitgliedInputEnvelope
-    connect?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
-  }
-
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
-  }
-
-  export type Enumff_mitglied_statusFieldUpdateOperationsInput = {
-    set?: $Enums.ff_mitglied_status
+  export type Enumff_mitglied_StatusFieldUpdateOperationsInput = {
+    set?: $Enums.ff_mitglied_Status
   }
 
   export type personUpdateOneRequiredWithoutFf_mitgliedNestedInput = {
@@ -14596,6 +21874,20 @@ export namespace Prisma {
     upsert?: personUpsertWithoutFf_mitgliedInput
     connect?: personWhereUniqueInput
     update?: XOR<XOR<personUpdateToOneWithWhereWithoutFf_mitgliedInput, personUpdateWithoutFf_mitgliedInput>, personUncheckedUpdateWithoutFf_mitgliedInput>
+  }
+
+  export type ff_mitglied_lehrgangUpdateManyWithoutFf_mitgliedNestedInput = {
+    create?: XOR<ff_mitglied_lehrgangCreateWithoutFf_mitgliedInput, ff_mitglied_lehrgangUncheckedCreateWithoutFf_mitgliedInput> | ff_mitglied_lehrgangCreateWithoutFf_mitgliedInput[] | ff_mitglied_lehrgangUncheckedCreateWithoutFf_mitgliedInput[]
+    connectOrCreate?: ff_mitglied_lehrgangCreateOrConnectWithoutFf_mitgliedInput | ff_mitglied_lehrgangCreateOrConnectWithoutFf_mitgliedInput[]
+    upsert?: ff_mitglied_lehrgangUpsertWithWhereUniqueWithoutFf_mitgliedInput | ff_mitglied_lehrgangUpsertWithWhereUniqueWithoutFf_mitgliedInput[]
+    createMany?: ff_mitglied_lehrgangCreateManyFf_mitgliedInputEnvelope
+    set?: ff_mitglied_lehrgangWhereUniqueInput | ff_mitglied_lehrgangWhereUniqueInput[]
+    disconnect?: ff_mitglied_lehrgangWhereUniqueInput | ff_mitglied_lehrgangWhereUniqueInput[]
+    delete?: ff_mitglied_lehrgangWhereUniqueInput | ff_mitglied_lehrgangWhereUniqueInput[]
+    connect?: ff_mitglied_lehrgangWhereUniqueInput | ff_mitglied_lehrgangWhereUniqueInput[]
+    update?: ff_mitglied_lehrgangUpdateWithWhereUniqueWithoutFf_mitgliedInput | ff_mitglied_lehrgangUpdateWithWhereUniqueWithoutFf_mitgliedInput[]
+    updateMany?: ff_mitglied_lehrgangUpdateManyWithWhereWithoutFf_mitgliedInput | ff_mitglied_lehrgangUpdateManyWithWhereWithoutFf_mitgliedInput[]
+    deleteMany?: ff_mitglied_lehrgangScalarWhereInput | ff_mitglied_lehrgangScalarWhereInput[]
   }
 
   export type mitglied_funktionenUpdateManyWithoutFf_mitgliedNestedInput = {
@@ -14612,18 +21904,18 @@ export namespace Prisma {
     deleteMany?: mitglied_funktionenScalarWhereInput | mitglied_funktionenScalarWhereInput[]
   }
 
-  export type teilnahmeUpdateManyWithoutFf_mitgliedNestedInput = {
-    create?: XOR<teilnahmeCreateWithoutFf_mitgliedInput, teilnahmeUncheckedCreateWithoutFf_mitgliedInput> | teilnahmeCreateWithoutFf_mitgliedInput[] | teilnahmeUncheckedCreateWithoutFf_mitgliedInput[]
-    connectOrCreate?: teilnahmeCreateOrConnectWithoutFf_mitgliedInput | teilnahmeCreateOrConnectWithoutFf_mitgliedInput[]
-    upsert?: teilnahmeUpsertWithWhereUniqueWithoutFf_mitgliedInput | teilnahmeUpsertWithWhereUniqueWithoutFf_mitgliedInput[]
-    createMany?: teilnahmeCreateManyFf_mitgliedInputEnvelope
-    set?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
-    disconnect?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
-    delete?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
-    connect?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
-    update?: teilnahmeUpdateWithWhereUniqueWithoutFf_mitgliedInput | teilnahmeUpdateWithWhereUniqueWithoutFf_mitgliedInput[]
-    updateMany?: teilnahmeUpdateManyWithWhereWithoutFf_mitgliedInput | teilnahmeUpdateManyWithWhereWithoutFf_mitgliedInput[]
-    deleteMany?: teilnahmeScalarWhereInput | teilnahmeScalarWhereInput[]
+  export type ff_mitglied_lehrgangUncheckedUpdateManyWithoutFf_mitgliedNestedInput = {
+    create?: XOR<ff_mitglied_lehrgangCreateWithoutFf_mitgliedInput, ff_mitglied_lehrgangUncheckedCreateWithoutFf_mitgliedInput> | ff_mitglied_lehrgangCreateWithoutFf_mitgliedInput[] | ff_mitglied_lehrgangUncheckedCreateWithoutFf_mitgliedInput[]
+    connectOrCreate?: ff_mitglied_lehrgangCreateOrConnectWithoutFf_mitgliedInput | ff_mitglied_lehrgangCreateOrConnectWithoutFf_mitgliedInput[]
+    upsert?: ff_mitglied_lehrgangUpsertWithWhereUniqueWithoutFf_mitgliedInput | ff_mitglied_lehrgangUpsertWithWhereUniqueWithoutFf_mitgliedInput[]
+    createMany?: ff_mitglied_lehrgangCreateManyFf_mitgliedInputEnvelope
+    set?: ff_mitglied_lehrgangWhereUniqueInput | ff_mitglied_lehrgangWhereUniqueInput[]
+    disconnect?: ff_mitglied_lehrgangWhereUniqueInput | ff_mitglied_lehrgangWhereUniqueInput[]
+    delete?: ff_mitglied_lehrgangWhereUniqueInput | ff_mitglied_lehrgangWhereUniqueInput[]
+    connect?: ff_mitglied_lehrgangWhereUniqueInput | ff_mitglied_lehrgangWhereUniqueInput[]
+    update?: ff_mitglied_lehrgangUpdateWithWhereUniqueWithoutFf_mitgliedInput | ff_mitglied_lehrgangUpdateWithWhereUniqueWithoutFf_mitgliedInput[]
+    updateMany?: ff_mitglied_lehrgangUpdateManyWithWhereWithoutFf_mitgliedInput | ff_mitglied_lehrgangUpdateManyWithWhereWithoutFf_mitgliedInput[]
+    deleteMany?: ff_mitglied_lehrgangScalarWhereInput | ff_mitglied_lehrgangScalarWhereInput[]
   }
 
   export type mitglied_funktionenUncheckedUpdateManyWithoutFf_mitgliedNestedInput = {
@@ -14640,18 +21932,32 @@ export namespace Prisma {
     deleteMany?: mitglied_funktionenScalarWhereInput | mitglied_funktionenScalarWhereInput[]
   }
 
-  export type teilnahmeUncheckedUpdateManyWithoutFf_mitgliedNestedInput = {
-    create?: XOR<teilnahmeCreateWithoutFf_mitgliedInput, teilnahmeUncheckedCreateWithoutFf_mitgliedInput> | teilnahmeCreateWithoutFf_mitgliedInput[] | teilnahmeUncheckedCreateWithoutFf_mitgliedInput[]
-    connectOrCreate?: teilnahmeCreateOrConnectWithoutFf_mitgliedInput | teilnahmeCreateOrConnectWithoutFf_mitgliedInput[]
-    upsert?: teilnahmeUpsertWithWhereUniqueWithoutFf_mitgliedInput | teilnahmeUpsertWithWhereUniqueWithoutFf_mitgliedInput[]
-    createMany?: teilnahmeCreateManyFf_mitgliedInputEnvelope
-    set?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
-    disconnect?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
-    delete?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
-    connect?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
-    update?: teilnahmeUpdateWithWhereUniqueWithoutFf_mitgliedInput | teilnahmeUpdateWithWhereUniqueWithoutFf_mitgliedInput[]
-    updateMany?: teilnahmeUpdateManyWithWhereWithoutFf_mitgliedInput | teilnahmeUpdateManyWithWhereWithoutFf_mitgliedInput[]
-    deleteMany?: teilnahmeScalarWhereInput | teilnahmeScalarWhereInput[]
+  export type ff_mitgliedCreateNestedOneWithoutFf_mitglied_lehrgangInput = {
+    create?: XOR<ff_mitgliedCreateWithoutFf_mitglied_lehrgangInput, ff_mitgliedUncheckedCreateWithoutFf_mitglied_lehrgangInput>
+    connectOrCreate?: ff_mitgliedCreateOrConnectWithoutFf_mitglied_lehrgangInput
+    connect?: ff_mitgliedWhereUniqueInput
+  }
+
+  export type lehrgangCreateNestedOneWithoutFf_mitglied_lehrgangInput = {
+    create?: XOR<lehrgangCreateWithoutFf_mitglied_lehrgangInput, lehrgangUncheckedCreateWithoutFf_mitglied_lehrgangInput>
+    connectOrCreate?: lehrgangCreateOrConnectWithoutFf_mitglied_lehrgangInput
+    connect?: lehrgangWhereUniqueInput
+  }
+
+  export type ff_mitgliedUpdateOneRequiredWithoutFf_mitglied_lehrgangNestedInput = {
+    create?: XOR<ff_mitgliedCreateWithoutFf_mitglied_lehrgangInput, ff_mitgliedUncheckedCreateWithoutFf_mitglied_lehrgangInput>
+    connectOrCreate?: ff_mitgliedCreateOrConnectWithoutFf_mitglied_lehrgangInput
+    upsert?: ff_mitgliedUpsertWithoutFf_mitglied_lehrgangInput
+    connect?: ff_mitgliedWhereUniqueInput
+    update?: XOR<XOR<ff_mitgliedUpdateToOneWithWhereWithoutFf_mitglied_lehrgangInput, ff_mitgliedUpdateWithoutFf_mitglied_lehrgangInput>, ff_mitgliedUncheckedUpdateWithoutFf_mitglied_lehrgangInput>
+  }
+
+  export type lehrgangUpdateOneRequiredWithoutFf_mitglied_lehrgangNestedInput = {
+    create?: XOR<lehrgangCreateWithoutFf_mitglied_lehrgangInput, lehrgangUncheckedCreateWithoutFf_mitglied_lehrgangInput>
+    connectOrCreate?: lehrgangCreateOrConnectWithoutFf_mitglied_lehrgangInput
+    upsert?: lehrgangUpsertWithoutFf_mitglied_lehrgangInput
+    connect?: lehrgangWhereUniqueInput
+    update?: XOR<XOR<lehrgangUpdateToOneWithWhereWithoutFf_mitglied_lehrgangInput, lehrgangUpdateWithoutFf_mitglied_lehrgangInput>, lehrgangUncheckedUpdateWithoutFf_mitglied_lehrgangInput>
   }
 
   export type mitglied_funktionenCreateNestedManyWithoutFunktion_ffInput = {
@@ -14752,8 +22058,8 @@ export namespace Prisma {
     connect?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
   }
 
-  export type Enumjf_mitglied_statusFieldUpdateOperationsInput = {
-    set?: $Enums.jf_mitglied_status
+  export type Enumjf_mitglied_StatusFieldUpdateOperationsInput = {
+    set?: $Enums.jf_mitglied_Status
   }
 
   export type jf_erziehungsberechtigterUpdateManyWithoutJf_mitgliedNestedInput = {
@@ -14792,6 +22098,56 @@ export namespace Prisma {
     deleteMany?: jf_erziehungsberechtigterScalarWhereInput | jf_erziehungsberechtigterScalarWhereInput[]
   }
 
+  export type ff_mitglied_lehrgangCreateNestedManyWithoutLehrgangInput = {
+    create?: XOR<ff_mitglied_lehrgangCreateWithoutLehrgangInput, ff_mitglied_lehrgangUncheckedCreateWithoutLehrgangInput> | ff_mitglied_lehrgangCreateWithoutLehrgangInput[] | ff_mitglied_lehrgangUncheckedCreateWithoutLehrgangInput[]
+    connectOrCreate?: ff_mitglied_lehrgangCreateOrConnectWithoutLehrgangInput | ff_mitglied_lehrgangCreateOrConnectWithoutLehrgangInput[]
+    createMany?: ff_mitglied_lehrgangCreateManyLehrgangInputEnvelope
+    connect?: ff_mitglied_lehrgangWhereUniqueInput | ff_mitglied_lehrgangWhereUniqueInput[]
+  }
+
+  export type ff_mitglied_lehrgangUncheckedCreateNestedManyWithoutLehrgangInput = {
+    create?: XOR<ff_mitglied_lehrgangCreateWithoutLehrgangInput, ff_mitglied_lehrgangUncheckedCreateWithoutLehrgangInput> | ff_mitglied_lehrgangCreateWithoutLehrgangInput[] | ff_mitglied_lehrgangUncheckedCreateWithoutLehrgangInput[]
+    connectOrCreate?: ff_mitglied_lehrgangCreateOrConnectWithoutLehrgangInput | ff_mitglied_lehrgangCreateOrConnectWithoutLehrgangInput[]
+    createMany?: ff_mitglied_lehrgangCreateManyLehrgangInputEnvelope
+    connect?: ff_mitglied_lehrgangWhereUniqueInput | ff_mitglied_lehrgangWhereUniqueInput[]
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type ff_mitglied_lehrgangUpdateManyWithoutLehrgangNestedInput = {
+    create?: XOR<ff_mitglied_lehrgangCreateWithoutLehrgangInput, ff_mitglied_lehrgangUncheckedCreateWithoutLehrgangInput> | ff_mitglied_lehrgangCreateWithoutLehrgangInput[] | ff_mitglied_lehrgangUncheckedCreateWithoutLehrgangInput[]
+    connectOrCreate?: ff_mitglied_lehrgangCreateOrConnectWithoutLehrgangInput | ff_mitglied_lehrgangCreateOrConnectWithoutLehrgangInput[]
+    upsert?: ff_mitglied_lehrgangUpsertWithWhereUniqueWithoutLehrgangInput | ff_mitglied_lehrgangUpsertWithWhereUniqueWithoutLehrgangInput[]
+    createMany?: ff_mitglied_lehrgangCreateManyLehrgangInputEnvelope
+    set?: ff_mitglied_lehrgangWhereUniqueInput | ff_mitglied_lehrgangWhereUniqueInput[]
+    disconnect?: ff_mitglied_lehrgangWhereUniqueInput | ff_mitglied_lehrgangWhereUniqueInput[]
+    delete?: ff_mitglied_lehrgangWhereUniqueInput | ff_mitglied_lehrgangWhereUniqueInput[]
+    connect?: ff_mitglied_lehrgangWhereUniqueInput | ff_mitglied_lehrgangWhereUniqueInput[]
+    update?: ff_mitglied_lehrgangUpdateWithWhereUniqueWithoutLehrgangInput | ff_mitglied_lehrgangUpdateWithWhereUniqueWithoutLehrgangInput[]
+    updateMany?: ff_mitglied_lehrgangUpdateManyWithWhereWithoutLehrgangInput | ff_mitglied_lehrgangUpdateManyWithWhereWithoutLehrgangInput[]
+    deleteMany?: ff_mitglied_lehrgangScalarWhereInput | ff_mitglied_lehrgangScalarWhereInput[]
+  }
+
+  export type ff_mitglied_lehrgangUncheckedUpdateManyWithoutLehrgangNestedInput = {
+    create?: XOR<ff_mitglied_lehrgangCreateWithoutLehrgangInput, ff_mitglied_lehrgangUncheckedCreateWithoutLehrgangInput> | ff_mitglied_lehrgangCreateWithoutLehrgangInput[] | ff_mitglied_lehrgangUncheckedCreateWithoutLehrgangInput[]
+    connectOrCreate?: ff_mitglied_lehrgangCreateOrConnectWithoutLehrgangInput | ff_mitglied_lehrgangCreateOrConnectWithoutLehrgangInput[]
+    upsert?: ff_mitglied_lehrgangUpsertWithWhereUniqueWithoutLehrgangInput | ff_mitglied_lehrgangUpsertWithWhereUniqueWithoutLehrgangInput[]
+    createMany?: ff_mitglied_lehrgangCreateManyLehrgangInputEnvelope
+    set?: ff_mitglied_lehrgangWhereUniqueInput | ff_mitglied_lehrgangWhereUniqueInput[]
+    disconnect?: ff_mitglied_lehrgangWhereUniqueInput | ff_mitglied_lehrgangWhereUniqueInput[]
+    delete?: ff_mitglied_lehrgangWhereUniqueInput | ff_mitglied_lehrgangWhereUniqueInput[]
+    connect?: ff_mitglied_lehrgangWhereUniqueInput | ff_mitglied_lehrgangWhereUniqueInput[]
+    update?: ff_mitglied_lehrgangUpdateWithWhereUniqueWithoutLehrgangInput | ff_mitglied_lehrgangUpdateWithWhereUniqueWithoutLehrgangInput[]
+    updateMany?: ff_mitglied_lehrgangUpdateManyWithWhereWithoutLehrgangInput | ff_mitglied_lehrgangUpdateManyWithWhereWithoutLehrgangInput[]
+    deleteMany?: ff_mitglied_lehrgangScalarWhereInput | ff_mitglied_lehrgangScalarWhereInput[]
+  }
+
   export type ff_mitgliedCreateNestedOneWithoutMitglied_funktionenInput = {
     create?: XOR<ff_mitgliedCreateWithoutMitglied_funktionenInput, ff_mitgliedUncheckedCreateWithoutMitglied_funktionenInput>
     connectOrCreate?: ff_mitgliedCreateOrConnectWithoutMitglied_funktionenInput
@@ -14804,8 +22160,8 @@ export namespace Prisma {
     connect?: funktion_ffWhereUniqueInput
   }
 
-  export type Enummitglied_funktionen_typFieldUpdateOperationsInput = {
-    set?: $Enums.mitglied_funktionen_typ
+  export type Enummitglied_funktionen_TypFieldUpdateOperationsInput = {
+    set?: $Enums.mitglied_funktionen_Typ
   }
 
   export type ff_mitgliedUpdateOneRequiredWithoutMitglied_funktionenNestedInput = {
@@ -14824,8 +22180,22 @@ export namespace Prisma {
     update?: XOR<XOR<funktion_ffUpdateToOneWithWhereWithoutMitglied_funktionenInput, funktion_ffUpdateWithoutMitglied_funktionenInput>, funktion_ffUncheckedUpdateWithoutMitglied_funktionenInput>
   }
 
-  export type Enummitglied_login_tyFieldUpdateOperationsInput = {
-    set?: $Enums.mitglied_login_ty
+  export type personCreateNestedOneWithoutMitglied_loginInput = {
+    create?: XOR<personCreateWithoutMitglied_loginInput, personUncheckedCreateWithoutMitglied_loginInput>
+    connectOrCreate?: personCreateOrConnectWithoutMitglied_loginInput
+    connect?: personWhereUniqueInput
+  }
+
+  export type Enummitglied_login_TypFieldUpdateOperationsInput = {
+    set?: $Enums.mitglied_login_Typ
+  }
+
+  export type personUpdateOneRequiredWithoutMitglied_loginNestedInput = {
+    create?: XOR<personCreateWithoutMitglied_loginInput, personUncheckedCreateWithoutMitglied_loginInput>
+    connectOrCreate?: personCreateOrConnectWithoutMitglied_loginInput
+    upsert?: personUpsertWithoutMitglied_loginInput
+    connect?: personWhereUniqueInput
+    update?: XOR<XOR<personUpdateToOneWithWhereWithoutMitglied_loginInput, personUpdateWithoutMitglied_loginInput>, personUncheckedUpdateWithoutMitglied_loginInput>
   }
 
   export type ff_mitgliedCreateNestedManyWithoutPersonInput = {
@@ -14849,6 +22219,20 @@ export namespace Prisma {
     connect?: jf_mitgliedWhereUniqueInput | jf_mitgliedWhereUniqueInput[]
   }
 
+  export type mitglied_loginCreateNestedManyWithoutPersonInput = {
+    create?: XOR<mitglied_loginCreateWithoutPersonInput, mitglied_loginUncheckedCreateWithoutPersonInput> | mitglied_loginCreateWithoutPersonInput[] | mitglied_loginUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: mitglied_loginCreateOrConnectWithoutPersonInput | mitglied_loginCreateOrConnectWithoutPersonInput[]
+    createMany?: mitglied_loginCreateManyPersonInputEnvelope
+    connect?: mitglied_loginWhereUniqueInput | mitglied_loginWhereUniqueInput[]
+  }
+
+  export type teilnahmeCreateNestedManyWithoutPersonInput = {
+    create?: XOR<teilnahmeCreateWithoutPersonInput, teilnahmeUncheckedCreateWithoutPersonInput> | teilnahmeCreateWithoutPersonInput[] | teilnahmeUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: teilnahmeCreateOrConnectWithoutPersonInput | teilnahmeCreateOrConnectWithoutPersonInput[]
+    createMany?: teilnahmeCreateManyPersonInputEnvelope
+    connect?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
+  }
+
   export type ff_mitgliedUncheckedCreateNestedManyWithoutPersonInput = {
     create?: XOR<ff_mitgliedCreateWithoutPersonInput, ff_mitgliedUncheckedCreateWithoutPersonInput> | ff_mitgliedCreateWithoutPersonInput[] | ff_mitgliedUncheckedCreateWithoutPersonInput[]
     connectOrCreate?: ff_mitgliedCreateOrConnectWithoutPersonInput | ff_mitgliedCreateOrConnectWithoutPersonInput[]
@@ -14868,6 +22252,20 @@ export namespace Prisma {
     connectOrCreate?: jf_mitgliedCreateOrConnectWithoutPersonInput | jf_mitgliedCreateOrConnectWithoutPersonInput[]
     createMany?: jf_mitgliedCreateManyPersonInputEnvelope
     connect?: jf_mitgliedWhereUniqueInput | jf_mitgliedWhereUniqueInput[]
+  }
+
+  export type mitglied_loginUncheckedCreateNestedManyWithoutPersonInput = {
+    create?: XOR<mitglied_loginCreateWithoutPersonInput, mitglied_loginUncheckedCreateWithoutPersonInput> | mitglied_loginCreateWithoutPersonInput[] | mitglied_loginUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: mitglied_loginCreateOrConnectWithoutPersonInput | mitglied_loginCreateOrConnectWithoutPersonInput[]
+    createMany?: mitglied_loginCreateManyPersonInputEnvelope
+    connect?: mitglied_loginWhereUniqueInput | mitglied_loginWhereUniqueInput[]
+  }
+
+  export type teilnahmeUncheckedCreateNestedManyWithoutPersonInput = {
+    create?: XOR<teilnahmeCreateWithoutPersonInput, teilnahmeUncheckedCreateWithoutPersonInput> | teilnahmeCreateWithoutPersonInput[] | teilnahmeUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: teilnahmeCreateOrConnectWithoutPersonInput | teilnahmeCreateOrConnectWithoutPersonInput[]
+    createMany?: teilnahmeCreateManyPersonInputEnvelope
+    connect?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
   }
 
   export type ff_mitgliedUpdateManyWithoutPersonNestedInput = {
@@ -14912,6 +22310,34 @@ export namespace Prisma {
     deleteMany?: jf_mitgliedScalarWhereInput | jf_mitgliedScalarWhereInput[]
   }
 
+  export type mitglied_loginUpdateManyWithoutPersonNestedInput = {
+    create?: XOR<mitglied_loginCreateWithoutPersonInput, mitglied_loginUncheckedCreateWithoutPersonInput> | mitglied_loginCreateWithoutPersonInput[] | mitglied_loginUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: mitglied_loginCreateOrConnectWithoutPersonInput | mitglied_loginCreateOrConnectWithoutPersonInput[]
+    upsert?: mitglied_loginUpsertWithWhereUniqueWithoutPersonInput | mitglied_loginUpsertWithWhereUniqueWithoutPersonInput[]
+    createMany?: mitglied_loginCreateManyPersonInputEnvelope
+    set?: mitglied_loginWhereUniqueInput | mitglied_loginWhereUniqueInput[]
+    disconnect?: mitglied_loginWhereUniqueInput | mitglied_loginWhereUniqueInput[]
+    delete?: mitglied_loginWhereUniqueInput | mitglied_loginWhereUniqueInput[]
+    connect?: mitglied_loginWhereUniqueInput | mitglied_loginWhereUniqueInput[]
+    update?: mitglied_loginUpdateWithWhereUniqueWithoutPersonInput | mitglied_loginUpdateWithWhereUniqueWithoutPersonInput[]
+    updateMany?: mitglied_loginUpdateManyWithWhereWithoutPersonInput | mitglied_loginUpdateManyWithWhereWithoutPersonInput[]
+    deleteMany?: mitglied_loginScalarWhereInput | mitglied_loginScalarWhereInput[]
+  }
+
+  export type teilnahmeUpdateManyWithoutPersonNestedInput = {
+    create?: XOR<teilnahmeCreateWithoutPersonInput, teilnahmeUncheckedCreateWithoutPersonInput> | teilnahmeCreateWithoutPersonInput[] | teilnahmeUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: teilnahmeCreateOrConnectWithoutPersonInput | teilnahmeCreateOrConnectWithoutPersonInput[]
+    upsert?: teilnahmeUpsertWithWhereUniqueWithoutPersonInput | teilnahmeUpsertWithWhereUniqueWithoutPersonInput[]
+    createMany?: teilnahmeCreateManyPersonInputEnvelope
+    set?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
+    disconnect?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
+    delete?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
+    connect?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
+    update?: teilnahmeUpdateWithWhereUniqueWithoutPersonInput | teilnahmeUpdateWithWhereUniqueWithoutPersonInput[]
+    updateMany?: teilnahmeUpdateManyWithWhereWithoutPersonInput | teilnahmeUpdateManyWithWhereWithoutPersonInput[]
+    deleteMany?: teilnahmeScalarWhereInput | teilnahmeScalarWhereInput[]
+  }
+
   export type ff_mitgliedUncheckedUpdateManyWithoutPersonNestedInput = {
     create?: XOR<ff_mitgliedCreateWithoutPersonInput, ff_mitgliedUncheckedCreateWithoutPersonInput> | ff_mitgliedCreateWithoutPersonInput[] | ff_mitgliedUncheckedCreateWithoutPersonInput[]
     connectOrCreate?: ff_mitgliedCreateOrConnectWithoutPersonInput | ff_mitgliedCreateOrConnectWithoutPersonInput[]
@@ -14954,22 +22380,50 @@ export namespace Prisma {
     deleteMany?: jf_mitgliedScalarWhereInput | jf_mitgliedScalarWhereInput[]
   }
 
-  export type ff_mitgliedCreateNestedOneWithoutTeilnahmeInput = {
-    create?: XOR<ff_mitgliedCreateWithoutTeilnahmeInput, ff_mitgliedUncheckedCreateWithoutTeilnahmeInput>
-    connectOrCreate?: ff_mitgliedCreateOrConnectWithoutTeilnahmeInput
-    connect?: ff_mitgliedWhereUniqueInput
+  export type mitglied_loginUncheckedUpdateManyWithoutPersonNestedInput = {
+    create?: XOR<mitglied_loginCreateWithoutPersonInput, mitglied_loginUncheckedCreateWithoutPersonInput> | mitglied_loginCreateWithoutPersonInput[] | mitglied_loginUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: mitglied_loginCreateOrConnectWithoutPersonInput | mitglied_loginCreateOrConnectWithoutPersonInput[]
+    upsert?: mitglied_loginUpsertWithWhereUniqueWithoutPersonInput | mitglied_loginUpsertWithWhereUniqueWithoutPersonInput[]
+    createMany?: mitglied_loginCreateManyPersonInputEnvelope
+    set?: mitglied_loginWhereUniqueInput | mitglied_loginWhereUniqueInput[]
+    disconnect?: mitglied_loginWhereUniqueInput | mitglied_loginWhereUniqueInput[]
+    delete?: mitglied_loginWhereUniqueInput | mitglied_loginWhereUniqueInput[]
+    connect?: mitglied_loginWhereUniqueInput | mitglied_loginWhereUniqueInput[]
+    update?: mitglied_loginUpdateWithWhereUniqueWithoutPersonInput | mitglied_loginUpdateWithWhereUniqueWithoutPersonInput[]
+    updateMany?: mitglied_loginUpdateManyWithWhereWithoutPersonInput | mitglied_loginUpdateManyWithWhereWithoutPersonInput[]
+    deleteMany?: mitglied_loginScalarWhereInput | mitglied_loginScalarWhereInput[]
   }
 
-  export type Enumteilnahme_typFieldUpdateOperationsInput = {
-    set?: $Enums.teilnahme_typ
+  export type teilnahmeUncheckedUpdateManyWithoutPersonNestedInput = {
+    create?: XOR<teilnahmeCreateWithoutPersonInput, teilnahmeUncheckedCreateWithoutPersonInput> | teilnahmeCreateWithoutPersonInput[] | teilnahmeUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: teilnahmeCreateOrConnectWithoutPersonInput | teilnahmeCreateOrConnectWithoutPersonInput[]
+    upsert?: teilnahmeUpsertWithWhereUniqueWithoutPersonInput | teilnahmeUpsertWithWhereUniqueWithoutPersonInput[]
+    createMany?: teilnahmeCreateManyPersonInputEnvelope
+    set?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
+    disconnect?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
+    delete?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
+    connect?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
+    update?: teilnahmeUpdateWithWhereUniqueWithoutPersonInput | teilnahmeUpdateWithWhereUniqueWithoutPersonInput[]
+    updateMany?: teilnahmeUpdateManyWithWhereWithoutPersonInput | teilnahmeUpdateManyWithWhereWithoutPersonInput[]
+    deleteMany?: teilnahmeScalarWhereInput | teilnahmeScalarWhereInput[]
   }
 
-  export type ff_mitgliedUpdateOneRequiredWithoutTeilnahmeNestedInput = {
-    create?: XOR<ff_mitgliedCreateWithoutTeilnahmeInput, ff_mitgliedUncheckedCreateWithoutTeilnahmeInput>
-    connectOrCreate?: ff_mitgliedCreateOrConnectWithoutTeilnahmeInput
-    upsert?: ff_mitgliedUpsertWithoutTeilnahmeInput
-    connect?: ff_mitgliedWhereUniqueInput
-    update?: XOR<XOR<ff_mitgliedUpdateToOneWithWhereWithoutTeilnahmeInput, ff_mitgliedUpdateWithoutTeilnahmeInput>, ff_mitgliedUncheckedUpdateWithoutTeilnahmeInput>
+  export type personCreateNestedOneWithoutTeilnahmeInput = {
+    create?: XOR<personCreateWithoutTeilnahmeInput, personUncheckedCreateWithoutTeilnahmeInput>
+    connectOrCreate?: personCreateOrConnectWithoutTeilnahmeInput
+    connect?: personWhereUniqueInput
+  }
+
+  export type Enumteilnahme_TypFieldUpdateOperationsInput = {
+    set?: $Enums.teilnahme_Typ
+  }
+
+  export type personUpdateOneRequiredWithoutTeilnahmeNestedInput = {
+    create?: XOR<personCreateWithoutTeilnahmeInput, personUncheckedCreateWithoutTeilnahmeInput>
+    connectOrCreate?: personCreateOrConnectWithoutTeilnahmeInput
+    upsert?: personUpsertWithoutTeilnahmeInput
+    connect?: personWhereUniqueInput
+    update?: XOR<XOR<personUpdateToOneWithWhereWithoutTeilnahmeInput, personUpdateWithoutTeilnahmeInput>, personUncheckedUpdateWithoutTeilnahmeInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -14981,17 +22435,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
@@ -15009,11 +22452,15 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedEnumeinsatz_artFilter<$PrismaModel = never> = {
-    equals?: $Enums.einsatz_art | Enumeinsatz_artFieldRefInput<$PrismaModel>
-    in?: $Enums.einsatz_art[]
-    notIn?: $Enums.einsatz_art[]
-    not?: NestedEnumeinsatz_artFilter<$PrismaModel> | $Enums.einsatz_art
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -15041,20 +22488,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -15086,34 +22519,6 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedEnumeinsatz_artWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.einsatz_art | Enumeinsatz_artFieldRefInput<$PrismaModel>
-    in?: $Enums.einsatz_art[]
-    notIn?: $Enums.einsatz_art[]
-    not?: NestedEnumeinsatz_artWithAggregatesFilter<$PrismaModel> | $Enums.einsatz_art
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumeinsatz_artFilter<$PrismaModel>
-    _max?: NestedEnumeinsatz_artFilter<$PrismaModel>
-  }
-
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | null
-    notIn?: Date[] | string[] | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
-  export type NestedEnumff_mitglied_statusFilter<$PrismaModel = never> = {
-    equals?: $Enums.ff_mitglied_status | Enumff_mitglied_statusFieldRefInput<$PrismaModel>
-    in?: $Enums.ff_mitglied_status[]
-    notIn?: $Enums.ff_mitglied_status[]
-    not?: NestedEnumff_mitglied_statusFilter<$PrismaModel> | $Enums.ff_mitglied_status
-  }
-
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | null
@@ -15128,14 +22533,63 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type NestedEnumff_mitglied_statusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.ff_mitglied_status | Enumff_mitglied_statusFieldRefInput<$PrismaModel>
-    in?: $Enums.ff_mitglied_status[]
-    notIn?: $Enums.ff_mitglied_status[]
-    not?: NestedEnumff_mitglied_statusWithAggregatesFilter<$PrismaModel> | $Enums.ff_mitglied_status
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumff_mitglied_statusFilter<$PrismaModel>
-    _max?: NestedEnumff_mitglied_statusFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumeinsatz_ArtFilter<$PrismaModel = never> = {
+    equals?: $Enums.einsatz_Art | Enumeinsatz_ArtFieldRefInput<$PrismaModel>
+    in?: $Enums.einsatz_Art[]
+    notIn?: $Enums.einsatz_Art[]
+    not?: NestedEnumeinsatz_ArtFilter<$PrismaModel> | $Enums.einsatz_Art
+  }
+
+  export type NestedEnumeinsatz_ArtWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.einsatz_Art | Enumeinsatz_ArtFieldRefInput<$PrismaModel>
+    in?: $Enums.einsatz_Art[]
+    notIn?: $Enums.einsatz_Art[]
+    not?: NestedEnumeinsatz_ArtWithAggregatesFilter<$PrismaModel> | $Enums.einsatz_Art
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumeinsatz_ArtFilter<$PrismaModel>
+    _max?: NestedEnumeinsatz_ArtFilter<$PrismaModel>
+  }
+
+  export type NestedEnumff_mitglied_StatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.ff_mitglied_Status | Enumff_mitglied_StatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ff_mitglied_Status[]
+    notIn?: $Enums.ff_mitglied_Status[]
+    not?: NestedEnumff_mitglied_StatusFilter<$PrismaModel> | $Enums.ff_mitglied_Status
+  }
+
+  export type NestedEnumff_mitglied_StatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ff_mitglied_Status | Enumff_mitglied_StatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ff_mitglied_Status[]
+    notIn?: $Enums.ff_mitglied_Status[]
+    not?: NestedEnumff_mitglied_StatusWithAggregatesFilter<$PrismaModel> | $Enums.ff_mitglied_Status
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumff_mitglied_StatusFilter<$PrismaModel>
+    _max?: NestedEnumff_mitglied_StatusFilter<$PrismaModel>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -15184,91 +22638,136 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type NestedEnumjf_mitglied_statusFilter<$PrismaModel = never> = {
-    equals?: $Enums.jf_mitglied_status | Enumjf_mitglied_statusFieldRefInput<$PrismaModel>
-    in?: $Enums.jf_mitglied_status[]
-    notIn?: $Enums.jf_mitglied_status[]
-    not?: NestedEnumjf_mitglied_statusFilter<$PrismaModel> | $Enums.jf_mitglied_status
+  export type NestedEnumjf_mitglied_StatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.jf_mitglied_Status | Enumjf_mitglied_StatusFieldRefInput<$PrismaModel>
+    in?: $Enums.jf_mitglied_Status[]
+    notIn?: $Enums.jf_mitglied_Status[]
+    not?: NestedEnumjf_mitglied_StatusFilter<$PrismaModel> | $Enums.jf_mitglied_Status
   }
 
-  export type NestedEnumjf_mitglied_statusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.jf_mitglied_status | Enumjf_mitglied_statusFieldRefInput<$PrismaModel>
-    in?: $Enums.jf_mitglied_status[]
-    notIn?: $Enums.jf_mitglied_status[]
-    not?: NestedEnumjf_mitglied_statusWithAggregatesFilter<$PrismaModel> | $Enums.jf_mitglied_status
+  export type NestedEnumjf_mitglied_StatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.jf_mitglied_Status | Enumjf_mitglied_StatusFieldRefInput<$PrismaModel>
+    in?: $Enums.jf_mitglied_Status[]
+    notIn?: $Enums.jf_mitglied_Status[]
+    not?: NestedEnumjf_mitglied_StatusWithAggregatesFilter<$PrismaModel> | $Enums.jf_mitglied_Status
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumjf_mitglied_statusFilter<$PrismaModel>
-    _max?: NestedEnumjf_mitglied_statusFilter<$PrismaModel>
+    _min?: NestedEnumjf_mitglied_StatusFilter<$PrismaModel>
+    _max?: NestedEnumjf_mitglied_StatusFilter<$PrismaModel>
   }
 
-  export type NestedEnummitglied_funktionen_typFilter<$PrismaModel = never> = {
-    equals?: $Enums.mitglied_funktionen_typ | Enummitglied_funktionen_typFieldRefInput<$PrismaModel>
-    in?: $Enums.mitglied_funktionen_typ[]
-    notIn?: $Enums.mitglied_funktionen_typ[]
-    not?: NestedEnummitglied_funktionen_typFilter<$PrismaModel> | $Enums.mitglied_funktionen_typ
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type NestedEnummitglied_funktionen_typWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.mitglied_funktionen_typ | Enummitglied_funktionen_typFieldRefInput<$PrismaModel>
-    in?: $Enums.mitglied_funktionen_typ[]
-    notIn?: $Enums.mitglied_funktionen_typ[]
-    not?: NestedEnummitglied_funktionen_typWithAggregatesFilter<$PrismaModel> | $Enums.mitglied_funktionen_typ
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedEnummitglied_funktionen_TypFilter<$PrismaModel = never> = {
+    equals?: $Enums.mitglied_funktionen_Typ | Enummitglied_funktionen_TypFieldRefInput<$PrismaModel>
+    in?: $Enums.mitglied_funktionen_Typ[]
+    notIn?: $Enums.mitglied_funktionen_Typ[]
+    not?: NestedEnummitglied_funktionen_TypFilter<$PrismaModel> | $Enums.mitglied_funktionen_Typ
+  }
+
+  export type NestedEnummitglied_funktionen_TypWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.mitglied_funktionen_Typ | Enummitglied_funktionen_TypFieldRefInput<$PrismaModel>
+    in?: $Enums.mitglied_funktionen_Typ[]
+    notIn?: $Enums.mitglied_funktionen_Typ[]
+    not?: NestedEnummitglied_funktionen_TypWithAggregatesFilter<$PrismaModel> | $Enums.mitglied_funktionen_Typ
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnummitglied_funktionen_typFilter<$PrismaModel>
-    _max?: NestedEnummitglied_funktionen_typFilter<$PrismaModel>
+    _min?: NestedEnummitglied_funktionen_TypFilter<$PrismaModel>
+    _max?: NestedEnummitglied_funktionen_TypFilter<$PrismaModel>
   }
 
-  export type NestedEnummitglied_login_tyFilter<$PrismaModel = never> = {
-    equals?: $Enums.mitglied_login_ty | Enummitglied_login_tyFieldRefInput<$PrismaModel>
-    in?: $Enums.mitglied_login_ty[]
-    notIn?: $Enums.mitglied_login_ty[]
-    not?: NestedEnummitglied_login_tyFilter<$PrismaModel> | $Enums.mitglied_login_ty
+  export type NestedEnummitglied_login_TypFilter<$PrismaModel = never> = {
+    equals?: $Enums.mitglied_login_Typ | Enummitglied_login_TypFieldRefInput<$PrismaModel>
+    in?: $Enums.mitglied_login_Typ[]
+    notIn?: $Enums.mitglied_login_Typ[]
+    not?: NestedEnummitglied_login_TypFilter<$PrismaModel> | $Enums.mitglied_login_Typ
   }
 
-  export type NestedEnummitglied_login_tyWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.mitglied_login_ty | Enummitglied_login_tyFieldRefInput<$PrismaModel>
-    in?: $Enums.mitglied_login_ty[]
-    notIn?: $Enums.mitglied_login_ty[]
-    not?: NestedEnummitglied_login_tyWithAggregatesFilter<$PrismaModel> | $Enums.mitglied_login_ty
+  export type NestedEnummitglied_login_TypWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.mitglied_login_Typ | Enummitglied_login_TypFieldRefInput<$PrismaModel>
+    in?: $Enums.mitglied_login_Typ[]
+    notIn?: $Enums.mitglied_login_Typ[]
+    not?: NestedEnummitglied_login_TypWithAggregatesFilter<$PrismaModel> | $Enums.mitglied_login_Typ
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnummitglied_login_tyFilter<$PrismaModel>
-    _max?: NestedEnummitglied_login_tyFilter<$PrismaModel>
+    _min?: NestedEnummitglied_login_TypFilter<$PrismaModel>
+    _max?: NestedEnummitglied_login_TypFilter<$PrismaModel>
   }
 
-  export type NestedEnumteilnahme_typFilter<$PrismaModel = never> = {
-    equals?: $Enums.teilnahme_typ | Enumteilnahme_typFieldRefInput<$PrismaModel>
-    in?: $Enums.teilnahme_typ[]
-    notIn?: $Enums.teilnahme_typ[]
-    not?: NestedEnumteilnahme_typFilter<$PrismaModel> | $Enums.teilnahme_typ
+  export type NestedEnumteilnahme_TypFilter<$PrismaModel = never> = {
+    equals?: $Enums.teilnahme_Typ | Enumteilnahme_TypFieldRefInput<$PrismaModel>
+    in?: $Enums.teilnahme_Typ[]
+    notIn?: $Enums.teilnahme_Typ[]
+    not?: NestedEnumteilnahme_TypFilter<$PrismaModel> | $Enums.teilnahme_Typ
   }
 
-  export type NestedEnumteilnahme_typWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.teilnahme_typ | Enumteilnahme_typFieldRefInput<$PrismaModel>
-    in?: $Enums.teilnahme_typ[]
-    notIn?: $Enums.teilnahme_typ[]
-    not?: NestedEnumteilnahme_typWithAggregatesFilter<$PrismaModel> | $Enums.teilnahme_typ
+  export type NestedEnumteilnahme_TypWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.teilnahme_Typ | Enumteilnahme_TypFieldRefInput<$PrismaModel>
+    in?: $Enums.teilnahme_Typ[]
+    notIn?: $Enums.teilnahme_Typ[]
+    not?: NestedEnumteilnahme_TypWithAggregatesFilter<$PrismaModel> | $Enums.teilnahme_Typ
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumteilnahme_typFilter<$PrismaModel>
-    _max?: NestedEnumteilnahme_typFilter<$PrismaModel>
+    _min?: NestedEnumteilnahme_TypFilter<$PrismaModel>
+    _max?: NestedEnumteilnahme_TypFilter<$PrismaModel>
   }
 
   export type personCreateWithoutFf_mitgliedInput = {
-    vorname: string
-    name: string
-    geburtsdatum?: Date | string | null
-    email: string
+    Vorname: string
+    Name: string
+    Geburtsdatum?: Date | string | null
+    Strasse?: string | null
+    Hausnummer?: string | null
+    Postleitzahl?: string | null
+    Ort?: string | null
+    Email?: string | null
+    HandyNr?: number | null
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterCreateNestedManyWithoutPersonInput
     jf_mitglied?: jf_mitgliedCreateNestedManyWithoutPersonInput
+    mitglied_login?: mitglied_loginCreateNestedManyWithoutPersonInput
+    teilnahme?: teilnahmeCreateNestedManyWithoutPersonInput
   }
 
   export type personUncheckedCreateWithoutFf_mitgliedInput = {
-    id?: number
-    vorname: string
-    name: string
-    geburtsdatum?: Date | string | null
-    email: string
+    ID?: number
+    Vorname: string
+    Name: string
+    Geburtsdatum?: Date | string | null
+    Strasse?: string | null
+    Hausnummer?: string | null
+    Postleitzahl?: string | null
+    Ort?: string | null
+    Email?: string | null
+    HandyNr?: number | null
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedCreateNestedManyWithoutPersonInput
     jf_mitglied?: jf_mitgliedUncheckedCreateNestedManyWithoutPersonInput
+    mitglied_login?: mitglied_loginUncheckedCreateNestedManyWithoutPersonInput
+    teilnahme?: teilnahmeUncheckedCreateNestedManyWithoutPersonInput
   }
 
   export type personCreateOrConnectWithoutFf_mitgliedInput = {
@@ -15276,15 +22775,44 @@ export namespace Prisma {
     create: XOR<personCreateWithoutFf_mitgliedInput, personUncheckedCreateWithoutFf_mitgliedInput>
   }
 
+  export type ff_mitglied_lehrgangCreateWithoutFf_mitgliedInput = {
+    Datum_bestanden?: Date | string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+    lehrgang: lehrgangCreateNestedOneWithoutFf_mitglied_lehrgangInput
+  }
+
+  export type ff_mitglied_lehrgangUncheckedCreateWithoutFf_mitgliedInput = {
+    ID?: number
+    Lehrgang_ID: number
+    Datum_bestanden?: Date | string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type ff_mitglied_lehrgangCreateOrConnectWithoutFf_mitgliedInput = {
+    where: ff_mitglied_lehrgangWhereUniqueInput
+    create: XOR<ff_mitglied_lehrgangCreateWithoutFf_mitgliedInput, ff_mitglied_lehrgangUncheckedCreateWithoutFf_mitgliedInput>
+  }
+
+  export type ff_mitglied_lehrgangCreateManyFf_mitgliedInputEnvelope = {
+    data: ff_mitglied_lehrgangCreateManyFf_mitgliedInput | ff_mitglied_lehrgangCreateManyFf_mitgliedInput[]
+    skipDuplicates?: boolean
+  }
+
   export type mitglied_funktionenCreateWithoutFf_mitgliedInput = {
-    typ: $Enums.mitglied_funktionen_typ
+    Typ: $Enums.mitglied_funktionen_Typ
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
     funktion_ff: funktion_ffCreateNestedOneWithoutMitglied_funktionenInput
   }
 
   export type mitglied_funktionenUncheckedCreateWithoutFf_mitgliedInput = {
-    id?: number
-    funktion_id: number
-    typ: $Enums.mitglied_funktionen_typ
+    ID?: number
+    Funktion_ID: number
+    Typ: $Enums.mitglied_funktionen_Typ
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type mitglied_funktionenCreateOrConnectWithoutFf_mitgliedInput = {
@@ -15294,27 +22822,6 @@ export namespace Prisma {
 
   export type mitglied_funktionenCreateManyFf_mitgliedInputEnvelope = {
     data: mitglied_funktionenCreateManyFf_mitgliedInput | mitglied_funktionenCreateManyFf_mitgliedInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type teilnahmeCreateWithoutFf_mitgliedInput = {
-    veranstaltung_id: number
-    typ: $Enums.teilnahme_typ
-  }
-
-  export type teilnahmeUncheckedCreateWithoutFf_mitgliedInput = {
-    id?: number
-    veranstaltung_id: number
-    typ: $Enums.teilnahme_typ
-  }
-
-  export type teilnahmeCreateOrConnectWithoutFf_mitgliedInput = {
-    where: teilnahmeWhereUniqueInput
-    create: XOR<teilnahmeCreateWithoutFf_mitgliedInput, teilnahmeUncheckedCreateWithoutFf_mitgliedInput>
-  }
-
-  export type teilnahmeCreateManyFf_mitgliedInputEnvelope = {
-    data: teilnahmeCreateManyFf_mitgliedInput | teilnahmeCreateManyFf_mitgliedInput[]
     skipDuplicates?: boolean
   }
 
@@ -15330,22 +22837,68 @@ export namespace Prisma {
   }
 
   export type personUpdateWithoutFf_mitgliedInput = {
-    vorname?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    Vorname?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Email?: NullableStringFieldUpdateOperationsInput | string | null
+    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterUpdateManyWithoutPersonNestedInput
     jf_mitglied?: jf_mitgliedUpdateManyWithoutPersonNestedInput
+    mitglied_login?: mitglied_loginUpdateManyWithoutPersonNestedInput
+    teilnahme?: teilnahmeUpdateManyWithoutPersonNestedInput
   }
 
   export type personUncheckedUpdateWithoutFf_mitgliedInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    vorname?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    ID?: IntFieldUpdateOperationsInput | number
+    Vorname?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Email?: NullableStringFieldUpdateOperationsInput | string | null
+    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedUpdateManyWithoutPersonNestedInput
     jf_mitglied?: jf_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
+    mitglied_login?: mitglied_loginUncheckedUpdateManyWithoutPersonNestedInput
+    teilnahme?: teilnahmeUncheckedUpdateManyWithoutPersonNestedInput
+  }
+
+  export type ff_mitglied_lehrgangUpsertWithWhereUniqueWithoutFf_mitgliedInput = {
+    where: ff_mitglied_lehrgangWhereUniqueInput
+    update: XOR<ff_mitglied_lehrgangUpdateWithoutFf_mitgliedInput, ff_mitglied_lehrgangUncheckedUpdateWithoutFf_mitgliedInput>
+    create: XOR<ff_mitglied_lehrgangCreateWithoutFf_mitgliedInput, ff_mitglied_lehrgangUncheckedCreateWithoutFf_mitgliedInput>
+  }
+
+  export type ff_mitglied_lehrgangUpdateWithWhereUniqueWithoutFf_mitgliedInput = {
+    where: ff_mitglied_lehrgangWhereUniqueInput
+    data: XOR<ff_mitglied_lehrgangUpdateWithoutFf_mitgliedInput, ff_mitglied_lehrgangUncheckedUpdateWithoutFf_mitgliedInput>
+  }
+
+  export type ff_mitglied_lehrgangUpdateManyWithWhereWithoutFf_mitgliedInput = {
+    where: ff_mitglied_lehrgangScalarWhereInput
+    data: XOR<ff_mitglied_lehrgangUpdateManyMutationInput, ff_mitglied_lehrgangUncheckedUpdateManyWithoutFf_mitgliedInput>
+  }
+
+  export type ff_mitglied_lehrgangScalarWhereInput = {
+    AND?: ff_mitglied_lehrgangScalarWhereInput | ff_mitglied_lehrgangScalarWhereInput[]
+    OR?: ff_mitglied_lehrgangScalarWhereInput[]
+    NOT?: ff_mitglied_lehrgangScalarWhereInput | ff_mitglied_lehrgangScalarWhereInput[]
+    ID?: IntFilter<"ff_mitglied_lehrgang"> | number
+    FF_Mitglied_ID?: IntFilter<"ff_mitglied_lehrgang"> | number
+    Lehrgang_ID?: IntFilter<"ff_mitglied_lehrgang"> | number
+    Datum_bestanden?: DateTimeNullableFilter<"ff_mitglied_lehrgang"> | Date | string | null
+    Erstellt_am?: DateTimeNullableFilter<"ff_mitglied_lehrgang"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"ff_mitglied_lehrgang"> | Date | string | null
   }
 
   export type mitglied_funktionenUpsertWithWhereUniqueWithoutFf_mitgliedInput = {
@@ -15368,47 +22921,139 @@ export namespace Prisma {
     AND?: mitglied_funktionenScalarWhereInput | mitglied_funktionenScalarWhereInput[]
     OR?: mitglied_funktionenScalarWhereInput[]
     NOT?: mitglied_funktionenScalarWhereInput | mitglied_funktionenScalarWhereInput[]
-    id?: IntFilter<"mitglied_funktionen"> | number
-    mitglied_id?: IntFilter<"mitglied_funktionen"> | number
-    funktion_id?: IntFilter<"mitglied_funktionen"> | number
-    typ?: Enummitglied_funktionen_typFilter<"mitglied_funktionen"> | $Enums.mitglied_funktionen_typ
+    ID?: IntFilter<"mitglied_funktionen"> | number
+    Mitglied_ID?: IntFilter<"mitglied_funktionen"> | number
+    Funktion_ID?: IntFilter<"mitglied_funktionen"> | number
+    Typ?: Enummitglied_funktionen_TypFilter<"mitglied_funktionen"> | $Enums.mitglied_funktionen_Typ
+    Erstellt_am?: DateTimeNullableFilter<"mitglied_funktionen"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"mitglied_funktionen"> | Date | string | null
   }
 
-  export type teilnahmeUpsertWithWhereUniqueWithoutFf_mitgliedInput = {
-    where: teilnahmeWhereUniqueInput
-    update: XOR<teilnahmeUpdateWithoutFf_mitgliedInput, teilnahmeUncheckedUpdateWithoutFf_mitgliedInput>
-    create: XOR<teilnahmeCreateWithoutFf_mitgliedInput, teilnahmeUncheckedCreateWithoutFf_mitgliedInput>
+  export type ff_mitgliedCreateWithoutFf_mitglied_lehrgangInput = {
+    Eintrittsdatum: Date | string
+    Austrittsdatum?: Date | string | null
+    Aufnahmedatum?: Date | string | null
+    Status?: $Enums.ff_mitglied_Status
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
+    person: personCreateNestedOneWithoutFf_mitgliedInput
+    mitglied_funktionen?: mitglied_funktionenCreateNestedManyWithoutFf_mitgliedInput
   }
 
-  export type teilnahmeUpdateWithWhereUniqueWithoutFf_mitgliedInput = {
-    where: teilnahmeWhereUniqueInput
-    data: XOR<teilnahmeUpdateWithoutFf_mitgliedInput, teilnahmeUncheckedUpdateWithoutFf_mitgliedInput>
+  export type ff_mitgliedUncheckedCreateWithoutFf_mitglied_lehrgangInput = {
+    ID?: number
+    Person_ID: number
+    Eintrittsdatum: Date | string
+    Austrittsdatum?: Date | string | null
+    Aufnahmedatum?: Date | string | null
+    Status?: $Enums.ff_mitglied_Status
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
+    mitglied_funktionen?: mitglied_funktionenUncheckedCreateNestedManyWithoutFf_mitgliedInput
   }
 
-  export type teilnahmeUpdateManyWithWhereWithoutFf_mitgliedInput = {
-    where: teilnahmeScalarWhereInput
-    data: XOR<teilnahmeUpdateManyMutationInput, teilnahmeUncheckedUpdateManyWithoutFf_mitgliedInput>
+  export type ff_mitgliedCreateOrConnectWithoutFf_mitglied_lehrgangInput = {
+    where: ff_mitgliedWhereUniqueInput
+    create: XOR<ff_mitgliedCreateWithoutFf_mitglied_lehrgangInput, ff_mitgliedUncheckedCreateWithoutFf_mitglied_lehrgangInput>
   }
 
-  export type teilnahmeScalarWhereInput = {
-    AND?: teilnahmeScalarWhereInput | teilnahmeScalarWhereInput[]
-    OR?: teilnahmeScalarWhereInput[]
-    NOT?: teilnahmeScalarWhereInput | teilnahmeScalarWhereInput[]
-    id?: IntFilter<"teilnahme"> | number
-    mitglied_id?: IntFilter<"teilnahme"> | number
-    veranstaltung_id?: IntFilter<"teilnahme"> | number
-    typ?: Enumteilnahme_typFilter<"teilnahme"> | $Enums.teilnahme_typ
+  export type lehrgangCreateWithoutFf_mitglied_lehrgangInput = {
+    Abk_rzung?: string | null
+    Beschreibung?: string | null
+    Reihenfolge?: number | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type lehrgangUncheckedCreateWithoutFf_mitglied_lehrgangInput = {
+    ID?: number
+    Abk_rzung?: string | null
+    Beschreibung?: string | null
+    Reihenfolge?: number | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type lehrgangCreateOrConnectWithoutFf_mitglied_lehrgangInput = {
+    where: lehrgangWhereUniqueInput
+    create: XOR<lehrgangCreateWithoutFf_mitglied_lehrgangInput, lehrgangUncheckedCreateWithoutFf_mitglied_lehrgangInput>
+  }
+
+  export type ff_mitgliedUpsertWithoutFf_mitglied_lehrgangInput = {
+    update: XOR<ff_mitgliedUpdateWithoutFf_mitglied_lehrgangInput, ff_mitgliedUncheckedUpdateWithoutFf_mitglied_lehrgangInput>
+    create: XOR<ff_mitgliedCreateWithoutFf_mitglied_lehrgangInput, ff_mitgliedUncheckedCreateWithoutFf_mitglied_lehrgangInput>
+    where?: ff_mitgliedWhereInput
+  }
+
+  export type ff_mitgliedUpdateToOneWithWhereWithoutFf_mitglied_lehrgangInput = {
+    where?: ff_mitgliedWhereInput
+    data: XOR<ff_mitgliedUpdateWithoutFf_mitglied_lehrgangInput, ff_mitgliedUncheckedUpdateWithoutFf_mitglied_lehrgangInput>
+  }
+
+  export type ff_mitgliedUpdateWithoutFf_mitglied_lehrgangInput = {
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumff_mitglied_StatusFieldUpdateOperationsInput | $Enums.ff_mitglied_Status
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    person?: personUpdateOneRequiredWithoutFf_mitgliedNestedInput
+    mitglied_funktionen?: mitglied_funktionenUpdateManyWithoutFf_mitgliedNestedInput
+  }
+
+  export type ff_mitgliedUncheckedUpdateWithoutFf_mitglied_lehrgangInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumff_mitglied_StatusFieldUpdateOperationsInput | $Enums.ff_mitglied_Status
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    mitglied_funktionen?: mitglied_funktionenUncheckedUpdateManyWithoutFf_mitgliedNestedInput
+  }
+
+  export type lehrgangUpsertWithoutFf_mitglied_lehrgangInput = {
+    update: XOR<lehrgangUpdateWithoutFf_mitglied_lehrgangInput, lehrgangUncheckedUpdateWithoutFf_mitglied_lehrgangInput>
+    create: XOR<lehrgangCreateWithoutFf_mitglied_lehrgangInput, lehrgangUncheckedCreateWithoutFf_mitglied_lehrgangInput>
+    where?: lehrgangWhereInput
+  }
+
+  export type lehrgangUpdateToOneWithWhereWithoutFf_mitglied_lehrgangInput = {
+    where?: lehrgangWhereInput
+    data: XOR<lehrgangUpdateWithoutFf_mitglied_lehrgangInput, lehrgangUncheckedUpdateWithoutFf_mitglied_lehrgangInput>
+  }
+
+  export type lehrgangUpdateWithoutFf_mitglied_lehrgangInput = {
+    Abk_rzung?: NullableStringFieldUpdateOperationsInput | string | null
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Reihenfolge?: NullableIntFieldUpdateOperationsInput | number | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type lehrgangUncheckedUpdateWithoutFf_mitglied_lehrgangInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Abk_rzung?: NullableStringFieldUpdateOperationsInput | string | null
+    Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Reihenfolge?: NullableIntFieldUpdateOperationsInput | number | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type mitglied_funktionenCreateWithoutFunktion_ffInput = {
-    typ: $Enums.mitglied_funktionen_typ
+    Typ: $Enums.mitglied_funktionen_Typ
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
     ff_mitglied: ff_mitgliedCreateNestedOneWithoutMitglied_funktionenInput
   }
 
   export type mitglied_funktionenUncheckedCreateWithoutFunktion_ffInput = {
-    id?: number
-    mitglied_id: number
-    typ: $Enums.mitglied_funktionen_typ
+    ID?: number
+    Mitglied_ID: number
+    Typ: $Enums.mitglied_funktionen_Typ
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type mitglied_funktionenCreateOrConnectWithoutFunktion_ffInput = {
@@ -15438,18 +23083,24 @@ export namespace Prisma {
   }
 
   export type jf_mitgliedCreateWithoutJf_erziehungsberechtigterInput = {
-    eintrittsdatum: Date | string
-    austrittsdatum?: Date | string | null
-    status?: $Enums.jf_mitglied_status
+    Eintrittsdatum: Date | string
+    Austrittsdatum?: Date | string | null
+    Aufnahmedatum?: Date | string | null
+    Status?: $Enums.jf_mitglied_Status
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
     person: personCreateNestedOneWithoutJf_mitgliedInput
   }
 
   export type jf_mitgliedUncheckedCreateWithoutJf_erziehungsberechtigterInput = {
-    id?: number
-    person_id: number
-    eintrittsdatum: Date | string
-    austrittsdatum?: Date | string | null
-    status?: $Enums.jf_mitglied_status
+    ID?: number
+    Person_ID: number
+    Eintrittsdatum: Date | string
+    Austrittsdatum?: Date | string | null
+    Aufnahmedatum?: Date | string | null
+    Status?: $Enums.jf_mitglied_Status
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type jf_mitgliedCreateOrConnectWithoutJf_erziehungsberechtigterInput = {
@@ -15458,22 +23109,40 @@ export namespace Prisma {
   }
 
   export type personCreateWithoutJf_erziehungsberechtigterInput = {
-    vorname: string
-    name: string
-    geburtsdatum?: Date | string | null
-    email: string
+    Vorname: string
+    Name: string
+    Geburtsdatum?: Date | string | null
+    Strasse?: string | null
+    Hausnummer?: string | null
+    Postleitzahl?: string | null
+    Ort?: string | null
+    Email?: string | null
+    HandyNr?: number | null
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
     ff_mitglied?: ff_mitgliedCreateNestedManyWithoutPersonInput
     jf_mitglied?: jf_mitgliedCreateNestedManyWithoutPersonInput
+    mitglied_login?: mitglied_loginCreateNestedManyWithoutPersonInput
+    teilnahme?: teilnahmeCreateNestedManyWithoutPersonInput
   }
 
   export type personUncheckedCreateWithoutJf_erziehungsberechtigterInput = {
-    id?: number
-    vorname: string
-    name: string
-    geburtsdatum?: Date | string | null
-    email: string
+    ID?: number
+    Vorname: string
+    Name: string
+    Geburtsdatum?: Date | string | null
+    Strasse?: string | null
+    Hausnummer?: string | null
+    Postleitzahl?: string | null
+    Ort?: string | null
+    Email?: string | null
+    HandyNr?: number | null
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
     ff_mitglied?: ff_mitgliedUncheckedCreateNestedManyWithoutPersonInput
     jf_mitglied?: jf_mitgliedUncheckedCreateNestedManyWithoutPersonInput
+    mitglied_login?: mitglied_loginUncheckedCreateNestedManyWithoutPersonInput
+    teilnahme?: teilnahmeUncheckedCreateNestedManyWithoutPersonInput
   }
 
   export type personCreateOrConnectWithoutJf_erziehungsberechtigterInput = {
@@ -15493,18 +23162,24 @@ export namespace Prisma {
   }
 
   export type jf_mitgliedUpdateWithoutJf_erziehungsberechtigterInput = {
-    eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: Enumjf_mitglied_statusFieldUpdateOperationsInput | $Enums.jf_mitglied_status
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     person?: personUpdateOneRequiredWithoutJf_mitgliedNestedInput
   }
 
   export type jf_mitgliedUncheckedUpdateWithoutJf_erziehungsberechtigterInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    person_id?: IntFieldUpdateOperationsInput | number
-    eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: Enumjf_mitglied_statusFieldUpdateOperationsInput | $Enums.jf_mitglied_status
+    ID?: IntFieldUpdateOperationsInput | number
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type personUpsertWithoutJf_erziehungsberechtigterInput = {
@@ -15519,31 +23194,53 @@ export namespace Prisma {
   }
 
   export type personUpdateWithoutJf_erziehungsberechtigterInput = {
-    vorname?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    Vorname?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Email?: NullableStringFieldUpdateOperationsInput | string | null
+    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ff_mitglied?: ff_mitgliedUpdateManyWithoutPersonNestedInput
     jf_mitglied?: jf_mitgliedUpdateManyWithoutPersonNestedInput
+    mitglied_login?: mitglied_loginUpdateManyWithoutPersonNestedInput
+    teilnahme?: teilnahmeUpdateManyWithoutPersonNestedInput
   }
 
   export type personUncheckedUpdateWithoutJf_erziehungsberechtigterInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    vorname?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    ID?: IntFieldUpdateOperationsInput | number
+    Vorname?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Email?: NullableStringFieldUpdateOperationsInput | string | null
+    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ff_mitglied?: ff_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
     jf_mitglied?: jf_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
+    mitglied_login?: mitglied_loginUncheckedUpdateManyWithoutPersonNestedInput
+    teilnahme?: teilnahmeUncheckedUpdateManyWithoutPersonNestedInput
   }
 
   export type jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput = {
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
     person: personCreateNestedOneWithoutJf_erziehungsberechtigterInput
   }
 
   export type jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput = {
-    id?: number
-    person_id: number
+    ID?: number
+    Person_ID: number
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type jf_erziehungsberechtigterCreateOrConnectWithoutJf_mitgliedInput = {
@@ -15557,22 +23254,40 @@ export namespace Prisma {
   }
 
   export type personCreateWithoutJf_mitgliedInput = {
-    vorname: string
-    name: string
-    geburtsdatum?: Date | string | null
-    email: string
+    Vorname: string
+    Name: string
+    Geburtsdatum?: Date | string | null
+    Strasse?: string | null
+    Hausnummer?: string | null
+    Postleitzahl?: string | null
+    Ort?: string | null
+    Email?: string | null
+    HandyNr?: number | null
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
     ff_mitglied?: ff_mitgliedCreateNestedManyWithoutPersonInput
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterCreateNestedManyWithoutPersonInput
+    mitglied_login?: mitglied_loginCreateNestedManyWithoutPersonInput
+    teilnahme?: teilnahmeCreateNestedManyWithoutPersonInput
   }
 
   export type personUncheckedCreateWithoutJf_mitgliedInput = {
-    id?: number
-    vorname: string
-    name: string
-    geburtsdatum?: Date | string | null
-    email: string
+    ID?: number
+    Vorname: string
+    Name: string
+    Geburtsdatum?: Date | string | null
+    Strasse?: string | null
+    Hausnummer?: string | null
+    Postleitzahl?: string | null
+    Ort?: string | null
+    Email?: string | null
+    HandyNr?: number | null
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
     ff_mitglied?: ff_mitgliedUncheckedCreateNestedManyWithoutPersonInput
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedCreateNestedManyWithoutPersonInput
+    mitglied_login?: mitglied_loginUncheckedCreateNestedManyWithoutPersonInput
+    teilnahme?: teilnahmeUncheckedCreateNestedManyWithoutPersonInput
   }
 
   export type personCreateOrConnectWithoutJf_mitgliedInput = {
@@ -15600,9 +23315,11 @@ export namespace Prisma {
     AND?: jf_erziehungsberechtigterScalarWhereInput | jf_erziehungsberechtigterScalarWhereInput[]
     OR?: jf_erziehungsberechtigterScalarWhereInput[]
     NOT?: jf_erziehungsberechtigterScalarWhereInput | jf_erziehungsberechtigterScalarWhereInput[]
-    id?: IntFilter<"jf_erziehungsberechtigter"> | number
-    jf_mitglied_id?: IntFilter<"jf_erziehungsberechtigter"> | number
-    person_id?: IntFilter<"jf_erziehungsberechtigter"> | number
+    ID?: IntFilter<"jf_erziehungsberechtigter"> | number
+    JF_Mitglied_ID?: IntFilter<"jf_erziehungsberechtigter"> | number
+    Person_ID?: IntFilter<"jf_erziehungsberechtigter"> | number
+    Erstellt_am?: DateTimeNullableFilter<"jf_erziehungsberechtigter"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"jf_erziehungsberechtigter"> | Date | string | null
   }
 
   export type personUpsertWithoutJf_mitgliedInput = {
@@ -15617,39 +23334,104 @@ export namespace Prisma {
   }
 
   export type personUpdateWithoutJf_mitgliedInput = {
-    vorname?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    Vorname?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Email?: NullableStringFieldUpdateOperationsInput | string | null
+    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ff_mitglied?: ff_mitgliedUpdateManyWithoutPersonNestedInput
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterUpdateManyWithoutPersonNestedInput
+    mitglied_login?: mitglied_loginUpdateManyWithoutPersonNestedInput
+    teilnahme?: teilnahmeUpdateManyWithoutPersonNestedInput
   }
 
   export type personUncheckedUpdateWithoutJf_mitgliedInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    vorname?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    ID?: IntFieldUpdateOperationsInput | number
+    Vorname?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Email?: NullableStringFieldUpdateOperationsInput | string | null
+    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ff_mitglied?: ff_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedUpdateManyWithoutPersonNestedInput
+    mitglied_login?: mitglied_loginUncheckedUpdateManyWithoutPersonNestedInput
+    teilnahme?: teilnahmeUncheckedUpdateManyWithoutPersonNestedInput
+  }
+
+  export type ff_mitglied_lehrgangCreateWithoutLehrgangInput = {
+    Datum_bestanden?: Date | string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+    ff_mitglied: ff_mitgliedCreateNestedOneWithoutFf_mitglied_lehrgangInput
+  }
+
+  export type ff_mitglied_lehrgangUncheckedCreateWithoutLehrgangInput = {
+    ID?: number
+    FF_Mitglied_ID: number
+    Datum_bestanden?: Date | string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type ff_mitglied_lehrgangCreateOrConnectWithoutLehrgangInput = {
+    where: ff_mitglied_lehrgangWhereUniqueInput
+    create: XOR<ff_mitglied_lehrgangCreateWithoutLehrgangInput, ff_mitglied_lehrgangUncheckedCreateWithoutLehrgangInput>
+  }
+
+  export type ff_mitglied_lehrgangCreateManyLehrgangInputEnvelope = {
+    data: ff_mitglied_lehrgangCreateManyLehrgangInput | ff_mitglied_lehrgangCreateManyLehrgangInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ff_mitglied_lehrgangUpsertWithWhereUniqueWithoutLehrgangInput = {
+    where: ff_mitglied_lehrgangWhereUniqueInput
+    update: XOR<ff_mitglied_lehrgangUpdateWithoutLehrgangInput, ff_mitglied_lehrgangUncheckedUpdateWithoutLehrgangInput>
+    create: XOR<ff_mitglied_lehrgangCreateWithoutLehrgangInput, ff_mitglied_lehrgangUncheckedCreateWithoutLehrgangInput>
+  }
+
+  export type ff_mitglied_lehrgangUpdateWithWhereUniqueWithoutLehrgangInput = {
+    where: ff_mitglied_lehrgangWhereUniqueInput
+    data: XOR<ff_mitglied_lehrgangUpdateWithoutLehrgangInput, ff_mitglied_lehrgangUncheckedUpdateWithoutLehrgangInput>
+  }
+
+  export type ff_mitglied_lehrgangUpdateManyWithWhereWithoutLehrgangInput = {
+    where: ff_mitglied_lehrgangScalarWhereInput
+    data: XOR<ff_mitglied_lehrgangUpdateManyMutationInput, ff_mitglied_lehrgangUncheckedUpdateManyWithoutLehrgangInput>
   }
 
   export type ff_mitgliedCreateWithoutMitglied_funktionenInput = {
-    eintrittsdatum: Date | string
-    austrittsdatum?: Date | string | null
-    status?: $Enums.ff_mitglied_status
+    Eintrittsdatum: Date | string
+    Austrittsdatum?: Date | string | null
+    Aufnahmedatum?: Date | string | null
+    Status?: $Enums.ff_mitglied_Status
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
     person: personCreateNestedOneWithoutFf_mitgliedInput
-    teilnahme?: teilnahmeCreateNestedManyWithoutFf_mitgliedInput
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangCreateNestedManyWithoutFf_mitgliedInput
   }
 
   export type ff_mitgliedUncheckedCreateWithoutMitglied_funktionenInput = {
-    id?: number
-    person_id: number
-    eintrittsdatum: Date | string
-    austrittsdatum?: Date | string | null
-    status?: $Enums.ff_mitglied_status
-    teilnahme?: teilnahmeUncheckedCreateNestedManyWithoutFf_mitgliedInput
+    ID?: number
+    Person_ID: number
+    Eintrittsdatum: Date | string
+    Austrittsdatum?: Date | string | null
+    Aufnahmedatum?: Date | string | null
+    Status?: $Enums.ff_mitglied_Status
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangUncheckedCreateNestedManyWithoutFf_mitgliedInput
   }
 
   export type ff_mitgliedCreateOrConnectWithoutMitglied_funktionenInput = {
@@ -15658,14 +23440,18 @@ export namespace Prisma {
   }
 
   export type funktion_ffCreateWithoutMitglied_funktionenInput = {
-    name: string
-    ist_admin?: boolean
+    Name: string
+    Ist_Admin?: boolean
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type funktion_ffUncheckedCreateWithoutMitglied_funktionenInput = {
-    id?: number
-    name: string
-    ist_admin?: boolean
+    ID?: number
+    Name: string
+    Ist_Admin?: boolean
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type funktion_ffCreateOrConnectWithoutMitglied_funktionenInput = {
@@ -15685,20 +23471,26 @@ export namespace Prisma {
   }
 
   export type ff_mitgliedUpdateWithoutMitglied_funktionenInput = {
-    eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: Enumff_mitglied_statusFieldUpdateOperationsInput | $Enums.ff_mitglied_status
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumff_mitglied_StatusFieldUpdateOperationsInput | $Enums.ff_mitglied_Status
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     person?: personUpdateOneRequiredWithoutFf_mitgliedNestedInput
-    teilnahme?: teilnahmeUpdateManyWithoutFf_mitgliedNestedInput
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangUpdateManyWithoutFf_mitgliedNestedInput
   }
 
   export type ff_mitgliedUncheckedUpdateWithoutMitglied_funktionenInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    person_id?: IntFieldUpdateOperationsInput | number
-    eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: Enumff_mitglied_statusFieldUpdateOperationsInput | $Enums.ff_mitglied_status
-    teilnahme?: teilnahmeUncheckedUpdateManyWithoutFf_mitgliedNestedInput
+    ID?: IntFieldUpdateOperationsInput | number
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumff_mitglied_StatusFieldUpdateOperationsInput | $Enums.ff_mitglied_Status
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangUncheckedUpdateManyWithoutFf_mitgliedNestedInput
   }
 
   export type funktion_ffUpsertWithoutMitglied_funktionenInput = {
@@ -15713,31 +23505,131 @@ export namespace Prisma {
   }
 
   export type funktion_ffUpdateWithoutMitglied_funktionenInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    ist_admin?: BoolFieldUpdateOperationsInput | boolean
+    Name?: StringFieldUpdateOperationsInput | string
+    Ist_Admin?: BoolFieldUpdateOperationsInput | boolean
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type funktion_ffUncheckedUpdateWithoutMitglied_funktionenInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    ist_admin?: BoolFieldUpdateOperationsInput | boolean
+    ID?: IntFieldUpdateOperationsInput | number
+    Name?: StringFieldUpdateOperationsInput | string
+    Ist_Admin?: BoolFieldUpdateOperationsInput | boolean
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type personCreateWithoutMitglied_loginInput = {
+    Vorname: string
+    Name: string
+    Geburtsdatum?: Date | string | null
+    Strasse?: string | null
+    Hausnummer?: string | null
+    Postleitzahl?: string | null
+    Ort?: string | null
+    Email?: string | null
+    HandyNr?: number | null
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
+    ff_mitglied?: ff_mitgliedCreateNestedManyWithoutPersonInput
+    jf_erziehungsberechtigter?: jf_erziehungsberechtigterCreateNestedManyWithoutPersonInput
+    jf_mitglied?: jf_mitgliedCreateNestedManyWithoutPersonInput
+    teilnahme?: teilnahmeCreateNestedManyWithoutPersonInput
+  }
+
+  export type personUncheckedCreateWithoutMitglied_loginInput = {
+    ID?: number
+    Vorname: string
+    Name: string
+    Geburtsdatum?: Date | string | null
+    Strasse?: string | null
+    Hausnummer?: string | null
+    Postleitzahl?: string | null
+    Ort?: string | null
+    Email?: string | null
+    HandyNr?: number | null
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
+    ff_mitglied?: ff_mitgliedUncheckedCreateNestedManyWithoutPersonInput
+    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedCreateNestedManyWithoutPersonInput
+    jf_mitglied?: jf_mitgliedUncheckedCreateNestedManyWithoutPersonInput
+    teilnahme?: teilnahmeUncheckedCreateNestedManyWithoutPersonInput
+  }
+
+  export type personCreateOrConnectWithoutMitglied_loginInput = {
+    where: personWhereUniqueInput
+    create: XOR<personCreateWithoutMitglied_loginInput, personUncheckedCreateWithoutMitglied_loginInput>
+  }
+
+  export type personUpsertWithoutMitglied_loginInput = {
+    update: XOR<personUpdateWithoutMitglied_loginInput, personUncheckedUpdateWithoutMitglied_loginInput>
+    create: XOR<personCreateWithoutMitglied_loginInput, personUncheckedCreateWithoutMitglied_loginInput>
+    where?: personWhereInput
+  }
+
+  export type personUpdateToOneWithWhereWithoutMitglied_loginInput = {
+    where?: personWhereInput
+    data: XOR<personUpdateWithoutMitglied_loginInput, personUncheckedUpdateWithoutMitglied_loginInput>
+  }
+
+  export type personUpdateWithoutMitglied_loginInput = {
+    Vorname?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Email?: NullableStringFieldUpdateOperationsInput | string | null
+    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ff_mitglied?: ff_mitgliedUpdateManyWithoutPersonNestedInput
+    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUpdateManyWithoutPersonNestedInput
+    jf_mitglied?: jf_mitgliedUpdateManyWithoutPersonNestedInput
+    teilnahme?: teilnahmeUpdateManyWithoutPersonNestedInput
+  }
+
+  export type personUncheckedUpdateWithoutMitglied_loginInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Vorname?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Email?: NullableStringFieldUpdateOperationsInput | string | null
+    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ff_mitglied?: ff_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
+    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedUpdateManyWithoutPersonNestedInput
+    jf_mitglied?: jf_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
+    teilnahme?: teilnahmeUncheckedUpdateManyWithoutPersonNestedInput
   }
 
   export type ff_mitgliedCreateWithoutPersonInput = {
-    eintrittsdatum: Date | string
-    austrittsdatum?: Date | string | null
-    status?: $Enums.ff_mitglied_status
+    Eintrittsdatum: Date | string
+    Austrittsdatum?: Date | string | null
+    Aufnahmedatum?: Date | string | null
+    Status?: $Enums.ff_mitglied_Status
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangCreateNestedManyWithoutFf_mitgliedInput
     mitglied_funktionen?: mitglied_funktionenCreateNestedManyWithoutFf_mitgliedInput
-    teilnahme?: teilnahmeCreateNestedManyWithoutFf_mitgliedInput
   }
 
   export type ff_mitgliedUncheckedCreateWithoutPersonInput = {
-    id?: number
-    eintrittsdatum: Date | string
-    austrittsdatum?: Date | string | null
-    status?: $Enums.ff_mitglied_status
+    ID?: number
+    Eintrittsdatum: Date | string
+    Austrittsdatum?: Date | string | null
+    Aufnahmedatum?: Date | string | null
+    Status?: $Enums.ff_mitglied_Status
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangUncheckedCreateNestedManyWithoutFf_mitgliedInput
     mitglied_funktionen?: mitglied_funktionenUncheckedCreateNestedManyWithoutFf_mitgliedInput
-    teilnahme?: teilnahmeUncheckedCreateNestedManyWithoutFf_mitgliedInput
   }
 
   export type ff_mitgliedCreateOrConnectWithoutPersonInput = {
@@ -15751,12 +23643,16 @@ export namespace Prisma {
   }
 
   export type jf_erziehungsberechtigterCreateWithoutPersonInput = {
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
     jf_mitglied: jf_mitgliedCreateNestedOneWithoutJf_erziehungsberechtigterInput
   }
 
   export type jf_erziehungsberechtigterUncheckedCreateWithoutPersonInput = {
-    id?: number
-    jf_mitglied_id: number
+    ID?: number
+    JF_Mitglied_ID: number
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type jf_erziehungsberechtigterCreateOrConnectWithoutPersonInput = {
@@ -15770,17 +23666,23 @@ export namespace Prisma {
   }
 
   export type jf_mitgliedCreateWithoutPersonInput = {
-    eintrittsdatum: Date | string
-    austrittsdatum?: Date | string | null
-    status?: $Enums.jf_mitglied_status
+    Eintrittsdatum: Date | string
+    Austrittsdatum?: Date | string | null
+    Aufnahmedatum?: Date | string | null
+    Status?: $Enums.jf_mitglied_Status
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterCreateNestedManyWithoutJf_mitgliedInput
   }
 
   export type jf_mitgliedUncheckedCreateWithoutPersonInput = {
-    id?: number
-    eintrittsdatum: Date | string
-    austrittsdatum?: Date | string | null
-    status?: $Enums.jf_mitglied_status
+    ID?: number
+    Eintrittsdatum: Date | string
+    Austrittsdatum?: Date | string | null
+    Aufnahmedatum?: Date | string | null
+    Status?: $Enums.jf_mitglied_Status
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedCreateNestedManyWithoutJf_mitgliedInput
   }
 
@@ -15791,6 +23693,56 @@ export namespace Prisma {
 
   export type jf_mitgliedCreateManyPersonInputEnvelope = {
     data: jf_mitgliedCreateManyPersonInput | jf_mitgliedCreateManyPersonInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type mitglied_loginCreateWithoutPersonInput = {
+    Benutzer_ID: number
+    Typ: $Enums.mitglied_login_Typ
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
+  }
+
+  export type mitglied_loginUncheckedCreateWithoutPersonInput = {
+    ID?: number
+    Benutzer_ID: number
+    Typ: $Enums.mitglied_login_Typ
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
+  }
+
+  export type mitglied_loginCreateOrConnectWithoutPersonInput = {
+    where: mitglied_loginWhereUniqueInput
+    create: XOR<mitglied_loginCreateWithoutPersonInput, mitglied_loginUncheckedCreateWithoutPersonInput>
+  }
+
+  export type mitglied_loginCreateManyPersonInputEnvelope = {
+    data: mitglied_loginCreateManyPersonInput | mitglied_loginCreateManyPersonInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type teilnahmeCreateWithoutPersonInput = {
+    Veranstaltung_ID: number
+    Typ: $Enums.teilnahme_Typ
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
+  }
+
+  export type teilnahmeUncheckedCreateWithoutPersonInput = {
+    ID?: number
+    Veranstaltung_ID: number
+    Typ: $Enums.teilnahme_Typ
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
+  }
+
+  export type teilnahmeCreateOrConnectWithoutPersonInput = {
+    where: teilnahmeWhereUniqueInput
+    create: XOR<teilnahmeCreateWithoutPersonInput, teilnahmeUncheckedCreateWithoutPersonInput>
+  }
+
+  export type teilnahmeCreateManyPersonInputEnvelope = {
+    data: teilnahmeCreateManyPersonInput | teilnahmeCreateManyPersonInput[]
     skipDuplicates?: boolean
   }
 
@@ -15814,11 +23766,14 @@ export namespace Prisma {
     AND?: ff_mitgliedScalarWhereInput | ff_mitgliedScalarWhereInput[]
     OR?: ff_mitgliedScalarWhereInput[]
     NOT?: ff_mitgliedScalarWhereInput | ff_mitgliedScalarWhereInput[]
-    id?: IntFilter<"ff_mitglied"> | number
-    person_id?: IntFilter<"ff_mitglied"> | number
-    eintrittsdatum?: DateTimeFilter<"ff_mitglied"> | Date | string
-    austrittsdatum?: DateTimeNullableFilter<"ff_mitglied"> | Date | string | null
-    status?: Enumff_mitglied_statusFilter<"ff_mitglied"> | $Enums.ff_mitglied_status
+    ID?: IntFilter<"ff_mitglied"> | number
+    Person_ID?: IntFilter<"ff_mitglied"> | number
+    Eintrittsdatum?: DateTimeFilter<"ff_mitglied"> | Date | string
+    Austrittsdatum?: DateTimeNullableFilter<"ff_mitglied"> | Date | string | null
+    Aufnahmedatum?: DateTimeNullableFilter<"ff_mitglied"> | Date | string | null
+    Status?: Enumff_mitglied_StatusFilter<"ff_mitglied"> | $Enums.ff_mitglied_Status
+    Erstellt_am?: DateTimeFilter<"ff_mitglied"> | Date | string
+    Geaendert_am?: DateTimeNullableFilter<"ff_mitglied"> | Date | string | null
   }
 
   export type jf_erziehungsberechtigterUpsertWithWhereUniqueWithoutPersonInput = {
@@ -15857,228 +23812,484 @@ export namespace Prisma {
     AND?: jf_mitgliedScalarWhereInput | jf_mitgliedScalarWhereInput[]
     OR?: jf_mitgliedScalarWhereInput[]
     NOT?: jf_mitgliedScalarWhereInput | jf_mitgliedScalarWhereInput[]
-    id?: IntFilter<"jf_mitglied"> | number
-    person_id?: IntFilter<"jf_mitglied"> | number
-    eintrittsdatum?: DateTimeFilter<"jf_mitglied"> | Date | string
-    austrittsdatum?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
-    status?: Enumjf_mitglied_statusFilter<"jf_mitglied"> | $Enums.jf_mitglied_status
+    ID?: IntFilter<"jf_mitglied"> | number
+    Person_ID?: IntFilter<"jf_mitglied"> | number
+    Eintrittsdatum?: DateTimeFilter<"jf_mitglied"> | Date | string
+    Austrittsdatum?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
+    Aufnahmedatum?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
+    Status?: Enumjf_mitglied_StatusFilter<"jf_mitglied"> | $Enums.jf_mitglied_Status
+    Erstellt_am?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
   }
 
-  export type ff_mitgliedCreateWithoutTeilnahmeInput = {
-    eintrittsdatum: Date | string
-    austrittsdatum?: Date | string | null
-    status?: $Enums.ff_mitglied_status
-    person: personCreateNestedOneWithoutFf_mitgliedInput
-    mitglied_funktionen?: mitglied_funktionenCreateNestedManyWithoutFf_mitgliedInput
+  export type mitglied_loginUpsertWithWhereUniqueWithoutPersonInput = {
+    where: mitglied_loginWhereUniqueInput
+    update: XOR<mitglied_loginUpdateWithoutPersonInput, mitglied_loginUncheckedUpdateWithoutPersonInput>
+    create: XOR<mitglied_loginCreateWithoutPersonInput, mitglied_loginUncheckedCreateWithoutPersonInput>
   }
 
-  export type ff_mitgliedUncheckedCreateWithoutTeilnahmeInput = {
-    id?: number
-    person_id: number
-    eintrittsdatum: Date | string
-    austrittsdatum?: Date | string | null
-    status?: $Enums.ff_mitglied_status
-    mitglied_funktionen?: mitglied_funktionenUncheckedCreateNestedManyWithoutFf_mitgliedInput
+  export type mitglied_loginUpdateWithWhereUniqueWithoutPersonInput = {
+    where: mitglied_loginWhereUniqueInput
+    data: XOR<mitglied_loginUpdateWithoutPersonInput, mitglied_loginUncheckedUpdateWithoutPersonInput>
   }
 
-  export type ff_mitgliedCreateOrConnectWithoutTeilnahmeInput = {
-    where: ff_mitgliedWhereUniqueInput
-    create: XOR<ff_mitgliedCreateWithoutTeilnahmeInput, ff_mitgliedUncheckedCreateWithoutTeilnahmeInput>
+  export type mitglied_loginUpdateManyWithWhereWithoutPersonInput = {
+    where: mitglied_loginScalarWhereInput
+    data: XOR<mitglied_loginUpdateManyMutationInput, mitglied_loginUncheckedUpdateManyWithoutPersonInput>
   }
 
-  export type ff_mitgliedUpsertWithoutTeilnahmeInput = {
-    update: XOR<ff_mitgliedUpdateWithoutTeilnahmeInput, ff_mitgliedUncheckedUpdateWithoutTeilnahmeInput>
-    create: XOR<ff_mitgliedCreateWithoutTeilnahmeInput, ff_mitgliedUncheckedCreateWithoutTeilnahmeInput>
-    where?: ff_mitgliedWhereInput
+  export type mitglied_loginScalarWhereInput = {
+    AND?: mitglied_loginScalarWhereInput | mitglied_loginScalarWhereInput[]
+    OR?: mitglied_loginScalarWhereInput[]
+    NOT?: mitglied_loginScalarWhereInput | mitglied_loginScalarWhereInput[]
+    ID?: IntFilter<"mitglied_login"> | number
+    Benutzer_ID?: IntFilter<"mitglied_login"> | number
+    Mitglied_ID?: IntFilter<"mitglied_login"> | number
+    Typ?: Enummitglied_login_TypFilter<"mitglied_login"> | $Enums.mitglied_login_Typ
+    Erstellt_am?: DateTimeFilter<"mitglied_login"> | Date | string
+    Geaendert_am?: DateTimeNullableFilter<"mitglied_login"> | Date | string | null
   }
 
-  export type ff_mitgliedUpdateToOneWithWhereWithoutTeilnahmeInput = {
-    where?: ff_mitgliedWhereInput
-    data: XOR<ff_mitgliedUpdateWithoutTeilnahmeInput, ff_mitgliedUncheckedUpdateWithoutTeilnahmeInput>
+  export type teilnahmeUpsertWithWhereUniqueWithoutPersonInput = {
+    where: teilnahmeWhereUniqueInput
+    update: XOR<teilnahmeUpdateWithoutPersonInput, teilnahmeUncheckedUpdateWithoutPersonInput>
+    create: XOR<teilnahmeCreateWithoutPersonInput, teilnahmeUncheckedCreateWithoutPersonInput>
   }
 
-  export type ff_mitgliedUpdateWithoutTeilnahmeInput = {
-    eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: Enumff_mitglied_statusFieldUpdateOperationsInput | $Enums.ff_mitglied_status
-    person?: personUpdateOneRequiredWithoutFf_mitgliedNestedInput
-    mitglied_funktionen?: mitglied_funktionenUpdateManyWithoutFf_mitgliedNestedInput
+  export type teilnahmeUpdateWithWhereUniqueWithoutPersonInput = {
+    where: teilnahmeWhereUniqueInput
+    data: XOR<teilnahmeUpdateWithoutPersonInput, teilnahmeUncheckedUpdateWithoutPersonInput>
   }
 
-  export type ff_mitgliedUncheckedUpdateWithoutTeilnahmeInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    person_id?: IntFieldUpdateOperationsInput | number
-    eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: Enumff_mitglied_statusFieldUpdateOperationsInput | $Enums.ff_mitglied_status
-    mitglied_funktionen?: mitglied_funktionenUncheckedUpdateManyWithoutFf_mitgliedNestedInput
+  export type teilnahmeUpdateManyWithWhereWithoutPersonInput = {
+    where: teilnahmeScalarWhereInput
+    data: XOR<teilnahmeUpdateManyMutationInput, teilnahmeUncheckedUpdateManyWithoutPersonInput>
+  }
+
+  export type teilnahmeScalarWhereInput = {
+    AND?: teilnahmeScalarWhereInput | teilnahmeScalarWhereInput[]
+    OR?: teilnahmeScalarWhereInput[]
+    NOT?: teilnahmeScalarWhereInput | teilnahmeScalarWhereInput[]
+    ID?: IntFilter<"teilnahme"> | number
+    Mitglied_ID?: IntFilter<"teilnahme"> | number
+    Veranstaltung_ID?: IntFilter<"teilnahme"> | number
+    Typ?: Enumteilnahme_TypFilter<"teilnahme"> | $Enums.teilnahme_Typ
+    Erstellt_am?: DateTimeFilter<"teilnahme"> | Date | string
+    Geaendert_am?: DateTimeNullableFilter<"teilnahme"> | Date | string | null
+  }
+
+  export type personCreateWithoutTeilnahmeInput = {
+    Vorname: string
+    Name: string
+    Geburtsdatum?: Date | string | null
+    Strasse?: string | null
+    Hausnummer?: string | null
+    Postleitzahl?: string | null
+    Ort?: string | null
+    Email?: string | null
+    HandyNr?: number | null
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
+    ff_mitglied?: ff_mitgliedCreateNestedManyWithoutPersonInput
+    jf_erziehungsberechtigter?: jf_erziehungsberechtigterCreateNestedManyWithoutPersonInput
+    jf_mitglied?: jf_mitgliedCreateNestedManyWithoutPersonInput
+    mitglied_login?: mitglied_loginCreateNestedManyWithoutPersonInput
+  }
+
+  export type personUncheckedCreateWithoutTeilnahmeInput = {
+    ID?: number
+    Vorname: string
+    Name: string
+    Geburtsdatum?: Date | string | null
+    Strasse?: string | null
+    Hausnummer?: string | null
+    Postleitzahl?: string | null
+    Ort?: string | null
+    Email?: string | null
+    HandyNr?: number | null
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
+    ff_mitglied?: ff_mitgliedUncheckedCreateNestedManyWithoutPersonInput
+    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedCreateNestedManyWithoutPersonInput
+    jf_mitglied?: jf_mitgliedUncheckedCreateNestedManyWithoutPersonInput
+    mitglied_login?: mitglied_loginUncheckedCreateNestedManyWithoutPersonInput
+  }
+
+  export type personCreateOrConnectWithoutTeilnahmeInput = {
+    where: personWhereUniqueInput
+    create: XOR<personCreateWithoutTeilnahmeInput, personUncheckedCreateWithoutTeilnahmeInput>
+  }
+
+  export type personUpsertWithoutTeilnahmeInput = {
+    update: XOR<personUpdateWithoutTeilnahmeInput, personUncheckedUpdateWithoutTeilnahmeInput>
+    create: XOR<personCreateWithoutTeilnahmeInput, personUncheckedCreateWithoutTeilnahmeInput>
+    where?: personWhereInput
+  }
+
+  export type personUpdateToOneWithWhereWithoutTeilnahmeInput = {
+    where?: personWhereInput
+    data: XOR<personUpdateWithoutTeilnahmeInput, personUncheckedUpdateWithoutTeilnahmeInput>
+  }
+
+  export type personUpdateWithoutTeilnahmeInput = {
+    Vorname?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Email?: NullableStringFieldUpdateOperationsInput | string | null
+    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ff_mitglied?: ff_mitgliedUpdateManyWithoutPersonNestedInput
+    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUpdateManyWithoutPersonNestedInput
+    jf_mitglied?: jf_mitgliedUpdateManyWithoutPersonNestedInput
+    mitglied_login?: mitglied_loginUpdateManyWithoutPersonNestedInput
+  }
+
+  export type personUncheckedUpdateWithoutTeilnahmeInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Vorname?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Email?: NullableStringFieldUpdateOperationsInput | string | null
+    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ff_mitglied?: ff_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
+    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedUpdateManyWithoutPersonNestedInput
+    jf_mitglied?: jf_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
+    mitglied_login?: mitglied_loginUncheckedUpdateManyWithoutPersonNestedInput
+  }
+
+  export type ff_mitglied_lehrgangCreateManyFf_mitgliedInput = {
+    ID?: number
+    Lehrgang_ID: number
+    Datum_bestanden?: Date | string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type mitglied_funktionenCreateManyFf_mitgliedInput = {
-    id?: number
-    funktion_id: number
-    typ: $Enums.mitglied_funktionen_typ
+    ID?: number
+    Funktion_ID: number
+    Typ: $Enums.mitglied_funktionen_Typ
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
-  export type teilnahmeCreateManyFf_mitgliedInput = {
-    id?: number
-    veranstaltung_id: number
-    typ: $Enums.teilnahme_typ
+  export type ff_mitglied_lehrgangUpdateWithoutFf_mitgliedInput = {
+    Datum_bestanden?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lehrgang?: lehrgangUpdateOneRequiredWithoutFf_mitglied_lehrgangNestedInput
+  }
+
+  export type ff_mitglied_lehrgangUncheckedUpdateWithoutFf_mitgliedInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Lehrgang_ID?: IntFieldUpdateOperationsInput | number
+    Datum_bestanden?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ff_mitglied_lehrgangUncheckedUpdateManyWithoutFf_mitgliedInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Lehrgang_ID?: IntFieldUpdateOperationsInput | number
+    Datum_bestanden?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type mitglied_funktionenUpdateWithoutFf_mitgliedInput = {
-    typ?: Enummitglied_funktionen_typFieldUpdateOperationsInput | $Enums.mitglied_funktionen_typ
+    Typ?: Enummitglied_funktionen_TypFieldUpdateOperationsInput | $Enums.mitglied_funktionen_Typ
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     funktion_ff?: funktion_ffUpdateOneRequiredWithoutMitglied_funktionenNestedInput
   }
 
   export type mitglied_funktionenUncheckedUpdateWithoutFf_mitgliedInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    funktion_id?: IntFieldUpdateOperationsInput | number
-    typ?: Enummitglied_funktionen_typFieldUpdateOperationsInput | $Enums.mitglied_funktionen_typ
+    ID?: IntFieldUpdateOperationsInput | number
+    Funktion_ID?: IntFieldUpdateOperationsInput | number
+    Typ?: Enummitglied_funktionen_TypFieldUpdateOperationsInput | $Enums.mitglied_funktionen_Typ
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type mitglied_funktionenUncheckedUpdateManyWithoutFf_mitgliedInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    funktion_id?: IntFieldUpdateOperationsInput | number
-    typ?: Enummitglied_funktionen_typFieldUpdateOperationsInput | $Enums.mitglied_funktionen_typ
-  }
-
-  export type teilnahmeUpdateWithoutFf_mitgliedInput = {
-    veranstaltung_id?: IntFieldUpdateOperationsInput | number
-    typ?: Enumteilnahme_typFieldUpdateOperationsInput | $Enums.teilnahme_typ
-  }
-
-  export type teilnahmeUncheckedUpdateWithoutFf_mitgliedInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    veranstaltung_id?: IntFieldUpdateOperationsInput | number
-    typ?: Enumteilnahme_typFieldUpdateOperationsInput | $Enums.teilnahme_typ
-  }
-
-  export type teilnahmeUncheckedUpdateManyWithoutFf_mitgliedInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    veranstaltung_id?: IntFieldUpdateOperationsInput | number
-    typ?: Enumteilnahme_typFieldUpdateOperationsInput | $Enums.teilnahme_typ
+    ID?: IntFieldUpdateOperationsInput | number
+    Funktion_ID?: IntFieldUpdateOperationsInput | number
+    Typ?: Enummitglied_funktionen_TypFieldUpdateOperationsInput | $Enums.mitglied_funktionen_Typ
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type mitglied_funktionenCreateManyFunktion_ffInput = {
-    id?: number
-    mitglied_id: number
-    typ: $Enums.mitglied_funktionen_typ
+    ID?: number
+    Mitglied_ID: number
+    Typ: $Enums.mitglied_funktionen_Typ
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type mitglied_funktionenUpdateWithoutFunktion_ffInput = {
-    typ?: Enummitglied_funktionen_typFieldUpdateOperationsInput | $Enums.mitglied_funktionen_typ
+    Typ?: Enummitglied_funktionen_TypFieldUpdateOperationsInput | $Enums.mitglied_funktionen_Typ
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ff_mitglied?: ff_mitgliedUpdateOneRequiredWithoutMitglied_funktionenNestedInput
   }
 
   export type mitglied_funktionenUncheckedUpdateWithoutFunktion_ffInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    mitglied_id?: IntFieldUpdateOperationsInput | number
-    typ?: Enummitglied_funktionen_typFieldUpdateOperationsInput | $Enums.mitglied_funktionen_typ
+    ID?: IntFieldUpdateOperationsInput | number
+    Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Typ?: Enummitglied_funktionen_TypFieldUpdateOperationsInput | $Enums.mitglied_funktionen_Typ
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type mitglied_funktionenUncheckedUpdateManyWithoutFunktion_ffInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    mitglied_id?: IntFieldUpdateOperationsInput | number
-    typ?: Enummitglied_funktionen_typFieldUpdateOperationsInput | $Enums.mitglied_funktionen_typ
+    ID?: IntFieldUpdateOperationsInput | number
+    Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Typ?: Enummitglied_funktionen_TypFieldUpdateOperationsInput | $Enums.mitglied_funktionen_Typ
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type jf_erziehungsberechtigterCreateManyJf_mitgliedInput = {
-    id?: number
-    person_id: number
+    ID?: number
+    Person_ID: number
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type jf_erziehungsberechtigterUpdateWithoutJf_mitgliedInput = {
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     person?: personUpdateOneRequiredWithoutJf_erziehungsberechtigterNestedInput
   }
 
   export type jf_erziehungsberechtigterUncheckedUpdateWithoutJf_mitgliedInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    person_id?: IntFieldUpdateOperationsInput | number
+    ID?: IntFieldUpdateOperationsInput | number
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type jf_erziehungsberechtigterUncheckedUpdateManyWithoutJf_mitgliedInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    person_id?: IntFieldUpdateOperationsInput | number
+    ID?: IntFieldUpdateOperationsInput | number
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ff_mitglied_lehrgangCreateManyLehrgangInput = {
+    ID?: number
+    FF_Mitglied_ID: number
+    Datum_bestanden?: Date | string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type ff_mitglied_lehrgangUpdateWithoutLehrgangInput = {
+    Datum_bestanden?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ff_mitglied?: ff_mitgliedUpdateOneRequiredWithoutFf_mitglied_lehrgangNestedInput
+  }
+
+  export type ff_mitglied_lehrgangUncheckedUpdateWithoutLehrgangInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    FF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Datum_bestanden?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ff_mitglied_lehrgangUncheckedUpdateManyWithoutLehrgangInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    FF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Datum_bestanden?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ff_mitgliedCreateManyPersonInput = {
-    id?: number
-    eintrittsdatum: Date | string
-    austrittsdatum?: Date | string | null
-    status?: $Enums.ff_mitglied_status
+    ID?: number
+    Eintrittsdatum: Date | string
+    Austrittsdatum?: Date | string | null
+    Aufnahmedatum?: Date | string | null
+    Status?: $Enums.ff_mitglied_Status
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
   }
 
   export type jf_erziehungsberechtigterCreateManyPersonInput = {
-    id?: number
-    jf_mitglied_id: number
+    ID?: number
+    JF_Mitglied_ID: number
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type jf_mitgliedCreateManyPersonInput = {
-    id?: number
-    eintrittsdatum: Date | string
-    austrittsdatum?: Date | string | null
-    status?: $Enums.jf_mitglied_status
+    ID?: number
+    Eintrittsdatum: Date | string
+    Austrittsdatum?: Date | string | null
+    Aufnahmedatum?: Date | string | null
+    Status?: $Enums.jf_mitglied_Status
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type mitglied_loginCreateManyPersonInput = {
+    ID?: number
+    Benutzer_ID: number
+    Typ: $Enums.mitglied_login_Typ
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
+  }
+
+  export type teilnahmeCreateManyPersonInput = {
+    ID?: number
+    Veranstaltung_ID: number
+    Typ: $Enums.teilnahme_Typ
+    Erstellt_am: Date | string
+    Geaendert_am?: Date | string | null
   }
 
   export type ff_mitgliedUpdateWithoutPersonInput = {
-    eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: Enumff_mitglied_statusFieldUpdateOperationsInput | $Enums.ff_mitglied_status
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumff_mitglied_StatusFieldUpdateOperationsInput | $Enums.ff_mitglied_Status
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangUpdateManyWithoutFf_mitgliedNestedInput
     mitglied_funktionen?: mitglied_funktionenUpdateManyWithoutFf_mitgliedNestedInput
-    teilnahme?: teilnahmeUpdateManyWithoutFf_mitgliedNestedInput
   }
 
   export type ff_mitgliedUncheckedUpdateWithoutPersonInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: Enumff_mitglied_statusFieldUpdateOperationsInput | $Enums.ff_mitglied_status
+    ID?: IntFieldUpdateOperationsInput | number
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumff_mitglied_StatusFieldUpdateOperationsInput | $Enums.ff_mitglied_Status
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ff_mitglied_lehrgang?: ff_mitglied_lehrgangUncheckedUpdateManyWithoutFf_mitgliedNestedInput
     mitglied_funktionen?: mitglied_funktionenUncheckedUpdateManyWithoutFf_mitgliedNestedInput
-    teilnahme?: teilnahmeUncheckedUpdateManyWithoutFf_mitgliedNestedInput
   }
 
   export type ff_mitgliedUncheckedUpdateManyWithoutPersonInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: Enumff_mitglied_statusFieldUpdateOperationsInput | $Enums.ff_mitglied_status
+    ID?: IntFieldUpdateOperationsInput | number
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumff_mitglied_StatusFieldUpdateOperationsInput | $Enums.ff_mitglied_Status
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type jf_erziehungsberechtigterUpdateWithoutPersonInput = {
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     jf_mitglied?: jf_mitgliedUpdateOneRequiredWithoutJf_erziehungsberechtigterNestedInput
   }
 
   export type jf_erziehungsberechtigterUncheckedUpdateWithoutPersonInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    jf_mitglied_id?: IntFieldUpdateOperationsInput | number
+    ID?: IntFieldUpdateOperationsInput | number
+    JF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type jf_erziehungsberechtigterUncheckedUpdateManyWithoutPersonInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    jf_mitglied_id?: IntFieldUpdateOperationsInput | number
+    ID?: IntFieldUpdateOperationsInput | number
+    JF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type jf_mitgliedUpdateWithoutPersonInput = {
-    eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: Enumjf_mitglied_statusFieldUpdateOperationsInput | $Enums.jf_mitglied_status
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterUpdateManyWithoutJf_mitgliedNestedInput
   }
 
   export type jf_mitgliedUncheckedUpdateWithoutPersonInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: Enumjf_mitglied_statusFieldUpdateOperationsInput | $Enums.jf_mitglied_status
+    ID?: IntFieldUpdateOperationsInput | number
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedUpdateManyWithoutJf_mitgliedNestedInput
   }
 
   export type jf_mitgliedUncheckedUpdateManyWithoutPersonInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: Enumjf_mitglied_statusFieldUpdateOperationsInput | $Enums.jf_mitglied_status
+    ID?: IntFieldUpdateOperationsInput | number
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type mitglied_loginUpdateWithoutPersonInput = {
+    Benutzer_ID?: IntFieldUpdateOperationsInput | number
+    Typ?: Enummitglied_login_TypFieldUpdateOperationsInput | $Enums.mitglied_login_Typ
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type mitglied_loginUncheckedUpdateWithoutPersonInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Benutzer_ID?: IntFieldUpdateOperationsInput | number
+    Typ?: Enummitglied_login_TypFieldUpdateOperationsInput | $Enums.mitglied_login_Typ
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type mitglied_loginUncheckedUpdateManyWithoutPersonInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Benutzer_ID?: IntFieldUpdateOperationsInput | number
+    Typ?: Enummitglied_login_TypFieldUpdateOperationsInput | $Enums.mitglied_login_Typ
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type teilnahmeUpdateWithoutPersonInput = {
+    Veranstaltung_ID?: IntFieldUpdateOperationsInput | number
+    Typ?: Enumteilnahme_TypFieldUpdateOperationsInput | $Enums.teilnahme_Typ
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type teilnahmeUncheckedUpdateWithoutPersonInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Veranstaltung_ID?: IntFieldUpdateOperationsInput | number
+    Typ?: Enumteilnahme_TypFieldUpdateOperationsInput | $Enums.teilnahme_Typ
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type teilnahmeUncheckedUpdateManyWithoutPersonInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Veranstaltung_ID?: IntFieldUpdateOperationsInput | number
+    Typ?: Enumteilnahme_TypFieldUpdateOperationsInput | $Enums.teilnahme_Typ
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
 

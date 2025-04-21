@@ -38,18 +38,18 @@ export type vereinszuordnung = $Result.DefaultSelection<Prisma.$vereinszuordnung
  * Enums
  */
 export namespace $Enums {
-  export const vereinszuordnung_rolle: {
+  export const vereinszuordnung_Rolle: {
   mitglied: 'mitglied',
   admin: 'admin'
 };
 
-export type vereinszuordnung_rolle = (typeof vereinszuordnung_rolle)[keyof typeof vereinszuordnung_rolle]
+export type vereinszuordnung_Rolle = (typeof vereinszuordnung_Rolle)[keyof typeof vereinszuordnung_Rolle]
 
 }
 
-export type vereinszuordnung_rolle = $Enums.vereinszuordnung_rolle
+export type vereinszuordnung_Rolle = $Enums.vereinszuordnung_Rolle
 
-export const vereinszuordnung_rolle: typeof $Enums.vereinszuordnung_rolle
+export const vereinszuordnung_Rolle: typeof $Enums.vereinszuordnung_Rolle
 
 /**
  * ##  Prisma Client ʲˢ
@@ -665,7 +665,7 @@ export namespace Prisma {
 
 
   export type Datasources = {
-    db?: Datasource
+    vereindb?: Datasource
   }
 
   interface TypeMapCb<ClientOptions = {}> extends $Utils.Fn<{extArgs: $Extensions.InternalArgs }, $Utils.Record<string, any>> {
@@ -1123,46 +1123,6 @@ export namespace Prisma {
 
 
   /**
-   * Count Type PersonCountOutputType
-   */
-
-  export type PersonCountOutputType = {
-    benutzerkonto: number
-    vereinszuordnung: number
-  }
-
-  export type PersonCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    benutzerkonto?: boolean | PersonCountOutputTypeCountBenutzerkontoArgs
-    vereinszuordnung?: boolean | PersonCountOutputTypeCountVereinszuordnungArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * PersonCountOutputType without action
-   */
-  export type PersonCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PersonCountOutputType
-     */
-    select?: PersonCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * PersonCountOutputType without action
-   */
-  export type PersonCountOutputTypeCountBenutzerkontoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: benutzerkontoWhereInput
-  }
-
-  /**
-   * PersonCountOutputType without action
-   */
-  export type PersonCountOutputTypeCountVereinszuordnungArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: vereinszuordnungWhereInput
-  }
-
-
-  /**
    * Count Type VereinCountOutputType
    */
 
@@ -1210,73 +1170,85 @@ export namespace Prisma {
   }
 
   export type BenutzerkontoAvgAggregateOutputType = {
-    id: number | null
-    person_id: number | null
+    ID: number | null
+    Person_ID: number | null
   }
 
   export type BenutzerkontoSumAggregateOutputType = {
-    id: number | null
-    person_id: number | null
+    ID: number | null
+    Person_ID: number | null
   }
 
   export type BenutzerkontoMinAggregateOutputType = {
-    id: number | null
-    benutzername: string | null
-    passwort: string | null
-    aktiv: boolean | null
-    person_id: number | null
+    ID: number | null
+    Benutzername: string | null
+    Passwort: string | null
+    Aktiv: boolean | null
+    Person_ID: number | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type BenutzerkontoMaxAggregateOutputType = {
-    id: number | null
-    benutzername: string | null
-    passwort: string | null
-    aktiv: boolean | null
-    person_id: number | null
+    ID: number | null
+    Benutzername: string | null
+    Passwort: string | null
+    Aktiv: boolean | null
+    Person_ID: number | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type BenutzerkontoCountAggregateOutputType = {
-    id: number
-    benutzername: number
-    passwort: number
-    aktiv: number
-    person_id: number
+    ID: number
+    Benutzername: number
+    Passwort: number
+    Aktiv: number
+    Person_ID: number
+    Erstellt_am: number
+    Geaendert_am: number
     _all: number
   }
 
 
   export type BenutzerkontoAvgAggregateInputType = {
-    id?: true
-    person_id?: true
+    ID?: true
+    Person_ID?: true
   }
 
   export type BenutzerkontoSumAggregateInputType = {
-    id?: true
-    person_id?: true
+    ID?: true
+    Person_ID?: true
   }
 
   export type BenutzerkontoMinAggregateInputType = {
-    id?: true
-    benutzername?: true
-    passwort?: true
-    aktiv?: true
-    person_id?: true
+    ID?: true
+    Benutzername?: true
+    Passwort?: true
+    Aktiv?: true
+    Person_ID?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type BenutzerkontoMaxAggregateInputType = {
-    id?: true
-    benutzername?: true
-    passwort?: true
-    aktiv?: true
-    person_id?: true
+    ID?: true
+    Benutzername?: true
+    Passwort?: true
+    Aktiv?: true
+    Person_ID?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type BenutzerkontoCountAggregateInputType = {
-    id?: true
-    benutzername?: true
-    passwort?: true
-    aktiv?: true
-    person_id?: true
+    ID?: true
+    Benutzername?: true
+    Passwort?: true
+    Aktiv?: true
+    Person_ID?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
     _all?: true
   }
 
@@ -1367,11 +1339,13 @@ export namespace Prisma {
   }
 
   export type BenutzerkontoGroupByOutputType = {
-    id: number
-    benutzername: string
-    passwort: string
-    aktiv: boolean
-    person_id: number
+    ID: number
+    Benutzername: string
+    Passwort: string
+    Aktiv: boolean
+    Person_ID: number
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
     _count: BenutzerkontoCountAggregateOutputType | null
     _avg: BenutzerkontoAvgAggregateOutputType | null
     _sum: BenutzerkontoSumAggregateOutputType | null
@@ -1394,40 +1368,40 @@ export namespace Prisma {
 
 
   export type benutzerkontoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    benutzername?: boolean
-    passwort?: boolean
-    aktiv?: boolean
-    person_id?: boolean
-    person?: boolean | personDefaultArgs<ExtArgs>
+    ID?: boolean
+    Benutzername?: boolean
+    Passwort?: boolean
+    Aktiv?: boolean
+    Person_ID?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
   }, ExtArgs["result"]["benutzerkonto"]>
 
 
 
   export type benutzerkontoSelectScalar = {
-    id?: boolean
-    benutzername?: boolean
-    passwort?: boolean
-    aktiv?: boolean
-    person_id?: boolean
+    ID?: boolean
+    Benutzername?: boolean
+    Passwort?: boolean
+    Aktiv?: boolean
+    Person_ID?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
   }
 
-  export type benutzerkontoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "benutzername" | "passwort" | "aktiv" | "person_id", ExtArgs["result"]["benutzerkonto"]>
-  export type benutzerkontoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    person?: boolean | personDefaultArgs<ExtArgs>
-  }
+  export type benutzerkontoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Benutzername" | "Passwort" | "Aktiv" | "Person_ID" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["benutzerkonto"]>
 
   export type $benutzerkontoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "benutzerkonto"
-    objects: {
-      person: Prisma.$personPayload<ExtArgs>
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      id: number
-      benutzername: string
-      passwort: string
-      aktiv: boolean
-      person_id: number
+      ID: number
+      Benutzername: string
+      Passwort: string
+      Aktiv: boolean
+      Person_ID: number
+      Erstellt_am: Date | null
+      Geaendert_am: Date | null
     }, ExtArgs["result"]["benutzerkonto"]>
     composites: {}
   }
@@ -1511,8 +1485,8 @@ export namespace Prisma {
      * // Get first 10 Benutzerkontos
      * const benutzerkontos = await prisma.benutzerkonto.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const benutzerkontoWithIdOnly = await prisma.benutzerkonto.findMany({ select: { id: true } })
+     * // Only select the `ID`
+     * const benutzerkontoWithIDOnly = await prisma.benutzerkonto.findMany({ select: { ID: true } })
      * 
      */
     findMany<T extends benutzerkontoFindManyArgs>(args?: SelectSubset<T, benutzerkontoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$benutzerkontoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -1768,7 +1742,6 @@ export namespace Prisma {
    */
   export interface Prisma__benutzerkontoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    person<T extends personDefaultArgs<ExtArgs> = {}>(args?: Subset<T, personDefaultArgs<ExtArgs>>): Prisma__personClient<$Result.GetResult<Prisma.$personPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1798,11 +1771,13 @@ export namespace Prisma {
    * Fields of the benutzerkonto model
    */
   interface benutzerkontoFieldRefs {
-    readonly id: FieldRef<"benutzerkonto", 'Int'>
-    readonly benutzername: FieldRef<"benutzerkonto", 'String'>
-    readonly passwort: FieldRef<"benutzerkonto", 'String'>
-    readonly aktiv: FieldRef<"benutzerkonto", 'Boolean'>
-    readonly person_id: FieldRef<"benutzerkonto", 'Int'>
+    readonly ID: FieldRef<"benutzerkonto", 'Int'>
+    readonly Benutzername: FieldRef<"benutzerkonto", 'String'>
+    readonly Passwort: FieldRef<"benutzerkonto", 'String'>
+    readonly Aktiv: FieldRef<"benutzerkonto", 'Boolean'>
+    readonly Person_ID: FieldRef<"benutzerkonto", 'Int'>
+    readonly Erstellt_am: FieldRef<"benutzerkonto", 'DateTime'>
+    readonly Geaendert_am: FieldRef<"benutzerkonto", 'DateTime'>
   }
     
 
@@ -1819,10 +1794,6 @@ export namespace Prisma {
      * Omit specific fields from the benutzerkonto
      */
     omit?: benutzerkontoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: benutzerkontoInclude<ExtArgs> | null
     /**
      * Filter, which benutzerkonto to fetch.
      */
@@ -1842,10 +1813,6 @@ export namespace Prisma {
      */
     omit?: benutzerkontoOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: benutzerkontoInclude<ExtArgs> | null
-    /**
      * Filter, which benutzerkonto to fetch.
      */
     where: benutzerkontoWhereUniqueInput
@@ -1863,10 +1830,6 @@ export namespace Prisma {
      * Omit specific fields from the benutzerkonto
      */
     omit?: benutzerkontoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: benutzerkontoInclude<ExtArgs> | null
     /**
      * Filter, which benutzerkonto to fetch.
      */
@@ -1916,10 +1879,6 @@ export namespace Prisma {
      */
     omit?: benutzerkontoOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: benutzerkontoInclude<ExtArgs> | null
-    /**
      * Filter, which benutzerkonto to fetch.
      */
     where?: benutzerkontoWhereInput
@@ -1968,10 +1927,6 @@ export namespace Prisma {
      */
     omit?: benutzerkontoOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: benutzerkontoInclude<ExtArgs> | null
-    /**
      * Filter, which benutzerkontos to fetch.
      */
     where?: benutzerkontoWhereInput
@@ -2015,10 +1970,6 @@ export namespace Prisma {
      */
     omit?: benutzerkontoOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: benutzerkontoInclude<ExtArgs> | null
-    /**
      * The data needed to create a benutzerkonto.
      */
     data: XOR<benutzerkontoCreateInput, benutzerkontoUncheckedCreateInput>
@@ -2047,10 +1998,6 @@ export namespace Prisma {
      * Omit specific fields from the benutzerkonto
      */
     omit?: benutzerkontoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: benutzerkontoInclude<ExtArgs> | null
     /**
      * The data needed to update a benutzerkonto.
      */
@@ -2092,10 +2039,6 @@ export namespace Prisma {
      */
     omit?: benutzerkontoOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: benutzerkontoInclude<ExtArgs> | null
-    /**
      * The filter to search for the benutzerkonto to update in case it exists.
      */
     where: benutzerkontoWhereUniqueInput
@@ -2121,10 +2064,6 @@ export namespace Prisma {
      * Omit specific fields from the benutzerkonto
      */
     omit?: benutzerkontoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: benutzerkontoInclude<ExtArgs> | null
     /**
      * Filter which benutzerkonto to delete.
      */
@@ -2157,10 +2096,6 @@ export namespace Prisma {
      * Omit specific fields from the benutzerkonto
      */
     omit?: benutzerkontoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: benutzerkontoInclude<ExtArgs> | null
   }
 
 
@@ -2177,69 +2112,111 @@ export namespace Prisma {
   }
 
   export type PersonAvgAggregateOutputType = {
-    id: number | null
+    ID: number | null
   }
 
   export type PersonSumAggregateOutputType = {
-    id: number | null
+    ID: number | null
   }
 
   export type PersonMinAggregateOutputType = {
-    id: number | null
-    vorname: string | null
-    name: string | null
-    geburtsdatum: Date | null
-    email: string | null
+    ID: number | null
+    Vorname: string | null
+    Name: string | null
+    Geburtsdatum: Date | null
+    Strasse: string | null
+    Hausnummer: string | null
+    Postleitzahl: string | null
+    Ort: string | null
+    Email: string | null
+    HandyNr: string | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type PersonMaxAggregateOutputType = {
-    id: number | null
-    vorname: string | null
-    name: string | null
-    geburtsdatum: Date | null
-    email: string | null
+    ID: number | null
+    Vorname: string | null
+    Name: string | null
+    Geburtsdatum: Date | null
+    Strasse: string | null
+    Hausnummer: string | null
+    Postleitzahl: string | null
+    Ort: string | null
+    Email: string | null
+    HandyNr: string | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type PersonCountAggregateOutputType = {
-    id: number
-    vorname: number
-    name: number
-    geburtsdatum: number
-    email: number
+    ID: number
+    Vorname: number
+    Name: number
+    Geburtsdatum: number
+    Strasse: number
+    Hausnummer: number
+    Postleitzahl: number
+    Ort: number
+    Email: number
+    HandyNr: number
+    Erstellt_am: number
+    Geaendert_am: number
     _all: number
   }
 
 
   export type PersonAvgAggregateInputType = {
-    id?: true
+    ID?: true
   }
 
   export type PersonSumAggregateInputType = {
-    id?: true
+    ID?: true
   }
 
   export type PersonMinAggregateInputType = {
-    id?: true
-    vorname?: true
-    name?: true
-    geburtsdatum?: true
-    email?: true
+    ID?: true
+    Vorname?: true
+    Name?: true
+    Geburtsdatum?: true
+    Strasse?: true
+    Hausnummer?: true
+    Postleitzahl?: true
+    Ort?: true
+    Email?: true
+    HandyNr?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type PersonMaxAggregateInputType = {
-    id?: true
-    vorname?: true
-    name?: true
-    geburtsdatum?: true
-    email?: true
+    ID?: true
+    Vorname?: true
+    Name?: true
+    Geburtsdatum?: true
+    Strasse?: true
+    Hausnummer?: true
+    Postleitzahl?: true
+    Ort?: true
+    Email?: true
+    HandyNr?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type PersonCountAggregateInputType = {
-    id?: true
-    vorname?: true
-    name?: true
-    geburtsdatum?: true
-    email?: true
+    ID?: true
+    Vorname?: true
+    Name?: true
+    Geburtsdatum?: true
+    Strasse?: true
+    Hausnummer?: true
+    Postleitzahl?: true
+    Ort?: true
+    Email?: true
+    HandyNr?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
     _all?: true
   }
 
@@ -2330,11 +2307,18 @@ export namespace Prisma {
   }
 
   export type PersonGroupByOutputType = {
-    id: number
-    vorname: string
-    name: string
-    geburtsdatum: Date | null
-    email: string
+    ID: number
+    Vorname: string
+    Name: string
+    Geburtsdatum: Date | null
+    Strasse: string | null
+    Hausnummer: string | null
+    Postleitzahl: string | null
+    Ort: string | null
+    Email: string | null
+    HandyNr: string | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
     _count: PersonCountAggregateOutputType | null
     _avg: PersonAvgAggregateOutputType | null
     _sum: PersonSumAggregateOutputType | null
@@ -2357,45 +2341,55 @@ export namespace Prisma {
 
 
   export type personSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    vorname?: boolean
-    name?: boolean
-    geburtsdatum?: boolean
-    email?: boolean
-    benutzerkonto?: boolean | person$benutzerkontoArgs<ExtArgs>
-    vereinszuordnung?: boolean | person$vereinszuordnungArgs<ExtArgs>
-    _count?: boolean | PersonCountOutputTypeDefaultArgs<ExtArgs>
+    ID?: boolean
+    Vorname?: boolean
+    Name?: boolean
+    Geburtsdatum?: boolean
+    Strasse?: boolean
+    Hausnummer?: boolean
+    Postleitzahl?: boolean
+    Ort?: boolean
+    Email?: boolean
+    HandyNr?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
   }, ExtArgs["result"]["person"]>
 
 
 
   export type personSelectScalar = {
-    id?: boolean
-    vorname?: boolean
-    name?: boolean
-    geburtsdatum?: boolean
-    email?: boolean
+    ID?: boolean
+    Vorname?: boolean
+    Name?: boolean
+    Geburtsdatum?: boolean
+    Strasse?: boolean
+    Hausnummer?: boolean
+    Postleitzahl?: boolean
+    Ort?: boolean
+    Email?: boolean
+    HandyNr?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
   }
 
-  export type personOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "vorname" | "name" | "geburtsdatum" | "email", ExtArgs["result"]["person"]>
-  export type personInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    benutzerkonto?: boolean | person$benutzerkontoArgs<ExtArgs>
-    vereinszuordnung?: boolean | person$vereinszuordnungArgs<ExtArgs>
-    _count?: boolean | PersonCountOutputTypeDefaultArgs<ExtArgs>
-  }
+  export type personOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Vorname" | "Name" | "Geburtsdatum" | "Strasse" | "Hausnummer" | "Postleitzahl" | "Ort" | "Email" | "HandyNr" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["person"]>
 
   export type $personPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "person"
-    objects: {
-      benutzerkonto: Prisma.$benutzerkontoPayload<ExtArgs>[]
-      vereinszuordnung: Prisma.$vereinszuordnungPayload<ExtArgs>[]
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      id: number
-      vorname: string
-      name: string
-      geburtsdatum: Date | null
-      email: string
+      ID: number
+      Vorname: string
+      Name: string
+      Geburtsdatum: Date | null
+      Strasse: string | null
+      Hausnummer: string | null
+      Postleitzahl: string | null
+      Ort: string | null
+      Email: string | null
+      HandyNr: string | null
+      Erstellt_am: Date | null
+      Geaendert_am: Date | null
     }, ExtArgs["result"]["person"]>
     composites: {}
   }
@@ -2479,8 +2473,8 @@ export namespace Prisma {
      * // Get first 10 People
      * const people = await prisma.person.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const personWithIdOnly = await prisma.person.findMany({ select: { id: true } })
+     * // Only select the `ID`
+     * const personWithIDOnly = await prisma.person.findMany({ select: { ID: true } })
      * 
      */
     findMany<T extends personFindManyArgs>(args?: SelectSubset<T, personFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$personPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -2736,8 +2730,6 @@ export namespace Prisma {
    */
   export interface Prisma__personClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    benutzerkonto<T extends person$benutzerkontoArgs<ExtArgs> = {}>(args?: Subset<T, person$benutzerkontoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$benutzerkontoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    vereinszuordnung<T extends person$vereinszuordnungArgs<ExtArgs> = {}>(args?: Subset<T, person$vereinszuordnungArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$vereinszuordnungPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2767,11 +2759,18 @@ export namespace Prisma {
    * Fields of the person model
    */
   interface personFieldRefs {
-    readonly id: FieldRef<"person", 'Int'>
-    readonly vorname: FieldRef<"person", 'String'>
-    readonly name: FieldRef<"person", 'String'>
-    readonly geburtsdatum: FieldRef<"person", 'DateTime'>
-    readonly email: FieldRef<"person", 'String'>
+    readonly ID: FieldRef<"person", 'Int'>
+    readonly Vorname: FieldRef<"person", 'String'>
+    readonly Name: FieldRef<"person", 'String'>
+    readonly Geburtsdatum: FieldRef<"person", 'DateTime'>
+    readonly Strasse: FieldRef<"person", 'String'>
+    readonly Hausnummer: FieldRef<"person", 'String'>
+    readonly Postleitzahl: FieldRef<"person", 'String'>
+    readonly Ort: FieldRef<"person", 'String'>
+    readonly Email: FieldRef<"person", 'String'>
+    readonly HandyNr: FieldRef<"person", 'String'>
+    readonly Erstellt_am: FieldRef<"person", 'DateTime'>
+    readonly Geaendert_am: FieldRef<"person", 'DateTime'>
   }
     
 
@@ -2788,10 +2787,6 @@ export namespace Prisma {
      * Omit specific fields from the person
      */
     omit?: personOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: personInclude<ExtArgs> | null
     /**
      * Filter, which person to fetch.
      */
@@ -2811,10 +2806,6 @@ export namespace Prisma {
      */
     omit?: personOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: personInclude<ExtArgs> | null
-    /**
      * Filter, which person to fetch.
      */
     where: personWhereUniqueInput
@@ -2832,10 +2823,6 @@ export namespace Prisma {
      * Omit specific fields from the person
      */
     omit?: personOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: personInclude<ExtArgs> | null
     /**
      * Filter, which person to fetch.
      */
@@ -2885,10 +2872,6 @@ export namespace Prisma {
      */
     omit?: personOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: personInclude<ExtArgs> | null
-    /**
      * Filter, which person to fetch.
      */
     where?: personWhereInput
@@ -2937,10 +2920,6 @@ export namespace Prisma {
      */
     omit?: personOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: personInclude<ExtArgs> | null
-    /**
      * Filter, which people to fetch.
      */
     where?: personWhereInput
@@ -2984,10 +2963,6 @@ export namespace Prisma {
      */
     omit?: personOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: personInclude<ExtArgs> | null
-    /**
      * The data needed to create a person.
      */
     data: XOR<personCreateInput, personUncheckedCreateInput>
@@ -3016,10 +2991,6 @@ export namespace Prisma {
      * Omit specific fields from the person
      */
     omit?: personOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: personInclude<ExtArgs> | null
     /**
      * The data needed to update a person.
      */
@@ -3061,10 +3032,6 @@ export namespace Prisma {
      */
     omit?: personOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: personInclude<ExtArgs> | null
-    /**
      * The filter to search for the person to update in case it exists.
      */
     where: personWhereUniqueInput
@@ -3091,10 +3058,6 @@ export namespace Prisma {
      */
     omit?: personOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: personInclude<ExtArgs> | null
-    /**
      * Filter which person to delete.
      */
     where: personWhereUniqueInput
@@ -3115,54 +3078,6 @@ export namespace Prisma {
   }
 
   /**
-   * person.benutzerkonto
-   */
-  export type person$benutzerkontoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the benutzerkonto
-     */
-    select?: benutzerkontoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the benutzerkonto
-     */
-    omit?: benutzerkontoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: benutzerkontoInclude<ExtArgs> | null
-    where?: benutzerkontoWhereInput
-    orderBy?: benutzerkontoOrderByWithRelationInput | benutzerkontoOrderByWithRelationInput[]
-    cursor?: benutzerkontoWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: BenutzerkontoScalarFieldEnum | BenutzerkontoScalarFieldEnum[]
-  }
-
-  /**
-   * person.vereinszuordnung
-   */
-  export type person$vereinszuordnungArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the vereinszuordnung
-     */
-    select?: vereinszuordnungSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the vereinszuordnung
-     */
-    omit?: vereinszuordnungOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: vereinszuordnungInclude<ExtArgs> | null
-    where?: vereinszuordnungWhereInput
-    orderBy?: vereinszuordnungOrderByWithRelationInput | vereinszuordnungOrderByWithRelationInput[]
-    cursor?: vereinszuordnungWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: VereinszuordnungScalarFieldEnum | VereinszuordnungScalarFieldEnum[]
-  }
-
-  /**
    * person without action
    */
   export type personDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3174,10 +3089,6 @@ export namespace Prisma {
      * Omit specific fields from the person
      */
     omit?: personOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: personInclude<ExtArgs> | null
   }
 
 
@@ -3194,89 +3105,93 @@ export namespace Prisma {
   }
 
   export type VereinAvgAggregateOutputType = {
-    id: number | null
-    hausnummer: number | null
-    postleitzahl: number | null
+    ID: number | null
   }
 
   export type VereinSumAggregateOutputType = {
-    id: number | null
-    hausnummer: number | null
-    postleitzahl: number | null
+    ID: number | null
   }
 
   export type VereinMinAggregateOutputType = {
-    id: number | null
-    name: string | null
-    strasse: string | null
-    hausnummer: number | null
-    postleitzahl: number | null
-    ort: string | null
-    subdomain: string | null
+    ID: number | null
+    Name: string | null
+    Strasse: string | null
+    Hausnummer: string | null
+    Postleitzahl: string | null
+    Ort: string | null
+    Subdomain: string | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type VereinMaxAggregateOutputType = {
-    id: number | null
-    name: string | null
-    strasse: string | null
-    hausnummer: number | null
-    postleitzahl: number | null
-    ort: string | null
-    subdomain: string | null
+    ID: number | null
+    Name: string | null
+    Strasse: string | null
+    Hausnummer: string | null
+    Postleitzahl: string | null
+    Ort: string | null
+    Subdomain: string | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type VereinCountAggregateOutputType = {
-    id: number
-    name: number
-    strasse: number
-    hausnummer: number
-    postleitzahl: number
-    ort: number
-    subdomain: number
+    ID: number
+    Name: number
+    Strasse: number
+    Hausnummer: number
+    Postleitzahl: number
+    Ort: number
+    Subdomain: number
+    Erstellt_am: number
+    Geaendert_am: number
     _all: number
   }
 
 
   export type VereinAvgAggregateInputType = {
-    id?: true
-    hausnummer?: true
-    postleitzahl?: true
+    ID?: true
   }
 
   export type VereinSumAggregateInputType = {
-    id?: true
-    hausnummer?: true
-    postleitzahl?: true
+    ID?: true
   }
 
   export type VereinMinAggregateInputType = {
-    id?: true
-    name?: true
-    strasse?: true
-    hausnummer?: true
-    postleitzahl?: true
-    ort?: true
-    subdomain?: true
+    ID?: true
+    Name?: true
+    Strasse?: true
+    Hausnummer?: true
+    Postleitzahl?: true
+    Ort?: true
+    Subdomain?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type VereinMaxAggregateInputType = {
-    id?: true
-    name?: true
-    strasse?: true
-    hausnummer?: true
-    postleitzahl?: true
-    ort?: true
-    subdomain?: true
+    ID?: true
+    Name?: true
+    Strasse?: true
+    Hausnummer?: true
+    Postleitzahl?: true
+    Ort?: true
+    Subdomain?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type VereinCountAggregateInputType = {
-    id?: true
-    name?: true
-    strasse?: true
-    hausnummer?: true
-    postleitzahl?: true
-    ort?: true
-    subdomain?: true
+    ID?: true
+    Name?: true
+    Strasse?: true
+    Hausnummer?: true
+    Postleitzahl?: true
+    Ort?: true
+    Subdomain?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
     _all?: true
   }
 
@@ -3367,13 +3282,15 @@ export namespace Prisma {
   }
 
   export type VereinGroupByOutputType = {
-    id: number
-    name: string
-    strasse: string
-    hausnummer: number
-    postleitzahl: number
-    ort: string
-    subdomain: string
+    ID: number
+    Name: string
+    Strasse: string
+    Hausnummer: string
+    Postleitzahl: string
+    Ort: string
+    Subdomain: string
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
     _count: VereinCountAggregateOutputType | null
     _avg: VereinAvgAggregateOutputType | null
     _sum: VereinSumAggregateOutputType | null
@@ -3396,13 +3313,15 @@ export namespace Prisma {
 
 
   export type vereinSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    strasse?: boolean
-    hausnummer?: boolean
-    postleitzahl?: boolean
-    ort?: boolean
-    subdomain?: boolean
+    ID?: boolean
+    Name?: boolean
+    Strasse?: boolean
+    Hausnummer?: boolean
+    Postleitzahl?: boolean
+    Ort?: boolean
+    Subdomain?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
     vereinszuordnung?: boolean | verein$vereinszuordnungArgs<ExtArgs>
     _count?: boolean | VereinCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["verein"]>
@@ -3410,16 +3329,18 @@ export namespace Prisma {
 
 
   export type vereinSelectScalar = {
-    id?: boolean
-    name?: boolean
-    strasse?: boolean
-    hausnummer?: boolean
-    postleitzahl?: boolean
-    ort?: boolean
-    subdomain?: boolean
+    ID?: boolean
+    Name?: boolean
+    Strasse?: boolean
+    Hausnummer?: boolean
+    Postleitzahl?: boolean
+    Ort?: boolean
+    Subdomain?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
   }
 
-  export type vereinOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "strasse" | "hausnummer" | "postleitzahl" | "ort" | "subdomain", ExtArgs["result"]["verein"]>
+  export type vereinOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Name" | "Strasse" | "Hausnummer" | "Postleitzahl" | "Ort" | "Subdomain" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["verein"]>
   export type vereinInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     vereinszuordnung?: boolean | verein$vereinszuordnungArgs<ExtArgs>
     _count?: boolean | VereinCountOutputTypeDefaultArgs<ExtArgs>
@@ -3431,13 +3352,15 @@ export namespace Prisma {
       vereinszuordnung: Prisma.$vereinszuordnungPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
-      name: string
-      strasse: string
-      hausnummer: number
-      postleitzahl: number
-      ort: string
-      subdomain: string
+      ID: number
+      Name: string
+      Strasse: string
+      Hausnummer: string
+      Postleitzahl: string
+      Ort: string
+      Subdomain: string
+      Erstellt_am: Date | null
+      Geaendert_am: Date | null
     }, ExtArgs["result"]["verein"]>
     composites: {}
   }
@@ -3521,8 +3444,8 @@ export namespace Prisma {
      * // Get first 10 Vereins
      * const vereins = await prisma.verein.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const vereinWithIdOnly = await prisma.verein.findMany({ select: { id: true } })
+     * // Only select the `ID`
+     * const vereinWithIDOnly = await prisma.verein.findMany({ select: { ID: true } })
      * 
      */
     findMany<T extends vereinFindManyArgs>(args?: SelectSubset<T, vereinFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$vereinPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -3808,13 +3731,15 @@ export namespace Prisma {
    * Fields of the verein model
    */
   interface vereinFieldRefs {
-    readonly id: FieldRef<"verein", 'Int'>
-    readonly name: FieldRef<"verein", 'String'>
-    readonly strasse: FieldRef<"verein", 'String'>
-    readonly hausnummer: FieldRef<"verein", 'Int'>
-    readonly postleitzahl: FieldRef<"verein", 'Int'>
-    readonly ort: FieldRef<"verein", 'String'>
-    readonly subdomain: FieldRef<"verein", 'String'>
+    readonly ID: FieldRef<"verein", 'Int'>
+    readonly Name: FieldRef<"verein", 'String'>
+    readonly Strasse: FieldRef<"verein", 'String'>
+    readonly Hausnummer: FieldRef<"verein", 'String'>
+    readonly Postleitzahl: FieldRef<"verein", 'String'>
+    readonly Ort: FieldRef<"verein", 'String'>
+    readonly Subdomain: FieldRef<"verein", 'String'>
+    readonly Erstellt_am: FieldRef<"verein", 'DateTime'>
+    readonly Geaendert_am: FieldRef<"verein", 'DateTime'>
   }
     
 
@@ -4213,71 +4138,83 @@ export namespace Prisma {
   }
 
   export type VereinszuordnungAvgAggregateOutputType = {
-    id: number | null
-    person_id: number | null
-    verein_id: number | null
+    ID: number | null
+    Person_ID: number | null
+    Verein_ID: number | null
   }
 
   export type VereinszuordnungSumAggregateOutputType = {
-    id: number | null
-    person_id: number | null
-    verein_id: number | null
+    ID: number | null
+    Person_ID: number | null
+    Verein_ID: number | null
   }
 
   export type VereinszuordnungMinAggregateOutputType = {
-    id: number | null
-    person_id: number | null
-    verein_id: number | null
-    rolle: $Enums.vereinszuordnung_rolle | null
+    ID: number | null
+    Person_ID: number | null
+    Verein_ID: number | null
+    Rolle: $Enums.vereinszuordnung_Rolle | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type VereinszuordnungMaxAggregateOutputType = {
-    id: number | null
-    person_id: number | null
-    verein_id: number | null
-    rolle: $Enums.vereinszuordnung_rolle | null
+    ID: number | null
+    Person_ID: number | null
+    Verein_ID: number | null
+    Rolle: $Enums.vereinszuordnung_Rolle | null
+    Erstellt_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type VereinszuordnungCountAggregateOutputType = {
-    id: number
-    person_id: number
-    verein_id: number
-    rolle: number
+    ID: number
+    Person_ID: number
+    Verein_ID: number
+    Rolle: number
+    Erstellt_am: number
+    Geaendert_am: number
     _all: number
   }
 
 
   export type VereinszuordnungAvgAggregateInputType = {
-    id?: true
-    person_id?: true
-    verein_id?: true
+    ID?: true
+    Person_ID?: true
+    Verein_ID?: true
   }
 
   export type VereinszuordnungSumAggregateInputType = {
-    id?: true
-    person_id?: true
-    verein_id?: true
+    ID?: true
+    Person_ID?: true
+    Verein_ID?: true
   }
 
   export type VereinszuordnungMinAggregateInputType = {
-    id?: true
-    person_id?: true
-    verein_id?: true
-    rolle?: true
+    ID?: true
+    Person_ID?: true
+    Verein_ID?: true
+    Rolle?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type VereinszuordnungMaxAggregateInputType = {
-    id?: true
-    person_id?: true
-    verein_id?: true
-    rolle?: true
+    ID?: true
+    Person_ID?: true
+    Verein_ID?: true
+    Rolle?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
   }
 
   export type VereinszuordnungCountAggregateInputType = {
-    id?: true
-    person_id?: true
-    verein_id?: true
-    rolle?: true
+    ID?: true
+    Person_ID?: true
+    Verein_ID?: true
+    Rolle?: true
+    Erstellt_am?: true
+    Geaendert_am?: true
     _all?: true
   }
 
@@ -4368,10 +4305,12 @@ export namespace Prisma {
   }
 
   export type VereinszuordnungGroupByOutputType = {
-    id: number
-    person_id: number
-    verein_id: number
-    rolle: $Enums.vereinszuordnung_rolle
+    ID: number
+    Person_ID: number
+    Verein_ID: number
+    Rolle: $Enums.vereinszuordnung_Rolle
+    Erstellt_am: Date
+    Geaendert_am: Date | null
     _count: VereinszuordnungCountAggregateOutputType | null
     _avg: VereinszuordnungAvgAggregateOutputType | null
     _sum: VereinszuordnungSumAggregateOutputType | null
@@ -4394,40 +4333,43 @@ export namespace Prisma {
 
 
   export type vereinszuordnungSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    person_id?: boolean
-    verein_id?: boolean
-    rolle?: boolean
-    person?: boolean | personDefaultArgs<ExtArgs>
+    ID?: boolean
+    Person_ID?: boolean
+    Verein_ID?: boolean
+    Rolle?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
     verein?: boolean | vereinDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["vereinszuordnung"]>
 
 
 
   export type vereinszuordnungSelectScalar = {
-    id?: boolean
-    person_id?: boolean
-    verein_id?: boolean
-    rolle?: boolean
+    ID?: boolean
+    Person_ID?: boolean
+    Verein_ID?: boolean
+    Rolle?: boolean
+    Erstellt_am?: boolean
+    Geaendert_am?: boolean
   }
 
-  export type vereinszuordnungOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "person_id" | "verein_id" | "rolle", ExtArgs["result"]["vereinszuordnung"]>
+  export type vereinszuordnungOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Person_ID" | "Verein_ID" | "Rolle" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["vereinszuordnung"]>
   export type vereinszuordnungInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    person?: boolean | personDefaultArgs<ExtArgs>
     verein?: boolean | vereinDefaultArgs<ExtArgs>
   }
 
   export type $vereinszuordnungPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "vereinszuordnung"
     objects: {
-      person: Prisma.$personPayload<ExtArgs>
       verein: Prisma.$vereinPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
-      person_id: number
-      verein_id: number
-      rolle: $Enums.vereinszuordnung_rolle
+      ID: number
+      Person_ID: number
+      Verein_ID: number
+      Rolle: $Enums.vereinszuordnung_Rolle
+      Erstellt_am: Date
+      Geaendert_am: Date | null
     }, ExtArgs["result"]["vereinszuordnung"]>
     composites: {}
   }
@@ -4511,8 +4453,8 @@ export namespace Prisma {
      * // Get first 10 Vereinszuordnungs
      * const vereinszuordnungs = await prisma.vereinszuordnung.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const vereinszuordnungWithIdOnly = await prisma.vereinszuordnung.findMany({ select: { id: true } })
+     * // Only select the `ID`
+     * const vereinszuordnungWithIDOnly = await prisma.vereinszuordnung.findMany({ select: { ID: true } })
      * 
      */
     findMany<T extends vereinszuordnungFindManyArgs>(args?: SelectSubset<T, vereinszuordnungFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$vereinszuordnungPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -4768,7 +4710,6 @@ export namespace Prisma {
    */
   export interface Prisma__vereinszuordnungClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    person<T extends personDefaultArgs<ExtArgs> = {}>(args?: Subset<T, personDefaultArgs<ExtArgs>>): Prisma__personClient<$Result.GetResult<Prisma.$personPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     verein<T extends vereinDefaultArgs<ExtArgs> = {}>(args?: Subset<T, vereinDefaultArgs<ExtArgs>>): Prisma__vereinClient<$Result.GetResult<Prisma.$vereinPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -4799,10 +4740,12 @@ export namespace Prisma {
    * Fields of the vereinszuordnung model
    */
   interface vereinszuordnungFieldRefs {
-    readonly id: FieldRef<"vereinszuordnung", 'Int'>
-    readonly person_id: FieldRef<"vereinszuordnung", 'Int'>
-    readonly verein_id: FieldRef<"vereinszuordnung", 'Int'>
-    readonly rolle: FieldRef<"vereinszuordnung", 'vereinszuordnung_rolle'>
+    readonly ID: FieldRef<"vereinszuordnung", 'Int'>
+    readonly Person_ID: FieldRef<"vereinszuordnung", 'Int'>
+    readonly Verein_ID: FieldRef<"vereinszuordnung", 'Int'>
+    readonly Rolle: FieldRef<"vereinszuordnung", 'vereinszuordnung_Rolle'>
+    readonly Erstellt_am: FieldRef<"vereinszuordnung", 'DateTime'>
+    readonly Geaendert_am: FieldRef<"vereinszuordnung", 'DateTime'>
   }
     
 
@@ -5179,45 +5122,58 @@ export namespace Prisma {
 
 
   export const BenutzerkontoScalarFieldEnum: {
-    id: 'id',
-    benutzername: 'benutzername',
-    passwort: 'passwort',
-    aktiv: 'aktiv',
-    person_id: 'person_id'
+    ID: 'ID',
+    Benutzername: 'Benutzername',
+    Passwort: 'Passwort',
+    Aktiv: 'Aktiv',
+    Person_ID: 'Person_ID',
+    Erstellt_am: 'Erstellt_am',
+    Geaendert_am: 'Geaendert_am'
   };
 
   export type BenutzerkontoScalarFieldEnum = (typeof BenutzerkontoScalarFieldEnum)[keyof typeof BenutzerkontoScalarFieldEnum]
 
 
   export const PersonScalarFieldEnum: {
-    id: 'id',
-    vorname: 'vorname',
-    name: 'name',
-    geburtsdatum: 'geburtsdatum',
-    email: 'email'
+    ID: 'ID',
+    Vorname: 'Vorname',
+    Name: 'Name',
+    Geburtsdatum: 'Geburtsdatum',
+    Strasse: 'Strasse',
+    Hausnummer: 'Hausnummer',
+    Postleitzahl: 'Postleitzahl',
+    Ort: 'Ort',
+    Email: 'Email',
+    HandyNr: 'HandyNr',
+    Erstellt_am: 'Erstellt_am',
+    Geaendert_am: 'Geaendert_am'
   };
 
   export type PersonScalarFieldEnum = (typeof PersonScalarFieldEnum)[keyof typeof PersonScalarFieldEnum]
 
 
   export const VereinScalarFieldEnum: {
-    id: 'id',
-    name: 'name',
-    strasse: 'strasse',
-    hausnummer: 'hausnummer',
-    postleitzahl: 'postleitzahl',
-    ort: 'ort',
-    subdomain: 'subdomain'
+    ID: 'ID',
+    Name: 'Name',
+    Strasse: 'Strasse',
+    Hausnummer: 'Hausnummer',
+    Postleitzahl: 'Postleitzahl',
+    Ort: 'Ort',
+    Subdomain: 'Subdomain',
+    Erstellt_am: 'Erstellt_am',
+    Geaendert_am: 'Geaendert_am'
   };
 
   export type VereinScalarFieldEnum = (typeof VereinScalarFieldEnum)[keyof typeof VereinScalarFieldEnum]
 
 
   export const VereinszuordnungScalarFieldEnum: {
-    id: 'id',
-    person_id: 'person_id',
-    verein_id: 'verein_id',
-    rolle: 'rolle'
+    ID: 'ID',
+    Person_ID: 'Person_ID',
+    Verein_ID: 'Verein_ID',
+    Rolle: 'Rolle',
+    Erstellt_am: 'Erstellt_am',
+    Geaendert_am: 'Geaendert_am'
   };
 
   export type VereinszuordnungScalarFieldEnum = (typeof VereinszuordnungScalarFieldEnum)[keyof typeof VereinszuordnungScalarFieldEnum]
@@ -5231,14 +5187,6 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-  export const benutzerkontoOrderByRelevanceFieldEnum: {
-    benutzername: 'benutzername',
-    passwort: 'passwort'
-  };
-
-  export type benutzerkontoOrderByRelevanceFieldEnum = (typeof benutzerkontoOrderByRelevanceFieldEnum)[keyof typeof benutzerkontoOrderByRelevanceFieldEnum]
-
-
   export const NullsOrder: {
     first: 'first',
     last: 'last'
@@ -5247,20 +5195,35 @@ export namespace Prisma {
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
+  export const benutzerkontoOrderByRelevanceFieldEnum: {
+    Benutzername: 'Benutzername',
+    Passwort: 'Passwort'
+  };
+
+  export type benutzerkontoOrderByRelevanceFieldEnum = (typeof benutzerkontoOrderByRelevanceFieldEnum)[keyof typeof benutzerkontoOrderByRelevanceFieldEnum]
+
+
   export const personOrderByRelevanceFieldEnum: {
-    vorname: 'vorname',
-    name: 'name',
-    email: 'email'
+    Vorname: 'Vorname',
+    Name: 'Name',
+    Strasse: 'Strasse',
+    Hausnummer: 'Hausnummer',
+    Postleitzahl: 'Postleitzahl',
+    Ort: 'Ort',
+    Email: 'Email',
+    HandyNr: 'HandyNr'
   };
 
   export type personOrderByRelevanceFieldEnum = (typeof personOrderByRelevanceFieldEnum)[keyof typeof personOrderByRelevanceFieldEnum]
 
 
   export const vereinOrderByRelevanceFieldEnum: {
-    name: 'name',
-    strasse: 'strasse',
-    ort: 'ort',
-    subdomain: 'subdomain'
+    Name: 'Name',
+    Strasse: 'Strasse',
+    Hausnummer: 'Hausnummer',
+    Postleitzahl: 'Postleitzahl',
+    Ort: 'Ort',
+    Subdomain: 'Subdomain'
   };
 
   export type vereinOrderByRelevanceFieldEnum = (typeof vereinOrderByRelevanceFieldEnum)[keyof typeof vereinOrderByRelevanceFieldEnum]
@@ -5300,9 +5263,9 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'vereinszuordnung_rolle'
+   * Reference to a field of type 'vereinszuordnung_Rolle'
    */
-  export type Enumvereinszuordnung_rolleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'vereinszuordnung_rolle'>
+  export type Enumvereinszuordnung_RolleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'vereinszuordnung_Rolle'>
     
 
 
@@ -5320,42 +5283,47 @@ export namespace Prisma {
     AND?: benutzerkontoWhereInput | benutzerkontoWhereInput[]
     OR?: benutzerkontoWhereInput[]
     NOT?: benutzerkontoWhereInput | benutzerkontoWhereInput[]
-    id?: IntFilter<"benutzerkonto"> | number
-    benutzername?: StringFilter<"benutzerkonto"> | string
-    passwort?: StringFilter<"benutzerkonto"> | string
-    aktiv?: BoolFilter<"benutzerkonto"> | boolean
-    person_id?: IntFilter<"benutzerkonto"> | number
-    person?: XOR<PersonScalarRelationFilter, personWhereInput>
+    ID?: IntFilter<"benutzerkonto"> | number
+    Benutzername?: StringFilter<"benutzerkonto"> | string
+    Passwort?: StringFilter<"benutzerkonto"> | string
+    Aktiv?: BoolFilter<"benutzerkonto"> | boolean
+    Person_ID?: IntFilter<"benutzerkonto"> | number
+    Erstellt_am?: DateTimeNullableFilter<"benutzerkonto"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"benutzerkonto"> | Date | string | null
   }
 
   export type benutzerkontoOrderByWithRelationInput = {
-    id?: SortOrder
-    benutzername?: SortOrder
-    passwort?: SortOrder
-    aktiv?: SortOrder
-    person_id?: SortOrder
-    person?: personOrderByWithRelationInput
+    ID?: SortOrder
+    Benutzername?: SortOrder
+    Passwort?: SortOrder
+    Aktiv?: SortOrder
+    Person_ID?: SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     _relevance?: benutzerkontoOrderByRelevanceInput
   }
 
   export type benutzerkontoWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    benutzername?: string
+    ID?: number
+    Benutzername?: string
     AND?: benutzerkontoWhereInput | benutzerkontoWhereInput[]
     OR?: benutzerkontoWhereInput[]
     NOT?: benutzerkontoWhereInput | benutzerkontoWhereInput[]
-    passwort?: StringFilter<"benutzerkonto"> | string
-    aktiv?: BoolFilter<"benutzerkonto"> | boolean
-    person_id?: IntFilter<"benutzerkonto"> | number
-    person?: XOR<PersonScalarRelationFilter, personWhereInput>
-  }, "id" | "benutzername">
+    Passwort?: StringFilter<"benutzerkonto"> | string
+    Aktiv?: BoolFilter<"benutzerkonto"> | boolean
+    Person_ID?: IntFilter<"benutzerkonto"> | number
+    Erstellt_am?: DateTimeNullableFilter<"benutzerkonto"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"benutzerkonto"> | Date | string | null
+  }, "ID" | "Benutzername">
 
   export type benutzerkontoOrderByWithAggregationInput = {
-    id?: SortOrder
-    benutzername?: SortOrder
-    passwort?: SortOrder
-    aktiv?: SortOrder
-    person_id?: SortOrder
+    ID?: SortOrder
+    Benutzername?: SortOrder
+    Passwort?: SortOrder
+    Aktiv?: SortOrder
+    Person_ID?: SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     _count?: benutzerkontoCountOrderByAggregateInput
     _avg?: benutzerkontoAvgOrderByAggregateInput
     _max?: benutzerkontoMaxOrderByAggregateInput
@@ -5367,56 +5335,80 @@ export namespace Prisma {
     AND?: benutzerkontoScalarWhereWithAggregatesInput | benutzerkontoScalarWhereWithAggregatesInput[]
     OR?: benutzerkontoScalarWhereWithAggregatesInput[]
     NOT?: benutzerkontoScalarWhereWithAggregatesInput | benutzerkontoScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"benutzerkonto"> | number
-    benutzername?: StringWithAggregatesFilter<"benutzerkonto"> | string
-    passwort?: StringWithAggregatesFilter<"benutzerkonto"> | string
-    aktiv?: BoolWithAggregatesFilter<"benutzerkonto"> | boolean
-    person_id?: IntWithAggregatesFilter<"benutzerkonto"> | number
+    ID?: IntWithAggregatesFilter<"benutzerkonto"> | number
+    Benutzername?: StringWithAggregatesFilter<"benutzerkonto"> | string
+    Passwort?: StringWithAggregatesFilter<"benutzerkonto"> | string
+    Aktiv?: BoolWithAggregatesFilter<"benutzerkonto"> | boolean
+    Person_ID?: IntWithAggregatesFilter<"benutzerkonto"> | number
+    Erstellt_am?: DateTimeNullableWithAggregatesFilter<"benutzerkonto"> | Date | string | null
+    Geaendert_am?: DateTimeNullableWithAggregatesFilter<"benutzerkonto"> | Date | string | null
   }
 
   export type personWhereInput = {
     AND?: personWhereInput | personWhereInput[]
     OR?: personWhereInput[]
     NOT?: personWhereInput | personWhereInput[]
-    id?: IntFilter<"person"> | number
-    vorname?: StringFilter<"person"> | string
-    name?: StringFilter<"person"> | string
-    geburtsdatum?: DateTimeNullableFilter<"person"> | Date | string | null
-    email?: StringFilter<"person"> | string
-    benutzerkonto?: BenutzerkontoListRelationFilter
-    vereinszuordnung?: VereinszuordnungListRelationFilter
+    ID?: IntFilter<"person"> | number
+    Vorname?: StringFilter<"person"> | string
+    Name?: StringFilter<"person"> | string
+    Geburtsdatum?: DateTimeNullableFilter<"person"> | Date | string | null
+    Strasse?: StringNullableFilter<"person"> | string | null
+    Hausnummer?: StringNullableFilter<"person"> | string | null
+    Postleitzahl?: StringNullableFilter<"person"> | string | null
+    Ort?: StringNullableFilter<"person"> | string | null
+    Email?: StringNullableFilter<"person"> | string | null
+    HandyNr?: StringNullableFilter<"person"> | string | null
+    Erstellt_am?: DateTimeNullableFilter<"person"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"person"> | Date | string | null
   }
 
   export type personOrderByWithRelationInput = {
-    id?: SortOrder
-    vorname?: SortOrder
-    name?: SortOrder
-    geburtsdatum?: SortOrderInput | SortOrder
-    email?: SortOrder
-    benutzerkonto?: benutzerkontoOrderByRelationAggregateInput
-    vereinszuordnung?: vereinszuordnungOrderByRelationAggregateInput
+    ID?: SortOrder
+    Vorname?: SortOrder
+    Name?: SortOrder
+    Geburtsdatum?: SortOrderInput | SortOrder
+    Strasse?: SortOrderInput | SortOrder
+    Hausnummer?: SortOrderInput | SortOrder
+    Postleitzahl?: SortOrderInput | SortOrder
+    Ort?: SortOrderInput | SortOrder
+    Email?: SortOrderInput | SortOrder
+    HandyNr?: SortOrderInput | SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     _relevance?: personOrderByRelevanceInput
   }
 
   export type personWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    ID?: number
     AND?: personWhereInput | personWhereInput[]
     OR?: personWhereInput[]
     NOT?: personWhereInput | personWhereInput[]
-    vorname?: StringFilter<"person"> | string
-    name?: StringFilter<"person"> | string
-    geburtsdatum?: DateTimeNullableFilter<"person"> | Date | string | null
-    email?: StringFilter<"person"> | string
-    benutzerkonto?: BenutzerkontoListRelationFilter
-    vereinszuordnung?: VereinszuordnungListRelationFilter
-  }, "id">
+    Vorname?: StringFilter<"person"> | string
+    Name?: StringFilter<"person"> | string
+    Geburtsdatum?: DateTimeNullableFilter<"person"> | Date | string | null
+    Strasse?: StringNullableFilter<"person"> | string | null
+    Hausnummer?: StringNullableFilter<"person"> | string | null
+    Postleitzahl?: StringNullableFilter<"person"> | string | null
+    Ort?: StringNullableFilter<"person"> | string | null
+    Email?: StringNullableFilter<"person"> | string | null
+    HandyNr?: StringNullableFilter<"person"> | string | null
+    Erstellt_am?: DateTimeNullableFilter<"person"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"person"> | Date | string | null
+  }, "ID">
 
   export type personOrderByWithAggregationInput = {
-    id?: SortOrder
-    vorname?: SortOrder
-    name?: SortOrder
-    geburtsdatum?: SortOrderInput | SortOrder
-    email?: SortOrder
+    ID?: SortOrder
+    Vorname?: SortOrder
+    Name?: SortOrder
+    Geburtsdatum?: SortOrderInput | SortOrder
+    Strasse?: SortOrderInput | SortOrder
+    Hausnummer?: SortOrderInput | SortOrder
+    Postleitzahl?: SortOrderInput | SortOrder
+    Ort?: SortOrderInput | SortOrder
+    Email?: SortOrderInput | SortOrder
+    HandyNr?: SortOrderInput | SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     _count?: personCountOrderByAggregateInput
     _avg?: personAvgOrderByAggregateInput
     _max?: personMaxOrderByAggregateInput
@@ -5428,61 +5420,76 @@ export namespace Prisma {
     AND?: personScalarWhereWithAggregatesInput | personScalarWhereWithAggregatesInput[]
     OR?: personScalarWhereWithAggregatesInput[]
     NOT?: personScalarWhereWithAggregatesInput | personScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"person"> | number
-    vorname?: StringWithAggregatesFilter<"person"> | string
-    name?: StringWithAggregatesFilter<"person"> | string
-    geburtsdatum?: DateTimeNullableWithAggregatesFilter<"person"> | Date | string | null
-    email?: StringWithAggregatesFilter<"person"> | string
+    ID?: IntWithAggregatesFilter<"person"> | number
+    Vorname?: StringWithAggregatesFilter<"person"> | string
+    Name?: StringWithAggregatesFilter<"person"> | string
+    Geburtsdatum?: DateTimeNullableWithAggregatesFilter<"person"> | Date | string | null
+    Strasse?: StringNullableWithAggregatesFilter<"person"> | string | null
+    Hausnummer?: StringNullableWithAggregatesFilter<"person"> | string | null
+    Postleitzahl?: StringNullableWithAggregatesFilter<"person"> | string | null
+    Ort?: StringNullableWithAggregatesFilter<"person"> | string | null
+    Email?: StringNullableWithAggregatesFilter<"person"> | string | null
+    HandyNr?: StringNullableWithAggregatesFilter<"person"> | string | null
+    Erstellt_am?: DateTimeNullableWithAggregatesFilter<"person"> | Date | string | null
+    Geaendert_am?: DateTimeNullableWithAggregatesFilter<"person"> | Date | string | null
   }
 
   export type vereinWhereInput = {
     AND?: vereinWhereInput | vereinWhereInput[]
     OR?: vereinWhereInput[]
     NOT?: vereinWhereInput | vereinWhereInput[]
-    id?: IntFilter<"verein"> | number
-    name?: StringFilter<"verein"> | string
-    strasse?: StringFilter<"verein"> | string
-    hausnummer?: IntFilter<"verein"> | number
-    postleitzahl?: IntFilter<"verein"> | number
-    ort?: StringFilter<"verein"> | string
-    subdomain?: StringFilter<"verein"> | string
+    ID?: IntFilter<"verein"> | number
+    Name?: StringFilter<"verein"> | string
+    Strasse?: StringFilter<"verein"> | string
+    Hausnummer?: StringFilter<"verein"> | string
+    Postleitzahl?: StringFilter<"verein"> | string
+    Ort?: StringFilter<"verein"> | string
+    Subdomain?: StringFilter<"verein"> | string
+    Erstellt_am?: DateTimeNullableFilter<"verein"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"verein"> | Date | string | null
     vereinszuordnung?: VereinszuordnungListRelationFilter
   }
 
   export type vereinOrderByWithRelationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    strasse?: SortOrder
-    hausnummer?: SortOrder
-    postleitzahl?: SortOrder
-    ort?: SortOrder
-    subdomain?: SortOrder
+    ID?: SortOrder
+    Name?: SortOrder
+    Strasse?: SortOrder
+    Hausnummer?: SortOrder
+    Postleitzahl?: SortOrder
+    Ort?: SortOrder
+    Subdomain?: SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     vereinszuordnung?: vereinszuordnungOrderByRelationAggregateInput
     _relevance?: vereinOrderByRelevanceInput
   }
 
   export type vereinWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    subdomain?: string
+    ID?: number
+    Subdomain?: string
     AND?: vereinWhereInput | vereinWhereInput[]
     OR?: vereinWhereInput[]
     NOT?: vereinWhereInput | vereinWhereInput[]
-    name?: StringFilter<"verein"> | string
-    strasse?: StringFilter<"verein"> | string
-    hausnummer?: IntFilter<"verein"> | number
-    postleitzahl?: IntFilter<"verein"> | number
-    ort?: StringFilter<"verein"> | string
+    Name?: StringFilter<"verein"> | string
+    Strasse?: StringFilter<"verein"> | string
+    Hausnummer?: StringFilter<"verein"> | string
+    Postleitzahl?: StringFilter<"verein"> | string
+    Ort?: StringFilter<"verein"> | string
+    Erstellt_am?: DateTimeNullableFilter<"verein"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"verein"> | Date | string | null
     vereinszuordnung?: VereinszuordnungListRelationFilter
-  }, "id" | "subdomain">
+  }, "ID" | "Subdomain">
 
   export type vereinOrderByWithAggregationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    strasse?: SortOrder
-    hausnummer?: SortOrder
-    postleitzahl?: SortOrder
-    ort?: SortOrder
-    subdomain?: SortOrder
+    ID?: SortOrder
+    Name?: SortOrder
+    Strasse?: SortOrder
+    Hausnummer?: SortOrder
+    Postleitzahl?: SortOrder
+    Ort?: SortOrder
+    Subdomain?: SortOrder
+    Erstellt_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     _count?: vereinCountOrderByAggregateInput
     _avg?: vereinAvgOrderByAggregateInput
     _max?: vereinMaxOrderByAggregateInput
@@ -5494,53 +5501,60 @@ export namespace Prisma {
     AND?: vereinScalarWhereWithAggregatesInput | vereinScalarWhereWithAggregatesInput[]
     OR?: vereinScalarWhereWithAggregatesInput[]
     NOT?: vereinScalarWhereWithAggregatesInput | vereinScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"verein"> | number
-    name?: StringWithAggregatesFilter<"verein"> | string
-    strasse?: StringWithAggregatesFilter<"verein"> | string
-    hausnummer?: IntWithAggregatesFilter<"verein"> | number
-    postleitzahl?: IntWithAggregatesFilter<"verein"> | number
-    ort?: StringWithAggregatesFilter<"verein"> | string
-    subdomain?: StringWithAggregatesFilter<"verein"> | string
+    ID?: IntWithAggregatesFilter<"verein"> | number
+    Name?: StringWithAggregatesFilter<"verein"> | string
+    Strasse?: StringWithAggregatesFilter<"verein"> | string
+    Hausnummer?: StringWithAggregatesFilter<"verein"> | string
+    Postleitzahl?: StringWithAggregatesFilter<"verein"> | string
+    Ort?: StringWithAggregatesFilter<"verein"> | string
+    Subdomain?: StringWithAggregatesFilter<"verein"> | string
+    Erstellt_am?: DateTimeNullableWithAggregatesFilter<"verein"> | Date | string | null
+    Geaendert_am?: DateTimeNullableWithAggregatesFilter<"verein"> | Date | string | null
   }
 
   export type vereinszuordnungWhereInput = {
     AND?: vereinszuordnungWhereInput | vereinszuordnungWhereInput[]
     OR?: vereinszuordnungWhereInput[]
     NOT?: vereinszuordnungWhereInput | vereinszuordnungWhereInput[]
-    id?: IntFilter<"vereinszuordnung"> | number
-    person_id?: IntFilter<"vereinszuordnung"> | number
-    verein_id?: IntFilter<"vereinszuordnung"> | number
-    rolle?: Enumvereinszuordnung_rolleFilter<"vereinszuordnung"> | $Enums.vereinszuordnung_rolle
-    person?: XOR<PersonScalarRelationFilter, personWhereInput>
+    ID?: IntFilter<"vereinszuordnung"> | number
+    Person_ID?: IntFilter<"vereinszuordnung"> | number
+    Verein_ID?: IntFilter<"vereinszuordnung"> | number
+    Rolle?: Enumvereinszuordnung_RolleFilter<"vereinszuordnung"> | $Enums.vereinszuordnung_Rolle
+    Erstellt_am?: DateTimeFilter<"vereinszuordnung"> | Date | string
+    Geaendert_am?: DateTimeNullableFilter<"vereinszuordnung"> | Date | string | null
     verein?: XOR<VereinScalarRelationFilter, vereinWhereInput>
   }
 
   export type vereinszuordnungOrderByWithRelationInput = {
-    id?: SortOrder
-    person_id?: SortOrder
-    verein_id?: SortOrder
-    rolle?: SortOrder
-    person?: personOrderByWithRelationInput
+    ID?: SortOrder
+    Person_ID?: SortOrder
+    Verein_ID?: SortOrder
+    Rolle?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     verein?: vereinOrderByWithRelationInput
   }
 
   export type vereinszuordnungWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    ID?: number
     AND?: vereinszuordnungWhereInput | vereinszuordnungWhereInput[]
     OR?: vereinszuordnungWhereInput[]
     NOT?: vereinszuordnungWhereInput | vereinszuordnungWhereInput[]
-    person_id?: IntFilter<"vereinszuordnung"> | number
-    verein_id?: IntFilter<"vereinszuordnung"> | number
-    rolle?: Enumvereinszuordnung_rolleFilter<"vereinszuordnung"> | $Enums.vereinszuordnung_rolle
-    person?: XOR<PersonScalarRelationFilter, personWhereInput>
+    Person_ID?: IntFilter<"vereinszuordnung"> | number
+    Verein_ID?: IntFilter<"vereinszuordnung"> | number
+    Rolle?: Enumvereinszuordnung_RolleFilter<"vereinszuordnung"> | $Enums.vereinszuordnung_Rolle
+    Erstellt_am?: DateTimeFilter<"vereinszuordnung"> | Date | string
+    Geaendert_am?: DateTimeNullableFilter<"vereinszuordnung"> | Date | string | null
     verein?: XOR<VereinScalarRelationFilter, vereinWhereInput>
-  }, "id">
+  }, "ID">
 
   export type vereinszuordnungOrderByWithAggregationInput = {
-    id?: SortOrder
-    person_id?: SortOrder
-    verein_id?: SortOrder
-    rolle?: SortOrder
+    ID?: SortOrder
+    Person_ID?: SortOrder
+    Verein_ID?: SortOrder
+    Rolle?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     _count?: vereinszuordnungCountOrderByAggregateInput
     _avg?: vereinszuordnungAvgOrderByAggregateInput
     _max?: vereinszuordnungMaxOrderByAggregateInput
@@ -5552,238 +5566,325 @@ export namespace Prisma {
     AND?: vereinszuordnungScalarWhereWithAggregatesInput | vereinszuordnungScalarWhereWithAggregatesInput[]
     OR?: vereinszuordnungScalarWhereWithAggregatesInput[]
     NOT?: vereinszuordnungScalarWhereWithAggregatesInput | vereinszuordnungScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"vereinszuordnung"> | number
-    person_id?: IntWithAggregatesFilter<"vereinszuordnung"> | number
-    verein_id?: IntWithAggregatesFilter<"vereinszuordnung"> | number
-    rolle?: Enumvereinszuordnung_rolleWithAggregatesFilter<"vereinszuordnung"> | $Enums.vereinszuordnung_rolle
+    ID?: IntWithAggregatesFilter<"vereinszuordnung"> | number
+    Person_ID?: IntWithAggregatesFilter<"vereinszuordnung"> | number
+    Verein_ID?: IntWithAggregatesFilter<"vereinszuordnung"> | number
+    Rolle?: Enumvereinszuordnung_RolleWithAggregatesFilter<"vereinszuordnung"> | $Enums.vereinszuordnung_Rolle
+    Erstellt_am?: DateTimeWithAggregatesFilter<"vereinszuordnung"> | Date | string
+    Geaendert_am?: DateTimeNullableWithAggregatesFilter<"vereinszuordnung"> | Date | string | null
   }
 
   export type benutzerkontoCreateInput = {
-    benutzername: string
-    passwort: string
-    aktiv?: boolean
-    person: personCreateNestedOneWithoutBenutzerkontoInput
+    Benutzername: string
+    Passwort: string
+    Aktiv?: boolean
+    Person_ID: number
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type benutzerkontoUncheckedCreateInput = {
-    id?: number
-    benutzername: string
-    passwort: string
-    aktiv?: boolean
-    person_id: number
+    ID?: number
+    Benutzername: string
+    Passwort: string
+    Aktiv?: boolean
+    Person_ID: number
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type benutzerkontoUpdateInput = {
-    benutzername?: StringFieldUpdateOperationsInput | string
-    passwort?: StringFieldUpdateOperationsInput | string
-    aktiv?: BoolFieldUpdateOperationsInput | boolean
-    person?: personUpdateOneRequiredWithoutBenutzerkontoNestedInput
+    Benutzername?: StringFieldUpdateOperationsInput | string
+    Passwort?: StringFieldUpdateOperationsInput | string
+    Aktiv?: BoolFieldUpdateOperationsInput | boolean
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type benutzerkontoUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    benutzername?: StringFieldUpdateOperationsInput | string
-    passwort?: StringFieldUpdateOperationsInput | string
-    aktiv?: BoolFieldUpdateOperationsInput | boolean
-    person_id?: IntFieldUpdateOperationsInput | number
+    ID?: IntFieldUpdateOperationsInput | number
+    Benutzername?: StringFieldUpdateOperationsInput | string
+    Passwort?: StringFieldUpdateOperationsInput | string
+    Aktiv?: BoolFieldUpdateOperationsInput | boolean
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type benutzerkontoCreateManyInput = {
-    id?: number
-    benutzername: string
-    passwort: string
-    aktiv?: boolean
-    person_id: number
+    ID?: number
+    Benutzername: string
+    Passwort: string
+    Aktiv?: boolean
+    Person_ID: number
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type benutzerkontoUpdateManyMutationInput = {
-    benutzername?: StringFieldUpdateOperationsInput | string
-    passwort?: StringFieldUpdateOperationsInput | string
-    aktiv?: BoolFieldUpdateOperationsInput | boolean
+    Benutzername?: StringFieldUpdateOperationsInput | string
+    Passwort?: StringFieldUpdateOperationsInput | string
+    Aktiv?: BoolFieldUpdateOperationsInput | boolean
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type benutzerkontoUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    benutzername?: StringFieldUpdateOperationsInput | string
-    passwort?: StringFieldUpdateOperationsInput | string
-    aktiv?: BoolFieldUpdateOperationsInput | boolean
-    person_id?: IntFieldUpdateOperationsInput | number
+    ID?: IntFieldUpdateOperationsInput | number
+    Benutzername?: StringFieldUpdateOperationsInput | string
+    Passwort?: StringFieldUpdateOperationsInput | string
+    Aktiv?: BoolFieldUpdateOperationsInput | boolean
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type personCreateInput = {
-    vorname: string
-    name: string
-    geburtsdatum?: Date | string | null
-    email: string
-    benutzerkonto?: benutzerkontoCreateNestedManyWithoutPersonInput
-    vereinszuordnung?: vereinszuordnungCreateNestedManyWithoutPersonInput
+    Vorname: string
+    Name: string
+    Geburtsdatum?: Date | string | null
+    Strasse?: string | null
+    Hausnummer?: string | null
+    Postleitzahl?: string | null
+    Ort?: string | null
+    Email?: string | null
+    HandyNr?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type personUncheckedCreateInput = {
-    id?: number
-    vorname: string
-    name: string
-    geburtsdatum?: Date | string | null
-    email: string
-    benutzerkonto?: benutzerkontoUncheckedCreateNestedManyWithoutPersonInput
-    vereinszuordnung?: vereinszuordnungUncheckedCreateNestedManyWithoutPersonInput
+    ID?: number
+    Vorname: string
+    Name: string
+    Geburtsdatum?: Date | string | null
+    Strasse?: string | null
+    Hausnummer?: string | null
+    Postleitzahl?: string | null
+    Ort?: string | null
+    Email?: string | null
+    HandyNr?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type personUpdateInput = {
-    vorname?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email?: StringFieldUpdateOperationsInput | string
-    benutzerkonto?: benutzerkontoUpdateManyWithoutPersonNestedInput
-    vereinszuordnung?: vereinszuordnungUpdateManyWithoutPersonNestedInput
+    Vorname?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Email?: NullableStringFieldUpdateOperationsInput | string | null
+    HandyNr?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type personUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    vorname?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email?: StringFieldUpdateOperationsInput | string
-    benutzerkonto?: benutzerkontoUncheckedUpdateManyWithoutPersonNestedInput
-    vereinszuordnung?: vereinszuordnungUncheckedUpdateManyWithoutPersonNestedInput
+    ID?: IntFieldUpdateOperationsInput | number
+    Vorname?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Email?: NullableStringFieldUpdateOperationsInput | string | null
+    HandyNr?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type personCreateManyInput = {
-    id?: number
-    vorname: string
-    name: string
-    geburtsdatum?: Date | string | null
-    email: string
+    ID?: number
+    Vorname: string
+    Name: string
+    Geburtsdatum?: Date | string | null
+    Strasse?: string | null
+    Hausnummer?: string | null
+    Postleitzahl?: string | null
+    Ort?: string | null
+    Email?: string | null
+    HandyNr?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type personUpdateManyMutationInput = {
-    vorname?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    Vorname?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Email?: NullableStringFieldUpdateOperationsInput | string | null
+    HandyNr?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type personUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    vorname?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    ID?: IntFieldUpdateOperationsInput | number
+    Vorname?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Email?: NullableStringFieldUpdateOperationsInput | string | null
+    HandyNr?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type vereinCreateInput = {
-    name: string
-    strasse: string
-    hausnummer: number
-    postleitzahl: number
-    ort: string
-    subdomain: string
+    Name: string
+    Strasse: string
+    Hausnummer: string
+    Postleitzahl: string
+    Ort: string
+    Subdomain: string
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
     vereinszuordnung?: vereinszuordnungCreateNestedManyWithoutVereinInput
   }
 
   export type vereinUncheckedCreateInput = {
-    id?: number
-    name: string
-    strasse: string
-    hausnummer: number
-    postleitzahl: number
-    ort: string
-    subdomain: string
+    ID?: number
+    Name: string
+    Strasse: string
+    Hausnummer: string
+    Postleitzahl: string
+    Ort: string
+    Subdomain: string
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
     vereinszuordnung?: vereinszuordnungUncheckedCreateNestedManyWithoutVereinInput
   }
 
   export type vereinUpdateInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    strasse?: StringFieldUpdateOperationsInput | string
-    hausnummer?: IntFieldUpdateOperationsInput | number
-    postleitzahl?: IntFieldUpdateOperationsInput | number
-    ort?: StringFieldUpdateOperationsInput | string
-    subdomain?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    Strasse?: StringFieldUpdateOperationsInput | string
+    Hausnummer?: StringFieldUpdateOperationsInput | string
+    Postleitzahl?: StringFieldUpdateOperationsInput | string
+    Ort?: StringFieldUpdateOperationsInput | string
+    Subdomain?: StringFieldUpdateOperationsInput | string
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     vereinszuordnung?: vereinszuordnungUpdateManyWithoutVereinNestedInput
   }
 
   export type vereinUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    strasse?: StringFieldUpdateOperationsInput | string
-    hausnummer?: IntFieldUpdateOperationsInput | number
-    postleitzahl?: IntFieldUpdateOperationsInput | number
-    ort?: StringFieldUpdateOperationsInput | string
-    subdomain?: StringFieldUpdateOperationsInput | string
+    ID?: IntFieldUpdateOperationsInput | number
+    Name?: StringFieldUpdateOperationsInput | string
+    Strasse?: StringFieldUpdateOperationsInput | string
+    Hausnummer?: StringFieldUpdateOperationsInput | string
+    Postleitzahl?: StringFieldUpdateOperationsInput | string
+    Ort?: StringFieldUpdateOperationsInput | string
+    Subdomain?: StringFieldUpdateOperationsInput | string
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     vereinszuordnung?: vereinszuordnungUncheckedUpdateManyWithoutVereinNestedInput
   }
 
   export type vereinCreateManyInput = {
-    id?: number
-    name: string
-    strasse: string
-    hausnummer: number
-    postleitzahl: number
-    ort: string
-    subdomain: string
+    ID?: number
+    Name: string
+    Strasse: string
+    Hausnummer: string
+    Postleitzahl: string
+    Ort: string
+    Subdomain: string
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type vereinUpdateManyMutationInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    strasse?: StringFieldUpdateOperationsInput | string
-    hausnummer?: IntFieldUpdateOperationsInput | number
-    postleitzahl?: IntFieldUpdateOperationsInput | number
-    ort?: StringFieldUpdateOperationsInput | string
-    subdomain?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    Strasse?: StringFieldUpdateOperationsInput | string
+    Hausnummer?: StringFieldUpdateOperationsInput | string
+    Postleitzahl?: StringFieldUpdateOperationsInput | string
+    Ort?: StringFieldUpdateOperationsInput | string
+    Subdomain?: StringFieldUpdateOperationsInput | string
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type vereinUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    strasse?: StringFieldUpdateOperationsInput | string
-    hausnummer?: IntFieldUpdateOperationsInput | number
-    postleitzahl?: IntFieldUpdateOperationsInput | number
-    ort?: StringFieldUpdateOperationsInput | string
-    subdomain?: StringFieldUpdateOperationsInput | string
+    ID?: IntFieldUpdateOperationsInput | number
+    Name?: StringFieldUpdateOperationsInput | string
+    Strasse?: StringFieldUpdateOperationsInput | string
+    Hausnummer?: StringFieldUpdateOperationsInput | string
+    Postleitzahl?: StringFieldUpdateOperationsInput | string
+    Ort?: StringFieldUpdateOperationsInput | string
+    Subdomain?: StringFieldUpdateOperationsInput | string
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type vereinszuordnungCreateInput = {
-    rolle?: $Enums.vereinszuordnung_rolle
-    person: personCreateNestedOneWithoutVereinszuordnungInput
+    Person_ID: number
+    Rolle?: $Enums.vereinszuordnung_Rolle
+    Erstellt_am?: Date | string
+    Geaendert_am?: Date | string | null
     verein: vereinCreateNestedOneWithoutVereinszuordnungInput
   }
 
   export type vereinszuordnungUncheckedCreateInput = {
-    id?: number
-    person_id: number
-    verein_id: number
-    rolle?: $Enums.vereinszuordnung_rolle
+    ID?: number
+    Person_ID: number
+    Verein_ID: number
+    Rolle?: $Enums.vereinszuordnung_Rolle
+    Erstellt_am?: Date | string
+    Geaendert_am?: Date | string | null
   }
 
   export type vereinszuordnungUpdateInput = {
-    rolle?: Enumvereinszuordnung_rolleFieldUpdateOperationsInput | $Enums.vereinszuordnung_rolle
-    person?: personUpdateOneRequiredWithoutVereinszuordnungNestedInput
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Rolle?: Enumvereinszuordnung_RolleFieldUpdateOperationsInput | $Enums.vereinszuordnung_Rolle
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verein?: vereinUpdateOneRequiredWithoutVereinszuordnungNestedInput
   }
 
   export type vereinszuordnungUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    person_id?: IntFieldUpdateOperationsInput | number
-    verein_id?: IntFieldUpdateOperationsInput | number
-    rolle?: Enumvereinszuordnung_rolleFieldUpdateOperationsInput | $Enums.vereinszuordnung_rolle
+    ID?: IntFieldUpdateOperationsInput | number
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Verein_ID?: IntFieldUpdateOperationsInput | number
+    Rolle?: Enumvereinszuordnung_RolleFieldUpdateOperationsInput | $Enums.vereinszuordnung_Rolle
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type vereinszuordnungCreateManyInput = {
-    id?: number
-    person_id: number
-    verein_id: number
-    rolle?: $Enums.vereinszuordnung_rolle
+    ID?: number
+    Person_ID: number
+    Verein_ID: number
+    Rolle?: $Enums.vereinszuordnung_Rolle
+    Erstellt_am?: Date | string
+    Geaendert_am?: Date | string | null
   }
 
   export type vereinszuordnungUpdateManyMutationInput = {
-    rolle?: Enumvereinszuordnung_rolleFieldUpdateOperationsInput | $Enums.vereinszuordnung_rolle
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Rolle?: Enumvereinszuordnung_RolleFieldUpdateOperationsInput | $Enums.vereinszuordnung_Rolle
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type vereinszuordnungUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    person_id?: IntFieldUpdateOperationsInput | number
-    verein_id?: IntFieldUpdateOperationsInput | number
-    rolle?: Enumvereinszuordnung_rolleFieldUpdateOperationsInput | $Enums.vereinszuordnung_rolle
+    ID?: IntFieldUpdateOperationsInput | number
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Verein_ID?: IntFieldUpdateOperationsInput | number
+    Rolle?: Enumvereinszuordnung_RolleFieldUpdateOperationsInput | $Enums.vereinszuordnung_Rolle
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -5817,9 +5918,20 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
-  export type PersonScalarRelationFilter = {
-    is?: personWhereInput
-    isNot?: personWhereInput
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type benutzerkontoOrderByRelevanceInput = {
@@ -5829,37 +5941,43 @@ export namespace Prisma {
   }
 
   export type benutzerkontoCountOrderByAggregateInput = {
-    id?: SortOrder
-    benutzername?: SortOrder
-    passwort?: SortOrder
-    aktiv?: SortOrder
-    person_id?: SortOrder
+    ID?: SortOrder
+    Benutzername?: SortOrder
+    Passwort?: SortOrder
+    Aktiv?: SortOrder
+    Person_ID?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type benutzerkontoAvgOrderByAggregateInput = {
-    id?: SortOrder
-    person_id?: SortOrder
+    ID?: SortOrder
+    Person_ID?: SortOrder
   }
 
   export type benutzerkontoMaxOrderByAggregateInput = {
-    id?: SortOrder
-    benutzername?: SortOrder
-    passwort?: SortOrder
-    aktiv?: SortOrder
-    person_id?: SortOrder
+    ID?: SortOrder
+    Benutzername?: SortOrder
+    Passwort?: SortOrder
+    Aktiv?: SortOrder
+    Person_ID?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type benutzerkontoMinOrderByAggregateInput = {
-    id?: SortOrder
-    benutzername?: SortOrder
-    passwort?: SortOrder
-    aktiv?: SortOrder
-    person_id?: SortOrder
+    ID?: SortOrder
+    Benutzername?: SortOrder
+    Passwort?: SortOrder
+    Aktiv?: SortOrder
+    Person_ID?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type benutzerkontoSumOrderByAggregateInput = {
-    id?: SortOrder
-    person_id?: SortOrder
+    ID?: SortOrder
+    Person_ID?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -5904,80 +6022,6 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | null
-    notIn?: Date[] | string[] | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
-  export type BenutzerkontoListRelationFilter = {
-    every?: benutzerkontoWhereInput
-    some?: benutzerkontoWhereInput
-    none?: benutzerkontoWhereInput
-  }
-
-  export type VereinszuordnungListRelationFilter = {
-    every?: vereinszuordnungWhereInput
-    some?: vereinszuordnungWhereInput
-    none?: vereinszuordnungWhereInput
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
-  }
-
-  export type benutzerkontoOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type vereinszuordnungOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type personOrderByRelevanceInput = {
-    fields: personOrderByRelevanceFieldEnum | personOrderByRelevanceFieldEnum[]
-    sort: SortOrder
-    search: string
-  }
-
-  export type personCountOrderByAggregateInput = {
-    id?: SortOrder
-    vorname?: SortOrder
-    name?: SortOrder
-    geburtsdatum?: SortOrder
-    email?: SortOrder
-  }
-
-  export type personAvgOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type personMaxOrderByAggregateInput = {
-    id?: SortOrder
-    vorname?: SortOrder
-    name?: SortOrder
-    geburtsdatum?: SortOrder
-    email?: SortOrder
-  }
-
-  export type personMinOrderByAggregateInput = {
-    id?: SortOrder
-    vorname?: SortOrder
-    name?: SortOrder
-    geburtsdatum?: SortOrder
-    email?: SortOrder
-  }
-
-  export type personSumOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | null
@@ -5992,6 +6036,108 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type personOrderByRelevanceInput = {
+    fields: personOrderByRelevanceFieldEnum | personOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type personCountOrderByAggregateInput = {
+    ID?: SortOrder
+    Vorname?: SortOrder
+    Name?: SortOrder
+    Geburtsdatum?: SortOrder
+    Strasse?: SortOrder
+    Hausnummer?: SortOrder
+    Postleitzahl?: SortOrder
+    Ort?: SortOrder
+    Email?: SortOrder
+    HandyNr?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type personAvgOrderByAggregateInput = {
+    ID?: SortOrder
+  }
+
+  export type personMaxOrderByAggregateInput = {
+    ID?: SortOrder
+    Vorname?: SortOrder
+    Name?: SortOrder
+    Geburtsdatum?: SortOrder
+    Strasse?: SortOrder
+    Hausnummer?: SortOrder
+    Postleitzahl?: SortOrder
+    Ort?: SortOrder
+    Email?: SortOrder
+    HandyNr?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type personMinOrderByAggregateInput = {
+    ID?: SortOrder
+    Vorname?: SortOrder
+    Name?: SortOrder
+    Geburtsdatum?: SortOrder
+    Strasse?: SortOrder
+    Hausnummer?: SortOrder
+    Postleitzahl?: SortOrder
+    Ort?: SortOrder
+    Email?: SortOrder
+    HandyNr?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
+  }
+
+  export type personSumOrderByAggregateInput = {
+    ID?: SortOrder
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type VereinszuordnungListRelationFilter = {
+    every?: vereinszuordnungWhereInput
+    some?: vereinszuordnungWhereInput
+    none?: vereinszuordnungWhereInput
+  }
+
+  export type vereinszuordnungOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type vereinOrderByRelevanceInput = {
     fields: vereinOrderByRelevanceFieldEnum | vereinOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -5999,52 +6145,65 @@ export namespace Prisma {
   }
 
   export type vereinCountOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    strasse?: SortOrder
-    hausnummer?: SortOrder
-    postleitzahl?: SortOrder
-    ort?: SortOrder
-    subdomain?: SortOrder
+    ID?: SortOrder
+    Name?: SortOrder
+    Strasse?: SortOrder
+    Hausnummer?: SortOrder
+    Postleitzahl?: SortOrder
+    Ort?: SortOrder
+    Subdomain?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type vereinAvgOrderByAggregateInput = {
-    id?: SortOrder
-    hausnummer?: SortOrder
-    postleitzahl?: SortOrder
+    ID?: SortOrder
   }
 
   export type vereinMaxOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    strasse?: SortOrder
-    hausnummer?: SortOrder
-    postleitzahl?: SortOrder
-    ort?: SortOrder
-    subdomain?: SortOrder
+    ID?: SortOrder
+    Name?: SortOrder
+    Strasse?: SortOrder
+    Hausnummer?: SortOrder
+    Postleitzahl?: SortOrder
+    Ort?: SortOrder
+    Subdomain?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type vereinMinOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    strasse?: SortOrder
-    hausnummer?: SortOrder
-    postleitzahl?: SortOrder
-    ort?: SortOrder
-    subdomain?: SortOrder
+    ID?: SortOrder
+    Name?: SortOrder
+    Strasse?: SortOrder
+    Hausnummer?: SortOrder
+    Postleitzahl?: SortOrder
+    Ort?: SortOrder
+    Subdomain?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type vereinSumOrderByAggregateInput = {
-    id?: SortOrder
-    hausnummer?: SortOrder
-    postleitzahl?: SortOrder
+    ID?: SortOrder
   }
 
-  export type Enumvereinszuordnung_rolleFilter<$PrismaModel = never> = {
-    equals?: $Enums.vereinszuordnung_rolle | Enumvereinszuordnung_rolleFieldRefInput<$PrismaModel>
-    in?: $Enums.vereinszuordnung_rolle[]
-    notIn?: $Enums.vereinszuordnung_rolle[]
-    not?: NestedEnumvereinszuordnung_rolleFilter<$PrismaModel> | $Enums.vereinszuordnung_rolle
+  export type Enumvereinszuordnung_RolleFilter<$PrismaModel = never> = {
+    equals?: $Enums.vereinszuordnung_Rolle | Enumvereinszuordnung_RolleFieldRefInput<$PrismaModel>
+    in?: $Enums.vereinszuordnung_Rolle[]
+    notIn?: $Enums.vereinszuordnung_Rolle[]
+    not?: NestedEnumvereinszuordnung_RolleFilter<$PrismaModel> | $Enums.vereinszuordnung_Rolle
+  }
+
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type VereinScalarRelationFilter = {
@@ -6053,52 +6212,66 @@ export namespace Prisma {
   }
 
   export type vereinszuordnungCountOrderByAggregateInput = {
-    id?: SortOrder
-    person_id?: SortOrder
-    verein_id?: SortOrder
-    rolle?: SortOrder
+    ID?: SortOrder
+    Person_ID?: SortOrder
+    Verein_ID?: SortOrder
+    Rolle?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type vereinszuordnungAvgOrderByAggregateInput = {
-    id?: SortOrder
-    person_id?: SortOrder
-    verein_id?: SortOrder
+    ID?: SortOrder
+    Person_ID?: SortOrder
+    Verein_ID?: SortOrder
   }
 
   export type vereinszuordnungMaxOrderByAggregateInput = {
-    id?: SortOrder
-    person_id?: SortOrder
-    verein_id?: SortOrder
-    rolle?: SortOrder
+    ID?: SortOrder
+    Person_ID?: SortOrder
+    Verein_ID?: SortOrder
+    Rolle?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type vereinszuordnungMinOrderByAggregateInput = {
-    id?: SortOrder
-    person_id?: SortOrder
-    verein_id?: SortOrder
-    rolle?: SortOrder
+    ID?: SortOrder
+    Person_ID?: SortOrder
+    Verein_ID?: SortOrder
+    Rolle?: SortOrder
+    Erstellt_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type vereinszuordnungSumOrderByAggregateInput = {
-    id?: SortOrder
-    person_id?: SortOrder
-    verein_id?: SortOrder
+    ID?: SortOrder
+    Person_ID?: SortOrder
+    Verein_ID?: SortOrder
   }
 
-  export type Enumvereinszuordnung_rolleWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.vereinszuordnung_rolle | Enumvereinszuordnung_rolleFieldRefInput<$PrismaModel>
-    in?: $Enums.vereinszuordnung_rolle[]
-    notIn?: $Enums.vereinszuordnung_rolle[]
-    not?: NestedEnumvereinszuordnung_rolleWithAggregatesFilter<$PrismaModel> | $Enums.vereinszuordnung_rolle
+  export type Enumvereinszuordnung_RolleWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.vereinszuordnung_Rolle | Enumvereinszuordnung_RolleFieldRefInput<$PrismaModel>
+    in?: $Enums.vereinszuordnung_Rolle[]
+    notIn?: $Enums.vereinszuordnung_Rolle[]
+    not?: NestedEnumvereinszuordnung_RolleWithAggregatesFilter<$PrismaModel> | $Enums.vereinszuordnung_Rolle
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumvereinszuordnung_rolleFilter<$PrismaModel>
-    _max?: NestedEnumvereinszuordnung_rolleFilter<$PrismaModel>
+    _min?: NestedEnumvereinszuordnung_RolleFilter<$PrismaModel>
+    _max?: NestedEnumvereinszuordnung_RolleFilter<$PrismaModel>
   }
 
-  export type personCreateNestedOneWithoutBenutzerkontoInput = {
-    create?: XOR<personCreateWithoutBenutzerkontoInput, personUncheckedCreateWithoutBenutzerkontoInput>
-    connectOrCreate?: personCreateOrConnectWithoutBenutzerkontoInput
-    connect?: personWhereUniqueInput
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -6109,14 +6282,6 @@ export namespace Prisma {
     set?: boolean
   }
 
-  export type personUpdateOneRequiredWithoutBenutzerkontoNestedInput = {
-    create?: XOR<personCreateWithoutBenutzerkontoInput, personUncheckedCreateWithoutBenutzerkontoInput>
-    connectOrCreate?: personCreateOrConnectWithoutBenutzerkontoInput
-    upsert?: personUpsertWithoutBenutzerkontoInput
-    connect?: personWhereUniqueInput
-    update?: XOR<XOR<personUpdateToOneWithWhereWithoutBenutzerkontoInput, personUpdateWithoutBenutzerkontoInput>, personUncheckedUpdateWithoutBenutzerkontoInput>
-  }
-
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -6125,92 +6290,12 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type benutzerkontoCreateNestedManyWithoutPersonInput = {
-    create?: XOR<benutzerkontoCreateWithoutPersonInput, benutzerkontoUncheckedCreateWithoutPersonInput> | benutzerkontoCreateWithoutPersonInput[] | benutzerkontoUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: benutzerkontoCreateOrConnectWithoutPersonInput | benutzerkontoCreateOrConnectWithoutPersonInput[]
-    createMany?: benutzerkontoCreateManyPersonInputEnvelope
-    connect?: benutzerkontoWhereUniqueInput | benutzerkontoWhereUniqueInput[]
-  }
-
-  export type vereinszuordnungCreateNestedManyWithoutPersonInput = {
-    create?: XOR<vereinszuordnungCreateWithoutPersonInput, vereinszuordnungUncheckedCreateWithoutPersonInput> | vereinszuordnungCreateWithoutPersonInput[] | vereinszuordnungUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: vereinszuordnungCreateOrConnectWithoutPersonInput | vereinszuordnungCreateOrConnectWithoutPersonInput[]
-    createMany?: vereinszuordnungCreateManyPersonInputEnvelope
-    connect?: vereinszuordnungWhereUniqueInput | vereinszuordnungWhereUniqueInput[]
-  }
-
-  export type benutzerkontoUncheckedCreateNestedManyWithoutPersonInput = {
-    create?: XOR<benutzerkontoCreateWithoutPersonInput, benutzerkontoUncheckedCreateWithoutPersonInput> | benutzerkontoCreateWithoutPersonInput[] | benutzerkontoUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: benutzerkontoCreateOrConnectWithoutPersonInput | benutzerkontoCreateOrConnectWithoutPersonInput[]
-    createMany?: benutzerkontoCreateManyPersonInputEnvelope
-    connect?: benutzerkontoWhereUniqueInput | benutzerkontoWhereUniqueInput[]
-  }
-
-  export type vereinszuordnungUncheckedCreateNestedManyWithoutPersonInput = {
-    create?: XOR<vereinszuordnungCreateWithoutPersonInput, vereinszuordnungUncheckedCreateWithoutPersonInput> | vereinszuordnungCreateWithoutPersonInput[] | vereinszuordnungUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: vereinszuordnungCreateOrConnectWithoutPersonInput | vereinszuordnungCreateOrConnectWithoutPersonInput[]
-    createMany?: vereinszuordnungCreateManyPersonInputEnvelope
-    connect?: vereinszuordnungWhereUniqueInput | vereinszuordnungWhereUniqueInput[]
-  }
-
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
   }
 
-  export type benutzerkontoUpdateManyWithoutPersonNestedInput = {
-    create?: XOR<benutzerkontoCreateWithoutPersonInput, benutzerkontoUncheckedCreateWithoutPersonInput> | benutzerkontoCreateWithoutPersonInput[] | benutzerkontoUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: benutzerkontoCreateOrConnectWithoutPersonInput | benutzerkontoCreateOrConnectWithoutPersonInput[]
-    upsert?: benutzerkontoUpsertWithWhereUniqueWithoutPersonInput | benutzerkontoUpsertWithWhereUniqueWithoutPersonInput[]
-    createMany?: benutzerkontoCreateManyPersonInputEnvelope
-    set?: benutzerkontoWhereUniqueInput | benutzerkontoWhereUniqueInput[]
-    disconnect?: benutzerkontoWhereUniqueInput | benutzerkontoWhereUniqueInput[]
-    delete?: benutzerkontoWhereUniqueInput | benutzerkontoWhereUniqueInput[]
-    connect?: benutzerkontoWhereUniqueInput | benutzerkontoWhereUniqueInput[]
-    update?: benutzerkontoUpdateWithWhereUniqueWithoutPersonInput | benutzerkontoUpdateWithWhereUniqueWithoutPersonInput[]
-    updateMany?: benutzerkontoUpdateManyWithWhereWithoutPersonInput | benutzerkontoUpdateManyWithWhereWithoutPersonInput[]
-    deleteMany?: benutzerkontoScalarWhereInput | benutzerkontoScalarWhereInput[]
-  }
-
-  export type vereinszuordnungUpdateManyWithoutPersonNestedInput = {
-    create?: XOR<vereinszuordnungCreateWithoutPersonInput, vereinszuordnungUncheckedCreateWithoutPersonInput> | vereinszuordnungCreateWithoutPersonInput[] | vereinszuordnungUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: vereinszuordnungCreateOrConnectWithoutPersonInput | vereinszuordnungCreateOrConnectWithoutPersonInput[]
-    upsert?: vereinszuordnungUpsertWithWhereUniqueWithoutPersonInput | vereinszuordnungUpsertWithWhereUniqueWithoutPersonInput[]
-    createMany?: vereinszuordnungCreateManyPersonInputEnvelope
-    set?: vereinszuordnungWhereUniqueInput | vereinszuordnungWhereUniqueInput[]
-    disconnect?: vereinszuordnungWhereUniqueInput | vereinszuordnungWhereUniqueInput[]
-    delete?: vereinszuordnungWhereUniqueInput | vereinszuordnungWhereUniqueInput[]
-    connect?: vereinszuordnungWhereUniqueInput | vereinszuordnungWhereUniqueInput[]
-    update?: vereinszuordnungUpdateWithWhereUniqueWithoutPersonInput | vereinszuordnungUpdateWithWhereUniqueWithoutPersonInput[]
-    updateMany?: vereinszuordnungUpdateManyWithWhereWithoutPersonInput | vereinszuordnungUpdateManyWithWhereWithoutPersonInput[]
-    deleteMany?: vereinszuordnungScalarWhereInput | vereinszuordnungScalarWhereInput[]
-  }
-
-  export type benutzerkontoUncheckedUpdateManyWithoutPersonNestedInput = {
-    create?: XOR<benutzerkontoCreateWithoutPersonInput, benutzerkontoUncheckedCreateWithoutPersonInput> | benutzerkontoCreateWithoutPersonInput[] | benutzerkontoUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: benutzerkontoCreateOrConnectWithoutPersonInput | benutzerkontoCreateOrConnectWithoutPersonInput[]
-    upsert?: benutzerkontoUpsertWithWhereUniqueWithoutPersonInput | benutzerkontoUpsertWithWhereUniqueWithoutPersonInput[]
-    createMany?: benutzerkontoCreateManyPersonInputEnvelope
-    set?: benutzerkontoWhereUniqueInput | benutzerkontoWhereUniqueInput[]
-    disconnect?: benutzerkontoWhereUniqueInput | benutzerkontoWhereUniqueInput[]
-    delete?: benutzerkontoWhereUniqueInput | benutzerkontoWhereUniqueInput[]
-    connect?: benutzerkontoWhereUniqueInput | benutzerkontoWhereUniqueInput[]
-    update?: benutzerkontoUpdateWithWhereUniqueWithoutPersonInput | benutzerkontoUpdateWithWhereUniqueWithoutPersonInput[]
-    updateMany?: benutzerkontoUpdateManyWithWhereWithoutPersonInput | benutzerkontoUpdateManyWithWhereWithoutPersonInput[]
-    deleteMany?: benutzerkontoScalarWhereInput | benutzerkontoScalarWhereInput[]
-  }
-
-  export type vereinszuordnungUncheckedUpdateManyWithoutPersonNestedInput = {
-    create?: XOR<vereinszuordnungCreateWithoutPersonInput, vereinszuordnungUncheckedCreateWithoutPersonInput> | vereinszuordnungCreateWithoutPersonInput[] | vereinszuordnungUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: vereinszuordnungCreateOrConnectWithoutPersonInput | vereinszuordnungCreateOrConnectWithoutPersonInput[]
-    upsert?: vereinszuordnungUpsertWithWhereUniqueWithoutPersonInput | vereinszuordnungUpsertWithWhereUniqueWithoutPersonInput[]
-    createMany?: vereinszuordnungCreateManyPersonInputEnvelope
-    set?: vereinszuordnungWhereUniqueInput | vereinszuordnungWhereUniqueInput[]
-    disconnect?: vereinszuordnungWhereUniqueInput | vereinszuordnungWhereUniqueInput[]
-    delete?: vereinszuordnungWhereUniqueInput | vereinszuordnungWhereUniqueInput[]
-    connect?: vereinszuordnungWhereUniqueInput | vereinszuordnungWhereUniqueInput[]
-    update?: vereinszuordnungUpdateWithWhereUniqueWithoutPersonInput | vereinszuordnungUpdateWithWhereUniqueWithoutPersonInput[]
-    updateMany?: vereinszuordnungUpdateManyWithWhereWithoutPersonInput | vereinszuordnungUpdateManyWithWhereWithoutPersonInput[]
-    deleteMany?: vereinszuordnungScalarWhereInput | vereinszuordnungScalarWhereInput[]
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type vereinszuordnungCreateNestedManyWithoutVereinInput = {
@@ -6255,28 +6340,18 @@ export namespace Prisma {
     deleteMany?: vereinszuordnungScalarWhereInput | vereinszuordnungScalarWhereInput[]
   }
 
-  export type personCreateNestedOneWithoutVereinszuordnungInput = {
-    create?: XOR<personCreateWithoutVereinszuordnungInput, personUncheckedCreateWithoutVereinszuordnungInput>
-    connectOrCreate?: personCreateOrConnectWithoutVereinszuordnungInput
-    connect?: personWhereUniqueInput
-  }
-
   export type vereinCreateNestedOneWithoutVereinszuordnungInput = {
     create?: XOR<vereinCreateWithoutVereinszuordnungInput, vereinUncheckedCreateWithoutVereinszuordnungInput>
     connectOrCreate?: vereinCreateOrConnectWithoutVereinszuordnungInput
     connect?: vereinWhereUniqueInput
   }
 
-  export type Enumvereinszuordnung_rolleFieldUpdateOperationsInput = {
-    set?: $Enums.vereinszuordnung_rolle
+  export type Enumvereinszuordnung_RolleFieldUpdateOperationsInput = {
+    set?: $Enums.vereinszuordnung_Rolle
   }
 
-  export type personUpdateOneRequiredWithoutVereinszuordnungNestedInput = {
-    create?: XOR<personCreateWithoutVereinszuordnungInput, personUncheckedCreateWithoutVereinszuordnungInput>
-    connectOrCreate?: personCreateOrConnectWithoutVereinszuordnungInput
-    upsert?: personUpsertWithoutVereinszuordnungInput
-    connect?: personWhereUniqueInput
-    update?: XOR<XOR<personUpdateToOneWithWhereWithoutVereinszuordnungInput, personUpdateWithoutVereinszuordnungInput>, personUncheckedUpdateWithoutVereinszuordnungInput>
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
   }
 
   export type vereinUpdateOneRequiredWithoutVereinszuordnungNestedInput = {
@@ -6316,6 +6391,17 @@ export namespace Prisma {
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -6371,17 +6457,6 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | null
-    notIn?: Date[] | string[] | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | null
@@ -6407,179 +6482,94 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedEnumvereinszuordnung_rolleFilter<$PrismaModel = never> = {
-    equals?: $Enums.vereinszuordnung_rolle | Enumvereinszuordnung_rolleFieldRefInput<$PrismaModel>
-    in?: $Enums.vereinszuordnung_rolle[]
-    notIn?: $Enums.vereinszuordnung_rolle[]
-    not?: NestedEnumvereinszuordnung_rolleFilter<$PrismaModel> | $Enums.vereinszuordnung_rolle
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedEnumvereinszuordnung_rolleWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.vereinszuordnung_rolle | Enumvereinszuordnung_rolleFieldRefInput<$PrismaModel>
-    in?: $Enums.vereinszuordnung_rolle[]
-    notIn?: $Enums.vereinszuordnung_rolle[]
-    not?: NestedEnumvereinszuordnung_rolleWithAggregatesFilter<$PrismaModel> | $Enums.vereinszuordnung_rolle
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumvereinszuordnung_RolleFilter<$PrismaModel = never> = {
+    equals?: $Enums.vereinszuordnung_Rolle | Enumvereinszuordnung_RolleFieldRefInput<$PrismaModel>
+    in?: $Enums.vereinszuordnung_Rolle[]
+    notIn?: $Enums.vereinszuordnung_Rolle[]
+    not?: NestedEnumvereinszuordnung_RolleFilter<$PrismaModel> | $Enums.vereinszuordnung_Rolle
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedEnumvereinszuordnung_RolleWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.vereinszuordnung_Rolle | Enumvereinszuordnung_RolleFieldRefInput<$PrismaModel>
+    in?: $Enums.vereinszuordnung_Rolle[]
+    notIn?: $Enums.vereinszuordnung_Rolle[]
+    not?: NestedEnumvereinszuordnung_RolleWithAggregatesFilter<$PrismaModel> | $Enums.vereinszuordnung_Rolle
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumvereinszuordnung_rolleFilter<$PrismaModel>
-    _max?: NestedEnumvereinszuordnung_rolleFilter<$PrismaModel>
+    _min?: NestedEnumvereinszuordnung_RolleFilter<$PrismaModel>
+    _max?: NestedEnumvereinszuordnung_RolleFilter<$PrismaModel>
   }
 
-  export type personCreateWithoutBenutzerkontoInput = {
-    vorname: string
-    name: string
-    geburtsdatum?: Date | string | null
-    email: string
-    vereinszuordnung?: vereinszuordnungCreateNestedManyWithoutPersonInput
-  }
-
-  export type personUncheckedCreateWithoutBenutzerkontoInput = {
-    id?: number
-    vorname: string
-    name: string
-    geburtsdatum?: Date | string | null
-    email: string
-    vereinszuordnung?: vereinszuordnungUncheckedCreateNestedManyWithoutPersonInput
-  }
-
-  export type personCreateOrConnectWithoutBenutzerkontoInput = {
-    where: personWhereUniqueInput
-    create: XOR<personCreateWithoutBenutzerkontoInput, personUncheckedCreateWithoutBenutzerkontoInput>
-  }
-
-  export type personUpsertWithoutBenutzerkontoInput = {
-    update: XOR<personUpdateWithoutBenutzerkontoInput, personUncheckedUpdateWithoutBenutzerkontoInput>
-    create: XOR<personCreateWithoutBenutzerkontoInput, personUncheckedCreateWithoutBenutzerkontoInput>
-    where?: personWhereInput
-  }
-
-  export type personUpdateToOneWithWhereWithoutBenutzerkontoInput = {
-    where?: personWhereInput
-    data: XOR<personUpdateWithoutBenutzerkontoInput, personUncheckedUpdateWithoutBenutzerkontoInput>
-  }
-
-  export type personUpdateWithoutBenutzerkontoInput = {
-    vorname?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email?: StringFieldUpdateOperationsInput | string
-    vereinszuordnung?: vereinszuordnungUpdateManyWithoutPersonNestedInput
-  }
-
-  export type personUncheckedUpdateWithoutBenutzerkontoInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    vorname?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email?: StringFieldUpdateOperationsInput | string
-    vereinszuordnung?: vereinszuordnungUncheckedUpdateManyWithoutPersonNestedInput
-  }
-
-  export type benutzerkontoCreateWithoutPersonInput = {
-    benutzername: string
-    passwort: string
-    aktiv?: boolean
-  }
-
-  export type benutzerkontoUncheckedCreateWithoutPersonInput = {
-    id?: number
-    benutzername: string
-    passwort: string
-    aktiv?: boolean
-  }
-
-  export type benutzerkontoCreateOrConnectWithoutPersonInput = {
-    where: benutzerkontoWhereUniqueInput
-    create: XOR<benutzerkontoCreateWithoutPersonInput, benutzerkontoUncheckedCreateWithoutPersonInput>
-  }
-
-  export type benutzerkontoCreateManyPersonInputEnvelope = {
-    data: benutzerkontoCreateManyPersonInput | benutzerkontoCreateManyPersonInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type vereinszuordnungCreateWithoutPersonInput = {
-    rolle?: $Enums.vereinszuordnung_rolle
-    verein: vereinCreateNestedOneWithoutVereinszuordnungInput
-  }
-
-  export type vereinszuordnungUncheckedCreateWithoutPersonInput = {
-    id?: number
-    verein_id: number
-    rolle?: $Enums.vereinszuordnung_rolle
-  }
-
-  export type vereinszuordnungCreateOrConnectWithoutPersonInput = {
-    where: vereinszuordnungWhereUniqueInput
-    create: XOR<vereinszuordnungCreateWithoutPersonInput, vereinszuordnungUncheckedCreateWithoutPersonInput>
-  }
-
-  export type vereinszuordnungCreateManyPersonInputEnvelope = {
-    data: vereinszuordnungCreateManyPersonInput | vereinszuordnungCreateManyPersonInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type benutzerkontoUpsertWithWhereUniqueWithoutPersonInput = {
-    where: benutzerkontoWhereUniqueInput
-    update: XOR<benutzerkontoUpdateWithoutPersonInput, benutzerkontoUncheckedUpdateWithoutPersonInput>
-    create: XOR<benutzerkontoCreateWithoutPersonInput, benutzerkontoUncheckedCreateWithoutPersonInput>
-  }
-
-  export type benutzerkontoUpdateWithWhereUniqueWithoutPersonInput = {
-    where: benutzerkontoWhereUniqueInput
-    data: XOR<benutzerkontoUpdateWithoutPersonInput, benutzerkontoUncheckedUpdateWithoutPersonInput>
-  }
-
-  export type benutzerkontoUpdateManyWithWhereWithoutPersonInput = {
-    where: benutzerkontoScalarWhereInput
-    data: XOR<benutzerkontoUpdateManyMutationInput, benutzerkontoUncheckedUpdateManyWithoutPersonInput>
-  }
-
-  export type benutzerkontoScalarWhereInput = {
-    AND?: benutzerkontoScalarWhereInput | benutzerkontoScalarWhereInput[]
-    OR?: benutzerkontoScalarWhereInput[]
-    NOT?: benutzerkontoScalarWhereInput | benutzerkontoScalarWhereInput[]
-    id?: IntFilter<"benutzerkonto"> | number
-    benutzername?: StringFilter<"benutzerkonto"> | string
-    passwort?: StringFilter<"benutzerkonto"> | string
-    aktiv?: BoolFilter<"benutzerkonto"> | boolean
-    person_id?: IntFilter<"benutzerkonto"> | number
-  }
-
-  export type vereinszuordnungUpsertWithWhereUniqueWithoutPersonInput = {
-    where: vereinszuordnungWhereUniqueInput
-    update: XOR<vereinszuordnungUpdateWithoutPersonInput, vereinszuordnungUncheckedUpdateWithoutPersonInput>
-    create: XOR<vereinszuordnungCreateWithoutPersonInput, vereinszuordnungUncheckedCreateWithoutPersonInput>
-  }
-
-  export type vereinszuordnungUpdateWithWhereUniqueWithoutPersonInput = {
-    where: vereinszuordnungWhereUniqueInput
-    data: XOR<vereinszuordnungUpdateWithoutPersonInput, vereinszuordnungUncheckedUpdateWithoutPersonInput>
-  }
-
-  export type vereinszuordnungUpdateManyWithWhereWithoutPersonInput = {
-    where: vereinszuordnungScalarWhereInput
-    data: XOR<vereinszuordnungUpdateManyMutationInput, vereinszuordnungUncheckedUpdateManyWithoutPersonInput>
-  }
-
-  export type vereinszuordnungScalarWhereInput = {
-    AND?: vereinszuordnungScalarWhereInput | vereinszuordnungScalarWhereInput[]
-    OR?: vereinszuordnungScalarWhereInput[]
-    NOT?: vereinszuordnungScalarWhereInput | vereinszuordnungScalarWhereInput[]
-    id?: IntFilter<"vereinszuordnung"> | number
-    person_id?: IntFilter<"vereinszuordnung"> | number
-    verein_id?: IntFilter<"vereinszuordnung"> | number
-    rolle?: Enumvereinszuordnung_rolleFilter<"vereinszuordnung"> | $Enums.vereinszuordnung_rolle
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type vereinszuordnungCreateWithoutVereinInput = {
-    rolle?: $Enums.vereinszuordnung_rolle
-    person: personCreateNestedOneWithoutVereinszuordnungInput
+    Person_ID: number
+    Rolle?: $Enums.vereinszuordnung_Rolle
+    Erstellt_am?: Date | string
+    Geaendert_am?: Date | string | null
   }
 
   export type vereinszuordnungUncheckedCreateWithoutVereinInput = {
-    id?: number
-    person_id: number
-    rolle?: $Enums.vereinszuordnung_rolle
+    ID?: number
+    Person_ID: number
+    Rolle?: $Enums.vereinszuordnung_Rolle
+    Erstellt_am?: Date | string
+    Geaendert_am?: Date | string | null
   }
 
   export type vereinszuordnungCreateOrConnectWithoutVereinInput = {
@@ -6608,78 +6598,44 @@ export namespace Prisma {
     data: XOR<vereinszuordnungUpdateManyMutationInput, vereinszuordnungUncheckedUpdateManyWithoutVereinInput>
   }
 
-  export type personCreateWithoutVereinszuordnungInput = {
-    vorname: string
-    name: string
-    geburtsdatum?: Date | string | null
-    email: string
-    benutzerkonto?: benutzerkontoCreateNestedManyWithoutPersonInput
-  }
-
-  export type personUncheckedCreateWithoutVereinszuordnungInput = {
-    id?: number
-    vorname: string
-    name: string
-    geburtsdatum?: Date | string | null
-    email: string
-    benutzerkonto?: benutzerkontoUncheckedCreateNestedManyWithoutPersonInput
-  }
-
-  export type personCreateOrConnectWithoutVereinszuordnungInput = {
-    where: personWhereUniqueInput
-    create: XOR<personCreateWithoutVereinszuordnungInput, personUncheckedCreateWithoutVereinszuordnungInput>
+  export type vereinszuordnungScalarWhereInput = {
+    AND?: vereinszuordnungScalarWhereInput | vereinszuordnungScalarWhereInput[]
+    OR?: vereinszuordnungScalarWhereInput[]
+    NOT?: vereinszuordnungScalarWhereInput | vereinszuordnungScalarWhereInput[]
+    ID?: IntFilter<"vereinszuordnung"> | number
+    Person_ID?: IntFilter<"vereinszuordnung"> | number
+    Verein_ID?: IntFilter<"vereinszuordnung"> | number
+    Rolle?: Enumvereinszuordnung_RolleFilter<"vereinszuordnung"> | $Enums.vereinszuordnung_Rolle
+    Erstellt_am?: DateTimeFilter<"vereinszuordnung"> | Date | string
+    Geaendert_am?: DateTimeNullableFilter<"vereinszuordnung"> | Date | string | null
   }
 
   export type vereinCreateWithoutVereinszuordnungInput = {
-    name: string
-    strasse: string
-    hausnummer: number
-    postleitzahl: number
-    ort: string
-    subdomain: string
+    Name: string
+    Strasse: string
+    Hausnummer: string
+    Postleitzahl: string
+    Ort: string
+    Subdomain: string
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type vereinUncheckedCreateWithoutVereinszuordnungInput = {
-    id?: number
-    name: string
-    strasse: string
-    hausnummer: number
-    postleitzahl: number
-    ort: string
-    subdomain: string
+    ID?: number
+    Name: string
+    Strasse: string
+    Hausnummer: string
+    Postleitzahl: string
+    Ort: string
+    Subdomain: string
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type vereinCreateOrConnectWithoutVereinszuordnungInput = {
     where: vereinWhereUniqueInput
     create: XOR<vereinCreateWithoutVereinszuordnungInput, vereinUncheckedCreateWithoutVereinszuordnungInput>
-  }
-
-  export type personUpsertWithoutVereinszuordnungInput = {
-    update: XOR<personUpdateWithoutVereinszuordnungInput, personUncheckedUpdateWithoutVereinszuordnungInput>
-    create: XOR<personCreateWithoutVereinszuordnungInput, personUncheckedCreateWithoutVereinszuordnungInput>
-    where?: personWhereInput
-  }
-
-  export type personUpdateToOneWithWhereWithoutVereinszuordnungInput = {
-    where?: personWhereInput
-    data: XOR<personUpdateWithoutVereinszuordnungInput, personUncheckedUpdateWithoutVereinszuordnungInput>
-  }
-
-  export type personUpdateWithoutVereinszuordnungInput = {
-    vorname?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email?: StringFieldUpdateOperationsInput | string
-    benutzerkonto?: benutzerkontoUpdateManyWithoutPersonNestedInput
-  }
-
-  export type personUncheckedUpdateWithoutVereinszuordnungInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    vorname?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email?: StringFieldUpdateOperationsInput | string
-    benutzerkonto?: benutzerkontoUncheckedUpdateManyWithoutPersonNestedInput
   }
 
   export type vereinUpsertWithoutVereinszuordnungInput = {
@@ -6694,95 +6650,57 @@ export namespace Prisma {
   }
 
   export type vereinUpdateWithoutVereinszuordnungInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    strasse?: StringFieldUpdateOperationsInput | string
-    hausnummer?: IntFieldUpdateOperationsInput | number
-    postleitzahl?: IntFieldUpdateOperationsInput | number
-    ort?: StringFieldUpdateOperationsInput | string
-    subdomain?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    Strasse?: StringFieldUpdateOperationsInput | string
+    Hausnummer?: StringFieldUpdateOperationsInput | string
+    Postleitzahl?: StringFieldUpdateOperationsInput | string
+    Ort?: StringFieldUpdateOperationsInput | string
+    Subdomain?: StringFieldUpdateOperationsInput | string
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type vereinUncheckedUpdateWithoutVereinszuordnungInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    strasse?: StringFieldUpdateOperationsInput | string
-    hausnummer?: IntFieldUpdateOperationsInput | number
-    postleitzahl?: IntFieldUpdateOperationsInput | number
-    ort?: StringFieldUpdateOperationsInput | string
-    subdomain?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type benutzerkontoCreateManyPersonInput = {
-    id?: number
-    benutzername: string
-    passwort: string
-    aktiv?: boolean
-  }
-
-  export type vereinszuordnungCreateManyPersonInput = {
-    id?: number
-    verein_id: number
-    rolle?: $Enums.vereinszuordnung_rolle
-  }
-
-  export type benutzerkontoUpdateWithoutPersonInput = {
-    benutzername?: StringFieldUpdateOperationsInput | string
-    passwort?: StringFieldUpdateOperationsInput | string
-    aktiv?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type benutzerkontoUncheckedUpdateWithoutPersonInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    benutzername?: StringFieldUpdateOperationsInput | string
-    passwort?: StringFieldUpdateOperationsInput | string
-    aktiv?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type benutzerkontoUncheckedUpdateManyWithoutPersonInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    benutzername?: StringFieldUpdateOperationsInput | string
-    passwort?: StringFieldUpdateOperationsInput | string
-    aktiv?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type vereinszuordnungUpdateWithoutPersonInput = {
-    rolle?: Enumvereinszuordnung_rolleFieldUpdateOperationsInput | $Enums.vereinszuordnung_rolle
-    verein?: vereinUpdateOneRequiredWithoutVereinszuordnungNestedInput
-  }
-
-  export type vereinszuordnungUncheckedUpdateWithoutPersonInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    verein_id?: IntFieldUpdateOperationsInput | number
-    rolle?: Enumvereinszuordnung_rolleFieldUpdateOperationsInput | $Enums.vereinszuordnung_rolle
-  }
-
-  export type vereinszuordnungUncheckedUpdateManyWithoutPersonInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    verein_id?: IntFieldUpdateOperationsInput | number
-    rolle?: Enumvereinszuordnung_rolleFieldUpdateOperationsInput | $Enums.vereinszuordnung_rolle
+    ID?: IntFieldUpdateOperationsInput | number
+    Name?: StringFieldUpdateOperationsInput | string
+    Strasse?: StringFieldUpdateOperationsInput | string
+    Hausnummer?: StringFieldUpdateOperationsInput | string
+    Postleitzahl?: StringFieldUpdateOperationsInput | string
+    Ort?: StringFieldUpdateOperationsInput | string
+    Subdomain?: StringFieldUpdateOperationsInput | string
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type vereinszuordnungCreateManyVereinInput = {
-    id?: number
-    person_id: number
-    rolle?: $Enums.vereinszuordnung_rolle
+    ID?: number
+    Person_ID: number
+    Rolle?: $Enums.vereinszuordnung_Rolle
+    Erstellt_am?: Date | string
+    Geaendert_am?: Date | string | null
   }
 
   export type vereinszuordnungUpdateWithoutVereinInput = {
-    rolle?: Enumvereinszuordnung_rolleFieldUpdateOperationsInput | $Enums.vereinszuordnung_rolle
-    person?: personUpdateOneRequiredWithoutVereinszuordnungNestedInput
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Rolle?: Enumvereinszuordnung_RolleFieldUpdateOperationsInput | $Enums.vereinszuordnung_Rolle
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type vereinszuordnungUncheckedUpdateWithoutVereinInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    person_id?: IntFieldUpdateOperationsInput | number
-    rolle?: Enumvereinszuordnung_rolleFieldUpdateOperationsInput | $Enums.vereinszuordnung_rolle
+    ID?: IntFieldUpdateOperationsInput | number
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Rolle?: Enumvereinszuordnung_RolleFieldUpdateOperationsInput | $Enums.vereinszuordnung_Rolle
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type vereinszuordnungUncheckedUpdateManyWithoutVereinInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    person_id?: IntFieldUpdateOperationsInput | number
-    rolle?: Enumvereinszuordnung_rolleFieldUpdateOperationsInput | $Enums.vereinszuordnung_rolle
+    ID?: IntFieldUpdateOperationsInput | number
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Rolle?: Enumvereinszuordnung_RolleFieldUpdateOperationsInput | $Enums.vereinszuordnung_Rolle
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
 

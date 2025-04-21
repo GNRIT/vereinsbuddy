@@ -118,36 +118,49 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 });
 
 exports.Prisma.BenutzerkontoScalarFieldEnum = {
-  id: 'id',
-  benutzername: 'benutzername',
-  passwort: 'passwort',
-  aktiv: 'aktiv',
-  person_id: 'person_id'
+  ID: 'ID',
+  Benutzername: 'Benutzername',
+  Passwort: 'Passwort',
+  Aktiv: 'Aktiv',
+  Person_ID: 'Person_ID',
+  Erstellt_am: 'Erstellt_am',
+  Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.PersonScalarFieldEnum = {
-  id: 'id',
-  vorname: 'vorname',
-  name: 'name',
-  geburtsdatum: 'geburtsdatum',
-  email: 'email'
+  ID: 'ID',
+  Vorname: 'Vorname',
+  Name: 'Name',
+  Geburtsdatum: 'Geburtsdatum',
+  Strasse: 'Strasse',
+  Hausnummer: 'Hausnummer',
+  Postleitzahl: 'Postleitzahl',
+  Ort: 'Ort',
+  Email: 'Email',
+  HandyNr: 'HandyNr',
+  Erstellt_am: 'Erstellt_am',
+  Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.VereinScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  strasse: 'strasse',
-  hausnummer: 'hausnummer',
-  postleitzahl: 'postleitzahl',
-  ort: 'ort',
-  subdomain: 'subdomain'
+  ID: 'ID',
+  Name: 'Name',
+  Strasse: 'Strasse',
+  Hausnummer: 'Hausnummer',
+  Postleitzahl: 'Postleitzahl',
+  Ort: 'Ort',
+  Subdomain: 'Subdomain',
+  Erstellt_am: 'Erstellt_am',
+  Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.VereinszuordnungScalarFieldEnum = {
-  id: 'id',
-  person_id: 'person_id',
-  verein_id: 'verein_id',
-  rolle: 'rolle'
+  ID: 'ID',
+  Person_ID: 'Person_ID',
+  Verein_ID: 'Verein_ID',
+  Rolle: 'Rolle',
+  Erstellt_am: 'Erstellt_am',
+  Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.SortOrder = {
@@ -155,29 +168,36 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
-exports.Prisma.benutzerkontoOrderByRelevanceFieldEnum = {
-  benutzername: 'benutzername',
-  passwort: 'passwort'
-};
-
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
 
+exports.Prisma.benutzerkontoOrderByRelevanceFieldEnum = {
+  Benutzername: 'Benutzername',
+  Passwort: 'Passwort'
+};
+
 exports.Prisma.personOrderByRelevanceFieldEnum = {
-  vorname: 'vorname',
-  name: 'name',
-  email: 'email'
+  Vorname: 'Vorname',
+  Name: 'Name',
+  Strasse: 'Strasse',
+  Hausnummer: 'Hausnummer',
+  Postleitzahl: 'Postleitzahl',
+  Ort: 'Ort',
+  Email: 'Email',
+  HandyNr: 'HandyNr'
 };
 
 exports.Prisma.vereinOrderByRelevanceFieldEnum = {
-  name: 'name',
-  strasse: 'strasse',
-  ort: 'ort',
-  subdomain: 'subdomain'
+  Name: 'Name',
+  Strasse: 'Strasse',
+  Hausnummer: 'Hausnummer',
+  Postleitzahl: 'Postleitzahl',
+  Ort: 'Ort',
+  Subdomain: 'Subdomain'
 };
-exports.vereinszuordnung_rolle = exports.$Enums.vereinszuordnung_rolle = {
+exports.vereinszuordnung_Rolle = exports.$Enums.vereinszuordnung_Rolle = {
   mitglied: 'mitglied',
   admin: 'admin'
 };

@@ -3,56 +3,65 @@ generator client {
   output   = "../generated/vereinsbuddy"
 }
 
-datasource db {
+datasource vereindb {
   provider = "mysql"
   url      = env("DATABASE_URL_VEREINSBUDDY")
 }
 
 model benutzerkonto {
-  id           Int     @id @default(autoincrement())
-  benutzername String  @unique(map: "benutzername") @db.VarChar(100)
-  passwort     String  @db.VarChar(255)
-  aktiv        Boolean @default(true)
-  person_id    Int
-  person       person  @relation(fields: [person_id], references: [id], onDelete: Cascade, map: "benutzerkonto_ibfk_1")
+  ID           Int       @id @default(autoincrement())
+  Benutzername String    @unique(map: "benutzername") @vereindb.VarChar(100)
+  Passwort     String    @vereindb.VarChar(255)
+  Aktiv        Boolean   @default(true)
+  Person_ID    Int
+  Erstellt_am  DateTime? @map("Erstellt am") @vereindb.Date
+  Geaendert_am DateTime? @map("Geaendert am") @vereindb.Date
 
-  @@index([person_id], map: "person_id")
+  @@index([Person_ID], map: "benutzerkonto_ibfk_1")
 }
 
 model person {
-  id               Int                @id @default(autoincrement())
-  vorname          String             @db.VarChar(100)
-  name             String             @db.VarChar(100)
-  geburtsdatum     DateTime?          @db.Date
-  email            String             @db.VarChar(255)
-  benutzerkonto    benutzerkonto[]
-  vereinszuordnung vereinszuordnung[]
+  ID           Int       @id @default(autoincrement())
+  Vorname      String    @vereindb.VarChar(100)
+  Name         String    @vereindb.VarChar(100)
+  Geburtsdatum DateTime? @vereindb.Date
+  Strasse      String?   @vereindb.VarChar(255)
+  Hausnummer   String?   @vereindb.VarChar(32)
+  Postleitzahl String?   @vereindb.VarChar(32)
+  Ort          String?   @vereindb.VarChar(255)
+  Email        String?   @vereindb.VarChar(255)
+  HandyNr      String?   @vereindb.VarChar(32)
+  Erstellt_am  DateTime? @map("Erstellt am") @vereindb.Date
+  Geaendert_am DateTime? @map("Geaendert am") @vereindb.Date
 }
 
 model verein {
-  id               Int                @id @default(autoincrement())
-  name             String             @db.VarChar(255)
-  strasse          String             @db.VarChar(100)
-  hausnummer       Int
-  postleitzahl     Int
-  ort              String             @db.VarChar(100)
-  subdomain        String             @unique(map: "subdomain") @db.VarChar(100)
+  ID               Int                @id @default(autoincrement())
+  Name             String             @vereindb.VarChar(255)
+  Strasse          String             @vereindb.VarChar(100)
+  Hausnummer       String             @vereindb.VarChar(32)
+  Postleitzahl     String             @vereindb.VarChar(32)
+  Ort              String             @vereindb.VarChar(100)
+  Subdomain        String             @unique(map: "subdomain") @vereindb.VarChar(255)
+  Erstellt_am      DateTime?          @map("Erstellt am") @vereindb.Date
+  Geaendert_am     DateTime?          @map("Geaendert am") @vereindb.Date
   vereinszuordnung vereinszuordnung[]
 }
 
 model vereinszuordnung {
-  id        Int                    @id @default(autoincrement())
-  person_id Int
-  verein_id Int
-  rolle     vereinszuordnung_rolle @default(mitglied)
-  person    person                 @relation(fields: [person_id], references: [id], onUpdate: Restrict, map: "vereinszuordnung_ibfk_1")
-  verein    verein                 @relation(fields: [verein_id], references: [id], onUpdate: Restrict, map: "vereinszuordnung_ibfk_2")
+  ID           Int                    @id @default(autoincrement())
+  Person_ID    Int
+  Verein_ID    Int
+  Rolle        vereinszuordnung_Rolle @default(mitglied)
+  Erstellt_am  DateTime               @default(now()) @map("Erstellt am") @vereindb.Date
+  Geaendert_am DateTime?              @map("Geaendert am") @vereindb.Date
+  verein       verein                 @relation(fields: [Verein_ID], references: [ID], onDelete: Cascade, map: "vereinszuordnung_ibfk_2")
 
-  @@index([person_id], map: "person_id")
-  @@index([verein_id], map: "verein_id")
+  @@index([Person_ID], map: "vereinszuordnung_ibfk_1")
+  @@index([Verein_ID], map: "vereinszuordnung_ibfk_2")
 }
 
-enum vereinszuordnung_rolle {
+enum vereinszuordnung_Rolle {
   mitglied
   admin
 }

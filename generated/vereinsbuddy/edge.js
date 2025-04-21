@@ -90,36 +90,49 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 });
 
 exports.Prisma.BenutzerkontoScalarFieldEnum = {
-  id: 'id',
-  benutzername: 'benutzername',
-  passwort: 'passwort',
-  aktiv: 'aktiv',
-  person_id: 'person_id'
+  ID: 'ID',
+  Benutzername: 'Benutzername',
+  Passwort: 'Passwort',
+  Aktiv: 'Aktiv',
+  Person_ID: 'Person_ID',
+  Erstellt_am: 'Erstellt_am',
+  Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.PersonScalarFieldEnum = {
-  id: 'id',
-  vorname: 'vorname',
-  name: 'name',
-  geburtsdatum: 'geburtsdatum',
-  email: 'email'
+  ID: 'ID',
+  Vorname: 'Vorname',
+  Name: 'Name',
+  Geburtsdatum: 'Geburtsdatum',
+  Strasse: 'Strasse',
+  Hausnummer: 'Hausnummer',
+  Postleitzahl: 'Postleitzahl',
+  Ort: 'Ort',
+  Email: 'Email',
+  HandyNr: 'HandyNr',
+  Erstellt_am: 'Erstellt_am',
+  Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.VereinScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  strasse: 'strasse',
-  hausnummer: 'hausnummer',
-  postleitzahl: 'postleitzahl',
-  ort: 'ort',
-  subdomain: 'subdomain'
+  ID: 'ID',
+  Name: 'Name',
+  Strasse: 'Strasse',
+  Hausnummer: 'Hausnummer',
+  Postleitzahl: 'Postleitzahl',
+  Ort: 'Ort',
+  Subdomain: 'Subdomain',
+  Erstellt_am: 'Erstellt_am',
+  Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.VereinszuordnungScalarFieldEnum = {
-  id: 'id',
-  person_id: 'person_id',
-  verein_id: 'verein_id',
-  rolle: 'rolle'
+  ID: 'ID',
+  Person_ID: 'Person_ID',
+  Verein_ID: 'Verein_ID',
+  Rolle: 'Rolle',
+  Erstellt_am: 'Erstellt_am',
+  Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.SortOrder = {
@@ -127,29 +140,36 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
-exports.Prisma.benutzerkontoOrderByRelevanceFieldEnum = {
-  benutzername: 'benutzername',
-  passwort: 'passwort'
-};
-
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
 
+exports.Prisma.benutzerkontoOrderByRelevanceFieldEnum = {
+  Benutzername: 'Benutzername',
+  Passwort: 'Passwort'
+};
+
 exports.Prisma.personOrderByRelevanceFieldEnum = {
-  vorname: 'vorname',
-  name: 'name',
-  email: 'email'
+  Vorname: 'Vorname',
+  Name: 'Name',
+  Strasse: 'Strasse',
+  Hausnummer: 'Hausnummer',
+  Postleitzahl: 'Postleitzahl',
+  Ort: 'Ort',
+  Email: 'Email',
+  HandyNr: 'HandyNr'
 };
 
 exports.Prisma.vereinOrderByRelevanceFieldEnum = {
-  name: 'name',
-  strasse: 'strasse',
-  ort: 'ort',
-  subdomain: 'subdomain'
+  Name: 'Name',
+  Strasse: 'Strasse',
+  Hausnummer: 'Hausnummer',
+  Postleitzahl: 'Postleitzahl',
+  Ort: 'Ort',
+  Subdomain: 'Subdomain'
 };
-exports.vereinszuordnung_rolle = exports.$Enums.vereinszuordnung_rolle = {
+exports.vereinszuordnung_Rolle = exports.$Enums.vereinszuordnung_Rolle = {
   mitglied: 'mitglied',
   admin: 'admin'
 };
@@ -196,25 +216,25 @@ const config = {
   "clientVersion": "6.6.0",
   "engineVersion": "f676762280b54cd07c770017ed3711ddde35f37a",
   "datasourceNames": [
-    "db"
+    "vereindb"
   ],
   "activeProvider": "mysql",
   "postinstall": false,
   "inlineDatasources": {
-    "db": {
+    "vereindb": {
       "url": {
         "fromEnvVar": "DATABASE_URL_VEREINSBUDDY",
         "value": null
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/vereinsbuddy\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL_VEREINSBUDDY\")\n}\n\nmodel benutzerkonto {\n  id           Int     @id @default(autoincrement())\n  benutzername String  @unique(map: \"benutzername\") @db.VarChar(100)\n  passwort     String  @db.VarChar(255)\n  aktiv        Boolean @default(true)\n  person_id    Int\n  person       person  @relation(fields: [person_id], references: [id], onDelete: Cascade, map: \"benutzerkonto_ibfk_1\")\n\n  @@index([person_id], map: \"person_id\")\n}\n\nmodel person {\n  id               Int                @id @default(autoincrement())\n  vorname          String             @db.VarChar(100)\n  name             String             @db.VarChar(100)\n  geburtsdatum     DateTime?          @db.Date\n  email            String             @db.VarChar(255)\n  benutzerkonto    benutzerkonto[]\n  vereinszuordnung vereinszuordnung[]\n}\n\nmodel verein {\n  id               Int                @id @default(autoincrement())\n  name             String             @db.VarChar(255)\n  strasse          String             @db.VarChar(100)\n  hausnummer       Int\n  postleitzahl     Int\n  ort              String             @db.VarChar(100)\n  subdomain        String             @unique(map: \"subdomain\") @db.VarChar(100)\n  vereinszuordnung vereinszuordnung[]\n}\n\nmodel vereinszuordnung {\n  id        Int                    @id @default(autoincrement())\n  person_id Int\n  verein_id Int\n  rolle     vereinszuordnung_rolle @default(mitglied)\n  person    person                 @relation(fields: [person_id], references: [id], onUpdate: Restrict, map: \"vereinszuordnung_ibfk_1\")\n  verein    verein                 @relation(fields: [verein_id], references: [id], onUpdate: Restrict, map: \"vereinszuordnung_ibfk_2\")\n\n  @@index([person_id], map: \"person_id\")\n  @@index([verein_id], map: \"verein_id\")\n}\n\nenum vereinszuordnung_rolle {\n  mitglied\n  admin\n}\n",
-  "inlineSchemaHash": "ba96ce74e7eec8617e9b6362be695b76e0037c4f3ce80620c2b06e6a877e3e9c",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/vereinsbuddy\"\n}\n\ndatasource vereindb {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL_VEREINSBUDDY\")\n}\n\nmodel benutzerkonto {\n  ID           Int       @id @default(autoincrement())\n  Benutzername String    @unique(map: \"benutzername\") @vereindb.VarChar(100)\n  Passwort     String    @vereindb.VarChar(255)\n  Aktiv        Boolean   @default(true)\n  Person_ID    Int\n  Erstellt_am  DateTime? @map(\"Erstellt am\") @vereindb.Date\n  Geaendert_am DateTime? @map(\"Geaendert am\") @vereindb.Date\n\n  @@index([Person_ID], map: \"benutzerkonto_ibfk_1\")\n}\n\nmodel person {\n  ID           Int       @id @default(autoincrement())\n  Vorname      String    @vereindb.VarChar(100)\n  Name         String    @vereindb.VarChar(100)\n  Geburtsdatum DateTime? @vereindb.Date\n  Strasse      String?   @vereindb.VarChar(255)\n  Hausnummer   String?   @vereindb.VarChar(32)\n  Postleitzahl String?   @vereindb.VarChar(32)\n  Ort          String?   @vereindb.VarChar(255)\n  Email        String?   @vereindb.VarChar(255)\n  HandyNr      String?   @vereindb.VarChar(32)\n  Erstellt_am  DateTime? @map(\"Erstellt am\") @vereindb.Date\n  Geaendert_am DateTime? @map(\"Geaendert am\") @vereindb.Date\n}\n\nmodel verein {\n  ID               Int                @id @default(autoincrement())\n  Name             String             @vereindb.VarChar(255)\n  Strasse          String             @vereindb.VarChar(100)\n  Hausnummer       String             @vereindb.VarChar(32)\n  Postleitzahl     String             @vereindb.VarChar(32)\n  Ort              String             @vereindb.VarChar(100)\n  Subdomain        String             @unique(map: \"subdomain\") @vereindb.VarChar(255)\n  Erstellt_am      DateTime?          @map(\"Erstellt am\") @vereindb.Date\n  Geaendert_am     DateTime?          @map(\"Geaendert am\") @vereindb.Date\n  vereinszuordnung vereinszuordnung[]\n}\n\nmodel vereinszuordnung {\n  ID           Int                    @id @default(autoincrement())\n  Person_ID    Int\n  Verein_ID    Int\n  Rolle        vereinszuordnung_Rolle @default(mitglied)\n  Erstellt_am  DateTime               @default(now()) @map(\"Erstellt am\") @vereindb.Date\n  Geaendert_am DateTime?              @map(\"Geaendert am\") @vereindb.Date\n  verein       verein                 @relation(fields: [Verein_ID], references: [ID], onDelete: Cascade, map: \"vereinszuordnung_ibfk_2\")\n\n  @@index([Person_ID], map: \"vereinszuordnung_ibfk_1\")\n  @@index([Verein_ID], map: \"vereinszuordnung_ibfk_2\")\n}\n\nenum vereinszuordnung_Rolle {\n  mitglied\n  admin\n}\n",
+  "inlineSchemaHash": "53c78397f44470ad6b9a89faa7941d5243f4e1f716b5fe602bb814aa6d8a18fa",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"benutzerkonto\":{\"dbName\":null,\"schema\":null,\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"nativeType\":null,\"default\":{\"name\":\"autoincrement\",\"args\":[]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"benutzername\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":true,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"100\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"passwort\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"255\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"aktiv\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Boolean\",\"nativeType\":null,\"default\":true,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"person_id\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":true,\"hasDefaultValue\":false,\"type\":\"Int\",\"nativeType\":null,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"person\",\"kind\":\"object\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"person\",\"nativeType\":null,\"relationName\":\"benutzerkontoToperson\",\"relationFromFields\":[\"person_id\"],\"relationToFields\":[\"id\"],\"relationOnDelete\":\"Cascade\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"person\":{\"dbName\":null,\"schema\":null,\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"nativeType\":null,\"default\":{\"name\":\"autoincrement\",\"args\":[]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"vorname\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"100\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"100\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"geburtsdatum\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"DateTime\",\"nativeType\":[\"Date\",[]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"email\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"255\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"benutzerkonto\",\"kind\":\"object\",\"isList\":true,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"benutzerkonto\",\"nativeType\":null,\"relationName\":\"benutzerkontoToperson\",\"relationFromFields\":[],\"relationToFields\":[],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"vereinszuordnung\",\"kind\":\"object\",\"isList\":true,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"vereinszuordnung\",\"nativeType\":null,\"relationName\":\"personTovereinszuordnung\",\"relationFromFields\":[],\"relationToFields\":[],\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"verein\":{\"dbName\":null,\"schema\":null,\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"nativeType\":null,\"default\":{\"name\":\"autoincrement\",\"args\":[]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"255\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"strasse\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"100\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"hausnummer\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"nativeType\":null,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"postleitzahl\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"nativeType\":null,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"ort\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"100\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"subdomain\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":true,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"100\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"vereinszuordnung\",\"kind\":\"object\",\"isList\":true,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"vereinszuordnung\",\"nativeType\":null,\"relationName\":\"vereinTovereinszuordnung\",\"relationFromFields\":[],\"relationToFields\":[],\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"vereinszuordnung\":{\"dbName\":null,\"schema\":null,\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"nativeType\":null,\"default\":{\"name\":\"autoincrement\",\"args\":[]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"person_id\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":true,\"hasDefaultValue\":false,\"type\":\"Int\",\"nativeType\":null,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"verein_id\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":true,\"hasDefaultValue\":false,\"type\":\"Int\",\"nativeType\":null,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"rolle\",\"kind\":\"enum\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"vereinszuordnung_rolle\",\"nativeType\":null,\"default\":\"mitglied\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"person\",\"kind\":\"object\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"person\",\"nativeType\":null,\"relationName\":\"personTovereinszuordnung\",\"relationFromFields\":[\"person_id\"],\"relationToFields\":[\"id\"],\"relationOnUpdate\":\"Restrict\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"verein\",\"kind\":\"object\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"verein\",\"nativeType\":null,\"relationName\":\"vereinTovereinszuordnung\",\"relationFromFields\":[\"verein_id\"],\"relationToFields\":[\"id\"],\"relationOnUpdate\":\"Restrict\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false}},\"enums\":{\"vereinszuordnung_rolle\":{\"values\":[{\"name\":\"mitglied\",\"dbName\":null},{\"name\":\"admin\",\"dbName\":null}],\"dbName\":null}},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"benutzerkonto\":{\"dbName\":null,\"schema\":null,\"fields\":[{\"name\":\"ID\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"nativeType\":null,\"default\":{\"name\":\"autoincrement\",\"args\":[]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Benutzername\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":true,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"100\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Passwort\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"255\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Aktiv\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Boolean\",\"nativeType\":null,\"default\":true,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Person_ID\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"nativeType\":null,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Erstellt_am\",\"dbName\":\"Erstellt am\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"DateTime\",\"nativeType\":[\"Date\",[]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Geaendert_am\",\"dbName\":\"Geaendert am\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"DateTime\",\"nativeType\":[\"Date\",[]],\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"person\":{\"dbName\":null,\"schema\":null,\"fields\":[{\"name\":\"ID\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"nativeType\":null,\"default\":{\"name\":\"autoincrement\",\"args\":[]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Vorname\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"100\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"100\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Geburtsdatum\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"DateTime\",\"nativeType\":[\"Date\",[]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Strasse\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"255\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Hausnummer\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"32\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Postleitzahl\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"32\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Ort\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"255\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Email\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"255\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"HandyNr\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"32\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Erstellt_am\",\"dbName\":\"Erstellt am\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"DateTime\",\"nativeType\":[\"Date\",[]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Geaendert_am\",\"dbName\":\"Geaendert am\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"DateTime\",\"nativeType\":[\"Date\",[]],\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"verein\":{\"dbName\":null,\"schema\":null,\"fields\":[{\"name\":\"ID\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"nativeType\":null,\"default\":{\"name\":\"autoincrement\",\"args\":[]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"255\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Strasse\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"100\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Hausnummer\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"32\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Postleitzahl\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"32\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Ort\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"100\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Subdomain\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":true,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"255\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Erstellt_am\",\"dbName\":\"Erstellt am\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"DateTime\",\"nativeType\":[\"Date\",[]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Geaendert_am\",\"dbName\":\"Geaendert am\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"DateTime\",\"nativeType\":[\"Date\",[]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"vereinszuordnung\",\"kind\":\"object\",\"isList\":true,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"vereinszuordnung\",\"nativeType\":null,\"relationName\":\"vereinTovereinszuordnung\",\"relationFromFields\":[],\"relationToFields\":[],\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"vereinszuordnung\":{\"dbName\":null,\"schema\":null,\"fields\":[{\"name\":\"ID\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"nativeType\":null,\"default\":{\"name\":\"autoincrement\",\"args\":[]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Person_ID\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"nativeType\":null,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Verein_ID\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":true,\"hasDefaultValue\":false,\"type\":\"Int\",\"nativeType\":null,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Rolle\",\"kind\":\"enum\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"vereinszuordnung_Rolle\",\"nativeType\":null,\"default\":\"mitglied\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Erstellt_am\",\"dbName\":\"Erstellt am\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"DateTime\",\"nativeType\":[\"Date\",[]],\"default\":{\"name\":\"now\",\"args\":[]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Geaendert_am\",\"dbName\":\"Geaendert am\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"DateTime\",\"nativeType\":[\"Date\",[]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"verein\",\"kind\":\"object\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"verein\",\"nativeType\":null,\"relationName\":\"vereinTovereinszuordnung\",\"relationFromFields\":[\"Verein_ID\"],\"relationToFields\":[\"ID\"],\"relationOnDelete\":\"Cascade\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false}},\"enums\":{\"vereinszuordnung_Rolle\":{\"values\":[{\"name\":\"mitglied\",\"dbName\":null},{\"name\":\"admin\",\"dbName\":null}],\"dbName\":null}},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = undefined
 config.compilerWasm = undefined
