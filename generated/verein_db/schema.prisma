@@ -149,30 +149,27 @@ model funktion_jf {
 }
 
 model jf_erziehungsberechtigter {
-  ID             Int         @id @default(autoincrement())
+  ID             Int       @id @default(autoincrement())
   JF_Mitglied_ID Int
   Person_ID      Int
-  Erstellt_am    DateTime?   @map("Erstellt am") @vereindb.Date
-  Geaendert_am   DateTime?   @map("Geaendert am") @vereindb.Date
-  jf_mitglied    jf_mitglied @relation(fields: [JF_Mitglied_ID], references: [ID], onUpdate: Restrict, map: "jf_erziehungsberechtigter_ibfk_1")
-  person         person      @relation(fields: [Person_ID], references: [ID], onUpdate: Restrict, map: "jf_erziehungsberechtigter_ibfk_2")
+  Erstellt_am    DateTime? @map("Erstellt am") @vereindb.Date
+  Geaendert_am   DateTime? @map("Geaendert am") @vereindb.Date
 
   @@index([JF_Mitglied_ID], map: "jf_mitglied_id")
   @@index([Person_ID], map: "person_id")
 }
 
 model jf_mitglied {
-  ID                        Int                         @id @default(autoincrement())
-  Person_ID                 Int
-  Eintrittsdatum            DateTime                    @vereindb.Date
-  Austrittsdatum            DateTime?                   @vereindb.Date
-  Aufnahmedatum             DateTime?                   @vereindb.Date
-  Status                    jf_mitglied_Status          @default(aktiv)
-  Erstellt_am               DateTime?                   @map("Erstellt am") @vereindb.Date
-  Geaendert_am              DateTime?                   @map("Geaendert am") @vereindb.Date
-  allergie                  allergie[]
-  jf_erziehungsberechtigter jf_erziehungsberechtigter[]
-  person                    person                      @relation(fields: [Person_ID], references: [ID], onDelete: Cascade, map: "jf_mitglied_ibfk_1")
+  ID             Int                @id @default(autoincrement())
+  Person_ID      Int
+  Eintrittsdatum DateTime           @vereindb.Date
+  Austrittsdatum DateTime?          @vereindb.Date
+  Aufnahmedatum  DateTime?          @vereindb.Date
+  Status         jf_mitglied_Status @default(aktiv)
+  Erstellt_am    DateTime?          @map("Erstellt am") @vereindb.Date
+  Geaendert_am   DateTime?          @map("Geaendert am") @vereindb.Date
+  allergie       allergie[]
+  person         person             @relation(fields: [Person_ID], references: [ID], onDelete: Cascade, map: "jf_mitglied_ibfk_1")
 
   @@index([Person_ID], map: "jf_mitglied_ibfk_1")
 }
@@ -215,23 +212,22 @@ model mitglied_login {
 }
 
 model person {
-  ID                        Int                         @id @default(autoincrement())
-  Vorname                   String                      @vereindb.VarChar(100)
-  Name                      String                      @vereindb.VarChar(100)
-  Geburtsdatum              DateTime?                   @vereindb.Date
-  Strasse                   String?                     @vereindb.VarChar(255)
-  Hausnummer                String?                     @vereindb.VarChar(32)
-  Postleitzahl              String?                     @vereindb.VarChar(32)
-  Ort                       String?                     @vereindb.VarChar(255)
-  Email                     String?                     @vereindb.VarChar(255)
-  HandyNr                   Int?
-  Erstellt_am               DateTime                    @map("Erstellt am") @vereindb.Date
-  Geaendert_am              DateTime?                   @map("Geaendert am") @vereindb.Date
-  ff_mitglied               ff_mitglied[]
-  jf_erziehungsberechtigter jf_erziehungsberechtigter[]
-  jf_mitglied               jf_mitglied[]
-  mitglied_login            mitglied_login[]
-  teilnahme                 teilnahme[]
+  ID             Int              @id @default(autoincrement())
+  Vorname        String           @vereindb.VarChar(100)
+  Name           String           @vereindb.VarChar(100)
+  Geburtsdatum   DateTime?        @vereindb.Date
+  Strasse        String?          @vereindb.VarChar(255)
+  Hausnummer     String?          @vereindb.VarChar(32)
+  Postleitzahl   String?          @vereindb.VarChar(32)
+  Ort            String?          @vereindb.VarChar(255)
+  Email          String?          @vereindb.VarChar(255)
+  HandyNr        Int?
+  Erstellt_am    DateTime         @map("Erstellt am") @vereindb.Date
+  Geaendert_am   DateTime?        @map("Geaendert am") @vereindb.Date
+  ff_mitglied    ff_mitglied[]
+  jf_mitglied    jf_mitglied[]
+  mitglied_login mitglied_login[]
+  teilnahme      teilnahme[]
 }
 
 model teilnahme {

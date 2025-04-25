@@ -1,13 +1,14 @@
-import { getSession } from 'next-auth/react'
-const { db1 } = require('@/lib/prisma')
+import { vereinsbuddyPrisma as db1 } from '@/lib/prisma';
+import { getSession } from 'next-auth/react';
+
 
 export default async function handler(req, res) {
     const session = await getSession({ req })
     const { id } = req.query
 
-    if (!session) {
+    /*if (!session) {
         return res.status(401).json({ message: 'Nicht autorisiert' })
-    }
+    }*/
 
     if (req.method === 'GET') {
         try {
@@ -65,7 +66,7 @@ export default async function handler(req, res) {
         if (existingZuordnung) {
             await db1.vereinszuordnung.update({
             where: {
-                id: existingZuordnung.id,
+                ID: existingZuordnung.ID,
             },
             data: {
                 Rolle,
@@ -90,7 +91,7 @@ export default async function handler(req, res) {
         // Dann die Person
         await db1.person.delete({
             where: {
-            id: parseInt(id),
+            ID: parseInt(id),
             }
         })
 

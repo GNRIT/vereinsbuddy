@@ -1123,6 +1123,46 @@ export namespace Prisma {
 
 
   /**
+   * Count Type PersonCountOutputType
+   */
+
+  export type PersonCountOutputType = {
+    benutzerkonto: number
+    vereinszuordnung: number
+  }
+
+  export type PersonCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    benutzerkonto?: boolean | PersonCountOutputTypeCountBenutzerkontoArgs
+    vereinszuordnung?: boolean | PersonCountOutputTypeCountVereinszuordnungArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * PersonCountOutputType without action
+   */
+  export type PersonCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PersonCountOutputType
+     */
+    select?: PersonCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * PersonCountOutputType without action
+   */
+  export type PersonCountOutputTypeCountBenutzerkontoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: benutzerkontoWhereInput
+  }
+
+  /**
+   * PersonCountOutputType without action
+   */
+  export type PersonCountOutputTypeCountVereinszuordnungArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: vereinszuordnungWhereInput
+  }
+
+
+  /**
    * Count Type VereinCountOutputType
    */
 
@@ -1375,6 +1415,7 @@ export namespace Prisma {
     Person_ID?: boolean
     Erstellt_am?: boolean
     Geaendert_am?: boolean
+    person?: boolean | personDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["benutzerkonto"]>
 
 
@@ -1390,10 +1431,15 @@ export namespace Prisma {
   }
 
   export type benutzerkontoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Benutzername" | "Passwort" | "Aktiv" | "Person_ID" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["benutzerkonto"]>
+  export type benutzerkontoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    person?: boolean | personDefaultArgs<ExtArgs>
+  }
 
   export type $benutzerkontoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "benutzerkonto"
-    objects: {}
+    objects: {
+      person: Prisma.$personPayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       ID: number
       Benutzername: string
@@ -1742,6 +1788,7 @@ export namespace Prisma {
    */
   export interface Prisma__benutzerkontoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    person<T extends personDefaultArgs<ExtArgs> = {}>(args?: Subset<T, personDefaultArgs<ExtArgs>>): Prisma__personClient<$Result.GetResult<Prisma.$personPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1795,6 +1842,10 @@ export namespace Prisma {
      */
     omit?: benutzerkontoOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: benutzerkontoInclude<ExtArgs> | null
+    /**
      * Filter, which benutzerkonto to fetch.
      */
     where: benutzerkontoWhereUniqueInput
@@ -1813,6 +1864,10 @@ export namespace Prisma {
      */
     omit?: benutzerkontoOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: benutzerkontoInclude<ExtArgs> | null
+    /**
      * Filter, which benutzerkonto to fetch.
      */
     where: benutzerkontoWhereUniqueInput
@@ -1830,6 +1885,10 @@ export namespace Prisma {
      * Omit specific fields from the benutzerkonto
      */
     omit?: benutzerkontoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: benutzerkontoInclude<ExtArgs> | null
     /**
      * Filter, which benutzerkonto to fetch.
      */
@@ -1879,6 +1938,10 @@ export namespace Prisma {
      */
     omit?: benutzerkontoOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: benutzerkontoInclude<ExtArgs> | null
+    /**
      * Filter, which benutzerkonto to fetch.
      */
     where?: benutzerkontoWhereInput
@@ -1927,6 +1990,10 @@ export namespace Prisma {
      */
     omit?: benutzerkontoOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: benutzerkontoInclude<ExtArgs> | null
+    /**
      * Filter, which benutzerkontos to fetch.
      */
     where?: benutzerkontoWhereInput
@@ -1970,6 +2037,10 @@ export namespace Prisma {
      */
     omit?: benutzerkontoOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: benutzerkontoInclude<ExtArgs> | null
+    /**
      * The data needed to create a benutzerkonto.
      */
     data: XOR<benutzerkontoCreateInput, benutzerkontoUncheckedCreateInput>
@@ -1998,6 +2069,10 @@ export namespace Prisma {
      * Omit specific fields from the benutzerkonto
      */
     omit?: benutzerkontoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: benutzerkontoInclude<ExtArgs> | null
     /**
      * The data needed to update a benutzerkonto.
      */
@@ -2039,6 +2114,10 @@ export namespace Prisma {
      */
     omit?: benutzerkontoOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: benutzerkontoInclude<ExtArgs> | null
+    /**
      * The filter to search for the benutzerkonto to update in case it exists.
      */
     where: benutzerkontoWhereUniqueInput
@@ -2064,6 +2143,10 @@ export namespace Prisma {
      * Omit specific fields from the benutzerkonto
      */
     omit?: benutzerkontoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: benutzerkontoInclude<ExtArgs> | null
     /**
      * Filter which benutzerkonto to delete.
      */
@@ -2096,6 +2179,10 @@ export namespace Prisma {
      * Omit specific fields from the benutzerkonto
      */
     omit?: benutzerkontoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: benutzerkontoInclude<ExtArgs> | null
   }
 
 
@@ -2353,6 +2440,9 @@ export namespace Prisma {
     HandyNr?: boolean
     Erstellt_am?: boolean
     Geaendert_am?: boolean
+    benutzerkonto?: boolean | person$benutzerkontoArgs<ExtArgs>
+    vereinszuordnung?: boolean | person$vereinszuordnungArgs<ExtArgs>
+    _count?: boolean | PersonCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["person"]>
 
 
@@ -2373,10 +2463,18 @@ export namespace Prisma {
   }
 
   export type personOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Vorname" | "Name" | "Geburtsdatum" | "Strasse" | "Hausnummer" | "Postleitzahl" | "Ort" | "Email" | "HandyNr" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["person"]>
+  export type personInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    benutzerkonto?: boolean | person$benutzerkontoArgs<ExtArgs>
+    vereinszuordnung?: boolean | person$vereinszuordnungArgs<ExtArgs>
+    _count?: boolean | PersonCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $personPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "person"
-    objects: {}
+    objects: {
+      benutzerkonto: Prisma.$benutzerkontoPayload<ExtArgs>[]
+      vereinszuordnung: Prisma.$vereinszuordnungPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       ID: number
       Vorname: string
@@ -2730,6 +2828,8 @@ export namespace Prisma {
    */
   export interface Prisma__personClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    benutzerkonto<T extends person$benutzerkontoArgs<ExtArgs> = {}>(args?: Subset<T, person$benutzerkontoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$benutzerkontoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    vereinszuordnung<T extends person$vereinszuordnungArgs<ExtArgs> = {}>(args?: Subset<T, person$vereinszuordnungArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$vereinszuordnungPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2788,6 +2888,10 @@ export namespace Prisma {
      */
     omit?: personOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: personInclude<ExtArgs> | null
+    /**
      * Filter, which person to fetch.
      */
     where: personWhereUniqueInput
@@ -2806,6 +2910,10 @@ export namespace Prisma {
      */
     omit?: personOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: personInclude<ExtArgs> | null
+    /**
      * Filter, which person to fetch.
      */
     where: personWhereUniqueInput
@@ -2823,6 +2931,10 @@ export namespace Prisma {
      * Omit specific fields from the person
      */
     omit?: personOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: personInclude<ExtArgs> | null
     /**
      * Filter, which person to fetch.
      */
@@ -2872,6 +2984,10 @@ export namespace Prisma {
      */
     omit?: personOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: personInclude<ExtArgs> | null
+    /**
      * Filter, which person to fetch.
      */
     where?: personWhereInput
@@ -2920,6 +3036,10 @@ export namespace Prisma {
      */
     omit?: personOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: personInclude<ExtArgs> | null
+    /**
      * Filter, which people to fetch.
      */
     where?: personWhereInput
@@ -2963,6 +3083,10 @@ export namespace Prisma {
      */
     omit?: personOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: personInclude<ExtArgs> | null
+    /**
      * The data needed to create a person.
      */
     data: XOR<personCreateInput, personUncheckedCreateInput>
@@ -2991,6 +3115,10 @@ export namespace Prisma {
      * Omit specific fields from the person
      */
     omit?: personOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: personInclude<ExtArgs> | null
     /**
      * The data needed to update a person.
      */
@@ -3032,6 +3160,10 @@ export namespace Prisma {
      */
     omit?: personOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: personInclude<ExtArgs> | null
+    /**
      * The filter to search for the person to update in case it exists.
      */
     where: personWhereUniqueInput
@@ -3058,6 +3190,10 @@ export namespace Prisma {
      */
     omit?: personOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: personInclude<ExtArgs> | null
+    /**
      * Filter which person to delete.
      */
     where: personWhereUniqueInput
@@ -3078,6 +3214,54 @@ export namespace Prisma {
   }
 
   /**
+   * person.benutzerkonto
+   */
+  export type person$benutzerkontoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the benutzerkonto
+     */
+    select?: benutzerkontoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the benutzerkonto
+     */
+    omit?: benutzerkontoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: benutzerkontoInclude<ExtArgs> | null
+    where?: benutzerkontoWhereInput
+    orderBy?: benutzerkontoOrderByWithRelationInput | benutzerkontoOrderByWithRelationInput[]
+    cursor?: benutzerkontoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BenutzerkontoScalarFieldEnum | BenutzerkontoScalarFieldEnum[]
+  }
+
+  /**
+   * person.vereinszuordnung
+   */
+  export type person$vereinszuordnungArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the vereinszuordnung
+     */
+    select?: vereinszuordnungSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the vereinszuordnung
+     */
+    omit?: vereinszuordnungOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: vereinszuordnungInclude<ExtArgs> | null
+    where?: vereinszuordnungWhereInput
+    orderBy?: vereinszuordnungOrderByWithRelationInput | vereinszuordnungOrderByWithRelationInput[]
+    cursor?: vereinszuordnungWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VereinszuordnungScalarFieldEnum | VereinszuordnungScalarFieldEnum[]
+  }
+
+  /**
    * person without action
    */
   export type personDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3089,6 +3273,10 @@ export namespace Prisma {
      * Omit specific fields from the person
      */
     omit?: personOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: personInclude<ExtArgs> | null
   }
 
 
@@ -4339,6 +4527,7 @@ export namespace Prisma {
     Rolle?: boolean
     Erstellt_am?: boolean
     Geaendert_am?: boolean
+    person?: boolean | personDefaultArgs<ExtArgs>
     verein?: boolean | vereinDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["vereinszuordnung"]>
 
@@ -4355,12 +4544,14 @@ export namespace Prisma {
 
   export type vereinszuordnungOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Person_ID" | "Verein_ID" | "Rolle" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["vereinszuordnung"]>
   export type vereinszuordnungInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    person?: boolean | personDefaultArgs<ExtArgs>
     verein?: boolean | vereinDefaultArgs<ExtArgs>
   }
 
   export type $vereinszuordnungPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "vereinszuordnung"
     objects: {
+      person: Prisma.$personPayload<ExtArgs>
       verein: Prisma.$vereinPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -4710,6 +4901,7 @@ export namespace Prisma {
    */
   export interface Prisma__vereinszuordnungClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    person<T extends personDefaultArgs<ExtArgs> = {}>(args?: Subset<T, personDefaultArgs<ExtArgs>>): Prisma__personClient<$Result.GetResult<Prisma.$personPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     verein<T extends vereinDefaultArgs<ExtArgs> = {}>(args?: Subset<T, vereinDefaultArgs<ExtArgs>>): Prisma__vereinClient<$Result.GetResult<Prisma.$vereinPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -5290,6 +5482,7 @@ export namespace Prisma {
     Person_ID?: IntFilter<"benutzerkonto"> | number
     Erstellt_am?: DateTimeNullableFilter<"benutzerkonto"> | Date | string | null
     Geaendert_am?: DateTimeNullableFilter<"benutzerkonto"> | Date | string | null
+    person?: XOR<PersonScalarRelationFilter, personWhereInput>
   }
 
   export type benutzerkontoOrderByWithRelationInput = {
@@ -5300,6 +5493,7 @@ export namespace Prisma {
     Person_ID?: SortOrder
     Erstellt_am?: SortOrderInput | SortOrder
     Geaendert_am?: SortOrderInput | SortOrder
+    person?: personOrderByWithRelationInput
     _relevance?: benutzerkontoOrderByRelevanceInput
   }
 
@@ -5314,6 +5508,7 @@ export namespace Prisma {
     Person_ID?: IntFilter<"benutzerkonto"> | number
     Erstellt_am?: DateTimeNullableFilter<"benutzerkonto"> | Date | string | null
     Geaendert_am?: DateTimeNullableFilter<"benutzerkonto"> | Date | string | null
+    person?: XOR<PersonScalarRelationFilter, personWhereInput>
   }, "ID" | "Benutzername">
 
   export type benutzerkontoOrderByWithAggregationInput = {
@@ -5360,6 +5555,8 @@ export namespace Prisma {
     HandyNr?: StringNullableFilter<"person"> | string | null
     Erstellt_am?: DateTimeNullableFilter<"person"> | Date | string | null
     Geaendert_am?: DateTimeNullableFilter<"person"> | Date | string | null
+    benutzerkonto?: BenutzerkontoListRelationFilter
+    vereinszuordnung?: VereinszuordnungListRelationFilter
   }
 
   export type personOrderByWithRelationInput = {
@@ -5375,6 +5572,8 @@ export namespace Prisma {
     HandyNr?: SortOrderInput | SortOrder
     Erstellt_am?: SortOrderInput | SortOrder
     Geaendert_am?: SortOrderInput | SortOrder
+    benutzerkonto?: benutzerkontoOrderByRelationAggregateInput
+    vereinszuordnung?: vereinszuordnungOrderByRelationAggregateInput
     _relevance?: personOrderByRelevanceInput
   }
 
@@ -5394,6 +5593,8 @@ export namespace Prisma {
     HandyNr?: StringNullableFilter<"person"> | string | null
     Erstellt_am?: DateTimeNullableFilter<"person"> | Date | string | null
     Geaendert_am?: DateTimeNullableFilter<"person"> | Date | string | null
+    benutzerkonto?: BenutzerkontoListRelationFilter
+    vereinszuordnung?: VereinszuordnungListRelationFilter
   }, "ID">
 
   export type personOrderByWithAggregationInput = {
@@ -5522,6 +5723,7 @@ export namespace Prisma {
     Rolle?: Enumvereinszuordnung_RolleFilter<"vereinszuordnung"> | $Enums.vereinszuordnung_Rolle
     Erstellt_am?: DateTimeFilter<"vereinszuordnung"> | Date | string
     Geaendert_am?: DateTimeNullableFilter<"vereinszuordnung"> | Date | string | null
+    person?: XOR<PersonScalarRelationFilter, personWhereInput>
     verein?: XOR<VereinScalarRelationFilter, vereinWhereInput>
   }
 
@@ -5532,6 +5734,7 @@ export namespace Prisma {
     Rolle?: SortOrder
     Erstellt_am?: SortOrder
     Geaendert_am?: SortOrderInput | SortOrder
+    person?: personOrderByWithRelationInput
     verein?: vereinOrderByWithRelationInput
   }
 
@@ -5545,6 +5748,7 @@ export namespace Prisma {
     Rolle?: Enumvereinszuordnung_RolleFilter<"vereinszuordnung"> | $Enums.vereinszuordnung_Rolle
     Erstellt_am?: DateTimeFilter<"vereinszuordnung"> | Date | string
     Geaendert_am?: DateTimeNullableFilter<"vereinszuordnung"> | Date | string | null
+    person?: XOR<PersonScalarRelationFilter, personWhereInput>
     verein?: XOR<VereinScalarRelationFilter, vereinWhereInput>
   }, "ID">
 
@@ -5578,9 +5782,9 @@ export namespace Prisma {
     Benutzername: string
     Passwort: string
     Aktiv?: boolean
-    Person_ID: number
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
+    person: personCreateNestedOneWithoutBenutzerkontoInput
   }
 
   export type benutzerkontoUncheckedCreateInput = {
@@ -5597,9 +5801,9 @@ export namespace Prisma {
     Benutzername?: StringFieldUpdateOperationsInput | string
     Passwort?: StringFieldUpdateOperationsInput | string
     Aktiv?: BoolFieldUpdateOperationsInput | boolean
-    Person_ID?: IntFieldUpdateOperationsInput | number
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    person?: personUpdateOneRequiredWithoutBenutzerkontoNestedInput
   }
 
   export type benutzerkontoUncheckedUpdateInput = {
@@ -5626,7 +5830,6 @@ export namespace Prisma {
     Benutzername?: StringFieldUpdateOperationsInput | string
     Passwort?: StringFieldUpdateOperationsInput | string
     Aktiv?: BoolFieldUpdateOperationsInput | boolean
-    Person_ID?: IntFieldUpdateOperationsInput | number
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -5653,6 +5856,8 @@ export namespace Prisma {
     HandyNr?: string | null
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
+    benutzerkonto?: benutzerkontoCreateNestedManyWithoutPersonInput
+    vereinszuordnung?: vereinszuordnungCreateNestedManyWithoutPersonInput
   }
 
   export type personUncheckedCreateInput = {
@@ -5668,6 +5873,8 @@ export namespace Prisma {
     HandyNr?: string | null
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
+    benutzerkonto?: benutzerkontoUncheckedCreateNestedManyWithoutPersonInput
+    vereinszuordnung?: vereinszuordnungUncheckedCreateNestedManyWithoutPersonInput
   }
 
   export type personUpdateInput = {
@@ -5682,6 +5889,8 @@ export namespace Prisma {
     HandyNr?: NullableStringFieldUpdateOperationsInput | string | null
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    benutzerkonto?: benutzerkontoUpdateManyWithoutPersonNestedInput
+    vereinszuordnung?: vereinszuordnungUpdateManyWithoutPersonNestedInput
   }
 
   export type personUncheckedUpdateInput = {
@@ -5697,6 +5906,8 @@ export namespace Prisma {
     HandyNr?: NullableStringFieldUpdateOperationsInput | string | null
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    benutzerkonto?: benutzerkontoUncheckedUpdateManyWithoutPersonNestedInput
+    vereinszuordnung?: vereinszuordnungUncheckedUpdateManyWithoutPersonNestedInput
   }
 
   export type personCreateManyInput = {
@@ -5829,10 +6040,10 @@ export namespace Prisma {
   }
 
   export type vereinszuordnungCreateInput = {
-    Person_ID: number
     Rolle?: $Enums.vereinszuordnung_Rolle
     Erstellt_am?: Date | string
     Geaendert_am?: Date | string | null
+    person: personCreateNestedOneWithoutVereinszuordnungInput
     verein: vereinCreateNestedOneWithoutVereinszuordnungInput
   }
 
@@ -5846,10 +6057,10 @@ export namespace Prisma {
   }
 
   export type vereinszuordnungUpdateInput = {
-    Person_ID?: IntFieldUpdateOperationsInput | number
     Rolle?: Enumvereinszuordnung_RolleFieldUpdateOperationsInput | $Enums.vereinszuordnung_Rolle
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    person?: personUpdateOneRequiredWithoutVereinszuordnungNestedInput
     verein?: vereinUpdateOneRequiredWithoutVereinszuordnungNestedInput
   }
 
@@ -5872,7 +6083,6 @@ export namespace Prisma {
   }
 
   export type vereinszuordnungUpdateManyMutationInput = {
-    Person_ID?: IntFieldUpdateOperationsInput | number
     Rolle?: Enumvereinszuordnung_RolleFieldUpdateOperationsInput | $Enums.vereinszuordnung_Rolle
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -5927,6 +6137,11 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type PersonScalarRelationFilter = {
+    is?: personWhereInput
+    isNot?: personWhereInput
   }
 
   export type SortOrderInput = {
@@ -6051,6 +6266,26 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type BenutzerkontoListRelationFilter = {
+    every?: benutzerkontoWhereInput
+    some?: benutzerkontoWhereInput
+    none?: benutzerkontoWhereInput
+  }
+
+  export type VereinszuordnungListRelationFilter = {
+    every?: vereinszuordnungWhereInput
+    some?: vereinszuordnungWhereInput
+    none?: vereinszuordnungWhereInput
+  }
+
+  export type benutzerkontoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type vereinszuordnungOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type personOrderByRelevanceInput = {
     fields: personOrderByRelevanceFieldEnum | personOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -6126,16 +6361,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type VereinszuordnungListRelationFilter = {
-    every?: vereinszuordnungWhereInput
-    some?: vereinszuordnungWhereInput
-    none?: vereinszuordnungWhereInput
-  }
-
-  export type vereinszuordnungOrderByRelationAggregateInput = {
-    _count?: SortOrder
   }
 
   export type vereinOrderByRelevanceInput = {
@@ -6274,12 +6499,30 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type personCreateNestedOneWithoutBenutzerkontoInput = {
+    create?: XOR<personCreateWithoutBenutzerkontoInput, personUncheckedCreateWithoutBenutzerkontoInput>
+    connectOrCreate?: personCreateOrConnectWithoutBenutzerkontoInput
+    connect?: personWhereUniqueInput
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
 
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
+  export type personUpdateOneRequiredWithoutBenutzerkontoNestedInput = {
+    create?: XOR<personCreateWithoutBenutzerkontoInput, personUncheckedCreateWithoutBenutzerkontoInput>
+    connectOrCreate?: personCreateOrConnectWithoutBenutzerkontoInput
+    upsert?: personUpsertWithoutBenutzerkontoInput
+    connect?: personWhereUniqueInput
+    update?: XOR<XOR<personUpdateToOneWithWhereWithoutBenutzerkontoInput, personUpdateWithoutBenutzerkontoInput>, personUncheckedUpdateWithoutBenutzerkontoInput>
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -6290,12 +6533,92 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
+  export type benutzerkontoCreateNestedManyWithoutPersonInput = {
+    create?: XOR<benutzerkontoCreateWithoutPersonInput, benutzerkontoUncheckedCreateWithoutPersonInput> | benutzerkontoCreateWithoutPersonInput[] | benutzerkontoUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: benutzerkontoCreateOrConnectWithoutPersonInput | benutzerkontoCreateOrConnectWithoutPersonInput[]
+    createMany?: benutzerkontoCreateManyPersonInputEnvelope
+    connect?: benutzerkontoWhereUniqueInput | benutzerkontoWhereUniqueInput[]
+  }
+
+  export type vereinszuordnungCreateNestedManyWithoutPersonInput = {
+    create?: XOR<vereinszuordnungCreateWithoutPersonInput, vereinszuordnungUncheckedCreateWithoutPersonInput> | vereinszuordnungCreateWithoutPersonInput[] | vereinszuordnungUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: vereinszuordnungCreateOrConnectWithoutPersonInput | vereinszuordnungCreateOrConnectWithoutPersonInput[]
+    createMany?: vereinszuordnungCreateManyPersonInputEnvelope
+    connect?: vereinszuordnungWhereUniqueInput | vereinszuordnungWhereUniqueInput[]
+  }
+
+  export type benutzerkontoUncheckedCreateNestedManyWithoutPersonInput = {
+    create?: XOR<benutzerkontoCreateWithoutPersonInput, benutzerkontoUncheckedCreateWithoutPersonInput> | benutzerkontoCreateWithoutPersonInput[] | benutzerkontoUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: benutzerkontoCreateOrConnectWithoutPersonInput | benutzerkontoCreateOrConnectWithoutPersonInput[]
+    createMany?: benutzerkontoCreateManyPersonInputEnvelope
+    connect?: benutzerkontoWhereUniqueInput | benutzerkontoWhereUniqueInput[]
+  }
+
+  export type vereinszuordnungUncheckedCreateNestedManyWithoutPersonInput = {
+    create?: XOR<vereinszuordnungCreateWithoutPersonInput, vereinszuordnungUncheckedCreateWithoutPersonInput> | vereinszuordnungCreateWithoutPersonInput[] | vereinszuordnungUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: vereinszuordnungCreateOrConnectWithoutPersonInput | vereinszuordnungCreateOrConnectWithoutPersonInput[]
+    createMany?: vereinszuordnungCreateManyPersonInputEnvelope
+    connect?: vereinszuordnungWhereUniqueInput | vereinszuordnungWhereUniqueInput[]
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
+  }
+
+  export type benutzerkontoUpdateManyWithoutPersonNestedInput = {
+    create?: XOR<benutzerkontoCreateWithoutPersonInput, benutzerkontoUncheckedCreateWithoutPersonInput> | benutzerkontoCreateWithoutPersonInput[] | benutzerkontoUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: benutzerkontoCreateOrConnectWithoutPersonInput | benutzerkontoCreateOrConnectWithoutPersonInput[]
+    upsert?: benutzerkontoUpsertWithWhereUniqueWithoutPersonInput | benutzerkontoUpsertWithWhereUniqueWithoutPersonInput[]
+    createMany?: benutzerkontoCreateManyPersonInputEnvelope
+    set?: benutzerkontoWhereUniqueInput | benutzerkontoWhereUniqueInput[]
+    disconnect?: benutzerkontoWhereUniqueInput | benutzerkontoWhereUniqueInput[]
+    delete?: benutzerkontoWhereUniqueInput | benutzerkontoWhereUniqueInput[]
+    connect?: benutzerkontoWhereUniqueInput | benutzerkontoWhereUniqueInput[]
+    update?: benutzerkontoUpdateWithWhereUniqueWithoutPersonInput | benutzerkontoUpdateWithWhereUniqueWithoutPersonInput[]
+    updateMany?: benutzerkontoUpdateManyWithWhereWithoutPersonInput | benutzerkontoUpdateManyWithWhereWithoutPersonInput[]
+    deleteMany?: benutzerkontoScalarWhereInput | benutzerkontoScalarWhereInput[]
+  }
+
+  export type vereinszuordnungUpdateManyWithoutPersonNestedInput = {
+    create?: XOR<vereinszuordnungCreateWithoutPersonInput, vereinszuordnungUncheckedCreateWithoutPersonInput> | vereinszuordnungCreateWithoutPersonInput[] | vereinszuordnungUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: vereinszuordnungCreateOrConnectWithoutPersonInput | vereinszuordnungCreateOrConnectWithoutPersonInput[]
+    upsert?: vereinszuordnungUpsertWithWhereUniqueWithoutPersonInput | vereinszuordnungUpsertWithWhereUniqueWithoutPersonInput[]
+    createMany?: vereinszuordnungCreateManyPersonInputEnvelope
+    set?: vereinszuordnungWhereUniqueInput | vereinszuordnungWhereUniqueInput[]
+    disconnect?: vereinszuordnungWhereUniqueInput | vereinszuordnungWhereUniqueInput[]
+    delete?: vereinszuordnungWhereUniqueInput | vereinszuordnungWhereUniqueInput[]
+    connect?: vereinszuordnungWhereUniqueInput | vereinszuordnungWhereUniqueInput[]
+    update?: vereinszuordnungUpdateWithWhereUniqueWithoutPersonInput | vereinszuordnungUpdateWithWhereUniqueWithoutPersonInput[]
+    updateMany?: vereinszuordnungUpdateManyWithWhereWithoutPersonInput | vereinszuordnungUpdateManyWithWhereWithoutPersonInput[]
+    deleteMany?: vereinszuordnungScalarWhereInput | vereinszuordnungScalarWhereInput[]
+  }
+
+  export type benutzerkontoUncheckedUpdateManyWithoutPersonNestedInput = {
+    create?: XOR<benutzerkontoCreateWithoutPersonInput, benutzerkontoUncheckedCreateWithoutPersonInput> | benutzerkontoCreateWithoutPersonInput[] | benutzerkontoUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: benutzerkontoCreateOrConnectWithoutPersonInput | benutzerkontoCreateOrConnectWithoutPersonInput[]
+    upsert?: benutzerkontoUpsertWithWhereUniqueWithoutPersonInput | benutzerkontoUpsertWithWhereUniqueWithoutPersonInput[]
+    createMany?: benutzerkontoCreateManyPersonInputEnvelope
+    set?: benutzerkontoWhereUniqueInput | benutzerkontoWhereUniqueInput[]
+    disconnect?: benutzerkontoWhereUniqueInput | benutzerkontoWhereUniqueInput[]
+    delete?: benutzerkontoWhereUniqueInput | benutzerkontoWhereUniqueInput[]
+    connect?: benutzerkontoWhereUniqueInput | benutzerkontoWhereUniqueInput[]
+    update?: benutzerkontoUpdateWithWhereUniqueWithoutPersonInput | benutzerkontoUpdateWithWhereUniqueWithoutPersonInput[]
+    updateMany?: benutzerkontoUpdateManyWithWhereWithoutPersonInput | benutzerkontoUpdateManyWithWhereWithoutPersonInput[]
+    deleteMany?: benutzerkontoScalarWhereInput | benutzerkontoScalarWhereInput[]
+  }
+
+  export type vereinszuordnungUncheckedUpdateManyWithoutPersonNestedInput = {
+    create?: XOR<vereinszuordnungCreateWithoutPersonInput, vereinszuordnungUncheckedCreateWithoutPersonInput> | vereinszuordnungCreateWithoutPersonInput[] | vereinszuordnungUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: vereinszuordnungCreateOrConnectWithoutPersonInput | vereinszuordnungCreateOrConnectWithoutPersonInput[]
+    upsert?: vereinszuordnungUpsertWithWhereUniqueWithoutPersonInput | vereinszuordnungUpsertWithWhereUniqueWithoutPersonInput[]
+    createMany?: vereinszuordnungCreateManyPersonInputEnvelope
+    set?: vereinszuordnungWhereUniqueInput | vereinszuordnungWhereUniqueInput[]
+    disconnect?: vereinszuordnungWhereUniqueInput | vereinszuordnungWhereUniqueInput[]
+    delete?: vereinszuordnungWhereUniqueInput | vereinszuordnungWhereUniqueInput[]
+    connect?: vereinszuordnungWhereUniqueInput | vereinszuordnungWhereUniqueInput[]
+    update?: vereinszuordnungUpdateWithWhereUniqueWithoutPersonInput | vereinszuordnungUpdateWithWhereUniqueWithoutPersonInput[]
+    updateMany?: vereinszuordnungUpdateManyWithWhereWithoutPersonInput | vereinszuordnungUpdateManyWithWhereWithoutPersonInput[]
+    deleteMany?: vereinszuordnungScalarWhereInput | vereinszuordnungScalarWhereInput[]
   }
 
   export type vereinszuordnungCreateNestedManyWithoutVereinInput = {
@@ -6340,6 +6663,12 @@ export namespace Prisma {
     deleteMany?: vereinszuordnungScalarWhereInput | vereinszuordnungScalarWhereInput[]
   }
 
+  export type personCreateNestedOneWithoutVereinszuordnungInput = {
+    create?: XOR<personCreateWithoutVereinszuordnungInput, personUncheckedCreateWithoutVereinszuordnungInput>
+    connectOrCreate?: personCreateOrConnectWithoutVereinszuordnungInput
+    connect?: personWhereUniqueInput
+  }
+
   export type vereinCreateNestedOneWithoutVereinszuordnungInput = {
     create?: XOR<vereinCreateWithoutVereinszuordnungInput, vereinUncheckedCreateWithoutVereinszuordnungInput>
     connectOrCreate?: vereinCreateOrConnectWithoutVereinszuordnungInput
@@ -6352,6 +6681,14 @@ export namespace Prisma {
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type personUpdateOneRequiredWithoutVereinszuordnungNestedInput = {
+    create?: XOR<personCreateWithoutVereinszuordnungInput, personUncheckedCreateWithoutVereinszuordnungInput>
+    connectOrCreate?: personCreateOrConnectWithoutVereinszuordnungInput
+    upsert?: personUpsertWithoutVereinszuordnungInput
+    connect?: personWhereUniqueInput
+    update?: XOR<XOR<personUpdateToOneWithWhereWithoutVereinszuordnungInput, personUpdateWithoutVereinszuordnungInput>, personUncheckedUpdateWithoutVereinszuordnungInput>
   }
 
   export type vereinUpdateOneRequiredWithoutVereinszuordnungNestedInput = {
@@ -6557,11 +6894,198 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type vereinszuordnungCreateWithoutVereinInput = {
-    Person_ID: number
+  export type personCreateWithoutBenutzerkontoInput = {
+    Vorname: string
+    Name: string
+    Geburtsdatum?: Date | string | null
+    Strasse?: string | null
+    Hausnummer?: string | null
+    Postleitzahl?: string | null
+    Ort?: string | null
+    Email?: string | null
+    HandyNr?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+    vereinszuordnung?: vereinszuordnungCreateNestedManyWithoutPersonInput
+  }
+
+  export type personUncheckedCreateWithoutBenutzerkontoInput = {
+    ID?: number
+    Vorname: string
+    Name: string
+    Geburtsdatum?: Date | string | null
+    Strasse?: string | null
+    Hausnummer?: string | null
+    Postleitzahl?: string | null
+    Ort?: string | null
+    Email?: string | null
+    HandyNr?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+    vereinszuordnung?: vereinszuordnungUncheckedCreateNestedManyWithoutPersonInput
+  }
+
+  export type personCreateOrConnectWithoutBenutzerkontoInput = {
+    where: personWhereUniqueInput
+    create: XOR<personCreateWithoutBenutzerkontoInput, personUncheckedCreateWithoutBenutzerkontoInput>
+  }
+
+  export type personUpsertWithoutBenutzerkontoInput = {
+    update: XOR<personUpdateWithoutBenutzerkontoInput, personUncheckedUpdateWithoutBenutzerkontoInput>
+    create: XOR<personCreateWithoutBenutzerkontoInput, personUncheckedCreateWithoutBenutzerkontoInput>
+    where?: personWhereInput
+  }
+
+  export type personUpdateToOneWithWhereWithoutBenutzerkontoInput = {
+    where?: personWhereInput
+    data: XOR<personUpdateWithoutBenutzerkontoInput, personUncheckedUpdateWithoutBenutzerkontoInput>
+  }
+
+  export type personUpdateWithoutBenutzerkontoInput = {
+    Vorname?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Email?: NullableStringFieldUpdateOperationsInput | string | null
+    HandyNr?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    vereinszuordnung?: vereinszuordnungUpdateManyWithoutPersonNestedInput
+  }
+
+  export type personUncheckedUpdateWithoutBenutzerkontoInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Vorname?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Email?: NullableStringFieldUpdateOperationsInput | string | null
+    HandyNr?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    vereinszuordnung?: vereinszuordnungUncheckedUpdateManyWithoutPersonNestedInput
+  }
+
+  export type benutzerkontoCreateWithoutPersonInput = {
+    Benutzername: string
+    Passwort: string
+    Aktiv?: boolean
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type benutzerkontoUncheckedCreateWithoutPersonInput = {
+    ID?: number
+    Benutzername: string
+    Passwort: string
+    Aktiv?: boolean
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type benutzerkontoCreateOrConnectWithoutPersonInput = {
+    where: benutzerkontoWhereUniqueInput
+    create: XOR<benutzerkontoCreateWithoutPersonInput, benutzerkontoUncheckedCreateWithoutPersonInput>
+  }
+
+  export type benutzerkontoCreateManyPersonInputEnvelope = {
+    data: benutzerkontoCreateManyPersonInput | benutzerkontoCreateManyPersonInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type vereinszuordnungCreateWithoutPersonInput = {
     Rolle?: $Enums.vereinszuordnung_Rolle
     Erstellt_am?: Date | string
     Geaendert_am?: Date | string | null
+    verein: vereinCreateNestedOneWithoutVereinszuordnungInput
+  }
+
+  export type vereinszuordnungUncheckedCreateWithoutPersonInput = {
+    ID?: number
+    Verein_ID: number
+    Rolle?: $Enums.vereinszuordnung_Rolle
+    Erstellt_am?: Date | string
+    Geaendert_am?: Date | string | null
+  }
+
+  export type vereinszuordnungCreateOrConnectWithoutPersonInput = {
+    where: vereinszuordnungWhereUniqueInput
+    create: XOR<vereinszuordnungCreateWithoutPersonInput, vereinszuordnungUncheckedCreateWithoutPersonInput>
+  }
+
+  export type vereinszuordnungCreateManyPersonInputEnvelope = {
+    data: vereinszuordnungCreateManyPersonInput | vereinszuordnungCreateManyPersonInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type benutzerkontoUpsertWithWhereUniqueWithoutPersonInput = {
+    where: benutzerkontoWhereUniqueInput
+    update: XOR<benutzerkontoUpdateWithoutPersonInput, benutzerkontoUncheckedUpdateWithoutPersonInput>
+    create: XOR<benutzerkontoCreateWithoutPersonInput, benutzerkontoUncheckedCreateWithoutPersonInput>
+  }
+
+  export type benutzerkontoUpdateWithWhereUniqueWithoutPersonInput = {
+    where: benutzerkontoWhereUniqueInput
+    data: XOR<benutzerkontoUpdateWithoutPersonInput, benutzerkontoUncheckedUpdateWithoutPersonInput>
+  }
+
+  export type benutzerkontoUpdateManyWithWhereWithoutPersonInput = {
+    where: benutzerkontoScalarWhereInput
+    data: XOR<benutzerkontoUpdateManyMutationInput, benutzerkontoUncheckedUpdateManyWithoutPersonInput>
+  }
+
+  export type benutzerkontoScalarWhereInput = {
+    AND?: benutzerkontoScalarWhereInput | benutzerkontoScalarWhereInput[]
+    OR?: benutzerkontoScalarWhereInput[]
+    NOT?: benutzerkontoScalarWhereInput | benutzerkontoScalarWhereInput[]
+    ID?: IntFilter<"benutzerkonto"> | number
+    Benutzername?: StringFilter<"benutzerkonto"> | string
+    Passwort?: StringFilter<"benutzerkonto"> | string
+    Aktiv?: BoolFilter<"benutzerkonto"> | boolean
+    Person_ID?: IntFilter<"benutzerkonto"> | number
+    Erstellt_am?: DateTimeNullableFilter<"benutzerkonto"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"benutzerkonto"> | Date | string | null
+  }
+
+  export type vereinszuordnungUpsertWithWhereUniqueWithoutPersonInput = {
+    where: vereinszuordnungWhereUniqueInput
+    update: XOR<vereinszuordnungUpdateWithoutPersonInput, vereinszuordnungUncheckedUpdateWithoutPersonInput>
+    create: XOR<vereinszuordnungCreateWithoutPersonInput, vereinszuordnungUncheckedCreateWithoutPersonInput>
+  }
+
+  export type vereinszuordnungUpdateWithWhereUniqueWithoutPersonInput = {
+    where: vereinszuordnungWhereUniqueInput
+    data: XOR<vereinszuordnungUpdateWithoutPersonInput, vereinszuordnungUncheckedUpdateWithoutPersonInput>
+  }
+
+  export type vereinszuordnungUpdateManyWithWhereWithoutPersonInput = {
+    where: vereinszuordnungScalarWhereInput
+    data: XOR<vereinszuordnungUpdateManyMutationInput, vereinszuordnungUncheckedUpdateManyWithoutPersonInput>
+  }
+
+  export type vereinszuordnungScalarWhereInput = {
+    AND?: vereinszuordnungScalarWhereInput | vereinszuordnungScalarWhereInput[]
+    OR?: vereinszuordnungScalarWhereInput[]
+    NOT?: vereinszuordnungScalarWhereInput | vereinszuordnungScalarWhereInput[]
+    ID?: IntFilter<"vereinszuordnung"> | number
+    Person_ID?: IntFilter<"vereinszuordnung"> | number
+    Verein_ID?: IntFilter<"vereinszuordnung"> | number
+    Rolle?: Enumvereinszuordnung_RolleFilter<"vereinszuordnung"> | $Enums.vereinszuordnung_Rolle
+    Erstellt_am?: DateTimeFilter<"vereinszuordnung"> | Date | string
+    Geaendert_am?: DateTimeNullableFilter<"vereinszuordnung"> | Date | string | null
+  }
+
+  export type vereinszuordnungCreateWithoutVereinInput = {
+    Rolle?: $Enums.vereinszuordnung_Rolle
+    Erstellt_am?: Date | string
+    Geaendert_am?: Date | string | null
+    person: personCreateNestedOneWithoutVereinszuordnungInput
   }
 
   export type vereinszuordnungUncheckedCreateWithoutVereinInput = {
@@ -6598,16 +7122,40 @@ export namespace Prisma {
     data: XOR<vereinszuordnungUpdateManyMutationInput, vereinszuordnungUncheckedUpdateManyWithoutVereinInput>
   }
 
-  export type vereinszuordnungScalarWhereInput = {
-    AND?: vereinszuordnungScalarWhereInput | vereinszuordnungScalarWhereInput[]
-    OR?: vereinszuordnungScalarWhereInput[]
-    NOT?: vereinszuordnungScalarWhereInput | vereinszuordnungScalarWhereInput[]
-    ID?: IntFilter<"vereinszuordnung"> | number
-    Person_ID?: IntFilter<"vereinszuordnung"> | number
-    Verein_ID?: IntFilter<"vereinszuordnung"> | number
-    Rolle?: Enumvereinszuordnung_RolleFilter<"vereinszuordnung"> | $Enums.vereinszuordnung_Rolle
-    Erstellt_am?: DateTimeFilter<"vereinszuordnung"> | Date | string
-    Geaendert_am?: DateTimeNullableFilter<"vereinszuordnung"> | Date | string | null
+  export type personCreateWithoutVereinszuordnungInput = {
+    Vorname: string
+    Name: string
+    Geburtsdatum?: Date | string | null
+    Strasse?: string | null
+    Hausnummer?: string | null
+    Postleitzahl?: string | null
+    Ort?: string | null
+    Email?: string | null
+    HandyNr?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+    benutzerkonto?: benutzerkontoCreateNestedManyWithoutPersonInput
+  }
+
+  export type personUncheckedCreateWithoutVereinszuordnungInput = {
+    ID?: number
+    Vorname: string
+    Name: string
+    Geburtsdatum?: Date | string | null
+    Strasse?: string | null
+    Hausnummer?: string | null
+    Postleitzahl?: string | null
+    Ort?: string | null
+    Email?: string | null
+    HandyNr?: string | null
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+    benutzerkonto?: benutzerkontoUncheckedCreateNestedManyWithoutPersonInput
+  }
+
+  export type personCreateOrConnectWithoutVereinszuordnungInput = {
+    where: personWhereUniqueInput
+    create: XOR<personCreateWithoutVereinszuordnungInput, personUncheckedCreateWithoutVereinszuordnungInput>
   }
 
   export type vereinCreateWithoutVereinszuordnungInput = {
@@ -6636,6 +7184,48 @@ export namespace Prisma {
   export type vereinCreateOrConnectWithoutVereinszuordnungInput = {
     where: vereinWhereUniqueInput
     create: XOR<vereinCreateWithoutVereinszuordnungInput, vereinUncheckedCreateWithoutVereinszuordnungInput>
+  }
+
+  export type personUpsertWithoutVereinszuordnungInput = {
+    update: XOR<personUpdateWithoutVereinszuordnungInput, personUncheckedUpdateWithoutVereinszuordnungInput>
+    create: XOR<personCreateWithoutVereinszuordnungInput, personUncheckedCreateWithoutVereinszuordnungInput>
+    where?: personWhereInput
+  }
+
+  export type personUpdateToOneWithWhereWithoutVereinszuordnungInput = {
+    where?: personWhereInput
+    data: XOR<personUpdateWithoutVereinszuordnungInput, personUncheckedUpdateWithoutVereinszuordnungInput>
+  }
+
+  export type personUpdateWithoutVereinszuordnungInput = {
+    Vorname?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Email?: NullableStringFieldUpdateOperationsInput | string | null
+    HandyNr?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    benutzerkonto?: benutzerkontoUpdateManyWithoutPersonNestedInput
+  }
+
+  export type personUncheckedUpdateWithoutVereinszuordnungInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Vorname?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
+    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
+    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
+    Ort?: NullableStringFieldUpdateOperationsInput | string | null
+    Email?: NullableStringFieldUpdateOperationsInput | string | null
+    HandyNr?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    benutzerkonto?: benutzerkontoUncheckedUpdateManyWithoutPersonNestedInput
   }
 
   export type vereinUpsertWithoutVereinszuordnungInput = {
@@ -6672,6 +7262,72 @@ export namespace Prisma {
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
+  export type benutzerkontoCreateManyPersonInput = {
+    ID?: number
+    Benutzername: string
+    Passwort: string
+    Aktiv?: boolean
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
+  export type vereinszuordnungCreateManyPersonInput = {
+    ID?: number
+    Verein_ID: number
+    Rolle?: $Enums.vereinszuordnung_Rolle
+    Erstellt_am?: Date | string
+    Geaendert_am?: Date | string | null
+  }
+
+  export type benutzerkontoUpdateWithoutPersonInput = {
+    Benutzername?: StringFieldUpdateOperationsInput | string
+    Passwort?: StringFieldUpdateOperationsInput | string
+    Aktiv?: BoolFieldUpdateOperationsInput | boolean
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type benutzerkontoUncheckedUpdateWithoutPersonInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Benutzername?: StringFieldUpdateOperationsInput | string
+    Passwort?: StringFieldUpdateOperationsInput | string
+    Aktiv?: BoolFieldUpdateOperationsInput | boolean
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type benutzerkontoUncheckedUpdateManyWithoutPersonInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Benutzername?: StringFieldUpdateOperationsInput | string
+    Passwort?: StringFieldUpdateOperationsInput | string
+    Aktiv?: BoolFieldUpdateOperationsInput | boolean
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type vereinszuordnungUpdateWithoutPersonInput = {
+    Rolle?: Enumvereinszuordnung_RolleFieldUpdateOperationsInput | $Enums.vereinszuordnung_Rolle
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verein?: vereinUpdateOneRequiredWithoutVereinszuordnungNestedInput
+  }
+
+  export type vereinszuordnungUncheckedUpdateWithoutPersonInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Verein_ID?: IntFieldUpdateOperationsInput | number
+    Rolle?: Enumvereinszuordnung_RolleFieldUpdateOperationsInput | $Enums.vereinszuordnung_Rolle
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type vereinszuordnungUncheckedUpdateManyWithoutPersonInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Verein_ID?: IntFieldUpdateOperationsInput | number
+    Rolle?: Enumvereinszuordnung_RolleFieldUpdateOperationsInput | $Enums.vereinszuordnung_Rolle
+    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
   export type vereinszuordnungCreateManyVereinInput = {
     ID?: number
     Person_ID: number
@@ -6681,10 +7337,10 @@ export namespace Prisma {
   }
 
   export type vereinszuordnungUpdateWithoutVereinInput = {
-    Person_ID?: IntFieldUpdateOperationsInput | number
     Rolle?: Enumvereinszuordnung_RolleFieldUpdateOperationsInput | $Enums.vereinszuordnung_Rolle
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    person?: personUpdateOneRequiredWithoutVereinszuordnungNestedInput
   }
 
   export type vereinszuordnungUncheckedUpdateWithoutVereinInput = {

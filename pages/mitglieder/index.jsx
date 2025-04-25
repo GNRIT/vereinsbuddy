@@ -1,6 +1,6 @@
-import Link from 'next/link'
-import Layout from '../../components/Layout'
-const { db1 } = require('@/lib/prisma')
+import { vereinsbuddyPrisma as db1 } from '@/lib/prisma';
+import Link from 'next/link';
+import Layout from '../../components/Layout';
 
 export default function MitgliederListe({ mitglieder }) {
     return (
@@ -9,9 +9,9 @@ export default function MitgliederListe({ mitglieder }) {
             <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Mitgliederverwaltung</h1>
             <Link href="/mitglieder/neu">
-                <a className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
+                <span className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
                 Neues Mitglied
-                </a>
+                </span>
             </Link>
             </div>
             
@@ -28,7 +28,7 @@ export default function MitgliederListe({ mitglieder }) {
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                 {mitglieder.map((mitglied) => (
-                    <tr key={mitglied.id}>
+                    <tr key={mitglied.ID}>
                     <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold">
@@ -54,11 +54,11 @@ export default function MitgliederListe({ mitglieder }) {
                         )}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <Link href={`/mitglieder/${mitglied.id}`}>
-                        <a className="text-blue-600 hover:text-blue-900 mr-3">Ansehen</a>
+                        <Link href={`/mitglieder/${mitglied.ID}`}>
+                        <span className="text-blue-600 hover:text-blue-900 mr-3">Ansehen</span>
                         </Link>
-                        <Link href={`/mitglieder/${mitglied.id}/bearbeiten`}>
-                        <a className="text-indigo-600 hover:text-indigo-900">Bearbeiten</a>
+                        <Link href={`/mitglieder/${mitglied.ID}/bearbeiten`}>
+                        <span className="text-indigo-600 hover:text-indigo-900">Bearbeiten</span>
                         </Link>
                     </td>
                     </tr>
@@ -74,7 +74,7 @@ export default function MitgliederListe({ mitglieder }) {
     export async function getServerSideProps() {
     const mitglieder = await db1.person.findMany({
         include: {
-        Vereinszuordnung: true
+        vereinszuordnung: true
         }
     })
 

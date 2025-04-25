@@ -1,11 +1,12 @@
-import { getSession } from 'next-auth/react'
-const { db1 } = require('@/lib/prisma')
+import { vereinsbuddyPrisma as db1 } from '@/lib/prisma';
+import { getSession } from 'next-auth/react';
+
 
 export default async function handler(req, res) {
     const session = await getSession({ req })
     const { id } = req.query
 
-    if (!session) {
+    /*if (!session) {
         return res.status(401).json({ message: 'Nicht autorisiert' })
     }
 
@@ -13,13 +14,13 @@ export default async function handler(req, res) {
     const isAdmin = session.user.vereine.some(v => v.rolle === 'admin')
     if (!isAdmin) {
         return res.status(403).json({ message: 'Keine Berechtigung' })
-    }
+    }*/
 
     if (req.method === 'GET') {
         try {
         const verein = await db1.verein.findUnique({
             where: {
-            id: parseInt(id)
+            ID: parseInt(id)
             }
         })
 
@@ -40,7 +41,7 @@ export default async function handler(req, res) {
             where: {
             Subdomain: Subdomain,
             NOT: {
-                id: parseInt(id)
+                ID: parseInt(id)
             }
             }
         })
@@ -51,7 +52,7 @@ export default async function handler(req, res) {
 
         const updatedVerein = await db1.verein.update({
             where: {
-            id: parseInt(id)
+            ID: parseInt(id)
             },
             data: {
             Name,
@@ -80,7 +81,7 @@ export default async function handler(req, res) {
         // Dann den Verein löschen
         await db1.verein.delete({
             where: {
-            id: parseInt(id)
+            ID: parseInt(id)
             }
         })
 

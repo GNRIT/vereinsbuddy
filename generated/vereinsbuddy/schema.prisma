@@ -16,23 +16,26 @@ model benutzerkonto {
   Person_ID    Int
   Erstellt_am  DateTime? @map("Erstellt am") @vereindb.Date
   Geaendert_am DateTime? @map("Geaendert am") @vereindb.Date
+  person       person    @relation(fields: [Person_ID], references: [ID], onDelete: Cascade, map: "benutzerkonto_ibfk_1")
 
   @@index([Person_ID], map: "benutzerkonto_ibfk_1")
 }
 
 model person {
-  ID           Int       @id @default(autoincrement())
-  Vorname      String    @vereindb.VarChar(100)
-  Name         String    @vereindb.VarChar(100)
-  Geburtsdatum DateTime? @vereindb.Date
-  Strasse      String?   @vereindb.VarChar(255)
-  Hausnummer   String?   @vereindb.VarChar(32)
-  Postleitzahl String?   @vereindb.VarChar(32)
-  Ort          String?   @vereindb.VarChar(255)
-  Email        String?   @vereindb.VarChar(255)
-  HandyNr      String?   @vereindb.VarChar(32)
-  Erstellt_am  DateTime? @map("Erstellt am") @vereindb.Date
-  Geaendert_am DateTime? @map("Geaendert am") @vereindb.Date
+  ID               Int                @id @default(autoincrement())
+  Vorname          String             @vereindb.VarChar(100)
+  Name             String             @vereindb.VarChar(100)
+  Geburtsdatum     DateTime?          @vereindb.Date
+  Strasse          String?            @vereindb.VarChar(255)
+  Hausnummer       String?            @vereindb.VarChar(32)
+  Postleitzahl     String?            @vereindb.VarChar(32)
+  Ort              String?            @vereindb.VarChar(255)
+  Email            String?            @vereindb.VarChar(255)
+  HandyNr          String?            @vereindb.VarChar(32)
+  Erstellt_am      DateTime?          @map("Erstellt am") @vereindb.Date
+  Geaendert_am     DateTime?          @map("Geaendert am") @vereindb.Date
+  benutzerkonto    benutzerkonto[]
+  vereinszuordnung vereinszuordnung[]
 }
 
 model verein {
@@ -55,6 +58,7 @@ model vereinszuordnung {
   Rolle        vereinszuordnung_Rolle @default(mitglied)
   Erstellt_am  DateTime               @default(now()) @map("Erstellt am") @vereindb.Date
   Geaendert_am DateTime?              @map("Geaendert am") @vereindb.Date
+  person       person                 @relation(fields: [Person_ID], references: [ID], onDelete: Cascade, map: "vereinszuordnung_ibfk_1")
   verein       verein                 @relation(fields: [Verein_ID], references: [ID], onDelete: Cascade, map: "vereinszuordnung_ibfk_2")
 
   @@index([Person_ID], map: "vereinszuordnung_ibfk_1")

@@ -1,14 +1,14 @@
-import { getSession } from 'next-auth/react'
-import Layout from '../../../components/Layout'
-import MitgliedForm from '../components/MitgliedForm'
-
-const { db1 } = require('@/lib/prisma')
+import { vereinsbuddyPrisma as db1 } from '@/lib/prisma';
+import { getSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import Layout from '../../../components/Layout';
+import MitgliedForm from '../components/MitgliedForm';
 export default function MitgliedBearbeiten({ initialData }) {
     const router = useRouter()
 
     const handleSubmit = async (formData) => {
         try {
-        const response = await fetch(`/api/mitglieder/${initialData.id}`, {
+        const response = await fetch(`/api/mitglieder/${initialData.ID}`, {
             method: 'PUT',
             headers: {
             'Content-Type': 'application/json',
@@ -17,7 +17,7 @@ export default function MitgliedBearbeiten({ initialData }) {
         })
 
         if (response.ok) {
-            router.push(`/mitglieder/${initialData.id}`)
+            router.push(`/mitglieder/${initialData.ID}`)
         } else {
             const errorData = await response.json()
             alert(errorData.message || 'Fehler beim Speichern')
@@ -39,36 +39,45 @@ export default function MitgliedBearbeiten({ initialData }) {
     }
 
     export async function getServerSideProps(context) {
-    const { id } = context.params
-    const session = await getSession(context)
-
-    if (!session) {
+        const { id } = context.params;
+        const session = await getSession(context);
+    
+    /*if (!session) {
         return {
-        redirect: {
+            redirect: {
             destination: '/auth/login',
             permanent: false,
-        },
+            },
+        };
+        }*/
+
+        // ⛔️ Frühzeitig prüfen
+        const parsedId = parseInt(id);
+        if (!parsedId || isNaN(parsedId)) {
+        return {
+            notFound: true,
+        };
         }
-    }
 
     const mitglied = await db1.person.findUnique({
         where: {
-        ID: parseInt(id),
+        ID: parsedId,
         },
         include: {
-        Vereinszuordnung: true,
+        vereinszuordnung: true,
         },
-    })
+    });
 
     if (!mitglied) {
         return {
-        notFound: true,
-        }
+            notFound: true,
+        };
     }
-
+    
     return {
         props: {
-        initialData: JSON.parse(JSON.stringify(mitglied)),
+            initialData: JSON.parse(JSON.stringify(mitglied)),
         },
-    }
+    };
 }
+

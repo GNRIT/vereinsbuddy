@@ -2566,12 +2566,10 @@ export namespace Prisma {
 
   export type Jf_mitgliedCountOutputType = {
     allergie: number
-    jf_erziehungsberechtigter: number
   }
 
   export type Jf_mitgliedCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     allergie?: boolean | Jf_mitgliedCountOutputTypeCountAllergieArgs
-    jf_erziehungsberechtigter?: boolean | Jf_mitgliedCountOutputTypeCountJf_erziehungsberechtigterArgs
   }
 
   // Custom InputTypes
@@ -2590,13 +2588,6 @@ export namespace Prisma {
    */
   export type Jf_mitgliedCountOutputTypeCountAllergieArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: allergieWhereInput
-  }
-
-  /**
-   * Jf_mitgliedCountOutputType without action
-   */
-  export type Jf_mitgliedCountOutputTypeCountJf_erziehungsberechtigterArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: jf_erziehungsberechtigterWhereInput
   }
 
 
@@ -2637,7 +2628,6 @@ export namespace Prisma {
 
   export type PersonCountOutputType = {
     ff_mitglied: number
-    jf_erziehungsberechtigter: number
     jf_mitglied: number
     mitglied_login: number
     teilnahme: number
@@ -2645,7 +2635,6 @@ export namespace Prisma {
 
   export type PersonCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     ff_mitglied?: boolean | PersonCountOutputTypeCountFf_mitgliedArgs
-    jf_erziehungsberechtigter?: boolean | PersonCountOutputTypeCountJf_erziehungsberechtigterArgs
     jf_mitglied?: boolean | PersonCountOutputTypeCountJf_mitgliedArgs
     mitglied_login?: boolean | PersonCountOutputTypeCountMitglied_loginArgs
     teilnahme?: boolean | PersonCountOutputTypeCountTeilnahmeArgs
@@ -2667,13 +2656,6 @@ export namespace Prisma {
    */
   export type PersonCountOutputTypeCountFf_mitgliedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ff_mitgliedWhereInput
-  }
-
-  /**
-   * PersonCountOutputType without action
-   */
-  export type PersonCountOutputTypeCountJf_erziehungsberechtigterArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: jf_erziehungsberechtigterWhereInput
   }
 
   /**
@@ -13917,8 +13899,6 @@ export namespace Prisma {
     Person_ID?: boolean
     Erstellt_am?: boolean
     Geaendert_am?: boolean
-    jf_mitglied?: boolean | jf_mitgliedDefaultArgs<ExtArgs>
-    person?: boolean | personDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["jf_erziehungsberechtigter"]>
 
 
@@ -13932,17 +13912,10 @@ export namespace Prisma {
   }
 
   export type jf_erziehungsberechtigterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "JF_Mitglied_ID" | "Person_ID" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["jf_erziehungsberechtigter"]>
-  export type jf_erziehungsberechtigterInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    jf_mitglied?: boolean | jf_mitgliedDefaultArgs<ExtArgs>
-    person?: boolean | personDefaultArgs<ExtArgs>
-  }
 
   export type $jf_erziehungsberechtigterPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "jf_erziehungsberechtigter"
-    objects: {
-      jf_mitglied: Prisma.$jf_mitgliedPayload<ExtArgs>
-      person: Prisma.$personPayload<ExtArgs>
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       ID: number
       JF_Mitglied_ID: number
@@ -14289,8 +14262,6 @@ export namespace Prisma {
    */
   export interface Prisma__jf_erziehungsberechtigterClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    jf_mitglied<T extends jf_mitgliedDefaultArgs<ExtArgs> = {}>(args?: Subset<T, jf_mitgliedDefaultArgs<ExtArgs>>): Prisma__jf_mitgliedClient<$Result.GetResult<Prisma.$jf_mitgliedPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    person<T extends personDefaultArgs<ExtArgs> = {}>(args?: Subset<T, personDefaultArgs<ExtArgs>>): Prisma__personClient<$Result.GetResult<Prisma.$personPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -14342,10 +14313,6 @@ export namespace Prisma {
      */
     omit?: jf_erziehungsberechtigterOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: jf_erziehungsberechtigterInclude<ExtArgs> | null
-    /**
      * Filter, which jf_erziehungsberechtigter to fetch.
      */
     where: jf_erziehungsberechtigterWhereUniqueInput
@@ -14364,10 +14331,6 @@ export namespace Prisma {
      */
     omit?: jf_erziehungsberechtigterOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: jf_erziehungsberechtigterInclude<ExtArgs> | null
-    /**
      * Filter, which jf_erziehungsberechtigter to fetch.
      */
     where: jf_erziehungsberechtigterWhereUniqueInput
@@ -14385,10 +14348,6 @@ export namespace Prisma {
      * Omit specific fields from the jf_erziehungsberechtigter
      */
     omit?: jf_erziehungsberechtigterOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: jf_erziehungsberechtigterInclude<ExtArgs> | null
     /**
      * Filter, which jf_erziehungsberechtigter to fetch.
      */
@@ -14438,10 +14397,6 @@ export namespace Prisma {
      */
     omit?: jf_erziehungsberechtigterOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: jf_erziehungsberechtigterInclude<ExtArgs> | null
-    /**
      * Filter, which jf_erziehungsberechtigter to fetch.
      */
     where?: jf_erziehungsberechtigterWhereInput
@@ -14490,10 +14445,6 @@ export namespace Prisma {
      */
     omit?: jf_erziehungsberechtigterOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: jf_erziehungsberechtigterInclude<ExtArgs> | null
-    /**
      * Filter, which jf_erziehungsberechtigters to fetch.
      */
     where?: jf_erziehungsberechtigterWhereInput
@@ -14537,10 +14488,6 @@ export namespace Prisma {
      */
     omit?: jf_erziehungsberechtigterOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: jf_erziehungsberechtigterInclude<ExtArgs> | null
-    /**
      * The data needed to create a jf_erziehungsberechtigter.
      */
     data: XOR<jf_erziehungsberechtigterCreateInput, jf_erziehungsberechtigterUncheckedCreateInput>
@@ -14569,10 +14516,6 @@ export namespace Prisma {
      * Omit specific fields from the jf_erziehungsberechtigter
      */
     omit?: jf_erziehungsberechtigterOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: jf_erziehungsberechtigterInclude<ExtArgs> | null
     /**
      * The data needed to update a jf_erziehungsberechtigter.
      */
@@ -14614,10 +14557,6 @@ export namespace Prisma {
      */
     omit?: jf_erziehungsberechtigterOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: jf_erziehungsberechtigterInclude<ExtArgs> | null
-    /**
      * The filter to search for the jf_erziehungsberechtigter to update in case it exists.
      */
     where: jf_erziehungsberechtigterWhereUniqueInput
@@ -14643,10 +14582,6 @@ export namespace Prisma {
      * Omit specific fields from the jf_erziehungsberechtigter
      */
     omit?: jf_erziehungsberechtigterOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: jf_erziehungsberechtigterInclude<ExtArgs> | null
     /**
      * Filter which jf_erziehungsberechtigter to delete.
      */
@@ -14679,10 +14614,6 @@ export namespace Prisma {
      * Omit specific fields from the jf_erziehungsberechtigter
      */
     omit?: jf_erziehungsberechtigterOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: jf_erziehungsberechtigterInclude<ExtArgs> | null
   }
 
 
@@ -14913,7 +14844,6 @@ export namespace Prisma {
     Erstellt_am?: boolean
     Geaendert_am?: boolean
     allergie?: boolean | jf_mitglied$allergieArgs<ExtArgs>
-    jf_erziehungsberechtigter?: boolean | jf_mitglied$jf_erziehungsberechtigterArgs<ExtArgs>
     person?: boolean | personDefaultArgs<ExtArgs>
     _count?: boolean | Jf_mitgliedCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["jf_mitglied"]>
@@ -14934,7 +14864,6 @@ export namespace Prisma {
   export type jf_mitgliedOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Person_ID" | "Eintrittsdatum" | "Austrittsdatum" | "Aufnahmedatum" | "Status" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["jf_mitglied"]>
   export type jf_mitgliedInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     allergie?: boolean | jf_mitglied$allergieArgs<ExtArgs>
-    jf_erziehungsberechtigter?: boolean | jf_mitglied$jf_erziehungsberechtigterArgs<ExtArgs>
     person?: boolean | personDefaultArgs<ExtArgs>
     _count?: boolean | Jf_mitgliedCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -14943,7 +14872,6 @@ export namespace Prisma {
     name: "jf_mitglied"
     objects: {
       allergie: Prisma.$allergiePayload<ExtArgs>[]
-      jf_erziehungsberechtigter: Prisma.$jf_erziehungsberechtigterPayload<ExtArgs>[]
       person: Prisma.$personPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -15296,7 +15224,6 @@ export namespace Prisma {
   export interface Prisma__jf_mitgliedClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     allergie<T extends jf_mitglied$allergieArgs<ExtArgs> = {}>(args?: Subset<T, jf_mitglied$allergieArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$allergiePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    jf_erziehungsberechtigter<T extends jf_mitglied$jf_erziehungsberechtigterArgs<ExtArgs> = {}>(args?: Subset<T, jf_mitglied$jf_erziehungsberechtigterArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jf_erziehungsberechtigterPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     person<T extends personDefaultArgs<ExtArgs> = {}>(args?: Subset<T, personDefaultArgs<ExtArgs>>): Prisma__personClient<$Result.GetResult<Prisma.$personPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -15699,30 +15626,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: AllergieScalarFieldEnum | AllergieScalarFieldEnum[]
-  }
-
-  /**
-   * jf_mitglied.jf_erziehungsberechtigter
-   */
-  export type jf_mitglied$jf_erziehungsberechtigterArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the jf_erziehungsberechtigter
-     */
-    select?: jf_erziehungsberechtigterSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the jf_erziehungsberechtigter
-     */
-    omit?: jf_erziehungsberechtigterOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: jf_erziehungsberechtigterInclude<ExtArgs> | null
-    where?: jf_erziehungsberechtigterWhereInput
-    orderBy?: jf_erziehungsberechtigterOrderByWithRelationInput | jf_erziehungsberechtigterOrderByWithRelationInput[]
-    cursor?: jf_erziehungsberechtigterWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Jf_erziehungsberechtigterScalarFieldEnum | Jf_erziehungsberechtigterScalarFieldEnum[]
   }
 
   /**
@@ -18975,7 +18878,6 @@ export namespace Prisma {
     Erstellt_am?: boolean
     Geaendert_am?: boolean
     ff_mitglied?: boolean | person$ff_mitgliedArgs<ExtArgs>
-    jf_erziehungsberechtigter?: boolean | person$jf_erziehungsberechtigterArgs<ExtArgs>
     jf_mitglied?: boolean | person$jf_mitgliedArgs<ExtArgs>
     mitglied_login?: boolean | person$mitglied_loginArgs<ExtArgs>
     teilnahme?: boolean | person$teilnahmeArgs<ExtArgs>
@@ -19002,7 +18904,6 @@ export namespace Prisma {
   export type personOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Vorname" | "Name" | "Geburtsdatum" | "Strasse" | "Hausnummer" | "Postleitzahl" | "Ort" | "Email" | "HandyNr" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["person"]>
   export type personInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     ff_mitglied?: boolean | person$ff_mitgliedArgs<ExtArgs>
-    jf_erziehungsberechtigter?: boolean | person$jf_erziehungsberechtigterArgs<ExtArgs>
     jf_mitglied?: boolean | person$jf_mitgliedArgs<ExtArgs>
     mitglied_login?: boolean | person$mitglied_loginArgs<ExtArgs>
     teilnahme?: boolean | person$teilnahmeArgs<ExtArgs>
@@ -19013,7 +18914,6 @@ export namespace Prisma {
     name: "person"
     objects: {
       ff_mitglied: Prisma.$ff_mitgliedPayload<ExtArgs>[]
-      jf_erziehungsberechtigter: Prisma.$jf_erziehungsberechtigterPayload<ExtArgs>[]
       jf_mitglied: Prisma.$jf_mitgliedPayload<ExtArgs>[]
       mitglied_login: Prisma.$mitglied_loginPayload<ExtArgs>[]
       teilnahme: Prisma.$teilnahmePayload<ExtArgs>[]
@@ -19372,7 +19272,6 @@ export namespace Prisma {
   export interface Prisma__personClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     ff_mitglied<T extends person$ff_mitgliedArgs<ExtArgs> = {}>(args?: Subset<T, person$ff_mitgliedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ff_mitgliedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    jf_erziehungsberechtigter<T extends person$jf_erziehungsberechtigterArgs<ExtArgs> = {}>(args?: Subset<T, person$jf_erziehungsberechtigterArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jf_erziehungsberechtigterPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     jf_mitglied<T extends person$jf_mitgliedArgs<ExtArgs> = {}>(args?: Subset<T, person$jf_mitgliedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jf_mitgliedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     mitglied_login<T extends person$mitglied_loginArgs<ExtArgs> = {}>(args?: Subset<T, person$mitglied_loginArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$mitglied_loginPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     teilnahme<T extends person$teilnahmeArgs<ExtArgs> = {}>(args?: Subset<T, person$teilnahmeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$teilnahmePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -19781,30 +19680,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: Ff_mitgliedScalarFieldEnum | Ff_mitgliedScalarFieldEnum[]
-  }
-
-  /**
-   * person.jf_erziehungsberechtigter
-   */
-  export type person$jf_erziehungsberechtigterArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the jf_erziehungsberechtigter
-     */
-    select?: jf_erziehungsberechtigterSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the jf_erziehungsberechtigter
-     */
-    omit?: jf_erziehungsberechtigterOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: jf_erziehungsberechtigterInclude<ExtArgs> | null
-    where?: jf_erziehungsberechtigterWhereInput
-    orderBy?: jf_erziehungsberechtigterOrderByWithRelationInput | jf_erziehungsberechtigterOrderByWithRelationInput[]
-    cursor?: jf_erziehungsberechtigterWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Jf_erziehungsberechtigterScalarFieldEnum | Jf_erziehungsberechtigterScalarFieldEnum[]
   }
 
   /**
@@ -22070,8 +21945,6 @@ export namespace Prisma {
     Person_ID?: IntFilter<"jf_erziehungsberechtigter"> | number
     Erstellt_am?: DateTimeNullableFilter<"jf_erziehungsberechtigter"> | Date | string | null
     Geaendert_am?: DateTimeNullableFilter<"jf_erziehungsberechtigter"> | Date | string | null
-    jf_mitglied?: XOR<Jf_mitgliedScalarRelationFilter, jf_mitgliedWhereInput>
-    person?: XOR<PersonScalarRelationFilter, personWhereInput>
   }
 
   export type jf_erziehungsberechtigterOrderByWithRelationInput = {
@@ -22080,8 +21953,6 @@ export namespace Prisma {
     Person_ID?: SortOrder
     Erstellt_am?: SortOrderInput | SortOrder
     Geaendert_am?: SortOrderInput | SortOrder
-    jf_mitglied?: jf_mitgliedOrderByWithRelationInput
-    person?: personOrderByWithRelationInput
   }
 
   export type jf_erziehungsberechtigterWhereUniqueInput = Prisma.AtLeast<{
@@ -22093,8 +21964,6 @@ export namespace Prisma {
     Person_ID?: IntFilter<"jf_erziehungsberechtigter"> | number
     Erstellt_am?: DateTimeNullableFilter<"jf_erziehungsberechtigter"> | Date | string | null
     Geaendert_am?: DateTimeNullableFilter<"jf_erziehungsberechtigter"> | Date | string | null
-    jf_mitglied?: XOR<Jf_mitgliedScalarRelationFilter, jf_mitgliedWhereInput>
-    person?: XOR<PersonScalarRelationFilter, personWhereInput>
   }, "ID">
 
   export type jf_erziehungsberechtigterOrderByWithAggregationInput = {
@@ -22134,7 +22003,6 @@ export namespace Prisma {
     Erstellt_am?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
     Geaendert_am?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
     allergie?: AllergieListRelationFilter
-    jf_erziehungsberechtigter?: Jf_erziehungsberechtigterListRelationFilter
     person?: XOR<PersonScalarRelationFilter, personWhereInput>
   }
 
@@ -22148,7 +22016,6 @@ export namespace Prisma {
     Erstellt_am?: SortOrderInput | SortOrder
     Geaendert_am?: SortOrderInput | SortOrder
     allergie?: allergieOrderByRelationAggregateInput
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterOrderByRelationAggregateInput
     person?: personOrderByWithRelationInput
   }
 
@@ -22165,7 +22032,6 @@ export namespace Prisma {
     Erstellt_am?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
     Geaendert_am?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
     allergie?: AllergieListRelationFilter
-    jf_erziehungsberechtigter?: Jf_erziehungsberechtigterListRelationFilter
     person?: XOR<PersonScalarRelationFilter, personWhereInput>
   }, "ID">
 
@@ -22406,7 +22272,6 @@ export namespace Prisma {
     Erstellt_am?: DateTimeFilter<"person"> | Date | string
     Geaendert_am?: DateTimeNullableFilter<"person"> | Date | string | null
     ff_mitglied?: Ff_mitgliedListRelationFilter
-    jf_erziehungsberechtigter?: Jf_erziehungsberechtigterListRelationFilter
     jf_mitglied?: Jf_mitgliedListRelationFilter
     mitglied_login?: Mitglied_loginListRelationFilter
     teilnahme?: TeilnahmeListRelationFilter
@@ -22426,7 +22291,6 @@ export namespace Prisma {
     Erstellt_am?: SortOrder
     Geaendert_am?: SortOrderInput | SortOrder
     ff_mitglied?: ff_mitgliedOrderByRelationAggregateInput
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterOrderByRelationAggregateInput
     jf_mitglied?: jf_mitgliedOrderByRelationAggregateInput
     mitglied_login?: mitglied_loginOrderByRelationAggregateInput
     teilnahme?: teilnahmeOrderByRelationAggregateInput
@@ -22450,7 +22314,6 @@ export namespace Prisma {
     Erstellt_am?: DateTimeFilter<"person"> | Date | string
     Geaendert_am?: DateTimeNullableFilter<"person"> | Date | string | null
     ff_mitglied?: Ff_mitgliedListRelationFilter
-    jf_erziehungsberechtigter?: Jf_erziehungsberechtigterListRelationFilter
     jf_mitglied?: Jf_mitgliedListRelationFilter
     mitglied_login?: Mitglied_loginListRelationFilter
     teilnahme?: TeilnahmeListRelationFilter
@@ -23293,10 +23156,10 @@ export namespace Prisma {
   }
 
   export type jf_erziehungsberechtigterCreateInput = {
+    JF_Mitglied_ID: number
+    Person_ID: number
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
-    jf_mitglied: jf_mitgliedCreateNestedOneWithoutJf_erziehungsberechtigterInput
-    person: personCreateNestedOneWithoutJf_erziehungsberechtigterInput
   }
 
   export type jf_erziehungsberechtigterUncheckedCreateInput = {
@@ -23308,10 +23171,10 @@ export namespace Prisma {
   }
 
   export type jf_erziehungsberechtigterUpdateInput = {
+    JF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Person_ID?: IntFieldUpdateOperationsInput | number
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    jf_mitglied?: jf_mitgliedUpdateOneRequiredWithoutJf_erziehungsberechtigterNestedInput
-    person?: personUpdateOneRequiredWithoutJf_erziehungsberechtigterNestedInput
   }
 
   export type jf_erziehungsberechtigterUncheckedUpdateInput = {
@@ -23331,6 +23194,8 @@ export namespace Prisma {
   }
 
   export type jf_erziehungsberechtigterUpdateManyMutationInput = {
+    JF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
+    Person_ID?: IntFieldUpdateOperationsInput | number
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -23351,7 +23216,6 @@ export namespace Prisma {
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
     allergie?: allergieCreateNestedManyWithoutJf_mitgliedInput
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterCreateNestedManyWithoutJf_mitgliedInput
     person: personCreateNestedOneWithoutJf_mitgliedInput
   }
 
@@ -23365,7 +23229,6 @@ export namespace Prisma {
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
     allergie?: allergieUncheckedCreateNestedManyWithoutJf_mitgliedInput
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedCreateNestedManyWithoutJf_mitgliedInput
   }
 
   export type jf_mitgliedUpdateInput = {
@@ -23376,7 +23239,6 @@ export namespace Prisma {
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     allergie?: allergieUpdateManyWithoutJf_mitgliedNestedInput
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUpdateManyWithoutJf_mitgliedNestedInput
     person?: personUpdateOneRequiredWithoutJf_mitgliedNestedInput
   }
 
@@ -23390,7 +23252,6 @@ export namespace Prisma {
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     allergie?: allergieUncheckedUpdateManyWithoutJf_mitgliedNestedInput
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedUpdateManyWithoutJf_mitgliedNestedInput
   }
 
   export type jf_mitgliedCreateManyInput = {
@@ -23618,7 +23479,6 @@ export namespace Prisma {
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
     ff_mitglied?: ff_mitgliedCreateNestedManyWithoutPersonInput
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterCreateNestedManyWithoutPersonInput
     jf_mitglied?: jf_mitgliedCreateNestedManyWithoutPersonInput
     mitglied_login?: mitglied_loginCreateNestedManyWithoutPersonInput
     teilnahme?: teilnahmeCreateNestedManyWithoutPersonInput
@@ -23638,7 +23498,6 @@ export namespace Prisma {
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
     ff_mitglied?: ff_mitgliedUncheckedCreateNestedManyWithoutPersonInput
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedCreateNestedManyWithoutPersonInput
     jf_mitglied?: jf_mitgliedUncheckedCreateNestedManyWithoutPersonInput
     mitglied_login?: mitglied_loginUncheckedCreateNestedManyWithoutPersonInput
     teilnahme?: teilnahmeUncheckedCreateNestedManyWithoutPersonInput
@@ -23657,7 +23516,6 @@ export namespace Prisma {
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ff_mitglied?: ff_mitgliedUpdateManyWithoutPersonNestedInput
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUpdateManyWithoutPersonNestedInput
     jf_mitglied?: jf_mitgliedUpdateManyWithoutPersonNestedInput
     mitglied_login?: mitglied_loginUpdateManyWithoutPersonNestedInput
     teilnahme?: teilnahmeUpdateManyWithoutPersonNestedInput
@@ -23677,7 +23535,6 @@ export namespace Prisma {
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ff_mitglied?: ff_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedUpdateManyWithoutPersonNestedInput
     jf_mitglied?: jf_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
     mitglied_login?: mitglied_loginUncheckedUpdateManyWithoutPersonNestedInput
     teilnahme?: teilnahmeUncheckedUpdateManyWithoutPersonNestedInput
@@ -24578,16 +24435,6 @@ export namespace Prisma {
     in?: $Enums.jf_mitglied_Status[]
     notIn?: $Enums.jf_mitglied_Status[]
     not?: NestedEnumjf_mitglied_StatusFilter<$PrismaModel> | $Enums.jf_mitglied_Status
-  }
-
-  export type Jf_erziehungsberechtigterListRelationFilter = {
-    every?: jf_erziehungsberechtigterWhereInput
-    some?: jf_erziehungsberechtigterWhereInput
-    none?: jf_erziehungsberechtigterWhereInput
-  }
-
-  export type jf_erziehungsberechtigterOrderByRelationAggregateInput = {
-    _count?: SortOrder
   }
 
   export type jf_mitgliedCountOrderByAggregateInput = {
@@ -25541,46 +25388,11 @@ export namespace Prisma {
     deleteMany?: mitglied_funktionenScalarWhereInput | mitglied_funktionenScalarWhereInput[]
   }
 
-  export type jf_mitgliedCreateNestedOneWithoutJf_erziehungsberechtigterInput = {
-    create?: XOR<jf_mitgliedCreateWithoutJf_erziehungsberechtigterInput, jf_mitgliedUncheckedCreateWithoutJf_erziehungsberechtigterInput>
-    connectOrCreate?: jf_mitgliedCreateOrConnectWithoutJf_erziehungsberechtigterInput
-    connect?: jf_mitgliedWhereUniqueInput
-  }
-
-  export type personCreateNestedOneWithoutJf_erziehungsberechtigterInput = {
-    create?: XOR<personCreateWithoutJf_erziehungsberechtigterInput, personUncheckedCreateWithoutJf_erziehungsberechtigterInput>
-    connectOrCreate?: personCreateOrConnectWithoutJf_erziehungsberechtigterInput
-    connect?: personWhereUniqueInput
-  }
-
-  export type jf_mitgliedUpdateOneRequiredWithoutJf_erziehungsberechtigterNestedInput = {
-    create?: XOR<jf_mitgliedCreateWithoutJf_erziehungsberechtigterInput, jf_mitgliedUncheckedCreateWithoutJf_erziehungsberechtigterInput>
-    connectOrCreate?: jf_mitgliedCreateOrConnectWithoutJf_erziehungsberechtigterInput
-    upsert?: jf_mitgliedUpsertWithoutJf_erziehungsberechtigterInput
-    connect?: jf_mitgliedWhereUniqueInput
-    update?: XOR<XOR<jf_mitgliedUpdateToOneWithWhereWithoutJf_erziehungsberechtigterInput, jf_mitgliedUpdateWithoutJf_erziehungsberechtigterInput>, jf_mitgliedUncheckedUpdateWithoutJf_erziehungsberechtigterInput>
-  }
-
-  export type personUpdateOneRequiredWithoutJf_erziehungsberechtigterNestedInput = {
-    create?: XOR<personCreateWithoutJf_erziehungsberechtigterInput, personUncheckedCreateWithoutJf_erziehungsberechtigterInput>
-    connectOrCreate?: personCreateOrConnectWithoutJf_erziehungsberechtigterInput
-    upsert?: personUpsertWithoutJf_erziehungsberechtigterInput
-    connect?: personWhereUniqueInput
-    update?: XOR<XOR<personUpdateToOneWithWhereWithoutJf_erziehungsberechtigterInput, personUpdateWithoutJf_erziehungsberechtigterInput>, personUncheckedUpdateWithoutJf_erziehungsberechtigterInput>
-  }
-
   export type allergieCreateNestedManyWithoutJf_mitgliedInput = {
     create?: XOR<allergieCreateWithoutJf_mitgliedInput, allergieUncheckedCreateWithoutJf_mitgliedInput> | allergieCreateWithoutJf_mitgliedInput[] | allergieUncheckedCreateWithoutJf_mitgliedInput[]
     connectOrCreate?: allergieCreateOrConnectWithoutJf_mitgliedInput | allergieCreateOrConnectWithoutJf_mitgliedInput[]
     createMany?: allergieCreateManyJf_mitgliedInputEnvelope
     connect?: allergieWhereUniqueInput | allergieWhereUniqueInput[]
-  }
-
-  export type jf_erziehungsberechtigterCreateNestedManyWithoutJf_mitgliedInput = {
-    create?: XOR<jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput, jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput> | jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput[] | jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput[]
-    connectOrCreate?: jf_erziehungsberechtigterCreateOrConnectWithoutJf_mitgliedInput | jf_erziehungsberechtigterCreateOrConnectWithoutJf_mitgliedInput[]
-    createMany?: jf_erziehungsberechtigterCreateManyJf_mitgliedInputEnvelope
-    connect?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
   }
 
   export type personCreateNestedOneWithoutJf_mitgliedInput = {
@@ -25594,13 +25406,6 @@ export namespace Prisma {
     connectOrCreate?: allergieCreateOrConnectWithoutJf_mitgliedInput | allergieCreateOrConnectWithoutJf_mitgliedInput[]
     createMany?: allergieCreateManyJf_mitgliedInputEnvelope
     connect?: allergieWhereUniqueInput | allergieWhereUniqueInput[]
-  }
-
-  export type jf_erziehungsberechtigterUncheckedCreateNestedManyWithoutJf_mitgliedInput = {
-    create?: XOR<jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput, jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput> | jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput[] | jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput[]
-    connectOrCreate?: jf_erziehungsberechtigterCreateOrConnectWithoutJf_mitgliedInput | jf_erziehungsberechtigterCreateOrConnectWithoutJf_mitgliedInput[]
-    createMany?: jf_erziehungsberechtigterCreateManyJf_mitgliedInputEnvelope
-    connect?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
   }
 
   export type Enumjf_mitglied_StatusFieldUpdateOperationsInput = {
@@ -25619,20 +25424,6 @@ export namespace Prisma {
     update?: allergieUpdateWithWhereUniqueWithoutJf_mitgliedInput | allergieUpdateWithWhereUniqueWithoutJf_mitgliedInput[]
     updateMany?: allergieUpdateManyWithWhereWithoutJf_mitgliedInput | allergieUpdateManyWithWhereWithoutJf_mitgliedInput[]
     deleteMany?: allergieScalarWhereInput | allergieScalarWhereInput[]
-  }
-
-  export type jf_erziehungsberechtigterUpdateManyWithoutJf_mitgliedNestedInput = {
-    create?: XOR<jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput, jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput> | jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput[] | jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput[]
-    connectOrCreate?: jf_erziehungsberechtigterCreateOrConnectWithoutJf_mitgliedInput | jf_erziehungsberechtigterCreateOrConnectWithoutJf_mitgliedInput[]
-    upsert?: jf_erziehungsberechtigterUpsertWithWhereUniqueWithoutJf_mitgliedInput | jf_erziehungsberechtigterUpsertWithWhereUniqueWithoutJf_mitgliedInput[]
-    createMany?: jf_erziehungsberechtigterCreateManyJf_mitgliedInputEnvelope
-    set?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
-    disconnect?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
-    delete?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
-    connect?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
-    update?: jf_erziehungsberechtigterUpdateWithWhereUniqueWithoutJf_mitgliedInput | jf_erziehungsberechtigterUpdateWithWhereUniqueWithoutJf_mitgliedInput[]
-    updateMany?: jf_erziehungsberechtigterUpdateManyWithWhereWithoutJf_mitgliedInput | jf_erziehungsberechtigterUpdateManyWithWhereWithoutJf_mitgliedInput[]
-    deleteMany?: jf_erziehungsberechtigterScalarWhereInput | jf_erziehungsberechtigterScalarWhereInput[]
   }
 
   export type personUpdateOneRequiredWithoutJf_mitgliedNestedInput = {
@@ -25655,20 +25446,6 @@ export namespace Prisma {
     update?: allergieUpdateWithWhereUniqueWithoutJf_mitgliedInput | allergieUpdateWithWhereUniqueWithoutJf_mitgliedInput[]
     updateMany?: allergieUpdateManyWithWhereWithoutJf_mitgliedInput | allergieUpdateManyWithWhereWithoutJf_mitgliedInput[]
     deleteMany?: allergieScalarWhereInput | allergieScalarWhereInput[]
-  }
-
-  export type jf_erziehungsberechtigterUncheckedUpdateManyWithoutJf_mitgliedNestedInput = {
-    create?: XOR<jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput, jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput> | jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput[] | jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput[]
-    connectOrCreate?: jf_erziehungsberechtigterCreateOrConnectWithoutJf_mitgliedInput | jf_erziehungsberechtigterCreateOrConnectWithoutJf_mitgliedInput[]
-    upsert?: jf_erziehungsberechtigterUpsertWithWhereUniqueWithoutJf_mitgliedInput | jf_erziehungsberechtigterUpsertWithWhereUniqueWithoutJf_mitgliedInput[]
-    createMany?: jf_erziehungsberechtigterCreateManyJf_mitgliedInputEnvelope
-    set?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
-    disconnect?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
-    delete?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
-    connect?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
-    update?: jf_erziehungsberechtigterUpdateWithWhereUniqueWithoutJf_mitgliedInput | jf_erziehungsberechtigterUpdateWithWhereUniqueWithoutJf_mitgliedInput[]
-    updateMany?: jf_erziehungsberechtigterUpdateManyWithWhereWithoutJf_mitgliedInput | jf_erziehungsberechtigterUpdateManyWithWhereWithoutJf_mitgliedInput[]
-    deleteMany?: jf_erziehungsberechtigterScalarWhereInput | jf_erziehungsberechtigterScalarWhereInput[]
   }
 
   export type ff_mitglied_lehrgangCreateNestedManyWithoutLehrgangInput = {
@@ -25778,13 +25555,6 @@ export namespace Prisma {
     connect?: ff_mitgliedWhereUniqueInput | ff_mitgliedWhereUniqueInput[]
   }
 
-  export type jf_erziehungsberechtigterCreateNestedManyWithoutPersonInput = {
-    create?: XOR<jf_erziehungsberechtigterCreateWithoutPersonInput, jf_erziehungsberechtigterUncheckedCreateWithoutPersonInput> | jf_erziehungsberechtigterCreateWithoutPersonInput[] | jf_erziehungsberechtigterUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: jf_erziehungsberechtigterCreateOrConnectWithoutPersonInput | jf_erziehungsberechtigterCreateOrConnectWithoutPersonInput[]
-    createMany?: jf_erziehungsberechtigterCreateManyPersonInputEnvelope
-    connect?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
-  }
-
   export type jf_mitgliedCreateNestedManyWithoutPersonInput = {
     create?: XOR<jf_mitgliedCreateWithoutPersonInput, jf_mitgliedUncheckedCreateWithoutPersonInput> | jf_mitgliedCreateWithoutPersonInput[] | jf_mitgliedUncheckedCreateWithoutPersonInput[]
     connectOrCreate?: jf_mitgliedCreateOrConnectWithoutPersonInput | jf_mitgliedCreateOrConnectWithoutPersonInput[]
@@ -25811,13 +25581,6 @@ export namespace Prisma {
     connectOrCreate?: ff_mitgliedCreateOrConnectWithoutPersonInput | ff_mitgliedCreateOrConnectWithoutPersonInput[]
     createMany?: ff_mitgliedCreateManyPersonInputEnvelope
     connect?: ff_mitgliedWhereUniqueInput | ff_mitgliedWhereUniqueInput[]
-  }
-
-  export type jf_erziehungsberechtigterUncheckedCreateNestedManyWithoutPersonInput = {
-    create?: XOR<jf_erziehungsberechtigterCreateWithoutPersonInput, jf_erziehungsberechtigterUncheckedCreateWithoutPersonInput> | jf_erziehungsberechtigterCreateWithoutPersonInput[] | jf_erziehungsberechtigterUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: jf_erziehungsberechtigterCreateOrConnectWithoutPersonInput | jf_erziehungsberechtigterCreateOrConnectWithoutPersonInput[]
-    createMany?: jf_erziehungsberechtigterCreateManyPersonInputEnvelope
-    connect?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
   }
 
   export type jf_mitgliedUncheckedCreateNestedManyWithoutPersonInput = {
@@ -25853,20 +25616,6 @@ export namespace Prisma {
     update?: ff_mitgliedUpdateWithWhereUniqueWithoutPersonInput | ff_mitgliedUpdateWithWhereUniqueWithoutPersonInput[]
     updateMany?: ff_mitgliedUpdateManyWithWhereWithoutPersonInput | ff_mitgliedUpdateManyWithWhereWithoutPersonInput[]
     deleteMany?: ff_mitgliedScalarWhereInput | ff_mitgliedScalarWhereInput[]
-  }
-
-  export type jf_erziehungsberechtigterUpdateManyWithoutPersonNestedInput = {
-    create?: XOR<jf_erziehungsberechtigterCreateWithoutPersonInput, jf_erziehungsberechtigterUncheckedCreateWithoutPersonInput> | jf_erziehungsberechtigterCreateWithoutPersonInput[] | jf_erziehungsberechtigterUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: jf_erziehungsberechtigterCreateOrConnectWithoutPersonInput | jf_erziehungsberechtigterCreateOrConnectWithoutPersonInput[]
-    upsert?: jf_erziehungsberechtigterUpsertWithWhereUniqueWithoutPersonInput | jf_erziehungsberechtigterUpsertWithWhereUniqueWithoutPersonInput[]
-    createMany?: jf_erziehungsberechtigterCreateManyPersonInputEnvelope
-    set?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
-    disconnect?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
-    delete?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
-    connect?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
-    update?: jf_erziehungsberechtigterUpdateWithWhereUniqueWithoutPersonInput | jf_erziehungsberechtigterUpdateWithWhereUniqueWithoutPersonInput[]
-    updateMany?: jf_erziehungsberechtigterUpdateManyWithWhereWithoutPersonInput | jf_erziehungsberechtigterUpdateManyWithWhereWithoutPersonInput[]
-    deleteMany?: jf_erziehungsberechtigterScalarWhereInput | jf_erziehungsberechtigterScalarWhereInput[]
   }
 
   export type jf_mitgliedUpdateManyWithoutPersonNestedInput = {
@@ -25923,20 +25672,6 @@ export namespace Prisma {
     update?: ff_mitgliedUpdateWithWhereUniqueWithoutPersonInput | ff_mitgliedUpdateWithWhereUniqueWithoutPersonInput[]
     updateMany?: ff_mitgliedUpdateManyWithWhereWithoutPersonInput | ff_mitgliedUpdateManyWithWhereWithoutPersonInput[]
     deleteMany?: ff_mitgliedScalarWhereInput | ff_mitgliedScalarWhereInput[]
-  }
-
-  export type jf_erziehungsberechtigterUncheckedUpdateManyWithoutPersonNestedInput = {
-    create?: XOR<jf_erziehungsberechtigterCreateWithoutPersonInput, jf_erziehungsberechtigterUncheckedCreateWithoutPersonInput> | jf_erziehungsberechtigterCreateWithoutPersonInput[] | jf_erziehungsberechtigterUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: jf_erziehungsberechtigterCreateOrConnectWithoutPersonInput | jf_erziehungsberechtigterCreateOrConnectWithoutPersonInput[]
-    upsert?: jf_erziehungsberechtigterUpsertWithWhereUniqueWithoutPersonInput | jf_erziehungsberechtigterUpsertWithWhereUniqueWithoutPersonInput[]
-    createMany?: jf_erziehungsberechtigterCreateManyPersonInputEnvelope
-    set?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
-    disconnect?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
-    delete?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
-    connect?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
-    update?: jf_erziehungsberechtigterUpdateWithWhereUniqueWithoutPersonInput | jf_erziehungsberechtigterUpdateWithWhereUniqueWithoutPersonInput[]
-    updateMany?: jf_erziehungsberechtigterUpdateManyWithWhereWithoutPersonInput | jf_erziehungsberechtigterUpdateManyWithWhereWithoutPersonInput[]
-    deleteMany?: jf_erziehungsberechtigterScalarWhereInput | jf_erziehungsberechtigterScalarWhereInput[]
   }
 
   export type jf_mitgliedUncheckedUpdateManyWithoutPersonNestedInput = {
@@ -26345,7 +26080,6 @@ export namespace Prisma {
     Status?: $Enums.jf_mitglied_Status
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterCreateNestedManyWithoutJf_mitgliedInput
     person: personCreateNestedOneWithoutJf_mitgliedInput
   }
 
@@ -26358,7 +26092,6 @@ export namespace Prisma {
     Status?: $Enums.jf_mitglied_Status
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedCreateNestedManyWithoutJf_mitgliedInput
   }
 
   export type jf_mitgliedCreateOrConnectWithoutAllergieInput = {
@@ -26422,7 +26155,6 @@ export namespace Prisma {
     Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUpdateManyWithoutJf_mitgliedNestedInput
     person?: personUpdateOneRequiredWithoutJf_mitgliedNestedInput
   }
 
@@ -26435,7 +26167,6 @@ export namespace Prisma {
     Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedUpdateManyWithoutJf_mitgliedNestedInput
   }
 
   export type einteilungCreateWithoutDientsabendInput = {
@@ -26968,7 +26699,6 @@ export namespace Prisma {
     HandyNr?: number | null
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterCreateNestedManyWithoutPersonInput
     jf_mitglied?: jf_mitgliedCreateNestedManyWithoutPersonInput
     mitglied_login?: mitglied_loginCreateNestedManyWithoutPersonInput
     teilnahme?: teilnahmeCreateNestedManyWithoutPersonInput
@@ -26987,7 +26717,6 @@ export namespace Prisma {
     HandyNr?: number | null
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedCreateNestedManyWithoutPersonInput
     jf_mitglied?: jf_mitgliedUncheckedCreateNestedManyWithoutPersonInput
     mitglied_login?: mitglied_loginUncheckedCreateNestedManyWithoutPersonInput
     teilnahme?: teilnahmeUncheckedCreateNestedManyWithoutPersonInput
@@ -27116,7 +26845,6 @@ export namespace Prisma {
     HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUpdateManyWithoutPersonNestedInput
     jf_mitglied?: jf_mitgliedUpdateManyWithoutPersonNestedInput
     mitglied_login?: mitglied_loginUpdateManyWithoutPersonNestedInput
     teilnahme?: teilnahmeUpdateManyWithoutPersonNestedInput
@@ -27135,7 +26863,6 @@ export namespace Prisma {
     HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedUpdateManyWithoutPersonNestedInput
     jf_mitglied?: jf_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
     mitglied_login?: mitglied_loginUncheckedUpdateManyWithoutPersonNestedInput
     teilnahme?: teilnahmeUncheckedUpdateManyWithoutPersonNestedInput
@@ -27358,158 +27085,6 @@ export namespace Prisma {
     data: XOR<mitglied_funktionenUpdateManyMutationInput, mitglied_funktionenUncheckedUpdateManyWithoutFunktion_ffInput>
   }
 
-  export type jf_mitgliedCreateWithoutJf_erziehungsberechtigterInput = {
-    Eintrittsdatum: Date | string
-    Austrittsdatum?: Date | string | null
-    Aufnahmedatum?: Date | string | null
-    Status?: $Enums.jf_mitglied_Status
-    Erstellt_am?: Date | string | null
-    Geaendert_am?: Date | string | null
-    allergie?: allergieCreateNestedManyWithoutJf_mitgliedInput
-    person: personCreateNestedOneWithoutJf_mitgliedInput
-  }
-
-  export type jf_mitgliedUncheckedCreateWithoutJf_erziehungsberechtigterInput = {
-    ID?: number
-    Person_ID: number
-    Eintrittsdatum: Date | string
-    Austrittsdatum?: Date | string | null
-    Aufnahmedatum?: Date | string | null
-    Status?: $Enums.jf_mitglied_Status
-    Erstellt_am?: Date | string | null
-    Geaendert_am?: Date | string | null
-    allergie?: allergieUncheckedCreateNestedManyWithoutJf_mitgliedInput
-  }
-
-  export type jf_mitgliedCreateOrConnectWithoutJf_erziehungsberechtigterInput = {
-    where: jf_mitgliedWhereUniqueInput
-    create: XOR<jf_mitgliedCreateWithoutJf_erziehungsberechtigterInput, jf_mitgliedUncheckedCreateWithoutJf_erziehungsberechtigterInput>
-  }
-
-  export type personCreateWithoutJf_erziehungsberechtigterInput = {
-    Vorname: string
-    Name: string
-    Geburtsdatum?: Date | string | null
-    Strasse?: string | null
-    Hausnummer?: string | null
-    Postleitzahl?: string | null
-    Ort?: string | null
-    Email?: string | null
-    HandyNr?: number | null
-    Erstellt_am: Date | string
-    Geaendert_am?: Date | string | null
-    ff_mitglied?: ff_mitgliedCreateNestedManyWithoutPersonInput
-    jf_mitglied?: jf_mitgliedCreateNestedManyWithoutPersonInput
-    mitglied_login?: mitglied_loginCreateNestedManyWithoutPersonInput
-    teilnahme?: teilnahmeCreateNestedManyWithoutPersonInput
-  }
-
-  export type personUncheckedCreateWithoutJf_erziehungsberechtigterInput = {
-    ID?: number
-    Vorname: string
-    Name: string
-    Geburtsdatum?: Date | string | null
-    Strasse?: string | null
-    Hausnummer?: string | null
-    Postleitzahl?: string | null
-    Ort?: string | null
-    Email?: string | null
-    HandyNr?: number | null
-    Erstellt_am: Date | string
-    Geaendert_am?: Date | string | null
-    ff_mitglied?: ff_mitgliedUncheckedCreateNestedManyWithoutPersonInput
-    jf_mitglied?: jf_mitgliedUncheckedCreateNestedManyWithoutPersonInput
-    mitglied_login?: mitglied_loginUncheckedCreateNestedManyWithoutPersonInput
-    teilnahme?: teilnahmeUncheckedCreateNestedManyWithoutPersonInput
-  }
-
-  export type personCreateOrConnectWithoutJf_erziehungsberechtigterInput = {
-    where: personWhereUniqueInput
-    create: XOR<personCreateWithoutJf_erziehungsberechtigterInput, personUncheckedCreateWithoutJf_erziehungsberechtigterInput>
-  }
-
-  export type jf_mitgliedUpsertWithoutJf_erziehungsberechtigterInput = {
-    update: XOR<jf_mitgliedUpdateWithoutJf_erziehungsberechtigterInput, jf_mitgliedUncheckedUpdateWithoutJf_erziehungsberechtigterInput>
-    create: XOR<jf_mitgliedCreateWithoutJf_erziehungsberechtigterInput, jf_mitgliedUncheckedCreateWithoutJf_erziehungsberechtigterInput>
-    where?: jf_mitgliedWhereInput
-  }
-
-  export type jf_mitgliedUpdateToOneWithWhereWithoutJf_erziehungsberechtigterInput = {
-    where?: jf_mitgliedWhereInput
-    data: XOR<jf_mitgliedUpdateWithoutJf_erziehungsberechtigterInput, jf_mitgliedUncheckedUpdateWithoutJf_erziehungsberechtigterInput>
-  }
-
-  export type jf_mitgliedUpdateWithoutJf_erziehungsberechtigterInput = {
-    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
-    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    allergie?: allergieUpdateManyWithoutJf_mitgliedNestedInput
-    person?: personUpdateOneRequiredWithoutJf_mitgliedNestedInput
-  }
-
-  export type jf_mitgliedUncheckedUpdateWithoutJf_erziehungsberechtigterInput = {
-    ID?: IntFieldUpdateOperationsInput | number
-    Person_ID?: IntFieldUpdateOperationsInput | number
-    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
-    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    allergie?: allergieUncheckedUpdateManyWithoutJf_mitgliedNestedInput
-  }
-
-  export type personUpsertWithoutJf_erziehungsberechtigterInput = {
-    update: XOR<personUpdateWithoutJf_erziehungsberechtigterInput, personUncheckedUpdateWithoutJf_erziehungsberechtigterInput>
-    create: XOR<personCreateWithoutJf_erziehungsberechtigterInput, personUncheckedCreateWithoutJf_erziehungsberechtigterInput>
-    where?: personWhereInput
-  }
-
-  export type personUpdateToOneWithWhereWithoutJf_erziehungsberechtigterInput = {
-    where?: personWhereInput
-    data: XOR<personUpdateWithoutJf_erziehungsberechtigterInput, personUncheckedUpdateWithoutJf_erziehungsberechtigterInput>
-  }
-
-  export type personUpdateWithoutJf_erziehungsberechtigterInput = {
-    Vorname?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
-    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
-    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
-    Ort?: NullableStringFieldUpdateOperationsInput | string | null
-    Email?: NullableStringFieldUpdateOperationsInput | string | null
-    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
-    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ff_mitglied?: ff_mitgliedUpdateManyWithoutPersonNestedInput
-    jf_mitglied?: jf_mitgliedUpdateManyWithoutPersonNestedInput
-    mitglied_login?: mitglied_loginUpdateManyWithoutPersonNestedInput
-    teilnahme?: teilnahmeUpdateManyWithoutPersonNestedInput
-  }
-
-  export type personUncheckedUpdateWithoutJf_erziehungsberechtigterInput = {
-    ID?: IntFieldUpdateOperationsInput | number
-    Vorname?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
-    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
-    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
-    Ort?: NullableStringFieldUpdateOperationsInput | string | null
-    Email?: NullableStringFieldUpdateOperationsInput | string | null
-    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
-    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ff_mitglied?: ff_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
-    jf_mitglied?: jf_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
-    mitglied_login?: mitglied_loginUncheckedUpdateManyWithoutPersonNestedInput
-    teilnahme?: teilnahmeUncheckedUpdateManyWithoutPersonNestedInput
-  }
-
   export type allergieCreateWithoutJf_mitgliedInput = {
     Allergie: string
     Beschreibung?: string | null
@@ -27537,29 +27112,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput = {
-    Erstellt_am?: Date | string | null
-    Geaendert_am?: Date | string | null
-    person: personCreateNestedOneWithoutJf_erziehungsberechtigterInput
-  }
-
-  export type jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput = {
-    ID?: number
-    Person_ID: number
-    Erstellt_am?: Date | string | null
-    Geaendert_am?: Date | string | null
-  }
-
-  export type jf_erziehungsberechtigterCreateOrConnectWithoutJf_mitgliedInput = {
-    where: jf_erziehungsberechtigterWhereUniqueInput
-    create: XOR<jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput, jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput>
-  }
-
-  export type jf_erziehungsberechtigterCreateManyJf_mitgliedInputEnvelope = {
-    data: jf_erziehungsberechtigterCreateManyJf_mitgliedInput | jf_erziehungsberechtigterCreateManyJf_mitgliedInput[]
-    skipDuplicates?: boolean
-  }
-
   export type personCreateWithoutJf_mitgliedInput = {
     Vorname: string
     Name: string
@@ -27573,7 +27125,6 @@ export namespace Prisma {
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
     ff_mitglied?: ff_mitgliedCreateNestedManyWithoutPersonInput
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterCreateNestedManyWithoutPersonInput
     mitglied_login?: mitglied_loginCreateNestedManyWithoutPersonInput
     teilnahme?: teilnahmeCreateNestedManyWithoutPersonInput
   }
@@ -27592,7 +27143,6 @@ export namespace Prisma {
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
     ff_mitglied?: ff_mitgliedUncheckedCreateNestedManyWithoutPersonInput
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedCreateNestedManyWithoutPersonInput
     mitglied_login?: mitglied_loginUncheckedCreateNestedManyWithoutPersonInput
     teilnahme?: teilnahmeUncheckedCreateNestedManyWithoutPersonInput
   }
@@ -27616,33 +27166,6 @@ export namespace Prisma {
   export type allergieUpdateManyWithWhereWithoutJf_mitgliedInput = {
     where: allergieScalarWhereInput
     data: XOR<allergieUpdateManyMutationInput, allergieUncheckedUpdateManyWithoutJf_mitgliedInput>
-  }
-
-  export type jf_erziehungsberechtigterUpsertWithWhereUniqueWithoutJf_mitgliedInput = {
-    where: jf_erziehungsberechtigterWhereUniqueInput
-    update: XOR<jf_erziehungsberechtigterUpdateWithoutJf_mitgliedInput, jf_erziehungsberechtigterUncheckedUpdateWithoutJf_mitgliedInput>
-    create: XOR<jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput, jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput>
-  }
-
-  export type jf_erziehungsberechtigterUpdateWithWhereUniqueWithoutJf_mitgliedInput = {
-    where: jf_erziehungsberechtigterWhereUniqueInput
-    data: XOR<jf_erziehungsberechtigterUpdateWithoutJf_mitgliedInput, jf_erziehungsberechtigterUncheckedUpdateWithoutJf_mitgliedInput>
-  }
-
-  export type jf_erziehungsberechtigterUpdateManyWithWhereWithoutJf_mitgliedInput = {
-    where: jf_erziehungsberechtigterScalarWhereInput
-    data: XOR<jf_erziehungsberechtigterUpdateManyMutationInput, jf_erziehungsberechtigterUncheckedUpdateManyWithoutJf_mitgliedInput>
-  }
-
-  export type jf_erziehungsberechtigterScalarWhereInput = {
-    AND?: jf_erziehungsberechtigterScalarWhereInput | jf_erziehungsberechtigterScalarWhereInput[]
-    OR?: jf_erziehungsberechtigterScalarWhereInput[]
-    NOT?: jf_erziehungsberechtigterScalarWhereInput | jf_erziehungsberechtigterScalarWhereInput[]
-    ID?: IntFilter<"jf_erziehungsberechtigter"> | number
-    JF_Mitglied_ID?: IntFilter<"jf_erziehungsberechtigter"> | number
-    Person_ID?: IntFilter<"jf_erziehungsberechtigter"> | number
-    Erstellt_am?: DateTimeNullableFilter<"jf_erziehungsberechtigter"> | Date | string | null
-    Geaendert_am?: DateTimeNullableFilter<"jf_erziehungsberechtigter"> | Date | string | null
   }
 
   export type personUpsertWithoutJf_mitgliedInput = {
@@ -27669,7 +27192,6 @@ export namespace Prisma {
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ff_mitglied?: ff_mitgliedUpdateManyWithoutPersonNestedInput
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUpdateManyWithoutPersonNestedInput
     mitglied_login?: mitglied_loginUpdateManyWithoutPersonNestedInput
     teilnahme?: teilnahmeUpdateManyWithoutPersonNestedInput
   }
@@ -27688,7 +27210,6 @@ export namespace Prisma {
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ff_mitglied?: ff_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedUpdateManyWithoutPersonNestedInput
     mitglied_login?: mitglied_loginUncheckedUpdateManyWithoutPersonNestedInput
     teilnahme?: teilnahmeUncheckedUpdateManyWithoutPersonNestedInput
   }
@@ -27863,7 +27384,6 @@ export namespace Prisma {
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
     ff_mitglied?: ff_mitgliedCreateNestedManyWithoutPersonInput
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterCreateNestedManyWithoutPersonInput
     jf_mitglied?: jf_mitgliedCreateNestedManyWithoutPersonInput
     teilnahme?: teilnahmeCreateNestedManyWithoutPersonInput
   }
@@ -27882,7 +27402,6 @@ export namespace Prisma {
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
     ff_mitglied?: ff_mitgliedUncheckedCreateNestedManyWithoutPersonInput
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedCreateNestedManyWithoutPersonInput
     jf_mitglied?: jf_mitgliedUncheckedCreateNestedManyWithoutPersonInput
     teilnahme?: teilnahmeUncheckedCreateNestedManyWithoutPersonInput
   }
@@ -27916,7 +27435,6 @@ export namespace Prisma {
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ff_mitglied?: ff_mitgliedUpdateManyWithoutPersonNestedInput
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUpdateManyWithoutPersonNestedInput
     jf_mitglied?: jf_mitgliedUpdateManyWithoutPersonNestedInput
     teilnahme?: teilnahmeUpdateManyWithoutPersonNestedInput
   }
@@ -27935,7 +27453,6 @@ export namespace Prisma {
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ff_mitglied?: ff_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedUpdateManyWithoutPersonNestedInput
     jf_mitglied?: jf_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
     teilnahme?: teilnahmeUncheckedUpdateManyWithoutPersonNestedInput
   }
@@ -27977,29 +27494,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type jf_erziehungsberechtigterCreateWithoutPersonInput = {
-    Erstellt_am?: Date | string | null
-    Geaendert_am?: Date | string | null
-    jf_mitglied: jf_mitgliedCreateNestedOneWithoutJf_erziehungsberechtigterInput
-  }
-
-  export type jf_erziehungsberechtigterUncheckedCreateWithoutPersonInput = {
-    ID?: number
-    JF_Mitglied_ID: number
-    Erstellt_am?: Date | string | null
-    Geaendert_am?: Date | string | null
-  }
-
-  export type jf_erziehungsberechtigterCreateOrConnectWithoutPersonInput = {
-    where: jf_erziehungsberechtigterWhereUniqueInput
-    create: XOR<jf_erziehungsberechtigterCreateWithoutPersonInput, jf_erziehungsberechtigterUncheckedCreateWithoutPersonInput>
-  }
-
-  export type jf_erziehungsberechtigterCreateManyPersonInputEnvelope = {
-    data: jf_erziehungsberechtigterCreateManyPersonInput | jf_erziehungsberechtigterCreateManyPersonInput[]
-    skipDuplicates?: boolean
-  }
-
   export type jf_mitgliedCreateWithoutPersonInput = {
     Eintrittsdatum: Date | string
     Austrittsdatum?: Date | string | null
@@ -28008,7 +27502,6 @@ export namespace Prisma {
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
     allergie?: allergieCreateNestedManyWithoutJf_mitgliedInput
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterCreateNestedManyWithoutJf_mitgliedInput
   }
 
   export type jf_mitgliedUncheckedCreateWithoutPersonInput = {
@@ -28020,7 +27513,6 @@ export namespace Prisma {
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
     allergie?: allergieUncheckedCreateNestedManyWithoutJf_mitgliedInput
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedCreateNestedManyWithoutJf_mitgliedInput
   }
 
   export type jf_mitgliedCreateOrConnectWithoutPersonInput = {
@@ -28111,22 +27603,6 @@ export namespace Prisma {
     Status?: Enumff_mitglied_StatusFilter<"ff_mitglied"> | $Enums.ff_mitglied_Status
     Erstellt_am?: DateTimeFilter<"ff_mitglied"> | Date | string
     Geaendert_am?: DateTimeNullableFilter<"ff_mitglied"> | Date | string | null
-  }
-
-  export type jf_erziehungsberechtigterUpsertWithWhereUniqueWithoutPersonInput = {
-    where: jf_erziehungsberechtigterWhereUniqueInput
-    update: XOR<jf_erziehungsberechtigterUpdateWithoutPersonInput, jf_erziehungsberechtigterUncheckedUpdateWithoutPersonInput>
-    create: XOR<jf_erziehungsberechtigterCreateWithoutPersonInput, jf_erziehungsberechtigterUncheckedCreateWithoutPersonInput>
-  }
-
-  export type jf_erziehungsberechtigterUpdateWithWhereUniqueWithoutPersonInput = {
-    where: jf_erziehungsberechtigterWhereUniqueInput
-    data: XOR<jf_erziehungsberechtigterUpdateWithoutPersonInput, jf_erziehungsberechtigterUncheckedUpdateWithoutPersonInput>
-  }
-
-  export type jf_erziehungsberechtigterUpdateManyWithWhereWithoutPersonInput = {
-    where: jf_erziehungsberechtigterScalarWhereInput
-    data: XOR<jf_erziehungsberechtigterUpdateManyMutationInput, jf_erziehungsberechtigterUncheckedUpdateManyWithoutPersonInput>
   }
 
   export type jf_mitgliedUpsertWithWhereUniqueWithoutPersonInput = {
@@ -28228,7 +27704,6 @@ export namespace Prisma {
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
     ff_mitglied?: ff_mitgliedCreateNestedManyWithoutPersonInput
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterCreateNestedManyWithoutPersonInput
     jf_mitglied?: jf_mitgliedCreateNestedManyWithoutPersonInput
     mitglied_login?: mitglied_loginCreateNestedManyWithoutPersonInput
   }
@@ -28247,7 +27722,6 @@ export namespace Prisma {
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
     ff_mitglied?: ff_mitgliedUncheckedCreateNestedManyWithoutPersonInput
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedCreateNestedManyWithoutPersonInput
     jf_mitglied?: jf_mitgliedUncheckedCreateNestedManyWithoutPersonInput
     mitglied_login?: mitglied_loginUncheckedCreateNestedManyWithoutPersonInput
   }
@@ -28281,7 +27755,6 @@ export namespace Prisma {
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ff_mitglied?: ff_mitgliedUpdateManyWithoutPersonNestedInput
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUpdateManyWithoutPersonNestedInput
     jf_mitglied?: jf_mitgliedUpdateManyWithoutPersonNestedInput
     mitglied_login?: mitglied_loginUpdateManyWithoutPersonNestedInput
   }
@@ -28300,7 +27773,6 @@ export namespace Prisma {
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ff_mitglied?: ff_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedUpdateManyWithoutPersonNestedInput
     jf_mitglied?: jf_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
     mitglied_login?: mitglied_loginUncheckedUpdateManyWithoutPersonNestedInput
   }
@@ -28597,13 +28069,6 @@ export namespace Prisma {
     Geaendert_am?: Date | string | null
   }
 
-  export type jf_erziehungsberechtigterCreateManyJf_mitgliedInput = {
-    ID?: number
-    Person_ID: number
-    Erstellt_am?: Date | string | null
-    Geaendert_am?: Date | string | null
-  }
-
   export type allergieUpdateWithoutJf_mitgliedInput = {
     Allergie?: StringFieldUpdateOperationsInput | string
     Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28626,26 +28091,6 @@ export namespace Prisma {
     FF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
     Allergie?: StringFieldUpdateOperationsInput | string
     Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
-    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type jf_erziehungsberechtigterUpdateWithoutJf_mitgliedInput = {
-    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    person?: personUpdateOneRequiredWithoutJf_erziehungsberechtigterNestedInput
-  }
-
-  export type jf_erziehungsberechtigterUncheckedUpdateWithoutJf_mitgliedInput = {
-    ID?: IntFieldUpdateOperationsInput | number
-    Person_ID?: IntFieldUpdateOperationsInput | number
-    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type jf_erziehungsberechtigterUncheckedUpdateManyWithoutJf_mitgliedInput = {
-    ID?: IntFieldUpdateOperationsInput | number
-    Person_ID?: IntFieldUpdateOperationsInput | number
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -28688,13 +28133,6 @@ export namespace Prisma {
     Aufnahmedatum?: Date | string | null
     Status?: $Enums.ff_mitglied_Status
     Erstellt_am: Date | string
-    Geaendert_am?: Date | string | null
-  }
-
-  export type jf_erziehungsberechtigterCreateManyPersonInput = {
-    ID?: number
-    JF_Mitglied_ID: number
-    Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
   }
 
@@ -28761,26 +28199,6 @@ export namespace Prisma {
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type jf_erziehungsberechtigterUpdateWithoutPersonInput = {
-    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    jf_mitglied?: jf_mitgliedUpdateOneRequiredWithoutJf_erziehungsberechtigterNestedInput
-  }
-
-  export type jf_erziehungsberechtigterUncheckedUpdateWithoutPersonInput = {
-    ID?: IntFieldUpdateOperationsInput | number
-    JF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
-    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type jf_erziehungsberechtigterUncheckedUpdateManyWithoutPersonInput = {
-    ID?: IntFieldUpdateOperationsInput | number
-    JF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
-    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
   export type jf_mitgliedUpdateWithoutPersonInput = {
     Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
     Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -28789,7 +28207,6 @@ export namespace Prisma {
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     allergie?: allergieUpdateManyWithoutJf_mitgliedNestedInput
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUpdateManyWithoutJf_mitgliedNestedInput
   }
 
   export type jf_mitgliedUncheckedUpdateWithoutPersonInput = {
@@ -28801,7 +28218,6 @@ export namespace Prisma {
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     allergie?: allergieUncheckedUpdateManyWithoutJf_mitgliedNestedInput
-    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedUpdateManyWithoutJf_mitgliedNestedInput
   }
 
   export type jf_mitgliedUncheckedUpdateManyWithoutPersonInput = {

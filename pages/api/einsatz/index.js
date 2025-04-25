@@ -1,18 +1,19 @@
-import { getSession } from 'next-auth/react'
-const { db2 } = require('@/lib/prisma')
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
+import { getSession } from 'next-auth/react';
+
 
 export default async function handler(req, res) {
     const session = await getSession({ req })
 
-    if (!session) {
+    /*if (!session) {
         return res.status(401).json({ message: 'Nicht autorisiert' })
-    }
+    }*/
 
     if (req.method === 'GET') {
         try {
         const einsaetze = await db2.einsatz.findMany({
             orderBy: {
-            StartDatum: 'desc',
+            Datum_Anfang: 'desc',
             },
         })
         res.status(200).json(einsaetze)

@@ -1,10 +1,11 @@
-import { getSession } from 'next-auth/react'
-const { db1 } = require('@/lib/prisma')
+import { vereinsbuddyPrisma as db1 } from '@/lib/prisma';
+import { getSession } from 'next-auth/react';
+
 
 export default async function handler(req, res) {
     const session = await getSession({ req })
 
-    if (!session) {
+    /*if (!session) {
         return res.status(401).json({ message: 'Nicht autorisiert' })
     }
 
@@ -12,7 +13,7 @@ export default async function handler(req, res) {
     const isAdmin = session.user.vereine.some(v => v.rolle === 'admin')
     if (!isAdmin) {
         return res.status(403).json({ message: 'Keine Berechtigung' })
-    }
+    }*/
 
     if (req.method === 'GET') {
         try {

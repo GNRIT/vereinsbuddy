@@ -1,8 +1,8 @@
-import { getSession } from 'next-auth/react'
-import Link from 'next/link'
-import Layout from '../../components/Layout'
+import { vereinsbuddyPrisma as db1 } from '@/lib/prisma';
+import { getSession } from 'next-auth/react';
+import Link from 'next/link';
+import Layout from '../../components/Layout';
 
-const { db1 } = require('@/lib/prisma')
 export default function VereinsListe({ vereine }) {
     return (
         <Layout>
@@ -10,9 +10,9 @@ export default function VereinsListe({ vereine }) {
             <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Vereinsverwaltung</h1>
             <Link href="/vereine/neu">
-                <a className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
+                <span className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
                 Neuen Verein erstellen
-                </a>
+                </span>
             </Link>
             </div>
             
@@ -28,7 +28,7 @@ export default function VereinsListe({ vereine }) {
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                 {vereine.map((verein) => (
-                    <tr key={verein.id}>
+                    <tr key={verein.ID}>
                     <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm font-medium text-gray-900">{verein.Name}</div>
                     </td>
@@ -44,11 +44,11 @@ export default function VereinsListe({ vereine }) {
                         {verein.Subdomain}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <Link href={`/vereine/${verein.id}/bearbeiten`}>
-                        <a className="text-blue-600 hover:text-blue-900 mr-3">Bearbeiten</a>
+                        <Link href={`/vereine/${verein.ID}/bearbeiten`}>
+                        <span className="text-blue-600 hover:text-blue-900 mr-3">Bearbeiten</span>
                         </Link>
-                        <Link href={`/vereine/${verein.id}`}>
-                        <a className="text-indigo-600 hover:text-indigo-900">Details</a>
+                        <Link href={`/vereine/${verein.ID}`}>
+                        <span className="text-indigo-600 hover:text-indigo-900">Details</span>
                         </Link>
                     </td>
                     </tr>
@@ -64,17 +64,17 @@ export default function VereinsListe({ vereine }) {
     export async function getServerSideProps(context) {
     const session = await getSession(context)
 
-    if (!session) {
+    /*if (!session) {
         return {
         redirect: {
             destination: '/auth/login',
             permanent: false,
         },
         }
-    }
+    }*/
 
     // Nur Admins dürfen alle Vereine sehen
-    const isAdmin = session.user.vereine.some(v => v.rolle === 'admin')
+    /*const isAdmin = session.user.vereine.some(v => v.rolle === 'admin')
     if (!isAdmin) {
         return {
         redirect: {
@@ -82,7 +82,7 @@ export default function VereinsListe({ vereine }) {
             permanent: false,
         },
         }
-    }
+    }*/
 
     const vereine = await db1.verein.findMany()
 

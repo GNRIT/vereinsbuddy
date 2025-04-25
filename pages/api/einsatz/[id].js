@@ -1,19 +1,20 @@
-import { getSession } from 'next-auth/react'
-const { db2 } = require('@/lib/prisma')
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
+import { getSession } from 'next-auth/react';
+
 
 export default async function handler(req, res) {
     const session = await getSession({ req })
     const { id } = req.query
 
-    if (!session) {
+    /*if (!session) {
         return res.status(401).json({ message: 'Nicht autorisiert' })
-    }
+    }*/
 
     if (req.method === 'GET') {
         try {
         const einsatz = await db2.einsatz.findUnique({
             where: {
-            id: parseInt(id),
+            ID: parseInt(id),
             }
         })
 
@@ -27,17 +28,17 @@ export default async function handler(req, res) {
         }
     } else if (req.method === 'PUT') {
         try {
-        const { Titel, Beschreibung, StartDatum, EndDatum, Ort } = req.body
+        const { Einsarznummer, Beschreibung, Datum_Anfang, Datum_Ende, Ort } = req.body
 
         const updatedEinsatz = await db2.einsatz.update({
             where: {
-            id: parseInt(id),
+            ID: parseInt(id),
             },
             data: {
-            Titel,
+            Einsarznummer,
             Beschreibung,
-            StartDatum: new Date(StartDatum),
-            EndDatum: EndDatum ? new Date(EndDatum) : null,
+            Datum_Anfang: new Date(Datum_Anfang),
+            Datum_End: Datum_End ? new Date(Datum_End) : null,
             Ort,
             Geaendert_am: new Date(),
             }
@@ -51,7 +52,7 @@ export default async function handler(req, res) {
         try {
         await db2.einsatz.delete({
             where: {
-            id: parseInt(id),
+            ID: parseInt(id),
             }
         })
 

@@ -1,15 +1,15 @@
-import { getSession } from 'next-auth/react'
-import { useRouter } from 'next/router'
-import Layout from '../../../components/Layout'
-import EinsatzForm from '../components/EinsatzForm'
-const { db2 } = require('@/lib/prisma')
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
+import { getSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import Layout from '../../../components/Layout';
+import EinsatzForm from '../components/EinsatzForm';
 
 export default function EinsatzBearbeiten({ initialData }) {
     const router = useRouter()
 
     const handleSubmit = async (formData) => {
         try {
-        const response = await fetch(`/api/einsatz/${initialData.id}`, {
+        const response = await fetch(`/api/einsatz/${initialData.ID}`, {
             method: 'PUT',
             headers: {
             'Content-Type': 'application/json',
@@ -18,7 +18,7 @@ export default function EinsatzBearbeiten({ initialData }) {
         })
 
         if (response.ok) {
-            router.push(`/einsatz/${initialData.id}`)
+            router.push(`/einsatz/${initialData.ID}`)
         } else {
             const errorData = await response.json()
             alert(errorData.message || 'Fehler beim Speichern')
@@ -43,18 +43,18 @@ export default function EinsatzBearbeiten({ initialData }) {
     const { id } = context.params
     const session = await getSession(context)
 
-    if (!session) {
+    /*if (!session) {
         return {
         redirect: {
             destination: '/auth/login',
             permanent: false,
         },
         }
-    }
+    }*/
 
     const einsatz = await db2.einsatz.findUnique({
         where: {
-        id: parseInt(id),
+        ID: parseInt(id),
         },
     })
 

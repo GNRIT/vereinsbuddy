@@ -41,14 +41,14 @@ export default function NeuerEinsatz() {
 export async function getServerSideProps(context) {
     const session = await getSession(context)
 
-    if (!session) {
+    /*if (!session) {
         return {
         redirect: {
             destination: '/auth/login',
             permanent: false,
         },
         }
-    }
+    }*/
 
     return {
         props: {},

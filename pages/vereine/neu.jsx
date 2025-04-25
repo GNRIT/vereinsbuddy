@@ -1,16 +1,15 @@
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import Layout from '../../../components/Layout'
-import VereinForm from '../components/VereinForm'
-const { db1 } = require('@/lib/prisma')
+import Layout from '../../components/Layout'
+import VereinForm from '../../components/VereinForm'
 
-export default function VereinBearbeiten({ initialData }) {
+export default function NeuerVerein() {
     const router = useRouter()
 
     const handleSubmit = async (formData) => {
         try {
-        const response = await fetch(`/api/vereine/${initialData.id}`, {
-            method: 'PUT',
+        const response = await fetch('/api/vereine', {
+            method: 'POST',
             headers: {
             'Content-Type': 'application/json',
             },
@@ -32,18 +31,17 @@ export default function VereinBearbeiten({ initialData }) {
     return (
         <Layout>
         <div className="bg-white shadow rounded-lg p-6">
-            <h1 className="text-2xl font-bold text-gray-900 mb-6">Verein bearbeiten</h1>
-            <VereinForm initialData={initialData} onSubmit={handleSubmit} />
+            <h1 className="text-2xl font-bold text-gray-900 mb-6">Neuen Verein erstellen</h1>
+            <VereinForm onSubmit={handleSubmit} />
         </div>
         </Layout>
     )
     }
 
     export async function getServerSideProps(context) {
-    const { id } = context.params
     const session = await getSession(context)
 
-    if (!session) {
+    /*if (!session) {
         return {
         redirect: {
             destination: '/auth/login',
@@ -52,7 +50,7 @@ export default function VereinBearbeiten({ initialData }) {
         }
     }
 
-    // Nur Admins dürfen Vereine bearbeiten
+    // Nur Admins dürfen Vereine erstellen
     const isAdmin = session.user.vereine.some(v => v.rolle === 'admin')
     if (!isAdmin) {
         return {
@@ -61,23 +59,9 @@ export default function VereinBearbeiten({ initialData }) {
             permanent: false,
         },
         }
-    }
-
-    const verein = await db1.verein.findUnique({
-        where: {
-        id: parseInt(id),
-        },
-    })
-
-    if (!verein) {
-        return {
-        notFound: true,
-        }
-    }
+    }*/
 
     return {
-        props: {
-        initialData: JSON.parse(JSON.stringify(verein)),
-        },
+        props: {},
     }
 }

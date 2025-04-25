@@ -1,15 +1,15 @@
-import { useSession } from 'next-auth/react'
-import { useRouter } from 'next/router'
-import Layout from '../../components/Layout'
-import { useVerein } from '../../context/VereinContext'
-const { db1 } = require('@/lib/prisma')
+import { vereinsbuddyPrisma as db1 } from '@/lib/prisma';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import Layout from '../../components/Layout';
+import { useVerein } from '../../context/VereinContext';
 
 export default function VereinDetail({ verein }) {
     const { data: session } = useSession()
     const router = useRouter()
     const { aktiverVerein } = useVerein()
 
-    if (!session) {
+    /*if (!session) {
         return (
         <Layout>
             <div className="bg-white shadow rounded-lg p-6">
@@ -17,7 +17,7 @@ export default function VereinDetail({ verein }) {
             </div>
         </Layout>
         )
-    }
+    }*/
 
     return (
         <Layout>

@@ -9,29 +9,36 @@ export default function LoginPage() {
     const router = useRouter()
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
-        setError('')
-        
+        e.preventDefault();
+        setError('');
+    
+        console.log("Benutzername:", benutzername);
+        console.log("Passwort:", passwort);
+    
+        try {
             const result = await signIn('credentials', {
-            redirect: false,
-            benutzername,
-            passwort,
-            callbackUrl: `${window.location.origin}/verein-auswahl`
-            })
-        
+                redirect: false,
+                benutzername,
+                passwort
+            });
+    
             if (result.error) {
-            setError(result.error)
+                setError(result.error);
             } else {
-            router.push(result.url || '/verein-auswahl')
+                router.push('/auth/redirect');  // Weiterleitung bei Erfolg
             }
+        } catch (error) {
+            setError('Anmeldefehler aufgetreten');
         }
+    };
+    
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
             <div>
             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                Vereinsbuddy - Anmeldung
+                Anmeldung
             </h2>
             </div>
             {error && (

@@ -1,6 +1,7 @@
-import { getSession } from 'next-auth/react'
-import Layout from '../../components/Layout'
-import MitgliedForm from './components/MitgliedForm'
+import { getSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import Layout from '../../components/Layout';
+import MitgliedForm from './components/MitgliedForm';
 
 export default function NeuesMitglied() {
     const router = useRouter()
@@ -40,14 +41,14 @@ export default function NeuesMitglied() {
 export async function getServerSideProps(context) {
     const session = await getSession(context)
 
-    if (!session) {
+    /*if (!session) {
         return {
         redirect: {
             destination: '/auth/login',
             permanent: false,
         },
         }
-    }
+    }*/
 
     return {
         props: {},

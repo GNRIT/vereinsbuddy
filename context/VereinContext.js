@@ -8,14 +8,13 @@ export function VereinProvider({ children }) {
     const [aktiverVerein, setAktiverVerein] = useState(null)
 
     useEffect(() => {
-        if (session && session.user.vereine.length > 0) {
-        // Standardmäßig den ersten Verein auswählen
+        if (session?.user?.vereine?.length === 1) {
         setAktiverVerein(session.user.vereine[0])
         }
     }, [session])
 
     const vereinWechseln = (vereinId) => {
-        const neuerVerein = session.user.vereine.find(v => v.vereinId === vereinId)
+        const neuerVerein = session?.user?.vereine?.find(v => v.vereinId === vereinId)
         if (neuerVerein) {
         setAktiverVerein(neuerVerein)
         }
