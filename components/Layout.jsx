@@ -48,10 +48,20 @@ export default function Layout({ children }) {
                                             Dashboard
                                         </span>
                                     </Link>
+                                    <Link href="/allergien">
+                                    <span className={`${router.pathname.startsWith('/allergien') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
+                                        Allergien
+                                    </span>
+                                    </Link>
                                     <Link href="/mitglieder">
                                         <span className={`${router.pathname.startsWith('/mitglieder') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
                                             Mitglieder
                                         </span>
+                                    </Link>
+                                    <Link href="/einheiten">
+                                    <a className={`${router.pathname.startsWith('/einheiten') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
+                                        Einheiten
+                                    </a>
                                     </Link>
                                     <Link href="/einsatz">
                                         <span className={`${router.pathname.startsWith('/einsatz') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>

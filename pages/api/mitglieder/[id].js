@@ -40,7 +40,7 @@ export default async function handler(req, res) {
         // Aktualisiere die Person
         const updatedPerson = await db1.person.update({
             where: {
-            id: parseInt(id),
+            ID: parseInt(id),
             },
             data: {
             Vorname,

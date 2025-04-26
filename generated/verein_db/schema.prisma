@@ -110,7 +110,7 @@ model ff_mitglied {
   Geaendert_am         DateTime?              @map("Geaendert am") @vereindb.Date
   allergie             allergie[]
   einteilung           einteilung[]
-  person               person                 @relation(fields: [Person_ID], references: [ID], onUpdate: Restrict, map: "ff_mitglied_ibfk_1")
+  person               person                 @relation(fields: [Person_ID], references: [ID], onDelete: Cascade, map: "ff_mitglied_ibfk_1")
   ff_mitglied_lehrgang ff_mitglied_lehrgang[]
   mitglied_funktionen  mitglied_funktionen[]
 
