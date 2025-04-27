@@ -1,0 +1,92 @@
+import { getSession } from 'next-auth/react'
+import Link from 'next/link'
+import Layout from '../../components/Layout'
+import { vereinDbPrisma as prisma } from '../../lib/prisma'
+
+export default function FahrzeugListe({ fahrzeuge }) {
+    return (
+        <Layout>
+        <div className="bg-white shadow rounded-lg p-6">
+            <div className="flex justify-between items-center mb-6">
+            <h1 className="text-2xl font-bold text-gray-900">Fahrzeugverwaltung</h1>
+            <Link href="/fahrzeuge/neu">
+                <a className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
+                Neues Fahrzeug
+                </a>
+            </Link>
+            </div>
+            
+            <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
+            <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                <tr>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kennzeichen</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Typ</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Besatzung</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aktionen</th>
+                </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                {fahrzeuge.map((fahrzeug) => (
+                    <tr key={fahrzeug.id}>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm font-medium text-gray-900">{fahrzeug.Kennzeichen || '-'}</div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{fahrzeug.Fahrzeugtyp || '-'}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{fahrzeug.Besatzungsstaerke || '-'}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                        <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                        fahrzeug.Status === 'verfuegbar' ? 'bg-green-100 text-green-800' :
+                        fahrzeug.Status === 'im_einsatz' ? 'bg-yellow-100 text-yellow-800' :
+                        fahrzeug.Status === 'in_wartung' ? 'bg-orange-100 text-orange-800' :
+                        'bg-red-100 text-red-800'
+                        }`}>
+                        {fahrzeug.Status.replace('_', ' ')}
+                        </span>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <Link href={`/fahrzeuge/${fahrzeug.id}`}>
+                        <a className="text-blue-600 hover:text-blue-900 mr-3">Ansehen</a>
+                        </Link>
+                        <Link href={`/fahrzeuge/${fahrzeug.id}/einteilung`}>
+                        <a className="text-indigo-600 hover:text-indigo-900 mr-3">Einteilung</a>
+                        </Link>
+                        <Link href={`/fahrzeuge/${fahrzeug.id}/bearbeiten`}>
+                        <a className="text-gray-600 hover:text-gray-900">Bearbeiten</a>
+                        </Link>
+                    </td>
+                    </tr>
+                ))}
+                </tbody>
+            </table>
+            </div>
+        </div>
+        </Layout>
+    )
+    }
+
+    export async function getServerSideProps(context) {
+    const session = await getSession(context)
+
+    if (!session) {
+        return {
+        redirect: {
+            destination: '/auth/login',
+            permanent: false,
+        },
+        }
+    }
+
+    const fahrzeuge = await prisma.fahrzeug.findMany({
+        orderBy: {
+        Kennzeichen: 'asc',
+        },
+    })
+
+    return {
+        props: {
+        fahrzeuge: JSON.parse(JSON.stringify(fahrzeuge)),
+        },
+    }
+}

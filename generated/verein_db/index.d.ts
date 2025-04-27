@@ -94,11 +94,6 @@ export type mitglied_funktionen = $Result.DefaultSelection<Prisma.$mitglied_funk
  */
 export type mitglied_login = $Result.DefaultSelection<Prisma.$mitglied_loginPayload>
 /**
- * Model person
- * 
- */
-export type person = $Result.DefaultSelection<Prisma.$personPayload>
-/**
  * Model teilnahme
  * 
  */
@@ -158,6 +153,16 @@ export const einsatz_Art: {
 
 export type einsatz_Art = (typeof einsatz_Art)[keyof typeof einsatz_Art]
 
+
+export const fahrzeug_Status: {
+  verfuegbar: 'verfuegbar',
+  im_einsatz: 'im_einsatz',
+  in_wartung: 'in_wartung',
+  ausser_dienst: 'ausser_dienst'
+};
+
+export type fahrzeug_Status = (typeof fahrzeug_Status)[keyof typeof fahrzeug_Status]
+
 }
 
 export type mitglied_funktionen_Typ = $Enums.mitglied_funktionen_Typ
@@ -183,6 +188,10 @@ export const jf_mitglied_Status: typeof $Enums.jf_mitglied_Status
 export type einsatz_Art = $Enums.einsatz_Art
 
 export const einsatz_Art: typeof $Enums.einsatz_Art
+
+export type fahrzeug_Status = $Enums.fahrzeug_Status
+
+export const fahrzeug_Status: typeof $Enums.fahrzeug_Status
 
 /**
  * ##  Prisma Client ʲˢ
@@ -468,16 +477,6 @@ export class PrismaClient<
     * ```
     */
   get mitglied_login(): Prisma.mitglied_loginDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.person`: Exposes CRUD operations for the **person** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more People
-    * const people = await prisma.person.findMany()
-    * ```
-    */
-  get person(): Prisma.personDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.teilnahme`: Exposes CRUD operations for the **teilnahme** model.
@@ -944,7 +943,6 @@ export namespace Prisma {
     lehrgang: 'lehrgang',
     mitglied_funktionen: 'mitglied_funktionen',
     mitglied_login: 'mitglied_login',
-    person: 'person',
     teilnahme: 'teilnahme'
   };
 
@@ -964,7 +962,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "allergie" | "dienstgrad" | "dientsabend" | "einheit" | "einsatz" | "einteilung" | "fahrzeug" | "ff_mitglied" | "ff_mitglied_lehrgang" | "funktion_ff" | "funktion_jf" | "jf_erziehungsberechtigter" | "jf_mitglied" | "lehrgang" | "mitglied_funktionen" | "mitglied_login" | "person" | "teilnahme"
+      modelProps: "allergie" | "dienstgrad" | "dientsabend" | "einheit" | "einsatz" | "einteilung" | "fahrzeug" | "ff_mitglied" | "ff_mitglied_lehrgang" | "funktion_ff" | "funktion_jf" | "jf_erziehungsberechtigter" | "jf_mitglied" | "lehrgang" | "mitglied_funktionen" | "mitglied_login" | "teilnahme"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2024,72 +2022,6 @@ export namespace Prisma {
           }
         }
       }
-      person: {
-        payload: Prisma.$personPayload<ExtArgs>
-        fields: Prisma.personFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.personFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$personPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.personFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$personPayload>
-          }
-          findFirst: {
-            args: Prisma.personFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$personPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.personFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$personPayload>
-          }
-          findMany: {
-            args: Prisma.personFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$personPayload>[]
-          }
-          create: {
-            args: Prisma.personCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$personPayload>
-          }
-          createMany: {
-            args: Prisma.personCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          delete: {
-            args: Prisma.personDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$personPayload>
-          }
-          update: {
-            args: Prisma.personUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$personPayload>
-          }
-          deleteMany: {
-            args: Prisma.personDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.personUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          upsert: {
-            args: Prisma.personUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$personPayload>
-          }
-          aggregate: {
-            args: Prisma.PersonAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregatePerson>
-          }
-          groupBy: {
-            args: Prisma.personGroupByArgs<ExtArgs>
-            result: $Utils.Optional<PersonGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.personCountArgs<ExtArgs>
-            result: $Utils.Optional<PersonCountAggregateOutputType> | number
-          }
-        }
-      }
       teilnahme: {
         payload: Prisma.$teilnahmePayload<ExtArgs>
         fields: Prisma.teilnahmeFieldRefs
@@ -2256,7 +2188,6 @@ export namespace Prisma {
     lehrgang?: lehrgangOmit
     mitglied_funktionen?: mitglied_funktionenOmit
     mitglied_login?: mitglied_loginOmit
-    person?: personOmit
     teilnahme?: teilnahmeOmit
   }
 
@@ -2566,10 +2497,12 @@ export namespace Prisma {
 
   export type Jf_mitgliedCountOutputType = {
     allergie: number
+    jf_erziehungsberechtigter: number
   }
 
   export type Jf_mitgliedCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     allergie?: boolean | Jf_mitgliedCountOutputTypeCountAllergieArgs
+    jf_erziehungsberechtigter?: boolean | Jf_mitgliedCountOutputTypeCountJf_erziehungsberechtigterArgs
   }
 
   // Custom InputTypes
@@ -2588,6 +2521,13 @@ export namespace Prisma {
    */
   export type Jf_mitgliedCountOutputTypeCountAllergieArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: allergieWhereInput
+  }
+
+  /**
+   * Jf_mitgliedCountOutputType without action
+   */
+  export type Jf_mitgliedCountOutputTypeCountJf_erziehungsberechtigterArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: jf_erziehungsberechtigterWhereInput
   }
 
 
@@ -2619,64 +2559,6 @@ export namespace Prisma {
    */
   export type LehrgangCountOutputTypeCountFf_mitglied_lehrgangArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ff_mitglied_lehrgangWhereInput
-  }
-
-
-  /**
-   * Count Type PersonCountOutputType
-   */
-
-  export type PersonCountOutputType = {
-    ff_mitglied: number
-    jf_mitglied: number
-    mitglied_login: number
-    teilnahme: number
-  }
-
-  export type PersonCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    ff_mitglied?: boolean | PersonCountOutputTypeCountFf_mitgliedArgs
-    jf_mitglied?: boolean | PersonCountOutputTypeCountJf_mitgliedArgs
-    mitglied_login?: boolean | PersonCountOutputTypeCountMitglied_loginArgs
-    teilnahme?: boolean | PersonCountOutputTypeCountTeilnahmeArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * PersonCountOutputType without action
-   */
-  export type PersonCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PersonCountOutputType
-     */
-    select?: PersonCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * PersonCountOutputType without action
-   */
-  export type PersonCountOutputTypeCountFf_mitgliedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ff_mitgliedWhereInput
-  }
-
-  /**
-   * PersonCountOutputType without action
-   */
-  export type PersonCountOutputTypeCountJf_mitgliedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: jf_mitgliedWhereInput
-  }
-
-  /**
-   * PersonCountOutputType without action
-   */
-  export type PersonCountOutputTypeCountMitglied_loginArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: mitglied_loginWhereInput
-  }
-
-  /**
-   * PersonCountOutputType without action
-   */
-  export type PersonCountOutputTypeCountTeilnahmeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: teilnahmeWhereInput
   }
 
 
@@ -8722,7 +8604,9 @@ export namespace Prisma {
   export type FahrzeugMinAggregateOutputType = {
     ID: number | null
     Kennzeichen: string | null
+    Fahrzeugtyp: string | null
     Besatzungsstaerke: string | null
+    Status: $Enums.fahrzeug_Status | null
     Erstellt_am: Date | null
     Geaendert_am: Date | null
   }
@@ -8730,7 +8614,9 @@ export namespace Prisma {
   export type FahrzeugMaxAggregateOutputType = {
     ID: number | null
     Kennzeichen: string | null
+    Fahrzeugtyp: string | null
     Besatzungsstaerke: string | null
+    Status: $Enums.fahrzeug_Status | null
     Erstellt_am: Date | null
     Geaendert_am: Date | null
   }
@@ -8738,7 +8624,9 @@ export namespace Prisma {
   export type FahrzeugCountAggregateOutputType = {
     ID: number
     Kennzeichen: number
+    Fahrzeugtyp: number
     Besatzungsstaerke: number
+    Status: number
     Erstellt_am: number
     Geaendert_am: number
     _all: number
@@ -8756,7 +8644,9 @@ export namespace Prisma {
   export type FahrzeugMinAggregateInputType = {
     ID?: true
     Kennzeichen?: true
+    Fahrzeugtyp?: true
     Besatzungsstaerke?: true
+    Status?: true
     Erstellt_am?: true
     Geaendert_am?: true
   }
@@ -8764,7 +8654,9 @@ export namespace Prisma {
   export type FahrzeugMaxAggregateInputType = {
     ID?: true
     Kennzeichen?: true
+    Fahrzeugtyp?: true
     Besatzungsstaerke?: true
+    Status?: true
     Erstellt_am?: true
     Geaendert_am?: true
   }
@@ -8772,7 +8664,9 @@ export namespace Prisma {
   export type FahrzeugCountAggregateInputType = {
     ID?: true
     Kennzeichen?: true
+    Fahrzeugtyp?: true
     Besatzungsstaerke?: true
+    Status?: true
     Erstellt_am?: true
     Geaendert_am?: true
     _all?: true
@@ -8867,7 +8761,9 @@ export namespace Prisma {
   export type FahrzeugGroupByOutputType = {
     ID: number
     Kennzeichen: string | null
+    Fahrzeugtyp: string | null
     Besatzungsstaerke: string | null
+    Status: $Enums.fahrzeug_Status
     Erstellt_am: Date | null
     Geaendert_am: Date | null
     _count: FahrzeugCountAggregateOutputType | null
@@ -8894,7 +8790,9 @@ export namespace Prisma {
   export type fahrzeugSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     ID?: boolean
     Kennzeichen?: boolean
+    Fahrzeugtyp?: boolean
     Besatzungsstaerke?: boolean
+    Status?: boolean
     Erstellt_am?: boolean
     Geaendert_am?: boolean
     einteilung?: boolean | fahrzeug$einteilungArgs<ExtArgs>
@@ -8906,12 +8804,14 @@ export namespace Prisma {
   export type fahrzeugSelectScalar = {
     ID?: boolean
     Kennzeichen?: boolean
+    Fahrzeugtyp?: boolean
     Besatzungsstaerke?: boolean
+    Status?: boolean
     Erstellt_am?: boolean
     Geaendert_am?: boolean
   }
 
-  export type fahrzeugOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Kennzeichen" | "Besatzungsstaerke" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["fahrzeug"]>
+  export type fahrzeugOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Kennzeichen" | "Fahrzeugtyp" | "Besatzungsstaerke" | "Status" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["fahrzeug"]>
   export type fahrzeugInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     einteilung?: boolean | fahrzeug$einteilungArgs<ExtArgs>
     _count?: boolean | FahrzeugCountOutputTypeDefaultArgs<ExtArgs>
@@ -8925,7 +8825,9 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       ID: number
       Kennzeichen: string | null
+      Fahrzeugtyp: string | null
       Besatzungsstaerke: string | null
+      Status: $Enums.fahrzeug_Status
       Erstellt_am: Date | null
       Geaendert_am: Date | null
     }, ExtArgs["result"]["fahrzeug"]>
@@ -9300,7 +9202,9 @@ export namespace Prisma {
   interface fahrzeugFieldRefs {
     readonly ID: FieldRef<"fahrzeug", 'Int'>
     readonly Kennzeichen: FieldRef<"fahrzeug", 'String'>
+    readonly Fahrzeugtyp: FieldRef<"fahrzeug", 'String'>
     readonly Besatzungsstaerke: FieldRef<"fahrzeug", 'String'>
+    readonly Status: FieldRef<"fahrzeug", 'fahrzeug_Status'>
     readonly Erstellt_am: FieldRef<"fahrzeug", 'DateTime'>
     readonly Geaendert_am: FieldRef<"fahrzeug", 'DateTime'>
   }
@@ -9916,7 +9820,6 @@ export namespace Prisma {
     Geaendert_am?: boolean
     allergie?: boolean | ff_mitglied$allergieArgs<ExtArgs>
     einteilung?: boolean | ff_mitglied$einteilungArgs<ExtArgs>
-    person?: boolean | personDefaultArgs<ExtArgs>
     ff_mitglied_lehrgang?: boolean | ff_mitglied$ff_mitglied_lehrgangArgs<ExtArgs>
     mitglied_funktionen?: boolean | ff_mitglied$mitglied_funktionenArgs<ExtArgs>
     _count?: boolean | Ff_mitgliedCountOutputTypeDefaultArgs<ExtArgs>
@@ -9939,7 +9842,6 @@ export namespace Prisma {
   export type ff_mitgliedInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     allergie?: boolean | ff_mitglied$allergieArgs<ExtArgs>
     einteilung?: boolean | ff_mitglied$einteilungArgs<ExtArgs>
-    person?: boolean | personDefaultArgs<ExtArgs>
     ff_mitglied_lehrgang?: boolean | ff_mitglied$ff_mitglied_lehrgangArgs<ExtArgs>
     mitglied_funktionen?: boolean | ff_mitglied$mitglied_funktionenArgs<ExtArgs>
     _count?: boolean | Ff_mitgliedCountOutputTypeDefaultArgs<ExtArgs>
@@ -9950,7 +9852,6 @@ export namespace Prisma {
     objects: {
       allergie: Prisma.$allergiePayload<ExtArgs>[]
       einteilung: Prisma.$einteilungPayload<ExtArgs>[]
-      person: Prisma.$personPayload<ExtArgs>
       ff_mitglied_lehrgang: Prisma.$ff_mitglied_lehrgangPayload<ExtArgs>[]
       mitglied_funktionen: Prisma.$mitglied_funktionenPayload<ExtArgs>[]
     }
@@ -10305,7 +10206,6 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     allergie<T extends ff_mitglied$allergieArgs<ExtArgs> = {}>(args?: Subset<T, ff_mitglied$allergieArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$allergiePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     einteilung<T extends ff_mitglied$einteilungArgs<ExtArgs> = {}>(args?: Subset<T, ff_mitglied$einteilungArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$einteilungPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    person<T extends personDefaultArgs<ExtArgs> = {}>(args?: Subset<T, personDefaultArgs<ExtArgs>>): Prisma__personClient<$Result.GetResult<Prisma.$personPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     ff_mitglied_lehrgang<T extends ff_mitglied$ff_mitglied_lehrgangArgs<ExtArgs> = {}>(args?: Subset<T, ff_mitglied$ff_mitglied_lehrgangArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ff_mitglied_lehrgangPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     mitglied_funktionen<T extends ff_mitglied$mitglied_funktionenArgs<ExtArgs> = {}>(args?: Subset<T, ff_mitglied$mitglied_funktionenArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$mitglied_funktionenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
@@ -13899,6 +13799,7 @@ export namespace Prisma {
     Person_ID?: boolean
     Erstellt_am?: boolean
     Geaendert_am?: boolean
+    jf_mitglied?: boolean | jf_mitgliedDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["jf_erziehungsberechtigter"]>
 
 
@@ -13912,10 +13813,15 @@ export namespace Prisma {
   }
 
   export type jf_erziehungsberechtigterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "JF_Mitglied_ID" | "Person_ID" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["jf_erziehungsberechtigter"]>
+  export type jf_erziehungsberechtigterInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    jf_mitglied?: boolean | jf_mitgliedDefaultArgs<ExtArgs>
+  }
 
   export type $jf_erziehungsberechtigterPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "jf_erziehungsberechtigter"
-    objects: {}
+    objects: {
+      jf_mitglied: Prisma.$jf_mitgliedPayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       ID: number
       JF_Mitglied_ID: number
@@ -14262,6 +14168,7 @@ export namespace Prisma {
    */
   export interface Prisma__jf_erziehungsberechtigterClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    jf_mitglied<T extends jf_mitgliedDefaultArgs<ExtArgs> = {}>(args?: Subset<T, jf_mitgliedDefaultArgs<ExtArgs>>): Prisma__jf_mitgliedClient<$Result.GetResult<Prisma.$jf_mitgliedPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -14313,6 +14220,10 @@ export namespace Prisma {
      */
     omit?: jf_erziehungsberechtigterOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jf_erziehungsberechtigterInclude<ExtArgs> | null
+    /**
      * Filter, which jf_erziehungsberechtigter to fetch.
      */
     where: jf_erziehungsberechtigterWhereUniqueInput
@@ -14331,6 +14242,10 @@ export namespace Prisma {
      */
     omit?: jf_erziehungsberechtigterOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jf_erziehungsberechtigterInclude<ExtArgs> | null
+    /**
      * Filter, which jf_erziehungsberechtigter to fetch.
      */
     where: jf_erziehungsberechtigterWhereUniqueInput
@@ -14348,6 +14263,10 @@ export namespace Prisma {
      * Omit specific fields from the jf_erziehungsberechtigter
      */
     omit?: jf_erziehungsberechtigterOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jf_erziehungsberechtigterInclude<ExtArgs> | null
     /**
      * Filter, which jf_erziehungsberechtigter to fetch.
      */
@@ -14397,6 +14316,10 @@ export namespace Prisma {
      */
     omit?: jf_erziehungsberechtigterOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jf_erziehungsberechtigterInclude<ExtArgs> | null
+    /**
      * Filter, which jf_erziehungsberechtigter to fetch.
      */
     where?: jf_erziehungsberechtigterWhereInput
@@ -14445,6 +14368,10 @@ export namespace Prisma {
      */
     omit?: jf_erziehungsberechtigterOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jf_erziehungsberechtigterInclude<ExtArgs> | null
+    /**
      * Filter, which jf_erziehungsberechtigters to fetch.
      */
     where?: jf_erziehungsberechtigterWhereInput
@@ -14488,6 +14415,10 @@ export namespace Prisma {
      */
     omit?: jf_erziehungsberechtigterOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jf_erziehungsberechtigterInclude<ExtArgs> | null
+    /**
      * The data needed to create a jf_erziehungsberechtigter.
      */
     data: XOR<jf_erziehungsberechtigterCreateInput, jf_erziehungsberechtigterUncheckedCreateInput>
@@ -14516,6 +14447,10 @@ export namespace Prisma {
      * Omit specific fields from the jf_erziehungsberechtigter
      */
     omit?: jf_erziehungsberechtigterOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jf_erziehungsberechtigterInclude<ExtArgs> | null
     /**
      * The data needed to update a jf_erziehungsberechtigter.
      */
@@ -14557,6 +14492,10 @@ export namespace Prisma {
      */
     omit?: jf_erziehungsberechtigterOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jf_erziehungsberechtigterInclude<ExtArgs> | null
+    /**
      * The filter to search for the jf_erziehungsberechtigter to update in case it exists.
      */
     where: jf_erziehungsberechtigterWhereUniqueInput
@@ -14582,6 +14521,10 @@ export namespace Prisma {
      * Omit specific fields from the jf_erziehungsberechtigter
      */
     omit?: jf_erziehungsberechtigterOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jf_erziehungsberechtigterInclude<ExtArgs> | null
     /**
      * Filter which jf_erziehungsberechtigter to delete.
      */
@@ -14614,6 +14557,10 @@ export namespace Prisma {
      * Omit specific fields from the jf_erziehungsberechtigter
      */
     omit?: jf_erziehungsberechtigterOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jf_erziehungsberechtigterInclude<ExtArgs> | null
   }
 
 
@@ -14844,7 +14791,7 @@ export namespace Prisma {
     Erstellt_am?: boolean
     Geaendert_am?: boolean
     allergie?: boolean | jf_mitglied$allergieArgs<ExtArgs>
-    person?: boolean | personDefaultArgs<ExtArgs>
+    jf_erziehungsberechtigter?: boolean | jf_mitglied$jf_erziehungsberechtigterArgs<ExtArgs>
     _count?: boolean | Jf_mitgliedCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["jf_mitglied"]>
 
@@ -14864,7 +14811,7 @@ export namespace Prisma {
   export type jf_mitgliedOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Person_ID" | "Eintrittsdatum" | "Austrittsdatum" | "Aufnahmedatum" | "Status" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["jf_mitglied"]>
   export type jf_mitgliedInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     allergie?: boolean | jf_mitglied$allergieArgs<ExtArgs>
-    person?: boolean | personDefaultArgs<ExtArgs>
+    jf_erziehungsberechtigter?: boolean | jf_mitglied$jf_erziehungsberechtigterArgs<ExtArgs>
     _count?: boolean | Jf_mitgliedCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -14872,7 +14819,7 @@ export namespace Prisma {
     name: "jf_mitglied"
     objects: {
       allergie: Prisma.$allergiePayload<ExtArgs>[]
-      person: Prisma.$personPayload<ExtArgs>
+      jf_erziehungsberechtigter: Prisma.$jf_erziehungsberechtigterPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       ID: number
@@ -15224,7 +15171,7 @@ export namespace Prisma {
   export interface Prisma__jf_mitgliedClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     allergie<T extends jf_mitglied$allergieArgs<ExtArgs> = {}>(args?: Subset<T, jf_mitglied$allergieArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$allergiePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    person<T extends personDefaultArgs<ExtArgs> = {}>(args?: Subset<T, personDefaultArgs<ExtArgs>>): Prisma__personClient<$Result.GetResult<Prisma.$personPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    jf_erziehungsberechtigter<T extends jf_mitglied$jf_erziehungsberechtigterArgs<ExtArgs> = {}>(args?: Subset<T, jf_mitglied$jf_erziehungsberechtigterArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jf_erziehungsberechtigterPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -15626,6 +15573,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: AllergieScalarFieldEnum | AllergieScalarFieldEnum[]
+  }
+
+  /**
+   * jf_mitglied.jf_erziehungsberechtigter
+   */
+  export type jf_mitglied$jf_erziehungsberechtigterArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jf_erziehungsberechtigter
+     */
+    select?: jf_erziehungsberechtigterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the jf_erziehungsberechtigter
+     */
+    omit?: jf_erziehungsberechtigterOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jf_erziehungsberechtigterInclude<ExtArgs> | null
+    where?: jf_erziehungsberechtigterWhereInput
+    orderBy?: jf_erziehungsberechtigterOrderByWithRelationInput | jf_erziehungsberechtigterOrderByWithRelationInput[]
+    cursor?: jf_erziehungsberechtigterWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Jf_erziehungsberechtigterScalarFieldEnum | Jf_erziehungsberechtigterScalarFieldEnum[]
   }
 
   /**
@@ -17851,7 +17822,6 @@ export namespace Prisma {
     Typ?: boolean
     Erstellt_am?: boolean
     Geaendert_am?: boolean
-    person?: boolean | personDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["mitglied_login"]>
 
 
@@ -17866,15 +17836,10 @@ export namespace Prisma {
   }
 
   export type mitglied_loginOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Benutzer_ID" | "Mitglied_ID" | "Typ" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["mitglied_login"]>
-  export type mitglied_loginInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    person?: boolean | personDefaultArgs<ExtArgs>
-  }
 
   export type $mitglied_loginPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "mitglied_login"
-    objects: {
-      person: Prisma.$personPayload<ExtArgs>
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       ID: number
       Benutzer_ID: number
@@ -18222,7 +18187,6 @@ export namespace Prisma {
    */
   export interface Prisma__mitglied_loginClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    person<T extends personDefaultArgs<ExtArgs> = {}>(args?: Subset<T, personDefaultArgs<ExtArgs>>): Prisma__personClient<$Result.GetResult<Prisma.$personPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -18275,10 +18239,6 @@ export namespace Prisma {
      */
     omit?: mitglied_loginOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mitglied_loginInclude<ExtArgs> | null
-    /**
      * Filter, which mitglied_login to fetch.
      */
     where: mitglied_loginWhereUniqueInput
@@ -18297,10 +18257,6 @@ export namespace Prisma {
      */
     omit?: mitglied_loginOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mitglied_loginInclude<ExtArgs> | null
-    /**
      * Filter, which mitglied_login to fetch.
      */
     where: mitglied_loginWhereUniqueInput
@@ -18318,10 +18274,6 @@ export namespace Prisma {
      * Omit specific fields from the mitglied_login
      */
     omit?: mitglied_loginOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mitglied_loginInclude<ExtArgs> | null
     /**
      * Filter, which mitglied_login to fetch.
      */
@@ -18371,10 +18323,6 @@ export namespace Prisma {
      */
     omit?: mitglied_loginOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mitglied_loginInclude<ExtArgs> | null
-    /**
      * Filter, which mitglied_login to fetch.
      */
     where?: mitglied_loginWhereInput
@@ -18423,10 +18371,6 @@ export namespace Prisma {
      */
     omit?: mitglied_loginOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mitglied_loginInclude<ExtArgs> | null
-    /**
      * Filter, which mitglied_logins to fetch.
      */
     where?: mitglied_loginWhereInput
@@ -18470,10 +18414,6 @@ export namespace Prisma {
      */
     omit?: mitglied_loginOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mitglied_loginInclude<ExtArgs> | null
-    /**
      * The data needed to create a mitglied_login.
      */
     data: XOR<mitglied_loginCreateInput, mitglied_loginUncheckedCreateInput>
@@ -18502,10 +18442,6 @@ export namespace Prisma {
      * Omit specific fields from the mitglied_login
      */
     omit?: mitglied_loginOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mitglied_loginInclude<ExtArgs> | null
     /**
      * The data needed to update a mitglied_login.
      */
@@ -18547,10 +18483,6 @@ export namespace Prisma {
      */
     omit?: mitglied_loginOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mitglied_loginInclude<ExtArgs> | null
-    /**
      * The filter to search for the mitglied_login to update in case it exists.
      */
     where: mitglied_loginWhereUniqueInput
@@ -18576,10 +18508,6 @@ export namespace Prisma {
      * Omit specific fields from the mitglied_login
      */
     omit?: mitglied_loginOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mitglied_loginInclude<ExtArgs> | null
     /**
      * Filter which mitglied_login to delete.
      */
@@ -18612,1164 +18540,6 @@ export namespace Prisma {
      * Omit specific fields from the mitglied_login
      */
     omit?: mitglied_loginOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mitglied_loginInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model person
-   */
-
-  export type AggregatePerson = {
-    _count: PersonCountAggregateOutputType | null
-    _avg: PersonAvgAggregateOutputType | null
-    _sum: PersonSumAggregateOutputType | null
-    _min: PersonMinAggregateOutputType | null
-    _max: PersonMaxAggregateOutputType | null
-  }
-
-  export type PersonAvgAggregateOutputType = {
-    ID: number | null
-    HandyNr: number | null
-  }
-
-  export type PersonSumAggregateOutputType = {
-    ID: number | null
-    HandyNr: number | null
-  }
-
-  export type PersonMinAggregateOutputType = {
-    ID: number | null
-    Vorname: string | null
-    Name: string | null
-    Geburtsdatum: Date | null
-    Strasse: string | null
-    Hausnummer: string | null
-    Postleitzahl: string | null
-    Ort: string | null
-    Email: string | null
-    HandyNr: number | null
-    Erstellt_am: Date | null
-    Geaendert_am: Date | null
-  }
-
-  export type PersonMaxAggregateOutputType = {
-    ID: number | null
-    Vorname: string | null
-    Name: string | null
-    Geburtsdatum: Date | null
-    Strasse: string | null
-    Hausnummer: string | null
-    Postleitzahl: string | null
-    Ort: string | null
-    Email: string | null
-    HandyNr: number | null
-    Erstellt_am: Date | null
-    Geaendert_am: Date | null
-  }
-
-  export type PersonCountAggregateOutputType = {
-    ID: number
-    Vorname: number
-    Name: number
-    Geburtsdatum: number
-    Strasse: number
-    Hausnummer: number
-    Postleitzahl: number
-    Ort: number
-    Email: number
-    HandyNr: number
-    Erstellt_am: number
-    Geaendert_am: number
-    _all: number
-  }
-
-
-  export type PersonAvgAggregateInputType = {
-    ID?: true
-    HandyNr?: true
-  }
-
-  export type PersonSumAggregateInputType = {
-    ID?: true
-    HandyNr?: true
-  }
-
-  export type PersonMinAggregateInputType = {
-    ID?: true
-    Vorname?: true
-    Name?: true
-    Geburtsdatum?: true
-    Strasse?: true
-    Hausnummer?: true
-    Postleitzahl?: true
-    Ort?: true
-    Email?: true
-    HandyNr?: true
-    Erstellt_am?: true
-    Geaendert_am?: true
-  }
-
-  export type PersonMaxAggregateInputType = {
-    ID?: true
-    Vorname?: true
-    Name?: true
-    Geburtsdatum?: true
-    Strasse?: true
-    Hausnummer?: true
-    Postleitzahl?: true
-    Ort?: true
-    Email?: true
-    HandyNr?: true
-    Erstellt_am?: true
-    Geaendert_am?: true
-  }
-
-  export type PersonCountAggregateInputType = {
-    ID?: true
-    Vorname?: true
-    Name?: true
-    Geburtsdatum?: true
-    Strasse?: true
-    Hausnummer?: true
-    Postleitzahl?: true
-    Ort?: true
-    Email?: true
-    HandyNr?: true
-    Erstellt_am?: true
-    Geaendert_am?: true
-    _all?: true
-  }
-
-  export type PersonAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which person to aggregate.
-     */
-    where?: personWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of people to fetch.
-     */
-    orderBy?: personOrderByWithRelationInput | personOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: personWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` people from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` people.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned people
-    **/
-    _count?: true | PersonCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: PersonAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: PersonSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: PersonMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: PersonMaxAggregateInputType
-  }
-
-  export type GetPersonAggregateType<T extends PersonAggregateArgs> = {
-        [P in keyof T & keyof AggregatePerson]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregatePerson[P]>
-      : GetScalarType<T[P], AggregatePerson[P]>
-  }
-
-
-
-
-  export type personGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: personWhereInput
-    orderBy?: personOrderByWithAggregationInput | personOrderByWithAggregationInput[]
-    by: PersonScalarFieldEnum[] | PersonScalarFieldEnum
-    having?: personScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: PersonCountAggregateInputType | true
-    _avg?: PersonAvgAggregateInputType
-    _sum?: PersonSumAggregateInputType
-    _min?: PersonMinAggregateInputType
-    _max?: PersonMaxAggregateInputType
-  }
-
-  export type PersonGroupByOutputType = {
-    ID: number
-    Vorname: string
-    Name: string
-    Geburtsdatum: Date | null
-    Strasse: string | null
-    Hausnummer: string | null
-    Postleitzahl: string | null
-    Ort: string | null
-    Email: string | null
-    HandyNr: number | null
-    Erstellt_am: Date
-    Geaendert_am: Date | null
-    _count: PersonCountAggregateOutputType | null
-    _avg: PersonAvgAggregateOutputType | null
-    _sum: PersonSumAggregateOutputType | null
-    _min: PersonMinAggregateOutputType | null
-    _max: PersonMaxAggregateOutputType | null
-  }
-
-  type GetPersonGroupByPayload<T extends personGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<PersonGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof PersonGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], PersonGroupByOutputType[P]>
-            : GetScalarType<T[P], PersonGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type personSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    ID?: boolean
-    Vorname?: boolean
-    Name?: boolean
-    Geburtsdatum?: boolean
-    Strasse?: boolean
-    Hausnummer?: boolean
-    Postleitzahl?: boolean
-    Ort?: boolean
-    Email?: boolean
-    HandyNr?: boolean
-    Erstellt_am?: boolean
-    Geaendert_am?: boolean
-    ff_mitglied?: boolean | person$ff_mitgliedArgs<ExtArgs>
-    jf_mitglied?: boolean | person$jf_mitgliedArgs<ExtArgs>
-    mitglied_login?: boolean | person$mitglied_loginArgs<ExtArgs>
-    teilnahme?: boolean | person$teilnahmeArgs<ExtArgs>
-    _count?: boolean | PersonCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["person"]>
-
-
-
-  export type personSelectScalar = {
-    ID?: boolean
-    Vorname?: boolean
-    Name?: boolean
-    Geburtsdatum?: boolean
-    Strasse?: boolean
-    Hausnummer?: boolean
-    Postleitzahl?: boolean
-    Ort?: boolean
-    Email?: boolean
-    HandyNr?: boolean
-    Erstellt_am?: boolean
-    Geaendert_am?: boolean
-  }
-
-  export type personOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Vorname" | "Name" | "Geburtsdatum" | "Strasse" | "Hausnummer" | "Postleitzahl" | "Ort" | "Email" | "HandyNr" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["person"]>
-  export type personInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    ff_mitglied?: boolean | person$ff_mitgliedArgs<ExtArgs>
-    jf_mitglied?: boolean | person$jf_mitgliedArgs<ExtArgs>
-    mitglied_login?: boolean | person$mitglied_loginArgs<ExtArgs>
-    teilnahme?: boolean | person$teilnahmeArgs<ExtArgs>
-    _count?: boolean | PersonCountOutputTypeDefaultArgs<ExtArgs>
-  }
-
-  export type $personPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "person"
-    objects: {
-      ff_mitglied: Prisma.$ff_mitgliedPayload<ExtArgs>[]
-      jf_mitglied: Prisma.$jf_mitgliedPayload<ExtArgs>[]
-      mitglied_login: Prisma.$mitglied_loginPayload<ExtArgs>[]
-      teilnahme: Prisma.$teilnahmePayload<ExtArgs>[]
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      ID: number
-      Vorname: string
-      Name: string
-      Geburtsdatum: Date | null
-      Strasse: string | null
-      Hausnummer: string | null
-      Postleitzahl: string | null
-      Ort: string | null
-      Email: string | null
-      HandyNr: number | null
-      Erstellt_am: Date
-      Geaendert_am: Date | null
-    }, ExtArgs["result"]["person"]>
-    composites: {}
-  }
-
-  type personGetPayload<S extends boolean | null | undefined | personDefaultArgs> = $Result.GetResult<Prisma.$personPayload, S>
-
-  type personCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<personFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: PersonCountAggregateInputType | true
-    }
-
-  export interface personDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['person'], meta: { name: 'person' } }
-    /**
-     * Find zero or one Person that matches the filter.
-     * @param {personFindUniqueArgs} args - Arguments to find a Person
-     * @example
-     * // Get one Person
-     * const person = await prisma.person.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends personFindUniqueArgs>(args: SelectSubset<T, personFindUniqueArgs<ExtArgs>>): Prisma__personClient<$Result.GetResult<Prisma.$personPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Person that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {personFindUniqueOrThrowArgs} args - Arguments to find a Person
-     * @example
-     * // Get one Person
-     * const person = await prisma.person.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends personFindUniqueOrThrowArgs>(args: SelectSubset<T, personFindUniqueOrThrowArgs<ExtArgs>>): Prisma__personClient<$Result.GetResult<Prisma.$personPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Person that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {personFindFirstArgs} args - Arguments to find a Person
-     * @example
-     * // Get one Person
-     * const person = await prisma.person.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends personFindFirstArgs>(args?: SelectSubset<T, personFindFirstArgs<ExtArgs>>): Prisma__personClient<$Result.GetResult<Prisma.$personPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Person that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {personFindFirstOrThrowArgs} args - Arguments to find a Person
-     * @example
-     * // Get one Person
-     * const person = await prisma.person.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends personFindFirstOrThrowArgs>(args?: SelectSubset<T, personFindFirstOrThrowArgs<ExtArgs>>): Prisma__personClient<$Result.GetResult<Prisma.$personPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more People that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {personFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all People
-     * const people = await prisma.person.findMany()
-     * 
-     * // Get first 10 People
-     * const people = await prisma.person.findMany({ take: 10 })
-     * 
-     * // Only select the `ID`
-     * const personWithIDOnly = await prisma.person.findMany({ select: { ID: true } })
-     * 
-     */
-    findMany<T extends personFindManyArgs>(args?: SelectSubset<T, personFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$personPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Person.
-     * @param {personCreateArgs} args - Arguments to create a Person.
-     * @example
-     * // Create one Person
-     * const Person = await prisma.person.create({
-     *   data: {
-     *     // ... data to create a Person
-     *   }
-     * })
-     * 
-     */
-    create<T extends personCreateArgs>(args: SelectSubset<T, personCreateArgs<ExtArgs>>): Prisma__personClient<$Result.GetResult<Prisma.$personPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many People.
-     * @param {personCreateManyArgs} args - Arguments to create many People.
-     * @example
-     * // Create many People
-     * const person = await prisma.person.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends personCreateManyArgs>(args?: SelectSubset<T, personCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Person.
-     * @param {personDeleteArgs} args - Arguments to delete one Person.
-     * @example
-     * // Delete one Person
-     * const Person = await prisma.person.delete({
-     *   where: {
-     *     // ... filter to delete one Person
-     *   }
-     * })
-     * 
-     */
-    delete<T extends personDeleteArgs>(args: SelectSubset<T, personDeleteArgs<ExtArgs>>): Prisma__personClient<$Result.GetResult<Prisma.$personPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Person.
-     * @param {personUpdateArgs} args - Arguments to update one Person.
-     * @example
-     * // Update one Person
-     * const person = await prisma.person.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends personUpdateArgs>(args: SelectSubset<T, personUpdateArgs<ExtArgs>>): Prisma__personClient<$Result.GetResult<Prisma.$personPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more People.
-     * @param {personDeleteManyArgs} args - Arguments to filter People to delete.
-     * @example
-     * // Delete a few People
-     * const { count } = await prisma.person.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends personDeleteManyArgs>(args?: SelectSubset<T, personDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more People.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {personUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many People
-     * const person = await prisma.person.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends personUpdateManyArgs>(args: SelectSubset<T, personUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Person.
-     * @param {personUpsertArgs} args - Arguments to update or create a Person.
-     * @example
-     * // Update or create a Person
-     * const person = await prisma.person.upsert({
-     *   create: {
-     *     // ... data to create a Person
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Person we want to update
-     *   }
-     * })
-     */
-    upsert<T extends personUpsertArgs>(args: SelectSubset<T, personUpsertArgs<ExtArgs>>): Prisma__personClient<$Result.GetResult<Prisma.$personPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of People.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {personCountArgs} args - Arguments to filter People to count.
-     * @example
-     * // Count the number of People
-     * const count = await prisma.person.count({
-     *   where: {
-     *     // ... the filter for the People we want to count
-     *   }
-     * })
-    **/
-    count<T extends personCountArgs>(
-      args?: Subset<T, personCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], PersonCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Person.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PersonAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends PersonAggregateArgs>(args: Subset<T, PersonAggregateArgs>): Prisma.PrismaPromise<GetPersonAggregateType<T>>
-
-    /**
-     * Group by Person.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {personGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends personGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: personGroupByArgs['orderBy'] }
-        : { orderBy?: personGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, personGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPersonGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the person model
-   */
-  readonly fields: personFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for person.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__personClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    ff_mitglied<T extends person$ff_mitgliedArgs<ExtArgs> = {}>(args?: Subset<T, person$ff_mitgliedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ff_mitgliedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    jf_mitglied<T extends person$jf_mitgliedArgs<ExtArgs> = {}>(args?: Subset<T, person$jf_mitgliedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jf_mitgliedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    mitglied_login<T extends person$mitglied_loginArgs<ExtArgs> = {}>(args?: Subset<T, person$mitglied_loginArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$mitglied_loginPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    teilnahme<T extends person$teilnahmeArgs<ExtArgs> = {}>(args?: Subset<T, person$teilnahmeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$teilnahmePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the person model
-   */
-  interface personFieldRefs {
-    readonly ID: FieldRef<"person", 'Int'>
-    readonly Vorname: FieldRef<"person", 'String'>
-    readonly Name: FieldRef<"person", 'String'>
-    readonly Geburtsdatum: FieldRef<"person", 'DateTime'>
-    readonly Strasse: FieldRef<"person", 'String'>
-    readonly Hausnummer: FieldRef<"person", 'String'>
-    readonly Postleitzahl: FieldRef<"person", 'String'>
-    readonly Ort: FieldRef<"person", 'String'>
-    readonly Email: FieldRef<"person", 'String'>
-    readonly HandyNr: FieldRef<"person", 'Int'>
-    readonly Erstellt_am: FieldRef<"person", 'DateTime'>
-    readonly Geaendert_am: FieldRef<"person", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * person findUnique
-   */
-  export type personFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the person
-     */
-    select?: personSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the person
-     */
-    omit?: personOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: personInclude<ExtArgs> | null
-    /**
-     * Filter, which person to fetch.
-     */
-    where: personWhereUniqueInput
-  }
-
-  /**
-   * person findUniqueOrThrow
-   */
-  export type personFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the person
-     */
-    select?: personSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the person
-     */
-    omit?: personOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: personInclude<ExtArgs> | null
-    /**
-     * Filter, which person to fetch.
-     */
-    where: personWhereUniqueInput
-  }
-
-  /**
-   * person findFirst
-   */
-  export type personFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the person
-     */
-    select?: personSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the person
-     */
-    omit?: personOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: personInclude<ExtArgs> | null
-    /**
-     * Filter, which person to fetch.
-     */
-    where?: personWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of people to fetch.
-     */
-    orderBy?: personOrderByWithRelationInput | personOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for people.
-     */
-    cursor?: personWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` people from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` people.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of people.
-     */
-    distinct?: PersonScalarFieldEnum | PersonScalarFieldEnum[]
-  }
-
-  /**
-   * person findFirstOrThrow
-   */
-  export type personFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the person
-     */
-    select?: personSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the person
-     */
-    omit?: personOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: personInclude<ExtArgs> | null
-    /**
-     * Filter, which person to fetch.
-     */
-    where?: personWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of people to fetch.
-     */
-    orderBy?: personOrderByWithRelationInput | personOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for people.
-     */
-    cursor?: personWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` people from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` people.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of people.
-     */
-    distinct?: PersonScalarFieldEnum | PersonScalarFieldEnum[]
-  }
-
-  /**
-   * person findMany
-   */
-  export type personFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the person
-     */
-    select?: personSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the person
-     */
-    omit?: personOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: personInclude<ExtArgs> | null
-    /**
-     * Filter, which people to fetch.
-     */
-    where?: personWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of people to fetch.
-     */
-    orderBy?: personOrderByWithRelationInput | personOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing people.
-     */
-    cursor?: personWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` people from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` people.
-     */
-    skip?: number
-    distinct?: PersonScalarFieldEnum | PersonScalarFieldEnum[]
-  }
-
-  /**
-   * person create
-   */
-  export type personCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the person
-     */
-    select?: personSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the person
-     */
-    omit?: personOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: personInclude<ExtArgs> | null
-    /**
-     * The data needed to create a person.
-     */
-    data: XOR<personCreateInput, personUncheckedCreateInput>
-  }
-
-  /**
-   * person createMany
-   */
-  export type personCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many people.
-     */
-    data: personCreateManyInput | personCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * person update
-   */
-  export type personUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the person
-     */
-    select?: personSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the person
-     */
-    omit?: personOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: personInclude<ExtArgs> | null
-    /**
-     * The data needed to update a person.
-     */
-    data: XOR<personUpdateInput, personUncheckedUpdateInput>
-    /**
-     * Choose, which person to update.
-     */
-    where: personWhereUniqueInput
-  }
-
-  /**
-   * person updateMany
-   */
-  export type personUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update people.
-     */
-    data: XOR<personUpdateManyMutationInput, personUncheckedUpdateManyInput>
-    /**
-     * Filter which people to update
-     */
-    where?: personWhereInput
-    /**
-     * Limit how many people to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * person upsert
-   */
-  export type personUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the person
-     */
-    select?: personSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the person
-     */
-    omit?: personOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: personInclude<ExtArgs> | null
-    /**
-     * The filter to search for the person to update in case it exists.
-     */
-    where: personWhereUniqueInput
-    /**
-     * In case the person found by the `where` argument doesn't exist, create a new person with this data.
-     */
-    create: XOR<personCreateInput, personUncheckedCreateInput>
-    /**
-     * In case the person was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<personUpdateInput, personUncheckedUpdateInput>
-  }
-
-  /**
-   * person delete
-   */
-  export type personDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the person
-     */
-    select?: personSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the person
-     */
-    omit?: personOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: personInclude<ExtArgs> | null
-    /**
-     * Filter which person to delete.
-     */
-    where: personWhereUniqueInput
-  }
-
-  /**
-   * person deleteMany
-   */
-  export type personDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which people to delete
-     */
-    where?: personWhereInput
-    /**
-     * Limit how many people to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * person.ff_mitglied
-   */
-  export type person$ff_mitgliedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ff_mitglied
-     */
-    select?: ff_mitgliedSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ff_mitglied
-     */
-    omit?: ff_mitgliedOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ff_mitgliedInclude<ExtArgs> | null
-    where?: ff_mitgliedWhereInput
-    orderBy?: ff_mitgliedOrderByWithRelationInput | ff_mitgliedOrderByWithRelationInput[]
-    cursor?: ff_mitgliedWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Ff_mitgliedScalarFieldEnum | Ff_mitgliedScalarFieldEnum[]
-  }
-
-  /**
-   * person.jf_mitglied
-   */
-  export type person$jf_mitgliedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the jf_mitglied
-     */
-    select?: jf_mitgliedSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the jf_mitglied
-     */
-    omit?: jf_mitgliedOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: jf_mitgliedInclude<ExtArgs> | null
-    where?: jf_mitgliedWhereInput
-    orderBy?: jf_mitgliedOrderByWithRelationInput | jf_mitgliedOrderByWithRelationInput[]
-    cursor?: jf_mitgliedWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Jf_mitgliedScalarFieldEnum | Jf_mitgliedScalarFieldEnum[]
-  }
-
-  /**
-   * person.mitglied_login
-   */
-  export type person$mitglied_loginArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mitglied_login
-     */
-    select?: mitglied_loginSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the mitglied_login
-     */
-    omit?: mitglied_loginOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mitglied_loginInclude<ExtArgs> | null
-    where?: mitglied_loginWhereInput
-    orderBy?: mitglied_loginOrderByWithRelationInput | mitglied_loginOrderByWithRelationInput[]
-    cursor?: mitglied_loginWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Mitglied_loginScalarFieldEnum | Mitglied_loginScalarFieldEnum[]
-  }
-
-  /**
-   * person.teilnahme
-   */
-  export type person$teilnahmeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the teilnahme
-     */
-    select?: teilnahmeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the teilnahme
-     */
-    omit?: teilnahmeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: teilnahmeInclude<ExtArgs> | null
-    where?: teilnahmeWhereInput
-    orderBy?: teilnahmeOrderByWithRelationInput | teilnahmeOrderByWithRelationInput[]
-    cursor?: teilnahmeWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: TeilnahmeScalarFieldEnum | TeilnahmeScalarFieldEnum[]
-  }
-
-  /**
-   * person without action
-   */
-  export type personDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the person
-     */
-    select?: personSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the person
-     */
-    omit?: personOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: personInclude<ExtArgs> | null
   }
 
 
@@ -19987,7 +18757,6 @@ export namespace Prisma {
     Typ?: boolean
     Erstellt_am?: boolean
     Geaendert_am?: boolean
-    person?: boolean | personDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["teilnahme"]>
 
 
@@ -20002,15 +18771,10 @@ export namespace Prisma {
   }
 
   export type teilnahmeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Mitglied_ID" | "Veranstaltung_ID" | "Typ" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["teilnahme"]>
-  export type teilnahmeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    person?: boolean | personDefaultArgs<ExtArgs>
-  }
 
   export type $teilnahmePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "teilnahme"
-    objects: {
-      person: Prisma.$personPayload<ExtArgs>
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       ID: number
       Mitglied_ID: number
@@ -20358,7 +19122,6 @@ export namespace Prisma {
    */
   export interface Prisma__teilnahmeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    person<T extends personDefaultArgs<ExtArgs> = {}>(args?: Subset<T, personDefaultArgs<ExtArgs>>): Prisma__personClient<$Result.GetResult<Prisma.$personPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -20411,10 +19174,6 @@ export namespace Prisma {
      */
     omit?: teilnahmeOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: teilnahmeInclude<ExtArgs> | null
-    /**
      * Filter, which teilnahme to fetch.
      */
     where: teilnahmeWhereUniqueInput
@@ -20433,10 +19192,6 @@ export namespace Prisma {
      */
     omit?: teilnahmeOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: teilnahmeInclude<ExtArgs> | null
-    /**
      * Filter, which teilnahme to fetch.
      */
     where: teilnahmeWhereUniqueInput
@@ -20454,10 +19209,6 @@ export namespace Prisma {
      * Omit specific fields from the teilnahme
      */
     omit?: teilnahmeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: teilnahmeInclude<ExtArgs> | null
     /**
      * Filter, which teilnahme to fetch.
      */
@@ -20507,10 +19258,6 @@ export namespace Prisma {
      */
     omit?: teilnahmeOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: teilnahmeInclude<ExtArgs> | null
-    /**
      * Filter, which teilnahme to fetch.
      */
     where?: teilnahmeWhereInput
@@ -20559,10 +19306,6 @@ export namespace Prisma {
      */
     omit?: teilnahmeOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: teilnahmeInclude<ExtArgs> | null
-    /**
      * Filter, which teilnahmes to fetch.
      */
     where?: teilnahmeWhereInput
@@ -20606,10 +19349,6 @@ export namespace Prisma {
      */
     omit?: teilnahmeOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: teilnahmeInclude<ExtArgs> | null
-    /**
      * The data needed to create a teilnahme.
      */
     data: XOR<teilnahmeCreateInput, teilnahmeUncheckedCreateInput>
@@ -20638,10 +19377,6 @@ export namespace Prisma {
      * Omit specific fields from the teilnahme
      */
     omit?: teilnahmeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: teilnahmeInclude<ExtArgs> | null
     /**
      * The data needed to update a teilnahme.
      */
@@ -20683,10 +19418,6 @@ export namespace Prisma {
      */
     omit?: teilnahmeOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: teilnahmeInclude<ExtArgs> | null
-    /**
      * The filter to search for the teilnahme to update in case it exists.
      */
     where: teilnahmeWhereUniqueInput
@@ -20712,10 +19443,6 @@ export namespace Prisma {
      * Omit specific fields from the teilnahme
      */
     omit?: teilnahmeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: teilnahmeInclude<ExtArgs> | null
     /**
      * Filter which teilnahme to delete.
      */
@@ -20748,10 +19475,6 @@ export namespace Prisma {
      * Omit specific fields from the teilnahme
      */
     omit?: teilnahmeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: teilnahmeInclude<ExtArgs> | null
   }
 
 
@@ -20852,7 +19575,9 @@ export namespace Prisma {
   export const FahrzeugScalarFieldEnum: {
     ID: 'ID',
     Kennzeichen: 'Kennzeichen',
+    Fahrzeugtyp: 'Fahrzeugtyp',
     Besatzungsstaerke: 'Besatzungsstaerke',
+    Status: 'Status',
     Erstellt_am: 'Erstellt_am',
     Geaendert_am: 'Geaendert_am'
   };
@@ -20969,24 +19694,6 @@ export namespace Prisma {
   export type Mitglied_loginScalarFieldEnum = (typeof Mitglied_loginScalarFieldEnum)[keyof typeof Mitglied_loginScalarFieldEnum]
 
 
-  export const PersonScalarFieldEnum: {
-    ID: 'ID',
-    Vorname: 'Vorname',
-    Name: 'Name',
-    Geburtsdatum: 'Geburtsdatum',
-    Strasse: 'Strasse',
-    Hausnummer: 'Hausnummer',
-    Postleitzahl: 'Postleitzahl',
-    Ort: 'Ort',
-    Email: 'Email',
-    HandyNr: 'HandyNr',
-    Erstellt_am: 'Erstellt_am',
-    Geaendert_am: 'Geaendert_am'
-  };
-
-  export type PersonScalarFieldEnum = (typeof PersonScalarFieldEnum)[keyof typeof PersonScalarFieldEnum]
-
-
   export const TeilnahmeScalarFieldEnum: {
     ID: 'ID',
     Mitglied_ID: 'Mitglied_ID',
@@ -21061,6 +19768,7 @@ export namespace Prisma {
 
   export const fahrzeugOrderByRelevanceFieldEnum: {
     Kennzeichen: 'Kennzeichen',
+    Fahrzeugtyp: 'Fahrzeugtyp',
     Besatzungsstaerke: 'Besatzungsstaerke'
   };
 
@@ -21087,19 +19795,6 @@ export namespace Prisma {
   };
 
   export type lehrgangOrderByRelevanceFieldEnum = (typeof lehrgangOrderByRelevanceFieldEnum)[keyof typeof lehrgangOrderByRelevanceFieldEnum]
-
-
-  export const personOrderByRelevanceFieldEnum: {
-    Vorname: 'Vorname',
-    Name: 'Name',
-    Strasse: 'Strasse',
-    Hausnummer: 'Hausnummer',
-    Postleitzahl: 'Postleitzahl',
-    Ort: 'Ort',
-    Email: 'Email'
-  };
-
-  export type personOrderByRelevanceFieldEnum = (typeof personOrderByRelevanceFieldEnum)[keyof typeof personOrderByRelevanceFieldEnum]
 
 
   /**
@@ -21132,6 +19827,13 @@ export namespace Prisma {
    * Reference to a field of type 'einsatz_Art'
    */
   export type Enumeinsatz_ArtFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'einsatz_Art'>
+    
+
+
+  /**
+   * Reference to a field of type 'fahrzeug_Status'
+   */
+  export type Enumfahrzeug_StatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'fahrzeug_Status'>
     
 
 
@@ -21622,7 +20324,9 @@ export namespace Prisma {
     NOT?: fahrzeugWhereInput | fahrzeugWhereInput[]
     ID?: IntFilter<"fahrzeug"> | number
     Kennzeichen?: StringNullableFilter<"fahrzeug"> | string | null
+    Fahrzeugtyp?: StringNullableFilter<"fahrzeug"> | string | null
     Besatzungsstaerke?: StringNullableFilter<"fahrzeug"> | string | null
+    Status?: Enumfahrzeug_StatusFilter<"fahrzeug"> | $Enums.fahrzeug_Status
     Erstellt_am?: DateTimeNullableFilter<"fahrzeug"> | Date | string | null
     Geaendert_am?: DateTimeNullableFilter<"fahrzeug"> | Date | string | null
     einteilung?: EinteilungListRelationFilter
@@ -21631,7 +20335,9 @@ export namespace Prisma {
   export type fahrzeugOrderByWithRelationInput = {
     ID?: SortOrder
     Kennzeichen?: SortOrderInput | SortOrder
+    Fahrzeugtyp?: SortOrderInput | SortOrder
     Besatzungsstaerke?: SortOrderInput | SortOrder
+    Status?: SortOrder
     Erstellt_am?: SortOrderInput | SortOrder
     Geaendert_am?: SortOrderInput | SortOrder
     einteilung?: einteilungOrderByRelationAggregateInput
@@ -21644,7 +20350,9 @@ export namespace Prisma {
     OR?: fahrzeugWhereInput[]
     NOT?: fahrzeugWhereInput | fahrzeugWhereInput[]
     Kennzeichen?: StringNullableFilter<"fahrzeug"> | string | null
+    Fahrzeugtyp?: StringNullableFilter<"fahrzeug"> | string | null
     Besatzungsstaerke?: StringNullableFilter<"fahrzeug"> | string | null
+    Status?: Enumfahrzeug_StatusFilter<"fahrzeug"> | $Enums.fahrzeug_Status
     Erstellt_am?: DateTimeNullableFilter<"fahrzeug"> | Date | string | null
     Geaendert_am?: DateTimeNullableFilter<"fahrzeug"> | Date | string | null
     einteilung?: EinteilungListRelationFilter
@@ -21653,7 +20361,9 @@ export namespace Prisma {
   export type fahrzeugOrderByWithAggregationInput = {
     ID?: SortOrder
     Kennzeichen?: SortOrderInput | SortOrder
+    Fahrzeugtyp?: SortOrderInput | SortOrder
     Besatzungsstaerke?: SortOrderInput | SortOrder
+    Status?: SortOrder
     Erstellt_am?: SortOrderInput | SortOrder
     Geaendert_am?: SortOrderInput | SortOrder
     _count?: fahrzeugCountOrderByAggregateInput
@@ -21669,7 +20379,9 @@ export namespace Prisma {
     NOT?: fahrzeugScalarWhereWithAggregatesInput | fahrzeugScalarWhereWithAggregatesInput[]
     ID?: IntWithAggregatesFilter<"fahrzeug"> | number
     Kennzeichen?: StringNullableWithAggregatesFilter<"fahrzeug"> | string | null
+    Fahrzeugtyp?: StringNullableWithAggregatesFilter<"fahrzeug"> | string | null
     Besatzungsstaerke?: StringNullableWithAggregatesFilter<"fahrzeug"> | string | null
+    Status?: Enumfahrzeug_StatusWithAggregatesFilter<"fahrzeug"> | $Enums.fahrzeug_Status
     Erstellt_am?: DateTimeNullableWithAggregatesFilter<"fahrzeug"> | Date | string | null
     Geaendert_am?: DateTimeNullableWithAggregatesFilter<"fahrzeug"> | Date | string | null
   }
@@ -21688,7 +20400,6 @@ export namespace Prisma {
     Geaendert_am?: DateTimeNullableFilter<"ff_mitglied"> | Date | string | null
     allergie?: AllergieListRelationFilter
     einteilung?: EinteilungListRelationFilter
-    person?: XOR<PersonScalarRelationFilter, personWhereInput>
     ff_mitglied_lehrgang?: Ff_mitglied_lehrgangListRelationFilter
     mitglied_funktionen?: Mitglied_funktionenListRelationFilter
   }
@@ -21704,7 +20415,6 @@ export namespace Prisma {
     Geaendert_am?: SortOrderInput | SortOrder
     allergie?: allergieOrderByRelationAggregateInput
     einteilung?: einteilungOrderByRelationAggregateInput
-    person?: personOrderByWithRelationInput
     ff_mitglied_lehrgang?: ff_mitglied_lehrgangOrderByRelationAggregateInput
     mitglied_funktionen?: mitglied_funktionenOrderByRelationAggregateInput
   }
@@ -21723,7 +20433,6 @@ export namespace Prisma {
     Geaendert_am?: DateTimeNullableFilter<"ff_mitglied"> | Date | string | null
     allergie?: AllergieListRelationFilter
     einteilung?: EinteilungListRelationFilter
-    person?: XOR<PersonScalarRelationFilter, personWhereInput>
     ff_mitglied_lehrgang?: Ff_mitglied_lehrgangListRelationFilter
     mitglied_funktionen?: Mitglied_funktionenListRelationFilter
   }, "ID">
@@ -21945,6 +20654,7 @@ export namespace Prisma {
     Person_ID?: IntFilter<"jf_erziehungsberechtigter"> | number
     Erstellt_am?: DateTimeNullableFilter<"jf_erziehungsberechtigter"> | Date | string | null
     Geaendert_am?: DateTimeNullableFilter<"jf_erziehungsberechtigter"> | Date | string | null
+    jf_mitglied?: XOR<Jf_mitgliedScalarRelationFilter, jf_mitgliedWhereInput>
   }
 
   export type jf_erziehungsberechtigterOrderByWithRelationInput = {
@@ -21953,6 +20663,7 @@ export namespace Prisma {
     Person_ID?: SortOrder
     Erstellt_am?: SortOrderInput | SortOrder
     Geaendert_am?: SortOrderInput | SortOrder
+    jf_mitglied?: jf_mitgliedOrderByWithRelationInput
   }
 
   export type jf_erziehungsberechtigterWhereUniqueInput = Prisma.AtLeast<{
@@ -21964,6 +20675,7 @@ export namespace Prisma {
     Person_ID?: IntFilter<"jf_erziehungsberechtigter"> | number
     Erstellt_am?: DateTimeNullableFilter<"jf_erziehungsberechtigter"> | Date | string | null
     Geaendert_am?: DateTimeNullableFilter<"jf_erziehungsberechtigter"> | Date | string | null
+    jf_mitglied?: XOR<Jf_mitgliedScalarRelationFilter, jf_mitgliedWhereInput>
   }, "ID">
 
   export type jf_erziehungsberechtigterOrderByWithAggregationInput = {
@@ -22003,7 +20715,7 @@ export namespace Prisma {
     Erstellt_am?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
     Geaendert_am?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
     allergie?: AllergieListRelationFilter
-    person?: XOR<PersonScalarRelationFilter, personWhereInput>
+    jf_erziehungsberechtigter?: Jf_erziehungsberechtigterListRelationFilter
   }
 
   export type jf_mitgliedOrderByWithRelationInput = {
@@ -22016,7 +20728,7 @@ export namespace Prisma {
     Erstellt_am?: SortOrderInput | SortOrder
     Geaendert_am?: SortOrderInput | SortOrder
     allergie?: allergieOrderByRelationAggregateInput
-    person?: personOrderByWithRelationInput
+    jf_erziehungsberechtigter?: jf_erziehungsberechtigterOrderByRelationAggregateInput
   }
 
   export type jf_mitgliedWhereUniqueInput = Prisma.AtLeast<{
@@ -22032,7 +20744,7 @@ export namespace Prisma {
     Erstellt_am?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
     Geaendert_am?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
     allergie?: AllergieListRelationFilter
-    person?: XOR<PersonScalarRelationFilter, personWhereInput>
+    jf_erziehungsberechtigter?: Jf_erziehungsberechtigterListRelationFilter
   }, "ID">
 
   export type jf_mitgliedOrderByWithAggregationInput = {
@@ -22203,7 +20915,6 @@ export namespace Prisma {
     Typ?: Enummitglied_login_TypFilter<"mitglied_login"> | $Enums.mitglied_login_Typ
     Erstellt_am?: DateTimeFilter<"mitglied_login"> | Date | string
     Geaendert_am?: DateTimeNullableFilter<"mitglied_login"> | Date | string | null
-    person?: XOR<PersonScalarRelationFilter, personWhereInput>
   }
 
   export type mitglied_loginOrderByWithRelationInput = {
@@ -22213,7 +20924,6 @@ export namespace Prisma {
     Typ?: SortOrder
     Erstellt_am?: SortOrder
     Geaendert_am?: SortOrderInput | SortOrder
-    person?: personOrderByWithRelationInput
   }
 
   export type mitglied_loginWhereUniqueInput = Prisma.AtLeast<{
@@ -22226,7 +20936,6 @@ export namespace Prisma {
     Typ?: Enummitglied_login_TypFilter<"mitglied_login"> | $Enums.mitglied_login_Typ
     Erstellt_am?: DateTimeFilter<"mitglied_login"> | Date | string
     Geaendert_am?: DateTimeNullableFilter<"mitglied_login"> | Date | string | null
-    person?: XOR<PersonScalarRelationFilter, personWhereInput>
   }, "ID">
 
   export type mitglied_loginOrderByWithAggregationInput = {
@@ -22255,108 +20964,6 @@ export namespace Prisma {
     Geaendert_am?: DateTimeNullableWithAggregatesFilter<"mitglied_login"> | Date | string | null
   }
 
-  export type personWhereInput = {
-    AND?: personWhereInput | personWhereInput[]
-    OR?: personWhereInput[]
-    NOT?: personWhereInput | personWhereInput[]
-    ID?: IntFilter<"person"> | number
-    Vorname?: StringFilter<"person"> | string
-    Name?: StringFilter<"person"> | string
-    Geburtsdatum?: DateTimeNullableFilter<"person"> | Date | string | null
-    Strasse?: StringNullableFilter<"person"> | string | null
-    Hausnummer?: StringNullableFilter<"person"> | string | null
-    Postleitzahl?: StringNullableFilter<"person"> | string | null
-    Ort?: StringNullableFilter<"person"> | string | null
-    Email?: StringNullableFilter<"person"> | string | null
-    HandyNr?: IntNullableFilter<"person"> | number | null
-    Erstellt_am?: DateTimeFilter<"person"> | Date | string
-    Geaendert_am?: DateTimeNullableFilter<"person"> | Date | string | null
-    ff_mitglied?: Ff_mitgliedListRelationFilter
-    jf_mitglied?: Jf_mitgliedListRelationFilter
-    mitglied_login?: Mitglied_loginListRelationFilter
-    teilnahme?: TeilnahmeListRelationFilter
-  }
-
-  export type personOrderByWithRelationInput = {
-    ID?: SortOrder
-    Vorname?: SortOrder
-    Name?: SortOrder
-    Geburtsdatum?: SortOrderInput | SortOrder
-    Strasse?: SortOrderInput | SortOrder
-    Hausnummer?: SortOrderInput | SortOrder
-    Postleitzahl?: SortOrderInput | SortOrder
-    Ort?: SortOrderInput | SortOrder
-    Email?: SortOrderInput | SortOrder
-    HandyNr?: SortOrderInput | SortOrder
-    Erstellt_am?: SortOrder
-    Geaendert_am?: SortOrderInput | SortOrder
-    ff_mitglied?: ff_mitgliedOrderByRelationAggregateInput
-    jf_mitglied?: jf_mitgliedOrderByRelationAggregateInput
-    mitglied_login?: mitglied_loginOrderByRelationAggregateInput
-    teilnahme?: teilnahmeOrderByRelationAggregateInput
-    _relevance?: personOrderByRelevanceInput
-  }
-
-  export type personWhereUniqueInput = Prisma.AtLeast<{
-    ID?: number
-    AND?: personWhereInput | personWhereInput[]
-    OR?: personWhereInput[]
-    NOT?: personWhereInput | personWhereInput[]
-    Vorname?: StringFilter<"person"> | string
-    Name?: StringFilter<"person"> | string
-    Geburtsdatum?: DateTimeNullableFilter<"person"> | Date | string | null
-    Strasse?: StringNullableFilter<"person"> | string | null
-    Hausnummer?: StringNullableFilter<"person"> | string | null
-    Postleitzahl?: StringNullableFilter<"person"> | string | null
-    Ort?: StringNullableFilter<"person"> | string | null
-    Email?: StringNullableFilter<"person"> | string | null
-    HandyNr?: IntNullableFilter<"person"> | number | null
-    Erstellt_am?: DateTimeFilter<"person"> | Date | string
-    Geaendert_am?: DateTimeNullableFilter<"person"> | Date | string | null
-    ff_mitglied?: Ff_mitgliedListRelationFilter
-    jf_mitglied?: Jf_mitgliedListRelationFilter
-    mitglied_login?: Mitglied_loginListRelationFilter
-    teilnahme?: TeilnahmeListRelationFilter
-  }, "ID">
-
-  export type personOrderByWithAggregationInput = {
-    ID?: SortOrder
-    Vorname?: SortOrder
-    Name?: SortOrder
-    Geburtsdatum?: SortOrderInput | SortOrder
-    Strasse?: SortOrderInput | SortOrder
-    Hausnummer?: SortOrderInput | SortOrder
-    Postleitzahl?: SortOrderInput | SortOrder
-    Ort?: SortOrderInput | SortOrder
-    Email?: SortOrderInput | SortOrder
-    HandyNr?: SortOrderInput | SortOrder
-    Erstellt_am?: SortOrder
-    Geaendert_am?: SortOrderInput | SortOrder
-    _count?: personCountOrderByAggregateInput
-    _avg?: personAvgOrderByAggregateInput
-    _max?: personMaxOrderByAggregateInput
-    _min?: personMinOrderByAggregateInput
-    _sum?: personSumOrderByAggregateInput
-  }
-
-  export type personScalarWhereWithAggregatesInput = {
-    AND?: personScalarWhereWithAggregatesInput | personScalarWhereWithAggregatesInput[]
-    OR?: personScalarWhereWithAggregatesInput[]
-    NOT?: personScalarWhereWithAggregatesInput | personScalarWhereWithAggregatesInput[]
-    ID?: IntWithAggregatesFilter<"person"> | number
-    Vorname?: StringWithAggregatesFilter<"person"> | string
-    Name?: StringWithAggregatesFilter<"person"> | string
-    Geburtsdatum?: DateTimeNullableWithAggregatesFilter<"person"> | Date | string | null
-    Strasse?: StringNullableWithAggregatesFilter<"person"> | string | null
-    Hausnummer?: StringNullableWithAggregatesFilter<"person"> | string | null
-    Postleitzahl?: StringNullableWithAggregatesFilter<"person"> | string | null
-    Ort?: StringNullableWithAggregatesFilter<"person"> | string | null
-    Email?: StringNullableWithAggregatesFilter<"person"> | string | null
-    HandyNr?: IntNullableWithAggregatesFilter<"person"> | number | null
-    Erstellt_am?: DateTimeWithAggregatesFilter<"person"> | Date | string
-    Geaendert_am?: DateTimeNullableWithAggregatesFilter<"person"> | Date | string | null
-  }
-
   export type teilnahmeWhereInput = {
     AND?: teilnahmeWhereInput | teilnahmeWhereInput[]
     OR?: teilnahmeWhereInput[]
@@ -22367,7 +20974,6 @@ export namespace Prisma {
     Typ?: Enumteilnahme_TypFilter<"teilnahme"> | $Enums.teilnahme_Typ
     Erstellt_am?: DateTimeFilter<"teilnahme"> | Date | string
     Geaendert_am?: DateTimeNullableFilter<"teilnahme"> | Date | string | null
-    person?: XOR<PersonScalarRelationFilter, personWhereInput>
   }
 
   export type teilnahmeOrderByWithRelationInput = {
@@ -22377,7 +20983,6 @@ export namespace Prisma {
     Typ?: SortOrder
     Erstellt_am?: SortOrder
     Geaendert_am?: SortOrderInput | SortOrder
-    person?: personOrderByWithRelationInput
   }
 
   export type teilnahmeWhereUniqueInput = Prisma.AtLeast<{
@@ -22390,7 +20995,6 @@ export namespace Prisma {
     Typ?: Enumteilnahme_TypFilter<"teilnahme"> | $Enums.teilnahme_Typ
     Erstellt_am?: DateTimeFilter<"teilnahme"> | Date | string
     Geaendert_am?: DateTimeNullableFilter<"teilnahme"> | Date | string | null
-    person?: XOR<PersonScalarRelationFilter, personWhereInput>
   }, "ID">
 
   export type teilnahmeOrderByWithAggregationInput = {
@@ -22843,7 +21447,9 @@ export namespace Prisma {
 
   export type fahrzeugCreateInput = {
     Kennzeichen?: string | null
+    Fahrzeugtyp?: string | null
     Besatzungsstaerke?: string | null
+    Status?: $Enums.fahrzeug_Status
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
     einteilung?: einteilungCreateNestedManyWithoutFahrzeugInput
@@ -22852,7 +21458,9 @@ export namespace Prisma {
   export type fahrzeugUncheckedCreateInput = {
     ID?: number
     Kennzeichen?: string | null
+    Fahrzeugtyp?: string | null
     Besatzungsstaerke?: string | null
+    Status?: $Enums.fahrzeug_Status
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
     einteilung?: einteilungUncheckedCreateNestedManyWithoutFahrzeugInput
@@ -22860,7 +21468,9 @@ export namespace Prisma {
 
   export type fahrzeugUpdateInput = {
     Kennzeichen?: NullableStringFieldUpdateOperationsInput | string | null
+    Fahrzeugtyp?: NullableStringFieldUpdateOperationsInput | string | null
     Besatzungsstaerke?: NullableStringFieldUpdateOperationsInput | string | null
+    Status?: Enumfahrzeug_StatusFieldUpdateOperationsInput | $Enums.fahrzeug_Status
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     einteilung?: einteilungUpdateManyWithoutFahrzeugNestedInput
@@ -22869,7 +21479,9 @@ export namespace Prisma {
   export type fahrzeugUncheckedUpdateInput = {
     ID?: IntFieldUpdateOperationsInput | number
     Kennzeichen?: NullableStringFieldUpdateOperationsInput | string | null
+    Fahrzeugtyp?: NullableStringFieldUpdateOperationsInput | string | null
     Besatzungsstaerke?: NullableStringFieldUpdateOperationsInput | string | null
+    Status?: Enumfahrzeug_StatusFieldUpdateOperationsInput | $Enums.fahrzeug_Status
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     einteilung?: einteilungUncheckedUpdateManyWithoutFahrzeugNestedInput
@@ -22878,14 +21490,18 @@ export namespace Prisma {
   export type fahrzeugCreateManyInput = {
     ID?: number
     Kennzeichen?: string | null
+    Fahrzeugtyp?: string | null
     Besatzungsstaerke?: string | null
+    Status?: $Enums.fahrzeug_Status
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
   }
 
   export type fahrzeugUpdateManyMutationInput = {
     Kennzeichen?: NullableStringFieldUpdateOperationsInput | string | null
+    Fahrzeugtyp?: NullableStringFieldUpdateOperationsInput | string | null
     Besatzungsstaerke?: NullableStringFieldUpdateOperationsInput | string | null
+    Status?: Enumfahrzeug_StatusFieldUpdateOperationsInput | $Enums.fahrzeug_Status
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -22893,12 +21509,15 @@ export namespace Prisma {
   export type fahrzeugUncheckedUpdateManyInput = {
     ID?: IntFieldUpdateOperationsInput | number
     Kennzeichen?: NullableStringFieldUpdateOperationsInput | string | null
+    Fahrzeugtyp?: NullableStringFieldUpdateOperationsInput | string | null
     Besatzungsstaerke?: NullableStringFieldUpdateOperationsInput | string | null
+    Status?: Enumfahrzeug_StatusFieldUpdateOperationsInput | $Enums.fahrzeug_Status
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ff_mitgliedCreateInput = {
+    Person_ID: number
     Eintrittsdatum: Date | string
     Austrittsdatum?: Date | string | null
     Aufnahmedatum?: Date | string | null
@@ -22907,7 +21526,6 @@ export namespace Prisma {
     Geaendert_am?: Date | string | null
     allergie?: allergieCreateNestedManyWithoutFf_mitgliedInput
     einteilung?: einteilungCreateNestedManyWithoutFf_mitgliedInput
-    person: personCreateNestedOneWithoutFf_mitgliedInput
     ff_mitglied_lehrgang?: ff_mitglied_lehrgangCreateNestedManyWithoutFf_mitgliedInput
     mitglied_funktionen?: mitglied_funktionenCreateNestedManyWithoutFf_mitgliedInput
   }
@@ -22928,6 +21546,7 @@ export namespace Prisma {
   }
 
   export type ff_mitgliedUpdateInput = {
+    Person_ID?: IntFieldUpdateOperationsInput | number
     Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
     Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -22936,7 +21555,6 @@ export namespace Prisma {
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     allergie?: allergieUpdateManyWithoutFf_mitgliedNestedInput
     einteilung?: einteilungUpdateManyWithoutFf_mitgliedNestedInput
-    person?: personUpdateOneRequiredWithoutFf_mitgliedNestedInput
     ff_mitglied_lehrgang?: ff_mitglied_lehrgangUpdateManyWithoutFf_mitgliedNestedInput
     mitglied_funktionen?: mitglied_funktionenUpdateManyWithoutFf_mitgliedNestedInput
   }
@@ -22968,6 +21586,7 @@ export namespace Prisma {
   }
 
   export type ff_mitgliedUpdateManyMutationInput = {
+    Person_ID?: IntFieldUpdateOperationsInput | number
     Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
     Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -23156,10 +21775,10 @@ export namespace Prisma {
   }
 
   export type jf_erziehungsberechtigterCreateInput = {
-    JF_Mitglied_ID: number
     Person_ID: number
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
+    jf_mitglied: jf_mitgliedCreateNestedOneWithoutJf_erziehungsberechtigterInput
   }
 
   export type jf_erziehungsberechtigterUncheckedCreateInput = {
@@ -23171,10 +21790,10 @@ export namespace Prisma {
   }
 
   export type jf_erziehungsberechtigterUpdateInput = {
-    JF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
     Person_ID?: IntFieldUpdateOperationsInput | number
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    jf_mitglied?: jf_mitgliedUpdateOneRequiredWithoutJf_erziehungsberechtigterNestedInput
   }
 
   export type jf_erziehungsberechtigterUncheckedUpdateInput = {
@@ -23194,7 +21813,6 @@ export namespace Prisma {
   }
 
   export type jf_erziehungsberechtigterUpdateManyMutationInput = {
-    JF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
     Person_ID?: IntFieldUpdateOperationsInput | number
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -23209,6 +21827,7 @@ export namespace Prisma {
   }
 
   export type jf_mitgliedCreateInput = {
+    Person_ID: number
     Eintrittsdatum: Date | string
     Austrittsdatum?: Date | string | null
     Aufnahmedatum?: Date | string | null
@@ -23216,7 +21835,7 @@ export namespace Prisma {
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
     allergie?: allergieCreateNestedManyWithoutJf_mitgliedInput
-    person: personCreateNestedOneWithoutJf_mitgliedInput
+    jf_erziehungsberechtigter?: jf_erziehungsberechtigterCreateNestedManyWithoutJf_mitgliedInput
   }
 
   export type jf_mitgliedUncheckedCreateInput = {
@@ -23229,9 +21848,11 @@ export namespace Prisma {
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
     allergie?: allergieUncheckedCreateNestedManyWithoutJf_mitgliedInput
+    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedCreateNestedManyWithoutJf_mitgliedInput
   }
 
   export type jf_mitgliedUpdateInput = {
+    Person_ID?: IntFieldUpdateOperationsInput | number
     Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
     Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -23239,7 +21860,7 @@ export namespace Prisma {
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     allergie?: allergieUpdateManyWithoutJf_mitgliedNestedInput
-    person?: personUpdateOneRequiredWithoutJf_mitgliedNestedInput
+    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUpdateManyWithoutJf_mitgliedNestedInput
   }
 
   export type jf_mitgliedUncheckedUpdateInput = {
@@ -23252,6 +21873,7 @@ export namespace Prisma {
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     allergie?: allergieUncheckedUpdateManyWithoutJf_mitgliedNestedInput
+    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedUpdateManyWithoutJf_mitgliedNestedInput
   }
 
   export type jf_mitgliedCreateManyInput = {
@@ -23266,6 +21888,7 @@ export namespace Prisma {
   }
 
   export type jf_mitgliedUpdateManyMutationInput = {
+    Person_ID?: IntFieldUpdateOperationsInput | number
     Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
     Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -23409,10 +22032,10 @@ export namespace Prisma {
 
   export type mitglied_loginCreateInput = {
     Benutzer_ID: number
+    Mitglied_ID: number
     Typ: $Enums.mitglied_login_Typ
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
-    person: personCreateNestedOneWithoutMitglied_loginInput
   }
 
   export type mitglied_loginUncheckedCreateInput = {
@@ -23426,10 +22049,10 @@ export namespace Prisma {
 
   export type mitglied_loginUpdateInput = {
     Benutzer_ID?: IntFieldUpdateOperationsInput | number
+    Mitglied_ID?: IntFieldUpdateOperationsInput | number
     Typ?: Enummitglied_login_TypFieldUpdateOperationsInput | $Enums.mitglied_login_Typ
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    person?: personUpdateOneRequiredWithoutMitglied_loginNestedInput
   }
 
   export type mitglied_loginUncheckedUpdateInput = {
@@ -23452,6 +22075,7 @@ export namespace Prisma {
 
   export type mitglied_loginUpdateManyMutationInput = {
     Benutzer_ID?: IntFieldUpdateOperationsInput | number
+    Mitglied_ID?: IntFieldUpdateOperationsInput | number
     Typ?: Enummitglied_login_TypFieldUpdateOperationsInput | $Enums.mitglied_login_Typ
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -23466,130 +22090,12 @@ export namespace Prisma {
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type personCreateInput = {
-    Vorname: string
-    Name: string
-    Geburtsdatum?: Date | string | null
-    Strasse?: string | null
-    Hausnummer?: string | null
-    Postleitzahl?: string | null
-    Ort?: string | null
-    Email?: string | null
-    HandyNr?: number | null
-    Erstellt_am: Date | string
-    Geaendert_am?: Date | string | null
-    ff_mitglied?: ff_mitgliedCreateNestedManyWithoutPersonInput
-    jf_mitglied?: jf_mitgliedCreateNestedManyWithoutPersonInput
-    mitglied_login?: mitglied_loginCreateNestedManyWithoutPersonInput
-    teilnahme?: teilnahmeCreateNestedManyWithoutPersonInput
-  }
-
-  export type personUncheckedCreateInput = {
-    ID?: number
-    Vorname: string
-    Name: string
-    Geburtsdatum?: Date | string | null
-    Strasse?: string | null
-    Hausnummer?: string | null
-    Postleitzahl?: string | null
-    Ort?: string | null
-    Email?: string | null
-    HandyNr?: number | null
-    Erstellt_am: Date | string
-    Geaendert_am?: Date | string | null
-    ff_mitglied?: ff_mitgliedUncheckedCreateNestedManyWithoutPersonInput
-    jf_mitglied?: jf_mitgliedUncheckedCreateNestedManyWithoutPersonInput
-    mitglied_login?: mitglied_loginUncheckedCreateNestedManyWithoutPersonInput
-    teilnahme?: teilnahmeUncheckedCreateNestedManyWithoutPersonInput
-  }
-
-  export type personUpdateInput = {
-    Vorname?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
-    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
-    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
-    Ort?: NullableStringFieldUpdateOperationsInput | string | null
-    Email?: NullableStringFieldUpdateOperationsInput | string | null
-    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
-    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ff_mitglied?: ff_mitgliedUpdateManyWithoutPersonNestedInput
-    jf_mitglied?: jf_mitgliedUpdateManyWithoutPersonNestedInput
-    mitglied_login?: mitglied_loginUpdateManyWithoutPersonNestedInput
-    teilnahme?: teilnahmeUpdateManyWithoutPersonNestedInput
-  }
-
-  export type personUncheckedUpdateInput = {
-    ID?: IntFieldUpdateOperationsInput | number
-    Vorname?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
-    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
-    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
-    Ort?: NullableStringFieldUpdateOperationsInput | string | null
-    Email?: NullableStringFieldUpdateOperationsInput | string | null
-    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
-    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ff_mitglied?: ff_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
-    jf_mitglied?: jf_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
-    mitglied_login?: mitglied_loginUncheckedUpdateManyWithoutPersonNestedInput
-    teilnahme?: teilnahmeUncheckedUpdateManyWithoutPersonNestedInput
-  }
-
-  export type personCreateManyInput = {
-    ID?: number
-    Vorname: string
-    Name: string
-    Geburtsdatum?: Date | string | null
-    Strasse?: string | null
-    Hausnummer?: string | null
-    Postleitzahl?: string | null
-    Ort?: string | null
-    Email?: string | null
-    HandyNr?: number | null
-    Erstellt_am: Date | string
-    Geaendert_am?: Date | string | null
-  }
-
-  export type personUpdateManyMutationInput = {
-    Vorname?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
-    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
-    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
-    Ort?: NullableStringFieldUpdateOperationsInput | string | null
-    Email?: NullableStringFieldUpdateOperationsInput | string | null
-    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
-    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type personUncheckedUpdateManyInput = {
-    ID?: IntFieldUpdateOperationsInput | number
-    Vorname?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
-    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
-    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
-    Ort?: NullableStringFieldUpdateOperationsInput | string | null
-    Email?: NullableStringFieldUpdateOperationsInput | string | null
-    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
-    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
   export type teilnahmeCreateInput = {
+    Mitglied_ID: number
     Veranstaltung_ID: number
     Typ: $Enums.teilnahme_Typ
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
-    person: personCreateNestedOneWithoutTeilnahmeInput
   }
 
   export type teilnahmeUncheckedCreateInput = {
@@ -23602,11 +22108,11 @@ export namespace Prisma {
   }
 
   export type teilnahmeUpdateInput = {
+    Mitglied_ID?: IntFieldUpdateOperationsInput | number
     Veranstaltung_ID?: IntFieldUpdateOperationsInput | number
     Typ?: Enumteilnahme_TypFieldUpdateOperationsInput | $Enums.teilnahme_Typ
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    person?: personUpdateOneRequiredWithoutTeilnahmeNestedInput
   }
 
   export type teilnahmeUncheckedUpdateInput = {
@@ -23628,6 +22134,7 @@ export namespace Prisma {
   }
 
   export type teilnahmeUpdateManyMutationInput = {
+    Mitglied_ID?: IntFieldUpdateOperationsInput | number
     Veranstaltung_ID?: IntFieldUpdateOperationsInput | number
     Typ?: Enumteilnahme_TypFieldUpdateOperationsInput | $Enums.teilnahme_Typ
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24128,6 +22635,13 @@ export namespace Prisma {
     Einheit_ID?: SortOrder
   }
 
+  export type Enumfahrzeug_StatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.fahrzeug_Status | Enumfahrzeug_StatusFieldRefInput<$PrismaModel>
+    in?: $Enums.fahrzeug_Status[]
+    notIn?: $Enums.fahrzeug_Status[]
+    not?: NestedEnumfahrzeug_StatusFilter<$PrismaModel> | $Enums.fahrzeug_Status
+  }
+
   export type fahrzeugOrderByRelevanceInput = {
     fields: fahrzeugOrderByRelevanceFieldEnum | fahrzeugOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -24137,7 +22651,9 @@ export namespace Prisma {
   export type fahrzeugCountOrderByAggregateInput = {
     ID?: SortOrder
     Kennzeichen?: SortOrder
+    Fahrzeugtyp?: SortOrder
     Besatzungsstaerke?: SortOrder
+    Status?: SortOrder
     Erstellt_am?: SortOrder
     Geaendert_am?: SortOrder
   }
@@ -24149,7 +22665,9 @@ export namespace Prisma {
   export type fahrzeugMaxOrderByAggregateInput = {
     ID?: SortOrder
     Kennzeichen?: SortOrder
+    Fahrzeugtyp?: SortOrder
     Besatzungsstaerke?: SortOrder
+    Status?: SortOrder
     Erstellt_am?: SortOrder
     Geaendert_am?: SortOrder
   }
@@ -24157,13 +22675,25 @@ export namespace Prisma {
   export type fahrzeugMinOrderByAggregateInput = {
     ID?: SortOrder
     Kennzeichen?: SortOrder
+    Fahrzeugtyp?: SortOrder
     Besatzungsstaerke?: SortOrder
+    Status?: SortOrder
     Erstellt_am?: SortOrder
     Geaendert_am?: SortOrder
   }
 
   export type fahrzeugSumOrderByAggregateInput = {
     ID?: SortOrder
+  }
+
+  export type Enumfahrzeug_StatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.fahrzeug_Status | Enumfahrzeug_StatusFieldRefInput<$PrismaModel>
+    in?: $Enums.fahrzeug_Status[]
+    notIn?: $Enums.fahrzeug_Status[]
+    not?: NestedEnumfahrzeug_StatusWithAggregatesFilter<$PrismaModel> | $Enums.fahrzeug_Status
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumfahrzeug_StatusFilter<$PrismaModel>
+    _max?: NestedEnumfahrzeug_StatusFilter<$PrismaModel>
   }
 
   export type Enumff_mitglied_StatusFilter<$PrismaModel = never> = {
@@ -24177,11 +22707,6 @@ export namespace Prisma {
     every?: allergieWhereInput
     some?: allergieWhereInput
     none?: allergieWhereInput
-  }
-
-  export type PersonScalarRelationFilter = {
-    is?: personWhereInput
-    isNot?: personWhereInput
   }
 
   export type Ff_mitglied_lehrgangListRelationFilter = {
@@ -24437,6 +22962,16 @@ export namespace Prisma {
     not?: NestedEnumjf_mitglied_StatusFilter<$PrismaModel> | $Enums.jf_mitglied_Status
   }
 
+  export type Jf_erziehungsberechtigterListRelationFilter = {
+    every?: jf_erziehungsberechtigterWhereInput
+    some?: jf_erziehungsberechtigterWhereInput
+    none?: jf_erziehungsberechtigterWhereInput
+  }
+
+  export type jf_erziehungsberechtigterOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type jf_mitgliedCountOrderByAggregateInput = {
     ID?: SortOrder
     Person_ID?: SortOrder
@@ -24675,107 +23210,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnummitglied_login_TypFilter<$PrismaModel>
     _max?: NestedEnummitglied_login_TypFilter<$PrismaModel>
-  }
-
-  export type Ff_mitgliedListRelationFilter = {
-    every?: ff_mitgliedWhereInput
-    some?: ff_mitgliedWhereInput
-    none?: ff_mitgliedWhereInput
-  }
-
-  export type Jf_mitgliedListRelationFilter = {
-    every?: jf_mitgliedWhereInput
-    some?: jf_mitgliedWhereInput
-    none?: jf_mitgliedWhereInput
-  }
-
-  export type Mitglied_loginListRelationFilter = {
-    every?: mitglied_loginWhereInput
-    some?: mitglied_loginWhereInput
-    none?: mitglied_loginWhereInput
-  }
-
-  export type TeilnahmeListRelationFilter = {
-    every?: teilnahmeWhereInput
-    some?: teilnahmeWhereInput
-    none?: teilnahmeWhereInput
-  }
-
-  export type ff_mitgliedOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type jf_mitgliedOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type mitglied_loginOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type teilnahmeOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type personOrderByRelevanceInput = {
-    fields: personOrderByRelevanceFieldEnum | personOrderByRelevanceFieldEnum[]
-    sort: SortOrder
-    search: string
-  }
-
-  export type personCountOrderByAggregateInput = {
-    ID?: SortOrder
-    Vorname?: SortOrder
-    Name?: SortOrder
-    Geburtsdatum?: SortOrder
-    Strasse?: SortOrder
-    Hausnummer?: SortOrder
-    Postleitzahl?: SortOrder
-    Ort?: SortOrder
-    Email?: SortOrder
-    HandyNr?: SortOrder
-    Erstellt_am?: SortOrder
-    Geaendert_am?: SortOrder
-  }
-
-  export type personAvgOrderByAggregateInput = {
-    ID?: SortOrder
-    HandyNr?: SortOrder
-  }
-
-  export type personMaxOrderByAggregateInput = {
-    ID?: SortOrder
-    Vorname?: SortOrder
-    Name?: SortOrder
-    Geburtsdatum?: SortOrder
-    Strasse?: SortOrder
-    Hausnummer?: SortOrder
-    Postleitzahl?: SortOrder
-    Ort?: SortOrder
-    Email?: SortOrder
-    HandyNr?: SortOrder
-    Erstellt_am?: SortOrder
-    Geaendert_am?: SortOrder
-  }
-
-  export type personMinOrderByAggregateInput = {
-    ID?: SortOrder
-    Vorname?: SortOrder
-    Name?: SortOrder
-    Geburtsdatum?: SortOrder
-    Strasse?: SortOrder
-    Hausnummer?: SortOrder
-    Postleitzahl?: SortOrder
-    Ort?: SortOrder
-    Email?: SortOrder
-    HandyNr?: SortOrder
-    Erstellt_am?: SortOrder
-    Geaendert_am?: SortOrder
-  }
-
-  export type personSumOrderByAggregateInput = {
-    ID?: SortOrder
-    HandyNr?: SortOrder
   }
 
   export type Enumteilnahme_TypFilter<$PrismaModel = never> = {
@@ -25100,6 +23534,10 @@ export namespace Prisma {
     connect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
   }
 
+  export type Enumfahrzeug_StatusFieldUpdateOperationsInput = {
+    set?: $Enums.fahrzeug_Status
+  }
+
   export type einteilungUpdateManyWithoutFahrzeugNestedInput = {
     create?: XOR<einteilungCreateWithoutFahrzeugInput, einteilungUncheckedCreateWithoutFahrzeugInput> | einteilungCreateWithoutFahrzeugInput[] | einteilungUncheckedCreateWithoutFahrzeugInput[]
     connectOrCreate?: einteilungCreateOrConnectWithoutFahrzeugInput | einteilungCreateOrConnectWithoutFahrzeugInput[]
@@ -25140,12 +23578,6 @@ export namespace Prisma {
     connectOrCreate?: einteilungCreateOrConnectWithoutFf_mitgliedInput | einteilungCreateOrConnectWithoutFf_mitgliedInput[]
     createMany?: einteilungCreateManyFf_mitgliedInputEnvelope
     connect?: einteilungWhereUniqueInput | einteilungWhereUniqueInput[]
-  }
-
-  export type personCreateNestedOneWithoutFf_mitgliedInput = {
-    create?: XOR<personCreateWithoutFf_mitgliedInput, personUncheckedCreateWithoutFf_mitgliedInput>
-    connectOrCreate?: personCreateOrConnectWithoutFf_mitgliedInput
-    connect?: personWhereUniqueInput
   }
 
   export type ff_mitglied_lehrgangCreateNestedManyWithoutFf_mitgliedInput = {
@@ -25220,14 +23652,6 @@ export namespace Prisma {
     update?: einteilungUpdateWithWhereUniqueWithoutFf_mitgliedInput | einteilungUpdateWithWhereUniqueWithoutFf_mitgliedInput[]
     updateMany?: einteilungUpdateManyWithWhereWithoutFf_mitgliedInput | einteilungUpdateManyWithWhereWithoutFf_mitgliedInput[]
     deleteMany?: einteilungScalarWhereInput | einteilungScalarWhereInput[]
-  }
-
-  export type personUpdateOneRequiredWithoutFf_mitgliedNestedInput = {
-    create?: XOR<personCreateWithoutFf_mitgliedInput, personUncheckedCreateWithoutFf_mitgliedInput>
-    connectOrCreate?: personCreateOrConnectWithoutFf_mitgliedInput
-    upsert?: personUpsertWithoutFf_mitgliedInput
-    connect?: personWhereUniqueInput
-    update?: XOR<XOR<personUpdateToOneWithWhereWithoutFf_mitgliedInput, personUpdateWithoutFf_mitgliedInput>, personUncheckedUpdateWithoutFf_mitgliedInput>
   }
 
   export type ff_mitglied_lehrgangUpdateManyWithoutFf_mitgliedNestedInput = {
@@ -25388,6 +23812,20 @@ export namespace Prisma {
     deleteMany?: mitglied_funktionenScalarWhereInput | mitglied_funktionenScalarWhereInput[]
   }
 
+  export type jf_mitgliedCreateNestedOneWithoutJf_erziehungsberechtigterInput = {
+    create?: XOR<jf_mitgliedCreateWithoutJf_erziehungsberechtigterInput, jf_mitgliedUncheckedCreateWithoutJf_erziehungsberechtigterInput>
+    connectOrCreate?: jf_mitgliedCreateOrConnectWithoutJf_erziehungsberechtigterInput
+    connect?: jf_mitgliedWhereUniqueInput
+  }
+
+  export type jf_mitgliedUpdateOneRequiredWithoutJf_erziehungsberechtigterNestedInput = {
+    create?: XOR<jf_mitgliedCreateWithoutJf_erziehungsberechtigterInput, jf_mitgliedUncheckedCreateWithoutJf_erziehungsberechtigterInput>
+    connectOrCreate?: jf_mitgliedCreateOrConnectWithoutJf_erziehungsberechtigterInput
+    upsert?: jf_mitgliedUpsertWithoutJf_erziehungsberechtigterInput
+    connect?: jf_mitgliedWhereUniqueInput
+    update?: XOR<XOR<jf_mitgliedUpdateToOneWithWhereWithoutJf_erziehungsberechtigterInput, jf_mitgliedUpdateWithoutJf_erziehungsberechtigterInput>, jf_mitgliedUncheckedUpdateWithoutJf_erziehungsberechtigterInput>
+  }
+
   export type allergieCreateNestedManyWithoutJf_mitgliedInput = {
     create?: XOR<allergieCreateWithoutJf_mitgliedInput, allergieUncheckedCreateWithoutJf_mitgliedInput> | allergieCreateWithoutJf_mitgliedInput[] | allergieUncheckedCreateWithoutJf_mitgliedInput[]
     connectOrCreate?: allergieCreateOrConnectWithoutJf_mitgliedInput | allergieCreateOrConnectWithoutJf_mitgliedInput[]
@@ -25395,10 +23833,11 @@ export namespace Prisma {
     connect?: allergieWhereUniqueInput | allergieWhereUniqueInput[]
   }
 
-  export type personCreateNestedOneWithoutJf_mitgliedInput = {
-    create?: XOR<personCreateWithoutJf_mitgliedInput, personUncheckedCreateWithoutJf_mitgliedInput>
-    connectOrCreate?: personCreateOrConnectWithoutJf_mitgliedInput
-    connect?: personWhereUniqueInput
+  export type jf_erziehungsberechtigterCreateNestedManyWithoutJf_mitgliedInput = {
+    create?: XOR<jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput, jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput> | jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput[] | jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput[]
+    connectOrCreate?: jf_erziehungsberechtigterCreateOrConnectWithoutJf_mitgliedInput | jf_erziehungsberechtigterCreateOrConnectWithoutJf_mitgliedInput[]
+    createMany?: jf_erziehungsberechtigterCreateManyJf_mitgliedInputEnvelope
+    connect?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
   }
 
   export type allergieUncheckedCreateNestedManyWithoutJf_mitgliedInput = {
@@ -25406,6 +23845,13 @@ export namespace Prisma {
     connectOrCreate?: allergieCreateOrConnectWithoutJf_mitgliedInput | allergieCreateOrConnectWithoutJf_mitgliedInput[]
     createMany?: allergieCreateManyJf_mitgliedInputEnvelope
     connect?: allergieWhereUniqueInput | allergieWhereUniqueInput[]
+  }
+
+  export type jf_erziehungsberechtigterUncheckedCreateNestedManyWithoutJf_mitgliedInput = {
+    create?: XOR<jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput, jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput> | jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput[] | jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput[]
+    connectOrCreate?: jf_erziehungsberechtigterCreateOrConnectWithoutJf_mitgliedInput | jf_erziehungsberechtigterCreateOrConnectWithoutJf_mitgliedInput[]
+    createMany?: jf_erziehungsberechtigterCreateManyJf_mitgliedInputEnvelope
+    connect?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
   }
 
   export type Enumjf_mitglied_StatusFieldUpdateOperationsInput = {
@@ -25426,12 +23872,18 @@ export namespace Prisma {
     deleteMany?: allergieScalarWhereInput | allergieScalarWhereInput[]
   }
 
-  export type personUpdateOneRequiredWithoutJf_mitgliedNestedInput = {
-    create?: XOR<personCreateWithoutJf_mitgliedInput, personUncheckedCreateWithoutJf_mitgliedInput>
-    connectOrCreate?: personCreateOrConnectWithoutJf_mitgliedInput
-    upsert?: personUpsertWithoutJf_mitgliedInput
-    connect?: personWhereUniqueInput
-    update?: XOR<XOR<personUpdateToOneWithWhereWithoutJf_mitgliedInput, personUpdateWithoutJf_mitgliedInput>, personUncheckedUpdateWithoutJf_mitgliedInput>
+  export type jf_erziehungsberechtigterUpdateManyWithoutJf_mitgliedNestedInput = {
+    create?: XOR<jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput, jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput> | jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput[] | jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput[]
+    connectOrCreate?: jf_erziehungsberechtigterCreateOrConnectWithoutJf_mitgliedInput | jf_erziehungsberechtigterCreateOrConnectWithoutJf_mitgliedInput[]
+    upsert?: jf_erziehungsberechtigterUpsertWithWhereUniqueWithoutJf_mitgliedInput | jf_erziehungsberechtigterUpsertWithWhereUniqueWithoutJf_mitgliedInput[]
+    createMany?: jf_erziehungsberechtigterCreateManyJf_mitgliedInputEnvelope
+    set?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
+    disconnect?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
+    delete?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
+    connect?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
+    update?: jf_erziehungsberechtigterUpdateWithWhereUniqueWithoutJf_mitgliedInput | jf_erziehungsberechtigterUpdateWithWhereUniqueWithoutJf_mitgliedInput[]
+    updateMany?: jf_erziehungsberechtigterUpdateManyWithWhereWithoutJf_mitgliedInput | jf_erziehungsberechtigterUpdateManyWithWhereWithoutJf_mitgliedInput[]
+    deleteMany?: jf_erziehungsberechtigterScalarWhereInput | jf_erziehungsberechtigterScalarWhereInput[]
   }
 
   export type allergieUncheckedUpdateManyWithoutJf_mitgliedNestedInput = {
@@ -25446,6 +23898,20 @@ export namespace Prisma {
     update?: allergieUpdateWithWhereUniqueWithoutJf_mitgliedInput | allergieUpdateWithWhereUniqueWithoutJf_mitgliedInput[]
     updateMany?: allergieUpdateManyWithWhereWithoutJf_mitgliedInput | allergieUpdateManyWithWhereWithoutJf_mitgliedInput[]
     deleteMany?: allergieScalarWhereInput | allergieScalarWhereInput[]
+  }
+
+  export type jf_erziehungsberechtigterUncheckedUpdateManyWithoutJf_mitgliedNestedInput = {
+    create?: XOR<jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput, jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput> | jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput[] | jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput[]
+    connectOrCreate?: jf_erziehungsberechtigterCreateOrConnectWithoutJf_mitgliedInput | jf_erziehungsberechtigterCreateOrConnectWithoutJf_mitgliedInput[]
+    upsert?: jf_erziehungsberechtigterUpsertWithWhereUniqueWithoutJf_mitgliedInput | jf_erziehungsberechtigterUpsertWithWhereUniqueWithoutJf_mitgliedInput[]
+    createMany?: jf_erziehungsberechtigterCreateManyJf_mitgliedInputEnvelope
+    set?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
+    disconnect?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
+    delete?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
+    connect?: jf_erziehungsberechtigterWhereUniqueInput | jf_erziehungsberechtigterWhereUniqueInput[]
+    update?: jf_erziehungsberechtigterUpdateWithWhereUniqueWithoutJf_mitgliedInput | jf_erziehungsberechtigterUpdateWithWhereUniqueWithoutJf_mitgliedInput[]
+    updateMany?: jf_erziehungsberechtigterUpdateManyWithWhereWithoutJf_mitgliedInput | jf_erziehungsberechtigterUpdateManyWithWhereWithoutJf_mitgliedInput[]
+    deleteMany?: jf_erziehungsberechtigterScalarWhereInput | jf_erziehungsberechtigterScalarWhereInput[]
   }
 
   export type ff_mitglied_lehrgangCreateNestedManyWithoutLehrgangInput = {
@@ -25530,208 +23996,12 @@ export namespace Prisma {
     update?: XOR<XOR<funktion_ffUpdateToOneWithWhereWithoutMitglied_funktionenInput, funktion_ffUpdateWithoutMitglied_funktionenInput>, funktion_ffUncheckedUpdateWithoutMitglied_funktionenInput>
   }
 
-  export type personCreateNestedOneWithoutMitglied_loginInput = {
-    create?: XOR<personCreateWithoutMitglied_loginInput, personUncheckedCreateWithoutMitglied_loginInput>
-    connectOrCreate?: personCreateOrConnectWithoutMitglied_loginInput
-    connect?: personWhereUniqueInput
-  }
-
   export type Enummitglied_login_TypFieldUpdateOperationsInput = {
     set?: $Enums.mitglied_login_Typ
   }
 
-  export type personUpdateOneRequiredWithoutMitglied_loginNestedInput = {
-    create?: XOR<personCreateWithoutMitglied_loginInput, personUncheckedCreateWithoutMitglied_loginInput>
-    connectOrCreate?: personCreateOrConnectWithoutMitglied_loginInput
-    upsert?: personUpsertWithoutMitglied_loginInput
-    connect?: personWhereUniqueInput
-    update?: XOR<XOR<personUpdateToOneWithWhereWithoutMitglied_loginInput, personUpdateWithoutMitglied_loginInput>, personUncheckedUpdateWithoutMitglied_loginInput>
-  }
-
-  export type ff_mitgliedCreateNestedManyWithoutPersonInput = {
-    create?: XOR<ff_mitgliedCreateWithoutPersonInput, ff_mitgliedUncheckedCreateWithoutPersonInput> | ff_mitgliedCreateWithoutPersonInput[] | ff_mitgliedUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: ff_mitgliedCreateOrConnectWithoutPersonInput | ff_mitgliedCreateOrConnectWithoutPersonInput[]
-    createMany?: ff_mitgliedCreateManyPersonInputEnvelope
-    connect?: ff_mitgliedWhereUniqueInput | ff_mitgliedWhereUniqueInput[]
-  }
-
-  export type jf_mitgliedCreateNestedManyWithoutPersonInput = {
-    create?: XOR<jf_mitgliedCreateWithoutPersonInput, jf_mitgliedUncheckedCreateWithoutPersonInput> | jf_mitgliedCreateWithoutPersonInput[] | jf_mitgliedUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: jf_mitgliedCreateOrConnectWithoutPersonInput | jf_mitgliedCreateOrConnectWithoutPersonInput[]
-    createMany?: jf_mitgliedCreateManyPersonInputEnvelope
-    connect?: jf_mitgliedWhereUniqueInput | jf_mitgliedWhereUniqueInput[]
-  }
-
-  export type mitglied_loginCreateNestedManyWithoutPersonInput = {
-    create?: XOR<mitglied_loginCreateWithoutPersonInput, mitglied_loginUncheckedCreateWithoutPersonInput> | mitglied_loginCreateWithoutPersonInput[] | mitglied_loginUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: mitglied_loginCreateOrConnectWithoutPersonInput | mitglied_loginCreateOrConnectWithoutPersonInput[]
-    createMany?: mitglied_loginCreateManyPersonInputEnvelope
-    connect?: mitglied_loginWhereUniqueInput | mitglied_loginWhereUniqueInput[]
-  }
-
-  export type teilnahmeCreateNestedManyWithoutPersonInput = {
-    create?: XOR<teilnahmeCreateWithoutPersonInput, teilnahmeUncheckedCreateWithoutPersonInput> | teilnahmeCreateWithoutPersonInput[] | teilnahmeUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: teilnahmeCreateOrConnectWithoutPersonInput | teilnahmeCreateOrConnectWithoutPersonInput[]
-    createMany?: teilnahmeCreateManyPersonInputEnvelope
-    connect?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
-  }
-
-  export type ff_mitgliedUncheckedCreateNestedManyWithoutPersonInput = {
-    create?: XOR<ff_mitgliedCreateWithoutPersonInput, ff_mitgliedUncheckedCreateWithoutPersonInput> | ff_mitgliedCreateWithoutPersonInput[] | ff_mitgliedUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: ff_mitgliedCreateOrConnectWithoutPersonInput | ff_mitgliedCreateOrConnectWithoutPersonInput[]
-    createMany?: ff_mitgliedCreateManyPersonInputEnvelope
-    connect?: ff_mitgliedWhereUniqueInput | ff_mitgliedWhereUniqueInput[]
-  }
-
-  export type jf_mitgliedUncheckedCreateNestedManyWithoutPersonInput = {
-    create?: XOR<jf_mitgliedCreateWithoutPersonInput, jf_mitgliedUncheckedCreateWithoutPersonInput> | jf_mitgliedCreateWithoutPersonInput[] | jf_mitgliedUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: jf_mitgliedCreateOrConnectWithoutPersonInput | jf_mitgliedCreateOrConnectWithoutPersonInput[]
-    createMany?: jf_mitgliedCreateManyPersonInputEnvelope
-    connect?: jf_mitgliedWhereUniqueInput | jf_mitgliedWhereUniqueInput[]
-  }
-
-  export type mitglied_loginUncheckedCreateNestedManyWithoutPersonInput = {
-    create?: XOR<mitglied_loginCreateWithoutPersonInput, mitglied_loginUncheckedCreateWithoutPersonInput> | mitglied_loginCreateWithoutPersonInput[] | mitglied_loginUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: mitglied_loginCreateOrConnectWithoutPersonInput | mitglied_loginCreateOrConnectWithoutPersonInput[]
-    createMany?: mitglied_loginCreateManyPersonInputEnvelope
-    connect?: mitglied_loginWhereUniqueInput | mitglied_loginWhereUniqueInput[]
-  }
-
-  export type teilnahmeUncheckedCreateNestedManyWithoutPersonInput = {
-    create?: XOR<teilnahmeCreateWithoutPersonInput, teilnahmeUncheckedCreateWithoutPersonInput> | teilnahmeCreateWithoutPersonInput[] | teilnahmeUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: teilnahmeCreateOrConnectWithoutPersonInput | teilnahmeCreateOrConnectWithoutPersonInput[]
-    createMany?: teilnahmeCreateManyPersonInputEnvelope
-    connect?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
-  }
-
-  export type ff_mitgliedUpdateManyWithoutPersonNestedInput = {
-    create?: XOR<ff_mitgliedCreateWithoutPersonInput, ff_mitgliedUncheckedCreateWithoutPersonInput> | ff_mitgliedCreateWithoutPersonInput[] | ff_mitgliedUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: ff_mitgliedCreateOrConnectWithoutPersonInput | ff_mitgliedCreateOrConnectWithoutPersonInput[]
-    upsert?: ff_mitgliedUpsertWithWhereUniqueWithoutPersonInput | ff_mitgliedUpsertWithWhereUniqueWithoutPersonInput[]
-    createMany?: ff_mitgliedCreateManyPersonInputEnvelope
-    set?: ff_mitgliedWhereUniqueInput | ff_mitgliedWhereUniqueInput[]
-    disconnect?: ff_mitgliedWhereUniqueInput | ff_mitgliedWhereUniqueInput[]
-    delete?: ff_mitgliedWhereUniqueInput | ff_mitgliedWhereUniqueInput[]
-    connect?: ff_mitgliedWhereUniqueInput | ff_mitgliedWhereUniqueInput[]
-    update?: ff_mitgliedUpdateWithWhereUniqueWithoutPersonInput | ff_mitgliedUpdateWithWhereUniqueWithoutPersonInput[]
-    updateMany?: ff_mitgliedUpdateManyWithWhereWithoutPersonInput | ff_mitgliedUpdateManyWithWhereWithoutPersonInput[]
-    deleteMany?: ff_mitgliedScalarWhereInput | ff_mitgliedScalarWhereInput[]
-  }
-
-  export type jf_mitgliedUpdateManyWithoutPersonNestedInput = {
-    create?: XOR<jf_mitgliedCreateWithoutPersonInput, jf_mitgliedUncheckedCreateWithoutPersonInput> | jf_mitgliedCreateWithoutPersonInput[] | jf_mitgliedUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: jf_mitgliedCreateOrConnectWithoutPersonInput | jf_mitgliedCreateOrConnectWithoutPersonInput[]
-    upsert?: jf_mitgliedUpsertWithWhereUniqueWithoutPersonInput | jf_mitgliedUpsertWithWhereUniqueWithoutPersonInput[]
-    createMany?: jf_mitgliedCreateManyPersonInputEnvelope
-    set?: jf_mitgliedWhereUniqueInput | jf_mitgliedWhereUniqueInput[]
-    disconnect?: jf_mitgliedWhereUniqueInput | jf_mitgliedWhereUniqueInput[]
-    delete?: jf_mitgliedWhereUniqueInput | jf_mitgliedWhereUniqueInput[]
-    connect?: jf_mitgliedWhereUniqueInput | jf_mitgliedWhereUniqueInput[]
-    update?: jf_mitgliedUpdateWithWhereUniqueWithoutPersonInput | jf_mitgliedUpdateWithWhereUniqueWithoutPersonInput[]
-    updateMany?: jf_mitgliedUpdateManyWithWhereWithoutPersonInput | jf_mitgliedUpdateManyWithWhereWithoutPersonInput[]
-    deleteMany?: jf_mitgliedScalarWhereInput | jf_mitgliedScalarWhereInput[]
-  }
-
-  export type mitglied_loginUpdateManyWithoutPersonNestedInput = {
-    create?: XOR<mitglied_loginCreateWithoutPersonInput, mitglied_loginUncheckedCreateWithoutPersonInput> | mitglied_loginCreateWithoutPersonInput[] | mitglied_loginUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: mitglied_loginCreateOrConnectWithoutPersonInput | mitglied_loginCreateOrConnectWithoutPersonInput[]
-    upsert?: mitglied_loginUpsertWithWhereUniqueWithoutPersonInput | mitglied_loginUpsertWithWhereUniqueWithoutPersonInput[]
-    createMany?: mitglied_loginCreateManyPersonInputEnvelope
-    set?: mitglied_loginWhereUniqueInput | mitglied_loginWhereUniqueInput[]
-    disconnect?: mitglied_loginWhereUniqueInput | mitglied_loginWhereUniqueInput[]
-    delete?: mitglied_loginWhereUniqueInput | mitglied_loginWhereUniqueInput[]
-    connect?: mitglied_loginWhereUniqueInput | mitglied_loginWhereUniqueInput[]
-    update?: mitglied_loginUpdateWithWhereUniqueWithoutPersonInput | mitglied_loginUpdateWithWhereUniqueWithoutPersonInput[]
-    updateMany?: mitglied_loginUpdateManyWithWhereWithoutPersonInput | mitglied_loginUpdateManyWithWhereWithoutPersonInput[]
-    deleteMany?: mitglied_loginScalarWhereInput | mitglied_loginScalarWhereInput[]
-  }
-
-  export type teilnahmeUpdateManyWithoutPersonNestedInput = {
-    create?: XOR<teilnahmeCreateWithoutPersonInput, teilnahmeUncheckedCreateWithoutPersonInput> | teilnahmeCreateWithoutPersonInput[] | teilnahmeUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: teilnahmeCreateOrConnectWithoutPersonInput | teilnahmeCreateOrConnectWithoutPersonInput[]
-    upsert?: teilnahmeUpsertWithWhereUniqueWithoutPersonInput | teilnahmeUpsertWithWhereUniqueWithoutPersonInput[]
-    createMany?: teilnahmeCreateManyPersonInputEnvelope
-    set?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
-    disconnect?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
-    delete?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
-    connect?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
-    update?: teilnahmeUpdateWithWhereUniqueWithoutPersonInput | teilnahmeUpdateWithWhereUniqueWithoutPersonInput[]
-    updateMany?: teilnahmeUpdateManyWithWhereWithoutPersonInput | teilnahmeUpdateManyWithWhereWithoutPersonInput[]
-    deleteMany?: teilnahmeScalarWhereInput | teilnahmeScalarWhereInput[]
-  }
-
-  export type ff_mitgliedUncheckedUpdateManyWithoutPersonNestedInput = {
-    create?: XOR<ff_mitgliedCreateWithoutPersonInput, ff_mitgliedUncheckedCreateWithoutPersonInput> | ff_mitgliedCreateWithoutPersonInput[] | ff_mitgliedUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: ff_mitgliedCreateOrConnectWithoutPersonInput | ff_mitgliedCreateOrConnectWithoutPersonInput[]
-    upsert?: ff_mitgliedUpsertWithWhereUniqueWithoutPersonInput | ff_mitgliedUpsertWithWhereUniqueWithoutPersonInput[]
-    createMany?: ff_mitgliedCreateManyPersonInputEnvelope
-    set?: ff_mitgliedWhereUniqueInput | ff_mitgliedWhereUniqueInput[]
-    disconnect?: ff_mitgliedWhereUniqueInput | ff_mitgliedWhereUniqueInput[]
-    delete?: ff_mitgliedWhereUniqueInput | ff_mitgliedWhereUniqueInput[]
-    connect?: ff_mitgliedWhereUniqueInput | ff_mitgliedWhereUniqueInput[]
-    update?: ff_mitgliedUpdateWithWhereUniqueWithoutPersonInput | ff_mitgliedUpdateWithWhereUniqueWithoutPersonInput[]
-    updateMany?: ff_mitgliedUpdateManyWithWhereWithoutPersonInput | ff_mitgliedUpdateManyWithWhereWithoutPersonInput[]
-    deleteMany?: ff_mitgliedScalarWhereInput | ff_mitgliedScalarWhereInput[]
-  }
-
-  export type jf_mitgliedUncheckedUpdateManyWithoutPersonNestedInput = {
-    create?: XOR<jf_mitgliedCreateWithoutPersonInput, jf_mitgliedUncheckedCreateWithoutPersonInput> | jf_mitgliedCreateWithoutPersonInput[] | jf_mitgliedUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: jf_mitgliedCreateOrConnectWithoutPersonInput | jf_mitgliedCreateOrConnectWithoutPersonInput[]
-    upsert?: jf_mitgliedUpsertWithWhereUniqueWithoutPersonInput | jf_mitgliedUpsertWithWhereUniqueWithoutPersonInput[]
-    createMany?: jf_mitgliedCreateManyPersonInputEnvelope
-    set?: jf_mitgliedWhereUniqueInput | jf_mitgliedWhereUniqueInput[]
-    disconnect?: jf_mitgliedWhereUniqueInput | jf_mitgliedWhereUniqueInput[]
-    delete?: jf_mitgliedWhereUniqueInput | jf_mitgliedWhereUniqueInput[]
-    connect?: jf_mitgliedWhereUniqueInput | jf_mitgliedWhereUniqueInput[]
-    update?: jf_mitgliedUpdateWithWhereUniqueWithoutPersonInput | jf_mitgliedUpdateWithWhereUniqueWithoutPersonInput[]
-    updateMany?: jf_mitgliedUpdateManyWithWhereWithoutPersonInput | jf_mitgliedUpdateManyWithWhereWithoutPersonInput[]
-    deleteMany?: jf_mitgliedScalarWhereInput | jf_mitgliedScalarWhereInput[]
-  }
-
-  export type mitglied_loginUncheckedUpdateManyWithoutPersonNestedInput = {
-    create?: XOR<mitglied_loginCreateWithoutPersonInput, mitglied_loginUncheckedCreateWithoutPersonInput> | mitglied_loginCreateWithoutPersonInput[] | mitglied_loginUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: mitglied_loginCreateOrConnectWithoutPersonInput | mitglied_loginCreateOrConnectWithoutPersonInput[]
-    upsert?: mitglied_loginUpsertWithWhereUniqueWithoutPersonInput | mitglied_loginUpsertWithWhereUniqueWithoutPersonInput[]
-    createMany?: mitglied_loginCreateManyPersonInputEnvelope
-    set?: mitglied_loginWhereUniqueInput | mitglied_loginWhereUniqueInput[]
-    disconnect?: mitglied_loginWhereUniqueInput | mitglied_loginWhereUniqueInput[]
-    delete?: mitglied_loginWhereUniqueInput | mitglied_loginWhereUniqueInput[]
-    connect?: mitglied_loginWhereUniqueInput | mitglied_loginWhereUniqueInput[]
-    update?: mitglied_loginUpdateWithWhereUniqueWithoutPersonInput | mitglied_loginUpdateWithWhereUniqueWithoutPersonInput[]
-    updateMany?: mitglied_loginUpdateManyWithWhereWithoutPersonInput | mitglied_loginUpdateManyWithWhereWithoutPersonInput[]
-    deleteMany?: mitglied_loginScalarWhereInput | mitglied_loginScalarWhereInput[]
-  }
-
-  export type teilnahmeUncheckedUpdateManyWithoutPersonNestedInput = {
-    create?: XOR<teilnahmeCreateWithoutPersonInput, teilnahmeUncheckedCreateWithoutPersonInput> | teilnahmeCreateWithoutPersonInput[] | teilnahmeUncheckedCreateWithoutPersonInput[]
-    connectOrCreate?: teilnahmeCreateOrConnectWithoutPersonInput | teilnahmeCreateOrConnectWithoutPersonInput[]
-    upsert?: teilnahmeUpsertWithWhereUniqueWithoutPersonInput | teilnahmeUpsertWithWhereUniqueWithoutPersonInput[]
-    createMany?: teilnahmeCreateManyPersonInputEnvelope
-    set?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
-    disconnect?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
-    delete?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
-    connect?: teilnahmeWhereUniqueInput | teilnahmeWhereUniqueInput[]
-    update?: teilnahmeUpdateWithWhereUniqueWithoutPersonInput | teilnahmeUpdateWithWhereUniqueWithoutPersonInput[]
-    updateMany?: teilnahmeUpdateManyWithWhereWithoutPersonInput | teilnahmeUpdateManyWithWhereWithoutPersonInput[]
-    deleteMany?: teilnahmeScalarWhereInput | teilnahmeScalarWhereInput[]
-  }
-
-  export type personCreateNestedOneWithoutTeilnahmeInput = {
-    create?: XOR<personCreateWithoutTeilnahmeInput, personUncheckedCreateWithoutTeilnahmeInput>
-    connectOrCreate?: personCreateOrConnectWithoutTeilnahmeInput
-    connect?: personWhereUniqueInput
-  }
-
   export type Enumteilnahme_TypFieldUpdateOperationsInput = {
     set?: $Enums.teilnahme_Typ
-  }
-
-  export type personUpdateOneRequiredWithoutTeilnahmeNestedInput = {
-    create?: XOR<personCreateWithoutTeilnahmeInput, personUncheckedCreateWithoutTeilnahmeInput>
-    connectOrCreate?: personCreateOrConnectWithoutTeilnahmeInput
-    upsert?: personUpsertWithoutTeilnahmeInput
-    connect?: personWhereUniqueInput
-    update?: XOR<XOR<personUpdateToOneWithWhereWithoutTeilnahmeInput, personUpdateWithoutTeilnahmeInput>, personUncheckedUpdateWithoutTeilnahmeInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -25916,6 +24186,23 @@ export namespace Prisma {
     _max?: NestedEnumeinsatz_ArtFilter<$PrismaModel>
   }
 
+  export type NestedEnumfahrzeug_StatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.fahrzeug_Status | Enumfahrzeug_StatusFieldRefInput<$PrismaModel>
+    in?: $Enums.fahrzeug_Status[]
+    notIn?: $Enums.fahrzeug_Status[]
+    not?: NestedEnumfahrzeug_StatusFilter<$PrismaModel> | $Enums.fahrzeug_Status
+  }
+
+  export type NestedEnumfahrzeug_StatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.fahrzeug_Status | Enumfahrzeug_StatusFieldRefInput<$PrismaModel>
+    in?: $Enums.fahrzeug_Status[]
+    notIn?: $Enums.fahrzeug_Status[]
+    not?: NestedEnumfahrzeug_StatusWithAggregatesFilter<$PrismaModel> | $Enums.fahrzeug_Status
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumfahrzeug_StatusFilter<$PrismaModel>
+    _max?: NestedEnumfahrzeug_StatusFilter<$PrismaModel>
+  }
+
   export type NestedEnumff_mitglied_StatusFilter<$PrismaModel = never> = {
     equals?: $Enums.ff_mitglied_Status | Enumff_mitglied_StatusFieldRefInput<$PrismaModel>
     in?: $Enums.ff_mitglied_Status[]
@@ -26042,6 +24329,7 @@ export namespace Prisma {
   }
 
   export type ff_mitgliedCreateWithoutAllergieInput = {
+    Person_ID: number
     Eintrittsdatum: Date | string
     Austrittsdatum?: Date | string | null
     Aufnahmedatum?: Date | string | null
@@ -26049,7 +24337,6 @@ export namespace Prisma {
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
     einteilung?: einteilungCreateNestedManyWithoutFf_mitgliedInput
-    person: personCreateNestedOneWithoutFf_mitgliedInput
     ff_mitglied_lehrgang?: ff_mitglied_lehrgangCreateNestedManyWithoutFf_mitgliedInput
     mitglied_funktionen?: mitglied_funktionenCreateNestedManyWithoutFf_mitgliedInput
   }
@@ -26074,13 +24361,14 @@ export namespace Prisma {
   }
 
   export type jf_mitgliedCreateWithoutAllergieInput = {
+    Person_ID: number
     Eintrittsdatum: Date | string
     Austrittsdatum?: Date | string | null
     Aufnahmedatum?: Date | string | null
     Status?: $Enums.jf_mitglied_Status
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
-    person: personCreateNestedOneWithoutJf_mitgliedInput
+    jf_erziehungsberechtigter?: jf_erziehungsberechtigterCreateNestedManyWithoutJf_mitgliedInput
   }
 
   export type jf_mitgliedUncheckedCreateWithoutAllergieInput = {
@@ -26092,6 +24380,7 @@ export namespace Prisma {
     Status?: $Enums.jf_mitglied_Status
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
+    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedCreateNestedManyWithoutJf_mitgliedInput
   }
 
   export type jf_mitgliedCreateOrConnectWithoutAllergieInput = {
@@ -26111,6 +24400,7 @@ export namespace Prisma {
   }
 
   export type ff_mitgliedUpdateWithoutAllergieInput = {
+    Person_ID?: IntFieldUpdateOperationsInput | number
     Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
     Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -26118,7 +24408,6 @@ export namespace Prisma {
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     einteilung?: einteilungUpdateManyWithoutFf_mitgliedNestedInput
-    person?: personUpdateOneRequiredWithoutFf_mitgliedNestedInput
     ff_mitglied_lehrgang?: ff_mitglied_lehrgangUpdateManyWithoutFf_mitgliedNestedInput
     mitglied_funktionen?: mitglied_funktionenUpdateManyWithoutFf_mitgliedNestedInput
   }
@@ -26149,13 +24438,14 @@ export namespace Prisma {
   }
 
   export type jf_mitgliedUpdateWithoutAllergieInput = {
+    Person_ID?: IntFieldUpdateOperationsInput | number
     Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
     Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    person?: personUpdateOneRequiredWithoutJf_mitgliedNestedInput
+    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUpdateManyWithoutJf_mitgliedNestedInput
   }
 
   export type jf_mitgliedUncheckedUpdateWithoutAllergieInput = {
@@ -26167,6 +24457,7 @@ export namespace Prisma {
     Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    jf_erziehungsberechtigter?: jf_erziehungsberechtigterUncheckedUpdateManyWithoutJf_mitgliedNestedInput
   }
 
   export type einteilungCreateWithoutDientsabendInput = {
@@ -26384,7 +24675,9 @@ export namespace Prisma {
 
   export type fahrzeugCreateWithoutEinteilungInput = {
     Kennzeichen?: string | null
+    Fahrzeugtyp?: string | null
     Besatzungsstaerke?: string | null
+    Status?: $Enums.fahrzeug_Status
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
   }
@@ -26392,7 +24685,9 @@ export namespace Prisma {
   export type fahrzeugUncheckedCreateWithoutEinteilungInput = {
     ID?: number
     Kennzeichen?: string | null
+    Fahrzeugtyp?: string | null
     Besatzungsstaerke?: string | null
+    Status?: $Enums.fahrzeug_Status
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
   }
@@ -26403,6 +24698,7 @@ export namespace Prisma {
   }
 
   export type ff_mitgliedCreateWithoutEinteilungInput = {
+    Person_ID: number
     Eintrittsdatum: Date | string
     Austrittsdatum?: Date | string | null
     Aufnahmedatum?: Date | string | null
@@ -26410,7 +24706,6 @@ export namespace Prisma {
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
     allergie?: allergieCreateNestedManyWithoutFf_mitgliedInput
-    person: personCreateNestedOneWithoutFf_mitgliedInput
     ff_mitglied_lehrgang?: ff_mitglied_lehrgangCreateNestedManyWithoutFf_mitgliedInput
     mitglied_funktionen?: mitglied_funktionenCreateNestedManyWithoutFf_mitgliedInput
   }
@@ -26543,7 +24838,9 @@ export namespace Prisma {
 
   export type fahrzeugUpdateWithoutEinteilungInput = {
     Kennzeichen?: NullableStringFieldUpdateOperationsInput | string | null
+    Fahrzeugtyp?: NullableStringFieldUpdateOperationsInput | string | null
     Besatzungsstaerke?: NullableStringFieldUpdateOperationsInput | string | null
+    Status?: Enumfahrzeug_StatusFieldUpdateOperationsInput | $Enums.fahrzeug_Status
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -26551,7 +24848,9 @@ export namespace Prisma {
   export type fahrzeugUncheckedUpdateWithoutEinteilungInput = {
     ID?: IntFieldUpdateOperationsInput | number
     Kennzeichen?: NullableStringFieldUpdateOperationsInput | string | null
+    Fahrzeugtyp?: NullableStringFieldUpdateOperationsInput | string | null
     Besatzungsstaerke?: NullableStringFieldUpdateOperationsInput | string | null
+    Status?: Enumfahrzeug_StatusFieldUpdateOperationsInput | $Enums.fahrzeug_Status
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -26568,6 +24867,7 @@ export namespace Prisma {
   }
 
   export type ff_mitgliedUpdateWithoutEinteilungInput = {
+    Person_ID?: IntFieldUpdateOperationsInput | number
     Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
     Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -26575,7 +24875,6 @@ export namespace Prisma {
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     allergie?: allergieUpdateManyWithoutFf_mitgliedNestedInput
-    person?: personUpdateOneRequiredWithoutFf_mitgliedNestedInput
     ff_mitglied_lehrgang?: ff_mitglied_lehrgangUpdateManyWithoutFf_mitgliedNestedInput
     mitglied_funktionen?: mitglied_funktionenUpdateManyWithoutFf_mitgliedNestedInput
   }
@@ -26687,46 +24986,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type personCreateWithoutFf_mitgliedInput = {
-    Vorname: string
-    Name: string
-    Geburtsdatum?: Date | string | null
-    Strasse?: string | null
-    Hausnummer?: string | null
-    Postleitzahl?: string | null
-    Ort?: string | null
-    Email?: string | null
-    HandyNr?: number | null
-    Erstellt_am: Date | string
-    Geaendert_am?: Date | string | null
-    jf_mitglied?: jf_mitgliedCreateNestedManyWithoutPersonInput
-    mitglied_login?: mitglied_loginCreateNestedManyWithoutPersonInput
-    teilnahme?: teilnahmeCreateNestedManyWithoutPersonInput
-  }
-
-  export type personUncheckedCreateWithoutFf_mitgliedInput = {
-    ID?: number
-    Vorname: string
-    Name: string
-    Geburtsdatum?: Date | string | null
-    Strasse?: string | null
-    Hausnummer?: string | null
-    Postleitzahl?: string | null
-    Ort?: string | null
-    Email?: string | null
-    HandyNr?: number | null
-    Erstellt_am: Date | string
-    Geaendert_am?: Date | string | null
-    jf_mitglied?: jf_mitgliedUncheckedCreateNestedManyWithoutPersonInput
-    mitglied_login?: mitglied_loginUncheckedCreateNestedManyWithoutPersonInput
-    teilnahme?: teilnahmeUncheckedCreateNestedManyWithoutPersonInput
-  }
-
-  export type personCreateOrConnectWithoutFf_mitgliedInput = {
-    where: personWhereUniqueInput
-    create: XOR<personCreateWithoutFf_mitgliedInput, personUncheckedCreateWithoutFf_mitgliedInput>
-  }
-
   export type ff_mitglied_lehrgangCreateWithoutFf_mitgliedInput = {
     Datum_bestanden?: Date | string | null
     Erstellt_am?: Date | string | null
@@ -26822,52 +25081,6 @@ export namespace Prisma {
     data: XOR<einteilungUpdateManyMutationInput, einteilungUncheckedUpdateManyWithoutFf_mitgliedInput>
   }
 
-  export type personUpsertWithoutFf_mitgliedInput = {
-    update: XOR<personUpdateWithoutFf_mitgliedInput, personUncheckedUpdateWithoutFf_mitgliedInput>
-    create: XOR<personCreateWithoutFf_mitgliedInput, personUncheckedCreateWithoutFf_mitgliedInput>
-    where?: personWhereInput
-  }
-
-  export type personUpdateToOneWithWhereWithoutFf_mitgliedInput = {
-    where?: personWhereInput
-    data: XOR<personUpdateWithoutFf_mitgliedInput, personUncheckedUpdateWithoutFf_mitgliedInput>
-  }
-
-  export type personUpdateWithoutFf_mitgliedInput = {
-    Vorname?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
-    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
-    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
-    Ort?: NullableStringFieldUpdateOperationsInput | string | null
-    Email?: NullableStringFieldUpdateOperationsInput | string | null
-    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
-    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    jf_mitglied?: jf_mitgliedUpdateManyWithoutPersonNestedInput
-    mitglied_login?: mitglied_loginUpdateManyWithoutPersonNestedInput
-    teilnahme?: teilnahmeUpdateManyWithoutPersonNestedInput
-  }
-
-  export type personUncheckedUpdateWithoutFf_mitgliedInput = {
-    ID?: IntFieldUpdateOperationsInput | number
-    Vorname?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
-    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
-    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
-    Ort?: NullableStringFieldUpdateOperationsInput | string | null
-    Email?: NullableStringFieldUpdateOperationsInput | string | null
-    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
-    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    jf_mitglied?: jf_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
-    mitglied_login?: mitglied_loginUncheckedUpdateManyWithoutPersonNestedInput
-    teilnahme?: teilnahmeUncheckedUpdateManyWithoutPersonNestedInput
-  }
-
   export type ff_mitglied_lehrgangUpsertWithWhereUniqueWithoutFf_mitgliedInput = {
     where: ff_mitglied_lehrgangWhereUniqueInput
     update: XOR<ff_mitglied_lehrgangUpdateWithoutFf_mitgliedInput, ff_mitglied_lehrgangUncheckedUpdateWithoutFf_mitgliedInput>
@@ -26925,6 +25138,7 @@ export namespace Prisma {
   }
 
   export type ff_mitgliedCreateWithoutFf_mitglied_lehrgangInput = {
+    Person_ID: number
     Eintrittsdatum: Date | string
     Austrittsdatum?: Date | string | null
     Aufnahmedatum?: Date | string | null
@@ -26933,7 +25147,6 @@ export namespace Prisma {
     Geaendert_am?: Date | string | null
     allergie?: allergieCreateNestedManyWithoutFf_mitgliedInput
     einteilung?: einteilungCreateNestedManyWithoutFf_mitgliedInput
-    person: personCreateNestedOneWithoutFf_mitgliedInput
     mitglied_funktionen?: mitglied_funktionenCreateNestedManyWithoutFf_mitgliedInput
   }
 
@@ -26990,6 +25203,7 @@ export namespace Prisma {
   }
 
   export type ff_mitgliedUpdateWithoutFf_mitglied_lehrgangInput = {
+    Person_ID?: IntFieldUpdateOperationsInput | number
     Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
     Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -26998,7 +25212,6 @@ export namespace Prisma {
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     allergie?: allergieUpdateManyWithoutFf_mitgliedNestedInput
     einteilung?: einteilungUpdateManyWithoutFf_mitgliedNestedInput
-    person?: personUpdateOneRequiredWithoutFf_mitgliedNestedInput
     mitglied_funktionen?: mitglied_funktionenUpdateManyWithoutFf_mitgliedNestedInput
   }
 
@@ -27085,6 +25298,68 @@ export namespace Prisma {
     data: XOR<mitglied_funktionenUpdateManyMutationInput, mitglied_funktionenUncheckedUpdateManyWithoutFunktion_ffInput>
   }
 
+  export type jf_mitgliedCreateWithoutJf_erziehungsberechtigterInput = {
+    Person_ID: number
+    Eintrittsdatum: Date | string
+    Austrittsdatum?: Date | string | null
+    Aufnahmedatum?: Date | string | null
+    Status?: $Enums.jf_mitglied_Status
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+    allergie?: allergieCreateNestedManyWithoutJf_mitgliedInput
+  }
+
+  export type jf_mitgliedUncheckedCreateWithoutJf_erziehungsberechtigterInput = {
+    ID?: number
+    Person_ID: number
+    Eintrittsdatum: Date | string
+    Austrittsdatum?: Date | string | null
+    Aufnahmedatum?: Date | string | null
+    Status?: $Enums.jf_mitglied_Status
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+    allergie?: allergieUncheckedCreateNestedManyWithoutJf_mitgliedInput
+  }
+
+  export type jf_mitgliedCreateOrConnectWithoutJf_erziehungsberechtigterInput = {
+    where: jf_mitgliedWhereUniqueInput
+    create: XOR<jf_mitgliedCreateWithoutJf_erziehungsberechtigterInput, jf_mitgliedUncheckedCreateWithoutJf_erziehungsberechtigterInput>
+  }
+
+  export type jf_mitgliedUpsertWithoutJf_erziehungsberechtigterInput = {
+    update: XOR<jf_mitgliedUpdateWithoutJf_erziehungsberechtigterInput, jf_mitgliedUncheckedUpdateWithoutJf_erziehungsberechtigterInput>
+    create: XOR<jf_mitgliedCreateWithoutJf_erziehungsberechtigterInput, jf_mitgliedUncheckedCreateWithoutJf_erziehungsberechtigterInput>
+    where?: jf_mitgliedWhereInput
+  }
+
+  export type jf_mitgliedUpdateToOneWithWhereWithoutJf_erziehungsberechtigterInput = {
+    where?: jf_mitgliedWhereInput
+    data: XOR<jf_mitgliedUpdateWithoutJf_erziehungsberechtigterInput, jf_mitgliedUncheckedUpdateWithoutJf_erziehungsberechtigterInput>
+  }
+
+  export type jf_mitgliedUpdateWithoutJf_erziehungsberechtigterInput = {
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    allergie?: allergieUpdateManyWithoutJf_mitgliedNestedInput
+  }
+
+  export type jf_mitgliedUncheckedUpdateWithoutJf_erziehungsberechtigterInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
+    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    allergie?: allergieUncheckedUpdateManyWithoutJf_mitgliedNestedInput
+  }
+
   export type allergieCreateWithoutJf_mitgliedInput = {
     Allergie: string
     Beschreibung?: string | null
@@ -27112,44 +25387,27 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type personCreateWithoutJf_mitgliedInput = {
-    Vorname: string
-    Name: string
-    Geburtsdatum?: Date | string | null
-    Strasse?: string | null
-    Hausnummer?: string | null
-    Postleitzahl?: string | null
-    Ort?: string | null
-    Email?: string | null
-    HandyNr?: number | null
-    Erstellt_am: Date | string
+  export type jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput = {
+    Person_ID: number
+    Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
-    ff_mitglied?: ff_mitgliedCreateNestedManyWithoutPersonInput
-    mitglied_login?: mitglied_loginCreateNestedManyWithoutPersonInput
-    teilnahme?: teilnahmeCreateNestedManyWithoutPersonInput
   }
 
-  export type personUncheckedCreateWithoutJf_mitgliedInput = {
+  export type jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput = {
     ID?: number
-    Vorname: string
-    Name: string
-    Geburtsdatum?: Date | string | null
-    Strasse?: string | null
-    Hausnummer?: string | null
-    Postleitzahl?: string | null
-    Ort?: string | null
-    Email?: string | null
-    HandyNr?: number | null
-    Erstellt_am: Date | string
+    Person_ID: number
+    Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
-    ff_mitglied?: ff_mitgliedUncheckedCreateNestedManyWithoutPersonInput
-    mitglied_login?: mitglied_loginUncheckedCreateNestedManyWithoutPersonInput
-    teilnahme?: teilnahmeUncheckedCreateNestedManyWithoutPersonInput
   }
 
-  export type personCreateOrConnectWithoutJf_mitgliedInput = {
-    where: personWhereUniqueInput
-    create: XOR<personCreateWithoutJf_mitgliedInput, personUncheckedCreateWithoutJf_mitgliedInput>
+  export type jf_erziehungsberechtigterCreateOrConnectWithoutJf_mitgliedInput = {
+    where: jf_erziehungsberechtigterWhereUniqueInput
+    create: XOR<jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput, jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput>
+  }
+
+  export type jf_erziehungsberechtigterCreateManyJf_mitgliedInputEnvelope = {
+    data: jf_erziehungsberechtigterCreateManyJf_mitgliedInput | jf_erziehungsberechtigterCreateManyJf_mitgliedInput[]
+    skipDuplicates?: boolean
   }
 
   export type allergieUpsertWithWhereUniqueWithoutJf_mitgliedInput = {
@@ -27168,50 +25426,31 @@ export namespace Prisma {
     data: XOR<allergieUpdateManyMutationInput, allergieUncheckedUpdateManyWithoutJf_mitgliedInput>
   }
 
-  export type personUpsertWithoutJf_mitgliedInput = {
-    update: XOR<personUpdateWithoutJf_mitgliedInput, personUncheckedUpdateWithoutJf_mitgliedInput>
-    create: XOR<personCreateWithoutJf_mitgliedInput, personUncheckedCreateWithoutJf_mitgliedInput>
-    where?: personWhereInput
+  export type jf_erziehungsberechtigterUpsertWithWhereUniqueWithoutJf_mitgliedInput = {
+    where: jf_erziehungsberechtigterWhereUniqueInput
+    update: XOR<jf_erziehungsberechtigterUpdateWithoutJf_mitgliedInput, jf_erziehungsberechtigterUncheckedUpdateWithoutJf_mitgliedInput>
+    create: XOR<jf_erziehungsberechtigterCreateWithoutJf_mitgliedInput, jf_erziehungsberechtigterUncheckedCreateWithoutJf_mitgliedInput>
   }
 
-  export type personUpdateToOneWithWhereWithoutJf_mitgliedInput = {
-    where?: personWhereInput
-    data: XOR<personUpdateWithoutJf_mitgliedInput, personUncheckedUpdateWithoutJf_mitgliedInput>
+  export type jf_erziehungsberechtigterUpdateWithWhereUniqueWithoutJf_mitgliedInput = {
+    where: jf_erziehungsberechtigterWhereUniqueInput
+    data: XOR<jf_erziehungsberechtigterUpdateWithoutJf_mitgliedInput, jf_erziehungsberechtigterUncheckedUpdateWithoutJf_mitgliedInput>
   }
 
-  export type personUpdateWithoutJf_mitgliedInput = {
-    Vorname?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
-    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
-    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
-    Ort?: NullableStringFieldUpdateOperationsInput | string | null
-    Email?: NullableStringFieldUpdateOperationsInput | string | null
-    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
-    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ff_mitglied?: ff_mitgliedUpdateManyWithoutPersonNestedInput
-    mitglied_login?: mitglied_loginUpdateManyWithoutPersonNestedInput
-    teilnahme?: teilnahmeUpdateManyWithoutPersonNestedInput
+  export type jf_erziehungsberechtigterUpdateManyWithWhereWithoutJf_mitgliedInput = {
+    where: jf_erziehungsberechtigterScalarWhereInput
+    data: XOR<jf_erziehungsberechtigterUpdateManyMutationInput, jf_erziehungsberechtigterUncheckedUpdateManyWithoutJf_mitgliedInput>
   }
 
-  export type personUncheckedUpdateWithoutJf_mitgliedInput = {
-    ID?: IntFieldUpdateOperationsInput | number
-    Vorname?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
-    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
-    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
-    Ort?: NullableStringFieldUpdateOperationsInput | string | null
-    Email?: NullableStringFieldUpdateOperationsInput | string | null
-    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
-    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ff_mitglied?: ff_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
-    mitglied_login?: mitglied_loginUncheckedUpdateManyWithoutPersonNestedInput
-    teilnahme?: teilnahmeUncheckedUpdateManyWithoutPersonNestedInput
+  export type jf_erziehungsberechtigterScalarWhereInput = {
+    AND?: jf_erziehungsberechtigterScalarWhereInput | jf_erziehungsberechtigterScalarWhereInput[]
+    OR?: jf_erziehungsberechtigterScalarWhereInput[]
+    NOT?: jf_erziehungsberechtigterScalarWhereInput | jf_erziehungsberechtigterScalarWhereInput[]
+    ID?: IntFilter<"jf_erziehungsberechtigter"> | number
+    JF_Mitglied_ID?: IntFilter<"jf_erziehungsberechtigter"> | number
+    Person_ID?: IntFilter<"jf_erziehungsberechtigter"> | number
+    Erstellt_am?: DateTimeNullableFilter<"jf_erziehungsberechtigter"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"jf_erziehungsberechtigter"> | Date | string | null
   }
 
   export type ff_mitglied_lehrgangCreateWithoutLehrgangInput = {
@@ -27256,6 +25495,7 @@ export namespace Prisma {
   }
 
   export type ff_mitgliedCreateWithoutMitglied_funktionenInput = {
+    Person_ID: number
     Eintrittsdatum: Date | string
     Austrittsdatum?: Date | string | null
     Aufnahmedatum?: Date | string | null
@@ -27264,7 +25504,6 @@ export namespace Prisma {
     Geaendert_am?: Date | string | null
     allergie?: allergieCreateNestedManyWithoutFf_mitgliedInput
     einteilung?: einteilungCreateNestedManyWithoutFf_mitgliedInput
-    person: personCreateNestedOneWithoutFf_mitgliedInput
     ff_mitglied_lehrgang?: ff_mitglied_lehrgangCreateNestedManyWithoutFf_mitgliedInput
   }
 
@@ -27319,6 +25558,7 @@ export namespace Prisma {
   }
 
   export type ff_mitgliedUpdateWithoutMitglied_funktionenInput = {
+    Person_ID?: IntFieldUpdateOperationsInput | number
     Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
     Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -27327,7 +25567,6 @@ export namespace Prisma {
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     allergie?: allergieUpdateManyWithoutFf_mitgliedNestedInput
     einteilung?: einteilungUpdateManyWithoutFf_mitgliedNestedInput
-    person?: personUpdateOneRequiredWithoutFf_mitgliedNestedInput
     ff_mitglied_lehrgang?: ff_mitglied_lehrgangUpdateManyWithoutFf_mitgliedNestedInput
   }
 
@@ -27369,412 +25608,6 @@ export namespace Prisma {
     Ist_Admin?: BoolFieldUpdateOperationsInput | boolean
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type personCreateWithoutMitglied_loginInput = {
-    Vorname: string
-    Name: string
-    Geburtsdatum?: Date | string | null
-    Strasse?: string | null
-    Hausnummer?: string | null
-    Postleitzahl?: string | null
-    Ort?: string | null
-    Email?: string | null
-    HandyNr?: number | null
-    Erstellt_am: Date | string
-    Geaendert_am?: Date | string | null
-    ff_mitglied?: ff_mitgliedCreateNestedManyWithoutPersonInput
-    jf_mitglied?: jf_mitgliedCreateNestedManyWithoutPersonInput
-    teilnahme?: teilnahmeCreateNestedManyWithoutPersonInput
-  }
-
-  export type personUncheckedCreateWithoutMitglied_loginInput = {
-    ID?: number
-    Vorname: string
-    Name: string
-    Geburtsdatum?: Date | string | null
-    Strasse?: string | null
-    Hausnummer?: string | null
-    Postleitzahl?: string | null
-    Ort?: string | null
-    Email?: string | null
-    HandyNr?: number | null
-    Erstellt_am: Date | string
-    Geaendert_am?: Date | string | null
-    ff_mitglied?: ff_mitgliedUncheckedCreateNestedManyWithoutPersonInput
-    jf_mitglied?: jf_mitgliedUncheckedCreateNestedManyWithoutPersonInput
-    teilnahme?: teilnahmeUncheckedCreateNestedManyWithoutPersonInput
-  }
-
-  export type personCreateOrConnectWithoutMitglied_loginInput = {
-    where: personWhereUniqueInput
-    create: XOR<personCreateWithoutMitglied_loginInput, personUncheckedCreateWithoutMitglied_loginInput>
-  }
-
-  export type personUpsertWithoutMitglied_loginInput = {
-    update: XOR<personUpdateWithoutMitglied_loginInput, personUncheckedUpdateWithoutMitglied_loginInput>
-    create: XOR<personCreateWithoutMitglied_loginInput, personUncheckedCreateWithoutMitglied_loginInput>
-    where?: personWhereInput
-  }
-
-  export type personUpdateToOneWithWhereWithoutMitglied_loginInput = {
-    where?: personWhereInput
-    data: XOR<personUpdateWithoutMitglied_loginInput, personUncheckedUpdateWithoutMitglied_loginInput>
-  }
-
-  export type personUpdateWithoutMitglied_loginInput = {
-    Vorname?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
-    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
-    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
-    Ort?: NullableStringFieldUpdateOperationsInput | string | null
-    Email?: NullableStringFieldUpdateOperationsInput | string | null
-    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
-    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ff_mitglied?: ff_mitgliedUpdateManyWithoutPersonNestedInput
-    jf_mitglied?: jf_mitgliedUpdateManyWithoutPersonNestedInput
-    teilnahme?: teilnahmeUpdateManyWithoutPersonNestedInput
-  }
-
-  export type personUncheckedUpdateWithoutMitglied_loginInput = {
-    ID?: IntFieldUpdateOperationsInput | number
-    Vorname?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
-    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
-    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
-    Ort?: NullableStringFieldUpdateOperationsInput | string | null
-    Email?: NullableStringFieldUpdateOperationsInput | string | null
-    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
-    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ff_mitglied?: ff_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
-    jf_mitglied?: jf_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
-    teilnahme?: teilnahmeUncheckedUpdateManyWithoutPersonNestedInput
-  }
-
-  export type ff_mitgliedCreateWithoutPersonInput = {
-    Eintrittsdatum: Date | string
-    Austrittsdatum?: Date | string | null
-    Aufnahmedatum?: Date | string | null
-    Status?: $Enums.ff_mitglied_Status
-    Erstellt_am: Date | string
-    Geaendert_am?: Date | string | null
-    allergie?: allergieCreateNestedManyWithoutFf_mitgliedInput
-    einteilung?: einteilungCreateNestedManyWithoutFf_mitgliedInput
-    ff_mitglied_lehrgang?: ff_mitglied_lehrgangCreateNestedManyWithoutFf_mitgliedInput
-    mitglied_funktionen?: mitglied_funktionenCreateNestedManyWithoutFf_mitgliedInput
-  }
-
-  export type ff_mitgliedUncheckedCreateWithoutPersonInput = {
-    ID?: number
-    Eintrittsdatum: Date | string
-    Austrittsdatum?: Date | string | null
-    Aufnahmedatum?: Date | string | null
-    Status?: $Enums.ff_mitglied_Status
-    Erstellt_am: Date | string
-    Geaendert_am?: Date | string | null
-    allergie?: allergieUncheckedCreateNestedManyWithoutFf_mitgliedInput
-    einteilung?: einteilungUncheckedCreateNestedManyWithoutFf_mitgliedInput
-    ff_mitglied_lehrgang?: ff_mitglied_lehrgangUncheckedCreateNestedManyWithoutFf_mitgliedInput
-    mitglied_funktionen?: mitglied_funktionenUncheckedCreateNestedManyWithoutFf_mitgliedInput
-  }
-
-  export type ff_mitgliedCreateOrConnectWithoutPersonInput = {
-    where: ff_mitgliedWhereUniqueInput
-    create: XOR<ff_mitgliedCreateWithoutPersonInput, ff_mitgliedUncheckedCreateWithoutPersonInput>
-  }
-
-  export type ff_mitgliedCreateManyPersonInputEnvelope = {
-    data: ff_mitgliedCreateManyPersonInput | ff_mitgliedCreateManyPersonInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type jf_mitgliedCreateWithoutPersonInput = {
-    Eintrittsdatum: Date | string
-    Austrittsdatum?: Date | string | null
-    Aufnahmedatum?: Date | string | null
-    Status?: $Enums.jf_mitglied_Status
-    Erstellt_am?: Date | string | null
-    Geaendert_am?: Date | string | null
-    allergie?: allergieCreateNestedManyWithoutJf_mitgliedInput
-  }
-
-  export type jf_mitgliedUncheckedCreateWithoutPersonInput = {
-    ID?: number
-    Eintrittsdatum: Date | string
-    Austrittsdatum?: Date | string | null
-    Aufnahmedatum?: Date | string | null
-    Status?: $Enums.jf_mitglied_Status
-    Erstellt_am?: Date | string | null
-    Geaendert_am?: Date | string | null
-    allergie?: allergieUncheckedCreateNestedManyWithoutJf_mitgliedInput
-  }
-
-  export type jf_mitgliedCreateOrConnectWithoutPersonInput = {
-    where: jf_mitgliedWhereUniqueInput
-    create: XOR<jf_mitgliedCreateWithoutPersonInput, jf_mitgliedUncheckedCreateWithoutPersonInput>
-  }
-
-  export type jf_mitgliedCreateManyPersonInputEnvelope = {
-    data: jf_mitgliedCreateManyPersonInput | jf_mitgliedCreateManyPersonInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type mitglied_loginCreateWithoutPersonInput = {
-    Benutzer_ID: number
-    Typ: $Enums.mitglied_login_Typ
-    Erstellt_am: Date | string
-    Geaendert_am?: Date | string | null
-  }
-
-  export type mitglied_loginUncheckedCreateWithoutPersonInput = {
-    ID?: number
-    Benutzer_ID: number
-    Typ: $Enums.mitglied_login_Typ
-    Erstellt_am: Date | string
-    Geaendert_am?: Date | string | null
-  }
-
-  export type mitglied_loginCreateOrConnectWithoutPersonInput = {
-    where: mitglied_loginWhereUniqueInput
-    create: XOR<mitglied_loginCreateWithoutPersonInput, mitglied_loginUncheckedCreateWithoutPersonInput>
-  }
-
-  export type mitglied_loginCreateManyPersonInputEnvelope = {
-    data: mitglied_loginCreateManyPersonInput | mitglied_loginCreateManyPersonInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type teilnahmeCreateWithoutPersonInput = {
-    Veranstaltung_ID: number
-    Typ: $Enums.teilnahme_Typ
-    Erstellt_am: Date | string
-    Geaendert_am?: Date | string | null
-  }
-
-  export type teilnahmeUncheckedCreateWithoutPersonInput = {
-    ID?: number
-    Veranstaltung_ID: number
-    Typ: $Enums.teilnahme_Typ
-    Erstellt_am: Date | string
-    Geaendert_am?: Date | string | null
-  }
-
-  export type teilnahmeCreateOrConnectWithoutPersonInput = {
-    where: teilnahmeWhereUniqueInput
-    create: XOR<teilnahmeCreateWithoutPersonInput, teilnahmeUncheckedCreateWithoutPersonInput>
-  }
-
-  export type teilnahmeCreateManyPersonInputEnvelope = {
-    data: teilnahmeCreateManyPersonInput | teilnahmeCreateManyPersonInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ff_mitgliedUpsertWithWhereUniqueWithoutPersonInput = {
-    where: ff_mitgliedWhereUniqueInput
-    update: XOR<ff_mitgliedUpdateWithoutPersonInput, ff_mitgliedUncheckedUpdateWithoutPersonInput>
-    create: XOR<ff_mitgliedCreateWithoutPersonInput, ff_mitgliedUncheckedCreateWithoutPersonInput>
-  }
-
-  export type ff_mitgliedUpdateWithWhereUniqueWithoutPersonInput = {
-    where: ff_mitgliedWhereUniqueInput
-    data: XOR<ff_mitgliedUpdateWithoutPersonInput, ff_mitgliedUncheckedUpdateWithoutPersonInput>
-  }
-
-  export type ff_mitgliedUpdateManyWithWhereWithoutPersonInput = {
-    where: ff_mitgliedScalarWhereInput
-    data: XOR<ff_mitgliedUpdateManyMutationInput, ff_mitgliedUncheckedUpdateManyWithoutPersonInput>
-  }
-
-  export type ff_mitgliedScalarWhereInput = {
-    AND?: ff_mitgliedScalarWhereInput | ff_mitgliedScalarWhereInput[]
-    OR?: ff_mitgliedScalarWhereInput[]
-    NOT?: ff_mitgliedScalarWhereInput | ff_mitgliedScalarWhereInput[]
-    ID?: IntFilter<"ff_mitglied"> | number
-    Person_ID?: IntFilter<"ff_mitglied"> | number
-    Eintrittsdatum?: DateTimeFilter<"ff_mitglied"> | Date | string
-    Austrittsdatum?: DateTimeNullableFilter<"ff_mitglied"> | Date | string | null
-    Aufnahmedatum?: DateTimeNullableFilter<"ff_mitglied"> | Date | string | null
-    Status?: Enumff_mitglied_StatusFilter<"ff_mitglied"> | $Enums.ff_mitglied_Status
-    Erstellt_am?: DateTimeFilter<"ff_mitglied"> | Date | string
-    Geaendert_am?: DateTimeNullableFilter<"ff_mitglied"> | Date | string | null
-  }
-
-  export type jf_mitgliedUpsertWithWhereUniqueWithoutPersonInput = {
-    where: jf_mitgliedWhereUniqueInput
-    update: XOR<jf_mitgliedUpdateWithoutPersonInput, jf_mitgliedUncheckedUpdateWithoutPersonInput>
-    create: XOR<jf_mitgliedCreateWithoutPersonInput, jf_mitgliedUncheckedCreateWithoutPersonInput>
-  }
-
-  export type jf_mitgliedUpdateWithWhereUniqueWithoutPersonInput = {
-    where: jf_mitgliedWhereUniqueInput
-    data: XOR<jf_mitgliedUpdateWithoutPersonInput, jf_mitgliedUncheckedUpdateWithoutPersonInput>
-  }
-
-  export type jf_mitgliedUpdateManyWithWhereWithoutPersonInput = {
-    where: jf_mitgliedScalarWhereInput
-    data: XOR<jf_mitgliedUpdateManyMutationInput, jf_mitgliedUncheckedUpdateManyWithoutPersonInput>
-  }
-
-  export type jf_mitgliedScalarWhereInput = {
-    AND?: jf_mitgliedScalarWhereInput | jf_mitgliedScalarWhereInput[]
-    OR?: jf_mitgliedScalarWhereInput[]
-    NOT?: jf_mitgliedScalarWhereInput | jf_mitgliedScalarWhereInput[]
-    ID?: IntFilter<"jf_mitglied"> | number
-    Person_ID?: IntFilter<"jf_mitglied"> | number
-    Eintrittsdatum?: DateTimeFilter<"jf_mitglied"> | Date | string
-    Austrittsdatum?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
-    Aufnahmedatum?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
-    Status?: Enumjf_mitglied_StatusFilter<"jf_mitglied"> | $Enums.jf_mitglied_Status
-    Erstellt_am?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
-    Geaendert_am?: DateTimeNullableFilter<"jf_mitglied"> | Date | string | null
-  }
-
-  export type mitglied_loginUpsertWithWhereUniqueWithoutPersonInput = {
-    where: mitglied_loginWhereUniqueInput
-    update: XOR<mitglied_loginUpdateWithoutPersonInput, mitglied_loginUncheckedUpdateWithoutPersonInput>
-    create: XOR<mitglied_loginCreateWithoutPersonInput, mitglied_loginUncheckedCreateWithoutPersonInput>
-  }
-
-  export type mitglied_loginUpdateWithWhereUniqueWithoutPersonInput = {
-    where: mitglied_loginWhereUniqueInput
-    data: XOR<mitglied_loginUpdateWithoutPersonInput, mitglied_loginUncheckedUpdateWithoutPersonInput>
-  }
-
-  export type mitglied_loginUpdateManyWithWhereWithoutPersonInput = {
-    where: mitglied_loginScalarWhereInput
-    data: XOR<mitglied_loginUpdateManyMutationInput, mitglied_loginUncheckedUpdateManyWithoutPersonInput>
-  }
-
-  export type mitglied_loginScalarWhereInput = {
-    AND?: mitglied_loginScalarWhereInput | mitglied_loginScalarWhereInput[]
-    OR?: mitglied_loginScalarWhereInput[]
-    NOT?: mitglied_loginScalarWhereInput | mitglied_loginScalarWhereInput[]
-    ID?: IntFilter<"mitglied_login"> | number
-    Benutzer_ID?: IntFilter<"mitglied_login"> | number
-    Mitglied_ID?: IntFilter<"mitglied_login"> | number
-    Typ?: Enummitglied_login_TypFilter<"mitglied_login"> | $Enums.mitglied_login_Typ
-    Erstellt_am?: DateTimeFilter<"mitglied_login"> | Date | string
-    Geaendert_am?: DateTimeNullableFilter<"mitglied_login"> | Date | string | null
-  }
-
-  export type teilnahmeUpsertWithWhereUniqueWithoutPersonInput = {
-    where: teilnahmeWhereUniqueInput
-    update: XOR<teilnahmeUpdateWithoutPersonInput, teilnahmeUncheckedUpdateWithoutPersonInput>
-    create: XOR<teilnahmeCreateWithoutPersonInput, teilnahmeUncheckedCreateWithoutPersonInput>
-  }
-
-  export type teilnahmeUpdateWithWhereUniqueWithoutPersonInput = {
-    where: teilnahmeWhereUniqueInput
-    data: XOR<teilnahmeUpdateWithoutPersonInput, teilnahmeUncheckedUpdateWithoutPersonInput>
-  }
-
-  export type teilnahmeUpdateManyWithWhereWithoutPersonInput = {
-    where: teilnahmeScalarWhereInput
-    data: XOR<teilnahmeUpdateManyMutationInput, teilnahmeUncheckedUpdateManyWithoutPersonInput>
-  }
-
-  export type teilnahmeScalarWhereInput = {
-    AND?: teilnahmeScalarWhereInput | teilnahmeScalarWhereInput[]
-    OR?: teilnahmeScalarWhereInput[]
-    NOT?: teilnahmeScalarWhereInput | teilnahmeScalarWhereInput[]
-    ID?: IntFilter<"teilnahme"> | number
-    Mitglied_ID?: IntFilter<"teilnahme"> | number
-    Veranstaltung_ID?: IntFilter<"teilnahme"> | number
-    Typ?: Enumteilnahme_TypFilter<"teilnahme"> | $Enums.teilnahme_Typ
-    Erstellt_am?: DateTimeFilter<"teilnahme"> | Date | string
-    Geaendert_am?: DateTimeNullableFilter<"teilnahme"> | Date | string | null
-  }
-
-  export type personCreateWithoutTeilnahmeInput = {
-    Vorname: string
-    Name: string
-    Geburtsdatum?: Date | string | null
-    Strasse?: string | null
-    Hausnummer?: string | null
-    Postleitzahl?: string | null
-    Ort?: string | null
-    Email?: string | null
-    HandyNr?: number | null
-    Erstellt_am: Date | string
-    Geaendert_am?: Date | string | null
-    ff_mitglied?: ff_mitgliedCreateNestedManyWithoutPersonInput
-    jf_mitglied?: jf_mitgliedCreateNestedManyWithoutPersonInput
-    mitglied_login?: mitglied_loginCreateNestedManyWithoutPersonInput
-  }
-
-  export type personUncheckedCreateWithoutTeilnahmeInput = {
-    ID?: number
-    Vorname: string
-    Name: string
-    Geburtsdatum?: Date | string | null
-    Strasse?: string | null
-    Hausnummer?: string | null
-    Postleitzahl?: string | null
-    Ort?: string | null
-    Email?: string | null
-    HandyNr?: number | null
-    Erstellt_am: Date | string
-    Geaendert_am?: Date | string | null
-    ff_mitglied?: ff_mitgliedUncheckedCreateNestedManyWithoutPersonInput
-    jf_mitglied?: jf_mitgliedUncheckedCreateNestedManyWithoutPersonInput
-    mitglied_login?: mitglied_loginUncheckedCreateNestedManyWithoutPersonInput
-  }
-
-  export type personCreateOrConnectWithoutTeilnahmeInput = {
-    where: personWhereUniqueInput
-    create: XOR<personCreateWithoutTeilnahmeInput, personUncheckedCreateWithoutTeilnahmeInput>
-  }
-
-  export type personUpsertWithoutTeilnahmeInput = {
-    update: XOR<personUpdateWithoutTeilnahmeInput, personUncheckedUpdateWithoutTeilnahmeInput>
-    create: XOR<personCreateWithoutTeilnahmeInput, personUncheckedCreateWithoutTeilnahmeInput>
-    where?: personWhereInput
-  }
-
-  export type personUpdateToOneWithWhereWithoutTeilnahmeInput = {
-    where?: personWhereInput
-    data: XOR<personUpdateWithoutTeilnahmeInput, personUncheckedUpdateWithoutTeilnahmeInput>
-  }
-
-  export type personUpdateWithoutTeilnahmeInput = {
-    Vorname?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
-    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
-    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
-    Ort?: NullableStringFieldUpdateOperationsInput | string | null
-    Email?: NullableStringFieldUpdateOperationsInput | string | null
-    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
-    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ff_mitglied?: ff_mitgliedUpdateManyWithoutPersonNestedInput
-    jf_mitglied?: jf_mitgliedUpdateManyWithoutPersonNestedInput
-    mitglied_login?: mitglied_loginUpdateManyWithoutPersonNestedInput
-  }
-
-  export type personUncheckedUpdateWithoutTeilnahmeInput = {
-    ID?: IntFieldUpdateOperationsInput | number
-    Vorname?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    Geburtsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Strasse?: NullableStringFieldUpdateOperationsInput | string | null
-    Hausnummer?: NullableStringFieldUpdateOperationsInput | string | null
-    Postleitzahl?: NullableStringFieldUpdateOperationsInput | string | null
-    Ort?: NullableStringFieldUpdateOperationsInput | string | null
-    Email?: NullableStringFieldUpdateOperationsInput | string | null
-    HandyNr?: NullableIntFieldUpdateOperationsInput | number | null
-    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ff_mitglied?: ff_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
-    jf_mitglied?: jf_mitgliedUncheckedUpdateManyWithoutPersonNestedInput
-    mitglied_login?: mitglied_loginUncheckedUpdateManyWithoutPersonNestedInput
   }
 
   export type einteilungCreateManyDientsabendInput = {
@@ -28069,6 +25902,13 @@ export namespace Prisma {
     Geaendert_am?: Date | string | null
   }
 
+  export type jf_erziehungsberechtigterCreateManyJf_mitgliedInput = {
+    ID?: number
+    Person_ID: number
+    Erstellt_am?: Date | string | null
+    Geaendert_am?: Date | string | null
+  }
+
   export type allergieUpdateWithoutJf_mitgliedInput = {
     Allergie?: StringFieldUpdateOperationsInput | string
     Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28091,6 +25931,26 @@ export namespace Prisma {
     FF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
     Allergie?: StringFieldUpdateOperationsInput | string
     Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type jf_erziehungsberechtigterUpdateWithoutJf_mitgliedInput = {
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type jf_erziehungsberechtigterUncheckedUpdateWithoutJf_mitgliedInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Person_ID?: IntFieldUpdateOperationsInput | number
+    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type jf_erziehungsberechtigterUncheckedUpdateManyWithoutJf_mitgliedInput = {
+    ID?: IntFieldUpdateOperationsInput | number
+    Person_ID?: IntFieldUpdateOperationsInput | number
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -28123,156 +25983,6 @@ export namespace Prisma {
     FF_Mitglied_ID?: IntFieldUpdateOperationsInput | number
     Datum_bestanden?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type ff_mitgliedCreateManyPersonInput = {
-    ID?: number
-    Eintrittsdatum: Date | string
-    Austrittsdatum?: Date | string | null
-    Aufnahmedatum?: Date | string | null
-    Status?: $Enums.ff_mitglied_Status
-    Erstellt_am: Date | string
-    Geaendert_am?: Date | string | null
-  }
-
-  export type jf_mitgliedCreateManyPersonInput = {
-    ID?: number
-    Eintrittsdatum: Date | string
-    Austrittsdatum?: Date | string | null
-    Aufnahmedatum?: Date | string | null
-    Status?: $Enums.jf_mitglied_Status
-    Erstellt_am?: Date | string | null
-    Geaendert_am?: Date | string | null
-  }
-
-  export type mitglied_loginCreateManyPersonInput = {
-    ID?: number
-    Benutzer_ID: number
-    Typ: $Enums.mitglied_login_Typ
-    Erstellt_am: Date | string
-    Geaendert_am?: Date | string | null
-  }
-
-  export type teilnahmeCreateManyPersonInput = {
-    ID?: number
-    Veranstaltung_ID: number
-    Typ: $Enums.teilnahme_Typ
-    Erstellt_am: Date | string
-    Geaendert_am?: Date | string | null
-  }
-
-  export type ff_mitgliedUpdateWithoutPersonInput = {
-    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Status?: Enumff_mitglied_StatusFieldUpdateOperationsInput | $Enums.ff_mitglied_Status
-    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    allergie?: allergieUpdateManyWithoutFf_mitgliedNestedInput
-    einteilung?: einteilungUpdateManyWithoutFf_mitgliedNestedInput
-    ff_mitglied_lehrgang?: ff_mitglied_lehrgangUpdateManyWithoutFf_mitgliedNestedInput
-    mitglied_funktionen?: mitglied_funktionenUpdateManyWithoutFf_mitgliedNestedInput
-  }
-
-  export type ff_mitgliedUncheckedUpdateWithoutPersonInput = {
-    ID?: IntFieldUpdateOperationsInput | number
-    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Status?: Enumff_mitglied_StatusFieldUpdateOperationsInput | $Enums.ff_mitglied_Status
-    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    allergie?: allergieUncheckedUpdateManyWithoutFf_mitgliedNestedInput
-    einteilung?: einteilungUncheckedUpdateManyWithoutFf_mitgliedNestedInput
-    ff_mitglied_lehrgang?: ff_mitglied_lehrgangUncheckedUpdateManyWithoutFf_mitgliedNestedInput
-    mitglied_funktionen?: mitglied_funktionenUncheckedUpdateManyWithoutFf_mitgliedNestedInput
-  }
-
-  export type ff_mitgliedUncheckedUpdateManyWithoutPersonInput = {
-    ID?: IntFieldUpdateOperationsInput | number
-    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Status?: Enumff_mitglied_StatusFieldUpdateOperationsInput | $Enums.ff_mitglied_Status
-    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type jf_mitgliedUpdateWithoutPersonInput = {
-    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
-    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    allergie?: allergieUpdateManyWithoutJf_mitgliedNestedInput
-  }
-
-  export type jf_mitgliedUncheckedUpdateWithoutPersonInput = {
-    ID?: IntFieldUpdateOperationsInput | number
-    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
-    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    allergie?: allergieUncheckedUpdateManyWithoutJf_mitgliedNestedInput
-  }
-
-  export type jf_mitgliedUncheckedUpdateManyWithoutPersonInput = {
-    ID?: IntFieldUpdateOperationsInput | number
-    Eintrittsdatum?: DateTimeFieldUpdateOperationsInput | Date | string
-    Austrittsdatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Aufnahmedatum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Status?: Enumjf_mitglied_StatusFieldUpdateOperationsInput | $Enums.jf_mitglied_Status
-    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type mitglied_loginUpdateWithoutPersonInput = {
-    Benutzer_ID?: IntFieldUpdateOperationsInput | number
-    Typ?: Enummitglied_login_TypFieldUpdateOperationsInput | $Enums.mitglied_login_Typ
-    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type mitglied_loginUncheckedUpdateWithoutPersonInput = {
-    ID?: IntFieldUpdateOperationsInput | number
-    Benutzer_ID?: IntFieldUpdateOperationsInput | number
-    Typ?: Enummitglied_login_TypFieldUpdateOperationsInput | $Enums.mitglied_login_Typ
-    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type mitglied_loginUncheckedUpdateManyWithoutPersonInput = {
-    ID?: IntFieldUpdateOperationsInput | number
-    Benutzer_ID?: IntFieldUpdateOperationsInput | number
-    Typ?: Enummitglied_login_TypFieldUpdateOperationsInput | $Enums.mitglied_login_Typ
-    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type teilnahmeUpdateWithoutPersonInput = {
-    Veranstaltung_ID?: IntFieldUpdateOperationsInput | number
-    Typ?: Enumteilnahme_TypFieldUpdateOperationsInput | $Enums.teilnahme_Typ
-    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type teilnahmeUncheckedUpdateWithoutPersonInput = {
-    ID?: IntFieldUpdateOperationsInput | number
-    Veranstaltung_ID?: IntFieldUpdateOperationsInput | number
-    Typ?: Enumteilnahme_TypFieldUpdateOperationsInput | $Enums.teilnahme_Typ
-    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type teilnahmeUncheckedUpdateManyWithoutPersonInput = {
-    ID?: IntFieldUpdateOperationsInput | number
-    Veranstaltung_ID?: IntFieldUpdateOperationsInput | number
-    Typ?: Enumteilnahme_TypFieldUpdateOperationsInput | $Enums.teilnahme_Typ
-    Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 

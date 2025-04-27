@@ -1,4 +1,4 @@
-import { vereinsbuddyPrisma as db1 } from '@/lib/prisma';
+/*import { vereinsbuddyPrisma as db1 } from '@/lib/prisma';
 import { getSession } from 'next-auth/react';
 
 
@@ -10,7 +10,7 @@ export default async function handler(req, res) {
         return res.status(401).json({ message: 'Nicht autorisiert' })
     }*/
 
-    if (req.method === 'GET') {
+    {/*if (req.method === 'GET') {
         try {
         const mitglied = await db1.person.findUnique({
             where: {
@@ -101,6 +101,48 @@ export default async function handler(req, res) {
         }
     } else {
         res.setHeader('Allow', ['GET', 'PUT', 'DELETE'])
+        res.status(405).json({ message: `Method ${req.method} not allowed` })
+    }
+}*/}
+
+import { vereinDbPrisma as prisma } from '../../../lib/prisma';
+
+export default async function handler(req, res) {
+    const session = await getSession({ req })
+    const { id } = req.query
+
+    if (!session || session.user.personId !== parseInt(id)) {
+        return res.status(401).json({ message: 'Nicht autorisiert' })
+    }
+
+    if (req.method === 'PUT') {
+        try {
+        const { Vorname, Name, Geburtsdatum, Email, HandyNr, Strasse, Hausnummer, Postleitzahl, Ort, Geaendert_am } = req.body
+
+        const updatedMitglied = await prisma.mitglied.update({
+            where: {
+            ID: parseInt(id),
+            },
+            data: {
+            Vorname,
+            Name,
+            Geburtsdatum: Geburtsdatum ? new Date(Geburtsdatum) : null,
+            Email,
+            HandyNr,
+            Strasse,
+            Hausnummer,
+            Postleitzahl,
+            Ort,
+            Geaendert_am: new Date(Geaendert_am),
+            }
+        })
+
+        res.status(200).json(updatedMitglied)
+        } catch (error) {
+        res.status(400).json({ message: 'Fehler beim Aktualisieren des Mitglieds', error: error.message })
+        }
+    } else {
+        res.setHeader('Allow', ['PUT'])
         res.status(405).json({ message: `Method ${req.method} not allowed` })
     }
 }

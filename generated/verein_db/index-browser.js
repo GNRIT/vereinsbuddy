@@ -182,7 +182,9 @@ exports.Prisma.EinteilungScalarFieldEnum = {
 exports.Prisma.FahrzeugScalarFieldEnum = {
   ID: 'ID',
   Kennzeichen: 'Kennzeichen',
+  Fahrzeugtyp: 'Fahrzeugtyp',
   Besatzungsstaerke: 'Besatzungsstaerke',
+  Status: 'Status',
   Erstellt_am: 'Erstellt_am',
   Geaendert_am: 'Geaendert_am'
 };
@@ -269,21 +271,6 @@ exports.Prisma.Mitglied_loginScalarFieldEnum = {
   Geaendert_am: 'Geaendert_am'
 };
 
-exports.Prisma.PersonScalarFieldEnum = {
-  ID: 'ID',
-  Vorname: 'Vorname',
-  Name: 'Name',
-  Geburtsdatum: 'Geburtsdatum',
-  Strasse: 'Strasse',
-  Hausnummer: 'Hausnummer',
-  Postleitzahl: 'Postleitzahl',
-  Ort: 'Ort',
-  Email: 'Email',
-  HandyNr: 'HandyNr',
-  Erstellt_am: 'Erstellt_am',
-  Geaendert_am: 'Geaendert_am'
-};
-
 exports.Prisma.TeilnahmeScalarFieldEnum = {
   ID: 'ID',
   Mitglied_ID: 'Mitglied_ID',
@@ -334,6 +321,7 @@ exports.Prisma.einsatzOrderByRelevanceFieldEnum = {
 
 exports.Prisma.fahrzeugOrderByRelevanceFieldEnum = {
   Kennzeichen: 'Kennzeichen',
+  Fahrzeugtyp: 'Fahrzeugtyp',
   Besatzungsstaerke: 'Besatzungsstaerke'
 };
 
@@ -349,20 +337,17 @@ exports.Prisma.lehrgangOrderByRelevanceFieldEnum = {
   Abk_rzung: 'Abk_rzung',
   Beschreibung: 'Beschreibung'
 };
-
-exports.Prisma.personOrderByRelevanceFieldEnum = {
-  Vorname: 'Vorname',
-  Name: 'Name',
-  Strasse: 'Strasse',
-  Hausnummer: 'Hausnummer',
-  Postleitzahl: 'Postleitzahl',
-  Ort: 'Ort',
-  Email: 'Email'
-};
 exports.einsatz_Art = exports.$Enums.einsatz_Art = {
   brand: 'brand',
   hilfeleistung: 'hilfeleistung',
   sonstiges: 'sonstiges'
+};
+
+exports.fahrzeug_Status = exports.$Enums.fahrzeug_Status = {
+  verfuegbar: 'verfuegbar',
+  im_einsatz: 'im_einsatz',
+  in_wartung: 'in_wartung',
+  ausser_dienst: 'ausser_dienst'
 };
 
 exports.ff_mitglied_Status = exports.$Enums.ff_mitglied_Status = {
@@ -409,7 +394,6 @@ exports.Prisma.ModelName = {
   lehrgang: 'lehrgang',
   mitglied_funktionen: 'mitglied_funktionen',
   mitglied_login: 'mitglied_login',
-  person: 'person',
   teilnahme: 'teilnahme'
 };
 
