@@ -13,7 +13,6 @@ export default function Layout({ children }) {
             </Head>
 
             <Navigation />
-
             
             <main className="flex-grow">
                 {children}

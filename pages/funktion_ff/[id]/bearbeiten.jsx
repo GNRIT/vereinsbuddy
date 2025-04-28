@@ -1,7 +1,7 @@
 import { vereinDbPrisma as db2 } from '@/lib/prisma'
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import FunktionForm from '../components/FunktionForm'
+import FunktionFFForm from '../components/FunktionFFForm'
 
 export default function FunktionBearbeiten({ initialData }) {
     const router = useRouter()
@@ -35,7 +35,7 @@ export default function FunktionBearbeiten({ initialData }) {
         <div>
             <div className="bg-white shadow rounded-lg p-6">
                 <h1 className="text-2xl font-bold text-gray-900 mb-6">Funktion bearbeiten</h1>
-                <FunktionForm initialData={initialData} onSubmit={handleSubmit} />
+                <FunktionFFForm initialData={initialData} onSubmit={handleSubmit} />
             </div>
         </div>
         
