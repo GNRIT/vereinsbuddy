@@ -1,6 +1,6 @@
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import FunktionJFForm from './components/FunktionJForm'
+import FunktionJFForm from './components/FunktionJFForm'
 
 export default function NeueJugendfunktion() {
     const router = useRouter()
