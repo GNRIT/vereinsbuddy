@@ -1,11 +1,10 @@
 import { vereinDbPrisma as db2 } from '@/lib/prisma';
 import Link from 'next/link';
-import Layout from '../../components/Layout';
 //import { vereinDbPrisma as db2, vereinsbuddyPrisma as db1 } from '@/lib/prisma';
 
 export default function JFMitgliederListe({ mitglieder }) {
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">JF-Mitgliederverwaltung</h1>
@@ -83,7 +82,7 @@ export default function JFMitgliederListe({ mitglieder }) {
             </table>
             </div>
         </div>
-        </Layout>
+        </div>
     )
 }
 

@@ -1,5 +1,5 @@
-import { getSession } from 'next-auth/react'
-import { vereinDbPrisma as prisma } from '../../lib/prisma'
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
+import { getSession } from 'next-auth/react';
 
 export default function AdminDashboard({ stats }) {
     return (
@@ -107,21 +107,21 @@ export default function AdminDashboard({ stats }) {
     }*/
 
     // Statistikdaten abfragen
-    const aktiveMitgliederFF = await prisma.mitglied.count({
+    const aktiveMitgliederFF = await db2.mitglied.count({
         where: {
         Status: 'Aktiv',
         Abteilung: 'FF'
         }
     })
 
-    const aktiveMitgliederJF = await prisma.mitglied.count({
+    const aktiveMitgliederJF = await db2.mitglied.count({
         where: {
         Status: 'Aktiv',
         Abteilung: 'JF'
         }
     })
 
-    const einsaetzeAktuellesJahr = await prisma.einsatz.count({
+    const einsaetzeAktuellesJahr = await db2.einsatz.count({
         where: {
         StartDatum: {
             gte: new Date(`${currentYear}-01-01`),
@@ -131,7 +131,7 @@ export default function AdminDashboard({ stats }) {
         }
     })
 
-    const letzteEinsaetze = await prisma.einsatz.findMany({
+    const letzteEinsaetze = await db2.einsatz.findMany({
         where: {
         Typ: 'einsatz'
         },
@@ -146,7 +146,7 @@ export default function AdminDashboard({ stats }) {
         take: 5
     })
 
-    const aktivsteMitglieder = await prisma.mitglied.findMany({
+    const aktivsteMitglieder = await db2.mitglied.findMany({
         where: {
         Status: 'Aktiv'
         },
@@ -170,7 +170,7 @@ export default function AdminDashboard({ stats }) {
     })
 
     // Durchschnittliche Teilnahme berechnen
-    const teilnahmeStats = await prisma.teilnahme.groupBy({
+    const teilnahmeStats = await db2.teilnahme.groupBy({
         by: ['Veranstaltung_ID'],
         _count: {
         _all: true

@@ -1,6 +1,5 @@
 import { vereinsbuddyPrisma as db1 } from '@/lib/prisma';
 import { useRouter } from 'next/router';
-import Layout from '../../components/Layout';
 
 export default function MitgliedDetail({ mitglied }) {
     const router = useRouter()
@@ -10,7 +9,7 @@ export default function MitgliedDetail({ mitglied }) {
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Mitglied: {mitglied.Vorname} {mitglied.Name}</h1>
@@ -96,7 +95,7 @@ export default function MitgliedDetail({ mitglied }) {
             </div>
             )}
         </div>
-        </Layout>
+        </div>
     )
     }
 

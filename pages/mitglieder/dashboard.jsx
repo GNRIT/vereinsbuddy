@@ -1,5 +1,6 @@
-import { vereinDbPrisma as db2 } from '@/lib/prisma'
-import { getSession } from 'next-auth/react'
+import { vereinsbuddyPrisma as db1, vereinDbPrisma as db2 } from '@/lib/prisma';
+import { getSession } from 'next-auth/react';
+
 export default function MitgliedDashboard({ mitglied, teilnahmen, eintrittsdatum }) {
     const aktiveJahre = Math.floor((new Date() - new Date(eintrittsdatum)) / (1000 * 60 * 60 * 24 * 365))
 
@@ -111,15 +112,15 @@ export default function MitgliedDashboard({ mitglied, teilnahmen, eintrittsdatum
         }
     }
 
-    const mitglied = await db2.mitglied.findUnique({
+    const mitglied = await db1.person.findUnique({
         where: {
-        ID: session.user.personId
+        ID: session.user.Person_ID
         }
     })
 
     const teilnahmen = await db2.teilnahme.findMany({
         where: {
-        Mitglied_ID: session.user.personId
+        Mitglied_ID: session.user.Person_ID
         },
         include: {
         veranstaltung: true

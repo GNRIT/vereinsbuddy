@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import Layout from '../../components/Layout'
 import DienstgradForm from './components/DienstgradForm'
 
 export default function NeuerDienstgrad() {
@@ -33,11 +32,11 @@ export default function NeuerDienstgrad() {
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Neuen Dienstgrad anlegen</h1>
             <DienstgradForm onSubmit={handleSubmit} isSubmitting={isSubmitting} />
         </div>
-        </Layout>
+        </div>
     )
 }

@@ -1,4 +1,3 @@
-import Layout from '@/components/Layout'
 import { vereinDbPrisma as db2 } from '@/lib/prisma'
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
@@ -40,12 +39,12 @@ export default function JFMitgliedBearbeiten({ initialData }) {
     }
 
     return (
-        <Layout>
+        <div>
             <div className="bg-white shadow rounded-lg p-6">
                 <h1 className="text-2xl font-bold text-gray-900 mb-6">JF-Mitglied bearbeiten</h1>
                 <JFMitgliedForm initialData={initialData} onSubmit={handleSubmit} />
             </div>
-        </Layout>
+        </div>
     )
 }
 

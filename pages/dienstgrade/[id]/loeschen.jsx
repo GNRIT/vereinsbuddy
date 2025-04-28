@@ -1,6 +1,5 @@
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import Layout from '../../../components/Layout'
 import { deleteDienstgrad, getDienstgradById } from '../services/dienstgradService'
 
 export default function DienstgradLoeschen({ dienstgrad }) {
@@ -17,7 +16,7 @@ export default function DienstgradLoeschen({ dienstgrad }) {
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6 max-w-lg mx-auto">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Dienstgrad löschen</h1>
             <p className="mb-6">Möchten Sie den Dienstgrad wirklich löschen?</p>
@@ -42,7 +41,7 @@ export default function DienstgradLoeschen({ dienstgrad }) {
             </button>
             </div>
         </div>
-        </Layout>
+        </div>
     )
     }
 

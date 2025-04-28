@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import DienstabendForm from '../../../components/DienstabendForm'
-import Layout from '../../../components/Layout'
+import DienstabendForm from '../components/DienstabendForm'
 
 export default function DienstabendBearbeiten() {
     const router = useRouter()
@@ -56,20 +55,20 @@ export default function DienstabendBearbeiten() {
 
     if (isLoading) {
         return (
-        <Layout>
+        <div>
             <div className="flex justify-center py-8">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
             </div>
-        </Layout>
+        </div>
         )
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Dienstabend bearbeiten</h1>
             <DienstabendForm initialData={initialData} onSubmit={handleSubmit} />
         </div>
-        </Layout>
+        </div>
     )
 }

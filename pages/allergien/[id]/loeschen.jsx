@@ -1,7 +1,6 @@
 import { vereinDbPrisma as db2 } from '@/lib/prisma';
 import { getSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import Layout from '../../../components/Layout';
 
 export default function AllergieLoeschen({ allergie }) {
     const router = useRouter()
@@ -25,7 +24,7 @@ export default function AllergieLoeschen({ allergie }) {
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Allergie löschen</h1>
             
@@ -59,7 +58,7 @@ export default function AllergieLoeschen({ allergie }) {
             </button>
             </div>
         </div>
-        </Layout>
+        </div>
     )
     }
 

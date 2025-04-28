@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router'
-import Layout from '../../components/Layout'
-import AllergieForm from '../components/AllergieForm'
+import AllergieForm from './components/AllergieForm'
 
 export default function NeueAllergie() {
     const router = useRouter()
@@ -28,11 +27,11 @@ export default function NeueAllergie() {
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Neue Allergie erfassen</h1>
             <AllergieForm onSubmit={handleSubmit} />
         </div>
-        </Layout>
+        </div>
     )
 }

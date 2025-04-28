@@ -1,8 +1,8 @@
 import { vereinsbuddyPrisma as db1 } from '@/lib/prisma';
 import { getSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import Layout from '../../../components/Layout';
 import MitgliedForm from '../components/MitgliedForm';
+
 export default function MitgliedBearbeiten({ initialData }) {
     const router = useRouter()
 
@@ -29,12 +29,12 @@ export default function MitgliedBearbeiten({ initialData }) {
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Mitglied bearbeiten</h1>
             <MitgliedForm initialData={initialData} onSubmit={handleSubmit} />
         </div>
-        </Layout>
+        </div>
     )
     }
 

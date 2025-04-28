@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import Layout from '../../components/Layout'
 
 export default function DienstabendListe() {
     const router = useRouter()
@@ -48,16 +47,16 @@ export default function DienstabendListe() {
 
     if (isLoading) {
         return (
-        <Layout>
+        <div>
             <div className="flex justify-center py-8">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
             </div>
-        </Layout>
+        </div>
         )
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Dienstabende</h1>
@@ -121,6 +120,6 @@ export default function DienstabendListe() {
             </table>
             </div>
         </div>
-        </Layout>
+        </div>
     )
 }

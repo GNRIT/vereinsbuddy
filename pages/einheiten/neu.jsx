@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import EinheitForm from '../../components/EinheitForm'
+import EinheitForm from './components/EinheitForm'
 
 export default function NeueEinheit() {
     const router = useRouter()

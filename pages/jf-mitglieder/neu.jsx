@@ -1,6 +1,5 @@
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import Layout from '../../components/Layout'
 import JFMitgliedForm from './components/JFMitgliedForm'
 
 export default function NeuesJFMitglied() {
@@ -31,12 +30,12 @@ export default function NeuesJFMitglied() {
 
     // WICHTIG: das hier ist die React-Komponente!
     return (
-        <Layout>
+        <div>
             <div className="bg-white shadow rounded-lg p-6">
                 <h1 className="text-2xl font-bold text-gray-900 mb-6">Neues JF-Mitglied anlegen</h1>
                 <JFMitgliedForm onSubmit={handleSubmit} />
             </div>
-        </Layout>
+        </div>
     )
 }
 

@@ -1,7 +1,6 @@
 import { vereinDbPrisma as db2 } from '@/lib/prisma';
 import { useRouter } from 'next/router';
-import Layout from '../../../components/Layout';
-import EinheitForm from './components/EinheitForm';
+import EinheitForm from '../components/EinheitForm';
 
 export default function EinheitBearbeiten({ initialData }) {
     const router = useRouter()
@@ -29,12 +28,12 @@ export default function EinheitBearbeiten({ initialData }) {
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Einheit bearbeiten</h1>
             <EinheitForm initialData={initialData} onSubmit={handleSubmit} />
         </div>
-        </Layout>
+        </div>
     )
 }
 

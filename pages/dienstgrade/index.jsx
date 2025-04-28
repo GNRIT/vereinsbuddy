@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { useState } from 'react'
-import Layout from '../../../components/Layout'
 
 export default function DienstgradeListe({ initialDienstgrade }) {
     const [dienstgrade, setDienstgrade] = useState(initialDienstgrade)
@@ -29,7 +28,7 @@ export default function DienstgradeListe({ initialDienstgrade }) {
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Dienstgrade</h1>
@@ -65,7 +64,7 @@ export default function DienstgradeListe({ initialDienstgrade }) {
             </table>
             </div>
         </div>
-        </Layout>
+        </div>
     )
 }
 

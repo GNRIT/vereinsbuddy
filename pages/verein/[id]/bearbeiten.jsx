@@ -1,7 +1,6 @@
 import { vereinsbuddyPrisma as db1 } from '@/lib/prisma';
 import { getSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import Layout from '../../../components/Layout';
 import VereinForm from '../components/VereinForm';
 
 export default function VereinBearbeiten({ initialData }) {
@@ -30,12 +29,12 @@ export default function VereinBearbeiten({ initialData }) {
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Verein bearbeiten</h1>
             <VereinForm initialData={initialData} onSubmit={handleSubmit} />
         </div>
-        </Layout>
+        </div>
     )
     }
 

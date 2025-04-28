@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router'
-import Layout from '../../../components/Layout'
+import DienstgradForm from '../components/DienstgradForm'
 import { getDienstgradById, updateDienstgrad } from '../services/dienstgradService'
-import DienstgradForm from './components/DienstgradForm'
 
 export default function DienstgradBearbeiten({ dienstgrad }) {
     const router = useRouter()
@@ -17,12 +16,12 @@ export default function DienstgradBearbeiten({ dienstgrad }) {
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Dienstgrad bearbeiten</h1>
             <DienstgradForm initialData={dienstgrad} onSubmit={handleSubmit} />
         </div>
-        </Layout>
+        </div>
     )
 }
 

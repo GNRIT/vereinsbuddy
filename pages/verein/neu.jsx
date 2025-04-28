@@ -1,6 +1,6 @@
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import VereinForm from '../../components/VereinForm'
+import VereinForm from './components/VereinForm'
 
 export default function NeuerVerein() {
     const router = useRouter()

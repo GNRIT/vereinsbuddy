@@ -1,7 +1,7 @@
 import { vereinDbPrisma as db2 } from '@/lib/prisma'
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import MitgliedLoginForm from './components/MitgliedLoginForm'
+import MitgliedLoginForm from '../components/MitgliedLoginForm'
 
 export default function MitgliedLoginBearbeiten({ initialData }) {
     const router = useRouter()

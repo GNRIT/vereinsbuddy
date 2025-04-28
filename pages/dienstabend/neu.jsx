@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router'
-import Layout from '../../components/Layout'
 import DienstabendForm from './components/DienstabendForm'
 
 export default function NeuerDienstabend() {
@@ -28,11 +27,11 @@ export default function NeuerDienstabend() {
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Neuer Dienstabend</h1>
             <DienstabendForm onSubmit={handleSubmit} />
         </div>
-        </Layout>
+        </div>
     )
 }
