@@ -40,7 +40,7 @@ export default function DienstgradBearbeiten({ initialData }) {
 export async function getServerSideProps(context) {
     const { id } = context.params;
     
-    const parsedId = parseInt(id, 10); // ✅ parseInt mit Basis 10
+    const parsedId = parseInt(id, 10); 
     if (!parsedId || isNaN(parsedId)) {
         return {
             notFound: true,
@@ -49,7 +49,7 @@ export async function getServerSideProps(context) {
 
     const dienstgrad = await db2.dienstgrad.findUnique({
         where: {
-            ID: parsedId, // ✅ Hier richtig 'parsedId' verwenden und 'ID' groß schreiben
+            ID: parsedId,
         },
     });
 

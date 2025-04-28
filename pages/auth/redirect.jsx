@@ -12,7 +12,7 @@ export default function AuthRedirect() {
     
             if (vereine.length === 1 && vereine[0].vereinId) {
                 // Direkt zum einzigen Verein weiterleiten
-                router.push(`/verein/${vereine[0].vereinId}`);
+                router.push(`/vereine/${vereine[0].vereinId}`);
             } else if (vereine.length > 1) {
                 // Wenn mehrere Vereine vorhanden
                 router.push('/verein-auswahl');

@@ -1,4 +1,5 @@
 import { signOut, useSession } from 'next-auth/react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
@@ -12,7 +13,7 @@ export default function VereinAuswahl() {
         if (status === 'authenticated') {
             // Wenn Benutzer nur einem Verein zugeordnet ist, direkt weiterleiten
             if (session?.user?.vereine?.length === 1) {
-                router.push(`/verein/${session.user.vereine[0].vereinId}`);
+                router.push(`/vereine/${session.user.vereine[0].vereinId}`);
             }
         }
         // Wenn nicht authentifiziert, zurück zum Login
@@ -54,7 +55,7 @@ export default function VereinAuswahl() {
         // Speichere ausgewählten Verein im localStorage für Persistenz
         localStorage.setItem('selectedVerein', vereinId);
         // Weiterleitung zur Vereinsseite
-        router.push(`/verein/${vereinId}`);
+        router.push(`/vereine/${vereinId}`);
     };
 
     return (
@@ -88,6 +89,9 @@ export default function VereinAuswahl() {
                                             <span>Mitglied</span>
                                         )}
                                     </p>
+                                    <Link href={`/vereine/${verein.vereinId}`}>
+                                    <span className="text-indigo-600 hover:text-indigo-900">Auswählen</span>
+                                    </Link>
                                 </div>
                             ))}
                         </div>
