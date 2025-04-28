@@ -8,9 +8,9 @@ export default function EinheitenListe({ einheiten }) {
             <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Einheitenverwaltung</h1>
             <Link href="/einheiten/neu">
-                <a className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
+                <span className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
                 Neue Einheit
-                </a>
+                </span>
             </Link>
             </div>
             
@@ -32,10 +32,10 @@ export default function EinheitenListe({ einheiten }) {
                     <td className="px-6 py-4 text-sm text-gray-500 max-w-xs truncate">{einheit.Beschreibung}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <Link href={`/einheiten/${einheit.ID}`}>
-                        <a className="text-blue-600 hover:text-blue-900 mr-3">Ansehen</a>
+                        <span className="text-blue-600 hover:text-blue-900 mr-3">Ansehen</span>
                         </Link>
                         <Link href={`/einheiten/${einheit.ID}/bearbeiten`}>
-                        <a className="text-indigo-600 hover:text-indigo-900 mr-3">Bearbeiten</a>
+                        <span className="text-indigo-600 hover:text-indigo-900 mr-3">Bearbeiten</span>
                         </Link>
                         <button 
                         onClick={() => {

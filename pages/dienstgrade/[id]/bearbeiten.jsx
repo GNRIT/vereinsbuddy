@@ -1,6 +1,6 @@
+import { getDienstgradById, updateDienstgrad } from '@/services/dienstgradService'
 import { useRouter } from 'next/router'
 import DienstgradForm from '../components/DienstgradForm'
-import { getDienstgradById, updateDienstgrad } from '../services/dienstgradService'
 
 export default function DienstgradBearbeiten({ dienstgrad }) {
     const router = useRouter()

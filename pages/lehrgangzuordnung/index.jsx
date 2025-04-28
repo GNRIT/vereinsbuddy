@@ -1,5 +1,6 @@
 import { vereinDbPrisma as db2 } from '@/lib/prisma'
 import Link from 'next/link'
+
 export default function LehrgangsZuordnungen({ zuordnungen }) {
     return (
         <div>
@@ -7,9 +8,9 @@ export default function LehrgangsZuordnungen({ zuordnungen }) {
             <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Lehrgangszuordnungen</h1>
             <Link href="/lehrgaenge/neu">
-                <a className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
+                <span className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
                 Neue Zuordnung
-                </a>
+                </span>
             </Link>
             </div>
             
@@ -42,10 +43,10 @@ export default function LehrgangsZuordnungen({ zuordnungen }) {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <Link href={`/lehrgaenge/${zuordnung.id}/bearbeiten`}>
-                        <a className="text-indigo-600 hover:text-indigo-900 mr-3">Bearbeiten</a>
+                        <span className="text-indigo-600 hover:text-indigo-900 mr-3">Bearbeiten</span>
                         </Link>
                         <Link href={`/lehrgaenge/${zuordnung.id}/loeschen`}>
-                        <a className="text-red-600 hover:text-red-900">Löschen</a>
+                        <span className="text-red-600 hover:text-red-900">Löschen</span>
                         </Link>
                     </td>
                     </tr>

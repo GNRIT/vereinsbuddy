@@ -8,9 +8,9 @@ export default function AllergieListe({ allergien }) {
             <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Allergieverwaltung</h1>
             <Link href="/allergien/neu">
-                <a className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
+                <span className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
                 Neue Allergie
-                </a>
+                </span>
             </Link>
             </div>
             
@@ -39,10 +39,10 @@ export default function AllergieListe({ allergien }) {
                     <td className="px-6 py-4 text-sm text-gray-500 max-w-xs truncate">{allergie.Beschreibung}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <Link href={`/allergien/${allergie.id}/bearbeiten`}>
-                        <a className="text-indigo-600 hover:text-indigo-900 mr-3">Bearbeiten</a>
+                        <span className="text-indigo-600 hover:text-indigo-900 mr-3">Bearbeiten</span>
                         </Link>
                         <Link href={`/allergien/${allergie.id}/loeschen`}>
-                        <a className="text-red-600 hover:text-red-900">Löschen</a>
+                        <span className="text-red-600 hover:text-red-900">Löschen</span>
                         </Link>
                     </td>
                     </tr>

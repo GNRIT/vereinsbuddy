@@ -33,9 +33,9 @@ export default function DienstgradeListe({ initialDienstgrade }) {
             <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Dienstgrade</h1>
             <Link href="/dienstgrade/neu">
-                <a className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
+                <span className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
                 Neuer Dienstgrad
-                </a>
+                </span>
             </Link>
             </div>
             
@@ -48,7 +48,7 @@ export default function DienstgradeListe({ initialDienstgrade }) {
                     {/* Zellen wie zuvor */}
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <Link href={`/dienstgrade/${dienstgrad.id}/bearbeiten`}>
-                        <a className="text-indigo-600 hover:text-indigo-900 mr-3">Bearbeiten</a>
+                        <span className="text-indigo-600 hover:text-indigo-900 mr-3">Bearbeiten</span>
                         </Link>
                         <button
                         onClick={() => handleDelete(dienstgrad.id)}

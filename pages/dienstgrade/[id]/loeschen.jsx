@@ -1,6 +1,6 @@
+import { deleteDienstgrad, getDienstgradById } from '@/services/dienstgradService'
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import { deleteDienstgrad, getDienstgradById } from '../services/dienstgradService'
 
 export default function DienstgradLoeschen({ dienstgrad }) {
     const router = useRouter()

@@ -1,7 +1,7 @@
 import { vereinDbPrisma as db2 } from '@/lib/prisma'
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import LehrgangForm from '../../../components/LehrgangForm'
+import LehrgangForm from '../components/LehrgangForm'
 
 export default function LehrgangBearbeiten({ initialData }) {
     const router = useRouter()

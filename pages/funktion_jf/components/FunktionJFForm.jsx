@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 
-export default function JugendfunktionForm({ initialData = {}, onSubmit }) {
+export default function FunktionJFForm({ initialData = {}, onSubmit }) {
     const [formData, setFormData] = useState({
         Name: initialData.Name || '',
         Ist_admin: initialData.Ist_admin || false,

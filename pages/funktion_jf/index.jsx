@@ -8,9 +8,9 @@ export default function JugendfunktionenListe({ funktionen }) {
             <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Jugendfunktionen</h1>
             <Link href="/jugendfunktionen/neu">
-                <a className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
+                <span className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
                 Neue Jugendfunktion
-                </a>
+                </span>
             </Link>
             </div>
             
@@ -46,10 +46,10 @@ export default function JugendfunktionenListe({ funktionen }) {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <Link href={`/jugendfunktionen/${funktion.ID}/bearbeiten`}>
-                        <a className="text-indigo-600 hover:text-indigo-900 mr-3">Bearbeiten</a>
+                        <span className="text-indigo-600 hover:text-indigo-900 mr-3">Bearbeiten</span>
                         </Link>
                         <Link href={`/jugendfunktionen/${funktion.ID}`}>
-                        <a className="text-blue-600 hover:text-blue-900">Ansehen</a>
+                        <span className="text-blue-600 hover:text-blue-900">Ansehen</span>
                         </Link>
                     </td>
                     </tr>

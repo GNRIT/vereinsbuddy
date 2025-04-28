@@ -9,9 +9,9 @@ export default function FahrzeugListe({ fahrzeuge }) {
             <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Fahrzeugverwaltung</h1>
             <Link href="/fahrzeuge/neu">
-                <a className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
+                <span className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
                 Neues Fahrzeug
-                </a>
+                </span>
             </Link>
             </div>
             
@@ -46,13 +46,13 @@ export default function FahrzeugListe({ fahrzeuge }) {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <Link href={`/fahrzeuge/${fahrzeug.id}`}>
-                        <a className="text-blue-600 hover:text-blue-900 mr-3">Ansehen</a>
+                        <span className="text-blue-600 hover:text-blue-900 mr-3">Ansehen</span>
                         </Link>
                         <Link href={`/fahrzeuge/${fahrzeug.id}/einteilung`}>
-                        <a className="text-indigo-600 hover:text-indigo-900 mr-3">Einteilung</a>
+                        <span className="text-indigo-600 hover:text-indigo-900 mr-3">Einteilung</span>
                         </Link>
                         <Link href={`/fahrzeuge/${fahrzeug.id}/bearbeiten`}>
-                        <a className="text-gray-600 hover:text-gray-900">Bearbeiten</a>
+                        <span className="text-gray-600 hover:text-gray-900">Bearbeiten</span>
                         </Link>
                     </td>
                     </tr>

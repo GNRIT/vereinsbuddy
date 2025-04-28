@@ -2,7 +2,7 @@ import { vereinDbPrisma as db2 } from '@/lib/prisma'
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import ConfirmationDialog from './components/ConfirmationDialog'
+import ConfirmationDialog from './components/FahrzeugForm'
 
 export default function FahrzeugDetail({ fahrzeug }) {
     const router = useRouter()

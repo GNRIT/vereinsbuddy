@@ -78,7 +78,7 @@ export async function getServerSideProps(context) {
     const { id } = context.params
     const verein = await db1.verein.findUnique({
         where: {
-            ID: parseInt(id),
+            ID: parseInt(id, 10),
         },
     })
 

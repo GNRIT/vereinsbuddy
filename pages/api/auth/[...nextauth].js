@@ -52,7 +52,7 @@ export const authOptions = {
                         vorname: user.person ? user.person.Vorname : null,
                         name: user.person ? user.person.Name : null,
                         email: user.person ? user.person.Email : null,
-                        vereine: user.person && user.person.Vereinszuordnung ? user.person.Vereinszuordnung.map(z => ({
+                        vereine: user.person && user.person.vereinszuordnung ? user.person.vereinszuordnung.map(z => ({
                             vereinId: z.Verein_ID,
                             vereinName: z.verein.Name,
                             subdomain: z.verein.Subdomain,
