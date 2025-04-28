@@ -7,7 +7,7 @@ export default function ErziehungsberechtigteListe({ erziehungsberechtigte }) {
         <div className="bg-white shadow rounded-lg p-6">
             <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Erziehungsberechtigte</h1>
-            <Link href="/jugend/erziehungsberechtigte/neu">
+            <Link href="/erziehungsberechtigte/neu">
                 <span className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
                 Neuer Eintrag
                 </span>
@@ -43,10 +43,10 @@ export default function ErziehungsberechtigteListe({ erziehungsberechtigte }) {
                         {eb.Erstellt_am ? new Date(eb.Erstellt_am).toLocaleDateString() : '-'}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <Link href={`/jugend/erziehungsberechtigte/${eb.ID}/bearbeiten`}>
+                        <Link href={`/erziehungsberechtigte/${eb.ID}/bearbeiten`}>
                         <span className="text-indigo-600 hover:text-indigo-900 mr-3">Bearbeiten</span>
                         </Link>
-                        <Link href={`/jugend/erziehungsberechtigte/${eb.ID}`}>
+                        <Link href={`/erziehungsberechtigte/${eb.ID}`}>
                         <span className="text-blue-600 hover:text-blue-900">Ansehen</span>
                         </Link>
                     </td>
@@ -63,8 +63,7 @@ export default function ErziehungsberechtigteListe({ erziehungsberechtigte }) {
 export async function getServerSideProps() {
     const erziehungsberechtigte = await db2.jf_erziehungsberechtigter.findMany({
         include: {
-        jf_mitglied: true,
-        person: true
+        jf_mitglied: true
         },
         orderBy: {
         Erstellt_am: 'desc',

@@ -220,7 +220,7 @@ exports.Prisma.Funktion_ffScalarFieldEnum = {
 exports.Prisma.Funktion_jfScalarFieldEnum = {
   ID: 'ID',
   Name: 'Name',
-  Ist_admin: 'Ist_admin',
+  Ist_Admin: 'Ist_Admin',
   Erstellt_am: 'Erstellt_am',
   Geaendert_am: 'Geaendert_am'
 };

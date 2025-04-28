@@ -1,5 +1,3 @@
-// components/ConfirmationDialog.jsx
-
 export default function ConfirmationDialog({
     isOpen,
     onClose,

@@ -7,18 +7,24 @@ export default function AuthRedirect() {
     const router = useRouter()
 
     useEffect(() => {
-        if (status === 'authenticated') {
-            if (session.user.vereine.length === 1) {
+        if (status === 'authenticated' && session?.user) {
+            const vereine = session.user.vereine || [];
+    
+            if (vereine.length === 1 && vereine[0].vereinId) {
                 // Direkt zum einzigen Verein weiterleiten
-                router.push(`/verein/${session.user.vereine[0].ID}`)
+                router.push(`/verein/${vereine[0].vereinId}`);
+            } else if (vereine.length > 1) {
+                // Wenn mehrere Vereine vorhanden
+                router.push('/verein-auswahl');
             } else {
-                // Zur Vereinsauswahl wenn mehrere Vereine
-                router.push('/verein-auswahl')
+                // Wenn keine Vereine vorhanden oder fehlerhafte Daten
+                console.error('Keine gültigen Vereinsdaten gefunden.');
             }
-        } else if (status === 'unauthenticated') {
-            router.push('/auth/login')
-        }
-    }, [status, router, session])
+        } /*else if (status === 'unauthenticated') {
+            router.push('/auth/login');
+        }*/
+    }, [status, router, session]);
+    
 
     return (
         <div className="min-h-screen flex items-center justify-center">

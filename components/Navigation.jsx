@@ -43,39 +43,106 @@ export default function Layout({ children }) {
                             </div>
                             {session && aktiverVerein && (
                                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-                                    <Link href="/dashboard">
-                                        <span className={`${router.pathname === '/dashboard' ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
+
+                                    <Link href="/admin">
+                                        <span className={`${router.pathname === '/admin' ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
                                             Dashboard
                                         </span>
                                     </Link>
+
                                     <Link href="/allergien">
                                     <span className={`${router.pathname.startsWith('/allergien') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
                                         Allergien
                                     </span>
                                     </Link>
-                                    <Link href="/mitglieder">
-                                        <span className={`${router.pathname.startsWith('/mitglieder') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
-                                            Mitglieder
-                                        </span>
+
+                                    <Link href="/dienstabend">
+                                    <span className={`${router.pathname.startsWith('/dienstabend') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
+                                        Dienstabend
+                                    </span>
                                     </Link>
+
+                                    <Link href="/dienstgrade">
+                                    <span className={`${router.pathname.startsWith('/dienstgrade') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
+                                        Dienstgrad
+                                    </span>
+                                    </Link>
+
                                     <Link href="/einheiten">
                                     <span className={`${router.pathname.startsWith('/einheiten') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
                                         Einheiten
                                     </span>
                                     </Link>
+
                                     <Link href="/einsatz">
-                                        <span className={`${router.pathname.startsWith('/einsatz') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
-                                            Einsätze
-                                        </span>
+                                    <span className={`${router.pathname.startsWith('/einsatz') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
+                                        Einsätze
+                                    </span>
                                     </Link>
+
+                                    <Link href="/erziehungsberechtigte">
+                                    <span className={`${router.pathname.startsWith('/erziehungsberechtigte') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
+                                        Erziehungsberechtigte
+                                    </span>
+                                    </Link>
+
                                     <Link href="/fahrzeuge">
-                                        <span className={`${router.pathname.startsWith('/fahrzeuge') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
-                                            Fahrzeuge
+                                    <span className={`${router.pathname.startsWith('/fahrzeuge') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
+                                        Fahrzeuge
+                                    </span>
+                                    </Link>
+
+                                    <Link href="/ff-mitglieder">
+                                    <span className={`${router.pathname.startsWith('/ff-mitglieder') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
+                                        FF-Mitglieder
+                                    </span>
+                                    </Link>
+
+                                    <Link href="/jf-mitglieder">
+                                        <span className={`${router.pathname.startsWith('/jf-mitglieder') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
+                                            JF-Mitglieder
                                         </span>
                                     </Link>
-                                    <Link href="/ausruestung">
-                                        <span className={`${router.pathname.startsWith('/ausruestung') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
-                                            Ausrüstung
+
+                                    <Link href="/lehrgang">
+                                    <span className={`${router.pathname.startsWith('/lehrgang') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
+                                        Lehrgänge
+                                    </span>
+                                    </Link>
+
+                                    <Link href="/funktion_ff">
+                                        <span className={`${router.pathname.startsWith('/funktion_ff') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
+                                            Funktion-FF
+                                        </span>
+                                    </Link>
+
+                                    <Link href="/lehrgangzuordnung">
+                                        <span className={`${router.pathname.startsWith('/lehrgangzuordnung') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
+                                            Lehrgangzuordnung
+                                        </span>
+                                    </Link>
+
+                                    <Link href="/mitglied-funktionen">
+                                        <span className={`${router.pathname.startsWith('/mitglied-funktionen') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
+                                            Mitglied-Funktionen
+                                        </span>
+                                    </Link>
+
+                                    <Link href="/mitglied-login">
+                                        <span className={`${router.pathname.startsWith('/mitglied-login') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
+                                            Mitglied-Login
+                                        </span>
+                                    </Link>
+
+                                    <Link href="/funktion_jf">
+                                        <span className={`${router.pathname.startsWith('/funktion_jf') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
+                                            Funktion-JF
+                                        </span>
+                                    </Link>
+
+                                    <Link href="/teilnahmen">
+                                        <span className={`${router.pathname.startsWith('/teilnahmen') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
+                                            Teilnahmen
                                         </span>
                                     </Link>
                                 </div>
@@ -168,7 +235,7 @@ export default function Layout({ children }) {
                                                 <p className="block px-4 py-2 text-sm text-gray-700 border-b">
                                                     {session.user?.vorname} {session.user?.name}
                                                 </p>
-                                                <Link href="/profil">
+                                                <Link href={`/mitglieder/${session.user.Person_ID}`}>
                                                     <span
                                                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                                         role="menuitem"

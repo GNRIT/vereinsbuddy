@@ -50,11 +50,15 @@ export default function AllergieForm({ initialData = {}, onSubmit }) {
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             >
                 <option value="">Bitte auswählen</option>
-                {mitglieder.filter(m => m.Mitgliedsart === 'FF').map(m => (
-                <option key={m.id} value={m.id}>
-                    {m.Vorname} {m.Name}
-                </option>
-                ))}
+                    {Array.isArray(mitglieder) && mitglieder.length > 0 ? (
+                        mitglieder.map(m => (
+                            <option key={m.id} value={m.id}>
+                                {m.Vorname} {m.Name}
+                            </option>
+                        ))
+                    ) : (
+                        <option disabled>Keine Mitglieder verfügbar</option>
+                    )}
             </select>
             </div>
 
@@ -69,12 +73,16 @@ export default function AllergieForm({ initialData = {}, onSubmit }) {
                 onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             >
-                <option value="">Kein Jugendfeuerwehr Mitglied</option>
-                {mitglieder.filter(m => m.Mitgliedsart === 'JF').map(m => (
-                <option key={m.id} value={m.id}>
-                    {m.Vorname} {m.Name}
-                </option>
-                ))}
+                <option value="">Bitte auswählen</option>
+                    {Array.isArray(mitglieder) && mitglieder.length > 0 ? (
+                        mitglieder.map(m => (
+                            <option key={m.id} value={m.id}>
+                                {m.Vorname} {m.Name}
+                            </option>
+                        ))
+                    ) : (
+                        <option disabled>Keine Mitglieder verfügbar</option>
+                    )}
             </select>
             </div>
         </div>

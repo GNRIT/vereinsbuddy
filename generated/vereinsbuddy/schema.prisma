@@ -16,7 +16,7 @@ model benutzerkonto {
   Person_ID    Int
   Erstellt_am  DateTime? @map("Erstellt am") @vereindb.Date
   Geaendert_am DateTime? @map("Geaendert am") @vereindb.Date
-  person       person    @relation(fields: [Person_ID], references: [ID], onDelete: Cascade, map: "benutzerkonto_ibfk_1")
+  person       person    @relation(fields: [Person_ID], references: [ID], onUpdate: Restrict, map: "benutzerkonto_ibfk_1")
 
   @@index([Person_ID], map: "benutzerkonto_ibfk_1")
 }
@@ -58,8 +58,8 @@ model vereinszuordnung {
   Rolle        vereinszuordnung_Rolle @default(mitglied)
   Erstellt_am  DateTime               @default(now()) @map("Erstellt am") @vereindb.Date
   Geaendert_am DateTime?              @map("Geaendert am") @vereindb.Date
-  person       person                 @relation(fields: [Person_ID], references: [ID], onDelete: Cascade, map: "vereinszuordnung_ibfk_1")
-  verein       verein                 @relation(fields: [Verein_ID], references: [ID], onDelete: Cascade, map: "vereinszuordnung_ibfk_2")
+  person       person                 @relation(fields: [Person_ID], references: [ID], onUpdate: Restrict, map: "vereinszuordnung_ibfk_1")
+  verein       verein                 @relation(fields: [Verein_ID], references: [ID], onUpdate: Restrict, map: "vereinszuordnung_ibfk_2")
 
   @@index([Person_ID], map: "vereinszuordnung_ibfk_1")
   @@index([Verein_ID], map: "vereinszuordnung_ibfk_2")

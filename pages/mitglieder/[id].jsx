@@ -115,7 +115,7 @@ export default function MitgliedDetail({ mitglied }) {
             include: {
                 vereinszuordnung: {
                     include: {
-                        Verein: true,
+                        verein: true,
                     },
                 },
             },

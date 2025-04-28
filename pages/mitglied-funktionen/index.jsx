@@ -19,8 +19,8 @@ export default function MitgliedFunktionenListe({ zuordnungen }) {
                 <thead className="bg-gray-50">
                 <tr>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mitglied</th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Funktion</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mitglied ID</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Funktion ID</th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Typ</th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aktionen</th>
                 </tr>
@@ -65,13 +65,7 @@ export default function MitgliedFunktionenListe({ zuordnungen }) {
         include: {
         ff_mitglied: {
             select: {
-            Vorname: true,
-            Name: true
-            }
-        },
-        funktion_ff: {
-            select: {
-            Name: true
+            Person_ID: true
             }
         }
         },

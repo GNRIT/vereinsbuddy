@@ -70,17 +70,20 @@ export default function TeilnahmenListe({ teilnahmen }) {
 
 export async function getServerSideProps() {
     const teilnahmen = await db2.teilnahme.findMany({
-        include: {
-        mitglied: true,
-        veranstaltung: true
-        },
         orderBy: {
         Erstellt_am: 'desc',
         },
     })
 
+    const mitglieder = await db1.person.findMany({
+        include: {
+        vereinszuordnung: true
+        }
+    })
+
     return {
         props: {
+        mitglieder: JSON.parse(JSON.stringify(mitglieder)),
         teilnahmen: JSON.parse(JSON.stringify(teilnahmen)),
         },
     }

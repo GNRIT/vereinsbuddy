@@ -57,7 +57,8 @@ export const authOptions = {
                             vereinName: z.verein.Name,
                             subdomain: z.verein.Subdomain,
                             rolle: z.Rolle
-                        })) : []
+                        })) : [],
+                        Person_ID: user.Person_ID
                     };
                 } catch (error) {
                     console.error('Fehler in der Authentifizierung:', error);
@@ -83,7 +84,7 @@ export const authOptions = {
                 token.id = user.ID; // wichtig für next-auth
                 token.name = user.Vorname || user.Benutzername;
                 token.email = user.Email || null;
-        
+                token.Person_ID = user.Person_ID;
                 // 👇 Alles, was du brauchst für session.user
                 token.user = user;
         
@@ -99,7 +100,8 @@ export const authOptions = {
             session.user = token.user || {
                 id: token.id,
                 name: token.name,
-                email: token.email
+                email: token.email,
+                Person_ID: token.Person_ID
             };
             return session;
             }

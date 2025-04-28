@@ -61,9 +61,9 @@ export default function DienstabendListe() {
             <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Dienstabende</h1>
             <Link href="/dienstabend/neu">
-                <a className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
+                <span className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
                 Neuer Dienstabend
-                </a>
+                </span>
             </Link>
             </div>
 

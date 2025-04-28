@@ -75,22 +75,29 @@ export default function VereinDetail({ verein }) {
 }
 
 export async function getServerSideProps(context) {
-    const { id } = context.params
-    const verein = await db1.verein.findUnique({
+    const { id } = context.params || {}; // Sicherstellen, dass params existiert
+    
+        if (!id) {
+        return {
+            notFound: true,
+        };
+        }
+    
+        const verein = await db1.verein.findUnique({
         where: {
             ID: parseInt(id, 10),
         },
-    })
-
-    if (!verein) {
+        });
+    
+        if (!verein) {
         return {
-        notFound: true,
+            notFound: true,
+        };
         }
-    }
-
-    return {
+    
+        return {
         props: {
-        verein: JSON.parse(JSON.stringify(verein)),
+            verein: JSON.parse(JSON.stringify(verein)),
         },
-    }
+    };
 }

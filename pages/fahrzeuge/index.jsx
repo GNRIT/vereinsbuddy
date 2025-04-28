@@ -68,14 +68,14 @@ export default function FahrzeugListe({ fahrzeuge }) {
     export async function getServerSideProps(context) {
     const session = await getSession(context)
 
-    if (!session) {
+    /*if (!session) {
         return {
         redirect: {
             destination: '/auth/login',
             permanent: false,
         },
         }
-    }
+    }*/
 
     const fahrzeuge = await db2.fahrzeug.findMany({
         orderBy: {

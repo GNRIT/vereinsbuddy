@@ -20,7 +20,7 @@ export default async function handler(req, res) {
         try {
         const verein = await db1.verein.findUnique({
             where: {
-            ID: parseInt(id)
+            ID: parseInt(id, 10)
             }
         })
 
@@ -41,7 +41,7 @@ export default async function handler(req, res) {
             where: {
             Subdomain: Subdomain,
             NOT: {
-                ID: parseInt(id)
+                ID: parseInt(id, 10)
             }
             }
         })
@@ -52,7 +52,7 @@ export default async function handler(req, res) {
 
         const updatedVerein = await db1.verein.update({
             where: {
-            ID: parseInt(id)
+            ID: parseInt(id, 10)
             },
             data: {
             Name,
@@ -74,14 +74,14 @@ export default async function handler(req, res) {
         // Zuerst alle Zuordnungen löschen
         await db1.vereinszuordnung.deleteMany({
             where: {
-            Verein_ID: parseInt(id)
+            Verein_ID: parseInt(id, 10)
             }
         })
 
         // Dann den Verein löschen
         await db1.verein.delete({
             where: {
-            ID: parseInt(id)
+            ID: parseInt(id, 10)
             }
         })
 

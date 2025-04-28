@@ -2461,37 +2461,6 @@ export namespace Prisma {
 
 
   /**
-   * Count Type Funktion_ffCountOutputType
-   */
-
-  export type Funktion_ffCountOutputType = {
-    mitglied_funktionen: number
-  }
-
-  export type Funktion_ffCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    mitglied_funktionen?: boolean | Funktion_ffCountOutputTypeCountMitglied_funktionenArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * Funktion_ffCountOutputType without action
-   */
-  export type Funktion_ffCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Funktion_ffCountOutputType
-     */
-    select?: Funktion_ffCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * Funktion_ffCountOutputType without action
-   */
-  export type Funktion_ffCountOutputTypeCountMitglied_funktionenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: mitglied_funktionenWhereInput
-  }
-
-
-  /**
    * Count Type Jf_mitgliedCountOutputType
    */
 
@@ -11886,8 +11855,6 @@ export namespace Prisma {
     Ist_Admin?: boolean
     Erstellt_am?: boolean
     Geaendert_am?: boolean
-    mitglied_funktionen?: boolean | funktion_ff$mitglied_funktionenArgs<ExtArgs>
-    _count?: boolean | Funktion_ffCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["funktion_ff"]>
 
 
@@ -11901,16 +11868,10 @@ export namespace Prisma {
   }
 
   export type funktion_ffOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Name" | "Ist_Admin" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["funktion_ff"]>
-  export type funktion_ffInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    mitglied_funktionen?: boolean | funktion_ff$mitglied_funktionenArgs<ExtArgs>
-    _count?: boolean | Funktion_ffCountOutputTypeDefaultArgs<ExtArgs>
-  }
 
   export type $funktion_ffPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "funktion_ff"
-    objects: {
-      mitglied_funktionen: Prisma.$mitglied_funktionenPayload<ExtArgs>[]
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       ID: number
       Name: string
@@ -12257,7 +12218,6 @@ export namespace Prisma {
    */
   export interface Prisma__funktion_ffClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    mitglied_funktionen<T extends funktion_ff$mitglied_funktionenArgs<ExtArgs> = {}>(args?: Subset<T, funktion_ff$mitglied_funktionenArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$mitglied_funktionenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -12309,10 +12269,6 @@ export namespace Prisma {
      */
     omit?: funktion_ffOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: funktion_ffInclude<ExtArgs> | null
-    /**
      * Filter, which funktion_ff to fetch.
      */
     where: funktion_ffWhereUniqueInput
@@ -12331,10 +12287,6 @@ export namespace Prisma {
      */
     omit?: funktion_ffOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: funktion_ffInclude<ExtArgs> | null
-    /**
      * Filter, which funktion_ff to fetch.
      */
     where: funktion_ffWhereUniqueInput
@@ -12352,10 +12304,6 @@ export namespace Prisma {
      * Omit specific fields from the funktion_ff
      */
     omit?: funktion_ffOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: funktion_ffInclude<ExtArgs> | null
     /**
      * Filter, which funktion_ff to fetch.
      */
@@ -12405,10 +12353,6 @@ export namespace Prisma {
      */
     omit?: funktion_ffOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: funktion_ffInclude<ExtArgs> | null
-    /**
      * Filter, which funktion_ff to fetch.
      */
     where?: funktion_ffWhereInput
@@ -12457,10 +12401,6 @@ export namespace Prisma {
      */
     omit?: funktion_ffOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: funktion_ffInclude<ExtArgs> | null
-    /**
      * Filter, which funktion_ffs to fetch.
      */
     where?: funktion_ffWhereInput
@@ -12504,10 +12444,6 @@ export namespace Prisma {
      */
     omit?: funktion_ffOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: funktion_ffInclude<ExtArgs> | null
-    /**
      * The data needed to create a funktion_ff.
      */
     data: XOR<funktion_ffCreateInput, funktion_ffUncheckedCreateInput>
@@ -12536,10 +12472,6 @@ export namespace Prisma {
      * Omit specific fields from the funktion_ff
      */
     omit?: funktion_ffOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: funktion_ffInclude<ExtArgs> | null
     /**
      * The data needed to update a funktion_ff.
      */
@@ -12581,10 +12513,6 @@ export namespace Prisma {
      */
     omit?: funktion_ffOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: funktion_ffInclude<ExtArgs> | null
-    /**
      * The filter to search for the funktion_ff to update in case it exists.
      */
     where: funktion_ffWhereUniqueInput
@@ -12611,10 +12539,6 @@ export namespace Prisma {
      */
     omit?: funktion_ffOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: funktion_ffInclude<ExtArgs> | null
-    /**
      * Filter which funktion_ff to delete.
      */
     where: funktion_ffWhereUniqueInput
@@ -12635,30 +12559,6 @@ export namespace Prisma {
   }
 
   /**
-   * funktion_ff.mitglied_funktionen
-   */
-  export type funktion_ff$mitglied_funktionenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mitglied_funktionen
-     */
-    select?: mitglied_funktionenSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the mitglied_funktionen
-     */
-    omit?: mitglied_funktionenOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mitglied_funktionenInclude<ExtArgs> | null
-    where?: mitglied_funktionenWhereInput
-    orderBy?: mitglied_funktionenOrderByWithRelationInput | mitglied_funktionenOrderByWithRelationInput[]
-    cursor?: mitglied_funktionenWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Mitglied_funktionenScalarFieldEnum | Mitglied_funktionenScalarFieldEnum[]
-  }
-
-  /**
    * funktion_ff without action
    */
   export type funktion_ffDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -12670,10 +12570,6 @@ export namespace Prisma {
      * Omit specific fields from the funktion_ff
      */
     omit?: funktion_ffOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: funktion_ffInclude<ExtArgs> | null
   }
 
 
@@ -12700,7 +12596,7 @@ export namespace Prisma {
   export type Funktion_jfMinAggregateOutputType = {
     ID: number | null
     Name: string | null
-    Ist_admin: boolean | null
+    Ist_Admin: boolean | null
     Erstellt_am: Date | null
     Geaendert_am: Date | null
   }
@@ -12708,7 +12604,7 @@ export namespace Prisma {
   export type Funktion_jfMaxAggregateOutputType = {
     ID: number | null
     Name: string | null
-    Ist_admin: boolean | null
+    Ist_Admin: boolean | null
     Erstellt_am: Date | null
     Geaendert_am: Date | null
   }
@@ -12716,7 +12612,7 @@ export namespace Prisma {
   export type Funktion_jfCountAggregateOutputType = {
     ID: number
     Name: number
-    Ist_admin: number
+    Ist_Admin: number
     Erstellt_am: number
     Geaendert_am: number
     _all: number
@@ -12734,7 +12630,7 @@ export namespace Prisma {
   export type Funktion_jfMinAggregateInputType = {
     ID?: true
     Name?: true
-    Ist_admin?: true
+    Ist_Admin?: true
     Erstellt_am?: true
     Geaendert_am?: true
   }
@@ -12742,7 +12638,7 @@ export namespace Prisma {
   export type Funktion_jfMaxAggregateInputType = {
     ID?: true
     Name?: true
-    Ist_admin?: true
+    Ist_Admin?: true
     Erstellt_am?: true
     Geaendert_am?: true
   }
@@ -12750,7 +12646,7 @@ export namespace Prisma {
   export type Funktion_jfCountAggregateInputType = {
     ID?: true
     Name?: true
-    Ist_admin?: true
+    Ist_Admin?: true
     Erstellt_am?: true
     Geaendert_am?: true
     _all?: true
@@ -12845,7 +12741,7 @@ export namespace Prisma {
   export type Funktion_jfGroupByOutputType = {
     ID: number
     Name: string
-    Ist_admin: boolean
+    Ist_Admin: boolean
     Erstellt_am: Date
     Geaendert_am: Date | null
     _count: Funktion_jfCountAggregateOutputType | null
@@ -12872,7 +12768,7 @@ export namespace Prisma {
   export type funktion_jfSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     ID?: boolean
     Name?: boolean
-    Ist_admin?: boolean
+    Ist_Admin?: boolean
     Erstellt_am?: boolean
     Geaendert_am?: boolean
   }, ExtArgs["result"]["funktion_jf"]>
@@ -12882,12 +12778,12 @@ export namespace Prisma {
   export type funktion_jfSelectScalar = {
     ID?: boolean
     Name?: boolean
-    Ist_admin?: boolean
+    Ist_Admin?: boolean
     Erstellt_am?: boolean
     Geaendert_am?: boolean
   }
 
-  export type funktion_jfOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Name" | "Ist_admin" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["funktion_jf"]>
+  export type funktion_jfOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Name" | "Ist_Admin" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["funktion_jf"]>
 
   export type $funktion_jfPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "funktion_jf"
@@ -12895,7 +12791,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       ID: number
       Name: string
-      Ist_admin: boolean
+      Ist_Admin: boolean
       Erstellt_am: Date
       Geaendert_am: Date | null
     }, ExtArgs["result"]["funktion_jf"]>
@@ -13269,7 +13165,7 @@ export namespace Prisma {
   interface funktion_jfFieldRefs {
     readonly ID: FieldRef<"funktion_jf", 'Int'>
     readonly Name: FieldRef<"funktion_jf", 'String'>
-    readonly Ist_admin: FieldRef<"funktion_jf", 'Boolean'>
+    readonly Ist_Admin: FieldRef<"funktion_jf", 'Boolean'>
     readonly Erstellt_am: FieldRef<"funktion_jf", 'DateTime'>
     readonly Geaendert_am: FieldRef<"funktion_jf", 'DateTime'>
   }
@@ -16837,7 +16733,6 @@ export namespace Prisma {
     Erstellt_am?: boolean
     Geaendert_am?: boolean
     ff_mitglied?: boolean | ff_mitgliedDefaultArgs<ExtArgs>
-    funktion_ff?: boolean | funktion_ffDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["mitglied_funktionen"]>
 
 
@@ -16854,14 +16749,12 @@ export namespace Prisma {
   export type mitglied_funktionenOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Mitglied_ID" | "Funktion_ID" | "Typ" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["mitglied_funktionen"]>
   export type mitglied_funktionenInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     ff_mitglied?: boolean | ff_mitgliedDefaultArgs<ExtArgs>
-    funktion_ff?: boolean | funktion_ffDefaultArgs<ExtArgs>
   }
 
   export type $mitglied_funktionenPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "mitglied_funktionen"
     objects: {
       ff_mitglied: Prisma.$ff_mitgliedPayload<ExtArgs>
-      funktion_ff: Prisma.$funktion_ffPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       ID: number
@@ -17211,7 +17104,6 @@ export namespace Prisma {
   export interface Prisma__mitglied_funktionenClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     ff_mitglied<T extends ff_mitgliedDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ff_mitgliedDefaultArgs<ExtArgs>>): Prisma__ff_mitgliedClient<$Result.GetResult<Prisma.$ff_mitgliedPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    funktion_ff<T extends funktion_ffDefaultArgs<ExtArgs> = {}>(args?: Subset<T, funktion_ffDefaultArgs<ExtArgs>>): Prisma__funktion_ffClient<$Result.GetResult<Prisma.$funktion_ffPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -19625,7 +19517,7 @@ export namespace Prisma {
   export const Funktion_jfScalarFieldEnum: {
     ID: 'ID',
     Name: 'Name',
-    Ist_admin: 'Ist_admin',
+    Ist_Admin: 'Ist_Admin',
     Erstellt_am: 'Erstellt_am',
     Geaendert_am: 'Geaendert_am'
   };
@@ -20541,7 +20433,6 @@ export namespace Prisma {
     Ist_Admin?: BoolFilter<"funktion_ff"> | boolean
     Erstellt_am?: DateTimeNullableFilter<"funktion_ff"> | Date | string | null
     Geaendert_am?: DateTimeNullableFilter<"funktion_ff"> | Date | string | null
-    mitglied_funktionen?: Mitglied_funktionenListRelationFilter
   }
 
   export type funktion_ffOrderByWithRelationInput = {
@@ -20550,7 +20441,6 @@ export namespace Prisma {
     Ist_Admin?: SortOrder
     Erstellt_am?: SortOrderInput | SortOrder
     Geaendert_am?: SortOrderInput | SortOrder
-    mitglied_funktionen?: mitglied_funktionenOrderByRelationAggregateInput
     _relevance?: funktion_ffOrderByRelevanceInput
   }
 
@@ -20563,7 +20453,6 @@ export namespace Prisma {
     Ist_Admin?: BoolFilter<"funktion_ff"> | boolean
     Erstellt_am?: DateTimeNullableFilter<"funktion_ff"> | Date | string | null
     Geaendert_am?: DateTimeNullableFilter<"funktion_ff"> | Date | string | null
-    mitglied_funktionen?: Mitglied_funktionenListRelationFilter
   }, "ID">
 
   export type funktion_ffOrderByWithAggregationInput = {
@@ -20596,7 +20485,7 @@ export namespace Prisma {
     NOT?: funktion_jfWhereInput | funktion_jfWhereInput[]
     ID?: IntFilter<"funktion_jf"> | number
     Name?: StringFilter<"funktion_jf"> | string
-    Ist_admin?: BoolFilter<"funktion_jf"> | boolean
+    Ist_Admin?: BoolFilter<"funktion_jf"> | boolean
     Erstellt_am?: DateTimeFilter<"funktion_jf"> | Date | string
     Geaendert_am?: DateTimeNullableFilter<"funktion_jf"> | Date | string | null
   }
@@ -20604,7 +20493,7 @@ export namespace Prisma {
   export type funktion_jfOrderByWithRelationInput = {
     ID?: SortOrder
     Name?: SortOrder
-    Ist_admin?: SortOrder
+    Ist_Admin?: SortOrder
     Erstellt_am?: SortOrder
     Geaendert_am?: SortOrderInput | SortOrder
     _relevance?: funktion_jfOrderByRelevanceInput
@@ -20616,7 +20505,7 @@ export namespace Prisma {
     OR?: funktion_jfWhereInput[]
     NOT?: funktion_jfWhereInput | funktion_jfWhereInput[]
     Name?: StringFilter<"funktion_jf"> | string
-    Ist_admin?: BoolFilter<"funktion_jf"> | boolean
+    Ist_Admin?: BoolFilter<"funktion_jf"> | boolean
     Erstellt_am?: DateTimeFilter<"funktion_jf"> | Date | string
     Geaendert_am?: DateTimeNullableFilter<"funktion_jf"> | Date | string | null
   }, "ID">
@@ -20624,7 +20513,7 @@ export namespace Prisma {
   export type funktion_jfOrderByWithAggregationInput = {
     ID?: SortOrder
     Name?: SortOrder
-    Ist_admin?: SortOrder
+    Ist_Admin?: SortOrder
     Erstellt_am?: SortOrder
     Geaendert_am?: SortOrderInput | SortOrder
     _count?: funktion_jfCountOrderByAggregateInput
@@ -20640,7 +20529,7 @@ export namespace Prisma {
     NOT?: funktion_jfScalarWhereWithAggregatesInput | funktion_jfScalarWhereWithAggregatesInput[]
     ID?: IntWithAggregatesFilter<"funktion_jf"> | number
     Name?: StringWithAggregatesFilter<"funktion_jf"> | string
-    Ist_admin?: BoolWithAggregatesFilter<"funktion_jf"> | boolean
+    Ist_Admin?: BoolWithAggregatesFilter<"funktion_jf"> | boolean
     Erstellt_am?: DateTimeWithAggregatesFilter<"funktion_jf"> | Date | string
     Geaendert_am?: DateTimeNullableWithAggregatesFilter<"funktion_jf"> | Date | string | null
   }
@@ -20851,7 +20740,6 @@ export namespace Prisma {
     Erstellt_am?: DateTimeNullableFilter<"mitglied_funktionen"> | Date | string | null
     Geaendert_am?: DateTimeNullableFilter<"mitglied_funktionen"> | Date | string | null
     ff_mitglied?: XOR<Ff_mitgliedScalarRelationFilter, ff_mitgliedWhereInput>
-    funktion_ff?: XOR<Funktion_ffScalarRelationFilter, funktion_ffWhereInput>
   }
 
   export type mitglied_funktionenOrderByWithRelationInput = {
@@ -20862,7 +20750,6 @@ export namespace Prisma {
     Erstellt_am?: SortOrderInput | SortOrder
     Geaendert_am?: SortOrderInput | SortOrder
     ff_mitglied?: ff_mitgliedOrderByWithRelationInput
-    funktion_ff?: funktion_ffOrderByWithRelationInput
   }
 
   export type mitglied_funktionenWhereUniqueInput = Prisma.AtLeast<{
@@ -20876,7 +20763,6 @@ export namespace Prisma {
     Erstellt_am?: DateTimeNullableFilter<"mitglied_funktionen"> | Date | string | null
     Geaendert_am?: DateTimeNullableFilter<"mitglied_funktionen"> | Date | string | null
     ff_mitglied?: XOR<Ff_mitgliedScalarRelationFilter, ff_mitgliedWhereInput>
-    funktion_ff?: XOR<Funktion_ffScalarRelationFilter, funktion_ffWhereInput>
   }, "ID">
 
   export type mitglied_funktionenOrderByWithAggregationInput = {
@@ -21669,7 +21555,6 @@ export namespace Prisma {
     Ist_Admin?: boolean
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
-    mitglied_funktionen?: mitglied_funktionenCreateNestedManyWithoutFunktion_ffInput
   }
 
   export type funktion_ffUncheckedCreateInput = {
@@ -21678,7 +21563,6 @@ export namespace Prisma {
     Ist_Admin?: boolean
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
-    mitglied_funktionen?: mitglied_funktionenUncheckedCreateNestedManyWithoutFunktion_ffInput
   }
 
   export type funktion_ffUpdateInput = {
@@ -21686,7 +21570,6 @@ export namespace Prisma {
     Ist_Admin?: BoolFieldUpdateOperationsInput | boolean
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    mitglied_funktionen?: mitglied_funktionenUpdateManyWithoutFunktion_ffNestedInput
   }
 
   export type funktion_ffUncheckedUpdateInput = {
@@ -21695,7 +21578,6 @@ export namespace Prisma {
     Ist_Admin?: BoolFieldUpdateOperationsInput | boolean
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    mitglied_funktionen?: mitglied_funktionenUncheckedUpdateManyWithoutFunktion_ffNestedInput
   }
 
   export type funktion_ffCreateManyInput = {
@@ -21723,7 +21605,7 @@ export namespace Prisma {
 
   export type funktion_jfCreateInput = {
     Name: string
-    Ist_admin?: boolean
+    Ist_Admin?: boolean
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
   }
@@ -21731,14 +21613,14 @@ export namespace Prisma {
   export type funktion_jfUncheckedCreateInput = {
     ID?: number
     Name: string
-    Ist_admin?: boolean
+    Ist_Admin?: boolean
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
   }
 
   export type funktion_jfUpdateInput = {
     Name?: StringFieldUpdateOperationsInput | string
-    Ist_admin?: BoolFieldUpdateOperationsInput | boolean
+    Ist_Admin?: BoolFieldUpdateOperationsInput | boolean
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -21746,7 +21628,7 @@ export namespace Prisma {
   export type funktion_jfUncheckedUpdateInput = {
     ID?: IntFieldUpdateOperationsInput | number
     Name?: StringFieldUpdateOperationsInput | string
-    Ist_admin?: BoolFieldUpdateOperationsInput | boolean
+    Ist_Admin?: BoolFieldUpdateOperationsInput | boolean
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -21754,14 +21636,14 @@ export namespace Prisma {
   export type funktion_jfCreateManyInput = {
     ID?: number
     Name: string
-    Ist_admin?: boolean
+    Ist_Admin?: boolean
     Erstellt_am: Date | string
     Geaendert_am?: Date | string | null
   }
 
   export type funktion_jfUpdateManyMutationInput = {
     Name?: StringFieldUpdateOperationsInput | string
-    Ist_admin?: BoolFieldUpdateOperationsInput | boolean
+    Ist_Admin?: BoolFieldUpdateOperationsInput | boolean
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -21769,7 +21651,7 @@ export namespace Prisma {
   export type funktion_jfUncheckedUpdateManyInput = {
     ID?: IntFieldUpdateOperationsInput | number
     Name?: StringFieldUpdateOperationsInput | string
-    Ist_admin?: BoolFieldUpdateOperationsInput | boolean
+    Ist_Admin?: BoolFieldUpdateOperationsInput | boolean
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -21973,11 +21855,11 @@ export namespace Prisma {
   }
 
   export type mitglied_funktionenCreateInput = {
+    Funktion_ID: number
     Typ: $Enums.mitglied_funktionen_Typ
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
     ff_mitglied: ff_mitgliedCreateNestedOneWithoutMitglied_funktionenInput
-    funktion_ff: funktion_ffCreateNestedOneWithoutMitglied_funktionenInput
   }
 
   export type mitglied_funktionenUncheckedCreateInput = {
@@ -21990,11 +21872,11 @@ export namespace Prisma {
   }
 
   export type mitglied_funktionenUpdateInput = {
+    Funktion_ID?: IntFieldUpdateOperationsInput | number
     Typ?: Enummitglied_funktionen_TypFieldUpdateOperationsInput | $Enums.mitglied_funktionen_Typ
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ff_mitglied?: ff_mitgliedUpdateOneRequiredWithoutMitglied_funktionenNestedInput
-    funktion_ff?: funktion_ffUpdateOneRequiredWithoutMitglied_funktionenNestedInput
   }
 
   export type mitglied_funktionenUncheckedUpdateInput = {
@@ -22016,6 +21898,7 @@ export namespace Prisma {
   }
 
   export type mitglied_funktionenUpdateManyMutationInput = {
+    Funktion_ID?: IntFieldUpdateOperationsInput | number
     Typ?: Enummitglied_funktionen_TypFieldUpdateOperationsInput | $Enums.mitglied_funktionen_Typ
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -22890,7 +22773,7 @@ export namespace Prisma {
   export type funktion_jfCountOrderByAggregateInput = {
     ID?: SortOrder
     Name?: SortOrder
-    Ist_admin?: SortOrder
+    Ist_Admin?: SortOrder
     Erstellt_am?: SortOrder
     Geaendert_am?: SortOrder
   }
@@ -22902,7 +22785,7 @@ export namespace Prisma {
   export type funktion_jfMaxOrderByAggregateInput = {
     ID?: SortOrder
     Name?: SortOrder
-    Ist_admin?: SortOrder
+    Ist_Admin?: SortOrder
     Erstellt_am?: SortOrder
     Geaendert_am?: SortOrder
   }
@@ -22910,7 +22793,7 @@ export namespace Prisma {
   export type funktion_jfMinOrderByAggregateInput = {
     ID?: SortOrder
     Name?: SortOrder
-    Ist_admin?: SortOrder
+    Ist_Admin?: SortOrder
     Erstellt_am?: SortOrder
     Geaendert_am?: SortOrder
   }
@@ -23100,11 +22983,6 @@ export namespace Prisma {
     in?: $Enums.mitglied_funktionen_Typ[]
     notIn?: $Enums.mitglied_funktionen_Typ[]
     not?: NestedEnummitglied_funktionen_TypFilter<$PrismaModel> | $Enums.mitglied_funktionen_Typ
-  }
-
-  export type Funktion_ffScalarRelationFilter = {
-    is?: funktion_ffWhereInput
-    isNot?: funktion_ffWhereInput
   }
 
   export type mitglied_funktionenCountOrderByAggregateInput = {
@@ -23766,50 +23644,8 @@ export namespace Prisma {
     update?: XOR<XOR<lehrgangUpdateToOneWithWhereWithoutFf_mitglied_lehrgangInput, lehrgangUpdateWithoutFf_mitglied_lehrgangInput>, lehrgangUncheckedUpdateWithoutFf_mitglied_lehrgangInput>
   }
 
-  export type mitglied_funktionenCreateNestedManyWithoutFunktion_ffInput = {
-    create?: XOR<mitglied_funktionenCreateWithoutFunktion_ffInput, mitglied_funktionenUncheckedCreateWithoutFunktion_ffInput> | mitglied_funktionenCreateWithoutFunktion_ffInput[] | mitglied_funktionenUncheckedCreateWithoutFunktion_ffInput[]
-    connectOrCreate?: mitglied_funktionenCreateOrConnectWithoutFunktion_ffInput | mitglied_funktionenCreateOrConnectWithoutFunktion_ffInput[]
-    createMany?: mitglied_funktionenCreateManyFunktion_ffInputEnvelope
-    connect?: mitglied_funktionenWhereUniqueInput | mitglied_funktionenWhereUniqueInput[]
-  }
-
-  export type mitglied_funktionenUncheckedCreateNestedManyWithoutFunktion_ffInput = {
-    create?: XOR<mitglied_funktionenCreateWithoutFunktion_ffInput, mitglied_funktionenUncheckedCreateWithoutFunktion_ffInput> | mitglied_funktionenCreateWithoutFunktion_ffInput[] | mitglied_funktionenUncheckedCreateWithoutFunktion_ffInput[]
-    connectOrCreate?: mitglied_funktionenCreateOrConnectWithoutFunktion_ffInput | mitglied_funktionenCreateOrConnectWithoutFunktion_ffInput[]
-    createMany?: mitglied_funktionenCreateManyFunktion_ffInputEnvelope
-    connect?: mitglied_funktionenWhereUniqueInput | mitglied_funktionenWhereUniqueInput[]
-  }
-
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
-  }
-
-  export type mitglied_funktionenUpdateManyWithoutFunktion_ffNestedInput = {
-    create?: XOR<mitglied_funktionenCreateWithoutFunktion_ffInput, mitglied_funktionenUncheckedCreateWithoutFunktion_ffInput> | mitglied_funktionenCreateWithoutFunktion_ffInput[] | mitglied_funktionenUncheckedCreateWithoutFunktion_ffInput[]
-    connectOrCreate?: mitglied_funktionenCreateOrConnectWithoutFunktion_ffInput | mitglied_funktionenCreateOrConnectWithoutFunktion_ffInput[]
-    upsert?: mitglied_funktionenUpsertWithWhereUniqueWithoutFunktion_ffInput | mitglied_funktionenUpsertWithWhereUniqueWithoutFunktion_ffInput[]
-    createMany?: mitglied_funktionenCreateManyFunktion_ffInputEnvelope
-    set?: mitglied_funktionenWhereUniqueInput | mitglied_funktionenWhereUniqueInput[]
-    disconnect?: mitglied_funktionenWhereUniqueInput | mitglied_funktionenWhereUniqueInput[]
-    delete?: mitglied_funktionenWhereUniqueInput | mitglied_funktionenWhereUniqueInput[]
-    connect?: mitglied_funktionenWhereUniqueInput | mitglied_funktionenWhereUniqueInput[]
-    update?: mitglied_funktionenUpdateWithWhereUniqueWithoutFunktion_ffInput | mitglied_funktionenUpdateWithWhereUniqueWithoutFunktion_ffInput[]
-    updateMany?: mitglied_funktionenUpdateManyWithWhereWithoutFunktion_ffInput | mitglied_funktionenUpdateManyWithWhereWithoutFunktion_ffInput[]
-    deleteMany?: mitglied_funktionenScalarWhereInput | mitglied_funktionenScalarWhereInput[]
-  }
-
-  export type mitglied_funktionenUncheckedUpdateManyWithoutFunktion_ffNestedInput = {
-    create?: XOR<mitglied_funktionenCreateWithoutFunktion_ffInput, mitglied_funktionenUncheckedCreateWithoutFunktion_ffInput> | mitglied_funktionenCreateWithoutFunktion_ffInput[] | mitglied_funktionenUncheckedCreateWithoutFunktion_ffInput[]
-    connectOrCreate?: mitglied_funktionenCreateOrConnectWithoutFunktion_ffInput | mitglied_funktionenCreateOrConnectWithoutFunktion_ffInput[]
-    upsert?: mitglied_funktionenUpsertWithWhereUniqueWithoutFunktion_ffInput | mitglied_funktionenUpsertWithWhereUniqueWithoutFunktion_ffInput[]
-    createMany?: mitglied_funktionenCreateManyFunktion_ffInputEnvelope
-    set?: mitglied_funktionenWhereUniqueInput | mitglied_funktionenWhereUniqueInput[]
-    disconnect?: mitglied_funktionenWhereUniqueInput | mitglied_funktionenWhereUniqueInput[]
-    delete?: mitglied_funktionenWhereUniqueInput | mitglied_funktionenWhereUniqueInput[]
-    connect?: mitglied_funktionenWhereUniqueInput | mitglied_funktionenWhereUniqueInput[]
-    update?: mitglied_funktionenUpdateWithWhereUniqueWithoutFunktion_ffInput | mitglied_funktionenUpdateWithWhereUniqueWithoutFunktion_ffInput[]
-    updateMany?: mitglied_funktionenUpdateManyWithWhereWithoutFunktion_ffInput | mitglied_funktionenUpdateManyWithWhereWithoutFunktion_ffInput[]
-    deleteMany?: mitglied_funktionenScalarWhereInput | mitglied_funktionenScalarWhereInput[]
   }
 
   export type jf_mitgliedCreateNestedOneWithoutJf_erziehungsberechtigterInput = {
@@ -23970,12 +23806,6 @@ export namespace Prisma {
     connect?: ff_mitgliedWhereUniqueInput
   }
 
-  export type funktion_ffCreateNestedOneWithoutMitglied_funktionenInput = {
-    create?: XOR<funktion_ffCreateWithoutMitglied_funktionenInput, funktion_ffUncheckedCreateWithoutMitglied_funktionenInput>
-    connectOrCreate?: funktion_ffCreateOrConnectWithoutMitglied_funktionenInput
-    connect?: funktion_ffWhereUniqueInput
-  }
-
   export type Enummitglied_funktionen_TypFieldUpdateOperationsInput = {
     set?: $Enums.mitglied_funktionen_Typ
   }
@@ -23986,14 +23816,6 @@ export namespace Prisma {
     upsert?: ff_mitgliedUpsertWithoutMitglied_funktionenInput
     connect?: ff_mitgliedWhereUniqueInput
     update?: XOR<XOR<ff_mitgliedUpdateToOneWithWhereWithoutMitglied_funktionenInput, ff_mitgliedUpdateWithoutMitglied_funktionenInput>, ff_mitgliedUncheckedUpdateWithoutMitglied_funktionenInput>
-  }
-
-  export type funktion_ffUpdateOneRequiredWithoutMitglied_funktionenNestedInput = {
-    create?: XOR<funktion_ffCreateWithoutMitglied_funktionenInput, funktion_ffUncheckedCreateWithoutMitglied_funktionenInput>
-    connectOrCreate?: funktion_ffCreateOrConnectWithoutMitglied_funktionenInput
-    upsert?: funktion_ffUpsertWithoutMitglied_funktionenInput
-    connect?: funktion_ffWhereUniqueInput
-    update?: XOR<XOR<funktion_ffUpdateToOneWithWhereWithoutMitglied_funktionenInput, funktion_ffUpdateWithoutMitglied_funktionenInput>, funktion_ffUncheckedUpdateWithoutMitglied_funktionenInput>
   }
 
   export type Enummitglied_login_TypFieldUpdateOperationsInput = {
@@ -25012,10 +24834,10 @@ export namespace Prisma {
   }
 
   export type mitglied_funktionenCreateWithoutFf_mitgliedInput = {
+    Funktion_ID: number
     Typ: $Enums.mitglied_funktionen_Typ
     Erstellt_am?: Date | string | null
     Geaendert_am?: Date | string | null
-    funktion_ff: funktion_ffCreateNestedOneWithoutMitglied_funktionenInput
   }
 
   export type mitglied_funktionenUncheckedCreateWithoutFf_mitgliedInput = {
@@ -25257,47 +25079,6 @@ export namespace Prisma {
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type mitglied_funktionenCreateWithoutFunktion_ffInput = {
-    Typ: $Enums.mitglied_funktionen_Typ
-    Erstellt_am?: Date | string | null
-    Geaendert_am?: Date | string | null
-    ff_mitglied: ff_mitgliedCreateNestedOneWithoutMitglied_funktionenInput
-  }
-
-  export type mitglied_funktionenUncheckedCreateWithoutFunktion_ffInput = {
-    ID?: number
-    Mitglied_ID: number
-    Typ: $Enums.mitglied_funktionen_Typ
-    Erstellt_am?: Date | string | null
-    Geaendert_am?: Date | string | null
-  }
-
-  export type mitglied_funktionenCreateOrConnectWithoutFunktion_ffInput = {
-    where: mitglied_funktionenWhereUniqueInput
-    create: XOR<mitglied_funktionenCreateWithoutFunktion_ffInput, mitglied_funktionenUncheckedCreateWithoutFunktion_ffInput>
-  }
-
-  export type mitglied_funktionenCreateManyFunktion_ffInputEnvelope = {
-    data: mitglied_funktionenCreateManyFunktion_ffInput | mitglied_funktionenCreateManyFunktion_ffInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type mitglied_funktionenUpsertWithWhereUniqueWithoutFunktion_ffInput = {
-    where: mitglied_funktionenWhereUniqueInput
-    update: XOR<mitglied_funktionenUpdateWithoutFunktion_ffInput, mitglied_funktionenUncheckedUpdateWithoutFunktion_ffInput>
-    create: XOR<mitglied_funktionenCreateWithoutFunktion_ffInput, mitglied_funktionenUncheckedCreateWithoutFunktion_ffInput>
-  }
-
-  export type mitglied_funktionenUpdateWithWhereUniqueWithoutFunktion_ffInput = {
-    where: mitglied_funktionenWhereUniqueInput
-    data: XOR<mitglied_funktionenUpdateWithoutFunktion_ffInput, mitglied_funktionenUncheckedUpdateWithoutFunktion_ffInput>
-  }
-
-  export type mitglied_funktionenUpdateManyWithWhereWithoutFunktion_ffInput = {
-    where: mitglied_funktionenScalarWhereInput
-    data: XOR<mitglied_funktionenUpdateManyMutationInput, mitglied_funktionenUncheckedUpdateManyWithoutFunktion_ffInput>
-  }
-
   export type jf_mitgliedCreateWithoutJf_erziehungsberechtigterInput = {
     Person_ID: number
     Eintrittsdatum: Date | string
@@ -25526,26 +25307,6 @@ export namespace Prisma {
     create: XOR<ff_mitgliedCreateWithoutMitglied_funktionenInput, ff_mitgliedUncheckedCreateWithoutMitglied_funktionenInput>
   }
 
-  export type funktion_ffCreateWithoutMitglied_funktionenInput = {
-    Name: string
-    Ist_Admin?: boolean
-    Erstellt_am?: Date | string | null
-    Geaendert_am?: Date | string | null
-  }
-
-  export type funktion_ffUncheckedCreateWithoutMitglied_funktionenInput = {
-    ID?: number
-    Name: string
-    Ist_Admin?: boolean
-    Erstellt_am?: Date | string | null
-    Geaendert_am?: Date | string | null
-  }
-
-  export type funktion_ffCreateOrConnectWithoutMitglied_funktionenInput = {
-    where: funktion_ffWhereUniqueInput
-    create: XOR<funktion_ffCreateWithoutMitglied_funktionenInput, funktion_ffUncheckedCreateWithoutMitglied_funktionenInput>
-  }
-
   export type ff_mitgliedUpsertWithoutMitglied_funktionenInput = {
     update: XOR<ff_mitgliedUpdateWithoutMitglied_funktionenInput, ff_mitgliedUncheckedUpdateWithoutMitglied_funktionenInput>
     create: XOR<ff_mitgliedCreateWithoutMitglied_funktionenInput, ff_mitgliedUncheckedCreateWithoutMitglied_funktionenInput>
@@ -25582,32 +25343,6 @@ export namespace Prisma {
     allergie?: allergieUncheckedUpdateManyWithoutFf_mitgliedNestedInput
     einteilung?: einteilungUncheckedUpdateManyWithoutFf_mitgliedNestedInput
     ff_mitglied_lehrgang?: ff_mitglied_lehrgangUncheckedUpdateManyWithoutFf_mitgliedNestedInput
-  }
-
-  export type funktion_ffUpsertWithoutMitglied_funktionenInput = {
-    update: XOR<funktion_ffUpdateWithoutMitglied_funktionenInput, funktion_ffUncheckedUpdateWithoutMitglied_funktionenInput>
-    create: XOR<funktion_ffCreateWithoutMitglied_funktionenInput, funktion_ffUncheckedCreateWithoutMitglied_funktionenInput>
-    where?: funktion_ffWhereInput
-  }
-
-  export type funktion_ffUpdateToOneWithWhereWithoutMitglied_funktionenInput = {
-    where?: funktion_ffWhereInput
-    data: XOR<funktion_ffUpdateWithoutMitglied_funktionenInput, funktion_ffUncheckedUpdateWithoutMitglied_funktionenInput>
-  }
-
-  export type funktion_ffUpdateWithoutMitglied_funktionenInput = {
-    Name?: StringFieldUpdateOperationsInput | string
-    Ist_Admin?: BoolFieldUpdateOperationsInput | boolean
-    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type funktion_ffUncheckedUpdateWithoutMitglied_funktionenInput = {
-    ID?: IntFieldUpdateOperationsInput | number
-    Name?: StringFieldUpdateOperationsInput | string
-    Ist_Admin?: BoolFieldUpdateOperationsInput | boolean
-    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type einteilungCreateManyDientsabendInput = {
@@ -25840,10 +25575,10 @@ export namespace Prisma {
   }
 
   export type mitglied_funktionenUpdateWithoutFf_mitgliedInput = {
+    Funktion_ID?: IntFieldUpdateOperationsInput | number
     Typ?: Enummitglied_funktionen_TypFieldUpdateOperationsInput | $Enums.mitglied_funktionen_Typ
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    funktion_ff?: funktion_ffUpdateOneRequiredWithoutMitglied_funktionenNestedInput
   }
 
   export type mitglied_funktionenUncheckedUpdateWithoutFf_mitgliedInput = {
@@ -25857,37 +25592,6 @@ export namespace Prisma {
   export type mitglied_funktionenUncheckedUpdateManyWithoutFf_mitgliedInput = {
     ID?: IntFieldUpdateOperationsInput | number
     Funktion_ID?: IntFieldUpdateOperationsInput | number
-    Typ?: Enummitglied_funktionen_TypFieldUpdateOperationsInput | $Enums.mitglied_funktionen_Typ
-    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type mitglied_funktionenCreateManyFunktion_ffInput = {
-    ID?: number
-    Mitglied_ID: number
-    Typ: $Enums.mitglied_funktionen_Typ
-    Erstellt_am?: Date | string | null
-    Geaendert_am?: Date | string | null
-  }
-
-  export type mitglied_funktionenUpdateWithoutFunktion_ffInput = {
-    Typ?: Enummitglied_funktionen_TypFieldUpdateOperationsInput | $Enums.mitglied_funktionen_Typ
-    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ff_mitglied?: ff_mitgliedUpdateOneRequiredWithoutMitglied_funktionenNestedInput
-  }
-
-  export type mitglied_funktionenUncheckedUpdateWithoutFunktion_ffInput = {
-    ID?: IntFieldUpdateOperationsInput | number
-    Mitglied_ID?: IntFieldUpdateOperationsInput | number
-    Typ?: Enummitglied_funktionen_TypFieldUpdateOperationsInput | $Enums.mitglied_funktionen_Typ
-    Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type mitglied_funktionenUncheckedUpdateManyWithoutFunktion_ffInput = {
-    ID?: IntFieldUpdateOperationsInput | number
-    Mitglied_ID?: IntFieldUpdateOperationsInput | number
     Typ?: Enummitglied_funktionen_TypFieldUpdateOperationsInput | $Enums.mitglied_funktionen_Typ
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
