@@ -1,4 +1,3 @@
-// pages/api/auth/[...nextauth].js
 import { vereinsbuddyPrisma as db1 } from '@/lib/prisma';
 import bcrypt from 'bcryptjs';
 import NextAuth from 'next-auth';

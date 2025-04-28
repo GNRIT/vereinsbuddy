@@ -12,20 +12,13 @@ export default function Layout({ children }) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            {/* Navigation oben */}
             <Navigation />
 
-            {/* Suchleiste 
-            <div className="d-flex justify-content-end align-items-center gap-2 p-4">
-                <SearchBar />
-            </div>*/}
-
-            {/* Hauptinhalt: dehnbar */}
+            
             <main className="flex-grow">
                 {children}
             </main>
 
-            {/* Fuszeile statisch unten */}
             <footer>
                 <Fuszeile />
             </footer>

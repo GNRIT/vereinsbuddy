@@ -1,5 +1,6 @@
 import { vereinDbPrisma as db2 } from '@/lib/prisma';
 import { getSession } from 'next-auth/react';
+
 export default async function handler(req, res) {
     const session = await getSession({ req })
     const { id } = req.query

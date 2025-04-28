@@ -16,7 +16,7 @@ export default function SearchBar() {
         <form onSubmit={handleSearch} className="search-bar">
             <input
                 type="text"
-                placeholder="🔍 Suche nach Karte..."
+                placeholder="🔍 Suche nach ..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 className="search-input"
