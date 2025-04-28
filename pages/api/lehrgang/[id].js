@@ -1,5 +1,5 @@
-import { getSession } from 'next-auth/react'
-import { vereinDbPrisma as prisma } from '../../../lib/prisma'
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
+import { getSession } from 'next-auth/react';
 
 export default async function handler(req, res) {
     const session = await getSession({ req })
@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
     if (req.method === 'GET') {
         try {
-        const lehrgang = await prisma.lehrgang.findUnique({
+        const lehrgang = await db2.lehrgang.findUnique({
             where: {
             ID: parseInt(id),
             }
@@ -29,7 +29,7 @@ export default async function handler(req, res) {
         try {
         const { Abk_rzung, Beschreibung, Reihenfolge } = req.body
 
-        const updatedLehrgang = await prisma.lehrgang.update({
+        const updatedLehrgang = await db2.lehrgang.update({
             where: {
             ID: parseInt(id),
             },
@@ -47,7 +47,7 @@ export default async function handler(req, res) {
         }
     } else if (req.method === 'DELETE') {
         try {
-        await prisma.lehrgang.delete({
+        await db2.lehrgang.delete({
             where: {
             ID: parseInt(id),
             }

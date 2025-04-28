@@ -1,7 +1,6 @@
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import FunktionForm from '../../components/FunktionForm'
-import Layout from '../../components/Layout'
+import FunktionForm from './components/FunktionForm'
 
 export default function NeueFunktion() {
     const router = useRouter()
@@ -31,13 +30,11 @@ export default function NeueFunktion() {
         }
     }
 
-    return (
-        <Layout>
+    return (    
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Neue Funktion erstellen</h1>
             <FunktionForm onSubmit={handleSubmit} />
         </div>
-        </Layout>
     )
     }
 

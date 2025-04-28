@@ -10,7 +10,7 @@ export default function AuthRedirect() {
         if (status === 'authenticated') {
             if (session.user.vereine.length === 1) {
                 // Direkt zum einzigen Verein weiterleiten
-                router.push(`/verein/${session.user.vereine[0].vereinId}`)
+                router.push(`/verein/${session.user.vereine[0].ID}`)
             } else {
                 // Zur Vereinsauswahl wenn mehrere Vereine
                 router.push('/verein-auswahl')

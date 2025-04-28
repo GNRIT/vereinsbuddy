@@ -1,7 +1,6 @@
-import { vereinDbPrisma as prisma } from '../../../../lib/prisma'
-
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
 export async function getDienstgrade() {
-    return await prisma.dienstgrad.findMany({
+    return await db2.dienstgrad.findMany({
         orderBy: {
         Abkuerzung_maennlich: 'asc',
         },
@@ -9,13 +8,13 @@ export async function getDienstgrade() {
     }
 
     export async function getDienstgradById(id) {
-    return await prisma.dienstgrad.findUnique({
-        where: { id: parseInt(id) },
+    return await db2.dienstgrad.findUnique({
+        where: { ID: parseInt(id) },
     })
     }
 
     export async function createDienstgrad(data) {
-    return await prisma.dienstgrad.create({
+    return await db2.dienstgrad.create({
         data: {
         ...data,
         Erstellt_am: new Date(),
@@ -24,8 +23,8 @@ export async function getDienstgrade() {
 }
 
 export async function updateDienstgrad(id, data) {
-    return await prisma.dienstgrad.update({
-        where: { id: parseInt(id) },
+    return await db2.dienstgrad.update({
+        where: { ID: parseInt(id) },
         data: {
         ...data,
         Geaendert_am: new Date(),
@@ -34,7 +33,7 @@ export async function updateDienstgrad(id, data) {
 }
 
 export async function deleteDienstgrad(id) {
-    return await prisma.dienstgrad.delete({
-        where: { id: parseInt(id) },
+    return await db2.dienstgrad.delete({
+        where: { ID: parseInt(id) },
     })
 }

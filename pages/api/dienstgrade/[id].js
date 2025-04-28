@@ -1,6 +1,5 @@
-import { getSession } from 'next-auth/react'
-import { vereinDbPrisma as prisma } from '../../../../lib/prisma'
-
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
+import { getSession } from 'next-auth/react';
 export default async function handler(req, res) {
     const session = await getSession({ req })
     const { id } = req.query
@@ -11,9 +10,9 @@ export default async function handler(req, res) {
 
     if (req.method === 'GET') {
         try {
-        const dienstgrad = await prisma.dienstgrad.findUnique({
+        const dienstgrad = await db2.dienstgrad.findUnique({
             where: {
-            id: parseInt(id),
+            ID: parseInt(id),
             }
         })
 
@@ -34,9 +33,9 @@ export default async function handler(req, res) {
             Beschreibung_weiblich 
         } = req.body
 
-        const updatedDienstgrad = await prisma.dienstgrad.update({
+        const updatedDienstgrad = await db2.dienstgrad.update({
             where: {
-            id: parseInt(id),
+            ID: parseInt(id),
             },
             data: {
             Abkuerzung_maennlich,
@@ -53,9 +52,9 @@ export default async function handler(req, res) {
         }
     } else if (req.method === 'DELETE') {
         try {
-        await prisma.dienstgrad.delete({
+        await db2.dienstgrad.delete({
             where: {
-            id: parseInt(id),
+            ID: parseInt(id),
             }
         })
 

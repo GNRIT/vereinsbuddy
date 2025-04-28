@@ -1,7 +1,7 @@
-import { useRouter } from 'next/router'
-import EinheitForm from '../../../components/EinheitForm'
-import Layout from '../../../components/Layout'
-import { vereinDbPrisma as prisma } from '../../../lib/prisma'
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
+import { useRouter } from 'next/router';
+import Layout from '../../../components/Layout';
+import EinheitForm from './components/EinheitForm';
 
 export default function EinheitBearbeiten({ initialData }) {
     const router = useRouter()
@@ -41,7 +41,7 @@ export default function EinheitBearbeiten({ initialData }) {
 export async function getServerSideProps(context) {
     const { id } = context.params
 
-    const einheit = await prisma.einheit.findUnique({
+    const einheit = await db2.einheit.findUnique({
         where: {
         ID: parseInt(id),
         },

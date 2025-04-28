@@ -1,12 +1,10 @@
+import { vereinDbPrisma as db2 } from '@/lib/prisma'
 import { getSession } from 'next-auth/react'
-import Layout from '../../components/Layout'
-import { vereinDbPrisma as prisma } from '../../lib/prisma'
-
 export default function MitgliedDashboard({ mitglied, teilnahmen, eintrittsdatum }) {
     const aktiveJahre = Math.floor((new Date() - new Date(eintrittsdatum)) / (1000 * 60 * 60 * 24 * 365))
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Mein Dashboard</h1>
@@ -97,7 +95,7 @@ export default function MitgliedDashboard({ mitglied, teilnahmen, eintrittsdatum
             </div>
             </div>
         </div>
-        </Layout>
+        </div>
     )
     }
 
@@ -113,13 +111,13 @@ export default function MitgliedDashboard({ mitglied, teilnahmen, eintrittsdatum
         }
     }
 
-    const mitglied = await prisma.mitglied.findUnique({
+    const mitglied = await db2.mitglied.findUnique({
         where: {
         ID: session.user.personId
         }
     })
 
-    const teilnahmen = await prisma.teilnahme.findMany({
+    const teilnahmen = await db2.teilnahme.findMany({
         where: {
         Mitglied_ID: session.user.personId
         },

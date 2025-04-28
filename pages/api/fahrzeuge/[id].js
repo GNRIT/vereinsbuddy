@@ -1,5 +1,5 @@
-import { getSession } from 'next-auth/react'
-import { vereinDbPrisma as prisma } from '../../../lib/prisma'
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
+import { getSession } from 'next-auth/react';
 
 export default async function handler(req, res) {
     const session = await getSession({ req })
@@ -11,9 +11,9 @@ export default async function handler(req, res) {
 
     if (req.method === 'GET') {
         try {
-        const fahrzeug = await prisma.fahrzeug.findUnique({
+        const fahrzeug = await db2.fahrzeug.findUnique({
             where: {
-            id: parseInt(id),
+            ID: parseInt(id),
             },
             include: {
             Einteilung: {
@@ -36,9 +36,9 @@ export default async function handler(req, res) {
         try {
         const { Kennzeichen, Fahrzeugtyp, Besatzungsstaerke, Status } = req.body
 
-        const updatedFahrzeug = await prisma.fahrzeug.update({
+        const updatedFahrzeug = await db2.fahrzeug.update({
             where: {
-            id: parseInt(id),
+            ID: parseInt(id),
             },
             data: {
             Kennzeichen,
@@ -55,15 +55,15 @@ export default async function handler(req, res) {
         }
     } else if (req.method === 'DELETE') {
         try {
-            await prisma.einteilung.deleteMany({
+            await db2.einteilung.deleteMany({
                 where: {
                 Fahrzeug_ID: parseInt(id),
                 },
             })
-            
-            await prisma.fahrzeug.delete({
+
+            await db2.fahrzeug.delete({
                 where: {
-                id: parseInt(id),
+                ID: parseInt(id),
                 },
             })
         

@@ -1,13 +1,12 @@
-import { getSession } from 'next-auth/react'
-import { useRouter } from 'next/router'
-import Layout from '../../../components/Layout'
-import { vereinDbPrisma as prisma } from '../../../lib/prisma'
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
+import { getSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 export default function FahrzeugEinteilung({ fahrzeug, einsaetze }) {
     const router = useRouter()
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">
@@ -106,7 +105,7 @@ export default function FahrzeugEinteilung({ fahrzeug, einsaetze }) {
             </div>
             </div>
         </div>
-        </Layout>
+        </div>
     )
     }
 
@@ -123,9 +122,9 @@ export default function FahrzeugEinteilung({ fahrzeug, einsaetze }) {
         }
     }
 
-    const fahrzeug = await prisma.fahrzeug.findUnique({
+    const fahrzeug = await db2.fahrzeug.findUnique({
         where: {
-        id: parseInt(id),
+        ID: parseInt(id),
         },
     })
 
@@ -136,7 +135,7 @@ export default function FahrzeugEinteilung({ fahrzeug, einsaetze }) {
     }
 
     // Hier würden die tatsächlichen Einsätze für das Fahrzeug geladen werden
-    const einsaetze = await prisma.einsatz.findMany({
+    const einsaetze = await db2.einsatz.findMany({
         where: {
         Einteilung: {
             some: {

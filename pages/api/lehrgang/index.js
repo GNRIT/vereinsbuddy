@@ -1,5 +1,5 @@
-import { getSession } from 'next-auth/react'
-import { vereinDbPrisma as prisma } from '../../../lib/prisma'
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
+import { getSession } from 'next-auth/react';
 
 export default async function handler(req, res) {
     const session = await getSession({ req })
@@ -10,7 +10,7 @@ export default async function handler(req, res) {
 
     if (req.method === 'GET') {
         try {
-        const lehrgaenge = await prisma.lehrgang.findMany({
+        const lehrgaenge = await db2.lehrgang.findMany({
             orderBy: {
             Reihenfolge: 'asc',
             },
@@ -23,7 +23,7 @@ export default async function handler(req, res) {
         try {
         const { Abk_rzung, Beschreibung, Reihenfolge } = req.body
 
-        const neuerLehrgang = await prisma.lehrgang.create({
+        const neuerLehrgang = await db2.lehrgang.create({
             data: {
             Abk_rzung,
             Beschreibung,

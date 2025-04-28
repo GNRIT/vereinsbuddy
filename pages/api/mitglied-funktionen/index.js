@@ -1,5 +1,5 @@
-import { getSession } from 'next-auth/react'
-import { vereinDbPrisma as prisma } from '../../../lib/prisma'
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
+import { getSession } from 'next-auth/react';
 
 export default async function handler(req, res) {
     const session = await getSession({ req })
@@ -10,7 +10,7 @@ export default async function handler(req, res) {
 
     if (req.method === 'GET') {
         try {
-        const zuordnungen = await prisma.mitglied_funktionen.findMany({
+        const zuordnungen = await db2.mitglied_funktionen.findMany({
             include: {
             ff_mitglied: {
                 select: {
@@ -36,7 +36,7 @@ export default async function handler(req, res) {
         try {
         const { Mitglied_ID, Funktion_ID, Typ, Erstellt_am } = req.body
 
-        const neueZuordnung = await prisma.mitglied_funktionen.create({
+        const neueZuordnung = await db2.mitglied_funktionen.create({
             data: {
             Mitglied_ID: parseInt(Mitglied_ID),
             Funktion_ID: parseInt(Funktion_ID),

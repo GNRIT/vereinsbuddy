@@ -1,10 +1,9 @@
 import { getSession } from 'next-auth/react'
-import Layout from '../../components/Layout'
 import { vereinDbPrisma as prisma } from '../../lib/prisma'
 
 export default function AdminDashboard({ stats }) {
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Admin Dashboard</h1>
             
@@ -90,7 +89,7 @@ export default function AdminDashboard({ stats }) {
             </div>
             </div>
         </div>
-        </Layout>
+        </div>
     )
     }
 
@@ -98,14 +97,14 @@ export default function AdminDashboard({ stats }) {
     const session = await getSession(context)
     const currentYear = new Date().getFullYear()
 
-    if (!session || !session.user.vereine.some(v => v.rolle === 'admin')) {
+    /*if (!session || !session.user.vereine.some(v => v.rolle === 'admin')) {
         return {
         redirect: {
             destination: '/',
             permanent: false,
         },
         }
-    }
+    }*/
 
     // Statistikdaten abfragen
     const aktiveMitgliederFF = await prisma.mitglied.count({

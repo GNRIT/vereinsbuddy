@@ -1,6 +1,5 @@
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import Layout from '../../components/Layout'
 import EinsatzForm from './components/EinsatzForm'
 
 export default function NeuerEinsatz() {
@@ -29,12 +28,12 @@ export default function NeuerEinsatz() {
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Neuen Einsatz anlegen</h1>
             <EinsatzForm onSubmit={handleSubmit} />
         </div>
-        </Layout>
+        </div>
     )
 }
 

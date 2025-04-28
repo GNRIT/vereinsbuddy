@@ -1,11 +1,11 @@
-import { vereinDbPrisma as prisma } from '../../../lib/prisma'
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
 
 export default async function handler(req, res) {
     const { id } = req.query
 
     if (req.method === 'GET') {
         try {
-        const zuordnung = await prisma.ff_mitglied_lehrgang.findUnique({
+        const zuordnung = await db2.ff_mitglied_lehrgang.findUnique({
             where: { ID: parseInt(id) },
             include: {
             ff_mitglied: true,
@@ -25,7 +25,7 @@ export default async function handler(req, res) {
         try {
         const { FF_Mitglied_ID, Lehrgang_ID, Datum_bestanden } = req.body
 
-        const updatedZuordnung = await prisma.ff_mitglied_lehrgang.update({
+        const updatedZuordnung = await db2.ff_mitglied_lehrgang.update({
             where: { ID: parseInt(id) },
             data: {
             FF_Mitglied_ID: parseInt(FF_Mitglied_ID),
@@ -41,7 +41,7 @@ export default async function handler(req, res) {
         }
     } else if (req.method === 'DELETE') {
         try {
-        await prisma.ff_mitglied_lehrgang.delete({
+        await db2.ff_mitglied_lehrgang.delete({
             where: { ID: parseInt(id) }
         })
 

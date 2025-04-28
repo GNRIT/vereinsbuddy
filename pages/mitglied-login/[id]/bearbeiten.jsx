@@ -1,8 +1,7 @@
+import { vereinDbPrisma as db2 } from '@/lib/prisma'
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import Layout from '../../../components/Layout'
-import MitgliedLoginForm from '../../../components/MitgliedLoginForm'
-import { vereinDbPrisma as prisma } from '../../../lib/prisma'
+import MitgliedLoginForm from './components/MitgliedLoginForm'
 
 export default function MitgliedLoginBearbeiten({ initialData }) {
     const router = useRouter()
@@ -33,12 +32,12 @@ export default function MitgliedLoginBearbeiten({ initialData }) {
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Mitglied-Login bearbeiten</h1>
             <MitgliedLoginForm initialData={initialData} onSubmit={handleSubmit} />
         </div>
-        </Layout>
+        </div>
     )
     }
 
@@ -55,7 +54,7 @@ export default function MitgliedLoginBearbeiten({ initialData }) {
         }
     }
 
-    const login = await prisma.mitglied_login.findUnique({
+    const login = await db2.mitglied_login.findUnique({
         where: {
         ID: parseInt(id),
         },

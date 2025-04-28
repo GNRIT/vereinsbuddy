@@ -1,5 +1,5 @@
-import { getSession } from 'next-auth/react'
-import { vereinDbPrisma as prisma } from '../../../lib/prisma'
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
+import { getSession } from 'next-auth/react';
 
 export default async function handler(req, res) {
     const session = await getSession({ req })
@@ -10,7 +10,7 @@ export default async function handler(req, res) {
 
     if (req.method === 'GET') {
         try {
-        const teilnahmen = await prisma.teilnahme.findMany({
+        const teilnahmen = await db2.teilnahme.findMany({
             include: {
             mitglied: true,
             veranstaltung: true
@@ -28,7 +28,7 @@ export default async function handler(req, res) {
         const { Mitglied_ID, Veranstaltung_ID, Typ, Erstellt_am } = req.body
 
         // Prüfen ob Teilnahme bereits existiert
-        const existierendeTeilnahme = await prisma.teilnahme.findFirst({
+        const existierendeTeilnahme = await db2.teilnahme.findFirst({
             where: {
             Mitglied_ID: parseInt(Mitglied_ID),
             Veranstaltung_ID: parseInt(Veranstaltung_ID),
@@ -39,7 +39,7 @@ export default async function handler(req, res) {
             return res.status(400).json({ message: 'Teilnahme existiert bereits' })
         }
 
-        const neueTeilnahme = await prisma.teilnahme.create({
+        const neueTeilnahme = await db2.teilnahme.create({
             data: {
             Mitglied_ID: parseInt(Mitglied_ID),
             Veranstaltung_ID: parseInt(Veranstaltung_ID),

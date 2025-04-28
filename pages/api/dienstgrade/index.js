@@ -1,6 +1,5 @@
-import { getSession } from 'next-auth/react'
-import { vereinDbPrisma as prisma } from '../../../../lib/prisma'
-
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
+import { getSession } from 'next-auth/react';
 export default async function handler(req, res) {
     const session = await getSession({ req })
 
@@ -10,7 +9,7 @@ export default async function handler(req, res) {
 
     if (req.method === 'GET') {
         try {
-        const dienstgrade = await prisma.dienstgrad.findMany({
+        const dienstgrade = await db2.dienstgrad.findMany({
             orderBy: {
             Abkuerzung_maennlich: 'asc',
             },
@@ -28,7 +27,7 @@ export default async function handler(req, res) {
             Beschreibung_weiblich 
         } = req.body
 
-        const neuerDienstgrad = await prisma.dienstgrad.create({
+        const neuerDienstgrad = await db2.dienstgrad.create({
             data: {
             Abkuerzung_maennlich,
             Beschreibung_maennlich,

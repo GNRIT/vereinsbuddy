@@ -1,11 +1,10 @@
-import { getSession } from 'next-auth/react'
-import Link from 'next/link'
-import Layout from '../../components/Layout'
-import { vereinDbPrisma as prisma } from '../../lib/prisma'
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
+import { getSession } from 'next-auth/react';
+import Link from 'next/link';
 
 export default function FahrzeugListe({ fahrzeuge }) {
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Fahrzeugverwaltung</h1>
@@ -62,7 +61,7 @@ export default function FahrzeugListe({ fahrzeuge }) {
             </table>
             </div>
         </div>
-        </Layout>
+        </div>
     )
     }
 
@@ -78,7 +77,7 @@ export default function FahrzeugListe({ fahrzeuge }) {
         }
     }
 
-    const fahrzeuge = await prisma.fahrzeug.findMany({
+    const fahrzeuge = await db2.fahrzeug.findMany({
         orderBy: {
         Kennzeichen: 'asc',
         },

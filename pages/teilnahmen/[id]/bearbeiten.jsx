@@ -1,8 +1,7 @@
+import { vereinDbPrisma as db2 } from '@/lib/prisma'
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import Layout from '../../../components/Layout'
-import TeilnahmeForm from '../../../components/TeilnahmeForm'
-import { vereinDbPrisma as prisma } from '../../../lib/prisma'
+import TeilnahmeForm from '../components/TeilnahmeForm'
 
 export default function TeilnahmeBearbeiten({ initialData }) {
     const router = useRouter()
@@ -33,12 +32,12 @@ export default function TeilnahmeBearbeiten({ initialData }) {
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Teilnahme bearbeiten</h1>
             <TeilnahmeForm initialData={initialData} onSubmit={handleSubmit} />
         </div>
-        </Layout>
+        </div>
     )
     }
 
@@ -55,7 +54,7 @@ export default function TeilnahmeBearbeiten({ initialData }) {
         }
     }
 
-    const teilnahme = await prisma.teilnahme.findUnique({
+    const teilnahme = await db2.teilnahme.findUnique({
         where: {
         ID: parseInt(id),
         },

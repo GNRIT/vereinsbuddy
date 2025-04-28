@@ -1,10 +1,9 @@
-import Link from 'next/link'
-import Layout from '../../components/Layout'
-import { vereinDbPrisma as prisma } from '../../lib/prisma'
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
+import Link from 'next/link';
 
 export default function EinheitenListe({ einheiten }) {
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Einheitenverwaltung</h1>
@@ -57,12 +56,12 @@ export default function EinheitenListe({ einheiten }) {
             </table>
             </div>
         </div>
-        </Layout>
+        </div>
     )
 }
 
 export async function getServerSideProps() {
-    const einheiten = await prisma.einheit.findMany({
+    const einheiten = await db2.einheit.findMany({
         orderBy: {
         ID: 'asc',
         },

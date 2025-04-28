@@ -1,8 +1,6 @@
+import { vereinDbPrisma as db2 } from '@/lib/prisma'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import Layout from '../../components/Layout'
-import { vereinDbPrisma as prisma } from '../../lib/prisma'
-
 export default function LehrgangListe({ lehrgaenge }) {
     const router = useRouter()
 
@@ -21,7 +19,7 @@ export default function LehrgangListe({ lehrgaenge }) {
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Lehrgangsverwaltung</h1>
@@ -71,12 +69,12 @@ export default function LehrgangListe({ lehrgaenge }) {
             </table>
             </div>
         </div>
-        </Layout>
+        </div>
     )
 }
 
 export async function getServerSideProps() {
-    const lehrgaenge = await prisma.lehrgang.findMany({
+    const lehrgaenge = await db2.lehrgang.findMany({
         orderBy: {
         Reihenfolge: 'asc',
         },

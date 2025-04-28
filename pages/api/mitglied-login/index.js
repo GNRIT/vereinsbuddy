@@ -1,5 +1,5 @@
-import { getSession } from 'next-auth/react'
-import { vereinDbPrisma as prisma } from '../../../lib/prisma'
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
+import { getSession } from 'next-auth/react';
 
 export default async function handler(req, res) {
     const session = await getSession({ req })
@@ -10,7 +10,7 @@ export default async function handler(req, res) {
 
     if (req.method === 'GET') {
         try {
-        const logins = await prisma.mitglied_login.findMany({
+        const logins = await db2.mitglied_login.findMany({
             orderBy: {
             Erstellt_am: 'desc',
             },
@@ -23,7 +23,7 @@ export default async function handler(req, res) {
         try {
         const { Benutzer_ID, Mitglied_ID, Typ, Erstellt_am } = req.body
 
-        const neuesLogin = await prisma.mitglied_login.create({
+        const neuesLogin = await db2.mitglied_login.create({
             data: {
             Benutzer_ID: parseInt(Benutzer_ID),
             Mitglied_ID: parseInt(Mitglied_ID),

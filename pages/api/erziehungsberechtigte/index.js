@@ -1,5 +1,5 @@
-import { getSession } from 'next-auth/react'
-import { vereinDbPrisma as prisma } from '../../../../lib/prisma'
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
+import { getSession } from 'next-auth/react';
 
 export default async function handler(req, res) {
     const session = await getSession({ req })
@@ -10,7 +10,7 @@ export default async function handler(req, res) {
 
     if (req.method === 'GET') {
         try {
-        const erziehungsberechtigte = await prisma.jf_erziehungsberechtigter.findMany({
+        const erziehungsberechtigte = await db2.jf_erziehungsberechtigter.findMany({
             include: {
             jf_mitglied: true,
             person: true
@@ -25,7 +25,7 @@ export default async function handler(req, res) {
         const { JF_Mitglied_ID, Person_ID } = req.body
 
         // Prüfen ob die Zuordnung bereits existiert
-        const exists = await prisma.jf_erziehungsberechtigter.findFirst({
+        const exists = await db2.jf_erziehungsberechtigter.findFirst({
             where: {
             JF_Mitglied_ID: parseInt(JF_Mitglied_ID),
             Person_ID: parseInt(Person_ID)
@@ -36,7 +36,7 @@ export default async function handler(req, res) {
             return res.status(400).json({ message: 'Diese Zuordnung existiert bereits' })
         }
 
-        const neueZuordnung = await prisma.jf_erziehungsberechtigter.create({
+        const neueZuordnung = await db2.jf_erziehungsberechtigter.create({
             data: {
             JF_Mitglied_ID: parseInt(JF_Mitglied_ID),
             Person_ID: parseInt(Person_ID),

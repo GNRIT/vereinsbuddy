@@ -1,11 +1,11 @@
-import { vereinDbPrisma as prisma } from '../../../lib/prisma'
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
 
 export default async function handler(req, res) {
     const { id } = req.query
 
     if (req.method === 'GET') {
         try {
-        const einheit = await prisma.einheit.findUnique({
+        const einheit = await db2.einheit.findUnique({
             where: {
             ID: parseInt(id),
             },
@@ -26,7 +26,7 @@ export default async function handler(req, res) {
         try {
         const { Abkuerzung, Beschreibung } = req.body
 
-        const updatedEinheit = await prisma.einheit.update({
+        const updatedEinheit = await db2.einheit.update({
             where: {
             ID: parseInt(id),
             },
@@ -44,14 +44,14 @@ export default async function handler(req, res) {
     } else if (req.method === 'DELETE') {
         try {
         // Zuerst alle Einteilungen löschen
-        await prisma.einteilung.deleteMany({
+        await db2.einteilung.deleteMany({
             where: {
             Einheit_ID: parseInt(id),
             }
         })
 
         // Dann die Einheit selbst löschen
-        await prisma.einheit.delete({
+        await db2.einheit.delete({
             where: {
             ID: parseInt(id),
             }

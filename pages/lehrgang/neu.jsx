@@ -1,7 +1,6 @@
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import Layout from '../../components/Layout'
-import LehrgangForm from '../../components/LehrgangForm'
+import LehrgangForm from './components/LehrgangForm'
 
 export default function NeuerLehrgang() {
     const router = useRouter()
@@ -29,12 +28,12 @@ export default function NeuerLehrgang() {
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Neuen Lehrgang anlegen</h1>
             <LehrgangForm onSubmit={handleSubmit} />
         </div>
-        </Layout>
+        </div>
     )
 }
 

@@ -1,8 +1,7 @@
+import { vereinDbPrisma as db2 } from '@/lib/prisma'
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import FunktionForm from '../../../components/FunktionForm'
-import Layout from '../../../components/Layout'
-import { vereinDbPrisma as prisma } from '../../../lib/prisma'
+import FunktionForm from '../components/FunktionForm'
 
 export default function FunktionBearbeiten({ initialData }) {
     const router = useRouter()
@@ -33,12 +32,13 @@ export default function FunktionBearbeiten({ initialData }) {
     }
 
     return (
-        <Layout>
-        <div className="bg-white shadow rounded-lg p-6">
-            <h1 className="text-2xl font-bold text-gray-900 mb-6">Funktion bearbeiten</h1>
-            <FunktionForm initialData={initialData} onSubmit={handleSubmit} />
+        <div>
+            <div className="bg-white shadow rounded-lg p-6">
+                <h1 className="text-2xl font-bold text-gray-900 mb-6">Funktion bearbeiten</h1>
+                <FunktionForm initialData={initialData} onSubmit={handleSubmit} />
+            </div>
         </div>
-        </Layout>
+        
     )
     }
 
@@ -55,7 +55,7 @@ export default function FunktionBearbeiten({ initialData }) {
         }
     }
 
-    const funktion = await prisma.funktion_ff.findUnique({
+    const funktion = await db2.funktion_ff.findUnique({
         where: {
         ID: parseInt(id),
         },

@@ -1,5 +1,5 @@
-import { getSession } from 'next-auth/react'
-import { vereinDbPrisma as prisma } from '../../../lib/prisma'
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
+import { getSession } from 'next-auth/react';
 
 export default async function handler(req, res) {
     const session = await getSession({ req })
@@ -10,7 +10,7 @@ export default async function handler(req, res) {
 
     if (req.method === 'GET') {
         try {
-        const fahrzeuge = await prisma.fahrzeug.findMany({
+        const fahrzeuge = await db2.fahrzeug.findMany({
             orderBy: {
             Kennzeichen: 'asc',
             },
@@ -23,7 +23,7 @@ export default async function handler(req, res) {
         try {
         const { Kennzeichen, Fahrzeugtyp, Besatzungsstaerke, Status } = req.body
 
-        const neuesFahrzeug = await prisma.fahrzeug.create({
+        const neuesFahrzeug = await db2.fahrzeug.create({
             data: {
             Kennzeichen,
             Fahrzeugtyp,

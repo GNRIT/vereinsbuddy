@@ -1,5 +1,5 @@
-import { getSession } from 'next-auth/react'
-import { vereinDbPrisma as prisma } from '../../../lib/prisma'
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
+import { getSession } from 'next-auth/react';
 
 export default async function handler(req, res) {
     const session = await getSession({ req })
@@ -12,9 +12,9 @@ export default async function handler(req, res) {
 
     if (req.method === 'GET') {
         try {
-        const dienstabend = await prisma.dientsabend.findUnique({
+        const dienstabend = await db2.dientsabend.findUnique({
             where: {
-            id: parseInt(id),
+            ID: parseInt(id),
             Verein_ID: aktiverVerein.vereinId
             }
         })
@@ -31,9 +31,9 @@ export default async function handler(req, res) {
         try {
         const { Datum, Thema } = req.body
 
-        const updatedDienstabend = await prisma.dientsabend.update({
+        const updatedDienstabend = await db2.dientsabend.update({
             where: {
-            id: parseInt(id),
+            ID: parseInt(id),
             Verein_ID: aktiverVerein.vereinId
             },
             data: {
@@ -49,9 +49,9 @@ export default async function handler(req, res) {
         }
     } else if (req.method === 'DELETE') {
         try {
-        await prisma.dientsabend.delete({
+        await db2.dientsabend.delete({
             where: {
-            id: parseInt(id),
+            ID: parseInt(id),
             Verein_ID: aktiverVerein.vereinId
             }
         })

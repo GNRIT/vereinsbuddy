@@ -1,7 +1,6 @@
 import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import Layout from '../components/Layout';
 
 export default function VereinAuswahl() {
     const { data: session, status } = useSession();
@@ -9,36 +8,32 @@ export default function VereinAuswahl() {
 
     useEffect(() => {
         if (status === 'authenticated' && session?.user?.vereine?.length === 1) {
-            router.push(`/verein/${session.user.vereine[0].Verein_ID}`);
+            router.push(`/verein/${session.user.vereine[0].ID}`);
         }
     }, [session, status, router]);
 
     if (status === 'loading') {
         return (
-            <Layout>
-                <div className="flex items-center justify-center min-h-screen">
+            <div className="flex items-center justify-center min-h-screen">
                     <p>Lade Benutzerdaten...</p>
-                </div>
-            </Layout>
+            </div>
         );
     }
 
     if (!session || !session.user) {
         return (
-            <Layout>
-                <div className="flex items-center justify-center min-h-screen">
+            <div className="flex items-center justify-center min-h-screen">
                     <p>Fehler: Keine Session gefunden.</p>
-                </div>
-            </Layout>
+            </div>
         );
     }
 
-    const handleVereinSelect = (vereinId) => {
-        router.push(`/verein/${vereinId}`);
+    const handleVereinSelect = (ID) => {
+        router.push(`/verein/${ID}`);
     };
 
     return (
-        <Layout>
+        <div>
             <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-md w-full space-y-8">
                     <div className="text-center">
@@ -55,8 +50,8 @@ export default function VereinAuswahl() {
                             <div className="space-y-4">
                                 {session.user.vereine.map((verein) => (
                                     <div
-                                        key={verein.Verein_ID}
-                                        onClick={() => handleVereinSelect(verein.Verein_ID)}
+                                        key={verein.ID}
+                                        onClick={() => handleVereinSelect(verein.ID)}
                                         className="cursor-pointer bg-white py-4 px-6 border border-gray-200 rounded-lg shadow-sm hover:border-blue-500 hover:ring-1 hover:ring-blue-500 transition duration-150 ease-in-out"
                                     >
                                         <h3 className="text-lg font-medium text-gray-900">
@@ -87,6 +82,6 @@ export default function VereinAuswahl() {
                     </div>
                 </div>
             </div>
-        </Layout>
+        </div>
     );
 }

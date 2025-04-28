@@ -1,7 +1,6 @@
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import Layout from '../../components/Layout'
-import TeilnahmeForm from '../../components/TeilnahmeForm'
+import TeilnahmeForm from './components/TeilnahmeForm'
 
 export default function NeueTeilnahme() {
     const router = useRouter()
@@ -32,12 +31,12 @@ export default function NeueTeilnahme() {
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Neue Teilnahme erfassen</h1>
             <TeilnahmeForm onSubmit={handleSubmit} />
         </div>
-        </Layout>
+        </div>
     )
 }
 

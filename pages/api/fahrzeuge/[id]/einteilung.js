@@ -1,5 +1,5 @@
-import { getSession } from 'next-auth/react'
-import { vereinDbPrisma as prisma } from '../../../../lib/prisma'
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
+import { getSession } from 'next-auth/react';
 
 export default async function handler(req, res) {
     const session = await getSession({ req })
@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
     if (req.method === 'GET') {
         try {
-        const einteilungen = await prisma.einteilung.findMany({
+        const einteilungen = await db2.einteilung.findMany({
             where: {
             Fahrzeug_ID: parseInt(id),
             },
@@ -34,9 +34,9 @@ export default async function handler(req, res) {
         const { einsatzId } = req.body
 
         // Prüfen ob das Fahrzeug verfügbar ist
-        const fahrzeug = await prisma.fahrzeug.findUnique({
+        const fahrzeug = await db2.fahrzeug.findUnique({
             where: {
-            id: parseInt(id),
+            ID: parseInt(id),
             },
         })
 
@@ -45,7 +45,7 @@ export default async function handler(req, res) {
         }
 
         // Einteilung erstellen
-        const einteilung = await prisma.einteilung.create({
+        const einteilung = await db2.einteilung.create({
             data: {
             Einsatz_ID: parseInt(einsatzId),
             Fahrzeug_ID: parseInt(id),
@@ -54,9 +54,9 @@ export default async function handler(req, res) {
         })
 
         // Fahrzeugstatus aktualisieren
-        await prisma.fahrzeug.update({
+        await db2.fahrzeug.update({
             where: {
-            id: parseInt(id),
+            ID: parseInt(id),
             },
             data: {
             Status: 'im_einsatz',
@@ -73,14 +73,14 @@ export default async function handler(req, res) {
         const { einteilungId } = req.body
 
         // Einteilung löschen
-        await prisma.einteilung.delete({
+        await db2.einteilung.delete({
             where: {
-            id: parseInt(einteilungId),
+            ID: parseInt(einteilungId),
             },
         })
 
         // Prüfen ob noch andere Einteilungen existieren
-        const verbleibendeEinteilungen = await prisma.einteilung.count({
+        const verbleibendeEinteilungen = await db2.einteilung.count({
             where: {
             Fahrzeug_ID: parseInt(id),
             },
@@ -88,7 +88,7 @@ export default async function handler(req, res) {
 
         // Fahrzeugstatus aktualisieren falls keine Einteilungen mehr
         if (verbleibendeEinteilungen === 0) {
-            await prisma.fahrzeug.update({
+            await db2.fahrzeug.update({
             where: {
                 id: parseInt(id),
             },

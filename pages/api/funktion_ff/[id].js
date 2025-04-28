@@ -1,5 +1,5 @@
-import { getSession } from 'next-auth/react'
-import { vereinDbPrisma as prisma } from '../../../lib/prisma'
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
+import { getSession } from 'next-auth/react';
 
 export default async function handler(req, res) {
     const session = await getSession({ req })
@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
     if (req.method === 'GET') {
         try {
-        const funktion = await prisma.funktion_ff.findUnique({
+        const funktion = await db2.funktion_ff.findUnique({
             where: {
             ID: parseInt(id),
             },
@@ -36,7 +36,7 @@ export default async function handler(req, res) {
         try {
         const { Name, Ist_Admin, Geaendert_am } = req.body
 
-        const updatedFunktion = await prisma.funktion_ff.update({
+        const updatedFunktion = await db2.funktion_ff.update({
             where: {
             ID: parseInt(id),
             },
@@ -54,14 +54,14 @@ export default async function handler(req, res) {
     } else if (req.method === 'DELETE') {
         try {
         // Zuerst die Zuordnungen löschen
-        await prisma.mitglied_funktionen.deleteMany({
+        await db2.mitglied_funktionen.deleteMany({
             where: {
             Funktion_ID: parseInt(id),
             }
         })
 
         // Dann die Funktion selbst löschen
-        await prisma.funktion_ff.delete({
+        await db2.funktion_ff.delete({
             where: {
             ID: parseInt(id),
             }

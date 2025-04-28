@@ -1,8 +1,7 @@
+import { vereinDbPrisma as db2 } from '@/lib/prisma'
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import Layout from '../../../components/Layout'
 import LehrgangForm from '../../../components/LehrgangForm'
-import { vereinDbPrisma as prisma } from '../../../lib/prisma'
 
 export default function LehrgangBearbeiten({ initialData }) {
     const router = useRouter()
@@ -30,12 +29,12 @@ export default function LehrgangBearbeiten({ initialData }) {
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Lehrgang bearbeiten</h1>
             <LehrgangForm initialData={initialData} onSubmit={handleSubmit} />
         </div>
-        </Layout>
+        </div>
     )
     }
 
@@ -52,7 +51,7 @@ export default function LehrgangBearbeiten({ initialData }) {
         }
     }
 
-    const lehrgang = await prisma.lehrgang.findUnique({
+    const lehrgang = await db2.lehrgang.findUnique({
         where: {
         ID: parseInt(id),
         },

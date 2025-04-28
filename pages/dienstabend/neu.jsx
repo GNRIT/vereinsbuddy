@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
-import DienstabendForm from '../../components/DienstabendForm'
 import Layout from '../../components/Layout'
+import DienstabendForm from './components/DienstabendForm'
 
 export default function NeuerDienstabend() {
     const router = useRouter()

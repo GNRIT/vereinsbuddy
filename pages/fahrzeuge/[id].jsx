@@ -1,9 +1,8 @@
+import { vereinDbPrisma as db2 } from '@/lib/prisma'
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import ConfirmationDialog from '../../../components/ConfirmationDialog'
-import Layout from '../../../components/Layout'
-import { vereinDbPrisma as prisma } from '../../../lib/prisma'
+import ConfirmationDialog from './components/ConfirmationDialog'
 
 export default function FahrzeugDetail({ fahrzeug }) {
     const router = useRouter()
@@ -33,7 +32,7 @@ export default function FahrzeugDetail({ fahrzeug }) {
     }
 
     return (
-        <Layout>
+        <div>
         <ConfirmationDialog
             isOpen={showDeleteDialog}
             onClose={() => setShowDeleteDialog(false)}
@@ -122,7 +121,7 @@ export default function FahrzeugDetail({ fahrzeug }) {
             </div>
             </div>
         </div>
-        </Layout>
+        </div>
     )
 }
 
@@ -139,9 +138,9 @@ export async function getServerSideProps(context) {
         }
     }
 
-    const fahrzeug = await prisma.fahrzeug.findUnique({
+    const fahrzeug = await db2.fahrzeug.findUnique({
         where: {
-        id: parseInt(id),
+        ID: parseInt(id),
         },
     })
 

@@ -1,15 +1,14 @@
+import { vereinDbPrisma as db2 } from '@/lib/prisma'
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import JugendfunktionForm from '../../../components/JugendfunktionForm'
-import Layout from '../../../components/Layout'
-import { vereinDbPrisma as prisma } from '../../../lib/prisma'
+import FunktionJFForm from '../components/FunktionJFForm'
 
-export default function JugendfunktionBearbeiten({ initialData }) {
+export default function FunktionJFBearbeiten({ initialData }) {
     const router = useRouter()
 
     const handleSubmit = async (formData) => {
         try {
-        const response = await fetch(`/api/jugendfunktionen/${initialData.ID}`, {
+        const response = await fetch(`/api/funktion_jf/${initialData.ID}`, {
             method: 'PUT',
             headers: {
             'Content-Type': 'application/json',
@@ -21,7 +20,7 @@ export default function JugendfunktionBearbeiten({ initialData }) {
         })
 
         if (response.ok) {
-            router.push(`/jugendfunktionen/${initialData.ID}`)
+            router.push(`/funktion_jf/${initialData.ID}`)
         } else {
             const errorData = await response.json()
             alert(errorData.message || 'Fehler beim Speichern')
@@ -33,12 +32,12 @@ export default function JugendfunktionBearbeiten({ initialData }) {
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
-            <h1 className="text-2xl font-bold text-gray-900 mb-6">Jugendfunktion bearbeiten</h1>
-            <JugendfunktionForm initialData={initialData} onSubmit={handleSubmit} />
+            <h1 className="text-2xl font-bold text-gray-900 mb-6">funktion_ff bearbeiten</h1>
+            <FunktionJFForm initialData={initialData} onSubmit={handleSubmit} />
         </div>
-        </Layout>
+        </div>
     )
     }
 
@@ -55,7 +54,7 @@ export default function JugendfunktionBearbeiten({ initialData }) {
         }
     }
 
-    const funktion = await prisma.funktion_jf.findUnique({
+    const funktion = await db2.funktion_jf.findUnique({
         where: {
         ID: parseInt(id),
         },

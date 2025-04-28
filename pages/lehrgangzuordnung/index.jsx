@@ -1,10 +1,8 @@
+import { vereinDbPrisma as db2 } from '@/lib/prisma'
 import Link from 'next/link'
-import Layout from '../../components/Layout'
-import { vereinDbPrisma as prisma } from '../../lib/prisma'
-
 export default function LehrgangsZuordnungen({ zuordnungen }) {
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Lehrgangszuordnungen</h1>
@@ -56,12 +54,12 @@ export default function LehrgangsZuordnungen({ zuordnungen }) {
             </table>
             </div>
         </div>
-        </Layout>
+        </div>
     )
 }
 
 export async function getServerSideProps() {
-    const zuordnungen = await prisma.ff_mitglied_lehrgang.findMany({
+    const zuordnungen = await db2.ff_mitglied_lehrgang.findMany({
         include: {
         ff_mitglied: true,
         lehrgang: true

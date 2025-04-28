@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import DienstgradForm from '../../../components/DienstgradForm'
-import Layout from '../../../components/Layout'
+import Layout from '../../components/Layout'
+import DienstgradForm from './components/DienstgradForm'
 
 export default function NeuerDienstgrad() {
     const router = useRouter()

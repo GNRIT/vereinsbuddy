@@ -1,6 +1,5 @@
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import Layout from '../../components/Layout'
 import VereinForm from '../../components/VereinForm'
 
 export default function NeuerVerein() {
@@ -29,12 +28,12 @@ export default function NeuerVerein() {
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Neuen Verein erstellen</h1>
             <VereinForm onSubmit={handleSubmit} />
         </div>
-        </Layout>
+        </div>
     )
     }
 

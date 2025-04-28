@@ -1,5 +1,5 @@
-import { getSession } from 'next-auth/react'
-import { vereinDbPrisma as prisma } from '../../../lib/prisma'
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
+import { getSession } from 'next-auth/react';
 
 export default async function handler(req, res) {
     const session = await getSession({ req })
@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
     if (req.method === 'GET') {
         try {
-        const dienstabende = await prisma.dientsabend.findMany({
+        const dienstabende = await db2.dientsabend.findMany({
             where: {
             Verein_ID: aktiverVerein.vereinId
             },
@@ -27,7 +27,7 @@ export default async function handler(req, res) {
         try {
         const { Datum, Thema } = req.body
 
-        const neuerDienstabend = await prisma.dientsabend.create({
+        const neuerDienstabend = await db2.dientsabend.create({
             data: {
             Datum: new Date(Datum),
             Thema,

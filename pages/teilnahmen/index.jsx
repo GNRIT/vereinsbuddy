@@ -1,10 +1,9 @@
+import { vereinDbPrisma as db2 } from '@/lib/prisma'
 import Link from 'next/link'
-import Layout from '../../components/Layout'
-import { vereinDbPrisma as prisma } from '../../lib/prisma'
 
 export default function TeilnahmenListe({ teilnahmen }) {
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Teilnahmen</h1>
@@ -65,12 +64,12 @@ export default function TeilnahmenListe({ teilnahmen }) {
             </table>
             </div>
         </div>
-        </Layout>
+        </div>
     )
 }
 
 export async function getServerSideProps() {
-    const teilnahmen = await prisma.teilnahme.findMany({
+    const teilnahmen = await db2.teilnahme.findMany({
         include: {
         mitglied: true,
         veranstaltung: true

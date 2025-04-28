@@ -1,7 +1,6 @@
+import { vereinDbPrisma as db2 } from '@/lib/prisma'
 import { useRouter } from 'next/router'
-import Layout from '../../../components/Layout'
-import LehrgangsZuordnungForm from '../../../components/LehrgangsZuordnungForm'
-import { vereinDbPrisma as prisma } from '../../../lib/prisma'
+import LehrgangsZuordnungForm from '../components/LehrgangsZuordnungForm'
 
 export default function LehrgangsZuordnungBearbeiten({ initialData, mitglieder, lehrgaenge }) {
     const router = useRouter()
@@ -29,7 +28,7 @@ export default function LehrgangsZuordnungBearbeiten({ initialData, mitglieder, 
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Lehrgangszuordnung bearbeiten</h1>
             <LehrgangsZuordnungForm 
@@ -39,7 +38,7 @@ export default function LehrgangsZuordnungBearbeiten({ initialData, mitglieder, 
             onSubmit={handleSubmit} 
             />
         </div>
-        </Layout>
+        </div>
     )
     }
 
@@ -47,11 +46,11 @@ export default function LehrgangsZuordnungBearbeiten({ initialData, mitglieder, 
     const { id } = context.params
 
     const [zuordnung, mitglieder, lehrgaenge] = await Promise.all([
-        prisma.ff_mitglied_lehrgang.findUnique({
+        db2.ff_mitglied_lehrgang.findUnique({
         where: { ID: parseInt(id) }
         }),
-        prisma.ff_mitglied.findMany(),
-        prisma.lehrgang.findMany()
+        db2.ff_mitglied.findMany(),
+        db2.lehrgang.findMany()
     ])
 
     if (!zuordnung) {

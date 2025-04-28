@@ -1,11 +1,10 @@
 import { vereinsbuddyPrisma as db1 } from '@/lib/prisma';
 import { getSession } from 'next-auth/react';
 import Link from 'next/link';
-import Layout from '../../components/Layout';
 
 export default function VereinsListe({ vereine }) {
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Vereinsverwaltung</h1>
@@ -57,7 +56,7 @@ export default function VereinsListe({ vereine }) {
             </table>
             </div>
         </div>
-        </Layout>
+        </div>
     )
     }
 

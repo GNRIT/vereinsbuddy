@@ -1,6 +1,5 @@
 import { vereinDbPrisma as db2 } from '@/lib/prisma';
 import { useRouter } from 'next/router';
-import Layout from '../../../components/Layout';
 
 export default function EinsatzDetail({ einsatz }) {
     const router = useRouter()
@@ -10,7 +9,7 @@ export default function EinsatzDetail({ einsatz }) {
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Einsatz: {einsatz.Einsarznummer}</h1>
@@ -85,7 +84,7 @@ export default function EinsatzDetail({ einsatz }) {
             </div>
             </div>
         </div>
-        </Layout>
+        </div>
     )
     }
 

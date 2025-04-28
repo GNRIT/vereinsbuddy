@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router'
 import EinheitForm from '../../components/EinheitForm'
-import Layout from '../../components/Layout'
 
 export default function NeueEinheit() {
     const router = useRouter()
@@ -28,11 +27,11 @@ export default function NeueEinheit() {
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Neue Einheit anlegen</h1>
             <EinheitForm onSubmit={handleSubmit} />
         </div>
-        </Layout>
+        </div>
     )
 }

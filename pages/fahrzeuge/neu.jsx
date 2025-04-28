@@ -1,7 +1,6 @@
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import FahrzeugForm from '../../components/FahrzeugForm'
-import Layout from '../../components/Layout'
+import FahrzeugForm from './components/FahrzeugForm'
 
 export default function NeuesFahrzeug() {
     const router = useRouter()
@@ -29,12 +28,12 @@ export default function NeuesFahrzeug() {
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Neues Fahrzeug anlegen</h1>
             <FahrzeugForm onSubmit={handleSubmit} />
         </div>
-        </Layout>
+        </div>
     )
 }
 

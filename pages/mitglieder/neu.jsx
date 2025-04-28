@@ -1,6 +1,5 @@
 import { getSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import Layout from '../../components/Layout';
 import MitgliedForm from './components/MitgliedForm';
 
 export default function NeuesMitglied() {
@@ -29,12 +28,12 @@ export default function NeuesMitglied() {
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Neues Mitglied anlegen</h1>
             <MitgliedForm onSubmit={handleSubmit} />
         </div>
-        </Layout>
+        </div>
     )
 }
 

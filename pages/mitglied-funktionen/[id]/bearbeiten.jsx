@@ -1,8 +1,7 @@
+import { vereinDbPrisma as db2 } from '@/lib/prisma'
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import Layout from '../../../components/Layout'
-import MitgliedFunktionForm from '../../../components/MitgliedFunktionForm'
-import { vereinDbPrisma as prisma } from '../../../lib/prisma'
+import MitgliedFunktionForm from '../components/MitgliedFunktionForm'
 
 export default function MitgliedFunktionBearbeiten({ initialData }) {
     const router = useRouter()
@@ -33,12 +32,12 @@ export default function MitgliedFunktionBearbeiten({ initialData }) {
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Mitglied-Funktion-Zuordnung bearbeiten</h1>
             <MitgliedFunktionForm initialData={initialData} onSubmit={handleSubmit} />
         </div>
-        </Layout>
+        </div>
     )
     }
 
@@ -55,7 +54,7 @@ export default function MitgliedFunktionBearbeiten({ initialData }) {
         }
     }
 
-    const zuordnung = await prisma.mitglied_funktionen.findUnique({
+    const zuordnung = await db2.mitglied_funktionen.findUnique({
         where: {
         ID: parseInt(id),
         },

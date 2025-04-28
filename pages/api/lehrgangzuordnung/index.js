@@ -1,9 +1,9 @@
-import { vereinDbPrisma as prisma } from '../../../lib/prisma'
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
 
 export default async function handler(req, res) {
     if (req.method === 'GET') {
         try {
-        const zuordnungen = await prisma.ff_mitglied_lehrgang.findMany({
+        const zuordnungen = await db2.ff_mitglied_lehrgang.findMany({
             include: {
             ff_mitglied: true,
             lehrgang: true
@@ -17,7 +17,7 @@ export default async function handler(req, res) {
         try {
         const { FF_Mitglied_ID, Lehrgang_ID, Datum_bestanden } = req.body
 
-        const neueZuordnung = await prisma.ff_mitglied_lehrgang.create({
+        const neueZuordnung = await db2.ff_mitglied_lehrgang.create({
             data: {
             FF_Mitglied_ID: parseInt(FF_Mitglied_ID),
             Lehrgang_ID: parseInt(Lehrgang_ID),

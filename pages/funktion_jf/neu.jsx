@@ -1,7 +1,6 @@
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import JugendfunktionForm from '../../components/JugendfunktionForm'
-import Layout from '../../components/Layout'
+import JugendfunktionForm from './components/JugendfunktionForm'
 
 export default function NeueJugendfunktion() {
     const router = useRouter()
@@ -32,12 +31,12 @@ export default function NeueJugendfunktion() {
     }
 
     return (
-        <Layout>
+        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Neue Jugendfunktion erstellen</h1>
             <JugendfunktionForm onSubmit={handleSubmit} />
         </div>
-        </Layout>
+        </div>
     )
 }
 
