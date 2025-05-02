@@ -122,9 +122,16 @@ export default function FahrzeugEinteilung({ fahrzeug, einsaetze }) {
         }
     }
 
+    const parsedId = parseInt(id);
+    if (!parsedId || isNaN(parsedId)) {
+        return {
+            notFound: true,
+        };
+    }
+
     const fahrzeug = await db2.fahrzeug.findUnique({
         where: {
-        ID: parseInt(id),
+        ID: parsedId,
         },
     })
 

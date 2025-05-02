@@ -7,7 +7,7 @@ export default function LehrgangsZuordnungen({ zuordnungen }) {
         <div className="bg-white shadow rounded-lg p-6">
             <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Lehrgangszuordnungen</h1>
-            <Link href="/lehrgaenge/neu">
+            <Link href="/lehrgangzuordnung/neu">
                 <span className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
                 Neue Zuordnung
                 </span>
@@ -18,6 +18,7 @@ export default function LehrgangsZuordnungen({ zuordnungen }) {
             <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                 <tr>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mitglied</th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Lehrgang</th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Datum bestanden</th>
@@ -26,13 +27,13 @@ export default function LehrgangsZuordnungen({ zuordnungen }) {
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                 {zuordnungen.map((zuordnung) => (
-                    <tr key={zuordnung.id}>
+                    <tr key={zuordnung.ID}>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        {zuordnung.ID}
+                    </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm font-medium text-gray-900">
-                        {zuordnung.ff_mitglied.Vorname} {zuordnung.ff_mitglied.Name}
-                        </div>
-                        <div className="text-sm text-gray-500">
-                        {zuordnung.ff_mitglied.Mitgliedsnummer}
+                        {zuordnung.ff_mitglied.ID}
                         </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -42,10 +43,10 @@ export default function LehrgangsZuordnungen({ zuordnungen }) {
                         {zuordnung.Datum_bestanden ? new Date(zuordnung.Datum_bestanden).toLocaleDateString() : 'Nicht bestanden'}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <Link href={`/lehrgaenge/${zuordnung.id}/bearbeiten`}>
+                        <Link href={`/lehrgangzuordnung/${zuordnung.ID}/bearbeiten`}>
                         <span className="text-indigo-600 hover:text-indigo-900 mr-3">Bearbeiten</span>
                         </Link>
-                        <Link href={`/lehrgaenge/${zuordnung.id}/loeschen`}>
+                        <Link href={`/lehrgangzuordnung/${zuordnung.ID}/loeschen`}>
                         <span className="text-red-600 hover:text-red-900">Löschen</span>
                         </Link>
                     </td>

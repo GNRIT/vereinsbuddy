@@ -7,7 +7,7 @@ export default function NeueLehrgangsZuordnung({ mitglieder, lehrgaenge }) {
 
     const handleSubmit = async (formData) => {
         try {
-        const response = await fetch('/api/lehrgang', {
+        const response = await fetch('/api/lehrgangzuordnung', {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
@@ -16,7 +16,7 @@ export default function NeueLehrgangsZuordnung({ mitglieder, lehrgaenge }) {
         })
 
         if (response.ok) {
-            router.push('/lehrgaenge')
+            router.push('/lehrgangzuordnung')
         } else {
             const errorData = await response.json()
             alert(errorData.message || 'Fehler beim Speichern')
@@ -31,10 +31,10 @@ export default function NeueLehrgangsZuordnung({ mitglieder, lehrgaenge }) {
         <div>
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Neue Lehrgangszuordnung</h1>
-            <LehrgangsZuordnungForm 
-            mitglieder={mitglieder} 
-            lehrgaenge={lehrgaenge} 
-            onSubmit={handleSubmit} 
+            <LehrgangsZuordnungForm
+            mitglieder={mitglieder}
+            lehrgaenge={lehrgaenge}
+            onSubmit={handleSubmit}
             />
         </div>
         </div>

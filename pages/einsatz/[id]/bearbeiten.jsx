@@ -51,9 +51,16 @@ export default function EinsatzBearbeiten({ initialData }) {
         }
     }*/
 
+        const parsedId = parseInt(id);
+        if (!parsedId || isNaN(parsedId)) {
+            return {
+                notFound: true,
+            };
+        }
+
     const einsatz = await db2.einsatz.findUnique({
         where: {
-        ID: parseInt(id),
+        ID: parsedId,
         },
     })
 

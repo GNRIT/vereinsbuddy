@@ -20,7 +20,7 @@ export default function FunktionJFBearbeiten({ initialData }) {
         })
 
         if (response.ok) {
-            router.push(`/funktion_jf/${initialData.ID}`)
+            router.push(`/funktion_jf`)
         } else {
             const errorData = await response.json()
             alert(errorData.message || 'Fehler beim Speichern')
@@ -34,7 +34,7 @@ export default function FunktionJFBearbeiten({ initialData }) {
     return (
         <div>
         <div className="bg-white shadow rounded-lg p-6">
-            <h1 className="text-2xl font-bold text-gray-900 mb-6">funktion_ff bearbeiten</h1>
+            <h1 className="text-2xl font-bold text-gray-900 mb-6">funktion_jf bearbeiten</h1>
             <FunktionJFForm initialData={initialData} onSubmit={handleSubmit} />
         </div>
         </div>
@@ -54,9 +54,16 @@ export default function FunktionJFBearbeiten({ initialData }) {
         }
     }
 
+    const parsedId = parseInt(id);
+    if (!parsedId || isNaN(parsedId)) {
+        return {
+            notFound: true,
+        };
+    }
+
     const funktion = await db2.funktion_jf.findUnique({
         where: {
-        ID: parseInt(id),
+        ID: parsedId,
         },
     })
 

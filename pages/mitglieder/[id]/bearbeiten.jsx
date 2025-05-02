@@ -51,12 +51,11 @@ export default function MitgliedBearbeiten({ initialData }) {
         };
         }*/
 
-        // ⛔️ Frühzeitig prüfen
         const parsedId = parseInt(id);
         if (!parsedId || isNaN(parsedId)) {
-        return {
-            notFound: true,
-        };
+            return {
+                notFound: true,
+            };
         }
 
     const mitglied = await db1.person.findUnique({

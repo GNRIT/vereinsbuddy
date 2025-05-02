@@ -19,6 +19,7 @@ export default function FahrzeugListe({ fahrzeuge }) {
             <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                 <tr>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kennzeichen</th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Typ</th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Besatzung</th>
@@ -28,7 +29,8 @@ export default function FahrzeugListe({ fahrzeuge }) {
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                 {fahrzeuge.map((fahrzeug) => (
-                    <tr key={fahrzeug.id}>
+                    <tr key={fahrzeug.ID}>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{fahrzeug.ID}</td>
                     <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm font-medium text-gray-900">{fahrzeug.Kennzeichen || '-'}</div>
                     </td>
@@ -45,13 +47,10 @@ export default function FahrzeugListe({ fahrzeuge }) {
                         </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <Link href={`/fahrzeuge/${fahrzeug.id}`}>
+                        <Link href={`/fahrzeuge/${fahrzeug.ID}`}>
                         <span className="text-blue-600 hover:text-blue-900 mr-3">Ansehen</span>
                         </Link>
-                        <Link href={`/fahrzeuge/${fahrzeug.id}/einteilung`}>
-                        <span className="text-indigo-600 hover:text-indigo-900 mr-3">Einteilung</span>
-                        </Link>
-                        <Link href={`/fahrzeuge/${fahrzeug.id}/bearbeiten`}>
+                        <Link href={`/fahrzeuge/${fahrzeug.ID}/bearbeiten`}>
                         <span className="text-gray-600 hover:text-gray-900">Bearbeiten</span>
                         </Link>
                     </td>

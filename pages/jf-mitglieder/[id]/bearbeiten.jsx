@@ -61,9 +61,16 @@ export async function getServerSideProps(context) {
         }
     }*/
 
+    const parsedId = parseInt(id);
+    if (!parsedId || isNaN(parsedId)) {
+        return {
+            notFound: true,
+        };
+    }
+        
     const mitglied = await db2.jf_mitglied.findUnique({
         where: {
-            ID: parseInt(id),
+            ID: parsedId,
         },
     })
 

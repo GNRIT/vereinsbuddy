@@ -4,11 +4,11 @@ import { useEffect, useState } from 'react'
 export default function TeilnahmeForm({ initialData = {}, onSubmit }) {
     const [formData, setFormData] = useState({
         Mitglied_ID: initialData.Mitglied_ID || '',
-        Veranstaltung_ID: initialData.Veranstaltung_ID || '',
+        Einsatz_ID: initialData.Einsatz_ID || '',
         Typ: initialData.Typ || 'einsatz',
     })
     const [mitglieder, setMitglieder] = useState([])
-    const [veranstaltungen, setVeranstaltungen] = useState([])
+    const [einsaetze, setEinsaetze] = useState([])
 
     const router = useRouter()
 
@@ -19,11 +19,11 @@ export default function TeilnahmeForm({ initialData = {}, onSubmit }) {
         .then(data => setMitglieder(data))
         .catch(err => console.error('Fehler beim Laden der Mitglieder:', err))
 
-        // Veranstaltungen laden
-        fetch('/api/veranstaltungen')
+        // einsaetze laden
+        fetch('/api/einsatz')
         .then(res => res.json())
-        .then(data => setVeranstaltungen(data))
-        .catch(err => console.error('Fehler beim Laden der Veranstaltungen:', err))
+        .then(data => setEinsaetze(data))
+        .catch(err => console.error('Fehler beim Laden der Einsaetze:', err))
     }, [])
 
     const handleChange = (e) => {
@@ -44,39 +44,45 @@ export default function TeilnahmeForm({ initialData = {}, onSubmit }) {
         <div className="grid grid-cols-1 gap-6">
             <div>
             <label htmlFor="Mitglied_ID" className="block text-sm font-medium text-gray-700">Mitglied *</label>
-            <select
-                id="Mitglied_ID"
-                name="Mitglied_ID"
-                required
-                value={formData.Mitglied_ID}
-                onChange={handleChange}
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-            >
+            <select name="Mitglied_ID" id="Mitglied_ID" required>
                 <option value="">Bitte wählen</option>
-                {mitglieder.map((mitglied) => (
-                <option key={mitglied.ID} value={mitglied.ID}>
-                    {mitglied.Vorname} {mitglied.Name}
-                </option>
-                ))}
+                {
+                    (() => {
+                        const options = [];
+                        for (const key in mitglieder) {
+                            const mitglied = mitglieder[key];
+                            options.push(
+                                <option key={mitglied.ID} value={mitglied.ID}>
+                                    {mitglied.Vorname} {mitglied.Name}
+                                </option>
+                            );
+                        }
+                        return options;
+                    })()
+                }
             </select>
+
             </div>
 
             <div>
-            <label htmlFor="Veranstaltung_ID" className="block text-sm font-medium text-gray-700">Veranstaltung *</label>
-            <select
-                id="Veranstaltung_ID"
-                name="Veranstaltung_ID"
-                required
-                value={formData.Veranstaltung_ID}
-                onChange={handleChange}
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-            >
+            <label htmlFor="Einsatz_ID" className="block text-sm font-medium text-gray-700">Einsaetze *</label>
+            
+            <select name="Einsatz_ID" id="Einsatz_ID" required>
                 <option value="">Bitte wählen</option>
-                {veranstaltungen.map((veranstaltung) => (
-                <option key={veranstaltung.ID} value={veranstaltung.ID}>
-                    {veranstaltung.Titel} ({new Date(veranstaltung.StartDatum).toLocaleDateString()})
-                </option>
-                ))}
+                {
+                    (() => {
+                        const options = [];
+                        for (const key in einsaetze) {
+                            const einsatz = einsaetze[key];
+                            options.push(
+                                <option key={einsatz.ID} value={einsatz.ID}>
+                                    {einsatz.ID} {einsatz.Einsatznummer}
+                                </option>
+                            );
+                        }
+                        return options;
+                    })()
+                }
             </select>
             </div>
 

@@ -7,7 +7,7 @@ export default function NeueJugendfunktion() {
 
     const handleSubmit = async (formData) => {
         try {
-        const response = await fetch('/api/jugendfunktionen', {
+        const response = await fetch('/api/funktion_jf', {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
@@ -19,7 +19,7 @@ export default function NeueJugendfunktion() {
         })
 
         if (response.ok) {
-            router.push('/jugendfunktionen')
+            router.push('/funktion_jf')
         } else {
             const errorData = await response.json()
             alert(errorData.message || 'Fehler beim Speichern')
@@ -31,11 +31,9 @@ export default function NeueJugendfunktion() {
     }
 
     return (
-        <div>
         <div className="bg-white shadow rounded-lg p-6">
-            <h1 className="text-2xl font-bold text-gray-900 mb-6">Neue Jugendfunktion erstellen</h1>
+            <h1 className="text-2xl font-bold text-gray-900 mb-6">Neue Funktion_jf erstellen</h1>
             <FunktionJFForm onSubmit={handleSubmit} />
-        </div>
         </div>
     )
 }

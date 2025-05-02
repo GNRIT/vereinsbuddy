@@ -3,13 +3,12 @@ import Link from 'next/link'
 
 export default function JugendfunktionenListe({ funktionen }) {
     return (
-        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Jugendfunktionen</h1>
-            <Link href="/jugendfunktionen/neu">
+            <Link href="/funktion_jf/neu">
                 <span className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
-                Neue Jugendfunktion
+                Neue funktion
                 </span>
             </Link>
             </div>
@@ -45,10 +44,10 @@ export default function JugendfunktionenListe({ funktionen }) {
                         {new Date(funktion.Erstellt_am).toLocaleDateString()}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <Link href={`/jugendfunktionen/${funktion.ID}/bearbeiten`}>
+                        <Link href={`/funktion_jf/${funktion.ID}/bearbeiten`}>
                         <span className="text-indigo-600 hover:text-indigo-900 mr-3">Bearbeiten</span>
                         </Link>
-                        <Link href={`/jugendfunktionen/${funktion.ID}`}>
+                        <Link href={`/funktion_jf/${funktion.ID}`}>
                         <span className="text-blue-600 hover:text-blue-900">Ansehen</span>
                         </Link>
                     </td>
@@ -58,14 +57,13 @@ export default function JugendfunktionenListe({ funktionen }) {
             </table>
             </div>
         </div>
-        </div>
     )
 }
 
 export async function getServerSideProps() {
     const funktionen = await db2.funktion_jf.findMany({
         orderBy: {
-        Name: 'asc',
+        ID: 'asc',
         },
     })
 

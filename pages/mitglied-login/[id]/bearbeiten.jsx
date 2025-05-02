@@ -54,9 +54,16 @@ export default function MitgliedLoginBearbeiten({ initialData }) {
         }
     }
 
+    const parsedId = parseInt(id);
+    if (!parsedId || isNaN(parsedId)) {
+        return {
+            notFound: true,
+        };
+    }
+
     const login = await db2.mitglied_login.findUnique({
         where: {
-        ID: parseInt(id),
+        ID: parsedId,
         },
     })
 

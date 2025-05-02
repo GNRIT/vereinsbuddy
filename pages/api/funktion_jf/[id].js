@@ -5,9 +5,9 @@ export default async function handler(req, res) {
     const session = await getSession({ req })
     const { id } = req.query
 
-    if (!session) {
+    /*if (!session) {
         return res.status(401).json({ message: 'Nicht autorisiert' })
-    }
+    }*/
 
     if (req.method === 'GET') {
         try {
@@ -18,12 +18,12 @@ export default async function handler(req, res) {
         })
 
         if (!funktion) {
-            return res.status(404).json({ message: 'Jugendfunktion nicht gefunden' })
+            return res.status(404).json({ message: 'funktion_jf nicht gefunden' })
         }
 
         res.status(200).json(funktion)
         } catch (error) {
-        res.status(500).json({ message: 'Fehler beim Abrufen der Jugendfunktion', error: error.message })
+        res.status(500).json({ message: 'Fehler beim Abrufen der funktion_jf', error: error.message })
         }
     } else if (req.method === 'PUT') {
         try {
@@ -42,7 +42,7 @@ export default async function handler(req, res) {
 
         res.status(200).json(updatedFunktion)
         } catch (error) {
-        res.status(400).json({ message: 'Fehler beim Aktualisieren der Jugendfunktion', error: error.message })
+        res.status(400).json({ message: 'Fehler beim Aktualisieren der funktion_jf', error: error.message })
         }
     } else if (req.method === 'DELETE') {
         try {
@@ -54,7 +54,7 @@ export default async function handler(req, res) {
 
         res.status(204).end()
         } catch (error) {
-        res.status(400).json({ message: 'Fehler beim Löschen der Jugendfunktion', error: error.message })
+        res.status(400).json({ message: 'Fehler beim Löschen der funktion_jf', error: error.message })
         }
     } else {
         res.setHeader('Allow', ['GET', 'PUT', 'DELETE'])

@@ -15,18 +15,29 @@ export default function MitgliedFunktionForm({ initialData = {}, onSubmit }) {
 
     useEffect(() => {
         async function fetchData() {
-        const [mitgliederRes, funktionenRes] = await Promise.all([
-            fetch('/api/mitglieder'),
-            fetch('/api/funktionen'),
-        ])
+            try {
+                const [mitgliederRes, funktionenRes] = await Promise.all([
+                fetch('/api/mitglieder'),
+                fetch('/api/mitglied-funktionen'),
+                ]);
         
-        setMitglieder(await mitgliederRes.json())
-        setFunktionen(await funktionenRes.json())
-        setIsLoading(false)
-        }
+                const mitgliederData = await mitgliederRes.json();
+                const funktionenData = await funktionenRes.json();
         
-        fetchData()
-    }, [])
+                setMitglieder(Array.isArray(mitgliederData) ? mitgliederData : []);
+                setFunktionen(Array.isArray(funktionenData) ? funktionenData : []);
+        
+            } catch (err) {
+                console.error('Fehler beim Laden der Daten:', err);
+                setMitglieder([]);
+                setFunktionen([]);
+            } finally {
+                setIsLoading(false);
+            }
+            }
+        
+            fetchData();
+        }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target

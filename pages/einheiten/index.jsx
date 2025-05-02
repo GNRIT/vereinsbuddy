@@ -31,9 +31,6 @@ export default function EinheitenListe({ einheiten }) {
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{einheit.Abkuerzung}</td>
                     <td className="px-6 py-4 text-sm text-gray-500 max-w-xs truncate">{einheit.Beschreibung}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <Link href={`/einheiten/${einheit.ID}`}>
-                        <span className="text-blue-600 hover:text-blue-900 mr-3">Ansehen</span>
-                        </Link>
                         <Link href={`/einheiten/${einheit.ID}/bearbeiten`}>
                         <span className="text-indigo-600 hover:text-indigo-900 mr-3">Bearbeiten</span>
                         </Link>

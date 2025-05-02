@@ -35,6 +35,7 @@ export default function LehrgangListe({ lehrgaenge }) {
             <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                 <tr>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Abkürzung</th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bezeichnung</th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Reihenfolge</th>
@@ -44,6 +45,9 @@ export default function LehrgangListe({ lehrgaenge }) {
                 <tbody className="bg-white divide-y divide-gray-200">
                 {lehrgaenge.map((lehrgang) => (
                     <tr key={lehrgang.ID}>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        {lehrgang.ID}
+                    </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                         {lehrgang.Abk_rzung}
                     </td>

@@ -62,9 +62,16 @@ export default function VereinBearbeiten({ initialData }) {
         }
     }*/
 
+        const parsedId = parseInt(id);
+        if (!parsedId || isNaN(parsedId)) {
+            return {
+                notFound: true,
+            };
+        }
+
     const verein = await db1.verein.findUnique({
         where: {
-        ID: parseInt(id),
+        ID: parsedId,
         },
     })
 

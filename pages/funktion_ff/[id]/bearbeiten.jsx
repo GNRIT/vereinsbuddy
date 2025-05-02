@@ -8,7 +8,7 @@ export default function FunktionBearbeiten({ initialData }) {
 
     const handleSubmit = async (formData) => {
         try {
-        const response = await fetch(`/api/funktionen/${initialData.ID}`, {
+        const response = await fetch(`/api/funktion_ff/${initialData.ID}`, {
             method: 'PUT',
             headers: {
             'Content-Type': 'application/json',
@@ -20,7 +20,7 @@ export default function FunktionBearbeiten({ initialData }) {
         })
 
         if (response.ok) {
-            router.push(`/funktionen/${initialData.ID}`)
+            router.push(`/funktion_ff`)
         } else {
             const errorData = await response.json()
             alert(errorData.message || 'Fehler beim Speichern')
@@ -55,9 +55,16 @@ export default function FunktionBearbeiten({ initialData }) {
         }
     }
 
+    const parsedId = parseInt(id);
+    if (!parsedId || isNaN(parsedId)) {
+        return {
+            notFound: true,
+        };
+    }
+
     const funktion = await db2.funktion_ff.findUnique({
         where: {
-        ID: parseInt(id),
+        ID: parsedId,
         },
     })
 

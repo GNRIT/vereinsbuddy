@@ -51,9 +51,16 @@ export default function LehrgangBearbeiten({ initialData }) {
         }
     }
 
+    const parsedId = parseInt(id);
+    if (!parsedId || isNaN(parsedId)) {
+        return {
+            notFound: true,
+        };
+    }
+
     const lehrgang = await db2.lehrgang.findUnique({
         where: {
-        ID: parseInt(id),
+        ID: parsedId,
         },
     })
 

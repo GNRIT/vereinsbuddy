@@ -4,15 +4,15 @@ import { getSession } from 'next-auth/react';
 export default async function handler(req, res) {
     const session = await getSession({ req })
 
-    if (!session) {
+    /*if (!session) {
         return res.status(401).json({ message: 'Nicht autorisiert' })
-    }
+    }*/
 
     if (req.method === 'GET') {
         try {
         const fahrzeuge = await db2.fahrzeug.findMany({
             orderBy: {
-            Kennzeichen: 'asc',
+            ID: 'desc',
             },
         })
         res.status(200).json(fahrzeuge)

@@ -7,7 +7,7 @@ export default function LehrgangsZuordnungBearbeiten({ initialData, mitglieder, 
 
     const handleSubmit = async (formData) => {
         try {
-        const response = await fetch(`/api/lehrgaenge/${initialData.ID}`, {
+        const response = await fetch(`/api/lehrgangzuordnung/${initialData.ID}`, {
             method: 'PUT',
             headers: {
             'Content-Type': 'application/json',
@@ -31,11 +31,11 @@ export default function LehrgangsZuordnungBearbeiten({ initialData, mitglieder, 
         <div>
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Lehrgangszuordnung bearbeiten</h1>
-            <LehrgangsZuordnungForm 
-            initialData={initialData} 
-            mitglieder={mitglieder} 
-            lehrgaenge={lehrgaenge} 
-            onSubmit={handleSubmit} 
+            <LehrgangsZuordnungForm
+            initialData={initialData}
+            mitglieder={mitglieder}
+            lehrgaenge={lehrgaenge}
+            onSubmit={handleSubmit}
             />
         </div>
         </div>
@@ -45,9 +45,16 @@ export default function LehrgangsZuordnungBearbeiten({ initialData, mitglieder, 
     export async function getServerSideProps(context) {
     const { id } = context.params
 
+    const parsedId = parseInt(id);
+    if (!parsedId || isNaN(parsedId)) {
+        return {
+            notFound: true,
+        };
+    }
+
     const [zuordnung, mitglieder, lehrgaenge] = await Promise.all([
         db2.ff_mitglied_lehrgang.findUnique({
-        where: { ID: parseInt(id) }
+        where: { ID: parsedId }
         }),
         db2.ff_mitglied.findMany(),
         db2.lehrgang.findMany()

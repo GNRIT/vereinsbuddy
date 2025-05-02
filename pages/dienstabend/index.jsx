@@ -27,15 +27,15 @@ export default function DienstabendListe() {
         fetchDienstabende()
     }, [])
 
-    const handleDelete = async (id) => {
+    const handleDelete = async (ID) => {
         if (confirm('Möchten Sie diesen Dienstabend wirklich löschen?')) {
         try {
-            const response = await fetch(`/api/dienstabend/${id}`, {
+            const response = await fetch(`/api/dienstabend/${ID}`, {
             method: 'DELETE'
             })
 
             if (response.ok) {
-            setDienstabende(dienstabende.filter(da => da.id !== id))
+            setDienstabende(dienstabende.filter(da => da.ID !== ID))
             } else {
             alert('Fehler beim Löschen des Dienstabends')
             }
@@ -71,6 +71,7 @@ export default function DienstabendListe() {
             <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                 <tr>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Datum</th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Thema</th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aktionen</th>
@@ -79,7 +80,8 @@ export default function DienstabendListe() {
                 <tbody className="bg-white divide-y divide-gray-200">
                 {dienstabende.length > 0 ? (
                     dienstabende.map((dienstabend) => (
-                    <tr key={dienstabend.id}>
+                    <tr key={dienstabend.ID}>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{dienstabend.ID}</td>
                         <td className="px-6 py-4 whitespace-nowrap">
                         {new Date(dienstabend.Datum).toLocaleDateString('de-DE', {
                             weekday: 'short',
@@ -95,13 +97,13 @@ export default function DienstabendListe() {
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <button
-                            onClick={() => router.push(`/dienstabend/${dienstabend.id}/bearbeiten`)}
+                            onClick={() => router.push(`/dienstabend/${dienstabend.ID}/bearbeiten`)}
                             className="text-indigo-600 hover:text-indigo-900 mr-3"
                         >
                             Bearbeiten
                         </button>
                         <button
-                            onClick={() => handleDelete(dienstabend.id)}
+                            onClick={() => handleDelete(dienstabend.ID)}
                             className="text-red-600 hover:text-red-900"
                         >
                             Löschen

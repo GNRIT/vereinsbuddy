@@ -3,11 +3,10 @@ import Link from 'next/link';
 
 export default function FunktionenListe({ funktionen }) {
     return (
-        <div>
         <div className="bg-white shadow rounded-lg p-6">
             <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Funktionen</h1>
-            <Link href="/funktionen/neu">
+            <Link href="/funktion_ff/neu">
                 <span className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
                 Neue Funktion
                 </span>
@@ -41,10 +40,10 @@ export default function FunktionenListe({ funktionen }) {
                         )}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <Link href={`/funktionen/${funktion.ID}/bearbeiten`}>
+                        <Link href={`/funktion_ff/${funktion.ID}/bearbeiten`}>
                         <span className="text-indigo-600 hover:text-indigo-900 mr-3">Bearbeiten</span>
                         </Link>
-                        <Link href={`/funktionen/${funktion.ID}`}>
+                        <Link href={`/funktion_ff/${funktion.ID}`}>
                         <span className="text-blue-600 hover:text-blue-900">Ansehen</span>
                         </Link>
                     </td>
@@ -54,14 +53,13 @@ export default function FunktionenListe({ funktionen }) {
             </table>
             </div>
         </div>
-        </div>
     )
     }
 
     export async function getServerSideProps() {
     const funktionen = await db2.funktion_ff.findMany({
         orderBy: {
-        Name: 'asc',
+        ID: 'desc',
         },
     })
 

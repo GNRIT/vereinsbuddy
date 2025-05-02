@@ -18,7 +18,7 @@ export default function DienstgradeListe({ initialDienstgrade }) {
                 });
 
                 if (response.ok) {
-                    setDienstgrade(dienstgrade.filter(d => d.id !== id));
+                    setDienstgrade(dienstgrade.filter(d => d.ID !== id));
                 } else {
                     alert('Fehler beim Löschen des Dienstgrads');
                 }
@@ -60,22 +60,22 @@ export default function DienstgradeListe({ initialDienstgrade }) {
                         <tbody className="bg-white divide-y divide-gray-200">
                             {dienstgrade.length > 0 ? (
                                 dienstgrade.map((dienstgrad) => (
-                                    <tr key={dienstgrad.id}>
+                                    <tr key={dienstgrad.ID}>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{dienstgrad.ID}</td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{dienstgrad.Abkuerzung_maennlich}</td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{dienstgrad.Bezeichnung_maennlich}</td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{dienstgrad.Abkuerzung_weiblich}</td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{dienstgrad.Bezeichnung_weiblich}</td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium flex space-x-4">
-                                            <Link href={`/dienstgrade/${dienstgrad.id}/bearbeiten`}>
+                                            <Link href={`/dienstgrade/${dienstgrad.ID}/bearbeiten`}>
                                                 <span className="text-indigo-600 hover:text-indigo-900 cursor-pointer">Bearbeiten</span>
                                             </Link>
                                             <button
-                                                onClick={() => handleDelete(dienstgrad.id)}
+                                                onClick={() => handleDelete(dienstgrad.ID)}
                                                 disabled={isLoading}
                                                 className="text-red-600 hover:text-red-900 disabled:opacity-50"
                                             >
-                                                {isLoading && deletingId === dienstgrad.id ? "Löschen..." : "Löschen"}
+                                                {isLoading && deletingId === dienstgrad.ID ? "Löschen..." : "Löschen"}
                                             </button>
                                         </td>
                                     </tr>
@@ -98,7 +98,7 @@ export default function DienstgradeListe({ initialDienstgrade }) {
 export async function getServerSideProps() {
     const dienstgrade = await db2.dienstgrad.findMany({
         orderBy: {
-            Abkuerzung_maennlich: 'asc',
+            ID: 'desc',
         },
     });
 

@@ -59,7 +59,7 @@ export default function FunktionForm({ initialData = {}, onSubmit }) {
         <div className="flex justify-end space-x-3">
             <button
             type="button"
-            onClick={() => router.push('/funktionen')}
+            onClick={() => router.push('/funktion_ff')}
             className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
             Abbrechen

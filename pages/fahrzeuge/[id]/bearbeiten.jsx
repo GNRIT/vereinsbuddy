@@ -8,7 +8,7 @@ export default function FahrzeugBearbeiten({ initialData }) {
 
     const handleSubmit = async (formData) => {
         try {
-        const response = await fetch(`/api/fahrzeuge/${initialData.id}`, {
+        const response = await fetch(`/api/fahrzeuge/${initialData.ID}`, {
             method: 'PUT',
             headers: {
             'Content-Type': 'application/json',
@@ -17,7 +17,7 @@ export default function FahrzeugBearbeiten({ initialData }) {
         })
 
         if (response.ok) {
-            router.push(`/fahrzeuge/${initialData.id}`)
+            router.push(`/fahrzeuge`)
         } else {
             const errorData = await response.json()
             alert(errorData.message || 'Fehler beim Speichern')
@@ -51,9 +51,16 @@ export default function FahrzeugBearbeiten({ initialData }) {
         }
     }
 
+    const parsedId = parseInt(id);
+    if (!parsedId || isNaN(parsedId)) {
+        return {
+            notFound: true,
+        };
+    }
+
     const fahrzeug = await db2.fahrzeug.findUnique({
         where: {
-        ID: parseInt(id),
+        ID: parsedId,
         },
     })
 

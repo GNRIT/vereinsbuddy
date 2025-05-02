@@ -4,9 +4,9 @@ import { getSession } from 'next-auth/react';
 export default async function handler(req, res) {
     const session = await getSession({ req })
 
-    if (!session) {
+    /*if (!session) {
         return res.status(401).json({ message: 'Nicht autorisiert' })
-    }
+    }*/
 
     if (req.method === 'GET') {
         try {
@@ -17,7 +17,7 @@ export default async function handler(req, res) {
         })
         res.status(200).json(funktionen)
         } catch (error) {
-        res.status(500).json({ message: 'Fehler beim Abrufen der Funktionen', error: error.message })
+        res.status(500).json({ message: 'Fehler beim Abrufen der Funktion_ff', error: error.message })
         }
     } else if (req.method === 'POST') {
         try {
@@ -33,7 +33,7 @@ export default async function handler(req, res) {
 
         res.status(201).json(neueFunktion)
         } catch (error) {
-        res.status(400).json({ message: 'Fehler beim Erstellen der Funktion', error: error.message })
+        res.status(400).json({ message: 'Fehler beim Erstellen der Funktion_ff', error: error.message })
         }
     } else {
         res.setHeader('Allow', ['GET', 'POST'])

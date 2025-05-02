@@ -75,9 +75,16 @@ export default function AllergieLoeschen({ allergie }) {
         }
     }
 
+    const parsedId = parseInt(id);
+    if (!parsedId || isNaN(parsedId)) {
+        return {
+            notFound: true,
+        };
+    }
+
     const allergie = await db2.allergie.findUnique({
         where: {
-        ID: parseInt(id),
+        ID: parsedId,
         },
         include: {
         ff_mitglied: true,

@@ -8,6 +8,7 @@ export default async function handler(req, res) {
     /*if (!session) {
         return res.status(401).json({ message: 'Nicht autorisiert' })
     }*/
+        
 
     if (req.method === 'GET') {
         try {

@@ -46,8 +46,28 @@ export default function Layout({ children }) {
 
                                     <Link href="/admin">
                                         <span className={`${router.pathname === '/admin' ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
-                                            Dashboard
+                                            Dashboard 
                                         </span>
+                                    </Link>
+
+                                    <Link href="/mitglieder">
+                                        <span className={`${router.pathname === '/mitglieder' ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
+                                            Mitglieder 
+                                        </span>
+                                    </Link>
+
+                                    {session.user.rolle === 'admin' && (
+                                    <Link href="/benutzerkonten">
+                                        <a className={`${router.pathname.startsWith('/benutzerkonten') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
+                                        Benutzerkonten
+                                        </a>
+                                    </Link>
+                                    )}
+
+                                    <Link href="/vereinszuordnungen">
+                                    <a className={`${router.pathname.startsWith('/vereinszuordnungen') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
+                                        Vereinszuordnungen
+                                    </a>
                                     </Link>
 
                                     <Link href="/allergien">

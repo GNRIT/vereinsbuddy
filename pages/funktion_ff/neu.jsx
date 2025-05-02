@@ -7,7 +7,7 @@ export default function NeueFunktion() {
 
     const handleSubmit = async (formData) => {
         try {
-        const response = await fetch('/api/funktionen', {
+        const response = await fetch('/api/funktion_ff', {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
@@ -19,7 +19,7 @@ export default function NeueFunktion() {
         })
 
         if (response.ok) {
-            router.push('/funktionen')
+            router.push('/funktion_ff')
         } else {
             const errorData = await response.json()
             alert(errorData.message || 'Fehler beim Speichern')
@@ -30,9 +30,9 @@ export default function NeueFunktion() {
         }
     }
 
-    return (    
+    return (
         <div className="bg-white shadow rounded-lg p-6">
-            <h1 className="text-2xl font-bold text-gray-900 mb-6">Neue Funktion erstellen</h1>
+            <h1 className="text-2xl font-bold text-gray-900 mb-6">Neue Funktion_ff erstellen</h1>
             <FunktionFFForm onSubmit={handleSubmit} />
         </div>
     )

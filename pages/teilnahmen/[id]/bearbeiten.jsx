@@ -54,9 +54,16 @@ export default function TeilnahmeBearbeiten({ initialData }) {
         }
     }
 
+    const parsedId = parseInt(id);
+    if (!parsedId || isNaN(parsedId)) {
+        return {
+            notFound: true,
+        };
+    }
+
     const teilnahme = await db2.teilnahme.findUnique({
         where: {
-        ID: parseInt(id),
+        ID: parsedId,
         },
         include: {
         mitglied: true,

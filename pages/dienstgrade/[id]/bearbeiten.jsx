@@ -16,7 +16,7 @@ export default function DienstgradBearbeiten({ initialData }) {
             });
 
             if (response.ok) {
-                router.push(`/dienstgrade/${initialData.ID}`);
+                router.push(`/dienstgrade`);
             } else {
                 const errorData = await response.json();
                 alert(errorData.message || 'Fehler beim Speichern');

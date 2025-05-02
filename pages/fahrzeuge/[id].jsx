@@ -48,7 +48,7 @@ export default function FahrzeugDetail({ fahrzeug }) {
             <h1 className="text-2xl font-bold text-gray-900">Fahrzeug: {fahrzeug.Kennzeichen || 'Ohne Kennzeichen'}</h1>
             <div>
                 <button
-                onClick={() => router.push(`/fahrzeuge/${fahrzeug.id}/bearbeiten`)}
+                onClick={() => router.push(`/fahrzeuge/${fahrzeug.ID}/bearbeiten`)}
                 className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded mr-2"
                 >
                 Bearbeiten
@@ -138,9 +138,16 @@ export async function getServerSideProps(context) {
         }
     }
 
+    const parsedId = parseInt(id);
+    if (!parsedId || isNaN(parsedId)) {
+        return {
+            notFound: true,
+        };
+    }
+
     const fahrzeug = await db2.fahrzeug.findUnique({
         where: {
-        ID: parseInt(id),
+        ID: parsedId,
         },
     })
 

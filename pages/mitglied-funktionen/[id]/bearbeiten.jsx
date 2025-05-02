@@ -20,7 +20,7 @@ export default function MitgliedFunktionBearbeiten({ initialData }) {
         })
 
         if (response.ok) {
-            router.push(`/mitglied-funktionen/${initialData.ID}`)
+            router.push(`/mitglied-funktionen`)
         } else {
             const errorData = await response.json()
             alert(errorData.message || 'Fehler beim Speichern')
@@ -54,9 +54,16 @@ export default function MitgliedFunktionBearbeiten({ initialData }) {
         }
     }
 
+    const parsedId = parseInt(id);
+    if (!parsedId || isNaN(parsedId)) {
+        return {
+            notFound: true,
+        };
+    }
+
     const zuordnung = await db2.mitglied_funktionen.findUnique({
         where: {
-        ID: parseInt(id),
+        ID: parsedId,
         },
         include: {
         ff_mitglied: {

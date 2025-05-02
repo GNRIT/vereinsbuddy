@@ -91,9 +91,16 @@ export default function EinsatzDetail({ einsatz }) {
     export async function getServerSideProps(context) {
     const { id } = context.params
 
+    const parsedId = parseInt(id);
+    if (!parsedId || isNaN(parsedId)) {
+        return {
+            notFound: true,
+        };
+    }
+
     const einsatz = await db2.einsatz.findUnique({
         where: {
-        ID: parseInt(id)
+        ID: parsedId
         }
     })
 

@@ -18,6 +18,7 @@ export default function MitgliederListe({ mitglieder }) {
             <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                 <tr>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">E-Mail</th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Telefon</th>
@@ -28,6 +29,7 @@ export default function MitgliederListe({ mitglieder }) {
                 <tbody className="bg-white divide-y divide-gray-200">
                 {mitglieder.map((mitglied) => (
                     <tr key={mitglied.ID}>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{mitglied.ID || '-'}</td>
                     <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold">

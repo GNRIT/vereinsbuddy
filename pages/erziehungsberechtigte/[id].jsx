@@ -85,8 +85,16 @@ export default function ErziehungsberechtigterDetail({ data }) {
 
     export async function getServerSideProps(context) {
     const { id } = context.params
+
+    const parsedId = parseInt(id);
+    if (!parsedId || isNaN(parsedId)) {
+        return {
+            notFound: true,
+        };
+    }
+
     const data = await db2.jf_erziehungsberechtigter.findUnique({
-        where: { ID: parseInt(id) },
+        where: { ID: parsedId },
         include: {
         jf_mitglied: true,
         person: true

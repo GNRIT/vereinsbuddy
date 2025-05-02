@@ -107,10 +107,17 @@ export default function MitgliedDetail({ mitglied }) {
                 notFound: true,
             };
         }
+
+        const parsedId = parseInt(id);
+        if (!parsedId || isNaN(parsedId)) {
+            return {
+                notFound: true,
+            };
+        }
     
         const mitglied = await db1.person.findUnique({
             where: {
-                ID: parseInt(id),
+                ID: parsedId,
             },
             include: {
                 vereinszuordnung: {

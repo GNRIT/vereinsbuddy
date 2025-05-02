@@ -41,7 +41,7 @@ export default function LehrgangsZuordnungForm({ initialData = {}, mitglieder, l
                 <option value="">Mitglied auswählen</option>
                 {mitglieder.map((mitglied) => (
                 <option key={mitglied.ID} value={mitglied.ID}>
-                    {mitglied.Vorname} {mitglied.Name} ({mitglied.Mitgliedsnummer})
+                    {mitglied.Vorname} {mitglied.Name}
                 </option>
                 ))}
             </select>
@@ -60,7 +60,7 @@ export default function LehrgangsZuordnungForm({ initialData = {}, mitglieder, l
                 <option value="">Lehrgang auswählen</option>
                 {lehrgaenge.map((lehrgang) => (
                 <option key={lehrgang.ID} value={lehrgang.ID}>
-                    {lehrgang.Bezeichnung} ({lehrgang.Dauer} Tage)
+                    {lehrgang.ID} ({lehrgang.Abkürzung})
                 </option>
                 ))}
             </select>
@@ -82,7 +82,7 @@ export default function LehrgangsZuordnungForm({ initialData = {}, mitglieder, l
         <div className="flex justify-end space-x-3">
             <button
             type="button"
-            onClick={() => router.push('/lehrgaenge')}
+            onClick={() => router.push('/lehrgangzuordnung')}
             className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
             Abbrechen

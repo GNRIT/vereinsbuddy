@@ -16,7 +16,7 @@ export default function EinheitBearbeiten({ initialData }) {
         })
 
         if (response.ok) {
-            router.push(`/einheiten/${initialData.ID}`)
+            router.push(`/einheiten`)
         } else {
             const errorData = await response.json()
             alert(errorData.message || 'Fehler beim Speichern')
@@ -40,9 +40,16 @@ export default function EinheitBearbeiten({ initialData }) {
 export async function getServerSideProps(context) {
     const { id } = context.params
 
+    const parsedId = parseInt(id);
+    if (!parsedId || isNaN(parsedId)) {
+        return {
+            notFound: true,
+        };
+    }
+
     const einheit = await db2.einheit.findUnique({
         where: {
-        ID: parseInt(id),
+        ID: parsedId,
         },
     })
 
