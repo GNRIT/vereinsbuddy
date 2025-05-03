@@ -1,10 +1,11 @@
 generator client {
   provider = "prisma-client-js"
+  binaryTargets = ["native", "windows", "linux-arm64-openssl-3.0.x"]
   output   = "../generated/verein_db"
 }
 
 datasource vereindb {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL_VEREINDB")
 }
 
