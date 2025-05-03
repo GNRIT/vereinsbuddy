@@ -1,47 +1,21 @@
 import { vereinDbPrisma as db2 } from '@/lib/prisma';
-import { getSession } from 'next-auth/react';
 
 export default async function handler(req, res) {
-    const session = await getSession({ req });
-
-    // Optional: Session-Check
-    /*
-    if (!session) {
-        return res.status(401).json({ message: 'Nicht autorisiert' });
-    }
-    */
-
-    if (req.method === 'GET') {
-        try {
-            const einsaetze = await db2.einsatz.findMany({
-                orderBy: {
-                    Datum_Anfang: 'desc',
-                },
-            });
-            res.status(200).json(einsaetze);
-        } catch (error) {
-            res.status(500).json({ message: 'Fehler beim Abrufen der Einsätze', error: error.message });
-        }
-    } else if (req.method === 'POST') {
+    if (req.method === 'POST') {
         try {
             // Logge die empfangenen Daten für Debugging
             console.log('POST request received with body:', req.body);
 
-            const { Einsatznummer, Beschreibung, Datum_Anfang, Datum_Ende, Ort, Uhrzeit_Anfang,
-                Art} = req.body;
+            const { Einsatznummer, Beschreibung, Datum_Anfang, Datum_Ende, Ort, Art, Uhrzeit_Anfang } = req.body;
 
-            // Validierung der erforderlichen Felder
-            if (!Einsatznummer || !Datum_Anfang || !Ort) {
-                return res.status(400).json({
-                    message: 'Fehlende erforderliche Felder: Einsatznummer, Datum_Anfang, Ort',
-                });
-            }
+            // Sicherstellen, dass Uhrzeit_Anfang als Date Objekte verarbeitet wird
+            const uhrzeitAnfang = Uhrzeit_Anfang ? new Date(`1970-01-01T${Uhrzeit_Anfang}:00Z`) : null;
 
-            // Sicherstellen, dass Datum_Anfang und Datum_Ende als Date Objekte verarbeitet werden
+            // Stelle sicher, dass Datum_Anfang und Datum_Ende korrekt verarbeitet werden
             const datumAnfang = new Date(Datum_Anfang);
             const datumEnde = Datum_Ende ? new Date(Datum_Ende) : null;
 
-            // Sicherstellen, dass die Eingabewerte korrekt sind
+            // Sicherstellen, dass Eingabewerte korrekt sind
             if (isNaN(datumAnfang)) {
                 return res.status(400).json({ message: 'Ungültiges Datum_Anfang Format' });
             }
@@ -50,19 +24,24 @@ export default async function handler(req, res) {
                 return res.status(400).json({ message: 'Ungültiges Datum_Ende Format' });
             }
 
+            if (uhrzeitAnfang && isNaN(uhrzeitAnfang)) {
+                return res.status(400).json({ message: 'Ungültiges Uhrzeit_Anfang Format' });
+            }
+
             // Erstelle den neuen Einsatz
             const neuerEinsatz = await db2.einsatz.create({
                 data: {
-                    Einsatznummer: parseInt(Einsatznummer),  // Stelle sicher, dass die Einsatznummer eine Zahl ist
+                    Einsatznummer: parseInt(Einsatznummer),
                     Beschreibung,
                     Datum_Anfang: datumAnfang,
                     Datum_Ende: datumEnde,
-                    Uhrzeit_Anfang: new Date(Uhrzeit_Anfang),
+                    Uhrzeit_Anfang: uhrzeitAnfang,  // Hier wird die Uhrzeit in das richtige Format übergeben
                     Ort,
                     Art,
                     Erstellt_am: new Date(),
                 },
             });
+
 
             res.status(201).json(neuerEinsatz);
         } catch (error) {
@@ -70,7 +49,8 @@ export default async function handler(req, res) {
             res.status(400).json({ message: 'Fehler beim Erstellen des Einsatzes', error: error.message });
         }
     } else {
-        res.setHeader('Allow', ['GET', 'POST']);
+        res.setHeader('Allow', ['POST']);
         res.status(405).json({ message: `Method ${req.method} not allowed` });
     }
 }
+

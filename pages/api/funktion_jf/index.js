@@ -21,12 +21,12 @@ export default async function handler(req, res) {
         }
     } else if (req.method === 'POST') {
         try {
-        const { Name, Ist_admin, Erstellt_am } = req.body
+        const { Name, Ist_Admin, Erstellt_am } = req.body
 
         const neueFunktion = await db2.funktion_jf.create({
             data: {
             Name,
-            Ist_admin,
+            Ist_Admin,
             Erstellt_am: new Date(Erstellt_am),
             }
         })

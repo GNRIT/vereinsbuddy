@@ -4,18 +4,16 @@ import { getSession } from 'next-auth/react';
 export default async function handler(req, res) {
     const session = await getSession({ req })
     const { id } = req.query
-    const { aktiverVerein } = session.user
 
-    if (!session) {
+    /*if (!session) {
         return res.status(401).json({ message: 'Nicht autorisiert' })
-    }
+    }*/
 
     if (req.method === 'GET') {
         try {
         const dienstabend = await db2.dientsabend.findUnique({
             where: {
             ID: parseInt(id),
-            Verein_ID: aktiverVerein.vereinId
             }
         })
 
@@ -33,8 +31,7 @@ export default async function handler(req, res) {
 
         const updatedDienstabend = await db2.dientsabend.update({
             where: {
-            ID: parseInt(id),
-            Verein_ID: aktiverVerein.vereinId
+            ID: parseInt(id)
             },
             data: {
             Datum: new Date(Datum),
@@ -51,8 +48,7 @@ export default async function handler(req, res) {
         try {
         await db2.dientsabend.delete({
             where: {
-            ID: parseInt(id),
-            Verein_ID: aktiverVerein.vereinId
+            ID: parseInt(id)
             }
         })
 

@@ -30,7 +30,7 @@ export default function JugendfunktionenListe({ funktionen }) {
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{funktion.ID}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{funktion.Name}</td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                        {funktion.Ist_admin ? (
+                        {funktion.Ist_Admin ? (
                         <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                             Ja
                         </span>
@@ -46,9 +46,6 @@ export default function JugendfunktionenListe({ funktionen }) {
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <Link href={`/funktion_jf/${funktion.ID}/bearbeiten`}>
                         <span className="text-indigo-600 hover:text-indigo-900 mr-3">Bearbeiten</span>
-                        </Link>
-                        <Link href={`/funktion_jf/${funktion.ID}`}>
-                        <span className="text-blue-600 hover:text-blue-900">Ansehen</span>
                         </Link>
                     </td>
                     </tr>

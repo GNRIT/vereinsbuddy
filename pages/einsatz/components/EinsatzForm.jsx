@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 export default function EinsatzForm({ initialData = {}, onSubmit }) {
@@ -7,16 +6,17 @@ export default function EinsatzForm({ initialData = {}, onSubmit }) {
         Beschreibung: initialData.Beschreibung || '',
         Datum_Anfang: initialData.Datum_Anfang
             ? new Date(initialData.Datum_Anfang).toISOString().slice(0, 16)
-            : new Date().toISOString().slice(0, 16),
+            : '',
         Datum_Ende: initialData.Datum_Ende
             ? new Date(initialData.Datum_Ende).toISOString().slice(0, 16)
             : '',
+        Uhrzeit_Anfang: initialData.Uhrzeit_Anfang
+            ? new Date(initialData.Uhrzeit_Anfang).toISOString().substring(11, 16)
+            : '', // => "HH:MM"
         Ort: initialData.Ort || '',
-        Uhrzeit_Anfang: initialData.Uhrzeit_Anfang || '12:00',
         Art: initialData.Art || '',
     });
-
-    const router = useRouter();
+    
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -29,7 +29,6 @@ export default function EinsatzForm({ initialData = {}, onSubmit }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Logge die Formulardaten vor dem Absenden
         console.log('Formular gesendet mit Daten:', formData);
 
         await onSubmit(formData);
@@ -38,11 +37,13 @@ export default function EinsatzForm({ initialData = {}, onSubmit }) {
     return (
         <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 gap-6">
+
                 <div>
                     <label htmlFor="Einsatznummer" className="block text-sm font-medium text-gray-700">
                         Einsatznummer *
                     </label>
                     <input
+                        type="text"
                         name="Einsatznummer"
                         id="Einsatznummer"
                         required
@@ -67,16 +68,32 @@ export default function EinsatzForm({ initialData = {}, onSubmit }) {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
                     <div>
                         <label htmlFor="Datum_Anfang" className="block text-sm font-medium text-gray-700">
                             Datum Anfang *
                         </label>
                         <input
-                            type="datetime-local"
+                            type="date"
                             name="Datum_Anfang"
                             id="Datum_Anfang"
                             required
                             value={formData.Datum_Anfang}
+                            onChange={handleChange}
+                            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3"
+                        />
+                    </div>
+
+                    <div>
+                        <label htmlFor="Uhrzeit_Anfang" className="block text-sm font-medium text-gray-700">
+                            Uhrzeit Anfang *
+                        </label>
+                        <input
+                            type="time"
+                            name="Uhrzeit_Anfang"
+                            id="Uhrzeit_Anfang"
+                            required
+                            value={formData.Uhrzeit_Anfang}
                             onChange={handleChange}
                             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3"
                         />
@@ -111,46 +128,31 @@ export default function EinsatzForm({ initialData = {}, onSubmit }) {
                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3"
                     />
                 </div>
-            </div>
 
-            <div>
-                <label htmlFor="Uhrzeit_Anfang" className="block text-sm font-medium text-gray-700">
-                    Uhrzeit Anfang *
-                </label>
-                <input
-                    type="time"
-                    name="Uhrzeit_Anfang"
-                    id="Uhrzeit_Anfang"
-                    required
-                    value={formData.Uhrzeit_Anfang}
-                    onChange={handleChange}
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3"
-                />
+                <div>
+                    <label htmlFor="Art" className="block text-sm font-medium text-gray-700">
+                        Einsatzart *
+                    </label>
+                    <select
+                        name="Art"
+                        id="Art"
+                        required
+                        value={formData.Art}
+                        onChange={handleChange}
+                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3"
+                    >
+                        <option value="">-- bitte wählen --</option>
+                        <option value="brand">Brand</option>
+                        <option value="hilfeleistung">Hilfeleistung</option>
+                        <option value="sonstiges">Sonstiges</option>
+                    </select>
                 </div>
-
-            <div>
-            <label htmlFor="Art" className="block text-sm font-medium text-gray-700">
-                Einsatzart *
-            </label>
-            <select
-                name="Art"
-                id="Art"
-                required
-                value={formData.Art}
-                onChange={handleChange}
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3"
-            >
-                <option value="">-- bitte wählen --</option>
-                <option value="brand">Brand</option>
-                <option value="hilfeleistung">Hilfeleistung</option>
-                <option value="sonstiges">Sonstiges</option>
-            </select>
             </div>
 
             <div className="flex justify-end space-x-3">
                 <button
                     type="button"
-                    onClick={() => router.push('/einsatz')}
+                    onClick={() => window.history.back()} 
                     className="bg-white py-2 px-4 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50"
                 >
                     Abbrechen

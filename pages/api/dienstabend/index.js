@@ -5,17 +5,13 @@ export default async function handler(req, res) {
     const session = await getSession({ req });
 
     // Session und aktiver Verein prüfen
-    /*const vereinId = session?.user?.aktiverVerein?.vereinId;
-    if (!session || !vereinId) {
+    /*if (!session || !vereinId) {
         return res.status(401).json({ message: 'Nicht autorisiert oder kein aktiver Verein gesetzt' });
     }*/
 
     if (req.method === 'GET') {
         try {
             const dienstabende = await db2.dientsabend.findMany({
-                where: {
-                    Verein_ID: vereinId,
-                },
                 orderBy: {
                     Datum: 'desc',
                 },
@@ -32,7 +28,6 @@ export default async function handler(req, res) {
                 data: {
                     Datum: new Date(Datum),
                     Thema,
-                    Verein_ID: vereinId,
                     Erstellt_am: new Date(),
                 },
             });

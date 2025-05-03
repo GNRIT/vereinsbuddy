@@ -27,7 +27,7 @@ export default async function handler(req, res) {
         }
     } else if (req.method === 'PUT') {
         try {
-        const { Name, Ist_admin, Geaendert_am } = req.body
+        const { Name, Ist_Admin, Geaendert_am } = req.body
 
         const updatedFunktion = await db2.funktion_jf.update({
             where: {
@@ -35,7 +35,7 @@ export default async function handler(req, res) {
             },
             data: {
             Name,
-            Ist_admin,
+            Ist_Admin,
             Geaendert_am: new Date(Geaendert_am),
             }
         })

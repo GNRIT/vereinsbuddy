@@ -5,17 +5,16 @@ export default async function handler(req, res) {
     const session = await getSession({ req })
     const { id } = req.query
 
-    if (!session) {
+    /*if (!session) {
         return res.status(401).json({ message: 'Nicht autorisiert' })
-    }
+    }*/
 
     if (req.method === 'GET') {
         try {
         const eintrag = await db2.jf_erziehungsberechtigter.findUnique({
             where: { ID: parseInt(id) },
             include: {
-            jf_mitglied: true,
-            person: true
+            jf_mitglied: true
             }
         })
         
@@ -32,8 +31,8 @@ export default async function handler(req, res) {
         const updated = await db2.jf_erziehungsberechtigter.update({
             where: { ID: parseInt(id) },
             data: {
-            JF_Mitglied_ID: parseInt(JF_Mitglied_ID),
-            Person_ID: parseInt(Person_ID),
+            JF_Mitglied_ID,
+            Person_ID,
             Geaendert_am: new Date()
             }
         })

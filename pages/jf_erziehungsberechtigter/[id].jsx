@@ -11,13 +11,13 @@ export default function ErziehungsberechtigterDetail({ data }) {
             <h1 className="text-2xl font-bold text-gray-900">Erziehungsberechtigter</h1>
             <div>
                 <button
-                onClick={() => router.push(`/jugend/erziehungsberechtigte/${data.ID}/bearbeiten`)}
+                onClick={() => router.push(`/jf_erziehungsberechtigter/${data.ID}/bearbeiten`)}
                 className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded mr-2"
                 >
                 Bearbeiten
                 </button>
                 <button
-                onClick={() => router.push('/jugend/erziehungsberechtigte')}
+                onClick={() => router.push('/jf_erziehungsberechtigter')}
                 className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded"
                 >
                 Zurück
@@ -96,8 +96,7 @@ export default function ErziehungsberechtigterDetail({ data }) {
     const data = await db2.jf_erziehungsberechtigter.findUnique({
         where: { ID: parsedId },
         include: {
-        jf_mitglied: true,
-        person: true
+        jf_mitglied: true
         }
     })
 

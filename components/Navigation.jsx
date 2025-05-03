@@ -50,9 +50,15 @@ export default function Layout({ children }) {
                                         </span>
                                     </Link>
 
+                                    <Link href="/einteilungen">
+                                        <span className={`${router.pathname.startsWith('/einteilungen') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
+                                            Einteilungen
+                                        </span>
+                                    </Link>
+
                                     <Link href="/mitglieder">
                                         <span className={`${router.pathname === '/mitglieder' ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
-                                            Mitglieder 
+                                            Mitglieder
                                         </span>
                                     </Link>
 

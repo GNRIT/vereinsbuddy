@@ -21,6 +21,7 @@ export default function NeuerEinsatz() {
                 router.push('/einsatz');
             } else {
                 const errorData = await response.json();
+                console.log('Fehlerantwort vom Server:', errorData);
                 alert(errorData.message || 'Fehler beim Speichern');
             }
         } catch (error) {
@@ -43,7 +44,6 @@ export default function NeuerEinsatz() {
 export async function getServerSideProps(context) {
     const session = await getSession(context);
 
-    // Optional: Authentifizierung check
     /*
     if (!session) {
         return {
