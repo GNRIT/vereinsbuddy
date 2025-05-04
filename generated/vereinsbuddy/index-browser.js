@@ -118,47 +118,47 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 });
 
 exports.Prisma.BenutzerkontoScalarFieldEnum = {
-  ID: 'ID',
-  Benutzername: 'Benutzername',
-  Passwort: 'Passwort',
-  Aktiv: 'Aktiv',
-  Person_ID: 'Person_ID',
+  id: 'id',
+  benutzername: 'benutzername',
+  passwort: 'passwort',
+  aktiv: 'aktiv',
+  person_id: 'person_id',
   Erstellt_am: 'Erstellt_am',
   Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.PersonScalarFieldEnum = {
-  ID: 'ID',
-  Vorname: 'Vorname',
-  Name: 'Name',
-  Geburtsdatum: 'Geburtsdatum',
-  Strasse: 'Strasse',
-  Hausnummer: 'Hausnummer',
-  Postleitzahl: 'Postleitzahl',
-  Ort: 'Ort',
-  Email: 'Email',
-  HandyNr: 'HandyNr',
+  id: 'id',
+  vorname: 'vorname',
+  name: 'name',
+  geburtsdatum: 'geburtsdatum',
+  strasse: 'strasse',
+  hausnummer: 'hausnummer',
+  postleitzahl: 'postleitzahl',
+  ort: 'ort',
+  email: 'email',
+  handynr: 'handynr',
   Erstellt_am: 'Erstellt_am',
   Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.VereinScalarFieldEnum = {
-  ID: 'ID',
-  Name: 'Name',
-  Strasse: 'Strasse',
-  Hausnummer: 'Hausnummer',
-  Postleitzahl: 'Postleitzahl',
-  Ort: 'Ort',
-  Subdomain: 'Subdomain',
+  id: 'id',
+  name: 'name',
+  strasse: 'strasse',
+  hausnummer: 'hausnummer',
+  postleitzahl: 'postleitzahl',
+  ort: 'ort',
+  subdomain: 'subdomain',
   Erstellt_am: 'Erstellt_am',
   Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.VereinszuordnungScalarFieldEnum = {
-  ID: 'ID',
-  Person_ID: 'Person_ID',
-  Verein_ID: 'Verein_ID',
-  Rolle: 'Rolle',
+  id: 'id',
+  person_id: 'person_id',
+  verein_id: 'verein_id',
+  rolle: 'rolle',
   Erstellt_am: 'Erstellt_am',
   Geaendert_am: 'Geaendert_am'
 };
@@ -168,39 +168,16 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+};
+
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
 
-exports.Prisma.benutzerkontoOrderByRelevanceFieldEnum = {
-  Benutzername: 'Benutzername',
-  Passwort: 'Passwort'
-};
-
-exports.Prisma.personOrderByRelevanceFieldEnum = {
-  Vorname: 'Vorname',
-  Name: 'Name',
-  Strasse: 'Strasse',
-  Hausnummer: 'Hausnummer',
-  Postleitzahl: 'Postleitzahl',
-  Ort: 'Ort',
-  Email: 'Email',
-  HandyNr: 'HandyNr'
-};
-
-exports.Prisma.vereinOrderByRelevanceFieldEnum = {
-  Name: 'Name',
-  Strasse: 'Strasse',
-  Hausnummer: 'Hausnummer',
-  Postleitzahl: 'Postleitzahl',
-  Ort: 'Ort',
-  Subdomain: 'Subdomain'
-};
-exports.vereinszuordnung_Rolle = exports.$Enums.vereinszuordnung_Rolle = {
-  mitglied: 'mitglied',
-  admin: 'admin'
-};
 
 exports.Prisma.ModelName = {
   benutzerkonto: 'benutzerkonto',

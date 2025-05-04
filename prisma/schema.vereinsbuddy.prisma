@@ -1,7 +1,7 @@
 generator client {
-  provider = "prisma-client-js"
-  binaryTargets = ["native", "windows", "linux-arm64-openssl-3.0.x"]
-  output   = "../generated/vereinsbuddy"
+  provider      = "prisma-client-js"
+  output        = "../generated/vereinsbuddy"
+  binaryTargets = ["native", "linux-arm64-openssl-3.0.x"]
 }
 
 datasource vereindb {
@@ -10,29 +10,29 @@ datasource vereindb {
 }
 
 model benutzerkonto {
-  ID           Int       @id @default(autoincrement())
-  Benutzername String    @unique(map: "benutzername") @vereindb.VarChar(100)
-  Passwort     String    @vereindb.VarChar(255)
-  Aktiv        Boolean   @default(true)
-  Person_ID    Int
+  id           Int       @id @default(autoincrement())
+  benutzername String    @unique @vereindb.VarChar(100)
+  passwort     String    @vereindb.VarChar(255)
+  aktiv        Boolean?  @default(true)
+  person_id    Int
   Erstellt_am  DateTime? @map("Erstellt am") @vereindb.Date
   Geaendert_am DateTime? @map("Geaendert am") @vereindb.Date
-  person       person    @relation(fields: [Person_ID], references: [ID], onUpdate: Restrict, map: "benutzerkonto_ibfk_1")
+  person       person    @relation(fields: [person_id], references: [id], onDelete: NoAction, onUpdate: Restrict, map: "benutzerkonto_person")
 
-  @@index([Person_ID], map: "benutzerkonto_ibfk_1")
+  @@index([person_id], map: "benutzerkonto_ibfk_1")
 }
 
 model person {
-  ID               Int                @id @default(autoincrement())
-  Vorname          String             @vereindb.VarChar(100)
-  Name             String             @vereindb.VarChar(100)
-  Geburtsdatum     DateTime?          @vereindb.Date
-  Strasse          String?            @vereindb.VarChar(255)
-  Hausnummer       String?            @vereindb.VarChar(32)
-  Postleitzahl     String?            @vereindb.VarChar(32)
-  Ort              String?            @vereindb.VarChar(255)
-  Email            String?            @vereindb.VarChar(255)
-  HandyNr          String?            @vereindb.VarChar(32)
+  id               Int                @id @default(autoincrement())
+  vorname          String             @vereindb.VarChar(100)
+  name             String             @vereindb.VarChar(100)
+  geburtsdatum     DateTime?          @vereindb.Date
+  strasse          String?            @vereindb.VarChar(255)
+  hausnummer       String?            @vereindb.VarChar(32)
+  postleitzahl     String?            @vereindb.VarChar(32)
+  ort              String?            @vereindb.VarChar(255)
+  email            String?            @vereindb.VarChar(255)
+  handynr          String?            @vereindb.VarChar(32)
   Erstellt_am      DateTime?          @map("Erstellt am") @vereindb.Date
   Geaendert_am     DateTime?          @map("Geaendert am") @vereindb.Date
   benutzerkonto    benutzerkonto[]
@@ -40,33 +40,28 @@ model person {
 }
 
 model verein {
-  ID               Int                @id @default(autoincrement())
-  Name             String             @vereindb.VarChar(255)
-  Strasse          String             @vereindb.VarChar(100)
-  Hausnummer       String             @vereindb.VarChar(32)
-  Postleitzahl     String             @vereindb.VarChar(32)
-  Ort              String             @vereindb.VarChar(100)
-  Subdomain        String             @unique(map: "subdomain") @vereindb.VarChar(255)
+  id               Int                @id @default(autoincrement())
+  name             String             @vereindb.VarChar(255)
+  strasse          String             @vereindb.VarChar(100)
+  hausnummer       String             @vereindb.VarChar(32)
+  postleitzahl     String             @vereindb.VarChar(32)
+  ort              String             @vereindb.VarChar(100)
+  subdomain        String?            @unique @vereindb.VarChar(255)
   Erstellt_am      DateTime?          @map("Erstellt am") @vereindb.Date
   Geaendert_am     DateTime?          @map("Geaendert am") @vereindb.Date
   vereinszuordnung vereinszuordnung[]
 }
 
 model vereinszuordnung {
-  ID           Int                    @id @default(autoincrement())
-  Person_ID    Int
-  Verein_ID    Int
-  Rolle        vereinszuordnung_Rolle @default(mitglied)
-  Erstellt_am  DateTime               @default(now()) @map("Erstellt am") @vereindb.Date
-  Geaendert_am DateTime?              @map("Geaendert am") @vereindb.Date
-  person       person                 @relation(fields: [Person_ID], references: [ID], onUpdate: Restrict, map: "vereinszuordnung_ibfk_1")
-  verein       verein                 @relation(fields: [Verein_ID], references: [ID], onUpdate: Restrict, map: "vereinszuordnung_ibfk_2")
+  id           Int       @id @default(autoincrement())
+  person_id    Int
+  verein_id    Int
+  rolle        String?   @default("mitglied") @vereindb.VarChar(50)
+  Erstellt_am  DateTime? @default(dbgenerated("CURRENT_DATE")) @map("Erstellt am") @vereindb.Date
+  Geaendert_am DateTime? @map("Geaendert am") @vereindb.Date
+  person       person    @relation(fields: [person_id], references: [id], onDelete: NoAction, onUpdate: Restrict, map: "vereinszuordnung_person")
+  verein       verein    @relation(fields: [verein_id], references: [id], onDelete: NoAction, onUpdate: Restrict, map: "vereinszuordnung_verein")
 
-  @@index([Person_ID], map: "vereinszuordnung_ibfk_1")
-  @@index([Verein_ID], map: "vereinszuordnung_ibfk_2")
-}
-
-enum vereinszuordnung_Rolle {
-  mitglied
-  admin
+  @@index([person_id], map: "vereinszuordnung_ibfk_1")
+  @@index([verein_id], map: "vereinszuordnung_ibfk_2")
 }

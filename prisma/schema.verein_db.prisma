@@ -1,7 +1,7 @@
 generator client {
-  provider = "prisma-client-js"
-  binaryTargets = ["native", "windows", "linux-arm64-openssl-3.0.x"]
-  output   = "../generated/verein_db"
+  provider      = "prisma-client-js"
+  output        = "../generated/verein_db"
+  binaryTargets = ["native", "linux-arm64-openssl-3.0.x"]
 }
 
 datasource vereindb {
@@ -10,61 +10,61 @@ datasource vereindb {
 }
 
 model allergie {
-  ID             Int         @id @default(autoincrement())
-  JF_Mitglied_ID Int
-  FF_Mitglied_ID Int
-  Allergie       String      @vereindb.VarChar(255)
-  Beschreibung   String?     @vereindb.Text
+  id             Int         @id @default(autoincrement())
+  jf_mitglied_id Int
+  ff_mitglied_id Int
+  allergie       String      @vereindb.VarChar(255)
+  beschreibung   String?
   Erstellt_am    DateTime?   @map("Erstellt am") @vereindb.Date
   Geaendert_am   DateTime?   @map("Geaendert am") @vereindb.Date
-  ff_mitglied    ff_mitglied @relation(fields: [FF_Mitglied_ID], references: [ID], onUpdate: Restrict, map: "allergie_ibfk_1")
-  jf_mitglied    jf_mitglied @relation(fields: [JF_Mitglied_ID], references: [ID], onUpdate: Restrict, map: "allergie_ibfk_2")
+  ff_mitglied    ff_mitglied @relation(fields: [ff_mitglied_id], references: [id], onDelete: NoAction, onUpdate: Restrict, map: "allergie_ibfk_1")
+  jf_mitglied    jf_mitglied @relation(fields: [jf_mitglied_id], references: [id], onDelete: NoAction, onUpdate: Restrict, map: "allergie_ibfk_2")
 
-  @@index([FF_Mitglied_ID], map: "FF_Mitglied_ID")
-  @@index([JF_Mitglied_ID], map: "JF_Mitglied_ID")
+  @@index([ff_mitglied_id], map: "FF_Mitglied_ID")
+  @@index([jf_mitglied_id], map: "JF_Mitglied_ID")
 }
 
 model dienstgrad {
-  ID                     Int       @id @default(autoincrement())
+  id                     Int       @id @default(autoincrement())
   Abkuerzung_maennlich   String?   @map("Abkuerzung maennlich") @vereindb.VarChar(100)
-  Beschreibung_maennlich String?   @map("Beschreibung maennlich") @vereindb.Text
+  Beschreibung_maennlich String?   @map("Beschreibung maennlich")
   Abkuerzung_weiblich    String?   @map("Abkuerzung weiblich") @vereindb.VarChar(100)
-  Beschreibung_weiblich  String?   @map("Beschreibung weiblich") @vereindb.Text
+  Beschreibung_weiblich  String?   @map("Beschreibung weiblich")
   Erstellt_am            DateTime? @map("Erstellt am") @vereindb.Date
   Geaendert_am           DateTime? @map("Geaendert am") @vereindb.Date
 }
 
-model dientsabend {
-  ID           Int          @id @default(autoincrement())
-  Datum        DateTime     @vereindb.DateTime(0)
-  Thema        String?      @vereindb.VarChar(255)
+model dienstabend {
+  id           Int          @id @default(autoincrement())
+  datum        DateTime?    @vereindb.Timestamp(6)
+  thema        String?      @vereindb.VarChar(255)
   Erstellt_am  DateTime     @map("Erstellt am") @vereindb.Date
   Geaendert_am DateTime?    @map("Geaendert am") @vereindb.Date
   einteilung   einteilung[]
 }
 
 model einheit {
-  ID           Int          @id @default(autoincrement())
-  Abkuerzung   String?      @vereindb.VarChar(255)
-  Beschreibung String?      @vereindb.Text
+  id           Int          @id @default(autoincrement())
+  abkuerzung   String?      @vereindb.VarChar(255)
+  beschreibung String?
   Erstellt_am  DateTime?    @map("Erstellt am") @vereindb.Date
   Geaendert_am DateTime?    @map("Geaendert am") @vereindb.Date
   einteilung   einteilung[]
 }
 
 model einsatz {
-  ID             Int          @id @default(autoincrement())
-  Einsatznummer  Int
-  Datum_Anfang   DateTime     @map("Datum Anfang") @vereindb.DateTime(0)
-  Uhrzeit_Anfang DateTime     @map("Uhrzeit Anfang") @vereindb.Time(0)
+  id             Int          @id @default(autoincrement())
+  einsatznummer  Int
+  Datum_Anfang   DateTime     @map("Datum Anfang") @vereindb.Timestamp(6)
+  Uhrzeit_Anfang DateTime     @map("Uhrzeit Anfang") @vereindb.Time(6)
   Datum_Ende     DateTime?    @map("Datum Ende") @vereindb.Date
-  Uhrzeit_Ende   DateTime?    @map("Uhrzeit Ende") @vereindb.Time(0)
-  Beschreibung   String?      @vereindb.Text
-  Strasse        String?      @vereindb.VarChar(255)
-  Hausnummer     String?      @vereindb.VarChar(32)
-  Postleitzahl   String?      @vereindb.VarChar(32)
-  Ort            String?      @vereindb.VarChar(255)
-  Art            einsatz_Art
+  Uhrzeit_Ende   DateTime?    @map("Uhrzeit Ende") @vereindb.Time(6)
+  beschreibung   String?
+  strasse        String?      @vereindb.VarChar(255)
+  hausnummer     String?      @vereindb.VarChar(32)
+  postleitzahl   String?      @vereindb.VarChar(32)
+  ort            String?      @vereindb.VarChar(255)
+  art            einsatz_art
   Erstellt_am    DateTime?    @map("Erstellt am") @vereindb.Date
   Geaendert_am   DateTime?    @map("Geaendert am") @vereindb.Date
   einteilung     einteilung[]
@@ -72,43 +72,43 @@ model einsatz {
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 model einteilung {
-  ID             Int         @id @default(autoincrement())
-  Einsatz_ID     Int
-  Dienstabend_ID Int
-  Fahrzeug_ID    Int
-  FF_Mitglied_ID Int
-  Einheit_ID     Int
-  dientsabend    dientsabend @relation(fields: [Dienstabend_ID], references: [ID], onUpdate: Restrict, map: "einteilung_ibfk_1")
-  einheit        einheit     @relation(fields: [Einheit_ID], references: [ID], onUpdate: Restrict, map: "einteilung_ibfk_2")
-  einsatz        einsatz     @relation(fields: [Einsatz_ID], references: [ID], onUpdate: Restrict, map: "einteilung_ibfk_3")
-  fahrzeug       fahrzeug    @relation(fields: [Fahrzeug_ID], references: [ID], onUpdate: Restrict, map: "einteilung_ibfk_4")
-  ff_mitglied    ff_mitglied @relation(fields: [FF_Mitglied_ID], references: [ID], onUpdate: Restrict, map: "einteilung_ibfk_5")
+  id             Int         @id @default(autoincrement())
+  einsatz_id     Int
+  dienstabend_id Int
+  fahrzeug_id    Int
+  ff_mitglied_id Int
+  einheit_id     Int
+  dienstabend    dienstabend @relation(fields: [dienstabend_id], references: [id], onDelete: NoAction, onUpdate: Restrict, map: "einteilung_dienstabend")
+  einheit        einheit     @relation(fields: [einheit_id], references: [id], onDelete: NoAction, onUpdate: Restrict, map: "einteilung_einheit")
+  einsatz        einsatz     @relation(fields: [einsatz_id], references: [id], onDelete: NoAction, onUpdate: Restrict, map: "einteilung_einsatz")
+  fahrzeug       fahrzeug    @relation(fields: [fahrzeug_id], references: [id], onDelete: NoAction, onUpdate: Restrict, map: "einteilung_fahrzeug")
+  ff_mitglied    ff_mitglied @relation(fields: [ff_mitglied_id], references: [id], onDelete: NoAction, onUpdate: Restrict, map: "einteilung_ff_mitglied")
 
-  @@index([Dienstabend_ID], map: "einteilung_ibfk_1")
-  @@index([Einheit_ID], map: "einteilung_ibfk_2")
-  @@index([Einsatz_ID], map: "einteilung_ibfk_3")
-  @@index([Fahrzeug_ID], map: "einteilung_ibfk_4")
-  @@index([FF_Mitglied_ID], map: "einteilung_ibfk_5")
+  @@index([dienstabend_id], map: "einteilung_ibfk_1")
+  @@index([einheit_id], map: "einteilung_ibfk_2")
+  @@index([einsatz_id], map: "einteilung_ibfk_3")
+  @@index([fahrzeug_id], map: "einteilung_ibfk_4")
+  @@index([ff_mitglied_id], map: "einteilung_ibfk_5")
 }
 
 model fahrzeug {
-  ID                Int             @id @default(autoincrement())
-  Kennzeichen       String?         @vereindb.VarChar(100)
-  Fahrzeugtyp       String?         @vereindb.VarChar(100)
-  Besatzungsstaerke String?         @vereindb.VarChar(100)
-  Status            fahrzeug_Status @default(verfuegbar)
-  Erstellt_am       DateTime?       @map("Erstellt am") @vereindb.Date
-  Geaendert_am      DateTime?       @map("Geaendert am") @vereindb.Date
+  id                Int              @id @default(autoincrement())
+  kennzeichen       String?          @vereindb.VarChar(100)
+  fahrzeugtyp       String?          @vereindb.VarChar(100)
+  besatzungsstaerke String?          @vereindb.VarChar(100)
+  status            fahrzeug_status? @default(verfuegbar)
+  Erstellt_am       DateTime?        @map("Erstellt am") @vereindb.Date
+  Geaendert_am      DateTime?        @map("Geaendert am") @vereindb.Date
   einteilung        einteilung[]
 }
 
 model ff_mitglied {
-  ID                   Int                    @id @default(autoincrement())
-  Person_ID            Int
-  Eintrittsdatum       DateTime               @vereindb.Date
-  Austrittsdatum       DateTime?              @vereindb.Date
-  Aufnahmedatum        DateTime?              @vereindb.Date
-  Status               ff_mitglied_Status     @default(aktiv)
+  id                   Int                    @id @default(autoincrement())
+  person_id            Int
+  eintrittsdatum       DateTime               @vereindb.Date
+  austrittsdatum       DateTime?              @vereindb.Date
+  aufnahmedatum        DateTime?              @vereindb.Date
+  status               ff_mitglied_status?    @default(aktiv)
   Erstellt_am          DateTime               @map("Erstellt am") @vereindb.Date
   Geaendert_am         DateTime?              @map("Geaendert am") @vereindb.Date
   allergie             allergie[]
@@ -116,149 +116,148 @@ model ff_mitglied {
   ff_mitglied_lehrgang ff_mitglied_lehrgang[]
   mitglied_funktionen  mitglied_funktionen[]
 
-  @@index([Person_ID], map: "ff_mitglied_ibfk_1")
+  @@index([person_id], map: "ff_mitglied_ibfk_1")
 }
 
 model ff_mitglied_lehrgang {
-  ID              Int         @id @default(autoincrement())
-  FF_Mitglied_ID  Int
-  Lehrgang_ID     Int
+  id              Int         @id @default(autoincrement())
+  ff_mitglied_id  Int
+  lehrgang_id     Int
   Datum_bestanden DateTime?   @map("Datum bestanden") @vereindb.Date
   Erstellt_am     DateTime?   @map("Erstellt am") @vereindb.Date
   Geaendert_am    DateTime?   @map("Geaendert am") @vereindb.Date
-  ff_mitglied     ff_mitglied @relation(fields: [FF_Mitglied_ID], references: [ID], onUpdate: Restrict, map: "ff_mitglied_lehrgang_ibfk_1")
-  lehrgang        lehrgang    @relation(fields: [Lehrgang_ID], references: [ID], onUpdate: Restrict, map: "ff_mitglied_lehrgang_ibfk_2")
+  ff_mitglied     ff_mitglied @relation(fields: [ff_mitglied_id], references: [id], onDelete: NoAction, onUpdate: Restrict, map: "ff_mitglied_lehrgang_ibfk_1")
+  lehrgang        lehrgang    @relation(fields: [lehrgang_id], references: [id], onDelete: NoAction, onUpdate: Restrict, map: "ff_mitglied_lehrgang_ibfk_2")
 
-  @@index([FF_Mitglied_ID], map: "FF_Mitglied_ID")
-  @@index([Lehrgang_ID], map: "Lehrgang_ID")
+  @@index([lehrgang_id], map: "Lehrgang_ID")
 }
 
 model funktion_ff {
-  ID           Int       @id @default(autoincrement())
-  Name         String    @vereindb.VarChar(100)
-  Ist_Admin    Boolean   @default(false)
+  id           Int       @id @default(autoincrement())
+  name         String    @vereindb.VarChar(100)
+  ist_admin    Boolean?  @default(false)
   Erstellt_am  DateTime? @map("Erstellt am") @vereindb.Date
   Geaendert_am DateTime? @map("Geaendert am") @vereindb.Date
 }
 
 model funktion_jf {
-  ID           Int       @id @default(autoincrement())
-  Name         String    @vereindb.VarChar(100)
-  Ist_Admin    Boolean   @default(false)
+  id           Int       @id @default(autoincrement())
+  name         String    @vereindb.VarChar(100)
+  ist_admin    Boolean?  @default(false)
   Erstellt_am  DateTime  @map("Erstellt am") @vereindb.Date
   Geaendert_am DateTime? @map("Geaendert am") @vereindb.Date
 }
 
 model jf_erziehungsberechtigter {
-  ID             Int         @id @default(autoincrement())
-  JF_Mitglied_ID Int
-  Person_ID      Int
+  id             Int         @id @default(autoincrement())
+  jf_mitglied_id Int
+  person_id      Int
   Erstellt_am    DateTime?   @map("Erstellt am") @vereindb.Date
   Geaendert_am   DateTime?   @map("Geaendert am") @vereindb.Date
-  jf_mitglied    jf_mitglied @relation(fields: [JF_Mitglied_ID], references: [ID], onUpdate: Restrict, map: "jf_erziehungsberechtigter_ibfk_1")
+  jf_mitglied    jf_mitglied @relation(fields: [jf_mitglied_id], references: [id], onDelete: NoAction, onUpdate: Restrict, map: "jf_erziehungsberechtigter_jf_mitglied")
 
-  @@index([JF_Mitglied_ID], map: "jf_erziehungsberechtigter_ibfk_1")
-  @@index([Person_ID], map: "jf_erziehungsberechtigter_ibfk_2")
+  @@index([jf_mitglied_id], map: "jf_erziehungsberechtigter_ibfk_1")
+  @@index([person_id], map: "jf_erziehungsberechtigter_ibfk_2")
 }
 
 model jf_mitglied {
-  ID                        Int                         @id @default(autoincrement())
-  Person_ID                 Int
-  Eintrittsdatum            DateTime                    @vereindb.Date
-  Austrittsdatum            DateTime?                   @vereindb.Date
-  Aufnahmedatum             DateTime?                   @vereindb.Date
-  Status                    jf_mitglied_Status          @default(aktiv)
+  id                        Int                         @id @default(autoincrement())
+  person_id                 Int
+  eintrittsdatum            DateTime                    @vereindb.Date
+  austrittsdatum            DateTime?                   @vereindb.Date
+  aufnahmedatum             DateTime?                   @vereindb.Date
+  status                    jf_mitglied_status?         @default(aktiv)
   Erstellt_am               DateTime?                   @map("Erstellt am") @vereindb.Date
   Geaendert_am              DateTime?                   @map("Geaendert am") @vereindb.Date
   allergie                  allergie[]
   jf_erziehungsberechtigter jf_erziehungsberechtigter[]
 
-  @@index([Person_ID], map: "jf_mitglied_ibfk_1")
+  @@index([person_id], map: "jf_mitglied_ibfk_1")
 }
 
 model lehrgang {
-  ID                   Int                    @id @default(autoincrement())
+  id                   Int                    @id @default(autoincrement())
   Abk_rzung            String?                @map("Abkürzung") @vereindb.VarChar(255)
-  Beschreibung         String?                @vereindb.Text
-  Reihenfolge          Int?
+  beschreibung         String?
+  reihenfolge          Int?
   Erstellt_am          DateTime?              @map("Erstellt am") @vereindb.Date
   Geaendert_am         DateTime?              @map("Geaendert am") @vereindb.Date
   ff_mitglied_lehrgang ff_mitglied_lehrgang[]
 }
 
 model mitglied_funktionen {
-  ID           Int                     @id @default(autoincrement())
-  Mitglied_ID  Int
-  Funktion_ID  Int
-  Typ          mitglied_funktionen_Typ
+  id           Int                     @id @default(autoincrement())
+  mitglied_id  Int
+  funktion_id  Int
+  typ          mitglied_funktionen_typ
   Erstellt_am  DateTime?               @map("Erstellt am") @vereindb.Date
   Geaendert_am DateTime?               @map("Geaendert am") @vereindb.Date
-  ff_mitglied  ff_mitglied             @relation(fields: [Mitglied_ID], references: [ID], onUpdate: Restrict, map: "mitglied_funktionen_ibfk_1")
+  ff_mitglied  ff_mitglied             @relation(fields: [mitglied_id], references: [id], onDelete: NoAction, onUpdate: Restrict, map: "mitglied_funktionen_ff_mitglied")
 
-  @@index([Mitglied_ID], map: "mitglied_funktionen_ibfk_1")
-  @@index([Funktion_ID], map: "mitglied_funktionen_ibfk_2")
+  @@index([mitglied_id], map: "mitglied_funktionen_ibfk_1")
+  @@index([funktion_id], map: "mitglied_funktionen_ibfk_2")
 }
 
 model mitglied_login {
-  ID           Int                @id @default(autoincrement())
-  Benutzer_ID  Int
-  Mitglied_ID  Int
-  Typ          mitglied_login_Typ
+  id           Int                @id @default(autoincrement())
+  benutzer_id  Int
+  mitglied_id  Int
+  typ          mitglied_login_typ
   Erstellt_am  DateTime           @map("Erstellt am") @vereindb.Date
   Geaendert_am DateTime?          @map("Geaendert am") @vereindb.Date
 
-  @@index([Benutzer_ID], map: "mitglied_login_ibfk_1")
-  @@index([Mitglied_ID], map: "mitglied_login_ibfk_2")
+  @@index([benutzer_id], map: "mitglied_login_ibfk_1")
+  @@index([mitglied_id], map: "mitglied_login_ibfk_2")
 }
 
 model teilnahme {
-  ID               Int           @id @default(autoincrement())
-  Mitglied_ID      Int
-  Veranstaltung_ID Int
-  Typ              teilnahme_Typ
+  id               Int           @id @default(autoincrement())
+  mitglied_id      Int
+  veranstaltung_id Int
+  typ              teilnahme_typ
   Erstellt_am      DateTime      @map("Erstellt am") @vereindb.Date
   Geaendert_am     DateTime?     @map("Geaendert am") @vereindb.Date
 
-  @@index([Veranstaltung_ID], map: "teilnahme_ibfk_4")
-  @@index([Mitglied_ID], map: "Mitglied_ID")
+  @@index([veranstaltung_id], map: "teilnahme_ibfk_4")
+  @@index([mitglied_id], map: "Mitglied_ID")
 }
 
-enum mitglied_funktionen_Typ {
-  ff
-  jf
-}
-
-enum mitglied_login_Typ {
-  ff
-  jf
-}
-
-enum teilnahme_Typ {
-  einsatz
-  dienstabend
-}
-
-enum ff_mitglied_Status {
-  aktiv
-  anwaerter
-  ausgetreten
-}
-
-enum jf_mitglied_Status {
-  aktiv
-  anwaerter
-  ausgetreten
-}
-
-enum einsatz_Art {
+enum einsatz_art {
   brand
   hilfeleistung
   sonstiges
 }
 
-enum fahrzeug_Status {
+enum fahrzeug_status {
   verfuegbar
   im_einsatz    @map("im einsatz")
   in_wartung    @map("in wartung")
   ausser_dienst @map("ausser dienst")
+}
+
+enum ff_mitglied_status {
+  aktiv
+  anwaerter
+  ausgetreten
+}
+
+enum jf_mitglied_status {
+  aktiv
+  anwaerter
+  ausgetreten
+}
+
+enum mitglied_funktionen_typ {
+  ff
+  jf
+}
+
+enum mitglied_login_typ {
+  ff
+  jf
+}
+
+enum teilnahme_typ {
+  einsatz
+  dienstabend
 }

@@ -118,17 +118,17 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 });
 
 exports.Prisma.AllergieScalarFieldEnum = {
-  ID: 'ID',
-  JF_Mitglied_ID: 'JF_Mitglied_ID',
-  FF_Mitglied_ID: 'FF_Mitglied_ID',
-  Allergie: 'Allergie',
-  Beschreibung: 'Beschreibung',
+  id: 'id',
+  jf_mitglied_id: 'jf_mitglied_id',
+  ff_mitglied_id: 'ff_mitglied_id',
+  allergie: 'allergie',
+  beschreibung: 'beschreibung',
   Erstellt_am: 'Erstellt_am',
   Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.DienstgradScalarFieldEnum = {
-  ID: 'ID',
+  id: 'id',
   Abkuerzung_maennlich: 'Abkuerzung_maennlich',
   Beschreibung_maennlich: 'Beschreibung_maennlich',
   Abkuerzung_weiblich: 'Abkuerzung_weiblich',
@@ -137,145 +137,145 @@ exports.Prisma.DienstgradScalarFieldEnum = {
   Geaendert_am: 'Geaendert_am'
 };
 
-exports.Prisma.DientsabendScalarFieldEnum = {
-  ID: 'ID',
-  Datum: 'Datum',
-  Thema: 'Thema',
+exports.Prisma.DienstabendScalarFieldEnum = {
+  id: 'id',
+  datum: 'datum',
+  thema: 'thema',
   Erstellt_am: 'Erstellt_am',
   Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.EinheitScalarFieldEnum = {
-  ID: 'ID',
-  Abkuerzung: 'Abkuerzung',
-  Beschreibung: 'Beschreibung',
+  id: 'id',
+  abkuerzung: 'abkuerzung',
+  beschreibung: 'beschreibung',
   Erstellt_am: 'Erstellt_am',
   Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.EinsatzScalarFieldEnum = {
-  ID: 'ID',
-  Einsatznummer: 'Einsatznummer',
+  id: 'id',
+  einsatznummer: 'einsatznummer',
   Datum_Anfang: 'Datum_Anfang',
   Uhrzeit_Anfang: 'Uhrzeit_Anfang',
   Datum_Ende: 'Datum_Ende',
   Uhrzeit_Ende: 'Uhrzeit_Ende',
-  Beschreibung: 'Beschreibung',
-  Strasse: 'Strasse',
-  Hausnummer: 'Hausnummer',
-  Postleitzahl: 'Postleitzahl',
-  Ort: 'Ort',
-  Art: 'Art',
+  beschreibung: 'beschreibung',
+  strasse: 'strasse',
+  hausnummer: 'hausnummer',
+  postleitzahl: 'postleitzahl',
+  ort: 'ort',
+  art: 'art',
   Erstellt_am: 'Erstellt_am',
   Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.EinteilungScalarFieldEnum = {
-  ID: 'ID',
-  Einsatz_ID: 'Einsatz_ID',
-  Dienstabend_ID: 'Dienstabend_ID',
-  Fahrzeug_ID: 'Fahrzeug_ID',
-  FF_Mitglied_ID: 'FF_Mitglied_ID',
-  Einheit_ID: 'Einheit_ID'
+  id: 'id',
+  einsatz_id: 'einsatz_id',
+  dienstabend_id: 'dienstabend_id',
+  fahrzeug_id: 'fahrzeug_id',
+  ff_mitglied_id: 'ff_mitglied_id',
+  einheit_id: 'einheit_id'
 };
 
 exports.Prisma.FahrzeugScalarFieldEnum = {
-  ID: 'ID',
-  Kennzeichen: 'Kennzeichen',
-  Fahrzeugtyp: 'Fahrzeugtyp',
-  Besatzungsstaerke: 'Besatzungsstaerke',
-  Status: 'Status',
+  id: 'id',
+  kennzeichen: 'kennzeichen',
+  fahrzeugtyp: 'fahrzeugtyp',
+  besatzungsstaerke: 'besatzungsstaerke',
+  status: 'status',
   Erstellt_am: 'Erstellt_am',
   Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.Ff_mitgliedScalarFieldEnum = {
-  ID: 'ID',
-  Person_ID: 'Person_ID',
-  Eintrittsdatum: 'Eintrittsdatum',
-  Austrittsdatum: 'Austrittsdatum',
-  Aufnahmedatum: 'Aufnahmedatum',
-  Status: 'Status',
+  id: 'id',
+  person_id: 'person_id',
+  eintrittsdatum: 'eintrittsdatum',
+  austrittsdatum: 'austrittsdatum',
+  aufnahmedatum: 'aufnahmedatum',
+  status: 'status',
   Erstellt_am: 'Erstellt_am',
   Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.Ff_mitglied_lehrgangScalarFieldEnum = {
-  ID: 'ID',
-  FF_Mitglied_ID: 'FF_Mitglied_ID',
-  Lehrgang_ID: 'Lehrgang_ID',
+  id: 'id',
+  ff_mitglied_id: 'ff_mitglied_id',
+  lehrgang_id: 'lehrgang_id',
   Datum_bestanden: 'Datum_bestanden',
   Erstellt_am: 'Erstellt_am',
   Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.Funktion_ffScalarFieldEnum = {
-  ID: 'ID',
-  Name: 'Name',
-  Ist_Admin: 'Ist_Admin',
+  id: 'id',
+  name: 'name',
+  ist_admin: 'ist_admin',
   Erstellt_am: 'Erstellt_am',
   Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.Funktion_jfScalarFieldEnum = {
-  ID: 'ID',
-  Name: 'Name',
-  Ist_Admin: 'Ist_Admin',
+  id: 'id',
+  name: 'name',
+  ist_admin: 'ist_admin',
   Erstellt_am: 'Erstellt_am',
   Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.Jf_erziehungsberechtigterScalarFieldEnum = {
-  ID: 'ID',
-  JF_Mitglied_ID: 'JF_Mitglied_ID',
-  Person_ID: 'Person_ID',
+  id: 'id',
+  jf_mitglied_id: 'jf_mitglied_id',
+  person_id: 'person_id',
   Erstellt_am: 'Erstellt_am',
   Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.Jf_mitgliedScalarFieldEnum = {
-  ID: 'ID',
-  Person_ID: 'Person_ID',
-  Eintrittsdatum: 'Eintrittsdatum',
-  Austrittsdatum: 'Austrittsdatum',
-  Aufnahmedatum: 'Aufnahmedatum',
-  Status: 'Status',
+  id: 'id',
+  person_id: 'person_id',
+  eintrittsdatum: 'eintrittsdatum',
+  austrittsdatum: 'austrittsdatum',
+  aufnahmedatum: 'aufnahmedatum',
+  status: 'status',
   Erstellt_am: 'Erstellt_am',
   Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.LehrgangScalarFieldEnum = {
-  ID: 'ID',
+  id: 'id',
   Abk_rzung: 'Abk_rzung',
-  Beschreibung: 'Beschreibung',
-  Reihenfolge: 'Reihenfolge',
+  beschreibung: 'beschreibung',
+  reihenfolge: 'reihenfolge',
   Erstellt_am: 'Erstellt_am',
   Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.Mitglied_funktionenScalarFieldEnum = {
-  ID: 'ID',
-  Mitglied_ID: 'Mitglied_ID',
-  Funktion_ID: 'Funktion_ID',
-  Typ: 'Typ',
+  id: 'id',
+  mitglied_id: 'mitglied_id',
+  funktion_id: 'funktion_id',
+  typ: 'typ',
   Erstellt_am: 'Erstellt_am',
   Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.Mitglied_loginScalarFieldEnum = {
-  ID: 'ID',
-  Benutzer_ID: 'Benutzer_ID',
-  Mitglied_ID: 'Mitglied_ID',
-  Typ: 'Typ',
+  id: 'id',
+  benutzer_id: 'benutzer_id',
+  mitglied_id: 'mitglied_id',
+  typ: 'typ',
   Erstellt_am: 'Erstellt_am',
   Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.TeilnahmeScalarFieldEnum = {
-  ID: 'ID',
-  Mitglied_ID: 'Mitglied_ID',
-  Veranstaltung_ID: 'Veranstaltung_ID',
-  Typ: 'Typ',
+  id: 'id',
+  mitglied_id: 'mitglied_id',
+  veranstaltung_id: 'veranstaltung_id',
+  typ: 'typ',
   Erstellt_am: 'Erstellt_am',
   Geaendert_am: 'Geaendert_am'
 };
@@ -285,94 +285,51 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+};
+
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
-exports.Prisma.allergieOrderByRelevanceFieldEnum = {
-  Allergie: 'Allergie',
-  Beschreibung: 'Beschreibung'
-};
-
-exports.Prisma.dienstgradOrderByRelevanceFieldEnum = {
-  Abkuerzung_maennlich: 'Abkuerzung_maennlich',
-  Beschreibung_maennlich: 'Beschreibung_maennlich',
-  Abkuerzung_weiblich: 'Abkuerzung_weiblich',
-  Beschreibung_weiblich: 'Beschreibung_weiblich'
-};
-
-exports.Prisma.dientsabendOrderByRelevanceFieldEnum = {
-  Thema: 'Thema'
-};
-
-exports.Prisma.einheitOrderByRelevanceFieldEnum = {
-  Abkuerzung: 'Abkuerzung',
-  Beschreibung: 'Beschreibung'
-};
-
-exports.Prisma.einsatzOrderByRelevanceFieldEnum = {
-  Beschreibung: 'Beschreibung',
-  Strasse: 'Strasse',
-  Hausnummer: 'Hausnummer',
-  Postleitzahl: 'Postleitzahl',
-  Ort: 'Ort'
-};
-
-exports.Prisma.fahrzeugOrderByRelevanceFieldEnum = {
-  Kennzeichen: 'Kennzeichen',
-  Fahrzeugtyp: 'Fahrzeugtyp',
-  Besatzungsstaerke: 'Besatzungsstaerke'
-};
-
-exports.Prisma.funktion_ffOrderByRelevanceFieldEnum = {
-  Name: 'Name'
-};
-
-exports.Prisma.funktion_jfOrderByRelevanceFieldEnum = {
-  Name: 'Name'
-};
-
-exports.Prisma.lehrgangOrderByRelevanceFieldEnum = {
-  Abk_rzung: 'Abk_rzung',
-  Beschreibung: 'Beschreibung'
-};
-exports.einsatz_Art = exports.$Enums.einsatz_Art = {
+exports.einsatz_art = exports.$Enums.einsatz_art = {
   brand: 'brand',
   hilfeleistung: 'hilfeleistung',
   sonstiges: 'sonstiges'
 };
 
-exports.fahrzeug_Status = exports.$Enums.fahrzeug_Status = {
+exports.fahrzeug_status = exports.$Enums.fahrzeug_status = {
   verfuegbar: 'verfuegbar',
   im_einsatz: 'im_einsatz',
   in_wartung: 'in_wartung',
   ausser_dienst: 'ausser_dienst'
 };
 
-exports.ff_mitglied_Status = exports.$Enums.ff_mitglied_Status = {
+exports.ff_mitglied_status = exports.$Enums.ff_mitglied_status = {
   aktiv: 'aktiv',
   anwaerter: 'anwaerter',
   ausgetreten: 'ausgetreten'
 };
 
-exports.jf_mitglied_Status = exports.$Enums.jf_mitglied_Status = {
+exports.jf_mitglied_status = exports.$Enums.jf_mitglied_status = {
   aktiv: 'aktiv',
   anwaerter: 'anwaerter',
   ausgetreten: 'ausgetreten'
 };
 
-exports.mitglied_funktionen_Typ = exports.$Enums.mitglied_funktionen_Typ = {
+exports.mitglied_funktionen_typ = exports.$Enums.mitglied_funktionen_typ = {
   ff: 'ff',
   jf: 'jf'
 };
 
-exports.mitglied_login_Typ = exports.$Enums.mitglied_login_Typ = {
+exports.mitglied_login_typ = exports.$Enums.mitglied_login_typ = {
   ff: 'ff',
   jf: 'jf'
 };
 
-exports.teilnahme_Typ = exports.$Enums.teilnahme_Typ = {
+exports.teilnahme_typ = exports.$Enums.teilnahme_typ = {
   einsatz: 'einsatz',
   dienstabend: 'dienstabend'
 };
@@ -380,7 +337,7 @@ exports.teilnahme_Typ = exports.$Enums.teilnahme_Typ = {
 exports.Prisma.ModelName = {
   allergie: 'allergie',
   dienstgrad: 'dienstgrad',
-  dientsabend: 'dientsabend',
+  dienstabend: 'dienstabend',
   einheit: 'einheit',
   einsatz: 'einsatz',
   einteilung: 'einteilung',
