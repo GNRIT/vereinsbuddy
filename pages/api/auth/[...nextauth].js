@@ -93,7 +93,7 @@ export const authOptions = {
         return session;
         }
     },
-    debug: process.env.NODE_ENV !== 'production'
+    debug: process.env.NODE_ENV !== 'development'
 };
 
 export default (req, res) => NextAuth(req, res, authOptions);
