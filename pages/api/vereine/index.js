@@ -24,12 +24,12 @@ export default async function handler(req, res) {
         }
     } else if (req.method === 'POST') {
         try {
-        const { Name, Strasse, Hausnummer, Postleitzahl, Ort, Subdomain } = req.body
+        const { name, strasse, hausnummer, postleitzahl, ort, subdomain } = req.body
 
         // Prüfen ob Subdomain bereits existiert
         const existingVerein = await db1.verein.findUnique({
             where: {
-            Subdomain: Subdomain
+            subdomain: subdomain
             }
         })
 
@@ -39,13 +39,13 @@ export default async function handler(req, res) {
 
         const neuerVerein = await db1.verein.create({
             data: {
-            Name,
-            Strasse,
-            Hausnummer,
-            Postleitzahl,
-            Ort,
-            Subdomain,
-            Erstellt_am: new Date()
+            name,
+            strasse,
+            hausnummer,
+            postleitzahl,
+            ort,
+            subdomain,
+            erstellt_am: new Date()
             }
         })
 

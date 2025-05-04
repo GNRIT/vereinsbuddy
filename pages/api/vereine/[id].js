@@ -5,7 +5,11 @@ import { getSession } from 'next-auth/react';
 export default async function handler(req, res) {
     const session = await getSession({ req })
     const { id } = req.query
+    const parsedId = parseInt(id, 10);
 
+    if (isNaN(parsedId)) {
+    return res.status(400).json({ message: 'Ungültige Verein-ID' });
+    }
     /*if (!session) {
         return res.status(401).json({ message: 'Nicht autorisiert' })
     }
@@ -20,7 +24,7 @@ export default async function handler(req, res) {
         try {
         const verein = await db1.verein.findUnique({
             where: {
-            ID: parseInt(id, 10)
+            id: parsedId
             }
         })
 
@@ -34,14 +38,14 @@ export default async function handler(req, res) {
         }
     } else if (req.method === 'PUT') {
         try {
-        const { Name, Strasse, Hausnummer, Postleitzahl, Ort, Subdomain } = req.body
+        const { name, strasse, hausnummer, postleitzahl, ort, subdomain } = req.body
 
         // Prüfen ob neue Subdomain bereits existiert (außer beim aktuellen Verein)
         const existingVerein = await db1.verein.findFirst({
             where: {
-            Subdomain: Subdomain,
+            subdomain: subdomain,
             NOT: {
-                ID: parseInt(id, 10)
+                id: parseInt(id, 10)
             }
             }
         })
@@ -52,16 +56,16 @@ export default async function handler(req, res) {
 
         const updatedVerein = await db1.verein.update({
             where: {
-            ID: parseInt(id, 10)
+            id: parseInt(id, 10)
             },
             data: {
-            Name,
-            Strasse,
-            Hausnummer,
-            Postleitzahl,
-            Ort,
-            Subdomain,
-            Geaendert_am: new Date()
+            name,
+            strasse,
+            hausnummer,
+            postleitzahl,
+            ort,
+            subdomain,
+            geaendert_am: new Date()
             }
         })
 
@@ -74,14 +78,14 @@ export default async function handler(req, res) {
         // Zuerst alle Zuordnungen löschen
         await db1.vereinszuordnung.deleteMany({
             where: {
-            Verein_ID: parseInt(id, 10)
+            verein_id: parseInt(id, 10)
             }
         })
 
         // Dann den Verein löschen
         await db1.verein.delete({
             where: {
-            ID: parseInt(id, 10)
+            id: parseInt(id, 10)
             }
         })
 

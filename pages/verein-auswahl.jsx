@@ -7,22 +7,20 @@ export default function VereinAuswahl() {
     const { data: session, status } = useSession();
     const router = useRouter();
 
-    // Effekt für automatische Weiterleitung bei nur einem Verein
     useEffect(() => {
-        // Nur ausführen wenn Authentifizierung abgeschlossen
+
         if (status === 'authenticated') {
-            // Wenn Benutzer nur einem Verein zugeordnet ist, direkt weiterleiten
+
             if (session?.user?.vereine?.length === 1) {
-                router.push(`/vereine/${session.user.vereine[0].vereinId}`);
+                router.push(`/vereine/${session.user.vereine[0].verein_id}`);
             }
         }
-        // Wenn nicht authentifiziert, zurück zum Login
+
         else if (status === 'unauthenticated') {
             router.push('/auth/login');
         }
     }, [status, session, router]);
 
-    // Ladeanzeige während der Authentifizierung
     if (status === 'loading') {
         return (
             <div className="flex items-center justify-center min-h-screen">
@@ -33,7 +31,7 @@ export default function VereinAuswahl() {
         );
     }
 
-    // Fallback für fehlende Session
+ 
     if (!session || !session.user) {
         return (
             <div className="flex items-center justify-center min-h-screen">
@@ -50,12 +48,12 @@ export default function VereinAuswahl() {
         );
     }
 
-    // Handler für Vereinsauswahl
-    const handleVereinSelect = (vereinId) => {
-        // Speichere ausgewählten Verein im localStorage für Persistenz
-        localStorage.setItem('selectedVerein', vereinId);
-        // Weiterleitung zur Vereinsseite
-        router.push(`/vereine/${vereinId}`);
+
+    const handleVereinSelect = (verein_id) => {
+
+        localStorage.setItem('selectedVerein', verein_id);
+
+        router.push(`/vereine/${verein_id}`);
     };
 
     return (
@@ -75,12 +73,12 @@ export default function VereinAuswahl() {
                         <div className="space-y-4">
                             {session.user.vereine.map((verein) => (
                                 <div
-                                    key={verein.vereinId}
-                                    onClick={() => handleVereinSelect(verein.vereinId)}
+                                    key={verein.verein_id}
+                                    onClick={() => handleVereinSelect(verein.verein_id)}
                                     className="cursor-pointer bg-white py-4 px-6 border border-gray-200 rounded-lg shadow-sm hover:border-blue-500 hover:ring-1 hover:ring-blue-500 transition duration-150 ease-in-out"
                                 >
                                     <h3 className="text-lg font-medium text-gray-900">
-                                        {verein.vereinName}
+                                        {verein.name}
                                     </h3>
                                     <p className="mt-1 text-sm text-gray-500">
                                         Rolle: {verein.rolle === 'admin' ? (
@@ -89,7 +87,7 @@ export default function VereinAuswahl() {
                                             <span>Mitglied</span>
                                         )}
                                     </p>
-                                    <Link href={`/vereine/${verein.vereinId}`}>
+                                    <Link href={`/vereine/${verein.verein_id}`}>
                                     <span className="text-indigo-600 hover:text-indigo-900">Auswählen</span>
                                     </Link>
                                 </div>

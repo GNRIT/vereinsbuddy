@@ -16,8 +16,8 @@ export const authOptions = {
             try {
             const user = await db1.benutzerkonto.findUnique({
                 where: {
-                Benutzername: credentials.benutzername,
-                Aktiv: true
+                benutzername: credentials.benutzername,
+                aktiv: true
                 },
                 include: {
                 person: {
@@ -34,21 +34,21 @@ export const authOptions = {
 
             if (!user) return null;
 
-            const isValid = await bcrypt.compare(credentials.passwort, user.Passwort);
+            const isValid = await bcrypt.compare(credentials.passwort, user.passwort);
             if (!isValid) return null;
 
             return {
-                id: user.ID,
-                benutzername: user.Benutzername,
-                vorname: user.person?.Vorname || null,
-                name: user.person?.Name || null,
-                email: user.person?.Email || null,
-                Person_ID: user.Person_ID,
+                id: user.id,
+                benutzername: user.benutzername,
+                vorname: user.person?.vorname || null,
+                name: user.person?.name || null,
+                email: user.person?.email || null,
+                person_id: user.person_id,
                 vereine: user.person?.vereinszuordnung?.map(z => ({
-                vereinId: z.Verein_ID,
-                vereinName: z.verein.Name,
-                subdomain: z.verein.Subdomain,
-                rolle: z.Rolle
+                vereinId: z.verein_id,
+                vereinName: z.verein.name,
+                subdomain: z.verein.subdomain,
+                rolle: z.rolle
                 })) || []
             };
             } catch (error) {
@@ -74,11 +74,11 @@ export const authOptions = {
             token.id = user.id;
             token.name = user.vorname || user.benutzername || user.name;
             token.email = user.email || null;
-            token.Person_ID = user.Person_ID;
+            token.person_id = user.person_id;
             token.user = user;
 
             if (user.vereine?.length === 1) {
-            token.user.aktuellerVerein = user.vereine[0].vereinId;
+            token.user.aktuellerVerein = user.vereine[0].verein_id;
             }
         }
         return token;
@@ -88,7 +88,7 @@ export const authOptions = {
         id: token.id,
         name: token.name,
         email: token.email,
-        Person_ID: token.Person_ID
+        person_id: token.Person_id
         };
         return session;
         }

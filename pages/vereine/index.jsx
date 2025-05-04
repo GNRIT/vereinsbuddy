@@ -14,7 +14,7 @@ export default function VereinsListe({ vereine: initialVereine }) {
             });
 
             if (res.ok) {
-            setVereine(vereine.filter((v) => v.ID !== id));
+            setVereine(vereine.filter((v) => v.id !== id));
             } else {
             const error = await res.json();
             alert(error.message || 'Fehler beim Löschen');
@@ -50,26 +50,26 @@ export default function VereinsListe({ vereine: initialVereine }) {
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                 {vereine.map((verein) => (
-                    <tr key={verein.ID}>
+                    <tr key={verein.id}>
                     <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-gray-900">{verein.Name}</div>
+                        <div className="text-sm font-medium text-gray-900">{verein.name}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm text-gray-900">
-                        {verein.Strasse} {verein.Hausnummer}
+                        {verein.strasse} {verein.hausnummer}
                         </div>
                         <div className="text-sm text-gray-500">
-                        {verein.Postleitzahl} {verein.Ort}
+                        {verein.postleitzahl} {verein.ort}
                         </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{verein.Subdomain}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{verein.subdomain}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <div className="flex space-x-3">
-                        <Link href={`/vereine/${verein.ID}/bearbeiten`}>
+                        <Link href={`/vereine/${verein.id}/bearbeiten`}>
                             <span className="text-blue-600 hover:text-blue-900 cursor-pointer">Bearbeiten</span>
                         </Link>
                         <button
-                            onClick={() => handleDelete(verein.ID)}
+                            onClick={() => handleDelete(verein.id)}
                             className="text-red-600 hover:text-red-900"
                         >
                             Löschen
