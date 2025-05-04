@@ -5,7 +5,7 @@ export default function LehrgangsZuordnungForm({ initialData = {}, mitglieder, l
     const [formData, setFormData] = useState({
         FF_Mitglied_ID: initialData.FF_Mitglied_ID || '',
         Lehrgang_ID: initialData.Lehrgang_ID || '',
-        Datum_bestanden: initialData.Datum_bestanden 
+        Datum_bestanden: initialData.Datum_bestanden
         ? new Date(initialData.Datum_bestanden).toISOString().split('T')[0]
         : ''
     })
@@ -29,8 +29,8 @@ export default function LehrgangsZuordnungForm({ initialData = {}, mitglieder, l
         <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 gap-6">
             <div>
-            <label htmlFor="FF_Mitglied_ID" className="block text-sm font-medium text-gray-700">Mitglied *</label>
-            <select
+            <label htmlFor="FF_Mitglied_ID" className="block text-sm font-medium text-gray-700">Mitglied ID*</label>
+            <input
                 id="FF_Mitglied_ID"
                 name="FF_Mitglied_ID"
                 required
@@ -38,18 +38,12 @@ export default function LehrgangsZuordnungForm({ initialData = {}, mitglieder, l
                 onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             >
-                <option value="">Mitglied auswählen</option>
-                {mitglieder.map((mitglied) => (
-                <option key={mitglied.ID} value={mitglied.ID}>
-                    {mitglied.Vorname} {mitglied.Name}
-                </option>
-                ))}
-            </select>
+            </input>
             </div>
 
             <div>
-            <label htmlFor="Lehrgang_ID" className="block text-sm font-medium text-gray-700">Lehrgang *</label>
-            <select
+            <label htmlFor="Lehrgang_ID" className="block text-sm font-medium text-gray-700">Lehrgang ID*</label>
+            <input
                 id="Lehrgang_ID"
                 name="Lehrgang_ID"
                 required
@@ -57,13 +51,7 @@ export default function LehrgangsZuordnungForm({ initialData = {}, mitglieder, l
                 onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             >
-                <option value="">Lehrgang auswählen</option>
-                {lehrgaenge.map((lehrgang) => (
-                <option key={lehrgang.ID} value={lehrgang.ID}>
-                    {lehrgang.ID} ({lehrgang.Abkürzung})
-                </option>
-                ))}
-            </select>
+            </input>
             </div>
 
             <div>
