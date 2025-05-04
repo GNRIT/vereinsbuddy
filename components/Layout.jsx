@@ -1,8 +1,16 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import Fuszeile from "../components/Fuszeile";
 import Navigation from "../components/Navigation";
 
 export default function Layout({ children }) {
+    const router = useRouter();
+
+    // Seiten definieren, auf denen die Navigation NICHT angezeigt werden soll
+    const hideNavigationRoutes = ['/auth/login', '/auth/redirect'];
+
+    const shouldShowNavigation = !hideNavigationRoutes.includes(router.pathname);
+
     return (
         <div className="min-h-screen flex flex-col">
             <Head>
@@ -11,13 +19,17 @@ export default function Layout({ children }) {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Navigation />
+
+            {shouldShowNavigation && <Navigation />}
+
             <main className="flex-grow">
                 {children}
             </main>
+
             <footer>
                 <Fuszeile />
             </footer>
         </div>
     );
 }
+

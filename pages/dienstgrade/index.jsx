@@ -1,11 +1,15 @@
 import { vereinDbPrisma as db2 } from '@/lib/prisma';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function DienstgradeListe({ initialDienstgrade }) {
-    const [dienstgrade, setDienstgrade] = useState(initialDienstgrade);
+    const [dienstgrade, setDienstgrade] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [deletingId, setDeletingId] = useState(null);
+
+    useEffect(() => {
+        setDienstgrade(initialDienstgrade);
+    }, [initialDienstgrade]);
 
     const handleDelete = async (id) => {
         if (confirm('Möchten Sie diesen Dienstgrad wirklich löschen?')) {
@@ -18,7 +22,7 @@ export default function DienstgradeListe({ initialDienstgrade }) {
                 });
 
                 if (response.ok) {
-                    setDienstgrade(dienstgrade.filter(d => d.ID !== id));
+                    setDienstgrade((prev) => prev.filter((d) => d.ID !== id));
                 } else {
                     alert('Fehler beim Löschen des Dienstgrads');
                 }
@@ -49,14 +53,13 @@ export default function DienstgradeListe({ initialDienstgrade }) {
                         <thead className="bg-gray-50">
                             <tr>
                                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Abkürzung männlich</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Beschreibung männlich</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Abkürzung weiblich</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Beschreibung weiblich</th>
+                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Abkürzung (m)</th>
+                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bezeichnung (m)</th>
+                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Abkürzung (w)</th>
+                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bezeichnung (w)</th>
                                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aktionen</th>
                             </tr>
                         </thead>
-
                         <tbody className="bg-white divide-y divide-gray-200">
                             {dienstgrade.length > 0 ? (
                                 dienstgrade.map((dienstgrad) => (
@@ -75,14 +78,14 @@ export default function DienstgradeListe({ initialDienstgrade }) {
                                                 disabled={isLoading}
                                                 className="text-red-600 hover:text-red-900 disabled:opacity-50"
                                             >
-                                                {isLoading && deletingId === dienstgrad.ID ? "Löschen..." : "Löschen"}
+                                                {isLoading && deletingId === dienstgrad.ID ? 'Löschen...' : 'Löschen'}
                                             </button>
                                         </td>
                                     </tr>
                                 ))
                             ) : (
                                 <tr>
-                                    <td colSpan="6" className="text-center py-6 text-gray-500">
+                                    <td colSpan={6} className="text-center py-6 text-gray-500">
                                         Keine Dienstgrade vorhanden.
                                     </td>
                                 </tr>

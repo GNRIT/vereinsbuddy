@@ -1,7 +1,32 @@
-import { vereinDbPrisma as db2 } from '@/lib/prisma'
-import Link from 'next/link'
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function MitgliedLoginListe({ logins }) {
+        const router = useRouter();
+    
+        const handleDelete = async (id) => {
+            if (!confirm('Willst du dieses Mitglied-Login wirklich löschen?')) return;
+    
+            try {
+                const res = await fetch(`/api/mitglied-login/${id}`, {
+                    method: 'DELETE',
+                });
+    
+                if (!res.ok) {
+                    const error = await res.json();
+                    alert(`Fehler: ${error.message}`);
+                    return;
+                }
+    
+                alert('Mitglied-Login gelöscht.');
+                router.replace(router.asPath);
+            } catch (err) {
+                console.error(err);
+                alert('Fehler beim Löschen.');
+            }
+        };
+
     return (
         <div>
         <div className="bg-white shadow rounded-lg p-6">
@@ -49,6 +74,12 @@ export default function MitgliedLoginListe({ logins }) {
                         <Link href={`/mitglied-login/${login.ID}`}>
                         <span className="text-blue-600 hover:text-blue-900">Ansehen</span>
                         </Link>
+                        <button
+                                onClick={() => handleDelete(login.ID)}
+                                className="text-red-600 hover:text-red-900"
+                            >
+                                Löschen
+                        </button>
                     </td>
                     </tr>
                 ))}

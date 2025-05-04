@@ -8,8 +8,8 @@ export const authOptions = {
         CredentialsProvider({
             name: 'Credentials',
             credentials: {
-                benutzername: { label: "Benutzername", type: "text" },
-                passwort: { label: "Passwort", type: "password" }
+                benutzername: { label: 'Benutzername', type: 'text' },
+                passwort: { label: 'Passwort', type: 'password' }
             },
             async authorize(credentials) {
                 try {
@@ -30,42 +30,31 @@ export const authOptions = {
                             }
                         }
                     });
-            
-                    console.log("Gefundener Benutzer:", user);  // Gibt den Benutzer in der Konsole aus
-            
-                    if (!user) {
-                        console.error('Benutzer nicht gefunden oder inaktiv');
-                        return null;
-                    }
-            
+
+                    if (!user) return null;
+
                     const isValid = await bcrypt.compare(credentials.passwort, user.Passwort);
-                    console.log("Passwort validiert:", isValid);
-            
-                    if (!isValid) {
-                        console.error('Ungültiges Passwort');
-                        return null;
-                    }
-            
+                    if (!isValid) return null;
+
                     return {
                         id: user.ID,
                         benutzername: user.Benutzername,
-                        vorname: user.person ? user.person.Vorname : null,
-                        name: user.person ? user.person.Name : null,
-                        email: user.person ? user.person.Email : null,
-                        vereine: user.person && user.person.vereinszuordnung ? user.person.vereinszuordnung.map(z => ({
+                        vorname: user.person?.Vorname || null,
+                        name: user.person?.Name || null,
+                        email: user.person?.Email || null,
+                        Person_ID: user.Person_ID,
+                        vereine: user.person?.vereinszuordnung?.map(z => ({
                             vereinId: z.Verein_ID,
                             vereinName: z.verein.Name,
                             subdomain: z.verein.Subdomain,
                             rolle: z.Rolle
-                        })) : [],
-                        Person_ID: user.Person_ID
+                        })) || []
                     };
                 } catch (error) {
-                    console.error('Fehler in der Authentifizierung:', error);
+                    console.error('Fehler in authorize:', error);
                     return null;
                 }
             }
-            
         })
     ],
     pages: {
@@ -81,22 +70,19 @@ export const authOptions = {
     callbacks: {
         async jwt({ token, user }) {
             if (user) {
-                token.id = user.ID; // wichtig für next-auth
-                token.name = user.Vorname || user.Benutzername;
-                token.email = user.Email || null;
+                token.id = user.id;
+                token.name = user.vorname || user.benutzername || user.name;
+                token.email = user.email || null;
                 token.Person_ID = user.Person_ID;
-                // 👇 Alles, was du brauchst für session.user
                 token.user = user;
-        
-                // Optional: Default-Verein setzen, wenn nur einer vorhanden
+
                 if (user.vereine?.length === 1) {
-                token.user.aktuellerVerein = user.vereine[0].Verein_ID;
+                    token.user.aktuellerVerein = user.vereine[0].vereinId;
                 }
             }
             return token;
-            },
-            async session({ session, token }) {
-            // next-auth erwartet das hier
+        },
+        async session({ session, token }) {
             session.user = token.user || {
                 id: token.id,
                 name: token.name,
@@ -104,9 +90,10 @@ export const authOptions = {
                 Person_ID: token.Person_ID
             };
             return session;
-            }
-        },
-    debug: process.env.NODE_ENV === 'production'
+        }
+    },
+    secret: process.env.NEXTAUTH_SECRET,
+    debug: process.env.NODE_ENV !== 'production'
 };
 
 export default (req, res) => NextAuth(req, res, authOptions);

@@ -1,7 +1,32 @@
-import { vereinDbPrisma as db2 } from '@/lib/prisma'
-import Link from 'next/link'
+import { vereinDbPrisma as db2 } from '@/lib/prisma';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function MitgliedFunktionenListe({ zuordnungen }) {
+    const router = useRouter();
+        
+            const handleDelete = async (id) => {
+                if (!confirm('Willst du dieses Mitglied-Funktionen wirklich löschen?')) return;
+        
+                try {
+                    const res = await fetch(`/api/mitglied-funktionen/${id}`, {
+                        method: 'DELETE',
+                    });
+        
+                    if (!res.ok) {
+                        const error = await res.json();
+                        alert(`Fehler: ${error.message}`);
+                        return;
+                    }
+        
+                    alert('Mitglied-Funktion gelöscht.');
+                    router.replace(router.asPath);
+                } catch (err) {
+                    console.error(err);
+                    alert('Fehler beim Löschen.');
+                }
+            };
+
     return (
         <div>
         <div className="bg-white shadow rounded-lg p-6">
@@ -46,9 +71,12 @@ export default function MitgliedFunktionenListe({ zuordnungen }) {
                         <Link href={`/mitglied-funktionen/${zuordnung.ID}/bearbeiten`}>
                         <span className="text-indigo-600 hover:text-indigo-900 mr-3">Bearbeiten</span>
                         </Link>
-                        <Link href={`/mitglied-funktionen/${zuordnung.ID}`}>
-                        <span className="text-blue-600 hover:text-blue-900">Ansehen</span>
-                        </Link>
+                        <button
+                                onClick={() => handleDelete(zuordnung.ID)}
+                                className="text-red-600 hover:text-red-900"
+                            >
+                                Löschen
+                        </button>
                     </td>
                     </tr>
                 ))}

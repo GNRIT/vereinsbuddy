@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useVerein } from '../context/VereinContext';
-export default function Layout({ children }) {
+export default function Layout() {
     const { data: session, status } = useSession();
     const router = useRouter();
     const { aktiverVerein, vereinWechseln } = useVerein();

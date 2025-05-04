@@ -1,7 +1,31 @@
 import { vereinDbPrisma as db2 } from '@/lib/prisma';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function FunktionenListe({ funktionen }) {
+    const router = useRouter();
+                        
+                const handleDelete = async (id) => {
+                    if (!confirm('Willst du dieses FF-Funktion wirklich löschen?')) return;
+                        
+                    try {
+                        const res = await fetch(`/api/ff-funktion/${id}`, {
+                            method: 'DELETE',
+                        });
+                        
+                        if (!res.ok) {
+                            const error = await res.json();
+                            alert(`Fehler: ${error.message}`);
+                            return;
+                        }
+                        
+                        alert('FF-Funktion gelöscht.');
+                        router.replace(router.asPath);
+                    } catch (err) {
+                        console.error(err);
+                        alert('Fehler beim Löschen.');
+                    }
+                };
     return (
         <div className="bg-white shadow rounded-lg p-6">
             <div className="flex justify-between items-center mb-6">
@@ -43,9 +67,12 @@ export default function FunktionenListe({ funktionen }) {
                         <Link href={`/funktion_ff/${funktion.ID}/bearbeiten`}>
                         <span className="text-indigo-600 hover:text-indigo-900 mr-3">Bearbeiten</span>
                         </Link>
-                        <Link href={`/funktion_ff/${funktion.ID}`}>
-                        <span className="text-blue-600 hover:text-blue-900">Ansehen</span>
-                        </Link>
+                        <button
+                        onClick={() => handleDelete(funktion.ID)}
+                        className="text-red-600 hover:text-red-900"
+                        >
+                        Löschen
+                        </button>
                     </td>
                     </tr>
                 ))}

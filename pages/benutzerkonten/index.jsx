@@ -51,6 +51,9 @@ export default function BenutzerkontenListe({ benutzerkonten }) {
                         {/*<Link href={`/benutzerkonten/${konto.ID}`}>
                         <span className="text-blue-600 hover:text-blue-900">Ansehen</span>
                         </Link>*/}
+                        <Link href={`/benutzerkonten/${konto.ID}/loeschen`}>
+                        <span className="text-red-600 hover:text-red-900">Löschen</span>
+                        </Link>
                     </td>
                     </tr>
                 ))}

@@ -2,7 +2,29 @@ import { vereinDbPrisma as db2 } from '@/lib/prisma';
 import { getSession } from 'next-auth/react';
 import Link from 'next/link';
 
-export default function FahrzeugListe({ fahrzeuge }) {
+export default function FahrzeugListe({ initialFahrzeugen }) {
+    const [fahrzeugen, setFahrzeugen] = useState(initialFahrzeugen);
+    
+        const handleDelete = async (id) => {
+            if (confirm('Möchtest du diesen Fahrzeug wirklich löschen?')) {
+            try {
+                const response = await fetch(`/api/fahrzeuge/${id}`, {
+                method: 'DELETE',
+                });
+    
+                if (response.ok) {
+                setFahrzeugen(fahrzeugen.filter((e) => e.ID !== id));
+                } else {
+                const error = await response.json();
+                alert(error.message || 'Fehler beim Löschen');
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Ein unerwarteter Fehler ist aufgetreten');
+            }
+            }
+        };
+
     return (
         <div>
         <div className="bg-white shadow rounded-lg p-6">
@@ -28,7 +50,7 @@ export default function FahrzeugListe({ fahrzeuge }) {
                 </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                {fahrzeuge.map((fahrzeug) => (
+                {fahrzeugen.map((fahrzeug) => (
                     <tr key={fahrzeug.ID}>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{fahrzeug.ID}</td>
                     <td className="px-6 py-4 whitespace-nowrap">
@@ -47,12 +69,15 @@ export default function FahrzeugListe({ fahrzeuge }) {
                         </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <Link href={`/fahrzeuge/${fahrzeug.ID}`}>
-                        <span className="text-blue-600 hover:text-blue-900 mr-3">Ansehen</span>
-                        </Link>
-                        <Link href={`/fahrzeuge/${fahrzeug.ID}/bearbeiten`}>
+                    <Link href={`/fahrzeuge/${fahrzeug.ID}/bearbeiten`}>
                         <span className="text-gray-600 hover:text-gray-900">Bearbeiten</span>
-                        </Link>
+                    </Link>
+                    <button
+                            onClick={() => handleDelete(fahrzeug.ID)}
+                            className="text-red-600 hover:text-red-900"
+                        >
+                            Löschen
+                    </button>
                     </td>
                     </tr>
                 ))}
