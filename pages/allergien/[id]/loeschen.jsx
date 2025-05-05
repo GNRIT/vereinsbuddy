@@ -7,7 +7,7 @@ export default function AllergieLoeschen({ allergie }) {
 
     const handleDelete = async () => {
         try {
-        const response = await fetch(`/api/allergien/${allergie.id}`, {
+        const response = await fetch(`/api/allergien/${allergie.ID}`, {
             method: 'DELETE',
         })
 

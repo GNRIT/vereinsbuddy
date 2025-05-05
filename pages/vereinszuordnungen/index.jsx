@@ -2,8 +2,8 @@ import { vereinsbuddyPrisma as db1 } from '@/lib/prisma';
 import Link from 'next/link';
 import { useState } from 'react';
 
-export default function VereinszuordnungenListe() {
-    const [zuordnungen, setZuordnungen] = useState([]);
+export default function VereinszuordnungenListe({ zuordnungen: initialZuordnungen }) {
+    const [zuordnungen, setZuordnungen] = useState(initialZuordnungen);
 
     const handleDelete = async (id) => {
         if (confirm('Möchtest du diese Zuordnung wirklich löschen?')) {

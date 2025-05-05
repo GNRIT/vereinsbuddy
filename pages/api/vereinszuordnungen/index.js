@@ -24,13 +24,13 @@ export default async function handler(req, res) {
         }
     } else if (req.method === 'POST') {
         try {
-        const { Person_ID, Verein_ID, Rolle, Erstellt_am } = req.body
+        const { person_id, verein_id, rolle } = req.body
 
         // Prüfen ob die Zuordnung bereits existiert
         const existierendeZuordnung = await db1.vereinszuordnung.findFirst({
             where: {
-            Person_ID: parseInt(Person_ID),
-            Verein_ID: parseInt(Verein_ID),
+            Person_ID: parseInt(person_id),
+            Verein_ID: parseInt(verein_id),
             },
         })
 
@@ -40,10 +40,11 @@ export default async function handler(req, res) {
 
         const neueZuordnung = await db1.vereinszuordnung.create({
             data: {
-            Person_ID: parseInt(Person_ID),
-            Verein_ID: parseInt(Verein_ID),
-            Rolle,
-            Erstellt_am: new Date(Erstellt_am),
+            Person_ID: parseInt(person_id),
+            Verein_ID: parseInt(verein_id),
+            Rolle: rolle,
+            Erstellt_am: new Date(),
+            Geaendert_am: new Date(),
             },
         })
 

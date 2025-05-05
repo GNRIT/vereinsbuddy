@@ -15,7 +15,7 @@ export default async function handler(req, res) {
     }
 
     // Nur Admins dürfen Vereine verwalten
-    const isAdmin = session.user.vereine.some(v => v.rolle === 'admin')
+    const isAdmin = session.user.vereine.some(v => v.Rolle === 'admin')
     if (!isAdmin) {
         return res.status(403).json({ message: 'Keine Berechtigung' })
     }*/
@@ -24,7 +24,7 @@ export default async function handler(req, res) {
         try {
         const verein = await db1.verein.findUnique({
             where: {
-            id: parsedId
+            ID: parsedId
             }
         })
 
@@ -43,9 +43,9 @@ export default async function handler(req, res) {
         // Prüfen ob neue Subdomain bereits existiert (außer beim aktuellen Verein)
         const existingVerein = await db1.verein.findFirst({
             where: {
-            subdomain: subdomain,
+            Subdomain: subdomain,
             NOT: {
-                id: parseInt(id, 10)
+                ID: parseInt(id, 10)
             }
             }
         })
@@ -56,16 +56,15 @@ export default async function handler(req, res) {
 
         const updatedVerein = await db1.verein.update({
             where: {
-            id: parseInt(id, 10)
+            ID: parseInt(id, 10)
             },
             data: {
-            name,
-            strasse,
-            hausnummer,
-            postleitzahl,
-            ort,
-            subdomain,
-            geaendert_am: new Date()
+            Name: name,
+            Strasse: strasse,
+            Hausnummer: hausnummer,
+            Postleitzahl: postleitzahl,
+            Ort: ort,
+            Subdomain: subdomain
             }
         })
 
@@ -78,14 +77,14 @@ export default async function handler(req, res) {
         // Zuerst alle Zuordnungen löschen
         await db1.vereinszuordnung.deleteMany({
             where: {
-            verein_id: parseInt(id, 10)
+            Verein_ID: parseInt(id, 10)
             }
         })
 
         // Dann den Verein löschen
         await db1.verein.delete({
             where: {
-            id: parseInt(id, 10)
+            ID: parseInt(id, 10)
             }
         })
 

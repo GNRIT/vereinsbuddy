@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     }
 
     // Nur Admins dürfen Vereine verwalten
-    const isAdmin = session.user.vereine.some(v => v.rolle === 'admin')
+    const isAdmin = session.user.vereine.some(v => v.Rolle === 'admin')
     if (!isAdmin) {
         return res.status(403).json({ message: 'Keine Berechtigung' })
     }*/
@@ -29,7 +29,7 @@ export default async function handler(req, res) {
         // Prüfen ob Subdomain bereits existiert
         const existingVerein = await db1.verein.findUnique({
             where: {
-            subdomain: subdomain
+            Subdomain: subdomain
             }
         })
 
@@ -39,13 +39,14 @@ export default async function handler(req, res) {
 
         const neuerVerein = await db1.verein.create({
             data: {
-            name,
-            strasse,
-            hausnummer,
-            postleitzahl,
-            ort,
-            subdomain,
-            erstellt_am: new Date()
+            Name: name,
+            Strasse: strasse,
+            Hausnummer: hausnummer,
+            Postleitzahl: postleitzahl,
+            Ort: ort,
+            Subdomain: subdomain,
+            Erstellt_am: new Date(),
+            Geaendert_am: new Date()
             }
         })
 

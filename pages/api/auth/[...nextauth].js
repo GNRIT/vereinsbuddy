@@ -14,10 +14,10 @@ export const authOptions = {
         },
         async authorize(credentials) {
             try {
-            const user = await db1.benutzerkonto.findUnique({
+            const user = await db1.benutzerkonto.findFirst({
                 where: {
-                benutzername: credentials.benutzername,
-                aktiv: true
+                Benutzername: credentials.benutzername,
+                Aktiv: true
                 },
                 include: {
                 person: {
@@ -34,21 +34,21 @@ export const authOptions = {
 
             if (!user) return null;
 
-            const isValid = await bcrypt.compare(credentials.passwort, user.passwort);
+            const isValid = await bcrypt.compare(credentials.passwort, user.Passwort);
             if (!isValid) return null;
 
             return {
-                id: user.id,
-                benutzername: user.benutzername,
-                vorname: user.person?.vorname || null,
-                name: user.person?.name || null,
-                email: user.person?.email || null,
-                person_id: user.person_id,
+                id: user.ID,
+                benutzername: user.Benutzername,
+                vorname: user.person?.Vorname || null,
+                name: user.person?.Name || null,
+                email: user.person?.Email || null,
+                person_id: user.Person_ID,
                 vereine: user.person?.vereinszuordnung?.map(z => ({
-                vereinId: z.verein_id,
-                vereinName: z.verein.name,
-                subdomain: z.verein.subdomain,
-                rolle: z.rolle
+                vereinId: z.Verein_ID,
+                vereinName: z.verein.Name,
+                subdomain: z.verein.Subdomain,
+                rolle: z.Rolle
                 })) || []
             };
             } catch (error) {
@@ -78,7 +78,7 @@ export const authOptions = {
             token.user = user;
 
             if (user.vereine?.length === 1) {
-            token.user.aktuellerVerein = user.vereine[0].verein_id;
+            token.user.aktuellerVerein = user.vereine[0].vereinId;
             }
         }
         return token;
@@ -88,7 +88,7 @@ export const authOptions = {
         id: token.id,
         name: token.name,
         email: token.email,
-        person_id: token.Person_id
+        person_id: token.person_id
         };
         return session;
         }

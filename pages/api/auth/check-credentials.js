@@ -9,13 +9,13 @@ export default async function handler(req, res) {
 
     try {
         const user = await db1.benutzerkonto.findUnique({
-            where: { benutzername: benutzername },
+            where: { Benutzername: benutzername },
             select: {
-                passwort: true,
+                Passwort: true,
                 person: {
                     select: {
-                        vorname: true,
-                        name: true,
+                        Vorname: true,
+                        Name: true,
                         vereinszuordnung: {
                             include: {
                                 verein: true
@@ -31,14 +31,14 @@ export default async function handler(req, res) {
         }
 
         res.status(200).json({
-            passwortHash: user.passwort,
+            passwortHash: user.Passwort,
             userData: {
-                vorname: user.person.vorname,
-                name: user.person.name,
+                vorname: user.person.Vorname,
+                name: user.person.Name,
                 vereine: user.person.vereinszuordnung.map(z => ({
-                    verein_id: z.verein_id,
-                    vereinName: z.verein.name,
-                    rolle: z.rolle
+                    vereinId: z.Verein_ID,
+                    vereinName: z.verein.Name,
+                    rolle: z.Rolle
                 }))
             }
         });

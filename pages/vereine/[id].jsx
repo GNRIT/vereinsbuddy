@@ -22,7 +22,7 @@ export default function VereinDetail({ verein }) {
         <div>
         <div className="bg-white shadow rounded-lg p-6">
             <div className="flex justify-between items-center mb-6">
-            <h1 className="text-2xl font-bold text-gray-900">Verein: {verein.name}</h1>
+            <h1 className="text-2xl font-bold text-gray-900">Verein: {verein.Name}</h1>
             <button
                 onClick={() => router.push('/verein-auswahl')}
                 className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded"
@@ -38,13 +38,13 @@ export default function VereinDetail({ verein }) {
                 <div className="mb-4">
                     <label className="block text-sm font-medium text-gray-500">Adresse</label>
                     <p className="mt-1 text-sm text-gray-900">
-                    {verein.strasse} {verein.hausnummer}<br />
-                    {verein.postleitzahl} {verein.ort}
+                    {verein.Strasse} {verein.Hausnummer}<br />
+                    {verein.Postleitzahl} {verein.Ort}
                     </p>
                 </div>
                 <div className="mb-4">
                     <label className="block text-sm font-medium text-gray-500">Subdomain</label>
-                    <p className="mt-1 text-sm text-gray-900">{verein.subdomain}</p>
+                    <p className="mt-1 text-sm text-gray-900">{verein.Subdomain}</p>
                 </div>
                 </div>
             </div>
@@ -66,6 +66,14 @@ export default function VereinDetail({ verein }) {
                     )}
                     </p>
                 </div>
+                    <div className="mb-4">
+                    <label className="block text-sm font-medium text-gray-500">Erstellt amn</label>
+                    <p className="mt-1 text-sm text-gray-900">{verein.Erstellt_am}</p>
+                    </div>
+                    <div className="mb-4">
+                    <label className="block text-sm font-medium text-gray-500">Geaendert_am</label>
+                    <p className="mt-1 text-sm text-gray-900">{verein.Geaendert_am}</p>
+                    </div>
                 </div>
             </div>
             </div>
@@ -86,7 +94,7 @@ export async function getServerSideProps(context) {
     
         const verein = await db1.verein.findUnique({
         where: {
-            id: parsedId
+            ID: parsedId
         },
         });
     

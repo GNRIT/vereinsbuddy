@@ -50,11 +50,11 @@ export default function NeuerVerein() {
     }
 
     // Nur Admins dürfen Vereine erstellen
-    const isAdmin = session.user.vereine.some(v => v.rolle === 'admin')
+    const isAdmin = session.user.vereine.some(v => v.Rolle === 'admin')
     if (!isAdmin) {
         return {
         redirect: {
-            destination: '/dashboard',
+            destination: '/admin',
             permanent: false,
         },
         }

@@ -41,6 +41,7 @@ export default async function handler(req, res) {
             Email,
             HandyNr,
             Erstellt_am: new Date(),
+            Geaendert_am: new Date(),
             }
         })
 
@@ -54,6 +55,7 @@ export default async function handler(req, res) {
                 Verein_ID: verein.ID,
                 Rolle,
                 Erstellt_am: new Date(),
+                Geaendert_am: new Date(),
             }
             })
         }

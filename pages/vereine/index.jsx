@@ -14,7 +14,7 @@ export default function VereinsListe({ vereine: initialVereine }) {
             });
 
             if (res.ok) {
-            setVereine(vereine.filter((v) => v.id !== id));
+            setVereine(vereine.filter((v) => v.ID !== id));
             } else {
             const error = await res.json();
             alert(error.message || 'Fehler beim Löschen');
@@ -42,34 +42,46 @@ export default function VereinsListe({ vereine: initialVereine }) {
             <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                 <tr>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Adresse</th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Subdomain</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Erstellt am</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Geändert am</th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aktionen</th>
                 </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                 {vereine.map((verein) => (
-                    <tr key={verein.id}>
+                    <tr key={verein.ID}>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm font-medium text-gray-900">{verein.ID}</div>
+                    </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-gray-900">{verein.name}</div>
+                        <div className="text-sm font-medium text-gray-900">{verein.Name}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm text-gray-900">
-                        {verein.strasse} {verein.hausnummer}
+                        {verein.Strasse} {verein.Hausnummer}
                         </div>
                         <div className="text-sm text-gray-500">
-                        {verein.postleitzahl} {verein.ort}
+                        {verein.Postleitzahl} {verein.Ort}
                         </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{verein.subdomain}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{verein.Subdomain}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm font-medium text-gray-900">{verein.Erstellt_am}</div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm font-medium text-gray-900">{verein.Geaendert_am}</div>
+                    </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <div className="flex space-x-3">
-                        <Link href={`/vereine/${verein.id}/bearbeiten`}>
+                        <Link href={`/vereine/${verein.ID}/bearbeiten`}>
                             <span className="text-blue-600 hover:text-blue-900 cursor-pointer">Bearbeiten</span>
                         </Link>
                         <button
-                            onClick={() => handleDelete(verein.id)}
+                            onClick={() => handleDelete(verein.ID)}
                             className="text-red-600 hover:text-red-900"
                         >
                             Löschen

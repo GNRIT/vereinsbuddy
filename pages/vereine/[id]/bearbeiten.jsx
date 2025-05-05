@@ -52,11 +52,11 @@ export default function VereinBearbeiten({ initialData }) {
     }*/
 
     // Nur Admins dürfen Vereine bearbeiten
-    /*const isAdmin = session.user.vereine.some(v => v.rolle === 'admin')
+    /*const isAdmin = session.user.vereine.some(v => v.Rolle === 'admin')
     if (!isAdmin) {
         return {
         redirect: {
-            destination: '/dashboard',
+            destination: '/admin',
             permanent: false,
         },
         }

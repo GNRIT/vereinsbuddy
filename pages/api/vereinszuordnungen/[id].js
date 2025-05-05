@@ -17,13 +17,14 @@ export default async function handler(req, res) {
     }
     else if (req.method === 'PUT') {
         try {
-        const { Person_ID, Verein_ID, Rolle } = req.body
+        const { person_id, verein_id, rolle } = req.body
         const updated = await db1.vereinszuordnung.update({
             where: { ID: parseInt(id) },
             data: {
-            Person_ID: parseInt(Person_ID),
-            Verein_ID: parseInt(Verein_ID),
-            Rolle,
+            Person_ID: parseInt(person_id),
+            Verein_ID: parseInt(verein_id),
+            Rolle: rolle,
+            Erstellt_am: new Date(),
             Geaendert_am: new Date()
             }
         })

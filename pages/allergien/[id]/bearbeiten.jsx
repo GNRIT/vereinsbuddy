@@ -7,7 +7,7 @@ export default function AllergieBearbeiten({ initialData }) {
 
     const handleSubmit = async (formData) => {
         try {
-        const response = await fetch(`/api/allergien/${initialData.id}`, {
+        const response = await fetch(`/api/allergien/${initialData.ID}`, {
             method: 'PUT',
             headers: {
             'Content-Type': 'application/json',

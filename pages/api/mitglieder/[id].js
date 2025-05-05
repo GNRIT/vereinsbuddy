@@ -14,7 +14,7 @@ export default async function handler(req, res) {
         try {
         const mitglied = await db1.person.findUnique({
             where: {
-            id: parseInt(id),
+            ID: parseInt(id),
             },
             include: {
             Vereinszuordnung: {
@@ -52,6 +52,7 @@ export default async function handler(req, res) {
             Ort,
             Email,
             HandyNr,
+            Erstellt_am: new Date(),
             Geaendert_am: new Date(),
             }
         })
