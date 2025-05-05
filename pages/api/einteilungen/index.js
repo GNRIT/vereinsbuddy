@@ -13,7 +13,7 @@ export default async function handler(req, res) {
         const einteilungen = await db2.einteilung.findMany({
             include: {
             einsatz: true,
-            dientsabend: true,
+            dienstabend: true,
             ff_mitglied: true,
             fahrzeug: true,
             einheit: true,

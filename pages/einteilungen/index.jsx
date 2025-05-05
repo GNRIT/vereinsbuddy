@@ -2,7 +2,7 @@ import { vereinDbPrisma as db2 } from '@/lib/prisma';
 import Link from 'next/link';
 import { useState } from 'react';
 
-export default function EinteilungenListe({initialEinteilungen }) {
+export default function EinteilungenListe({einteilungen: initialEinteilungen  }) {
     const [einteilungen, setEinteilungen] = useState(initialEinteilungen);
 
     const handleDelete = async (id) => {
@@ -54,7 +54,7 @@ export default function EinteilungenListe({initialEinteilungen }) {
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{einteilung.ID}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{einteilung.einsatz?.Titel || 'Kein Einsatz'}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {einteilung.dientsabend?.Datum ? new Date(einteilung.dientsabend.Datum).toLocaleDateString() : 'Kein Dienstabend'}
+                        {einteilung.dienstabend?.Datum ? new Date(einteilung.dientsabend.Datum).toLocaleDateString() : 'Kein Dienstabend'}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                         {einteilung.ff_mitglied?.Vorname} {einteilung.ff_mitglied?.Name}
@@ -95,7 +95,7 @@ export async function getServerSideProps() {
     const einteilungen = await db2.einteilung.findMany({
         include: {
         einsatz: true,
-        dientsabend: true,
+        dienstabend: true,
         ff_mitglied: true,
         fahrzeug: true,
         einheit: true,

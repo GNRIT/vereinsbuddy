@@ -21,10 +21,8 @@ export default function Layout({ children }) {
             </Head>
 
             {shouldShowNavigation && <Navigation />}
-
             
                 {children}
-            
 
             <footer>
                 <Fuszeile />

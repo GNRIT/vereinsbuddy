@@ -8,8 +8,8 @@ export function VereinProvider({ children }) {
     const [aktiverVerein, setAktiverVerein] = useState(null)
 
     useEffect(() => {
-        if (session?.user?.vereine?.length === 1) {
-        setAktiverVerein(session.user.vereine[0])
+        if (session?.user?.vereine?.length > 0) {
+            setAktiverVerein(prev => prev ?? session.user.vereine[0])
         }
     }, [session])
 
