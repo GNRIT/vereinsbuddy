@@ -33,52 +33,61 @@ export default async function handler(req, res) {
         } catch (error) {
         res.status(500).json({ message: 'Fehler beim Abrufen des Mitglieds', error: error.message })
         }
-    } else if (req.method === 'PUT') {
+    }  else if (req.method === 'PUT') {
         try {
-        const { Vorname, Name, Geburtsdatum, Strasse, Hausnummer, Postleitzahl, Ort, Email, HandyNr, Rolle } = req.body
-
-        // Aktualisiere die Person
-        const updatedPerson = await db1.person.update({
-            where: {
-            ID: parseInt(id),
-            },
-            data: {
-            Vorname,
-            Name,
-            Geburtsdatum: Geburtsdatum ? new Date(Geburtsdatum) : null,
-            Strasse,
-            Hausnummer,
-            Postleitzahl,
-            Ort,
-            Email,
-            HandyNr,
-            Erstellt_am: new Date(),
-            Geaendert_am: new Date(),
-            }
-        })
-
-        // Aktualisiere die Vereinszuordnung (falls vorhanden)
-        const existingZuordnung = await db1.vereinszuordnung.findFirst({
-            where: {
-            Person_ID: parseInt(id),
-            }
-        })
-
-        if (existingZuordnung) {
-            await db1.vereinszuordnung.update({
-            where: {
-                ID: existingZuordnung.ID,
-            },
-            data: {
-                Rolle,
-                Geaendert_am: new Date(),
-            }
+            const {
+                Vorname,
+                Name,
+                Geburtsdatum,
+                Strasse,
+                Hausnummer,
+                Postleitzahl,
+                Ort,
+                Email,
+                Handynr,
+                Rolle
+            } = req.body
+    
+            const updatedPerson = await db1.person.update({
+                where: {
+                    ID: parseInt(id),
+                },
+                data: {
+                    Vorname,
+                    Name,
+                    Geburtsdatum: Geburtsdatum && Geburtsdatum !== '' ? new Date(Geburtsdatum) : null,
+                    Strasse,
+                    Hausnummer,
+                    Postleitzahl,
+                    Ort,
+                    Email,
+                    Handynr,
+                    Geaendert_am: new Date(),
+                }
             })
-        }
-
-        res.status(200).json(updatedPerson)
+    
+            const existingZuordnung = await db1.vereinszuordnung.findFirst({
+                where: {
+                    Person_ID: parseInt(id),
+                }
+            })
+    
+            if (existingZuordnung) {
+                await db1.vereinszuordnung.update({
+                    where: {
+                        ID: existingZuordnung.ID,
+                    },
+                    data: {
+                        Rolle,
+                        Geaendert_am: new Date(),
+                    }
+                })
+            }
+    
+            res.status(200).json(updatedPerson)
         } catch (error) {
-        res.status(400).json({ message: 'Fehler beim Aktualisieren des Mitglieds', error: error.message })
+            console.error('PUT Fehler:', error)
+            res.status(400).json({ message: 'Fehler beim Aktualisieren des Mitglieds', error: error.message })
         }
     } else if (req.method === 'DELETE') {
         try {

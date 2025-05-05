@@ -26,7 +26,7 @@ export default async function handler(req, res) {
         }
     } else if (req.method === 'POST') {
         try {
-        const { Vorname, Name, Geburtsdatum, Strasse, Hausnummer, Postleitzahl, Ort, Email, HandyNr, Rolle } = req.body
+        const { Vorname, Name, Geburtsdatum, Strasse, Hausnummer, Postleitzahl, Ort, Email, Handynr, Rolle } = req.body
 
         // Erstelle zuerst die Person
         const neuePerson = await db1.person.create({
@@ -39,7 +39,7 @@ export default async function handler(req, res) {
             Postleitzahl,
             Ort,
             Email,
-            HandyNr,
+            Handynr,
             Erstellt_am: new Date(),
             Geaendert_am: new Date(),
             }

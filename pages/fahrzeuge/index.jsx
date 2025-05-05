@@ -1,9 +1,10 @@
 import { vereinDbPrisma as db2 } from '@/lib/prisma';
 import { getSession } from 'next-auth/react';
 import Link from 'next/link';
+import { useState } from 'react';
 
-export default function FahrzeugListe({ initialFahrzeugen }) {
-    const [fahrzeugen, setFahrzeugen] = useState(initialFahrzeugen);
+export default function FahrzeugListe({ fahrzeuge }) {
+    const [fahrzeugen, setFahrzeugen] = useState(fahrzeuge);
     
         const handleDelete = async (id) => {
             if (confirm('Möchtest du diesen Fahrzeug wirklich löschen?')) {
@@ -50,7 +51,7 @@ export default function FahrzeugListe({ initialFahrzeugen }) {
                 </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                {fahrzeugen.map((fahrzeug) => (
+                {fahrzeugen.map((fahrzeug) => ( 
                     <tr key={fahrzeug.ID}>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{fahrzeug.ID}</td>
                     <td className="px-6 py-4 whitespace-nowrap">
@@ -103,7 +104,7 @@ export default function FahrzeugListe({ initialFahrzeugen }) {
 
     const fahrzeuge = await db2.fahrzeug.findMany({
         orderBy: {
-        Kennzeichen: 'asc',
+        ID: 'asc',
         },
     })
 

@@ -12,7 +12,7 @@ export default function VereinAuswahl() {
         if (status === 'authenticated') {
 
             if (session?.user?.vereine?.length === 1) {
-                router.push(`/vereine/${session.user.vereine[0].ID}`);
+                router.push(`/vereine/${session.user.vereine[0].vereinId}`);
             }
         }
 
@@ -60,7 +60,7 @@ export default function VereinAuswahl() {
             <div className="max-w-md w-full space-y-8">
                 <div className="text-center">
                     <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-                        Willkommen, {session.user.Vorname}!
+                        Willkommen, {session.user.vorname} {session.user.name}!
                     </h2>
                     <p className="mt-2 text-sm text-gray-600">
                         Bitte wählen Sie einen Verein aus
@@ -72,21 +72,21 @@ export default function VereinAuswahl() {
                         <div className="space-y-4">
                             {session.user.vereine.map((verein) => (
                                 <div
-                                    key={verein.ID}
-                                    onClick={() => handleVereinSelect(verein.ID)}
+                                    key={verein.vereinId}
+                                    onClick={() => handleVereinSelect(verein.vereinId)}
                                     className="cursor-pointer bg-white py-4 px-6 border border-gray-200 rounded-lg shadow-sm hover:border-blue-500 hover:ring-1 hover:ring-blue-500 transition duration-150 ease-in-out"
                                 >
                                     <h3 className="text-lg font-medium text-gray-900">
-                                        {verein.Name}
+                                        {verein.vereinName}
                                     </h3>
                                     <p className="mt-1 text-sm text-gray-500">
-                                        Rolle: {verein.Rolle === 'admin' ? (
+                                        Rolle: {verein.rolle === 'admin' ? (
                                             <span className="text-blue-600">Administrator</span>
                                         ) : (
                                             <span>Mitglied</span>
                                         )}
                                     </p>
-                                    <Link href={`/vereine/${verein.ID}`}>
+                                    <Link href={`/vereine/${verein.vereinId}`}>
                                     <span className="text-indigo-600 hover:text-indigo-900">Auswählen</span>
                                     </Link>
                                 </div>

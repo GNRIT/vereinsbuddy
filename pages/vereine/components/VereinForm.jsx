@@ -8,7 +8,9 @@ export default function VereinForm({ initialData = {}, onSubmit }) {
         Hausnummer: initialData.Hausnummer || '',
         Postleitzahl: initialData.Postleitzahl || '',
         Ort: initialData.Ort || '',
-        Subdomain: initialData.Subdomain || ''
+        Subdomain: initialData.Subdomain || '',
+        Erstellt_am: initialData.Erstellt_am,
+        Geaendert_am: initialData.Geaendert_am ? new Date(initialData.Geaendert_am).toISOString().split('T')[0] : '',
     })
 
     const router = useRouter()
@@ -102,7 +104,6 @@ export default function VereinForm({ initialData = {}, onSubmit }) {
             <label htmlFor="Subdomain" className="block text-sm font-medium text-gray-700">Subdomain *</label>
             <div className="mt-1 flex rounded-md shadow-sm">
                 <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
-                https://
                 </span>
                 <input
                 type="text"
@@ -115,7 +116,6 @@ export default function VereinForm({ initialData = {}, onSubmit }) {
                 placeholder="meinverein"
                 />
                 <span className="inline-flex items-center px-3 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
-                .vereinsbuddy.de
                 </span>
             </div>
             </div>

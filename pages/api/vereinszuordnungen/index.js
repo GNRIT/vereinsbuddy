@@ -3,9 +3,9 @@ import { getSession } from 'next-auth/react';
 export default async function handler(req, res) {
     const session = await getSession({ req })
 
-    if (!session) {
+    /*if (!session) {
         return res.status(401).json({ message: 'Nicht autorisiert' })
-    }
+    }*/
 
     if (req.method === 'GET') {
         try {
@@ -13,10 +13,7 @@ export default async function handler(req, res) {
             include: {
             person: true,
             verein: true,
-            },
-            orderBy: {
-            Erstellt_am: 'desc',
-            },
+            }
         })
         res.status(200).json(zuordnungen)
         } catch (error) {
@@ -24,13 +21,13 @@ export default async function handler(req, res) {
         }
     } else if (req.method === 'POST') {
         try {
-        const { person_id, verein_id, rolle } = req.body
+        const { Person_ID, Verein_ID, Rolle } = req.body
 
         // Prüfen ob die Zuordnung bereits existiert
         const existierendeZuordnung = await db1.vereinszuordnung.findFirst({
             where: {
-            Person_ID: parseInt(person_id),
-            Verein_ID: parseInt(verein_id),
+            Person_ID: parseInt(Person_ID),
+            Verein_ID: parseInt(Verein_ID),
             },
         })
 
@@ -40,9 +37,9 @@ export default async function handler(req, res) {
 
         const neueZuordnung = await db1.vereinszuordnung.create({
             data: {
-            Person_ID: parseInt(person_id),
-            Verein_ID: parseInt(verein_id),
-            Rolle: rolle,
+            Person_ID: parseInt(Person_ID),
+            Verein_ID: parseInt(Verein_ID),
+            Rolle,
             Erstellt_am: new Date(),
             Geaendert_am: new Date(),
             },

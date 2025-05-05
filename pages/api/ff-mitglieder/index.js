@@ -63,12 +63,12 @@ async function handlePost(req, res) {
         const neuesMitglied = await db2.ff_mitglied.create({
             data: {
                 Person_ID: Number(Person_ID),
-                Eintrittsdatum: parseDate(Eintrittsdatum) || new Date(),
-                Austrittsdatum: parseDate(Austrittsdatum),
-                Aufnahmedatum: parseDate(Aufnahmedatum),
+                Eintrittsdatum: parseDate() || new Date(),
+                Austrittsdatum: parseDate(),
+                Aufnahmedatum: parseDate(),
                 Status,
-                Erstellt_am: parseDate(Erstellt_am) || new Date(),
-                Geaendert_am: parseDate(Geaendert_am) || new Date(),
+                Erstellt_am: parseDate() || new Date(),
+                Geaendert_am: parseDate() || new Date(),
             }
         });
 

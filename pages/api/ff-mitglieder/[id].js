@@ -33,7 +33,7 @@ export default async function handler(req, res) {
                 Eintrittsdatum,
                 Austrittsdatum,
                 Aufnahmedatum,
-                Status, // <-- richtig benannt!
+                Status,
                 Erstellt_am,
                 Geaendert_am,
             } = req.body
@@ -42,12 +42,12 @@ export default async function handler(req, res) {
                 where: { ID: mitgliedId },
                 data: {
                     Person_ID,
-                    Eintrittsdatum: Eintrittsdatum ? new Date(Eintrittsdatum) : undefined,
-                    Austrittsdatum: Austrittsdatum ? new Date(Austrittsdatum) : null,
-                    Aufnahmedatum: Aufnahmedatum ? new Date(Aufnahmedatum) : null,
-                    Status, // <-- korrekt
-                    Erstellt_am: Erstellt_am ? new Date(Erstellt_am) : new Date(), // fallback: jetzt
-                    Geaendert_am: Geaendert_am ? new Date(Geaendert_am) : new Date(),
+                    Eintrittsdatum: Eintrittsdatum ? new Date() : undefined,
+                    Austrittsdatum: Austrittsdatum ? new Date() : null,
+                    Aufnahmedatum: Aufnahmedatum ? new Date() : null,
+                    Status,
+                    Erstellt_am: Erstellt_am ? new Date() : new Date(),
+                    Geaendert_am: Geaendert_am ? new Date() : new Date(),
                 }
             })
 

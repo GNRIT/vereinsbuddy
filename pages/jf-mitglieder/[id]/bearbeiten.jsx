@@ -27,7 +27,7 @@ export default function JFMitgliedBearbeiten({ initialData }) {
             })
 
             if (response.ok) {
-                router.push(`/jf-mitglieder/${initialData.ID}`)
+                router.push(`/jf-mitglieder`)
             } else {
                 const errorData = await response.json()
                 alert(errorData.message || 'Fehler beim Speichern')

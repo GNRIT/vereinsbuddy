@@ -27,15 +27,15 @@ export default function DienstabendListe() {
         fetchDienstabende()
     }, [])
 
-    const handleDelete = async (ID) => {
+    const handleDelete = async (id) => {
         if (confirm('Möchten Sie diesen Dienstabend wirklich löschen?')) {
         try {
-            const response = await fetch(`/api/dienstabend/${ID}`, {
+            const response = await fetch(`/api/dienstabend/${id}`, {
             method: 'DELETE'
             })
 
             if (response.ok) {
-            setDienstabende(dienstabende.filter(da => da.ID !== ID))
+            setDienstabende(dienstabende.filter(da => da.ID !== id))
             } else {
             alert('Fehler beim Löschen des Dienstabends')
             }

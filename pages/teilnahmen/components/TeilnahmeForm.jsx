@@ -43,47 +43,28 @@ export default function TeilnahmeForm({ initialData = {}, onSubmit }) {
         <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 gap-6">
             <div>
-            <label htmlFor="Mitglied_ID" className="block text-sm font-medium text-gray-700">Mitglied *</label>
-            <select name="Mitglied_ID" id="Mitglied_ID" required>
-                <option value="">Bitte wählen</option>
-                {
-                    (() => {
-                        const options = [];
-                        for (const key in mitglieder) {
-                            const mitglied = mitglieder[key];
-                            options.push(
-                                <option key={mitglied.ID} value={mitglied.ID}>
-                                    {mitglied.Vorname} {mitglied.Name}
-                                </option>
-                            );
-                        }
-                        return options;
-                    })()
-                }
-            </select>
+            <label htmlFor="Mitglied_ID" className="block text-sm font-medium text-gray-700">Mitglied ID *</label>
+            
+
+            <input
+            name="Mitglied_ID"
+            id="Mitglied_ID"
+                required
+                value={formData.Mitglied_ID}
+                onChange={handleChange}
+                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            />
 
             </div>
 
             <div>
-            <label htmlFor="Einsatz_ID" className="block text-sm font-medium text-gray-700">Einsaetze *</label>
+            <label htmlFor="Einsatz_ID" className="block text-sm font-medium text-gray-700">Einsatz ID *</label>
             
-            <select name="Einsatz_ID" id="Einsatz_ID" required>
-                <option value="">Bitte wählen</option>
-                {
-                    (() => {
-                        const options = [];
-                        for (const key in einsaetze) {
-                            const einsatz = einsaetze[key];
-                            options.push(
-                                <option key={einsatz.ID} value={einsatz.ID}>
-                                    {einsatz.ID} {einsatz.Einsatznummer}
-                                </option>
-                            );
-                        }
-                        return options;
-                    })()
-                }
-            </select>
+            <input name="Einsatz_ID" id="Einsatz_ID" required
+                value={formData.Einsatz_ID}
+                onChange={handleChange}
+                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            />
             </div>
 
             <div>

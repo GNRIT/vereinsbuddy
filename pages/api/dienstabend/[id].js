@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
     if (req.method === 'GET') {
         try {
-        const dienstabend = await db2.dientsabend.findUnique({
+        const dienstabend = await db2.dienstabend.findUnique({
             where: {
             ID: parseInt(id),
             }
@@ -29,7 +29,7 @@ export default async function handler(req, res) {
         try {
         const { Datum, Thema } = req.body
 
-        const updatedDienstabend = await db2.dientsabend.update({
+        const updatedDienstabend = await db2.dienstabend.update({
             where: {
             ID: parseInt(id)
             },
@@ -46,7 +46,7 @@ export default async function handler(req, res) {
         }
     } else if (req.method === 'DELETE') {
         try {
-        await db2.dientsabend.delete({
+        await db2.dienstabend.delete({
             where: {
             ID: parseInt(id)
             }

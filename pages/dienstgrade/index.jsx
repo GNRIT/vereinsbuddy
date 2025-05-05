@@ -54,9 +54,9 @@ export default function DienstgradeListe({ initialDienstgrade }) {
                             <tr>
                                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
                                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Abkürzung (m)</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bezeichnung (m)</th>
+                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Beschreibung (m)</th>
                                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Abkürzung (w)</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bezeichnung (w)</th>
+                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Beschreibung (w)</th>
                                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aktionen</th>
                             </tr>
                         </thead>
@@ -66,9 +66,9 @@ export default function DienstgradeListe({ initialDienstgrade }) {
                                     <tr key={dienstgrad.ID}>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{dienstgrad.ID}</td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{dienstgrad.Abkuerzung_maennlich}</td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{dienstgrad.Bezeichnung_maennlich}</td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{dienstgrad.Beschreibung_maennlich}</td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{dienstgrad.Abkuerzung_weiblich}</td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{dienstgrad.Bezeichnung_weiblich}</td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{dienstgrad.Beschreibung_weiblich}</td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium flex space-x-4">
                                             <Link href={`/dienstgrade/${dienstgrad.ID}/bearbeiten`}>
                                                 <span className="text-indigo-600 hover:text-indigo-900 cursor-pointer">Bearbeiten</span>

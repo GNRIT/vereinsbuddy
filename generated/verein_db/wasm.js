@@ -134,7 +134,7 @@ exports.Prisma.DienstgradScalarFieldEnum = {
   Abkuerzung_weiblich: 'Abkuerzung_weiblich',
   Beschreibung_weiblich: 'Beschreibung_weiblich',
   Erstellt_am: 'Erstellt_am',
-  Geaenfert_am: 'Geaenfert_am'
+  Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.DienstabendScalarFieldEnum = {
@@ -142,7 +142,7 @@ exports.Prisma.DienstabendScalarFieldEnum = {
   Datum: 'Datum',
   Thema: 'Thema',
   Erstellt_am: 'Erstellt_am',
-  Geaenfert_am: 'Geaenfert_am'
+  Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.EinheitScalarFieldEnum = {
@@ -150,7 +150,7 @@ exports.Prisma.EinheitScalarFieldEnum = {
   Abkuerzung: 'Abkuerzung',
   Beschreibung: 'Beschreibung',
   Erstellt_am: 'Erstellt_am',
-  Geaenfert_am: 'Geaenfert_am'
+  Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.EinsatzScalarFieldEnum = {
@@ -167,7 +167,7 @@ exports.Prisma.EinsatzScalarFieldEnum = {
   Ort: 'Ort',
   Art: 'Art',
   Erstellt_am: 'Erstellt_am',
-  Geaenfert_am: 'Geaenfert_am'
+  Geaendert_am: 'Geaendert_am'
 };
 
 exports.Prisma.EinteilungScalarFieldEnum = {

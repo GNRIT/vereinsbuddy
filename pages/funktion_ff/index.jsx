@@ -9,7 +9,7 @@ export default function FunktionenListe({ funktionen }) {
                     if (!confirm('Willst du dieses FF-Funktion wirklich löschen?')) return;
                         
                     try {
-                        const res = await fetch(`/api/ff-funktion/${id}`, {
+                        const res = await fetch(`/api/funktion_ff/${id}`, {
                             method: 'DELETE',
                         });
                         

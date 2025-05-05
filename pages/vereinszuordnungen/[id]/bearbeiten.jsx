@@ -7,7 +7,7 @@ export default function VereinszuordnungBearbeiten({ initialData }) {
 
     const handleSubmit = async (formData) => {
         try {
-            const response = await fetch(`/api/vereinszuordnung/${initialData.id}`, {
+            const response = await fetch(`/api/vereinszuordnungen/${initialData.ID}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

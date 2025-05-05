@@ -22,9 +22,9 @@ export default function Layout({ children }) {
 
             {shouldShowNavigation && <Navigation />}
 
-            <main className="flex-grow">
+            
                 {children}
-            </main>
+            
 
             <footer>
                 <Fuszeile />

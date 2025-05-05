@@ -41,11 +41,12 @@ export default function TeilnahmenListe() {
             <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                 <tr>
-                    {['ID', 'Mitglied', 'Veranstaltung', 'Typ', 'Erstellt am', 'Aktionen'].map((th) => (
-                    <th key={th} className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        {th}
-                    </th>
-                    ))}
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mitglied ID</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Veranstaltung ID</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Typ</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Erstellt am</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aktionen</th>
                 </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
@@ -53,9 +54,9 @@ export default function TeilnahmenListe() {
                     <tr key={teilnahme.ID}>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{teilnahme.ID}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {teilnahme.mitglied?.Vorname} {teilnahme.mitglied?.Name}
+                        {teilnahme.mitglied?.ID}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{teilnahme.veranstaltung?.Titel}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{teilnahme.veranstaltung?.ID}</td>
                     <td className="px-6 py-4 whitespace-nowrap">
                         <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
                         teilnahme.Typ === 'einsatz'
@@ -101,17 +102,14 @@ export default function TeilnahmenListe() {
 export async function getServerSideProps() {
     const teilnahmen = await db2.teilnahme.findMany({
         orderBy: {
-        Erstellt_am: 'desc',
-        },
-        include: {
-        mitglied: true,
-        veranstaltung: true,
-        },
+            Erstellt_am: 'desc',
+        }
     });
 
     return {
         props: {
-        teilnahmen: JSON.parse(JSON.stringify(teilnahmen)),
+            teilnahmen: JSON.parse(JSON.stringify(teilnahmen)),
         },
     };
 }
+

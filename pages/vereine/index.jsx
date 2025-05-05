@@ -73,12 +73,17 @@ export default function VereinsListe({ vereine: initialVereine }) {
                         <div className="text-sm font-medium text-gray-900">{verein.Erstellt_am}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-gray-900">{verein.Geaendert_am}</div>
+                        <div className="text-sm font-medium text-gray-900">
+                            {verein.Geaendert_am ? new Date(verein.Geaendert_am).toLocaleDateString() : '-'}
+                        </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <div className="flex space-x-3">
                         <Link href={`/vereine/${verein.ID}/bearbeiten`}>
                             <span className="text-blue-600 hover:text-blue-900 cursor-pointer">Bearbeiten</span>
+                        </Link>
+                        <Link href={`/vereine/${verein.ID}`}>
+                            <span className="text-blue-600 hover:text-blue-900 cursor-pointer">ansehen</span>
                         </Link>
                         <button
                             onClick={() => handleDelete(verein.ID)}

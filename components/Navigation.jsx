@@ -14,7 +14,7 @@ export default function Layout() {
         return <div>Laden...</div>;
     }
 
-    /* if (!session && router.pathname !== '/auth/login' && router.pathname !== 'verein-auswahl') {
+    if (!session && router.pathname !== '/auth/login' && router.pathname !== 'verein-auswahl') {
         return (
             <div className="min-h-screen flex items-center justify-center">
                 <div className="text-center">
@@ -28,7 +28,7 @@ export default function Layout() {
                 </div>
             </div>
         );
-    }*/
+    }
 
     return (
         <div className="min-h-screen bg-gray-100">
@@ -46,7 +46,7 @@ export default function Layout() {
 
                                     <Link href="/admin">
                                         <span className={`${router.pathname === '/admin' ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
-                                            Dashboard 
+                                            Dashboard
                                         </span>
                                     </Link>
 
@@ -94,7 +94,7 @@ export default function Layout() {
                                     </span>
                                     </Link>
 
-                                    <Link href="/einheiten">
+                                    {/*<Link href="/einheiten">
                                     <span className={`${router.pathname.startsWith('/einheiten') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
                                         Einheiten
                                     </span>
@@ -170,7 +170,7 @@ export default function Layout() {
                                         <span className={`${router.pathname.startsWith('/teilnahmen') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
                                             Teilnahmen
                                         </span>
-                                    </Link>
+                                    </Link>*/}
                                 </div>
                             )}
                         </div>
@@ -261,7 +261,7 @@ export default function Layout() {
                                                 <p className="block px-4 py-2 text-sm text-gray-700 border-b">
                                                     {session.user?.vorname} {session.user?.name}
                                                 </p>
-                                                <Link href={`/mitglieder/${session.user.Person_ID}`}>
+                                                <Link href={`/mitglieder/${session.user.person_id}`}>
                                                     <span
                                                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                                         role="menuitem"

@@ -9,7 +9,7 @@ export default function JugendfunktionenListe({ funktionen }) {
                 if (!confirm('Willst du dieses JF-Funktion wirklich löschen?')) return;
                     
                 try {
-                    const res = await fetch(`/api/jf-funktion/${id}`, {
+                    const res = await fetch(`/api/funktion_jf/${id}`, {
                         method: 'DELETE',
                     });
                     

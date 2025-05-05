@@ -11,8 +11,10 @@ export default function MitgliedForm({ initialData = {}, onSubmit }) {
         Postleitzahl: initialData.Postleitzahl || '',
         Ort: initialData.Ort || '',
         Email: initialData.Email || '',
-        HandyNr: initialData.HandyNr || '',
-        Rolle: initialData.Vereinszuordnung?.[0]?.Rolle || 'mitglied'
+        Handynr: initialData.Handynr || '',
+        Rolle: initialData.Vereinszuordnung?.[0]?.Rolle || 'mitglied',
+        Erstellt_am: initialData.Erstellt_am,
+        Geaendert_am: initialData.Geaendert_am ? new Date(initialData.Geaendert_am).toISOString().split('T')[0] : '',
     })
 
     const router = useRouter()

@@ -4,20 +4,20 @@ import { useState } from 'react'
 export default function FFMitgliedForm({ initialData = {}, onSubmit }) {
     const [formData, setFormData] = useState({
         person_ID: initialData.Person_ID,
-        eintrittsdatum: initialData.Eintrittsdatum
+        Eintrittsdatum: initialData.Eintrittsdatum
             ? new Date(initialData.Eintrittsdatum).toISOString().split('T')[0] 
             : new Date().toISOString().split('T')[0],
-        austrittsdatum: initialData.Austrittsdatum
+        Austrittsdatum: initialData.Austrittsdatum
             ? new Date(initialData.Austrittsdatum).toISOString().split('T')[0] 
             : '',
-        aufnahmedatum: initialData.Aufnahmedatum
+        Austrittsdatum: initialData.Aufnahmedatum
             ? new Date(initialData.Aufnahmedatum).toISOString().split('T')[0] 
             : '',
-        aktiv: initialData.Status === 'aktiv' ? true : false,
-        erstelldatum: initialData.Erstellt_am
+        Aktiv: initialData.Status === 'aktiv' ? true : false,
+        Erstellt_am: initialData.Erstellt_am
             ? new Date(initialData.Erstellt_am).toISOString().split('T')[0] 
             : '',
-        änderungsdatum: initialData.Geaendert_am
+        Geaendert_am: initialData.Geaendert_am
             ? new Date(initialData.Geaendert_am).toISOString().split('T')[0] 
             : '',
     })
@@ -37,12 +37,12 @@ export default function FFMitgliedForm({ initialData = {}, onSubmit }) {
 
         const payload = {
             Person_ID: formData.person_ID ? parseInt(formData.person_ID, 10) : null,
-            Eintrittsdatum: formData.eintrittsdatum,
-            Austrittsdatum: formData.austrittsdatum || null,
-            Aufnahmedatum: formData.aufnahmedatum || null,
-            Status: formData.aktiv ? 'aktiv' : 'inaktiv',
-            Erstellt_am: formData.erstelldatum,
-            Geaendert_am: formData.änderungsdatum || null,
+            Eintrittsdatum: formData.Eintrittsdatum,
+            Austrittsdatum: formData.Austrittsdatum || null,
+            Aufnahmedatum: formData.Aufnahmedatum || null,
+            Status: formData.Aktiv ? 'aktiv' : 'inaktiv',
+            Erstellt_am: formData.Erstellt_am,
+            Geaendert_am: formData.Geaendert_am || null,
         }
 
         await onSubmit(payload)
@@ -64,37 +64,37 @@ export default function FFMitgliedForm({ initialData = {}, onSubmit }) {
             />
             </div>
             <div>
-            <label htmlFor="eintrittsdatum" className="block text-sm font-medium text-gray-700">Eintrittsdatum *</label>
+            <label htmlFor="Eintrittsdatum" className="block text-sm font-medium text-gray-700">Eintrittsdatum *</label>
             <input
                 type="date"
-                name="eintrittsdatum"
-                id="eintrittsdatum"
+                name="Eintrittsdatum"
+                id="Eintrittsdatum"
                 required
-                value={formData.eintrittsdatum}
+                value={formData.Eintrittsdatum}
                 onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             />
             </div>
     
             <div>
-            <label htmlFor="austrittsdatum" className="block text-sm font-medium text-gray-700">Austrittsdatum</label>
+            <label htmlFor="Austrittsdatum" className="block text-sm font-medium text-gray-700">Austrittsdatum</label>
             <input
                 type="date"
-                name="austrittsdatum"
-                id="austrittsdatum"
-                value={formData.austrittsdatum}
+                name="Austrittsdatum"
+                id="Austrittsdatum"
+                value={formData.Austrittsdatum}
                 onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             />
             </div>
     
             <div>
-            <label htmlFor="aufnahmedatum" className="block text-sm font-medium text-gray-700">Aufnahmedatum</label>
+            <label htmlFor="Aufnahmedatum" className="block text-sm font-medium text-gray-700">Aufnahmedatum</label>
             <input
                 type="date"
-                name="aufnahmedatum"
-                id="aufnahmedatum"
-                value={formData.aufnahmedatum}
+                name="Aufnahmedatum"
+                id="Aufnahmedatum"
+                value={formData.Aufnahmedatum}
                 onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             />
@@ -103,37 +103,37 @@ export default function FFMitgliedForm({ initialData = {}, onSubmit }) {
             <div className="flex items-center">
             <input
                 type="checkbox"
-                name="aktiv"
-                id="aktiv"
-                checked={formData.aktiv}
+                name="Aktiv"
+                id="Aktiv"
+                checked={formData.Aktiv}
                 onChange={handleChange}
                 className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
             />
-            <label htmlFor="aktiv" className="ml-2 block text-sm text-gray-900">
+            <label htmlFor="Aktiv" className="ml-2 block text-sm text-gray-900">
                 Aktiv
             </label>
             </div>
         </div>
     
         <div>
-            <label htmlFor="erstelldatum" className="block text-sm font-medium text-gray-700">Erstellt am</label>
+            <label htmlFor="Erstellt_am" className="block text-sm font-medium text-gray-700">Erstellt am</label>
             <input
                 type="date"
-                name="erstelldatum"
-                id="erstelldatum"
-                value={formData.erstelldatum}
+                name="Erstellt_am"
+                id="Erstellt_am"
+                value={formData.Erstellt_am}
                 onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             />
         </div>
     
         <div>
-            <label htmlFor="änderungsdatum" className="block text-sm font-medium text-gray-700">Geändert am</label>
+            <label htmlFor="Geändert_am" className="block text-sm font-medium text-gray-700">Geändert am</label>
             <input
                 type="date"
-                name="änderungsdatum"
-                id="änderungsdatum"
-                value={formData.änderungsdatum}
+                name="Geändert_am"
+                id="Geändert_am"
+                value={formData.Geändert_am}
                 onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             />

@@ -1,4 +1,3 @@
-import Layout from '@/components/Layout'
 import { vereinDbPrisma as db2 } from '@/lib/prisma'
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
@@ -28,7 +27,7 @@ export default function FFMitgliedBearbeiten({ initialData }) {
             })
 
             if (response.ok) {
-                router.push(`/ff-mitglieder/${initialData.ID}`)
+                router.push(`/ff-mitglieder`)
             } else {
                 const errorData = await response.json()
                 alert(errorData.message || 'Fehler beim Speichern')
@@ -40,12 +39,10 @@ export default function FFMitgliedBearbeiten({ initialData }) {
     }
 
     return (
-        <Layout>
             <div className="bg-white shadow rounded-lg p-6">
                 <h1 className="text-2xl font-bold text-gray-900 mb-6">FF-Mitglied bearbeiten</h1>
                 <FFMitgliedForm initialData={initialData} onSubmit={handleSubmit} />
             </div>
-        </Layout>
     )
 }
 

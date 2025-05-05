@@ -8,7 +8,7 @@ export default function VereinszuordnungenListe({ zuordnungen: initialZuordnunge
     const handleDelete = async (id) => {
         if (confirm('Möchtest du diese Zuordnung wirklich löschen?')) {
             try {
-                const res = await fetch(`/api/vereinszuordnung/${id}`, {
+                const res = await fetch(`/api/vereinszuordnungen/${id}`, {
                     method: 'DELETE',
                 });
 

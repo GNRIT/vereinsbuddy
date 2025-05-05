@@ -67,11 +67,11 @@ export default function VereinDetail({ verein }) {
                     </p>
                 </div>
                     <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-500">Erstellt amn</label>
+                    <label className="block text-sm font-medium text-gray-500">Erstellt am</label>
                     <p className="mt-1 text-sm text-gray-900">{verein.Erstellt_am}</p>
                     </div>
                     <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-500">Geaendert_am</label>
+                    <label className="block text-sm font-medium text-gray-500">Geaendert am</label>
                     <p className="mt-1 text-sm text-gray-900">{verein.Geaendert_am}</p>
                     </div>
                 </div>

@@ -4,9 +4,9 @@ import { getSession } from 'next-auth/react';
 export default async function handler(req, res) {
     const session = await getSession({ req })
 
-    if (!session) {
+    /*if (!session) {
         return res.status(401).json({ message: 'Nicht autorisiert' })
-    }
+    }*/
 
     if (req.method === 'GET') {
         try {
@@ -14,11 +14,15 @@ export default async function handler(req, res) {
             include: {
             ff_mitglied: {
                 select: {
-                Vorname: true,
-                Name: true
+                Person_ID: true,
                 }
             },
             funktion_ff: {
+                select: {
+                Name: true
+                }
+            },
+            funktion_jf: {
                 select: {
                 Name: true
                 }

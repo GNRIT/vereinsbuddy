@@ -3832,7 +3832,7 @@ export namespace Prisma {
     Abkuerzung_weiblich: string | null
     Beschreibung_weiblich: string | null
     Erstellt_am: Date | null
-    Geaenfert_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type DienstgradMaxAggregateOutputType = {
@@ -3842,7 +3842,7 @@ export namespace Prisma {
     Abkuerzung_weiblich: string | null
     Beschreibung_weiblich: string | null
     Erstellt_am: Date | null
-    Geaenfert_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type DienstgradCountAggregateOutputType = {
@@ -3852,7 +3852,7 @@ export namespace Prisma {
     Abkuerzung_weiblich: number
     Beschreibung_weiblich: number
     Erstellt_am: number
-    Geaenfert_am: number
+    Geaendert_am: number
     _all: number
   }
 
@@ -3872,7 +3872,7 @@ export namespace Prisma {
     Abkuerzung_weiblich?: true
     Beschreibung_weiblich?: true
     Erstellt_am?: true
-    Geaenfert_am?: true
+    Geaendert_am?: true
   }
 
   export type DienstgradMaxAggregateInputType = {
@@ -3882,7 +3882,7 @@ export namespace Prisma {
     Abkuerzung_weiblich?: true
     Beschreibung_weiblich?: true
     Erstellt_am?: true
-    Geaenfert_am?: true
+    Geaendert_am?: true
   }
 
   export type DienstgradCountAggregateInputType = {
@@ -3892,7 +3892,7 @@ export namespace Prisma {
     Abkuerzung_weiblich?: true
     Beschreibung_weiblich?: true
     Erstellt_am?: true
-    Geaenfert_am?: true
+    Geaendert_am?: true
     _all?: true
   }
 
@@ -3989,7 +3989,7 @@ export namespace Prisma {
     Abkuerzung_weiblich: string | null
     Beschreibung_weiblich: string | null
     Erstellt_am: Date | null
-    Geaenfert_am: Date | null
+    Geaendert_am: Date | null
     _count: DienstgradCountAggregateOutputType | null
     _avg: DienstgradAvgAggregateOutputType | null
     _sum: DienstgradSumAggregateOutputType | null
@@ -4018,7 +4018,7 @@ export namespace Prisma {
     Abkuerzung_weiblich?: boolean
     Beschreibung_weiblich?: boolean
     Erstellt_am?: boolean
-    Geaenfert_am?: boolean
+    Geaendert_am?: boolean
   }, ExtArgs["result"]["dienstgrad"]>
 
   export type dienstgradSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4028,7 +4028,7 @@ export namespace Prisma {
     Abkuerzung_weiblich?: boolean
     Beschreibung_weiblich?: boolean
     Erstellt_am?: boolean
-    Geaenfert_am?: boolean
+    Geaendert_am?: boolean
   }, ExtArgs["result"]["dienstgrad"]>
 
   export type dienstgradSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4038,7 +4038,7 @@ export namespace Prisma {
     Abkuerzung_weiblich?: boolean
     Beschreibung_weiblich?: boolean
     Erstellt_am?: boolean
-    Geaenfert_am?: boolean
+    Geaendert_am?: boolean
   }, ExtArgs["result"]["dienstgrad"]>
 
   export type dienstgradSelectScalar = {
@@ -4048,10 +4048,10 @@ export namespace Prisma {
     Abkuerzung_weiblich?: boolean
     Beschreibung_weiblich?: boolean
     Erstellt_am?: boolean
-    Geaenfert_am?: boolean
+    Geaendert_am?: boolean
   }
 
-  export type dienstgradOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Abkuerzung_maennlich" | "Beschreibung_maennlich" | "Abkuerzung_weiblich" | "Beschreibung_weiblich" | "Erstellt_am" | "Geaenfert_am", ExtArgs["result"]["dienstgrad"]>
+  export type dienstgradOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Abkuerzung_maennlich" | "Beschreibung_maennlich" | "Abkuerzung_weiblich" | "Beschreibung_weiblich" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["dienstgrad"]>
 
   export type $dienstgradPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "dienstgrad"
@@ -4063,7 +4063,7 @@ export namespace Prisma {
       Abkuerzung_weiblich: string | null
       Beschreibung_weiblich: string | null
       Erstellt_am: Date | null
-      Geaenfert_am: Date | null
+      Geaendert_am: Date | null
     }, ExtArgs["result"]["dienstgrad"]>
     composites: {}
   }
@@ -4493,7 +4493,7 @@ export namespace Prisma {
     readonly Abkuerzung_weiblich: FieldRef<"dienstgrad", 'String'>
     readonly Beschreibung_weiblich: FieldRef<"dienstgrad", 'String'>
     readonly Erstellt_am: FieldRef<"dienstgrad", 'DateTime'>
-    readonly Geaenfert_am: FieldRef<"dienstgrad", 'DateTime'>
+    readonly Geaendert_am: FieldRef<"dienstgrad", 'DateTime'>
   }
     
 
@@ -4885,7 +4885,7 @@ export namespace Prisma {
     Datum: Date | null
     Thema: string | null
     Erstellt_am: Date | null
-    Geaenfert_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type DienstabendMaxAggregateOutputType = {
@@ -4893,7 +4893,7 @@ export namespace Prisma {
     Datum: Date | null
     Thema: string | null
     Erstellt_am: Date | null
-    Geaenfert_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type DienstabendCountAggregateOutputType = {
@@ -4901,7 +4901,7 @@ export namespace Prisma {
     Datum: number
     Thema: number
     Erstellt_am: number
-    Geaenfert_am: number
+    Geaendert_am: number
     _all: number
   }
 
@@ -4919,7 +4919,7 @@ export namespace Prisma {
     Datum?: true
     Thema?: true
     Erstellt_am?: true
-    Geaenfert_am?: true
+    Geaendert_am?: true
   }
 
   export type DienstabendMaxAggregateInputType = {
@@ -4927,7 +4927,7 @@ export namespace Prisma {
     Datum?: true
     Thema?: true
     Erstellt_am?: true
-    Geaenfert_am?: true
+    Geaendert_am?: true
   }
 
   export type DienstabendCountAggregateInputType = {
@@ -4935,7 +4935,7 @@ export namespace Prisma {
     Datum?: true
     Thema?: true
     Erstellt_am?: true
-    Geaenfert_am?: true
+    Geaendert_am?: true
     _all?: true
   }
 
@@ -5030,7 +5030,7 @@ export namespace Prisma {
     Datum: Date | null
     Thema: string | null
     Erstellt_am: Date
-    Geaenfert_am: Date | null
+    Geaendert_am: Date | null
     _count: DienstabendCountAggregateOutputType | null
     _avg: DienstabendAvgAggregateOutputType | null
     _sum: DienstabendSumAggregateOutputType | null
@@ -5057,7 +5057,7 @@ export namespace Prisma {
     Datum?: boolean
     Thema?: boolean
     Erstellt_am?: boolean
-    Geaenfert_am?: boolean
+    Geaendert_am?: boolean
     einteilung?: boolean | dienstabend$einteilungArgs<ExtArgs>
     _count?: boolean | DienstabendCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["dienstabend"]>
@@ -5067,7 +5067,7 @@ export namespace Prisma {
     Datum?: boolean
     Thema?: boolean
     Erstellt_am?: boolean
-    Geaenfert_am?: boolean
+    Geaendert_am?: boolean
   }, ExtArgs["result"]["dienstabend"]>
 
   export type dienstabendSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5075,7 +5075,7 @@ export namespace Prisma {
     Datum?: boolean
     Thema?: boolean
     Erstellt_am?: boolean
-    Geaenfert_am?: boolean
+    Geaendert_am?: boolean
   }, ExtArgs["result"]["dienstabend"]>
 
   export type dienstabendSelectScalar = {
@@ -5083,10 +5083,10 @@ export namespace Prisma {
     Datum?: boolean
     Thema?: boolean
     Erstellt_am?: boolean
-    Geaenfert_am?: boolean
+    Geaendert_am?: boolean
   }
 
-  export type dienstabendOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Datum" | "Thema" | "Erstellt_am" | "Geaenfert_am", ExtArgs["result"]["dienstabend"]>
+  export type dienstabendOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Datum" | "Thema" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["dienstabend"]>
   export type dienstabendInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     einteilung?: boolean | dienstabend$einteilungArgs<ExtArgs>
     _count?: boolean | DienstabendCountOutputTypeDefaultArgs<ExtArgs>
@@ -5104,7 +5104,7 @@ export namespace Prisma {
       Datum: Date | null
       Thema: string | null
       Erstellt_am: Date
-      Geaenfert_am: Date | null
+      Geaendert_am: Date | null
     }, ExtArgs["result"]["dienstabend"]>
     composites: {}
   }
@@ -5533,7 +5533,7 @@ export namespace Prisma {
     readonly Datum: FieldRef<"dienstabend", 'DateTime'>
     readonly Thema: FieldRef<"dienstabend", 'String'>
     readonly Erstellt_am: FieldRef<"dienstabend", 'DateTime'>
-    readonly Geaenfert_am: FieldRef<"dienstabend", 'DateTime'>
+    readonly Geaendert_am: FieldRef<"dienstabend", 'DateTime'>
   }
     
 
@@ -5989,7 +5989,7 @@ export namespace Prisma {
     Abkuerzung: string | null
     Beschreibung: string | null
     Erstellt_am: Date | null
-    Geaenfert_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type EinheitMaxAggregateOutputType = {
@@ -5997,7 +5997,7 @@ export namespace Prisma {
     Abkuerzung: string | null
     Beschreibung: string | null
     Erstellt_am: Date | null
-    Geaenfert_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type EinheitCountAggregateOutputType = {
@@ -6005,7 +6005,7 @@ export namespace Prisma {
     Abkuerzung: number
     Beschreibung: number
     Erstellt_am: number
-    Geaenfert_am: number
+    Geaendert_am: number
     _all: number
   }
 
@@ -6023,7 +6023,7 @@ export namespace Prisma {
     Abkuerzung?: true
     Beschreibung?: true
     Erstellt_am?: true
-    Geaenfert_am?: true
+    Geaendert_am?: true
   }
 
   export type EinheitMaxAggregateInputType = {
@@ -6031,7 +6031,7 @@ export namespace Prisma {
     Abkuerzung?: true
     Beschreibung?: true
     Erstellt_am?: true
-    Geaenfert_am?: true
+    Geaendert_am?: true
   }
 
   export type EinheitCountAggregateInputType = {
@@ -6039,7 +6039,7 @@ export namespace Prisma {
     Abkuerzung?: true
     Beschreibung?: true
     Erstellt_am?: true
-    Geaenfert_am?: true
+    Geaendert_am?: true
     _all?: true
   }
 
@@ -6134,7 +6134,7 @@ export namespace Prisma {
     Abkuerzung: string | null
     Beschreibung: string | null
     Erstellt_am: Date | null
-    Geaenfert_am: Date | null
+    Geaendert_am: Date | null
     _count: EinheitCountAggregateOutputType | null
     _avg: EinheitAvgAggregateOutputType | null
     _sum: EinheitSumAggregateOutputType | null
@@ -6161,7 +6161,7 @@ export namespace Prisma {
     Abkuerzung?: boolean
     Beschreibung?: boolean
     Erstellt_am?: boolean
-    Geaenfert_am?: boolean
+    Geaendert_am?: boolean
     einteilung?: boolean | einheit$einteilungArgs<ExtArgs>
     _count?: boolean | EinheitCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["einheit"]>
@@ -6171,7 +6171,7 @@ export namespace Prisma {
     Abkuerzung?: boolean
     Beschreibung?: boolean
     Erstellt_am?: boolean
-    Geaenfert_am?: boolean
+    Geaendert_am?: boolean
   }, ExtArgs["result"]["einheit"]>
 
   export type einheitSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6179,7 +6179,7 @@ export namespace Prisma {
     Abkuerzung?: boolean
     Beschreibung?: boolean
     Erstellt_am?: boolean
-    Geaenfert_am?: boolean
+    Geaendert_am?: boolean
   }, ExtArgs["result"]["einheit"]>
 
   export type einheitSelectScalar = {
@@ -6187,10 +6187,10 @@ export namespace Prisma {
     Abkuerzung?: boolean
     Beschreibung?: boolean
     Erstellt_am?: boolean
-    Geaenfert_am?: boolean
+    Geaendert_am?: boolean
   }
 
-  export type einheitOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Abkuerzung" | "Beschreibung" | "Erstellt_am" | "Geaenfert_am", ExtArgs["result"]["einheit"]>
+  export type einheitOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Abkuerzung" | "Beschreibung" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["einheit"]>
   export type einheitInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     einteilung?: boolean | einheit$einteilungArgs<ExtArgs>
     _count?: boolean | EinheitCountOutputTypeDefaultArgs<ExtArgs>
@@ -6208,7 +6208,7 @@ export namespace Prisma {
       Abkuerzung: string | null
       Beschreibung: string | null
       Erstellt_am: Date | null
-      Geaenfert_am: Date | null
+      Geaendert_am: Date | null
     }, ExtArgs["result"]["einheit"]>
     composites: {}
   }
@@ -6637,7 +6637,7 @@ export namespace Prisma {
     readonly Abkuerzung: FieldRef<"einheit", 'String'>
     readonly Beschreibung: FieldRef<"einheit", 'String'>
     readonly Erstellt_am: FieldRef<"einheit", 'DateTime'>
-    readonly Geaenfert_am: FieldRef<"einheit", 'DateTime'>
+    readonly Geaendert_am: FieldRef<"einheit", 'DateTime'>
   }
     
 
@@ -7104,7 +7104,7 @@ export namespace Prisma {
     Ort: string | null
     Art: $Enums.einsatz_art | null
     Erstellt_am: Date | null
-    Geaenfert_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type EinsatzMaxAggregateOutputType = {
@@ -7121,7 +7121,7 @@ export namespace Prisma {
     Ort: string | null
     Art: $Enums.einsatz_art | null
     Erstellt_am: Date | null
-    Geaenfert_am: Date | null
+    Geaendert_am: Date | null
   }
 
   export type EinsatzCountAggregateOutputType = {
@@ -7138,7 +7138,7 @@ export namespace Prisma {
     Ort: number
     Art: number
     Erstellt_am: number
-    Geaenfert_am: number
+    Geaendert_am: number
     _all: number
   }
 
@@ -7167,7 +7167,7 @@ export namespace Prisma {
     Ort?: true
     Art?: true
     Erstellt_am?: true
-    Geaenfert_am?: true
+    Geaendert_am?: true
   }
 
   export type EinsatzMaxAggregateInputType = {
@@ -7184,7 +7184,7 @@ export namespace Prisma {
     Ort?: true
     Art?: true
     Erstellt_am?: true
-    Geaenfert_am?: true
+    Geaendert_am?: true
   }
 
   export type EinsatzCountAggregateInputType = {
@@ -7201,7 +7201,7 @@ export namespace Prisma {
     Ort?: true
     Art?: true
     Erstellt_am?: true
-    Geaenfert_am?: true
+    Geaendert_am?: true
     _all?: true
   }
 
@@ -7305,7 +7305,7 @@ export namespace Prisma {
     Ort: string | null
     Art: $Enums.einsatz_art
     Erstellt_am: Date | null
-    Geaenfert_am: Date | null
+    Geaendert_am: Date | null
     _count: EinsatzCountAggregateOutputType | null
     _avg: EinsatzAvgAggregateOutputType | null
     _sum: EinsatzSumAggregateOutputType | null
@@ -7341,7 +7341,7 @@ export namespace Prisma {
     Ort?: boolean
     Art?: boolean
     Erstellt_am?: boolean
-    Geaenfert_am?: boolean
+    Geaendert_am?: boolean
     einteilung?: boolean | einsatz$einteilungArgs<ExtArgs>
     _count?: boolean | EinsatzCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["einsatz"]>
@@ -7360,7 +7360,7 @@ export namespace Prisma {
     Ort?: boolean
     Art?: boolean
     Erstellt_am?: boolean
-    Geaenfert_am?: boolean
+    Geaendert_am?: boolean
   }, ExtArgs["result"]["einsatz"]>
 
   export type einsatzSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7377,7 +7377,7 @@ export namespace Prisma {
     Ort?: boolean
     Art?: boolean
     Erstellt_am?: boolean
-    Geaenfert_am?: boolean
+    Geaendert_am?: boolean
   }, ExtArgs["result"]["einsatz"]>
 
   export type einsatzSelectScalar = {
@@ -7394,10 +7394,10 @@ export namespace Prisma {
     Ort?: boolean
     Art?: boolean
     Erstellt_am?: boolean
-    Geaenfert_am?: boolean
+    Geaendert_am?: boolean
   }
 
-  export type einsatzOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Einsatznummer" | "Datum_Anfang" | "Uhrzeit_Anfang" | "Datum_Ende" | "Uhrzeit_Ende" | "Beschreibung" | "Strasse" | "Hausnummer" | "Postleitzahl" | "Ort" | "Art" | "Erstellt_am" | "Geaenfert_am", ExtArgs["result"]["einsatz"]>
+  export type einsatzOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "Einsatznummer" | "Datum_Anfang" | "Uhrzeit_Anfang" | "Datum_Ende" | "Uhrzeit_Ende" | "Beschreibung" | "Strasse" | "Hausnummer" | "Postleitzahl" | "Ort" | "Art" | "Erstellt_am" | "Geaendert_am", ExtArgs["result"]["einsatz"]>
   export type einsatzInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     einteilung?: boolean | einsatz$einteilungArgs<ExtArgs>
     _count?: boolean | EinsatzCountOutputTypeDefaultArgs<ExtArgs>
@@ -7424,7 +7424,7 @@ export namespace Prisma {
       Ort: string | null
       Art: $Enums.einsatz_art
       Erstellt_am: Date | null
-      Geaenfert_am: Date | null
+      Geaendert_am: Date | null
     }, ExtArgs["result"]["einsatz"]>
     composites: {}
   }
@@ -7862,7 +7862,7 @@ export namespace Prisma {
     readonly Ort: FieldRef<"einsatz", 'String'>
     readonly Art: FieldRef<"einsatz", 'einsatz_art'>
     readonly Erstellt_am: FieldRef<"einsatz", 'DateTime'>
-    readonly Geaenfert_am: FieldRef<"einsatz", 'DateTime'>
+    readonly Geaendert_am: FieldRef<"einsatz", 'DateTime'>
   }
     
 
@@ -21633,7 +21633,7 @@ export namespace Prisma {
     Abkuerzung_weiblich: 'Abkuerzung_weiblich',
     Beschreibung_weiblich: 'Beschreibung_weiblich',
     Erstellt_am: 'Erstellt_am',
-    Geaenfert_am: 'Geaenfert_am'
+    Geaendert_am: 'Geaendert_am'
   };
 
   export type DienstgradScalarFieldEnum = (typeof DienstgradScalarFieldEnum)[keyof typeof DienstgradScalarFieldEnum]
@@ -21644,7 +21644,7 @@ export namespace Prisma {
     Datum: 'Datum',
     Thema: 'Thema',
     Erstellt_am: 'Erstellt_am',
-    Geaenfert_am: 'Geaenfert_am'
+    Geaendert_am: 'Geaendert_am'
   };
 
   export type DienstabendScalarFieldEnum = (typeof DienstabendScalarFieldEnum)[keyof typeof DienstabendScalarFieldEnum]
@@ -21655,7 +21655,7 @@ export namespace Prisma {
     Abkuerzung: 'Abkuerzung',
     Beschreibung: 'Beschreibung',
     Erstellt_am: 'Erstellt_am',
-    Geaenfert_am: 'Geaenfert_am'
+    Geaendert_am: 'Geaendert_am'
   };
 
   export type EinheitScalarFieldEnum = (typeof EinheitScalarFieldEnum)[keyof typeof EinheitScalarFieldEnum]
@@ -21675,7 +21675,7 @@ export namespace Prisma {
     Ort: 'Ort',
     Art: 'Art',
     Erstellt_am: 'Erstellt_am',
-    Geaenfert_am: 'Geaenfert_am'
+    Geaendert_am: 'Geaendert_am'
   };
 
   export type EinsatzScalarFieldEnum = (typeof EinsatzScalarFieldEnum)[keyof typeof EinsatzScalarFieldEnum]
@@ -22100,7 +22100,7 @@ export namespace Prisma {
     Abkuerzung_weiblich?: StringNullableFilter<"dienstgrad"> | string | null
     Beschreibung_weiblich?: StringNullableFilter<"dienstgrad"> | string | null
     Erstellt_am?: DateTimeNullableFilter<"dienstgrad"> | Date | string | null
-    Geaenfert_am?: DateTimeNullableFilter<"dienstgrad"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"dienstgrad"> | Date | string | null
   }
 
   export type dienstgradOrderByWithRelationInput = {
@@ -22110,7 +22110,7 @@ export namespace Prisma {
     Abkuerzung_weiblich?: SortOrderInput | SortOrder
     Beschreibung_weiblich?: SortOrderInput | SortOrder
     Erstellt_am?: SortOrderInput | SortOrder
-    Geaenfert_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
   }
 
   export type dienstgradWhereUniqueInput = Prisma.AtLeast<{
@@ -22123,7 +22123,7 @@ export namespace Prisma {
     Abkuerzung_weiblich?: StringNullableFilter<"dienstgrad"> | string | null
     Beschreibung_weiblich?: StringNullableFilter<"dienstgrad"> | string | null
     Erstellt_am?: DateTimeNullableFilter<"dienstgrad"> | Date | string | null
-    Geaenfert_am?: DateTimeNullableFilter<"dienstgrad"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"dienstgrad"> | Date | string | null
   }, "ID">
 
   export type dienstgradOrderByWithAggregationInput = {
@@ -22133,7 +22133,7 @@ export namespace Prisma {
     Abkuerzung_weiblich?: SortOrderInput | SortOrder
     Beschreibung_weiblich?: SortOrderInput | SortOrder
     Erstellt_am?: SortOrderInput | SortOrder
-    Geaenfert_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     _count?: dienstgradCountOrderByAggregateInput
     _avg?: dienstgradAvgOrderByAggregateInput
     _max?: dienstgradMaxOrderByAggregateInput
@@ -22151,7 +22151,7 @@ export namespace Prisma {
     Abkuerzung_weiblich?: StringNullableWithAggregatesFilter<"dienstgrad"> | string | null
     Beschreibung_weiblich?: StringNullableWithAggregatesFilter<"dienstgrad"> | string | null
     Erstellt_am?: DateTimeNullableWithAggregatesFilter<"dienstgrad"> | Date | string | null
-    Geaenfert_am?: DateTimeNullableWithAggregatesFilter<"dienstgrad"> | Date | string | null
+    Geaendert_am?: DateTimeNullableWithAggregatesFilter<"dienstgrad"> | Date | string | null
   }
 
   export type dienstabendWhereInput = {
@@ -22162,7 +22162,7 @@ export namespace Prisma {
     Datum?: DateTimeNullableFilter<"dienstabend"> | Date | string | null
     Thema?: StringNullableFilter<"dienstabend"> | string | null
     Erstellt_am?: DateTimeFilter<"dienstabend"> | Date | string
-    Geaenfert_am?: DateTimeNullableFilter<"dienstabend"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"dienstabend"> | Date | string | null
     einteilung?: EinteilungListRelationFilter
   }
 
@@ -22171,7 +22171,7 @@ export namespace Prisma {
     Datum?: SortOrderInput | SortOrder
     Thema?: SortOrderInput | SortOrder
     Erstellt_am?: SortOrder
-    Geaenfert_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     einteilung?: einteilungOrderByRelationAggregateInput
   }
 
@@ -22183,7 +22183,7 @@ export namespace Prisma {
     Datum?: DateTimeNullableFilter<"dienstabend"> | Date | string | null
     Thema?: StringNullableFilter<"dienstabend"> | string | null
     Erstellt_am?: DateTimeFilter<"dienstabend"> | Date | string
-    Geaenfert_am?: DateTimeNullableFilter<"dienstabend"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"dienstabend"> | Date | string | null
     einteilung?: EinteilungListRelationFilter
   }, "ID">
 
@@ -22192,7 +22192,7 @@ export namespace Prisma {
     Datum?: SortOrderInput | SortOrder
     Thema?: SortOrderInput | SortOrder
     Erstellt_am?: SortOrder
-    Geaenfert_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     _count?: dienstabendCountOrderByAggregateInput
     _avg?: dienstabendAvgOrderByAggregateInput
     _max?: dienstabendMaxOrderByAggregateInput
@@ -22208,7 +22208,7 @@ export namespace Prisma {
     Datum?: DateTimeNullableWithAggregatesFilter<"dienstabend"> | Date | string | null
     Thema?: StringNullableWithAggregatesFilter<"dienstabend"> | string | null
     Erstellt_am?: DateTimeWithAggregatesFilter<"dienstabend"> | Date | string
-    Geaenfert_am?: DateTimeNullableWithAggregatesFilter<"dienstabend"> | Date | string | null
+    Geaendert_am?: DateTimeNullableWithAggregatesFilter<"dienstabend"> | Date | string | null
   }
 
   export type einheitWhereInput = {
@@ -22219,7 +22219,7 @@ export namespace Prisma {
     Abkuerzung?: StringNullableFilter<"einheit"> | string | null
     Beschreibung?: StringNullableFilter<"einheit"> | string | null
     Erstellt_am?: DateTimeNullableFilter<"einheit"> | Date | string | null
-    Geaenfert_am?: DateTimeNullableFilter<"einheit"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"einheit"> | Date | string | null
     einteilung?: EinteilungListRelationFilter
   }
 
@@ -22228,7 +22228,7 @@ export namespace Prisma {
     Abkuerzung?: SortOrderInput | SortOrder
     Beschreibung?: SortOrderInput | SortOrder
     Erstellt_am?: SortOrderInput | SortOrder
-    Geaenfert_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     einteilung?: einteilungOrderByRelationAggregateInput
   }
 
@@ -22240,7 +22240,7 @@ export namespace Prisma {
     Abkuerzung?: StringNullableFilter<"einheit"> | string | null
     Beschreibung?: StringNullableFilter<"einheit"> | string | null
     Erstellt_am?: DateTimeNullableFilter<"einheit"> | Date | string | null
-    Geaenfert_am?: DateTimeNullableFilter<"einheit"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"einheit"> | Date | string | null
     einteilung?: EinteilungListRelationFilter
   }, "ID">
 
@@ -22249,7 +22249,7 @@ export namespace Prisma {
     Abkuerzung?: SortOrderInput | SortOrder
     Beschreibung?: SortOrderInput | SortOrder
     Erstellt_am?: SortOrderInput | SortOrder
-    Geaenfert_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     _count?: einheitCountOrderByAggregateInput
     _avg?: einheitAvgOrderByAggregateInput
     _max?: einheitMaxOrderByAggregateInput
@@ -22265,7 +22265,7 @@ export namespace Prisma {
     Abkuerzung?: StringNullableWithAggregatesFilter<"einheit"> | string | null
     Beschreibung?: StringNullableWithAggregatesFilter<"einheit"> | string | null
     Erstellt_am?: DateTimeNullableWithAggregatesFilter<"einheit"> | Date | string | null
-    Geaenfert_am?: DateTimeNullableWithAggregatesFilter<"einheit"> | Date | string | null
+    Geaendert_am?: DateTimeNullableWithAggregatesFilter<"einheit"> | Date | string | null
   }
 
   export type einsatzWhereInput = {
@@ -22285,7 +22285,7 @@ export namespace Prisma {
     Ort?: StringNullableFilter<"einsatz"> | string | null
     Art?: Enumeinsatz_artFilter<"einsatz"> | $Enums.einsatz_art
     Erstellt_am?: DateTimeNullableFilter<"einsatz"> | Date | string | null
-    Geaenfert_am?: DateTimeNullableFilter<"einsatz"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"einsatz"> | Date | string | null
     einteilung?: EinteilungListRelationFilter
   }
 
@@ -22303,7 +22303,7 @@ export namespace Prisma {
     Ort?: SortOrderInput | SortOrder
     Art?: SortOrder
     Erstellt_am?: SortOrderInput | SortOrder
-    Geaenfert_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     einteilung?: einteilungOrderByRelationAggregateInput
   }
 
@@ -22324,7 +22324,7 @@ export namespace Prisma {
     Ort?: StringNullableFilter<"einsatz"> | string | null
     Art?: Enumeinsatz_artFilter<"einsatz"> | $Enums.einsatz_art
     Erstellt_am?: DateTimeNullableFilter<"einsatz"> | Date | string | null
-    Geaenfert_am?: DateTimeNullableFilter<"einsatz"> | Date | string | null
+    Geaendert_am?: DateTimeNullableFilter<"einsatz"> | Date | string | null
     einteilung?: EinteilungListRelationFilter
   }, "ID">
 
@@ -22342,7 +22342,7 @@ export namespace Prisma {
     Ort?: SortOrderInput | SortOrder
     Art?: SortOrder
     Erstellt_am?: SortOrderInput | SortOrder
-    Geaenfert_am?: SortOrderInput | SortOrder
+    Geaendert_am?: SortOrderInput | SortOrder
     _count?: einsatzCountOrderByAggregateInput
     _avg?: einsatzAvgOrderByAggregateInput
     _max?: einsatzMaxOrderByAggregateInput
@@ -22367,7 +22367,7 @@ export namespace Prisma {
     Ort?: StringNullableWithAggregatesFilter<"einsatz"> | string | null
     Art?: Enumeinsatz_artWithAggregatesFilter<"einsatz"> | $Enums.einsatz_art
     Erstellt_am?: DateTimeNullableWithAggregatesFilter<"einsatz"> | Date | string | null
-    Geaenfert_am?: DateTimeNullableWithAggregatesFilter<"einsatz"> | Date | string | null
+    Geaendert_am?: DateTimeNullableWithAggregatesFilter<"einsatz"> | Date | string | null
   }
 
   export type einteilungWhereInput = {
@@ -23210,7 +23210,7 @@ export namespace Prisma {
     Abkuerzung_weiblich?: string | null
     Beschreibung_weiblich?: string | null
     Erstellt_am?: Date | string | null
-    Geaenfert_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type dienstgradUncheckedCreateInput = {
@@ -23220,7 +23220,7 @@ export namespace Prisma {
     Abkuerzung_weiblich?: string | null
     Beschreibung_weiblich?: string | null
     Erstellt_am?: Date | string | null
-    Geaenfert_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type dienstgradUpdateInput = {
@@ -23229,7 +23229,7 @@ export namespace Prisma {
     Abkuerzung_weiblich?: NullableStringFieldUpdateOperationsInput | string | null
     Beschreibung_weiblich?: NullableStringFieldUpdateOperationsInput | string | null
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaenfert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type dienstgradUncheckedUpdateInput = {
@@ -23239,7 +23239,7 @@ export namespace Prisma {
     Abkuerzung_weiblich?: NullableStringFieldUpdateOperationsInput | string | null
     Beschreibung_weiblich?: NullableStringFieldUpdateOperationsInput | string | null
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaenfert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type dienstgradCreateManyInput = {
@@ -23249,7 +23249,7 @@ export namespace Prisma {
     Abkuerzung_weiblich?: string | null
     Beschreibung_weiblich?: string | null
     Erstellt_am?: Date | string | null
-    Geaenfert_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type dienstgradUpdateManyMutationInput = {
@@ -23258,7 +23258,7 @@ export namespace Prisma {
     Abkuerzung_weiblich?: NullableStringFieldUpdateOperationsInput | string | null
     Beschreibung_weiblich?: NullableStringFieldUpdateOperationsInput | string | null
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaenfert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type dienstgradUncheckedUpdateManyInput = {
@@ -23268,14 +23268,14 @@ export namespace Prisma {
     Abkuerzung_weiblich?: NullableStringFieldUpdateOperationsInput | string | null
     Beschreibung_weiblich?: NullableStringFieldUpdateOperationsInput | string | null
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaenfert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type dienstabendCreateInput = {
     Datum?: Date | string | null
     Thema?: string | null
     Erstellt_am: Date | string
-    Geaenfert_am?: Date | string | null
+    Geaendert_am?: Date | string | null
     einteilung?: einteilungCreateNestedManyWithoutDienstabendInput
   }
 
@@ -23284,7 +23284,7 @@ export namespace Prisma {
     Datum?: Date | string | null
     Thema?: string | null
     Erstellt_am: Date | string
-    Geaenfert_am?: Date | string | null
+    Geaendert_am?: Date | string | null
     einteilung?: einteilungUncheckedCreateNestedManyWithoutDienstabendInput
   }
 
@@ -23292,7 +23292,7 @@ export namespace Prisma {
     Datum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Thema?: NullableStringFieldUpdateOperationsInput | string | null
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaenfert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     einteilung?: einteilungUpdateManyWithoutDienstabendNestedInput
   }
 
@@ -23301,7 +23301,7 @@ export namespace Prisma {
     Datum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Thema?: NullableStringFieldUpdateOperationsInput | string | null
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaenfert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     einteilung?: einteilungUncheckedUpdateManyWithoutDienstabendNestedInput
   }
 
@@ -23310,14 +23310,14 @@ export namespace Prisma {
     Datum?: Date | string | null
     Thema?: string | null
     Erstellt_am: Date | string
-    Geaenfert_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type dienstabendUpdateManyMutationInput = {
     Datum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Thema?: NullableStringFieldUpdateOperationsInput | string | null
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaenfert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type dienstabendUncheckedUpdateManyInput = {
@@ -23325,14 +23325,14 @@ export namespace Prisma {
     Datum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Thema?: NullableStringFieldUpdateOperationsInput | string | null
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaenfert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type einheitCreateInput = {
     Abkuerzung?: string | null
     Beschreibung?: string | null
     Erstellt_am?: Date | string | null
-    Geaenfert_am?: Date | string | null
+    Geaendert_am?: Date | string | null
     einteilung?: einteilungCreateNestedManyWithoutEinheitInput
   }
 
@@ -23341,7 +23341,7 @@ export namespace Prisma {
     Abkuerzung?: string | null
     Beschreibung?: string | null
     Erstellt_am?: Date | string | null
-    Geaenfert_am?: Date | string | null
+    Geaendert_am?: Date | string | null
     einteilung?: einteilungUncheckedCreateNestedManyWithoutEinheitInput
   }
 
@@ -23349,7 +23349,7 @@ export namespace Prisma {
     Abkuerzung?: NullableStringFieldUpdateOperationsInput | string | null
     Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaenfert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     einteilung?: einteilungUpdateManyWithoutEinheitNestedInput
   }
 
@@ -23358,7 +23358,7 @@ export namespace Prisma {
     Abkuerzung?: NullableStringFieldUpdateOperationsInput | string | null
     Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaenfert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     einteilung?: einteilungUncheckedUpdateManyWithoutEinheitNestedInput
   }
 
@@ -23367,14 +23367,14 @@ export namespace Prisma {
     Abkuerzung?: string | null
     Beschreibung?: string | null
     Erstellt_am?: Date | string | null
-    Geaenfert_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type einheitUpdateManyMutationInput = {
     Abkuerzung?: NullableStringFieldUpdateOperationsInput | string | null
     Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaenfert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type einheitUncheckedUpdateManyInput = {
@@ -23382,7 +23382,7 @@ export namespace Prisma {
     Abkuerzung?: NullableStringFieldUpdateOperationsInput | string | null
     Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaenfert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type einsatzCreateInput = {
@@ -23398,7 +23398,7 @@ export namespace Prisma {
     Ort?: string | null
     Art: $Enums.einsatz_art
     Erstellt_am?: Date | string | null
-    Geaenfert_am?: Date | string | null
+    Geaendert_am?: Date | string | null
     einteilung?: einteilungCreateNestedManyWithoutEinsatzInput
   }
 
@@ -23416,7 +23416,7 @@ export namespace Prisma {
     Ort?: string | null
     Art: $Enums.einsatz_art
     Erstellt_am?: Date | string | null
-    Geaenfert_am?: Date | string | null
+    Geaendert_am?: Date | string | null
     einteilung?: einteilungUncheckedCreateNestedManyWithoutEinsatzInput
   }
 
@@ -23433,7 +23433,7 @@ export namespace Prisma {
     Ort?: NullableStringFieldUpdateOperationsInput | string | null
     Art?: Enumeinsatz_artFieldUpdateOperationsInput | $Enums.einsatz_art
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaenfert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     einteilung?: einteilungUpdateManyWithoutEinsatzNestedInput
   }
 
@@ -23451,7 +23451,7 @@ export namespace Prisma {
     Ort?: NullableStringFieldUpdateOperationsInput | string | null
     Art?: Enumeinsatz_artFieldUpdateOperationsInput | $Enums.einsatz_art
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaenfert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     einteilung?: einteilungUncheckedUpdateManyWithoutEinsatzNestedInput
   }
 
@@ -23469,7 +23469,7 @@ export namespace Prisma {
     Ort?: string | null
     Art: $Enums.einsatz_art
     Erstellt_am?: Date | string | null
-    Geaenfert_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type einsatzUpdateManyMutationInput = {
@@ -23485,7 +23485,7 @@ export namespace Prisma {
     Ort?: NullableStringFieldUpdateOperationsInput | string | null
     Art?: Enumeinsatz_artFieldUpdateOperationsInput | $Enums.einsatz_art
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaenfert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type einsatzUncheckedUpdateManyInput = {
@@ -23502,7 +23502,7 @@ export namespace Prisma {
     Ort?: NullableStringFieldUpdateOperationsInput | string | null
     Art?: Enumeinsatz_artFieldUpdateOperationsInput | $Enums.einsatz_art
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaenfert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type einteilungCreateInput = {
@@ -24445,7 +24445,7 @@ export namespace Prisma {
     Abkuerzung_weiblich?: SortOrder
     Beschreibung_weiblich?: SortOrder
     Erstellt_am?: SortOrder
-    Geaenfert_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type dienstgradAvgOrderByAggregateInput = {
@@ -24459,7 +24459,7 @@ export namespace Prisma {
     Abkuerzung_weiblich?: SortOrder
     Beschreibung_weiblich?: SortOrder
     Erstellt_am?: SortOrder
-    Geaenfert_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type dienstgradMinOrderByAggregateInput = {
@@ -24469,7 +24469,7 @@ export namespace Prisma {
     Abkuerzung_weiblich?: SortOrder
     Beschreibung_weiblich?: SortOrder
     Erstellt_am?: SortOrder
-    Geaenfert_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type dienstgradSumOrderByAggregateInput = {
@@ -24502,7 +24502,7 @@ export namespace Prisma {
     Datum?: SortOrder
     Thema?: SortOrder
     Erstellt_am?: SortOrder
-    Geaenfert_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type dienstabendAvgOrderByAggregateInput = {
@@ -24514,7 +24514,7 @@ export namespace Prisma {
     Datum?: SortOrder
     Thema?: SortOrder
     Erstellt_am?: SortOrder
-    Geaenfert_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type dienstabendMinOrderByAggregateInput = {
@@ -24522,7 +24522,7 @@ export namespace Prisma {
     Datum?: SortOrder
     Thema?: SortOrder
     Erstellt_am?: SortOrder
-    Geaenfert_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type dienstabendSumOrderByAggregateInput = {
@@ -24548,7 +24548,7 @@ export namespace Prisma {
     Abkuerzung?: SortOrder
     Beschreibung?: SortOrder
     Erstellt_am?: SortOrder
-    Geaenfert_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type einheitAvgOrderByAggregateInput = {
@@ -24560,7 +24560,7 @@ export namespace Prisma {
     Abkuerzung?: SortOrder
     Beschreibung?: SortOrder
     Erstellt_am?: SortOrder
-    Geaenfert_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type einheitMinOrderByAggregateInput = {
@@ -24568,7 +24568,7 @@ export namespace Prisma {
     Abkuerzung?: SortOrder
     Beschreibung?: SortOrder
     Erstellt_am?: SortOrder
-    Geaenfert_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type einheitSumOrderByAggregateInput = {
@@ -24596,7 +24596,7 @@ export namespace Prisma {
     Ort?: SortOrder
     Art?: SortOrder
     Erstellt_am?: SortOrder
-    Geaenfert_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type einsatzAvgOrderByAggregateInput = {
@@ -24618,7 +24618,7 @@ export namespace Prisma {
     Ort?: SortOrder
     Art?: SortOrder
     Erstellt_am?: SortOrder
-    Geaenfert_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type einsatzMinOrderByAggregateInput = {
@@ -24635,7 +24635,7 @@ export namespace Prisma {
     Ort?: SortOrder
     Art?: SortOrder
     Erstellt_am?: SortOrder
-    Geaenfert_am?: SortOrder
+    Geaendert_am?: SortOrder
   }
 
   export type einsatzSumOrderByAggregateInput = {
@@ -26593,7 +26593,7 @@ export namespace Prisma {
     Datum?: Date | string | null
     Thema?: string | null
     Erstellt_am: Date | string
-    Geaenfert_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type dienstabendUncheckedCreateWithoutEinteilungInput = {
@@ -26601,7 +26601,7 @@ export namespace Prisma {
     Datum?: Date | string | null
     Thema?: string | null
     Erstellt_am: Date | string
-    Geaenfert_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type dienstabendCreateOrConnectWithoutEinteilungInput = {
@@ -26613,7 +26613,7 @@ export namespace Prisma {
     Abkuerzung?: string | null
     Beschreibung?: string | null
     Erstellt_am?: Date | string | null
-    Geaenfert_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type einheitUncheckedCreateWithoutEinteilungInput = {
@@ -26621,7 +26621,7 @@ export namespace Prisma {
     Abkuerzung?: string | null
     Beschreibung?: string | null
     Erstellt_am?: Date | string | null
-    Geaenfert_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type einheitCreateOrConnectWithoutEinteilungInput = {
@@ -26642,7 +26642,7 @@ export namespace Prisma {
     Ort?: string | null
     Art: $Enums.einsatz_art
     Erstellt_am?: Date | string | null
-    Geaenfert_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type einsatzUncheckedCreateWithoutEinteilungInput = {
@@ -26659,7 +26659,7 @@ export namespace Prisma {
     Ort?: string | null
     Art: $Enums.einsatz_art
     Erstellt_am?: Date | string | null
-    Geaenfert_am?: Date | string | null
+    Geaendert_am?: Date | string | null
   }
 
   export type einsatzCreateOrConnectWithoutEinteilungInput = {
@@ -26738,7 +26738,7 @@ export namespace Prisma {
     Datum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Thema?: NullableStringFieldUpdateOperationsInput | string | null
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaenfert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type dienstabendUncheckedUpdateWithoutEinteilungInput = {
@@ -26746,7 +26746,7 @@ export namespace Prisma {
     Datum?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Thema?: NullableStringFieldUpdateOperationsInput | string | null
     Erstellt_am?: DateTimeFieldUpdateOperationsInput | Date | string
-    Geaenfert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type einheitUpsertWithoutEinteilungInput = {
@@ -26764,7 +26764,7 @@ export namespace Prisma {
     Abkuerzung?: NullableStringFieldUpdateOperationsInput | string | null
     Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaenfert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type einheitUncheckedUpdateWithoutEinteilungInput = {
@@ -26772,7 +26772,7 @@ export namespace Prisma {
     Abkuerzung?: NullableStringFieldUpdateOperationsInput | string | null
     Beschreibung?: NullableStringFieldUpdateOperationsInput | string | null
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaenfert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type einsatzUpsertWithoutEinteilungInput = {
@@ -26799,7 +26799,7 @@ export namespace Prisma {
     Ort?: NullableStringFieldUpdateOperationsInput | string | null
     Art?: Enumeinsatz_artFieldUpdateOperationsInput | $Enums.einsatz_art
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaenfert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type einsatzUncheckedUpdateWithoutEinteilungInput = {
@@ -26816,7 +26816,7 @@ export namespace Prisma {
     Ort?: NullableStringFieldUpdateOperationsInput | string | null
     Art?: Enumeinsatz_artFieldUpdateOperationsInput | $Enums.einsatz_art
     Erstellt_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Geaenfert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Geaendert_am?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type fahrzeugUpsertWithoutEinteilungInput = {

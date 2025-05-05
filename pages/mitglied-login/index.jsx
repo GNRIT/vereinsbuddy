@@ -71,9 +71,9 @@ export default function MitgliedLoginListe({ logins }) {
                         <Link href={`/mitglied-login/${login.ID}/bearbeiten`}>
                         <span className="text-indigo-600 hover:text-indigo-900 mr-3">Bearbeiten</span>
                         </Link>
-                        <Link href={`/mitglied-login/${login.ID}`}>
+                        {/*<Link href={`/mitglied-login/${login.Mitglied_ID}`}>
                         <span className="text-blue-600 hover:text-blue-900">Ansehen</span>
-                        </Link>
+                        </Link>*/}
                         <button
                                 onClick={() => handleDelete(login.ID)}
                                 className="text-red-600 hover:text-red-900"

@@ -11,9 +11,9 @@ export default async function handler(req, res) {
 
     if (req.method === 'GET') {
         try {
-            const dienstabende = await db2.dientsabend.findMany({
+            const dienstabende = await db2.dienstabend.findMany({
                 orderBy: {
-                    Datum: 'desc',
+                    ID: 'desc',
                 },
             });
             res.status(200).json(dienstabende);
@@ -24,11 +24,11 @@ export default async function handler(req, res) {
         try {
             const { Datum, Thema } = req.body;
 
-            const neuerDienstabend = await db2.dientsabend.create({
+            const neuerDienstabend = await db2.dienstabend.create({
                 data: {
                     Datum: new Date(Datum),
                     Thema,
-                    Erstellt_am: new Date(),
+                    Erstellt_am: new Date()
                 },
             });
 

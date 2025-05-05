@@ -20,7 +20,7 @@ export default function MitgliedLoginBearbeiten({ initialData }) {
         })
 
         if (response.ok) {
-            router.push(`/mitglied-login/${initialData.ID}`)
+            router.push(`/mitglied-login`)
         } else {
             const errorData = await response.json()
             alert(errorData.message || 'Fehler beim Speichern')
@@ -45,14 +45,14 @@ export default function MitgliedLoginBearbeiten({ initialData }) {
     const { id } = context.params
     const session = await getSession(context)
 
-    if (!session) {
+    /*if (!session) {
         return {
         redirect: {
             destination: '/auth/login',
             permanent: false,
         },
         }
-    }
+    }*/
 
     const parsedId = parseInt(id);
     if (!parsedId || isNaN(parsedId)) {

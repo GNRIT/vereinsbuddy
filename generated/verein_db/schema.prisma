@@ -31,7 +31,7 @@ model dienstgrad {
   Abkuerzung_weiblich    String?   @vereindb.VarChar(100)
   Beschreibung_weiblich  String?
   Erstellt_am            DateTime? @vereindb.Date
-  Geaenfert_am           DateTime? @vereindb.Date
+  Geaendert_am           DateTime? @vereindb.Date
 }
 
 model dienstabend {
@@ -39,7 +39,7 @@ model dienstabend {
   Datum        DateTime?    @vereindb.Timestamp(6)
   Thema        String?      @vereindb.VarChar(255)
   Erstellt_am  DateTime     @vereindb.Date
-  Geaenfert_am DateTime?    @vereindb.Date
+  Geaendert_am DateTime?    @vereindb.Date
   einteilung   einteilung[]
 }
 
@@ -48,7 +48,7 @@ model einheit {
   Abkuerzung   String?      @vereindb.VarChar(255)
   Beschreibung String?
   Erstellt_am  DateTime?    @vereindb.Date
-  Geaenfert_am DateTime?    @vereindb.Date
+  Geaendert_am DateTime?    @vereindb.Date
   einteilung   einteilung[]
 }
 
@@ -66,7 +66,7 @@ model einsatz {
   Ort            String?      @vereindb.VarChar(255)
   Art            einsatz_art
   Erstellt_am    DateTime?    @vereindb.Date
-  Geaenfert_am   DateTime?    @vereindb.Date
+  Geaendert_am   DateTime?    @vereindb.Date
   einteilung     einteilung[]
 }
 

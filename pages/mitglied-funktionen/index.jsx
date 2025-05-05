@@ -55,10 +55,10 @@ export default function MitgliedFunktionenListe({ zuordnungen }) {
                     <tr key={zuordnung.ID}>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{zuordnung.ID}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                        {zuordnung.ff_mitglied?.Vorname} {zuordnung.ff_mitglied?.Name}
+                        {zuordnung.ff_mitglied?.ID}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {zuordnung.funktion_ff?.Name}
+                        {zuordnung.funktion_ff?.ID}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
