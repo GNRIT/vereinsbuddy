@@ -1,53 +1,67 @@
-import { authOptions } from '@/lib/auth'
-import { vereinsbuddyPrisma as db1 } from '@/lib/prisma'
-import { getServerSession } from 'next-auth'
+import { authOptions } from '@/lib/auth';
+import { vereinsbuddyPrisma as db1, vereinDbPrisma as db2 } from '@/lib/prisma';
+import { getServerSession } from 'next-auth';
 
-    export default async function handler(req, res) {
-    const session = await getServerSession(req, res, authOptions)
-    const { id } = req.query
+export default async function handler(req, res) {
+    const session = await getServerSession(req, res, authOptions);
+    const { id } = req.query;
 
-    if (!session) {
-        return res.status(401).json({ message: 'Nicht autorisiert' })
-    }
+    // Auth deaktiviert für Entwicklung, optional aktivieren
+    /*if (!session) {
+        return res.status(401).json({ message: 'Nicht autorisiert' });
+    }*/
 
     try {
+        const parsedId = parseInt(id);
+        if (isNaN(parsedId)) {
+        return res.status(400).json({ message: 'Ungültige ID' });
+        }
+
         if (req.method === 'GET') {
         const mitglied = await db1.person.findUnique({
-            where: { ID: parseInt(id) },
+            where: { ID: parsedId },
             include: {
-            Vereinszuordnung: {
-                include: { Verein: true }
-            },
-            ff_mitglied: {
-                include: {
-                ff_mitglied_lehrgang: {
-                    include: {
-                    lehrgang: true
-                    }
-                }
-                }
+            vereinszuordnung: {
+                include: { verein: true }
             }
             }
-        })
+        });
 
         if (!mitglied) {
-            return res.status(404).json({ message: 'Mitglied nicht gefunden' })
+            return res.status(404).json({ message: 'Mitglied nicht gefunden' });
         }
 
-        res.status(200).json(mitglied)
+        const ffMitglied = await db2.ff_mitglied.findFirst({
+            where: { Person_ID: parsedId },
+            include: {
+            ff_mitglied_lehrgang: {
+                include: { lehrgang: true }
+            }
+            }
+        });
+
+        return res.status(200).json({ mitglied, ffMitglied });
         }
+
         else if (req.method === 'PUT') {
-        if (session.user.role !== 'admin') {
-            return res.status(403).json({ message: 'Keine Berechtigung' })
+        // Optional: nur Admin darf bearbeiten
+        /*if (session.user.role !== 'admin') {
+            return res.status(403).json({ message: 'Keine Berechtigung' });
+        }*/
+
+        const { personData, lehrgaenge = [] } = req.body;
+
+        if (!personData?.Vorname || !personData?.Name) {
+            return res.status(400).json({ message: 'Vorname und Name sind erforderlich' });
         }
 
-        const { personData, lehrgaenge = [] } = req.body
+        const now = new Date();
 
         const result = await db1.$transaction(async (tx) => {
-            // Person aktualisieren
             const updatedPerson = await tx.person.update({
-            where: { ID: parseInt(id) },
+            where: { ID: parsedId },
             data: {
+                ID: personData.ID,
                 Vorname: personData.Vorname,
                 Name: personData.Name,
                 Geburtsdatum: personData.Geburtsdatum ? new Date(personData.Geburtsdatum) : null,
@@ -57,100 +71,96 @@ import { getServerSession } from 'next-auth'
                 Ort: personData.Ort,
                 Email: personData.Email,
                 Handynr: personData.Handynr,
-                Geaendert_am: new Date()
+                Geaendert_am: now
             }
-            })
+            });
 
-            // Vereinszuordnung aktualisieren
             const existingZuordnung = await tx.vereinszuordnung.findFirst({
-            where: { Person_ID: parseInt(id) }
-            })
-            
+            where: { Person_ID: parsedId }
+            });
+
             if (existingZuordnung) {
             await tx.vereinszuordnung.update({
                 where: { ID: existingZuordnung.ID },
                 data: {
                 Rolle: personData.Rolle,
-                Geaendert_am: new Date()
+                Geaendert_am: now
                 }
-            })
+            });
             }
 
-            // FF-Mitglied finden
-            const ffMitglied = await tx.ff_mitglied.findFirst({
-            where: { Person_ID: parseInt(id) }
-            })
+            const ffMitglied = await db2.ff_mitglied.findFirst({
+            where: { Person_ID: parsedId }
+            });
 
             if (ffMitglied) {
-            // Bestehende Lehrgänge löschen
-            await tx.ff_mitglied_lehrgang.deleteMany({
+            await db2.ff_mitglied_lehrgang.deleteMany({
                 where: { FF_Mitglied_ID: ffMitglied.ID }
-            })
+            });
 
-            // Neue Lehrgänge hinzufügen
             if (lehrgaenge.length > 0) {
-                await Promise.all(lehrgaenge.map(lehrgang => 
-                tx.ff_mitglied_lehrgang.create({
+                await Promise.all(lehrgaenge.map(lehrgang =>
+                db2.ff_mitglied_lehrgang.create({
                     data: {
                     FF_Mitglied_ID: ffMitglied.ID,
                     Lehrgang_ID: lehrgang.id,
                     Datum_bestanden: lehrgang.datum ? new Date(lehrgang.datum) : null,
-                    Erstellt_am: new Date(),
-                    Geaendert_am: new Date()
+                    Erstellt_am: now,
+                    Geaendert_am: now
                     }
                 })
-                ))
+                ));
             }
             }
 
-            return updatedPerson
-        })
+            return updatedPerson;
+        });
 
-        res.status(200).json(result)
+        return res.status(200).json(result);
         }
+
         else if (req.method === 'DELETE') {
+        // Optional: nur Admin darf löschen
         if (session.user.role !== 'admin') {
-            return res.status(403).json({ message: 'Keine Berechtigung' })
+            return res.status(403).json({ message: 'Keine Berechtigung' });
         }
 
         await db1.$transaction(async (tx) => {
-            // Vereinszuordnung löschen
             await tx.vereinszuordnung.deleteMany({
-            where: { Person_ID: parseInt(id) }
-        })
+            where: { Person_ID: parsedId }
+            });
 
-        // FF-Mitglied und zugehörige Lehrgänge löschen
-        const ffMitglied = await tx.ff_mitglied.findFirst({
-            where: { Person_ID: parseInt(id) }
-            })
-            
+            const ffMitglied = await db2.ff_mitglied.findFirst({
+            where: { Person_ID: parsedId }
+            });
+
             if (ffMitglied) {
-            await tx.ff_mitglied_lehrgang.deleteMany({
+            await db2.ff_mitglied_lehrgang.deleteMany({
                 where: { FF_Mitglied_ID: ffMitglied.ID }
-            })
-            
-            await tx.ff_mitglied.delete({
+            });
+
+            await db2.ff_mitglied.delete({
                 where: { ID: ffMitglied.ID }
-            })
+            });
+            }
+
+            await tx.person.delete({
+            where: { ID: parsedId }
+            });
+        });
+
+        return res.status(200).json({ message: 'Mitglied erfolgreich gelöscht' });
         }
 
-        // Person löschen
-        await tx.person.delete({
-            where: { ID: parseInt(id) }
-            })
-        })
-
-        res.status(204).end()
-        }
         else {
-        res.setHeader('Allow', ['GET', 'PUT', 'DELETE'])
-        res.status(405).json({ message: `Method ${req.method} not allowed` })
+        res.setHeader('Allow', ['GET', 'PUT', 'DELETE']);
+        return res.status(405).json({ message: `Methode ${req.method} nicht erlaubt` });
         }
     } catch (error) {
-        console.error('API Fehler:', error)
-        res.status(500).json({ 
+        console.error('API Fehler:', error);
+        return res.status(500).json({
         message: 'Interner Serverfehler',
-        error: process.env.NODE_ENV === 'development' ? error.message : undefined
-        })
+        error: process.env.NODE_ENV === 'development' ? error.stack : undefined
+        });
     }
 }

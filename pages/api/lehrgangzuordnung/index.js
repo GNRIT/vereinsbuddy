@@ -8,30 +8,38 @@ export default async function handler(req, res) {
             ff_mitglied: true,
             lehrgang: true
             }
-        })
-        res.status(200).json(zuordnungen)
+        });
+        res.status(200).json(zuordnungen);
         } catch (error) {
-        res.status(500).json({ message: 'Fehler beim Abrufen der Zuordnungen', error: error.message })
+        res.status(500).json({ message: 'Fehler beim Abrufen der Zuordnungen', error: error.message });
         }
     } else if (req.method === 'POST') {
         try {
-        const { FF_Mitglied_ID, Lehrgang_ID, Datum_bestanden } = req.body
+        const { FF_Mitglied_ID, Lehrgang_ID, Datum_bestanden } = req.body;
+
+        const mitgliedId = parseInt(FF_Mitglied_ID);
+        const lehrgangId = parseInt(Lehrgang_ID);
+
+        if (isNaN(mitgliedId) || isNaN(lehrgangId)) {
+            return res.status(400).json({ message: 'Ungültige Mitglieds- oder Lehrgangs-ID.' });
+        }
 
         const neueZuordnung = await db2.ff_mitglied_lehrgang.create({
             data: {
-            FF_Mitglied_ID: parseInt(FF_Mitglied_ID),
-            Lehrgang_ID: parseInt(Lehrgang_ID),
+            FF_Mitglied_ID: mitgliedId,
+            Lehrgang_ID: lehrgangId,
             Datum_bestanden: Datum_bestanden ? new Date(Datum_bestanden) : null,
             Erstellt_am: new Date()
             }
-        })
+        });
 
-        res.status(201).json(neueZuordnung)
+        res.status(201).json(neueZuordnung);
         } catch (error) {
-        res.status(400).json({ message: 'Fehler beim Erstellen der Zuordnung', error: error.message })
+        console.error(error);
+        res.status(400).json({ message: 'Fehler beim Erstellen der Zuordnung', error: error.message });
         }
     } else {
-        res.setHeader('Allow', ['GET', 'POST'])
-        res.status(405).json({ message: `Method ${req.method} not allowed` })
+        res.setHeader('Allow', ['GET', 'POST']);
+        res.status(405).json({ message: `Method ${req.method} not allowed` });
     }
 }

@@ -161,20 +161,11 @@ export default function MitgliedDetail({ mitglied }) {
         ID: parsedId,
         },
         include: {
-        Vereinszuordnung: {
+        vereinszuordnung: {
             include: {
-            Verein: true,
+            verein: true,
             },
-        },
-        ff_mitglied: {
-            include: {
-            ff_mitglied_lehrgang: {
-                include: {
-                lehrgang: true,
-                },
-            },
-            },
-        },
+        }
         },
     })
 

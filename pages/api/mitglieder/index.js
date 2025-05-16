@@ -1,13 +1,13 @@
-import { authOptions } from '@/lib/auth'
-import { vereinsbuddyPrisma as db1 } from '@/lib/prisma'
-import { getServerSession } from 'next-auth'
+import { authOptions } from '@/lib/auth';
+import { vereinsbuddyPrisma as db1, vereinDbPrisma as db2 } from '@/lib/prisma';
+import { getServerSession } from 'next-auth';
 
 export default async function handler(req, res) {
     const session = await getServerSession(req, res, authOptions)
 
-    if (!session) {
+    /*if (!session) {
         return res.status(401).json({ message: 'Nicht autorisiert' })
-    }
+    }*/
 
     try {
         if (req.method === 'GET') {
@@ -19,17 +19,8 @@ export default async function handler(req, res) {
             skip,
             take: parseInt(limit),
             include: {
-                Vereinszuordnung: {
-                include: { Verein: true }
-                },
-                ff_mitglied: {
-                include: {
-                    ff_mitglied_lehrgang: {
-                    include: {
-                        lehrgang: true
-                    }
-                    }
-                }
+                vereinszuordnung: {
+                include: { verein: true }
                 }
             },
             orderBy: { Name: 'asc' }
@@ -37,7 +28,7 @@ export default async function handler(req, res) {
             db1.person.count()
         ])
 
-        res.status(200).json({
+        return res.status(200).json({
             data: mitglieder,
             pagination: {
             page: parseInt(page),
@@ -46,23 +37,20 @@ export default async function handler(req, res) {
             totalPages: Math.ceil(total / parseInt(limit))
             }
         })
-        } 
-        else if (req.method === 'POST') {
-        if (session.user.role !== 'admin') {
-            return res.status(403).json({ message: 'Keine Berechtigung' })
         }
 
+        else if (req.method === 'POST') {
         const { personData, lehrgaenge = [] } = req.body
 
-        // Validierung
         if (!personData.Vorname || !personData.Name) {
             return res.status(400).json({ message: 'Vorname und Name sind erforderlich' })
         }
 
         const result = await db1.$transaction(async (tx) => {
-            // Person erstellen
+            // 1. Person anlegen
             const neuePerson = await tx.person.create({
             data: {
+                ID: personData.ID,
                 Vorname: personData.Vorname,
                 Name: personData.Name,
                 Geburtsdatum: personData.Geburtsdatum ? new Date(personData.Geburtsdatum) : null,
@@ -77,8 +65,8 @@ export default async function handler(req, res) {
             }
             })
 
-            // FF-Mitglied erstellen
-            const ffMitglied = await tx.ff_mitglied.create({
+            // 2. FF-Mitglied anlegen
+            const ffMitglied = await db2.ff_mitglied.create({
             data: {
                 Person_ID: neuePerson.ID,
                 Eintrittsdatum: new Date(),
@@ -88,7 +76,7 @@ export default async function handler(req, res) {
             }
             })
 
-            // Vereinszuordnung erstellen
+            // 3. Vereinszuordnung (mit Default-Verein)
             const verein = await tx.verein.findFirst()
             if (verein) {
             await tx.vereinszuordnung.create({
@@ -102,10 +90,10 @@ export default async function handler(req, res) {
             })
             }
 
-            // Lehrgänge zuordnen
+            // 4. Lehrgänge zuordnen (wenn vorhanden)
             if (lehrgaenge.length > 0) {
-            await Promise.all(lehrgaenge.map(lehrgang => 
-                tx.ff_mitglied_lehrgang.create({
+            await Promise.all(lehrgaenge.map((lehrgang) =>
+                db2.ff_mitglied_lehrgang.create({
                 data: {
                     FF_Mitglied_ID: ffMitglied.ID,
                     Lehrgang_ID: lehrgang.id,
@@ -120,17 +108,18 @@ export default async function handler(req, res) {
             return neuePerson
         })
 
-        res.status(201).json(result)
-        } 
+        return res.status(201).json(result)
+        }
+
         else {
         res.setHeader('Allow', ['GET', 'POST'])
-        res.status(405).json({ message: `Method ${req.method} not allowed` })
+        return res.status(405).json({ message: `Method ${req.method} not allowed` })
         }
     } catch (error) {
         console.error('API Fehler:', error)
-        res.status(500).json({ 
+        return res.status(500).json({
         message: 'Interner Serverfehler',
-        error: process.env.NODE_ENV === 'development' ? error.message : undefined
+        error: process.env.NODE_ENV === 'production' ? undefined : error.message
         })
     }
 }

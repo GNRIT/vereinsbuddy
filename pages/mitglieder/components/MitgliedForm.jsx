@@ -81,11 +81,13 @@ export default function MitgliedForm({ initialData = {}, onSubmit }) {
         await onSubmit({
         personData: {
             ...formData,
-            Geburtsdatum: formData.Geburtsdatum?.toISOString().split('T')[0]
+            Geburtsdatum: initialData.Geburtsdatum ? new Date(initialData.Geburtsdatum): null,
+
         },
         lehrgaenge: validLehrgaenge.map(l => ({
             id: parseInt(l.id),
-            datum: l.datum?.toISOString().split('T')[0]
+            datum: l.Datum_bestanden ? new Date(l.Datum_bestanden) : null,
+
         }))
         })
     }
