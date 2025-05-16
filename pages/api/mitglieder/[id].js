@@ -1,25 +1,30 @@
-import { vereinsbuddyPrisma as db1 } from '@/lib/prisma';
-import { getSession } from 'next-auth/react';
+import { authOptions } from '@/lib/auth'
+import { vereinsbuddyPrisma as db1 } from '@/lib/prisma'
+import { getServerSession } from 'next-auth'
 
-
-export default async function handler(req, res) {
-    const session = await getSession({ req })
+    export default async function handler(req, res) {
+    const session = await getServerSession(req, res, authOptions)
     const { id } = req.query
 
-    /*if (!session) {
+    if (!session) {
         return res.status(401).json({ message: 'Nicht autorisiert' })
-    }*/
+    }
 
-    if (req.method === 'GET') {
-        try {
+    try {
+        if (req.method === 'GET') {
         const mitglied = await db1.person.findUnique({
-            where: {
-            ID: parseInt(id),
-            },
+            where: { ID: parseInt(id) },
             include: {
             Vereinszuordnung: {
+                include: { Verein: true }
+            },
+            ff_mitglied: {
                 include: {
-                Verein: true
+                ff_mitglied_lehrgang: {
+                    include: {
+                    lehrgang: true
+                    }
+                }
                 }
             }
             }
@@ -30,87 +35,122 @@ export default async function handler(req, res) {
         }
 
         res.status(200).json(mitglied)
-        } catch (error) {
-        res.status(500).json({ message: 'Fehler beim Abrufen des Mitglieds', error: error.message })
         }
-    }  else if (req.method === 'PUT') {
-        try {
-            const {
-                Vorname,
-                Name,
-                Geburtsdatum,
-                Strasse,
-                Hausnummer,
-                Postleitzahl,
-                Ort,
-                Email,
-                Handynr,
-                Rolle
-            } = req.body
-    
-            const updatedPerson = await db1.person.update({
-                where: {
-                    ID: parseInt(id),
-                },
-                data: {
-                    Vorname,
-                    Name,
-                    Geburtsdatum: Geburtsdatum && Geburtsdatum !== '' ? new Date(Geburtsdatum) : null,
-                    Strasse,
-                    Hausnummer,
-                    Postleitzahl,
-                    Ort,
-                    Email,
-                    Handynr,
-                    Geaendert_am: new Date(),
-                }
+        else if (req.method === 'PUT') {
+        if (session.user.role !== 'admin') {
+            return res.status(403).json({ message: 'Keine Berechtigung' })
+        }
+
+        const { personData, lehrgaenge = [] } = req.body
+
+        const result = await db1.$transaction(async (tx) => {
+            // Person aktualisieren
+            const updatedPerson = await tx.person.update({
+            where: { ID: parseInt(id) },
+            data: {
+                Vorname: personData.Vorname,
+                Name: personData.Name,
+                Geburtsdatum: personData.Geburtsdatum ? new Date(personData.Geburtsdatum) : null,
+                Strasse: personData.Strasse,
+                Hausnummer: personData.Hausnummer,
+                Postleitzahl: personData.Postleitzahl,
+                Ort: personData.Ort,
+                Email: personData.Email,
+                Handynr: personData.Handynr,
+                Geaendert_am: new Date()
+            }
             })
-    
-            const existingZuordnung = await db1.vereinszuordnung.findFirst({
-                where: {
-                    Person_ID: parseInt(id),
-                }
+
+            // Vereinszuordnung aktualisieren
+            const existingZuordnung = await tx.vereinszuordnung.findFirst({
+            where: { Person_ID: parseInt(id) }
             })
-    
+            
             if (existingZuordnung) {
-                await db1.vereinszuordnung.update({
-                    where: {
-                        ID: existingZuordnung.ID,
-                    },
+            await tx.vereinszuordnung.update({
+                where: { ID: existingZuordnung.ID },
+                data: {
+                Rolle: personData.Rolle,
+                Geaendert_am: new Date()
+                }
+            })
+            }
+
+            // FF-Mitglied finden
+            const ffMitglied = await tx.ff_mitglied.findFirst({
+            where: { Person_ID: parseInt(id) }
+            })
+
+            if (ffMitglied) {
+            // Bestehende Lehrgänge löschen
+            await tx.ff_mitglied_lehrgang.deleteMany({
+                where: { FF_Mitglied_ID: ffMitglied.ID }
+            })
+
+            // Neue Lehrgänge hinzufügen
+            if (lehrgaenge.length > 0) {
+                await Promise.all(lehrgaenge.map(lehrgang => 
+                tx.ff_mitglied_lehrgang.create({
                     data: {
-                        Rolle,
-                        Geaendert_am: new Date(),
+                    FF_Mitglied_ID: ffMitglied.ID,
+                    Lehrgang_ID: lehrgang.id,
+                    Datum_bestanden: lehrgang.datum ? new Date(lehrgang.datum) : null,
+                    Erstellt_am: new Date(),
+                    Geaendert_am: new Date()
                     }
                 })
+                ))
             }
-    
-            res.status(200).json(updatedPerson)
-        } catch (error) {
-            console.error('PUT Fehler:', error)
-            res.status(400).json({ message: 'Fehler beim Aktualisieren des Mitglieds', error: error.message })
-        }
-    } else if (req.method === 'DELETE') {
-        try {
-        // Lösche zuerst die Vereinszuordnung
-        await db1.vereinszuordnung.deleteMany({
-            where: {
-            Person_ID: parseInt(id),
             }
+
+            return updatedPerson
         })
 
-        // Dann die Person
-        await db1.person.delete({
-            where: {
-            ID: parseInt(id),
-            }
+        res.status(200).json(result)
+        }
+        else if (req.method === 'DELETE') {
+        if (session.user.role !== 'admin') {
+            return res.status(403).json({ message: 'Keine Berechtigung' })
+        }
+
+        await db1.$transaction(async (tx) => {
+            // Vereinszuordnung löschen
+            await tx.vereinszuordnung.deleteMany({
+            where: { Person_ID: parseInt(id) }
+        })
+
+        // FF-Mitglied und zugehörige Lehrgänge löschen
+        const ffMitglied = await tx.ff_mitglied.findFirst({
+            where: { Person_ID: parseInt(id) }
+            })
+            
+            if (ffMitglied) {
+            await tx.ff_mitglied_lehrgang.deleteMany({
+                where: { FF_Mitglied_ID: ffMitglied.ID }
+            })
+            
+            await tx.ff_mitglied.delete({
+                where: { ID: ffMitglied.ID }
+            })
+        }
+
+        // Person löschen
+        await tx.person.delete({
+            where: { ID: parseInt(id) }
+            })
         })
 
         res.status(204).end()
-        } catch (error) {
-        res.status(400).json({ message: 'Fehler beim Löschen des Mitglieds', error: error.message })
         }
-    } else {
+        else {
         res.setHeader('Allow', ['GET', 'PUT', 'DELETE'])
         res.status(405).json({ message: `Method ${req.method} not allowed` })
+        }
+    } catch (error) {
+        console.error('API Fehler:', error)
+        res.status(500).json({ 
+        message: 'Interner Serverfehler',
+        error: process.env.NODE_ENV === 'development' ? error.message : undefined
+        })
     }
 }

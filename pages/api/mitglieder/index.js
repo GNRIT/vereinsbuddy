@@ -1,71 +1,136 @@
-import { vereinsbuddyPrisma as db1 } from '@/lib/prisma';
-import { getSession } from 'next-auth/react';
-
+import { authOptions } from '@/lib/auth'
+import { vereinsbuddyPrisma as db1 } from '@/lib/prisma'
+import { getServerSession } from 'next-auth'
 
 export default async function handler(req, res) {
-    const session = await getSession({ req })
+    const session = await getServerSession(req, res, authOptions)
 
-    /*if (!session) {
+    if (!session) {
         return res.status(401).json({ message: 'Nicht autorisiert' })
-    }*/
+    }
 
-    if (req.method === 'GET') {
-        try {
-        const mitglieder = await db1.person.findMany({
+    try {
+        if (req.method === 'GET') {
+        const { page = 1, limit = 10 } = req.query
+        const skip = (Math.max(1, parseInt(page)) - 1) * Math.max(1, parseInt(limit))
+
+        const [mitglieder, total] = await Promise.all([
+            db1.person.findMany({
+            skip,
+            take: parseInt(limit),
             include: {
-            Vereinszuordnung: {
+                Vereinszuordnung: {
+                include: { Verein: true }
+                },
+                ff_mitglied: {
                 include: {
-                Verein: true
+                    ff_mitglied_lehrgang: {
+                    include: {
+                        lehrgang: true
+                    }
+                    }
                 }
-            }
+                }
+            },
+            orderBy: { Name: 'asc' }
+            }),
+            db1.person.count()
+        ])
+
+        res.status(200).json({
+            data: mitglieder,
+            pagination: {
+            page: parseInt(page),
+            limit: parseInt(limit),
+            total,
+            totalPages: Math.ceil(total / parseInt(limit))
             }
         })
-        res.status(200).json(mitglieder)
-        } catch (error) {
-        res.status(500).json({ message: 'Fehler beim Abrufen der Mitglieder', error: error.message })
+        } 
+        else if (req.method === 'POST') {
+        if (session.user.role !== 'admin') {
+            return res.status(403).json({ message: 'Keine Berechtigung' })
         }
-    } else if (req.method === 'POST') {
-        try {
-        const { Vorname, Name, Geburtsdatum, Strasse, Hausnummer, Postleitzahl, Ort, Email, Handynr, Rolle } = req.body
 
-        // Erstelle zuerst die Person
-        const neuePerson = await db1.person.create({
-            data: {
-            Vorname,
-            Name,
-            Geburtsdatum: Geburtsdatum ? new Date(Geburtsdatum) : null,
-            Strasse,
-            Hausnummer,
-            Postleitzahl,
-            Ort,
-            Email,
-            Handynr,
-            Erstellt_am: new Date(),
-            Geaendert_am: new Date(),
-            }
-        })
+        const { personData, lehrgaenge = [] } = req.body
 
-        // Dann die Vereinszuordnung (hier mit dem ersten Verein, könnte erweitert werden)
-        const verein = await db1.verein.findFirst()
-        
-        if (verein) {
-            await db1.vereinszuordnung.create({
+        // Validierung
+        if (!personData.Vorname || !personData.Name) {
+            return res.status(400).json({ message: 'Vorname und Name sind erforderlich' })
+        }
+
+        const result = await db1.$transaction(async (tx) => {
+            // Person erstellen
+            const neuePerson = await tx.person.create({
             data: {
-                Person_ID: neuePerson.ID,
-                Verein_ID: verein.ID,
-                Rolle,
+                Vorname: personData.Vorname,
+                Name: personData.Name,
+                Geburtsdatum: personData.Geburtsdatum ? new Date(personData.Geburtsdatum) : null,
+                Strasse: personData.Strasse,
+                Hausnummer: personData.Hausnummer,
+                Postleitzahl: personData.Postleitzahl,
+                Ort: personData.Ort,
+                Email: personData.Email,
+                Handynr: personData.Handynr,
                 Erstellt_am: new Date(),
-                Geaendert_am: new Date(),
+                Geaendert_am: new Date()
             }
             })
-        }
 
-        res.status(201).json(neuePerson)
-        } catch (error) {
-        res.status(400).json({ message: 'Fehler beim Erstellen des Mitglieds', error: error.message })
-        }
-    } else {
+            // FF-Mitglied erstellen
+            const ffMitglied = await tx.ff_mitglied.create({
+            data: {
+                Person_ID: neuePerson.ID,
+                Eintrittsdatum: new Date(),
+                Status: 'aktiv',
+                Erstellt_am: new Date(),
+                Geaendert_am: new Date()
+            }
+            })
+
+            // Vereinszuordnung erstellen
+            const verein = await tx.verein.findFirst()
+            if (verein) {
+            await tx.vereinszuordnung.create({
+                data: {
+                Person_ID: neuePerson.ID,
+                Verein_ID: verein.ID,
+                Rolle: personData.Rolle || 'mitglied',
+                Erstellt_am: new Date(),
+                Geaendert_am: new Date()
+                }
+            })
+            }
+
+            // Lehrgänge zuordnen
+            if (lehrgaenge.length > 0) {
+            await Promise.all(lehrgaenge.map(lehrgang => 
+                tx.ff_mitglied_lehrgang.create({
+                data: {
+                    FF_Mitglied_ID: ffMitglied.ID,
+                    Lehrgang_ID: lehrgang.id,
+                    Datum_bestanden: lehrgang.datum ? new Date(lehrgang.datum) : null,
+                    Erstellt_am: new Date(),
+                    Geaendert_am: new Date()
+                }
+                })
+            ))
+            }
+
+            return neuePerson
+        })
+
+        res.status(201).json(result)
+        } 
+        else {
         res.setHeader('Allow', ['GET', 'POST'])
         res.status(405).json({ message: `Method ${req.method} not allowed` })
+        }
+    } catch (error) {
+        console.error('API Fehler:', error)
+        res.status(500).json({ 
+        message: 'Interner Serverfehler',
+        error: process.env.NODE_ENV === 'development' ? error.message : undefined
+        })
     }
 }

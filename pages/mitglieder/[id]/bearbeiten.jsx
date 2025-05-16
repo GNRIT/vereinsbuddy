@@ -29,54 +29,77 @@ export default function MitgliedBearbeiten({ initialData }) {
     }
 
     return (
-        <div>
+        <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <div className="bg-white shadow rounded-lg p-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Mitglied bearbeiten</h1>
-            <MitgliedForm initialData={initialData} onSubmit={handleSubmit} />
+            <MitgliedForm 
+            initialData={initialData} 
+            onSubmit={handleSubmit} 
+            />
         </div>
         </div>
     )
     }
 
     export async function getServerSideProps(context) {
-        const { id } = context.params;
-        const session = await getSession(context);
-    
+    const { id } = context.params
+    const session = await getSession(context)
+
     /*if (!session) {
         return {
-            redirect: {
+        redirect: {
             destination: '/auth/login',
             permanent: false,
-            },
-        };
-        }*/
-
-        const parsedId = parseInt(id);
-        if (!parsedId || isNaN(parsedId)) {
-            return {
-                notFound: true,
-            };
+        },
         }
+    }*/
 
+    const parsedId = parseInt(id)
+    if (!parsedId || isNaN(parsedId)) {
+        return {
+        notFound: true,
+        }
+    }
+
+    // Mitgliedsdaten mit allen notwendigen Relationen laden
     const mitglied = await db1.person.findUnique({
         where: {
         ID: parsedId,
         },
         include: {
-        vereinszuordnung: true,
+        Vereinszuordnung: {
+            include: {
+            Verein: true
+            }
         },
-    });
+        ff_mitglied: {
+            include: {
+            ff_mitglied_lehrgang: {
+                include: {
+                lehrgang: true
+                }
+            }
+            }
+        }
+        }
+    })
 
     if (!mitglied) {
         return {
-            notFound: true,
-        };
+        notFound: true,
+        }
     }
-    
+
+    // Daten für das Formular aufbereiten
+    const initialData = {
+        ...mitglied,
+        Rolle: mitglied.Vereinszuordnung?.[0]?.Rolle || 'mitglied',
+        ff_mitglied_lehrgang: mitglied.ff_mitglied?.[0]?.ff_mitglied_lehrgang || []
+    }
+
     return {
         props: {
-            initialData: JSON.parse(JSON.stringify(mitglied)),
+        initialData: JSON.parse(JSON.stringify(initialData)),
         },
-    };
+    }
 }
-

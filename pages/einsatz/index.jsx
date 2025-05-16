@@ -60,9 +60,9 @@ export default function EinsatzListe({ einsaetze: initialEinsaetze }) {
                                     <td className="px-6 py-4 text-sm text-gray-900">
                                         {einsatz.Uhrzeit_Anfang
                                             ? new Date(einsatz.Uhrzeit_Anfang).toLocaleTimeString([], {
-                                                  hour: '2-digit',
-                                                  minute: '2-digit',
-                                              })
+                                                    hour: '2-digit',
+                                                    minute: '2-digit',
+                                            })
                                             : '–'}
                                     </td>
                                     <td className="px-6 py-4 text-sm text-gray-900">

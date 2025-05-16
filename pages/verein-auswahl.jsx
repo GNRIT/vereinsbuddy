@@ -36,7 +36,7 @@ export default function VereinAuswahl() {
             <div className="flex items-center justify-center min-h-screen">
                 <div className="text-center">
                     <p>Fehler: Keine Benutzerdaten gefunden.</p>
-                    <button 
+                    <button
                         onClick={() => signOut()}
                         className="mt-4 text-blue-600 hover:text-blue-800"
                     >
