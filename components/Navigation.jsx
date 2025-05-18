@@ -34,7 +34,7 @@ export default function Navigation() {
     const navItems = [
         { href: '/einteilungen', label: 'Einteilungen   ' },
         { href: '/mitglieder', label: 'Mitglieder   ' },
-        { href: '/benutzerkonten', label: 'Benutzerkonten   ', admin: true },
+        { href: '/benutzerkonten', label: 'Benutzerkonten   '/*, admin: true*/ },
         { href: '/vereinszuordnungen', label: 'Vereinszuordnungen   ' },
         { href: '/allergien', label: 'Allergien   ' },
         { href: '/dienstabend', label: 'Dienstabend   ' },

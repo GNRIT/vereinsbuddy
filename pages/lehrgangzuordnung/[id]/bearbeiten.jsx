@@ -16,7 +16,7 @@ export default function LehrgangsZuordnungBearbeiten({ initialData, mitglieder, 
         })
 
         if (response.ok) {
-            router.push('/lehrgaenge')
+            router.push('/lehrgangzuordnung')
         } else {
             const errorData = await response.json()
             alert(errorData.message || 'Fehler beim Speichern')

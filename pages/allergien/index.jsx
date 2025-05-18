@@ -31,10 +31,7 @@ export default function AllergieListe({ allergien }) {
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{allergie.ID}</td>
                     <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm font-medium text-gray-900">
-                        {allergie.ff_mitglied?.Vorname} {allergie.ff_mitglied?.Name}
-                        </div>
-                        <div className="text-sm text-gray-500">
-                        {allergie.jf_mitglied?.Vorname} {allergie.jf_mitglied?.Name}
+                        {allergie.ff_mitglied?.ID}
                         </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{allergie.Allergie}</td>

@@ -28,7 +28,7 @@ async function handleGet(req, res) {
                 ID: 'asc'
             },
             include: {
-                person: true, // Person-Daten einbinden
+                allergie: true, // Person-Daten einbinden
             },
         });
         res.status(200).json(mitglieder);

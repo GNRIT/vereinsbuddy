@@ -1,12 +1,8 @@
-import { vereinsbuddyPrisma as db1 } from '@/lib/prisma'
-import { useRouter } from 'next/router'
+import { vereinsbuddyPrisma as db1, vereinDbPrisma as db2 } from '@/lib/prisma';
+import { useRouter } from 'next/router';
 
-export default function MitgliedDetail({ mitglied }) {
+export default function MitgliedDetail({ mitglied, ffDaten }) {
     const router = useRouter()
-
-    if (router.isFallback) {
-        return <div>Laden...</div>
-    }
 
     // Formatieren des Bestehensdatums für Lehrgänge
     const formatLehrgangDatum = (datum) => {
@@ -81,7 +77,7 @@ export default function MitgliedDetail({ mitglied }) {
             </div>
 
             {/* Lehrgänge Abschnitt */}
-            {mitglied.ff_mitglied?.[0]?.ff_mitglied_lehrgang?.length > 0 && (
+            *{ffDaten?.ff_mitglied_lehrgang?.length > 0 && (
             <div className="mt-6">
                 <h2 className="text-lg font-semibold text-gray-900 mb-4">Lehrgänge</h2>
                 <div className="bg-gray-50 p-4 rounded-lg">
@@ -95,20 +91,27 @@ export default function MitgliedDetail({ mitglied }) {
                         </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
-                        {mitglied.ff_mitglied[0].ff_mitglied_lehrgang.map((lehrgang) => (
-                        <tr key={lehrgang.ID}>
+                    {ffDaten.ff_mitglied_lehrgang.map((eintrag) => (
+                        <tr key={eintrag.ID}>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            {lehrgang.lehrgang.Beschreibung}
+                                {eintrag.lehrgang?.Abk_rzung || ''}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            {lehrgang.lehrgang.Abk_rzung}
+                                {eintrag.lehrgang?.Beschreibung || ''}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            {formatLehrgangDatum(lehrgang.Datum_bestanden)}
+                                {eintrag.Datum_bestanden ? (
+                                    <span className="text-gray-600">
+                                        {new Date(eintrag.Datum_bestanden).toLocaleDateString('de-DE')}
+                                    </span>
+                                ) : (
+                                    'nicht bestanden'
+                                )}
                             </td>
                         </tr>
-                        ))}
-                    </tbody>
+                    ))}
+                </tbody>
+
                     </table>
                 </div>
                 </div>
@@ -145,39 +148,141 @@ export default function MitgliedDetail({ mitglied }) {
     )
     }
 
-    export async function getServerSideProps(context) {
-    const { id } = context.params
+    export async function getServerSideProps({ params }) {
+    const id = parseInt(params.id, 10);
 
-    const parsedId = parseInt(id)
-    if (!parsedId || isNaN(parsedId)) {
-        return {
-        notFound: true,
-        }
-    }
-
-    // Mitglied mit allen relevanten Daten laden
-    const mitglied = await db1.person.findUnique({
-        where: {
-        ID: parsedId,
-        },
-        include: {
-        vereinszuordnung: {
+    try {
+        const mitglied = await db1.person.findUnique({
+            where: { ID: id },
             include: {
-            verein: true,
+                vereinszuordnung: true,
             },
-        }
-        },
-    })
+        });
 
-    if (!mitglied) {
+        const ffDaten = await db2.ff_mitglied.findUnique({
+            where: { ID: id },
+            include: {
+                ff_mitglied_lehrgang: {
+                    include: {
+                        lehrgang: true,
+                    },
+                },
+            },
+        });
+
+        if (!mitglied) {
+            return { notFound: true };
+        }
+
         return {
-        notFound: true,
-        }
-    }
-
-    return {
-        props: {
-        mitglied: JSON.parse(JSON.stringify(mitglied)),
-        },
+            props: {
+                mitglied: JSON.parse(JSON.stringify(mitglied)),
+                ffDaten: JSON.parse(JSON.stringify(ffDaten)),
+            },
+        };
+    } catch (error) {
+        console.error('Fehler beim Abrufen des Mitglieds:', error);
+        return {
+            notFound: true,
+        };
     }
 }
+
+
+{/*import { vereinsbuddyPrisma as db1, vereinDbPrisma as db2 } from '@/lib/prisma';
+import Link from 'next/link';
+
+export default function MitgliedDetail({ mitglied, ffDaten }) {
+    if (!mitglied) {
+        return (
+            <div className="max-w-4xl mx-auto p-4">
+                <p className="text-red-500">Mitglied nicht gefunden.</p>
+                <Link href="/mitglieder">
+                    <a className="text-blue-600 hover:underline">Zurück zur Übersicht</a>
+                </Link>
+            </div>
+        );
+    }
+
+    return (
+        <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+            <h1 className="text-2xl font-bold mb-4">
+                {mitglied.Vorname} {mitglied.Name}
+            </h1>
+            <p><strong>Geburtsdatum:</strong> {mitglied.Geburtsdatum ? new Date(mitglied.Geburtsdatum).toLocaleDateString('de-DE') : 'Nicht angegeben'}</p>
+            <p><strong>Email:</strong> {mitglied.Email || 'Nicht angegeben'}</p>
+            <p><strong>Telefon:</strong> {mitglied.HandyNr || 'Nicht angegeben'}</p>
+            <p><strong>Rolle:</strong> {mitglied.vereinszuordnung?.[0]?.Rolle || 'Unbekannt'}</p>
+
+            <div className="mt-6">
+                <h2 className="text-xl font-semibold mb-2">Lehrgänge</h2>
+                {ffDaten?.ff_mitglied_lehrgang?.length > 0 ? (
+                    <ul className="list-disc pl-5 space-y-1">
+                        {ffDaten.ff_mitglied_lehrgang.map((eintrag, idx) => (
+                            <li key={idx}>
+                                <span className="font-medium">{eintrag.lehrgang?.Abk_rzung || ''}</span>
+                                {' – '}
+                                {eintrag.lehrgang?.Beschreibung || ''}
+                                {eintrag.Datum_bestanden && (
+                                    <>
+                                        <span className="text-gray-600">
+                                            {new Date(eintrag.Datum_bestanden).toLocaleDateString('de-DE')}
+                                        </span>
+                                    </>
+                                )}
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <p className="text-gray-500">Keine Lehrgänge vorhanden.</p>
+                )}
+            </div>
+
+            <div className="mt-6">
+                <Link href="/mitglieder">
+                    <a className="text-blue-600 hover:underline">Zurück zur Mitgliederliste</a>
+                </Link>
+            </div>
+        </div>
+    );
+}
+
+export async function getServerSideProps({ params }) {
+    const id = parseInt(params.id, 10);
+
+    try {
+        const mitglied = await db1.person.findUnique({
+            where: { ID: id },
+            include: {
+                vereinszuordnung: true,
+            },
+        });
+
+        const ffDaten = await db2.ff_mitglied.findUnique({
+            where: { ID: id },
+            include: {
+                ff_mitglied_lehrgang: {
+                    include: {
+                        lehrgang: true,
+                    },
+                },
+            },
+        });
+
+        if (!mitglied) {
+            return { notFound: true };
+        }
+
+        return {
+            props: {
+                mitglied: JSON.parse(JSON.stringify(mitglied)),
+                ffDaten: JSON.parse(JSON.stringify(ffDaten)),
+            },
+        };
+    } catch (error) {
+        console.error('Fehler beim Abrufen des Mitglieds:', error);
+        return {
+            notFound: true,
+        };
+    }
+}*/}

@@ -9,7 +9,7 @@ export default function LehrgangsZuordnungen({ zuordnungen }) {
                     if (!confirm('Willst du dieses Lehrgengzuornung wirklich löschen?')) return;
             
                     try {
-                        const res = await fetch(`/api/lehrgengzuornung/${id}`, {
+                        const res = await fetch(`/api/lehrgangzuordnung/${id}`, {
                             method: 'DELETE',
                         });
             
@@ -62,7 +62,7 @@ export default function LehrgangsZuordnungen({ zuordnungen }) {
                         </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {zuordnung.lehrgang.Bezeichnung}
+                        {zuordnung.lehrgang.Beschreibung}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         {zuordnung.Datum_bestanden ? new Date(zuordnung.Datum_bestanden).toLocaleDateString() : 'Nicht bestanden'}

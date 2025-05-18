@@ -1,10 +1,11 @@
-import { useRouter } from 'next/router'
-import AllergieForm from './components/AllergieForm'
+import { useRouter } from 'next/router';
+import AllergieForm from './components/AllergieForm';
 
 export default function NeueAllergie() {
     const router = useRouter()
 
     const handleSubmit = async (formData) => {
+        console.log('Form Data:', formData);
         try {
         const response = await fetch('/api/allergien', {
             method: 'POST',

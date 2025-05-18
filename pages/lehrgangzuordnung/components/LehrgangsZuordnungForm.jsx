@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 
-export default function LehrgangsZuordnungForm({ initialData = {}, mitglieder, lehrgaenge, onSubmit }) {
+export default function LehrgangsZuordnungForm({ initialData = {}, mitglieder = [], lehrgaenge = [], onSubmit }) {
     const [formData, setFormData] = useState({
         FF_Mitglied_ID: initialData.FF_Mitglied_ID || '',
         Lehrgang_ID: initialData.Lehrgang_ID || '',
@@ -14,7 +14,7 @@ export default function LehrgangsZuordnungForm({ initialData = {}, mitglieder, l
 
     const handleChange = (e) => {
         const { name, value } = e.target
-        setFormData(prev => ({
+        setFormData((prev) => ({
         ...prev,
         [name]: value
         }))
@@ -29,8 +29,10 @@ export default function LehrgangsZuordnungForm({ initialData = {}, mitglieder, l
         <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 gap-6">
             <div>
-            <label htmlFor="FF_Mitglied_ID" className="block text-sm font-medium text-gray-700">Mitglied ID*</label>
-            <input
+            <label htmlFor="FF_Mitglied_ID" className="block text-sm font-medium text-gray-700">
+                Mitglied*
+            </label>
+            <select
                 id="FF_Mitglied_ID"
                 name="FF_Mitglied_ID"
                 required
@@ -38,12 +40,20 @@ export default function LehrgangsZuordnungForm({ initialData = {}, mitglieder, l
                 onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             >
-            </input>
+                <option value="">Bitte wählen</option>
+                {mitglieder.map((mitglied) => (
+                <option key={mitglied.ID} value={mitglied.ID}>
+                    {mitglied.name ?? `Mitglied #${mitglied.ID}`}
+                </option>
+                ))}
+            </select>
             </div>
 
             <div>
-            <label htmlFor="Lehrgang_ID" className="block text-sm font-medium text-gray-700">Lehrgang ID*</label>
-            <input
+            <label htmlFor="Lehrgang_ID" className="block text-sm font-medium text-gray-700">
+                Lehrgang*
+            </label>
+            <select
                 id="Lehrgang_ID"
                 name="Lehrgang_ID"
                 required
@@ -51,11 +61,19 @@ export default function LehrgangsZuordnungForm({ initialData = {}, mitglieder, l
                 onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             >
-            </input>
+                <option value="">Bitte wählen</option>
+                {lehrgaenge.map((lehrgang) => (
+                <option key={lehrgang.ID} value={lehrgang.ID}>
+                    {lehrgang.Abk_rzung ?? `Lehrgang #${lehrgang.ID}`}
+                </option>
+                ))}
+            </select>
             </div>
 
             <div>
-            <label htmlFor="Datum_bestanden" className="block text-sm font-medium text-gray-700">Datum bestanden</label>
+            <label htmlFor="Datum_bestanden" className="block text-sm font-medium text-gray-700">
+                Datum bestanden
+            </label>
             <input
                 type="date"
                 name="Datum_bestanden"

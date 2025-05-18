@@ -33,7 +33,7 @@ export default function MitgliedForm({ initialData = {}, onSubmit }) {
                 initialData.ff_mitglied[0].ff_mitglied_lehrgang.map(l => ({
                 id: l.Lehrgang_ID,
                 datum: l.Datum_bestanden,
-                bezeichnung: lehrgaenge.find(lg => lg.ID === l.Lehrgang_ID)?.Beschreibung || ''
+                beschreibung: lehrgaenge.find(lg => lg.ID === l.Lehrgang_ID)?.Beschreibung || ''
                 }))
             )
             }
@@ -56,7 +56,7 @@ export default function MitgliedForm({ initialData = {}, onSubmit }) {
     const handleAddLehrgang = () => {
         setSelectedLehrgaenge(prev => [
         ...prev,
-        { id: '', datum: null, bezeichnung: '' }
+        { id: '', datum: null, beschreibung: '' }
         ])
     }
 
@@ -65,8 +65,8 @@ export default function MitgliedForm({ initialData = {}, onSubmit }) {
     }
 
     const handleLehrgangChange = (index, field, value) => {
-        setSelectedLehrgaenge(prev => 
-        prev.map((item, i) => 
+        setSelectedLehrgaenge(prev =>
+        prev.map((item, i) =>
             i === index ? { ...item, [field]: value } : item
         )
         )
@@ -75,7 +75,6 @@ export default function MitgliedForm({ initialData = {}, onSubmit }) {
     const handleSubmit = async (e) => {
         e.preventDefault()
         
-        // Filter out empty Lehrgänge
         const validLehrgaenge = selectedLehrgaenge.filter(l => l.id)
         
         await onSubmit({
@@ -256,6 +255,7 @@ export default function MitgliedForm({ initialData = {}, onSubmit }) {
                 />
                 </div>
 
+                <div>
                 <div className="flex items-end">
                 <button
                     type="button"
@@ -264,6 +264,17 @@ export default function MitgliedForm({ initialData = {}, onSubmit }) {
                 >
                     Entfernen
                 </button>
+                </div>
+
+                <div className="flex items-end">
+                <button
+                    type="button"
+                    onClick={() => handleConfirmLehrgang(index)}
+                    className="inline-flex items-center px-3 py-1 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                >
+                    confirm
+                </button>
+                </div>
                 </div>
             </div>
             ))}
